@@ -10,11 +10,14 @@
 
 @interface DozenalViewController : UIViewController <UITextFieldDelegate>
 
-@property (weak, nonatomic) IBOutlet UILabel *label;
+@property (weak, nonatomic) IBOutlet UILabel *debugOrientation;
+@property (weak, nonatomic) IBOutlet UILabel *debugNode;
+
 @property (weak, nonatomic) IBOutlet UIButton *moveForward;
 
 - (IBAction)moveLeft:(id)sender;
 - (IBAction)moveRight:(id)sender;
+- (IBAction)moveForward:(id)sender;
 
 @end
 

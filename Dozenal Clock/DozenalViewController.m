@@ -25,7 +25,12 @@ int             userOrientation = 0;
     
     [super viewDidLoad];
     
-    worldNode[1][2][0] = @"2";
+    [self moveCheck];
+    
+    worldNode[0][2][0] = @"2";
+    
+    worldNode[2][0][0] = @"0";
+    
     
 }
 
@@ -51,13 +56,22 @@ int             userOrientation = 0;
     
 }
 
+- (IBAction)moveForward:(id)sender {
+    
+    userNode = [ worldNode[userNode][userOrientation][0] intValue];
+    
+    [self moveCheck];
+    
+}
+
 
 - (void)moveCheck
 {
     
-    self.moveForward.hidden = worldNode[1][userOrientation][0] ? NO : YES;
+    self.moveForward.hidden = worldNode[userNode][userOrientation][0] ? NO : YES;
 
-    self.label.text = worldOrientation[userOrientation];
+    self.debugOrientation.text = worldOrientation[userOrientation];
+    self.debugNode.text = [NSString stringWithFormat:@"%d",userNode];
     
 }
 
