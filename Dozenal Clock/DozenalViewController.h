@@ -12,8 +12,11 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *debugOrientation;
 @property (weak, nonatomic) IBOutlet UILabel *debugNode;
-
+@property (weak, nonatomic) IBOutlet UILabel *debugLocation;
+//
 @property (weak, nonatomic) IBOutlet UIButton *moveForward;
+
+@property (weak, nonatomic) IBOutlet UIButton *moveAction;
 
 - (IBAction)moveLeft:(id)sender;
 - (IBAction)moveRight:(id)sender;

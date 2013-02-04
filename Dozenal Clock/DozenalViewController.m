@@ -9,7 +9,7 @@
 #import "DozenalViewController.h"
 
 NSString        *worldOrientation[4] = {@"north",@"east",@"south",@"west"};
-NSString        *worldNode[200][4][2] = {0};
+NSString        *worldNode[200][4][20] = {0};
 
 int             userNode = 0;
 int             userOrientation = 0;
@@ -27,8 +27,12 @@ int             userOrientation = 0;
     
     [self moveCheck];
     
+    worldNode[0][0][1] = @"The Hugly Bathroom";
     worldNode[0][2][0] = @"2";
+    worldNode[0][3][11] = @"puzzle 1";
     
+    
+    worldNode[2][0][1] = @"The Dicusting Kitchen";
     worldNode[2][0][0] = @"0";
     
     
@@ -69,9 +73,11 @@ int             userOrientation = 0;
 {
     
     self.moveForward.hidden = worldNode[userNode][userOrientation][0] ? NO : YES;
+    self.moveAction.hidden = worldNode[userNode][userOrientation][11] ? NO : YES;
 
     self.debugOrientation.text = worldOrientation[userOrientation];
     self.debugNode.text = [NSString stringWithFormat:@"%d",userNode];
+    self.debugLocation.text = worldNode[userNode][0][1];
     
 }
 
