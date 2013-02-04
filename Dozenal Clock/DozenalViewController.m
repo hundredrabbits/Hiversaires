@@ -70,13 +70,19 @@ int             userAction;
     
 }
 
+- (IBAction)moveAction:(id)sender {
+    
+    NSLog(@"FocusMode");
+    
+}
+
 
 - (void)moveCheck
 {
     
     self.moveForward.hidden = worldNode[userNode][userOrientation][0] ? NO : YES;
     self.moveAction.hidden = worldNode[userNode][userOrientation][11] ? NO : YES;
-    self.moveAction.titleLabel.text = worldNode[userNode][userOrientation][11];
+    [_moveAction setTitle:worldNode[userNode][userOrientation][11] forState:UIControlStateNormal];
     
     self.debugOrientation.text = worldOrientation[userOrientation];
     self.debugNode.text = [NSString stringWithFormat:@"%d",userNode];
