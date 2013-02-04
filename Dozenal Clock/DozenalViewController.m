@@ -13,7 +13,7 @@ NSString        *worldNode[200][4][20] = {0};
 
 int             userNode;
 int             userOrientation;
-int             userAction;
+int             userAction = 0;
 
 @interface DozenalViewController ()
 @end
@@ -27,16 +27,15 @@ int             userAction;
     [super viewDidLoad];
     
     [self moveCheck];
+    [self actionCheck];
     
     worldNode[0][0][1] = @"The Hugly Bathroom";
     worldNode[0][2][0] = @"2";
-    worldNode[0][3][11] = @"puzzle 1";
-    worldNode[0][1][11] = @"puzzle 2";
+        worldNode[0][3][11] = @"puzzle 1";
+        worldNode[0][3][10] = @"1";
     
     worldNode[2][0][1] = @"The Dicusting Kitchen";
     worldNode[2][0][0] = @"0";
-    worldNode[2][1][11] = @"Puzzle 3";
-    
     
 }
 
@@ -72,7 +71,18 @@ int             userAction;
 
 - (IBAction)moveAction:(id)sender {
     
-    NSLog(@"FocusMode");
+    userAction = [worldNode[userNode][userOrientation][10] intValue];
+    
+    [self actionCheck];
+
+}
+
+- (IBAction)moveReturn:(id)sender {
+    
+    userAction = 0;
+    
+    [self actionCheck];
+    [self moveCheck];
     
 }
 
@@ -90,7 +100,17 @@ int             userAction;
     
 }
 
+- (void)actionCheck
+{
+    
+    self.debugAction.text = userAction ? worldNode[userNode][userOrientation][11] : 0;
+    
+    self.moveLeft.hidden = userAction ? YES : NO;
+    self.moveRight.hidden = userAction ? YES : NO;
+    self.moveForward.hidden = userAction ? YES : NO;
+    self.moveReturn.hidden = userAction ? NO : YES;
 
+}
 
 
 @end
