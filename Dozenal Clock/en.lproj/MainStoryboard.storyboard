@@ -72,6 +72,7 @@
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F1N-h8-Kf8">
                                 <constraints>
+                                    <constraint firstAttribute="width" constant="103" id="guJ-nH-007"/>
                                     <constraint firstAttribute="height" constant="44" id="tsP-Vk-VxV"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="11"/>
@@ -88,11 +89,11 @@
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fLw-eO-WBB">
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="103" id="Nin-KC-Lfa"/>
+                                    <constraint firstAttribute="width" constant="166" id="7BQ-DL-FEo"/>
                                     <constraint firstAttribute="height" constant="44" id="P8D-zn-EiI"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="11"/>
-                                <state key="normal" title="ACTION 1">
+                                <state key="normal" title="ACTION">
                                     <color key="titleColor" red="1" green="0.69522645923565818" blue="0.25447518953864934" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -118,11 +119,10 @@
                             <constraint firstItem="8Pn-4H-mjL" firstAttribute="trailing" secondItem="mj8-4K-569" secondAttribute="trailing" type="default" id="Uhu-vh-MfN"/>
                             <constraint firstAttribute="bottom" secondItem="F1N-h8-Kf8" secondAttribute="bottom" constant="131" id="Vh1-Sp-VPf"/>
                             <constraint firstItem="mj8-4K-569" firstAttribute="leading" secondItem="3" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="W51-en-Zuw"/>
+                            <constraint firstItem="F1N-h8-Kf8" firstAttribute="centerX" secondItem="3" secondAttribute="centerX" type="default" id="YaO-3m-9ue"/>
+                            <constraint firstItem="F1N-h8-Kf8" firstAttribute="centerX" secondItem="fLw-eO-WBB" secondAttribute="centerX" type="default" id="cYT-Tt-qX4"/>
                             <constraint firstAttribute="trailing" secondItem="OaR-be-2E9" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="ihE-Bg-LDp"/>
                             <constraint firstItem="HZM-Xl-Bax" firstAttribute="leading" secondItem="3" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="jVd-HY-H54"/>
-                            <constraint firstItem="fLw-eO-WBB" firstAttribute="trailing" secondItem="F1N-h8-Kf8" secondAttribute="trailing" type="default" id="n5U-iN-odt"/>
-                            <constraint firstItem="fLw-eO-WBB" firstAttribute="leading" secondItem="F1N-h8-Kf8" secondAttribute="leading" type="default" id="q0N-r4-19C"/>
-                            <constraint firstItem="fLw-eO-WBB" firstAttribute="centerX" secondItem="3" secondAttribute="centerX" type="default" id="s8G-pG-2Av"/>
                             <constraint firstItem="F1N-h8-Kf8" firstAttribute="baseline" secondItem="OaR-be-2E9" secondAttribute="baseline" type="default" id="tfp-ff-4Oi"/>
                             <constraint firstItem="8Pn-4H-mjL" firstAttribute="top" secondItem="3" secondAttribute="top" constant="20" symbolic="YES" type="default" id="vKP-qs-tFk"/>
                             <constraint firstItem="8Pn-4H-mjL" firstAttribute="leading" secondItem="3" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="x5d-Te-bMm"/>

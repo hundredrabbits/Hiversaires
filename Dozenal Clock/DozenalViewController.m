@@ -11,8 +11,9 @@
 NSString        *worldOrientation[4] = {@"north",@"east",@"south",@"west"};
 NSString        *worldNode[200][4][20] = {0};
 
-int             userNode = 0;
-int             userOrientation = 0;
+int             userNode;
+int             userOrientation;
+int             userAction;
 
 @interface DozenalViewController ()
 @end
@@ -30,10 +31,11 @@ int             userOrientation = 0;
     worldNode[0][0][1] = @"The Hugly Bathroom";
     worldNode[0][2][0] = @"2";
     worldNode[0][3][11] = @"puzzle 1";
-    
+    worldNode[0][1][11] = @"puzzle 2";
     
     worldNode[2][0][1] = @"The Dicusting Kitchen";
     worldNode[2][0][0] = @"0";
+    worldNode[2][1][11] = @"Puzzle 3";
     
     
 }
@@ -74,7 +76,8 @@ int             userOrientation = 0;
     
     self.moveForward.hidden = worldNode[userNode][userOrientation][0] ? NO : YES;
     self.moveAction.hidden = worldNode[userNode][userOrientation][11] ? NO : YES;
-
+    self.moveAction.titleLabel.text = worldNode[userNode][userOrientation][11];
+    
     self.debugOrientation.text = worldOrientation[userOrientation];
     self.debugNode.text = [NSString stringWithFormat:@"%d",userNode];
     self.debugLocation.text = worldNode[userNode][0][1];
