@@ -8,6 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
-@interface DozenalViewController : UIViewController
+@interface DozenalViewController : UIViewController <UITextFieldDelegate>
+
+@property (weak, nonatomic) IBOutlet UILabel *label;
+@property (weak, nonatomic) IBOutlet UIButton *moveForward;
+
+- (IBAction)moveLeft:(id)sender;
+- (IBAction)moveRight:(id)sender;
 
 @end
+

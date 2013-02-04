@@ -36,14 +36,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		03E0DABA16BA86D700D0C40E /* Dozenal Clock.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Dozenal Clock.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		03E0DABA16BA86D700D0C40E /* Hiversaires.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Hiversaires.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		03E0DABE16BA86D700D0C40E /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		03E0DAC016BA86D700D0C40E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		03E0DAC216BA86D700D0C40E /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		03E0DAC616BA86D700D0C40E /* Dozenal Clock-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Dozenal Clock-Info.plist"; sourceTree = "<group>"; };
+		03E0DAC616BA86D700D0C40E /* Hiversaires-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Hiversaires-Info.plist"; sourceTree = "<group>"; };
 		03E0DAC816BA86D700D0C40E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		03E0DACA16BA86D700D0C40E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		03E0DACC16BA86D700D0C40E /* Dozenal Clock-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Dozenal Clock-Prefix.pch"; sourceTree = "<group>"; };
+		03E0DACC16BA86D700D0C40E /* Hiversaires-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Hiversaires-Prefix.pch"; sourceTree = "<group>"; };
 		03E0DACD16BA86D700D0C40E /* DozenalAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DozenalAppDelegate.h; sourceTree = "<group>"; };
 		03E0DACE16BA86D700D0C40E /* DozenalAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DozenalAppDelegate.m; sourceTree = "<group>"; };
 		03E0DAD016BA86D700D0C40E /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
@@ -52,9 +52,9 @@
 		03E0DAD716BA86D700D0C40E /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
 		03E0DAD916BA86D700D0C40E /* DozenalViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DozenalViewController.h; sourceTree = "<group>"; };
 		03E0DADA16BA86D700D0C40E /* DozenalViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DozenalViewController.m; sourceTree = "<group>"; };
-		03E0DAE116BA86D700D0C40E /* Dozenal ClockTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Dozenal ClockTests.octest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		03E0DAE116BA86D700D0C40E /* HiversairesTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HiversairesTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		03E0DAE216BA86D700D0C40E /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
-		03E0DAEA16BA86D700D0C40E /* Dozenal ClockTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Dozenal ClockTests-Info.plist"; sourceTree = "<group>"; };
+		03E0DAEA16BA86D700D0C40E /* HiversairesTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "HiversairesTests-Info.plist"; sourceTree = "<group>"; };
 		03E0DAEC16BA86D700D0C40E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		03E0DAEE16BA86D700D0C40E /* Dozenal_ClockTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Dozenal_ClockTests.h; sourceTree = "<group>"; };
 		03E0DAEF16BA86D700D0C40E /* Dozenal_ClockTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Dozenal_ClockTests.m; sourceTree = "<group>"; };
@@ -97,8 +97,8 @@
 		03E0DABB16BA86D700D0C40E /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				03E0DABA16BA86D700D0C40E /* Dozenal Clock.app */,
-				03E0DAE116BA86D700D0C40E /* Dozenal ClockTests.octest */,
+				03E0DABA16BA86D700D0C40E /* Hiversaires.app */,
+				03E0DAE116BA86D700D0C40E /* HiversairesTests.octest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -130,10 +130,10 @@
 		03E0DAC516BA86D700D0C40E /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				03E0DAC616BA86D700D0C40E /* Dozenal Clock-Info.plist */,
+				03E0DAC616BA86D700D0C40E /* Hiversaires-Info.plist */,
 				03E0DAC716BA86D700D0C40E /* InfoPlist.strings */,
 				03E0DACA16BA86D700D0C40E /* main.m */,
-				03E0DACC16BA86D700D0C40E /* Dozenal Clock-Prefix.pch */,
+				03E0DACC16BA86D700D0C40E /* Hiversaires-Prefix.pch */,
 				03E0DAD016BA86D700D0C40E /* Default.png */,
 				03E0DAD216BA86D700D0C40E /* Default@2x.png */,
 				03E0DAD416BA86D700D0C40E /* Default-568h@2x.png */,
@@ -154,7 +154,7 @@
 		03E0DAE916BA86D700D0C40E /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				03E0DAEA16BA86D700D0C40E /* Dozenal ClockTests-Info.plist */,
+				03E0DAEA16BA86D700D0C40E /* HiversairesTests-Info.plist */,
 				03E0DAEB16BA86D700D0C40E /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
@@ -163,9 +163,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		03E0DAB916BA86D700D0C40E /* Dozenal Clock */ = {
+		03E0DAB916BA86D700D0C40E /* Hiversaires */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 03E0DAF316BA86D700D0C40E /* Build configuration list for PBXNativeTarget "Dozenal Clock" */;
+			buildConfigurationList = 03E0DAF316BA86D700D0C40E /* Build configuration list for PBXNativeTarget "Hiversaires" */;
 			buildPhases = (
 				03E0DAB616BA86D700D0C40E /* Sources */,
 				03E0DAB716BA86D700D0C40E /* Frameworks */,
@@ -175,14 +175,14 @@
 			);
 			dependencies = (
 			);
-			name = "Dozenal Clock";
+			name = Hiversaires;
 			productName = "Dozenal Clock";
-			productReference = 03E0DABA16BA86D700D0C40E /* Dozenal Clock.app */;
+			productReference = 03E0DABA16BA86D700D0C40E /* Hiversaires.app */;
 			productType = "com.apple.product-type.application";
 		};
-		03E0DAE016BA86D700D0C40E /* Dozenal ClockTests */ = {
+		03E0DAE016BA86D700D0C40E /* HiversairesTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 03E0DAF616BA86D700D0C40E /* Build configuration list for PBXNativeTarget "Dozenal ClockTests" */;
+			buildConfigurationList = 03E0DAF616BA86D700D0C40E /* Build configuration list for PBXNativeTarget "HiversairesTests" */;
 			buildPhases = (
 				03E0DADC16BA86D700D0C40E /* Sources */,
 				03E0DADD16BA86D700D0C40E /* Frameworks */,
@@ -194,9 +194,9 @@
 			dependencies = (
 				03E0DAE716BA86D700D0C40E /* PBXTargetDependency */,
 			);
-			name = "Dozenal ClockTests";
+			name = HiversairesTests;
 			productName = "Dozenal ClockTests";
-			productReference = 03E0DAE116BA86D700D0C40E /* Dozenal ClockTests.octest */;
+			productReference = 03E0DAE116BA86D700D0C40E /* HiversairesTests.octest */;
 			productType = "com.apple.product-type.bundle";
 		};
 /* End PBXNativeTarget section */
@@ -209,7 +209,7 @@
 				LastUpgradeCheck = 0450;
 				ORGANIZATIONNAME = XXIIVV;
 			};
-			buildConfigurationList = 03E0DAB416BA86D700D0C40E /* Build configuration list for PBXProject "Dozenal Clock" */;
+			buildConfigurationList = 03E0DAB416BA86D700D0C40E /* Build configuration list for PBXProject "Hiversaires" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -221,8 +221,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				03E0DAB916BA86D700D0C40E /* Dozenal Clock */,
-				03E0DAE016BA86D700D0C40E /* Dozenal ClockTests */,
+				03E0DAB916BA86D700D0C40E /* Hiversaires */,
+				03E0DAE016BA86D700D0C40E /* HiversairesTests */,
 			);
 		};
 /* End PBXProject section */
@@ -290,7 +290,7 @@
 /* Begin PBXTargetDependency section */
 		03E0DAE716BA86D700D0C40E /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 03E0DAB916BA86D700D0C40E /* Dozenal Clock */;
+			target = 03E0DAB916BA86D700D0C40E /* Hiversaires */;
 			targetProxy = 03E0DAE616BA86D700D0C40E /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -377,9 +377,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Dozenal Clock/Dozenal Clock-Prefix.pch";
-				INFOPLIST_FILE = "Dozenal Clock/Dozenal Clock-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				GCC_PREFIX_HEADER = "Dozenal Clock/Hiversaires-Prefix.pch";
+				INFOPLIST_FILE = "Dozenal Clock/Hiversaires-Info.plist";
+				PRODUCT_NAME = Hiversaires;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -388,9 +388,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Dozenal Clock/Dozenal Clock-Prefix.pch";
-				INFOPLIST_FILE = "Dozenal Clock/Dozenal Clock-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				GCC_PREFIX_HEADER = "Dozenal Clock/Hiversaires-Prefix.pch";
+				INFOPLIST_FILE = "Dozenal Clock/Hiversaires-Info.plist";
+				PRODUCT_NAME = Hiversaires;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -405,8 +405,8 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Dozenal Clock/Dozenal Clock-Prefix.pch";
-				INFOPLIST_FILE = "Dozenal ClockTests/Dozenal ClockTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				INFOPLIST_FILE = "Dozenal ClockTests/HiversairesTests-Info.plist";
+				PRODUCT_NAME = HiversairesTests;
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = octest;
 			};
@@ -422,8 +422,8 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Dozenal Clock/Dozenal Clock-Prefix.pch";
-				INFOPLIST_FILE = "Dozenal ClockTests/Dozenal ClockTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				INFOPLIST_FILE = "Dozenal ClockTests/HiversairesTests-Info.plist";
+				PRODUCT_NAME = HiversairesTests;
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = octest;
 			};
@@ -432,7 +432,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		03E0DAB416BA86D700D0C40E /* Build configuration list for PBXProject "Dozenal Clock" */ = {
+		03E0DAB416BA86D700D0C40E /* Build configuration list for PBXProject "Hiversaires" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				03E0DAF116BA86D700D0C40E /* Debug */,
@@ -441,21 +441,23 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		03E0DAF316BA86D700D0C40E /* Build configuration list for PBXNativeTarget "Dozenal Clock" */ = {
+		03E0DAF316BA86D700D0C40E /* Build configuration list for PBXNativeTarget "Hiversaires" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				03E0DAF416BA86D700D0C40E /* Debug */,
 				03E0DAF516BA86D700D0C40E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
-		03E0DAF616BA86D700D0C40E /* Build configuration list for PBXNativeTarget "Dozenal ClockTests" */ = {
+		03E0DAF616BA86D700D0C40E /* Build configuration list for PBXNativeTarget "HiversairesTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				03E0DAF716BA86D700D0C40E /* Debug */,
 				03E0DAF816BA86D700D0C40E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
