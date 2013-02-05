@@ -117,7 +117,8 @@ int             userAction = 0;
     self.moveRight.hidden = userAction ? YES : NO;
     self.moveForward.hidden = userAction ? YES : NO;
     self.moveReturn.hidden = userAction ? NO : YES;
-
+    self.moveAction.hidden = userAction ? YES : NO;
+    
 }
 
 
