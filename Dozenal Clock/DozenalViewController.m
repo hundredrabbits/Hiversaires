@@ -27,7 +27,6 @@ int             userAction = 0;
     
     [super viewDidLoad];
     
-    
     worldNode[0][0][1] = @"The Hugly Bathroom";
     worldNode[0][2][0] = @"2";
         worldNode[0][3][11] = @"puzzle 1";
@@ -39,7 +38,7 @@ int             userAction = 0;
     
     [self moveCheck];
     [self actionCheck];
-    
+	
 }
 
 
@@ -47,6 +46,8 @@ int             userAction = 0;
 {
     [super didReceiveMemoryWarning];
 }
+
+// Movement
 
 - (IBAction)moveLeft:(id)sender {
     
@@ -89,6 +90,7 @@ int             userAction = 0;
     
 }
 
+// Check
 
 - (void)moveCheck
 {
@@ -119,7 +121,61 @@ int             userAction = 0;
     self.moveReturn.hidden = userAction ? NO : YES;
     self.moveAction.hidden = userAction ? YES : NO;
     
+	self.action1.hidden = YES;
+	self.action2.hidden = YES;
+	self.action3.hidden = YES;
+	self.action4.hidden = YES;
+	
+    if( userAction ){
+        
+        [self actionRouting];
+    }
+    
+}
+
+// Interaction
+
+- (void)actionRouting
+{
+	
+	// Puzzle 1
+	if( worldNode[userNode][userOrientation][10] == @"1" ){
+		self.action1.hidden = NO;
+		self.action2.hidden = NO;
+	}
+    	
 }
 
 
+- (void)actionItem
+{
+	
+    NSLog(@"%@ - %@",@"Load Item Interface", worldNode[userNode][userOrientation][11] );
+	
+}
+
+
+- (IBAction)action1:(id)sender {
+	
+	NSLog( @"Action?" );
+	
+}
+
+- (IBAction)action2:(id)sender {
+	
+	NSLog( @"Action?" );
+	
+}
+
+- (IBAction)action3:(id)sender {
+	
+	NSLog( @"Action?" );
+	
+}
+
+- (IBAction)action4:(id)sender {
+	
+	NSLog( @"Action?" );
+	
+}
 @end
