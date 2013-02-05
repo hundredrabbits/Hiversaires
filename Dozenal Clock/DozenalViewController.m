@@ -12,7 +12,6 @@ NSString        *worldOrientation[4] = {@"north",@"east",@"south",@"west"};
 NSString        *worldNode[200][4][20] = {0};
 NSString        *worldNodeImg = @"empty";
 
-
 int             userNode;
 int             userOrientation;
 int             userAction = 0;
