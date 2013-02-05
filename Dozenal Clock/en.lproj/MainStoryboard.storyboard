@@ -185,7 +185,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="node1.jpg" width="2560" height="920"/>
+        <image name="node1.jpg" width="16" height="16"/>
     </resources>
     <classes>
         <class className="DozenalViewController" superclassName="UIViewController">

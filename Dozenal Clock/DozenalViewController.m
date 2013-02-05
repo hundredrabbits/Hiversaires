@@ -10,6 +10,8 @@
 
 NSString        *worldOrientation[4] = {@"north",@"east",@"south",@"west"};
 NSString        *worldNode[200][4][20] = {0};
+NSString        *worldNodeImg = @"empty";
+
 
 int             userNode;
 int             userOrientation;
@@ -100,7 +102,9 @@ int             userAction = 0;
     self.debugNode.text = [NSString stringWithFormat:@"%d",userNode];
     self.debugLocation.text = worldNode[userNode][0][1];
     
-    self.viewMain.image = [UIImage imageNamed:@"node1.jpg"];
+    worldNodeImg = [NSString stringWithFormat:@"%@%d%@", @"node", userNode, @".jpg"];
+    
+    self.viewMain.image = [UIImage imageNamed:worldNodeImg];
     self.viewMain.frame = CGRectMake( (userOrientation*320*-1 ) , 10.0, 1280.0, 460.0);
     
 }
