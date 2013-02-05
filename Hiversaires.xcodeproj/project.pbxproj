@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		03D6AF7716C08D40000D0750 /* test.png in Resources */ = {isa = PBXBuildFile; fileRef = 03D6AF7616C08D40000D0750 /* test.png */; };
+		03D6AF7916C0A238000D0750 /* node1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 03D6AF7816C0A238000D0750 /* node1.jpg */; };
 		03E0DABF16BA86D700D0C40E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03E0DABE16BA86D700D0C40E /* UIKit.framework */; };
 		03E0DAC116BA86D700D0C40E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03E0DAC016BA86D700D0C40E /* Foundation.framework */; };
 		03E0DAC316BA86D700D0C40E /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03E0DAC216BA86D700D0C40E /* CoreGraphics.framework */; };
@@ -36,6 +38,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		03D6AF7616C08D40000D0750 /* test.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = test.png; path = graphics/test.png; sourceTree = "<group>"; };
+		03D6AF7816C0A238000D0750 /* node1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = node1.jpg; path = graphics/node1.jpg; sourceTree = "<group>"; };
 		03E0DABA16BA86D700D0C40E /* Hiversaires.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Hiversaires.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		03E0DABE16BA86D700D0C40E /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		03E0DAC016BA86D700D0C40E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -84,6 +88,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		03D6AF7316C08A72000D0750 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				03D6AF7816C0A238000D0750 /* node1.jpg */,
+				03D6AF7616C08D40000D0750 /* test.png */,
+			);
+			name = Images;
+			sourceTree = "<group>";
+		};
 		03E0DAAF16BA86D700D0C40E = {
 			isa = PBXGroup;
 			children = (
@@ -130,6 +143,7 @@
 		03E0DAC516BA86D700D0C40E /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				03D6AF7316C08A72000D0750 /* Images */,
 				03E0DAC616BA86D700D0C40E /* Hiversaires-Info.plist */,
 				03E0DAC716BA86D700D0C40E /* InfoPlist.strings */,
 				03E0DACA16BA86D700D0C40E /* main.m */,
@@ -139,7 +153,8 @@
 				03E0DAD416BA86D700D0C40E /* Default-568h@2x.png */,
 			);
 			name = "Supporting Files";
-			sourceTree = "<group>";
+			path = "Dozenal Clock";
+			sourceTree = SOURCE_ROOT;
 		};
 		03E0DAE816BA86D700D0C40E /* Dozenal ClockTests */ = {
 			isa = PBXGroup;
@@ -237,6 +252,8 @@
 				03E0DAD316BA86D700D0C40E /* Default@2x.png in Resources */,
 				03E0DAD516BA86D700D0C40E /* Default-568h@2x.png in Resources */,
 				03E0DAD816BA86D700D0C40E /* MainStoryboard.storyboard in Resources */,
+				03D6AF7716C08D40000D0750 /* test.png in Resources */,
+				03D6AF7916C0A238000D0750 /* node1.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -26,8 +26,6 @@ int             userAction = 0;
     
     [super viewDidLoad];
     
-    [self moveCheck];
-    [self actionCheck];
     
     worldNode[0][0][1] = @"The Hugly Bathroom";
     worldNode[0][2][0] = @"2";
@@ -36,6 +34,10 @@ int             userAction = 0;
     
     worldNode[2][0][1] = @"The Dicusting Kitchen";
     worldNode[2][0][0] = @"0";
+    
+    
+    [self moveCheck];
+    [self actionCheck];
     
 }
 
@@ -47,7 +49,7 @@ int             userAction = 0;
 
 - (IBAction)moveLeft:(id)sender {
     
-    userOrientation = userOrientation < 3 ? userOrientation+1 : 0;
+    userOrientation = userOrientation == 0 ? 3 : userOrientation-1;
     
     [self moveCheck];
     
@@ -55,7 +57,7 @@ int             userAction = 0;
 
 - (IBAction)moveRight:(id)sender {
     
-    userOrientation = userOrientation == 0 ? 3 : userOrientation-1;
+    userOrientation = userOrientation < 3 ? userOrientation+1 : 0;
     
     [self moveCheck];
     
@@ -97,6 +99,9 @@ int             userAction = 0;
     self.debugOrientation.text = worldOrientation[userOrientation];
     self.debugNode.text = [NSString stringWithFormat:@"%d",userNode];
     self.debugLocation.text = worldNode[userNode][0][1];
+    
+    self.viewMain.image = [UIImage imageNamed:@"node1.jpg"];
+    self.viewMain.frame = CGRectMake( (userOrientation*320*-1 ) , 10.0, 1280.0, 460.0);
     
 }
 

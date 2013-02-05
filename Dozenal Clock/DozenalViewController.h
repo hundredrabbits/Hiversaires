@@ -22,6 +22,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *moveForward;
 @property (weak, nonatomic) IBOutlet UIButton *moveAction;
 @property (weak, nonatomic) IBOutlet UIButton *moveReturn;
+@property (weak, nonatomic) IBOutlet UIImageView *viewMain;
 
 - (IBAction)moveLeft:(id)sender;
 - (IBAction)moveRight:(id)sender;
