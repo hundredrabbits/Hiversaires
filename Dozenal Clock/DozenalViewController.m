@@ -8,6 +8,8 @@
 
 #import "DozenalViewController.h"
 
+NSUserDefaults *userDefaults;
+
 NSString        *worldOrientation[4] = {@"north",@"east",@"south",@"west"};
 NSString        *worldNode[200][4][20] = {0};
 NSString        *worldNodeImg = @"empty";
@@ -28,6 +30,10 @@ int             userAction = 0;
     
     [super viewDidLoad];
     
+	// userDefaults = [NSUserDefaults standardUserDefaults];
+	// NSLog(@"NSUserDefaults dump: %@", [[NSUserDefaults standardUserDefaults] dictionaryRepresentation]);
+
+	
 	// The Forest Terminal
 	
     worldNode[0][0][1] = @"Forest Terminal";
