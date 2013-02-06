@@ -32,40 +32,37 @@ int             userAction = 0;
 	
     worldNode[0][0][1] = @"Forest Terminal";
     worldNode[0][0][0] = @"1";
-	
+    worldNode[0][2][10] = @"1";
+    worldNode[0][2][11] = @"Action 1";
     worldNode[1][0][0] = @"2";
     worldNode[1][2][0] = @"0";
-	
     worldNode[2][0][0] = @"3";
     worldNode[2][2][0] = @"1";
-	
     worldNode[3][3][0] = @"4";
     worldNode[3][1][0] = @"10";
     worldNode[3][0][0] = @"11";
     worldNode[3][2][0] = @"2";
-	
     worldNode[4][0][0] = @"5";
     worldNode[4][1][0] = @"3";
-	
     worldNode[5][0][0] = @"6";
     worldNode[5][2][0] = @"4";
-	
     worldNode[6][1][0] = @"7";
     worldNode[6][2][0] = @"5";
-	
     worldNode[7][1][0] = @"8";
     worldNode[7][3][0] = @"6";
-	
+    worldNode[7][2][10] = @"2";
+    worldNode[7][2][11] = @"Action 2";
     worldNode[8][2][0] = @"9";
-    worldNode[8][3][0] = @"6";
-	
+    worldNode[8][3][0] = @"7";
     worldNode[9][0][0] = @"8";
     worldNode[9][2][0] = @"10";
-	
     worldNode[10][3][0] = @"3";
     worldNode[10][0][0] = @"9";
-	
+    worldNode[11][0][1] = @"The Echorridoors";
     worldNode[11][2][0] = @"3";
+    worldNode[11][2][0] = @"3";
+    worldNode[11][0][10] = @"3";
+    worldNode[11][0][11] = @"Action 3";
     
     [self actionCheck];
     [self moveCheck];
@@ -144,6 +141,7 @@ int             userAction = 0;
 	
 	NSLog( @"%@", [NSString stringWithFormat:@"%04d", (userNode*4)+userOrientation ]);
 	
+	[self fadeOut:_interfaceVignette t:1];
 }
 
 - (void)actionCheck
@@ -156,7 +154,7 @@ int             userAction = 0;
     self.moveForward.hidden = userAction ? YES : NO;
     self.moveReturn.hidden = userAction ? NO : YES;
     self.moveAction.hidden = userAction ? YES : NO;
-    
+	
 	self.action1.hidden = YES;
 	self.action2.hidden = YES;
 	self.action3.hidden = YES;
@@ -165,6 +163,9 @@ int             userAction = 0;
     if( userAction ){
         
         [self actionRouting];
+		[self fadeIn:_interfaceVignette t:1];
+		[self fadeIn:_moveReturn t:1];
+		
     }
     
 }
@@ -214,4 +215,29 @@ int             userAction = 0;
 	NSLog( @"Action?" );
 	
 }
+
+
+
+
+// Tools
+
+-(void)fadeIn:(UIView*)viewToFadeIn t:(NSTimeInterval)duration
+{
+	[UIView beginAnimations: @"Fade In" context:nil];
+	[UIView setAnimationDuration:duration];
+	viewToFadeIn.alpha = 1;
+	[UIView commitAnimations];
+}
+
+-(void)fadeOut:(UIView*)viewToFadeOut t:(NSTimeInterval)duration
+{
+	
+	[UIView beginAnimations: @"Fade Out" context:nil];
+	[UIView setAnimationDuration:duration];
+	viewToFadeOut.alpha = 0;
+	[UIView commitAnimations];
+}
+
+
+
 @end
