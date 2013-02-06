@@ -12,11 +12,7 @@
                         <rect key="frame" x="0.0" y="20" width="320" height="460"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" image="node1.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="qDH-p4-ZxP">
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="1280" id="Kzn-tc-7pI"/>
-                                </constraints>
-                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" image="node1.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="qDH-p4-ZxP"/>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Orientation" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Pn-4H-mjL" userLabel="DebugOrientation">
                                 <constraints>
                                     <constraint firstAttribute="width" constant="84" id="T3g-4f-V79"/>
@@ -260,14 +256,15 @@
                             <constraint firstItem="HZM-Xl-Bax" firstAttribute="bottom" secondItem="3" secondAttribute="bottom" type="default" id="nd7-Pu-XNZ"/>
                             <constraint firstItem="gRh-4u-m9X" firstAttribute="trailing" secondItem="mj8-4K-569" secondAttribute="trailing" type="default" id="oDB-mW-I63"/>
                             <constraint firstItem="BmP-NF-uqb" firstAttribute="trailing" secondItem="3" secondAttribute="trailing" type="default" id="on7-Mo-Crx"/>
-                            <constraint firstItem="fLw-eO-WBB" firstAttribute="centerX" secondItem="3" secondAttribute="centerX" type="default" id="pK2-Ck-lxQ"/>
                             <constraint firstAttribute="trailing" secondItem="Cn8-VS-3Wf" secondAttribute="trailing" constant="75" id="qjD-iM-l2x"/>
                             <constraint firstItem="Cn8-VS-3Wf" firstAttribute="top" secondItem="BmP-NF-uqb" secondAttribute="top" type="default" id="qpx-jW-EG0"/>
                             <constraint firstItem="8Pn-4H-mjL" firstAttribute="top" secondItem="3" secondAttribute="top" constant="20" symbolic="YES" type="default" id="vKP-qs-tFk"/>
                             <constraint firstItem="fLw-eO-WBB" firstAttribute="top" secondItem="3" secondAttribute="top" constant="70" id="vVA-7t-jHX"/>
+                            <constraint firstItem="qDH-p4-ZxP" firstAttribute="centerX" secondItem="F1N-h8-Kf8" secondAttribute="centerX" type="default" id="vVa-51-vDP"/>
                             <constraint firstItem="DVQ-gd-NUz" firstAttribute="bottom" secondItem="gRh-4u-m9X" secondAttribute="bottom" type="default" id="wgV-zN-c92"/>
                             <constraint firstItem="8Pn-4H-mjL" firstAttribute="leading" secondItem="3" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="x5d-Te-bMm"/>
                             <constraint firstItem="fLw-eO-WBB" firstAttribute="trailing" secondItem="F1N-h8-Kf8" secondAttribute="trailing" type="default" id="z7o-Vh-QLF"/>
+                            <constraint firstItem="qDH-p4-ZxP" firstAttribute="trailing" secondItem="3" secondAttribute="trailing" type="default" id="ziE-Q8-q2o"/>
                         </constraints>
                     </view>
                     <connections>

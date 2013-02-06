@@ -11,8 +11,9 @@
 NSString        *worldOrientation[4] = {@"north",@"east",@"south",@"west"};
 NSString        *worldNode[200][4][20] = {0};
 NSString        *worldNodeImg = @"empty";
+NSString		*worldNodeImgId;
 
-int             userNode;
+int             userNode = 0;
 int             userOrientation;
 int             userAction = 0;
 
@@ -27,17 +28,47 @@ int             userAction = 0;
     
     [super viewDidLoad];
     
-    worldNode[0][0][1] = @"The Hugly Bathroom";
-    worldNode[0][2][0] = @"2";
-        worldNode[0][3][11] = @"puzzle 1";
-        worldNode[0][3][10] = @"1";
+	// The Forest Terminal
+	
+    worldNode[0][0][1] = @"Forest Terminal";
+    worldNode[0][0][0] = @"1";
+	
+    worldNode[1][0][0] = @"2";
+    worldNode[1][2][0] = @"0";
+	
+    worldNode[2][0][0] = @"3";
+    worldNode[2][2][0] = @"1";
+	
+    worldNode[3][3][0] = @"4";
+    worldNode[3][1][0] = @"10";
+    worldNode[3][0][0] = @"11";
+    worldNode[3][2][0] = @"2";
+	
+    worldNode[4][0][0] = @"5";
+    worldNode[4][1][0] = @"3";
+	
+    worldNode[5][0][0] = @"6";
+    worldNode[5][2][0] = @"4";
+	
+    worldNode[6][1][0] = @"7";
+    worldNode[6][2][0] = @"5";
+	
+    worldNode[7][1][0] = @"8";
+    worldNode[7][3][0] = @"6";
+	
+    worldNode[8][2][0] = @"9";
+    worldNode[8][3][0] = @"6";
+	
+    worldNode[9][0][0] = @"8";
+    worldNode[9][2][0] = @"10";
+	
+    worldNode[10][3][0] = @"3";
+    worldNode[10][0][0] = @"9";
+	
+    worldNode[11][2][0] = @"3";
     
-    worldNode[2][0][1] = @"The Dicusting Kitchen";
-    worldNode[2][0][0] = @"0";
-    
-    
-    [self moveCheck];
     [self actionCheck];
+    [self moveCheck];
 	
 }
 
@@ -103,11 +134,16 @@ int             userAction = 0;
     self.debugNode.text = [NSString stringWithFormat:@"%d",userNode];
     self.debugLocation.text = worldNode[userNode][0][1];
     
-    worldNodeImg = [NSString stringWithFormat:@"%@%d%@", @"node", userNode, @".jpg"];
+	worldNodeImgId = [NSString stringWithFormat:@"%04d", (userNode*4)+userOrientation ];
+	
+	
+    worldNodeImg = [NSString stringWithFormat:@"%@%@%@", @"node.", worldNodeImgId, @".jpg"];
     
     self.viewMain.image = [UIImage imageNamed:worldNodeImg];
-    self.viewMain.frame = CGRectMake( (userOrientation*320*-1 ) , 10.0, 1280.0, 460.0);
-    
+    //self.viewMain.frame = CGRectMake( (userOrientation*320*-1 ) , 10.0, 1280.0, 460.0);
+	
+	NSLog( @"%@", [NSString stringWithFormat:@"%04d", (userNode*4)+userOrientation ]);
+	
 }
 
 - (void)actionCheck
