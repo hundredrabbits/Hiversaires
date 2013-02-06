@@ -16,6 +16,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *debugNode;
 @property (weak, nonatomic) IBOutlet UILabel *debugLocation;
 @property (weak, nonatomic) IBOutlet UILabel *debugAction;
+@property (weak, nonatomic) IBOutlet UILabel *debugActionValue;
 
 // Interface
 

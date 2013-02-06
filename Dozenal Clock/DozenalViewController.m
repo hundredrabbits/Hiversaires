@@ -32,8 +32,11 @@ int             userAction = 0;
 	
     worldNode[0][0][1] = @"Forest Terminal";
     worldNode[0][0][0] = @"1";
+    worldNode[0][2][11] = @"Puzzle 1";
     worldNode[0][2][10] = @"1";
-    worldNode[0][2][11] = @"Action 1";
+    worldNode[0][2][12] = @"16";
+    worldNode[0][2][13] = @"20";
+    worldNode[0][2][14] = @"0";
     worldNode[1][0][0] = @"2";
     worldNode[1][2][0] = @"0";
     worldNode[2][0][0] = @"3";
@@ -50,8 +53,9 @@ int             userAction = 0;
     worldNode[6][2][0] = @"5";
     worldNode[7][1][0] = @"8";
     worldNode[7][3][0] = @"6";
+    worldNode[7][2][11] = @"Puzzle 2";
     worldNode[7][2][10] = @"2";
-    worldNode[7][2][11] = @"Action 2";
+    worldNode[7][2][12] = @"55";
     worldNode[8][2][0] = @"9";
     worldNode[8][3][0] = @"7";
     worldNode[9][0][0] = @"8";
@@ -61,8 +65,9 @@ int             userAction = 0;
     worldNode[11][0][1] = @"The Echorridoors";
     worldNode[11][2][0] = @"3";
     worldNode[11][2][0] = @"3";
+    worldNode[11][0][11] = @"Puzzle 3";
     worldNode[11][0][10] = @"3";
-    worldNode[11][0][11] = @"Action 3";
+    worldNode[11][0][12] = @"10";
     
     [self actionCheck];
     [self moveCheck];
@@ -147,6 +152,8 @@ int             userAction = 0;
 - (void)actionCheck
 {
     
+	[self solveCheck];
+	
     self.debugAction.text = userAction ? worldNode[userNode][userOrientation][11] : 0;
     
     self.moveLeft.hidden = userAction ? YES : NO;
@@ -170,6 +177,23 @@ int             userAction = 0;
     
 }
 
+- (void)solveCheck
+{
+	
+    self.debugActionValue.text = userAction ? worldNode[userNode][userOrientation][12] : 0;
+	
+	worldNode[userNode][userOrientation][14] = worldNode[userNode][userOrientation][12] == worldNode[userNode][userOrientation][13] ? @"1" : @"0";
+	
+	if( [ worldNode[userNode][userOrientation][12] intValue ] == [ worldNode[userNode][userOrientation][13] intValue ] ){
+		worldNode[userNode][userOrientation][14] = @"1";
+		self.debugActionValue.text = userAction ? @"Solved": 0;
+		NSLog(@"solved");
+	}
+	
+	
+}
+
+
 // Interaction
 
 - (void)actionRouting
@@ -186,33 +210,37 @@ int             userAction = 0;
 
 - (void)actionItem
 {
-	
-    NSLog(@"%@ - %@",@"Load Item Interface", worldNode[userNode][userOrientation][11] );
+	NSLog(@"%@ - %@",@"Load Item Interface", worldNode[userNode][userOrientation][11] );
 	
 }
 
-
 - (IBAction)action1:(id)sender {
 	
-	NSLog( @"Action?" );
+	// Increment
+	worldNode[userNode][userOrientation][12] = [NSString stringWithFormat:@"%d", [ worldNode[userNode][userOrientation][12] intValue]+1 ];
+	[self solveCheck];
 	
 }
 
 - (IBAction)action2:(id)sender {
 	
-	NSLog( @"Action?" );
+	// Decrement
+	worldNode[userNode][userOrientation][12] = [NSString stringWithFormat:@"%d", [ worldNode[userNode][userOrientation][12] intValue]-1 ];
+	[self solveCheck];
 	
 }
 
 - (IBAction)action3:(id)sender {
 	
 	NSLog( @"Action?" );
+	[self solveCheck];
 	
 }
 
 - (IBAction)action4:(id)sender {
 	
 	NSLog( @"Action?" );
+	[self solveCheck];
 	
 }
 
