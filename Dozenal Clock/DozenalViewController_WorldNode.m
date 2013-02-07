@@ -9,38 +9,34 @@ NSDictionary *world;
     
 	hello[100][2][4] = @"!hey there";
 	
-	NSMutableArray *node = [NSMutableArray arrayWithObjects:@"String1",@"String2",nil];
+	NSMutableArray *node = [NSMutableArray arrayWithObjects:@"String1",@"String2",@"String3",nil];
 	
-	NSMutableArray *nodeOrientation = [NSMutableArray arrayWithObjects:0,1,2,3,nil];	
+	NSMutableArray *nodeOrientation = [NSMutableArray arrayWithObjects:0,1,2,3,nil];
+//	NSMutableArray *orientationStarage = [NSMutableArray arrayWithObjects:0,1,2,3,4,5,6,7,8,9,nil];
 	
-	int nodeCount = 0;
-	
-	while ( nodeCount < 70 )
-	{
-		
-		node[nodeCount] = nodeOrientation;
-		nodeCount++;
-		
-	}
+//	int nodeCount = 0;
+//	int orientationCount = 4;
+//	
+//	while ( nodeCount < 30 ) // Create 70 Nodes
+//	{
+//		node[nodeCount] = nodeOrientation;
+//		
+//		nodeCount++;
+//	}
 	
 	// Forest ( 0 - 11 )
+	node[0] = [NSMutableArray arrayWithObjects:@"0",@"1",@"2",@"3",nil];
 	
-	node[1] = @"Overrride";
-	node[2] = @"dsfadsf";
-	node[3] = @"sdf";
-	node[4] = nodeOrientation;
+	node[0][2] = [NSMutableArray arrayWithObjects:@"0",@"1",@"2",@"3",nil];
+	node[0][2][2] = @"!!!";
 	
-	node[4][0] = @"north";
-	node[4][1] = @"east";
-	node[4][2] = @"south";
-	node[4][3] = @"west";
 	
-	node[5] = @"west";
+	node[2] = nodeOrientation;
+	node[2][0] = @"else";
+	node[2][1] = @"else";
+	node[2][2] = @"else";
 	
 		
-	NSLog(@"%@",node);
-	
-	
 	return node;
 }
 @end
