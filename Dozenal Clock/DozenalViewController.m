@@ -32,48 +32,7 @@ int             userAction = 0;
     [super viewDidLoad];
     
 	worldNew = [self add];
-	
-	// The Forest Terminal
-//    worldNode[0][0][1] = @"Forest Terminal";
-//    worldNode[0][0][0] = @"1";
-//    worldNode[0][2][11] = @"Puzzle 1";
-//    worldNode[0][2][10] = @"1";
-//    worldNode[0][2][12] = @"16";
-//    worldNode[0][2][13] = @"20";
-//    worldNode[0][2][14] = @"0";
-//    worldNode[1][0][0] = @"2";
-//    worldNode[1][2][0] = @"0";
-//    worldNode[2][0][0] = @"3";
-//    worldNode[2][2][0] = @"1";
-//    worldNode[3][3][0] = @"4";
-//    worldNode[3][1][0] = @"10";
-//    worldNode[3][0][0] = @"11";
-//    worldNode[3][2][0] = @"2";
-//    worldNode[4][0][0] = @"5";
-//    worldNode[4][1][0] = @"3";
-//    worldNode[5][0][0] = @"6";
-//    worldNode[5][2][0] = @"4";
-//    worldNode[6][1][0] = @"7";
-//    worldNode[6][2][0] = @"5";
-//    worldNode[7][1][0] = @"8";
-//    worldNode[7][3][0] = @"6";
-//    worldNode[7][2][11] = @"Puzzle 2";
-//    worldNode[7][2][10] = @"2";
-//    worldNode[7][2][12] = @"55";
-//    worldNode[8][2][0] = @"9";
-//    worldNode[8][3][0] = @"7";
-//    worldNode[9][0][0] = @"8";
-//    worldNode[9][2][0] = @"10";
-//    worldNode[10][3][0] = @"3";
-//    worldNode[10][0][0] = @"9";
-//    worldNode[11][0][1] = @"The Echorridoors";
-//    worldNode[11][2][0] = @"3";
-//    worldNode[11][2][0] = @"3";
-//    worldNode[11][0][11] = @"Puzzle 3";
-//    worldNode[11][0][10] = @"3";
-//    worldNode[11][0][12] = @"10";
-    
-    [self actionCheck];
+	[self actionCheck];
     [self moveCheck];
 	
 }
@@ -103,8 +62,8 @@ int             userAction = 0;
 }
 
 - (IBAction)moveForward:(id)sender {
-    
-    userNode = [ worldNew[userNode][userOrientation][0] intValue];
+	
+    userNode = [ worldNew[userNode][userOrientation][0] intValue] > 0 ? [ worldNew[userNode][userOrientation][0] intValue] : userNode;
     
     [self moveCheck];
     
@@ -132,7 +91,7 @@ int             userAction = 0;
 - (void)moveCheck
 {
     
-	NSLog(@"%@",worldNew[userNode][userOrientation]);
+	//NSLog(@"%@",worldNew[userNode][userOrientation]);
 	
     self.moveForward.hidden = worldNew[userNode][userOrientation][0] ? NO : YES;
 	
