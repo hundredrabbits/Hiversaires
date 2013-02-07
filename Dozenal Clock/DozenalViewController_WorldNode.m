@@ -1,22 +1,16 @@
 #import "DozenalViewController_WorldNode.h"
 
-NSString *hello[200][4][20] = {0};
-NSString *node[200][4][20] = {0};
-NSDictionary *world;
-
 @implementation DozenalViewController (Math)
 -(NSMutableArray*) worldPaths
 {
-    
-	hello[100][2][4] = @"!hey there";
 	
-	NSMutableArray *node = [NSMutableArray arrayWithObjects:@"String1",@"String2",@"String3",nil];
+	NSMutableArray *node = [NSMutableArray arrayWithObjects:@"",nil];
 	
 	// ====================
 	// Forest ( 0 - 11 )
 	// ====================	
 
-	node[0]		= [NSArray arrayWithObjects: @"1", @"0", @"0", @"0", nil];
+	node[0]		= [NSArray arrayWithObjects: @"1", @"e", @"0", @"0", nil];
 	node[1]		= [NSArray arrayWithObjects: @"2", @"0", @"0", @"0", nil];
 	node[2]		= [NSArray arrayWithObjects: @"3", @"0", @"1", @"0", nil];
 	node[3]		= [NSArray arrayWithObjects: @"11", @"10", @"2", @"4", nil];
@@ -34,6 +28,10 @@ NSDictionary *world;
 
 - (NSMutableArray *) worldActions
 {
+	// ====================
+	// Forest ( 0 - 11 )
+	// ====================
+	
 	return 0;
 }
 

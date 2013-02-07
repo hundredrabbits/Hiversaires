@@ -9,17 +9,16 @@
 #import "DozenalViewController.h"
 #import "DozenalViewController_WorldNode.h"
 
-NSString        *worldOrientation[4] = {@"north",@"east",@"south",@"west"};
-
+// World
 NSArray			*worldPath;
 NSMutableArray	*worldActions;
-
 NSString        *worldNodeImg = @"empty";
 NSString		*worldNodeImgId;
 
+// User
+NSString        *userAction;
 int             userNode = 0;
 int             userOrientation;
-int             userAction = 0;
 
 @interface DozenalViewController ()
 @end
@@ -75,15 +74,18 @@ int             userAction = 0;
 
 - (IBAction)moveAction:(id)sender {
     
-    //userAction = [worldNode[userNode][userOrientation][10] intValue];
+    userAction = worldPath[userNode][userOrientation];
     
+	NSLog(@"!!!!");
+	
+	
     [self actionCheck];
 
 }
 
 - (IBAction)moveReturn:(id)sender {
     
-    userAction = 0;
+    userAction = nil;
     
     [self actionCheck];
     [self moveCheck];
@@ -97,23 +99,16 @@ int             userAction = 0;
 - (void)moveCheck
 {
 	// Debug
-	self.debugOrientation.text = worldOrientation[userOrientation];
     self.debugNode.text = [NSString stringWithFormat:@"%d",userNode];
-	
-	
-	
+	self.moveAction.hidden = YES; [self fadeOut:_interfaceVignette t:1];
     self.moveForward.hidden = worldPath[userNode][userOrientation] ? NO : YES;
-	
-	self.moveAction.hidden = YES;
-
-	[self fadeOut:_interfaceVignette t:1];
+	self.moveAction.hidden = [[NSCharacterSet letterCharacterSet] characterIsMember:[worldPath[userNode][userOrientation] characterAtIndex:0]] ? NO : YES;
 	
 	// Graphics
 	worldNodeImgId = [NSString stringWithFormat:@"%04d", (userNode*4)+userOrientation ];
 	worldNodeImg = [NSString stringWithFormat:@"%@%@%@", @"node.", worldNodeImgId, @".jpg"];
 	self.viewMain.image = [UIImage imageNamed:worldNodeImg];
     
-	
 }
 
 - (void)actionCheck
