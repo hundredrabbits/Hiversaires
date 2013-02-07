@@ -11,7 +11,7 @@
 
 // World
 NSArray			*worldPath;
-NSMutableArray	*worldActions;
+NSArray			*worldAction;
 NSString        *worldNodeImg = @"empty";
 NSString		*worldNodeImgId;
 
@@ -31,8 +31,9 @@ int             userOrientation;
     
     [super viewDidLoad];
     
-	worldPath = [self worldPaths];
-	worldActions = [self worldActions];
+	worldPath = [self worldPath];
+	worldAction = [self worldAction];
+	
 	[self actionCheck];
     [self moveCheck];
 	
@@ -75,10 +76,7 @@ int             userOrientation;
 - (IBAction)moveAction:(id)sender {
     
     userAction = worldPath[userNode][userOrientation];
-    
-	NSLog(@"!!!!");
-	
-	
+    	
     [self actionCheck];
 
 }
@@ -98,13 +96,10 @@ int             userOrientation;
 
 - (void)moveCheck
 {
-	// Debug
-    self.debugNode.text = [NSString stringWithFormat:@"%d",userNode];
 	self.moveAction.hidden = YES; [self fadeOut:_interfaceVignette t:1];
     self.moveForward.hidden = worldPath[userNode][userOrientation] ? NO : YES;
 	self.moveAction.hidden = [[NSCharacterSet letterCharacterSet] characterIsMember:[worldPath[userNode][userOrientation] characterAtIndex:0]] ? NO : YES;
 	
-	// Graphics
 	worldNodeImgId = [NSString stringWithFormat:@"%04d", (userNode*4)+userOrientation ];
 	worldNodeImg = [NSString stringWithFormat:@"%@%@%@", @"node.", worldNodeImgId, @".jpg"];
 	self.viewMain.image = [UIImage imageNamed:worldNodeImg];
@@ -150,16 +145,13 @@ int             userOrientation;
 - (void)actionRouting
 {
 	
+	if (userAction == @"e") {
+		NSLog(@"%@",worldAction[0]);
+	}
+	
 	self.action1.hidden = NO;
 	self.action2.hidden = NO;
     	
-}
-
-
-- (void)actionItem
-{
-	
-	
 }
 
 - (IBAction)action1:(id)sender {

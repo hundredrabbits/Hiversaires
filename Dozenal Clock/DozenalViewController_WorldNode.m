@@ -1,7 +1,9 @@
 #import "DozenalViewController_WorldNode.h"
 
 @implementation DozenalViewController (Math)
--(NSMutableArray*) worldPaths
+
+
+-(NSMutableArray*) worldPath
 {
 	
 	NSMutableArray *node = [NSMutableArray arrayWithObjects:@"",nil];
@@ -26,13 +28,29 @@
 	return node;
 }
 
-- (NSMutableArray *) worldActions
+- (NSMutableArray*) worldAction
 {
+	
+	NSMutableArray *puzzle = [NSMutableArray arrayWithObjects:@"",nil];
+	
 	// ====================
-	// Forest ( 0 - 11 )
+	// Forest ( 1 - 3 )
 	// ====================
 	
-	return 0;
+	puzzle[0]		= [NSArray arrayWithObjects: @"First Puzzle", @"Solution", @"State", nil];
+	puzzle[1]		= [NSArray arrayWithObjects: @"Name", @"Solution", @"State", nil];
+	puzzle[2]		= [NSArray arrayWithObjects: @"Name", @"Solution", @"State", nil];
+	puzzle[3]		= [NSArray arrayWithObjects: @"Name", @"Solution", @"State", nil];
+	puzzle[4]		= [NSArray arrayWithObjects: @"Name", @"Solution", @"State", nil];
+	puzzle[5]		= [NSArray arrayWithObjects: @"Name", @"Solution", @"State", nil];
+	puzzle[6]		= [NSArray arrayWithObjects: @"Name", @"Solution", @"State", nil];
+	puzzle[7]		= [NSArray arrayWithObjects: @"Name", @"Solution", @"State", nil];
+	puzzle[8]		= [NSArray arrayWithObjects: @"Name", @"Solution", @"State", nil];
+	puzzle[9]		= [NSArray arrayWithObjects: @"Name", @"Solution", @"State", nil];
+	puzzle[10]		= [NSArray arrayWithObjects: @"Name", @"Solution", @"State", nil];
+	puzzle[11]		= [NSArray arrayWithObjects: @"Name", @"Solution", @"State", nil];
+	
+	return puzzle;
 }
 
 
