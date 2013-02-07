@@ -1,5 +1,5 @@
 #import "DozenalViewController.h"
 
 @interface DozenalViewController (Math)
--(DozenalViewController*) add;
+-(NSMutableArray*) add;
 @end
