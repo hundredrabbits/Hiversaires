@@ -1,7 +1,7 @@
 #import "DozenalViewController_WorldNode.h"
 
 NSString *hello[200][4][20] = {0};
-NSString *arrayTest[200][4][20] = {0};
+NSString *node[200][4][20] = {0};
 NSDictionary *world;
 
 @implementation DozenalViewController (Math)
@@ -9,24 +9,38 @@ NSDictionary *world;
     
 	hello[100][2][4] = @"!hey there";
 	
-	NSMutableArray *arrayTest = [NSMutableArray arrayWithObjects:@"String1",@"String2",nil];
+	NSMutableArray *node = [NSMutableArray arrayWithObjects:@"String1",@"String2",nil];
 	
-	NSMutableArray *node1 = [NSMutableArray arrayWithObjects:0,1,2,3,nil];
+	NSMutableArray *nodeOrientation = [NSMutableArray arrayWithObjects:0,1,2,3,nil];	
 	
+	int nodeCount = 0;
 	
-	arrayTest[1] = @"Overrride";
-	arrayTest[2] = @"dsfadsf";
-	arrayTest[3] = @"sdf";
-	arrayTest[4] = node1;
-	
-	arrayTest[4][0] = @"test";
-	arrayTest[4][1] = @"test";
-	arrayTest[4][2] = @"test";
-	arrayTest[4][3] = @"test";
+	while ( nodeCount < 70 )
+	{
 		
-	NSLog(@"%@",arrayTest);
+		node[nodeCount] = nodeOrientation;
+		nodeCount++;
+		
+	}
+	
+	// Forest ( 0 - 11 )
+	
+	node[1] = @"Overrride";
+	node[2] = @"dsfadsf";
+	node[3] = @"sdf";
+	node[4] = nodeOrientation;
+	
+	node[4][0] = @"north";
+	node[4][1] = @"east";
+	node[4][2] = @"south";
+	node[4][3] = @"west";
+	
+	node[5] = @"west";
+	
+		
+	NSLog(@"%@",node);
 	
 	
-	return arrayTest;
+	return node;
 }
 @end
