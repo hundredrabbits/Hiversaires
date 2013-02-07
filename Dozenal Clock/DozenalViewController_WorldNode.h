@@ -1,5 +1,6 @@
 #import "DozenalViewController.h"
 
 @interface DozenalViewController (Math)
--(NSMutableArray*) add;
+-(NSMutableArray*) worldPaths;
+-(NSMutableArray*) worldActions;
 @end

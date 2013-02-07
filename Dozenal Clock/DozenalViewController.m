@@ -10,11 +10,12 @@
 #import "DozenalViewController_WorldNode.h"
 
 NSString        *worldOrientation[4] = {@"north",@"east",@"south",@"west"};
-NSString        *worldNode[200][4][20] = {0};
+
+NSArray			*worldPath;
+NSMutableArray	*worldActions;
+
 NSString        *worldNodeImg = @"empty";
 NSString		*worldNodeImgId;
-
-NSMutableArray *worldNew;
 
 int             userNode = 0;
 int             userOrientation;
@@ -31,7 +32,8 @@ int             userAction = 0;
     
     [super viewDidLoad];
     
-	worldNew = [self add];
+	worldPath = [self worldPaths];
+	worldActions = [self worldActions];
 	[self actionCheck];
     [self moveCheck];
 	
@@ -64,9 +66,8 @@ int             userAction = 0;
 }
 
 - (IBAction)moveForward:(id)sender {
-	 NSLog(@"%@", worldNew[userNode][userOrientation]);
 	
-    userNode = [ worldNew[userNode][userOrientation] intValue] > 0 ? [ worldNew[userNode][userOrientation] intValue] : userNode;
+    userNode = [ worldPath[userNode][userOrientation] intValue] > 0 ? [ worldPath[userNode][userOrientation] intValue] : userNode;
     
     [self moveCheck];
     
@@ -74,7 +75,7 @@ int             userAction = 0;
 
 - (IBAction)moveAction:(id)sender {
     
-    userAction = [worldNode[userNode][userOrientation][10] intValue];
+    //userAction = [worldNode[userNode][userOrientation][10] intValue];
     
     [self actionCheck];
 
@@ -95,38 +96,30 @@ int             userAction = 0;
 
 - (void)moveCheck
 {
-    NSLog(@"%@", worldNew[userNode][userOrientation]);
+	// Debug
+	self.debugOrientation.text = worldOrientation[userOrientation];
+    self.debugNode.text = [NSString stringWithFormat:@"%d",userNode];
 	
-	//NSLog(@"%@",worldNew[userNode][userOrientation]);
 	
-    self.moveForward.hidden = worldNew[userNode][userOrientation] ? NO : YES;
+	
+    self.moveForward.hidden = worldPath[userNode][userOrientation] ? NO : YES;
 	
 	self.moveAction.hidden = YES;
-	
-    //[_moveAction setTitle:worldNew[userNode][userOrientation][1] forState:UIControlStateNormal];
-    
-    self.debugOrientation.text = worldOrientation[userOrientation];
-    self.debugNode.text = [NSString stringWithFormat:@"%d",userNode];
-    
-	worldNodeImgId = [NSString stringWithFormat:@"%04d", (userNode*4)+userOrientation ];
-	
-	
-    worldNodeImg = [NSString stringWithFormat:@"%@%@%@", @"node.", worldNodeImgId, @".jpg"];
-    
-    self.viewMain.image = [UIImage imageNamed:worldNodeImg];
-    //self.viewMain.frame = CGRectMake( (userOrientation*320*-1 ) , 10.0, 1280.0, 460.0);
-	
-	//NSLog( @"%@", [NSString stringWithFormat:@"%04d", (userNode*4)+userOrientation ]);
-	
+
 	[self fadeOut:_interfaceVignette t:1];
+	
+	// Graphics
+	worldNodeImgId = [NSString stringWithFormat:@"%04d", (userNode*4)+userOrientation ];
+	worldNodeImg = [NSString stringWithFormat:@"%@%@%@", @"node.", worldNodeImgId, @".jpg"];
+	self.viewMain.image = [UIImage imageNamed:worldNodeImg];
+    
+	
 }
 
 - (void)actionCheck
 {
     
 	[self solveCheck];
-	
-    self.debugAction.text = userAction ? worldNode[userNode][userOrientation][11] : 0;
     
     self.moveLeft.hidden = userAction ? YES : NO;
     self.moveRight.hidden = userAction ? YES : NO;
@@ -151,18 +144,7 @@ int             userAction = 0;
 
 - (void)solveCheck
 {
-	
-    self.debugActionValue.text = userAction ? worldNode[userNode][userOrientation][12] : 0;
-	
-	worldNode[userNode][userOrientation][14] = worldNode[userNode][userOrientation][12] == worldNode[userNode][userOrientation][13] ? @"1" : @"0";
-	
-	if( [ worldNode[userNode][userOrientation][12] intValue ] == [ worldNode[userNode][userOrientation][13] intValue ] ){
-		worldNode[userNode][userOrientation][14] = @"1";
-		self.debugActionValue.text = userAction ? @"Solved": 0;
-		NSLog(@"solved");
-	}
-	
-	
+		
 }
 
 
@@ -173,25 +155,22 @@ int             userAction = 0;
 - (void)actionRouting
 {
 	
-	// Puzzle 1
-	if( worldNode[userNode][userOrientation][10] == @"1" ){
-		self.action1.hidden = NO;
-		self.action2.hidden = NO;
-	}
+	self.action1.hidden = NO;
+	self.action2.hidden = NO;
     	
 }
 
 
 - (void)actionItem
 {
-	NSLog(@"%@ - %@",@"Load Item Interface", worldNode[userNode][userOrientation][11] );
+	
 	
 }
 
 - (IBAction)action1:(id)sender {
 	
 	// Increment
-	worldNode[userNode][userOrientation][12] = [NSString stringWithFormat:@"%d", [ worldNode[userNode][userOrientation][12] intValue]+1 ];
+	
 	[self solveCheck];
 	
 }
@@ -199,21 +178,21 @@ int             userAction = 0;
 - (IBAction)action2:(id)sender {
 	
 	// Decrement
-	worldNode[userNode][userOrientation][12] = [NSString stringWithFormat:@"%d", [ worldNode[userNode][userOrientation][12] intValue]-1 ];
+	
 	[self solveCheck];
 	
 }
 
 - (IBAction)action3:(id)sender {
 	
-	NSLog( @"Action?" );
+	
 	[self solveCheck];
 	
 }
 
 - (IBAction)action4:(id)sender {
 	
-	NSLog( @"Action?" );
+	
 	[self solveCheck];
 	
 }

@@ -5,7 +5,8 @@ NSString *node[200][4][20] = {0};
 NSDictionary *world;
 
 @implementation DozenalViewController (Math)
--(NSMutableArray*) add {
+-(NSMutableArray*) worldPaths
+{
     
 	hello[100][2][4] = @"!hey there";
 	
@@ -29,6 +30,11 @@ NSDictionary *world;
 	node[11]	= [NSArray arrayWithObjects: @"0", @"0", @"3", @"0", nil];
 	
 	return node;
+}
+
+- (NSMutableArray *) worldActions
+{
+	return 0;
 }
 
 

@@ -30,25 +30,12 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Dozenal Clock/DozenalViewController.m"
-         timestampString = "381919726.937698"
+         timestampString = "381920677.254881"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "185"
-         endingLineNumber = "185"
+         startingLineNumber = "173"
+         endingLineNumber = "173"
          landmarkName = "-actionItem"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "Dozenal Clock/DozenalViewController.m"
-         timestampString = "381919726.937698"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "159"
-         endingLineNumber = "159"
-         landmarkName = "-solveCheck"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>
