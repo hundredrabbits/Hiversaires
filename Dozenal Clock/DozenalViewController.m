@@ -132,13 +132,15 @@ int             userAction = 0;
 - (void)moveCheck
 {
     
-    self.moveForward.hidden = worldNode[userNode][userOrientation][0] ? NO : YES;
+	NSLog(@"%@",worldNew[userNode][userOrientation]);
+	
+    self.moveForward.hidden = worldNew[userNode][userOrientation][0] ? NO : YES;
+	
     self.moveAction.hidden = worldNode[userNode][userOrientation][11] ? NO : YES;
     [_moveAction setTitle:worldNode[userNode][userOrientation][11] forState:UIControlStateNormal];
     
     self.debugOrientation.text = worldOrientation[userOrientation];
     self.debugNode.text = [NSString stringWithFormat:@"%d",userNode];
-    self.debugLocation.text = worldNode[userNode][0][1];
     
 	worldNodeImgId = [NSString stringWithFormat:@"%04d", (userNode*4)+userOrientation ];
 	
@@ -148,7 +150,7 @@ int             userAction = 0;
     self.viewMain.image = [UIImage imageNamed:worldNodeImg];
     //self.viewMain.frame = CGRectMake( (userOrientation*320*-1 ) , 10.0, 1280.0, 460.0);
 	
-	NSLog( @"%@", [NSString stringWithFormat:@"%04d", (userNode*4)+userOrientation ]);
+	//NSLog( @"%@", [NSString stringWithFormat:@"%04d", (userNode*4)+userOrientation ]);
 	
 	[self fadeOut:_interfaceVignette t:1];
 }
