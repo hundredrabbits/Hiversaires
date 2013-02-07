@@ -61,6 +61,7 @@
 		0333140F16C1F12C009DD80A /* node.0051.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 033313DA16C1F12C009DD80A /* node.0051.jpg */; };
 		0333141016C1F12C009DD80A /* node.0052.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 033313DB16C1F12C009DD80A /* node.0052.jpg */; };
 		0333141316C214E0009DD80A /* vignette.png in Resources */ = {isa = PBXBuildFile; fileRef = 0333141216C214E0009DD80A /* vignette.png */; };
+		0388224216C344BF0060C323 /* DozenalViewController_WorldNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 0388224116C344BF0060C323 /* DozenalViewController_WorldNode.m */; };
 		03E0DABF16BA86D700D0C40E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03E0DABE16BA86D700D0C40E /* UIKit.framework */; };
 		03E0DAC116BA86D700D0C40E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03E0DAC016BA86D700D0C40E /* Foundation.framework */; };
 		03E0DAC316BA86D700D0C40E /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03E0DAC216BA86D700D0C40E /* CoreGraphics.framework */; };
@@ -144,6 +145,8 @@
 		033313DA16C1F12C009DD80A /* node.0051.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = node.0051.jpg; path = graphics/node.0051.jpg; sourceTree = "<group>"; };
 		033313DB16C1F12C009DD80A /* node.0052.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = node.0052.jpg; path = graphics/node.0052.jpg; sourceTree = "<group>"; };
 		0333141216C214E0009DD80A /* vignette.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = vignette.png; path = interface/vignette.png; sourceTree = "<group>"; };
+		0388223F16C344840060C323 /* DozenalViewController_WorldNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DozenalViewController_WorldNode.h; sourceTree = "<group>"; };
+		0388224116C344BF0060C323 /* DozenalViewController_WorldNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DozenalViewController_WorldNode.m; sourceTree = "<group>"; };
 		03E0DABA16BA86D700D0C40E /* Hiversaires.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Hiversaires.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		03E0DABE16BA86D700D0C40E /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		03E0DAC016BA86D700D0C40E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -295,10 +298,12 @@
 			children = (
 				03E0DACD16BA86D700D0C40E /* DozenalAppDelegate.h */,
 				03E0DACE16BA86D700D0C40E /* DozenalAppDelegate.m */,
-				03E0DAD616BA86D700D0C40E /* MainStoryboard.storyboard */,
 				03E0DAD916BA86D700D0C40E /* DozenalViewController.h */,
 				03E0DADA16BA86D700D0C40E /* DozenalViewController.m */,
+				0388223F16C344840060C323 /* DozenalViewController_WorldNode.h */,
+				0388224116C344BF0060C323 /* DozenalViewController_WorldNode.m */,
 				03E0DAC516BA86D700D0C40E /* Supporting Files */,
+				03E0DAD616BA86D700D0C40E /* MainStoryboard.storyboard */,
 			);
 			path = "Dozenal Clock";
 			sourceTree = "<group>";
@@ -507,6 +512,7 @@
 				03E0DACB16BA86D700D0C40E /* main.m in Sources */,
 				03E0DACF16BA86D700D0C40E /* DozenalAppDelegate.m in Sources */,
 				03E0DADB16BA86D700D0C40E /* DozenalViewController.m in Sources */,
+				0388224216C344BF0060C323 /* DozenalViewController_WorldNode.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

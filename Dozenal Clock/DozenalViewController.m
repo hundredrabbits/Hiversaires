@@ -7,6 +7,7 @@
 //
 
 #import "DozenalViewController.h"
+#import "DozenalViewController_WorldNode.h"
 
 NSString        *worldOrientation[4] = {@"north",@"east",@"south",@"west"};
 NSString        *worldNode[200][4][20] = {0};
@@ -71,6 +72,7 @@ int             userAction = 0;
     
     [self actionCheck];
     [self moveCheck];
+	[self add];
 	
 }
 
