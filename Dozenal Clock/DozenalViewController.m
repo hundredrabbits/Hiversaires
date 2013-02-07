@@ -43,7 +43,9 @@ int             userAction = 0;
     [super didReceiveMemoryWarning];
 }
 
+// ====================
 // Movement
+// ====================
 
 - (IBAction)moveLeft:(id)sender {
     
@@ -62,8 +64,9 @@ int             userAction = 0;
 }
 
 - (IBAction)moveForward:(id)sender {
+	 NSLog(@"%@", worldNew[userNode][userOrientation]);
 	
-    userNode = [ worldNew[userNode][userOrientation][0] intValue] > 0 ? [ worldNew[userNode][userOrientation][0] intValue] : userNode;
+    userNode = [ worldNew[userNode][userOrientation] intValue] > 0 ? [ worldNew[userNode][userOrientation] intValue] : userNode;
     
     [self moveCheck];
     
@@ -86,17 +89,21 @@ int             userAction = 0;
     
 }
 
-// Check
+// ====================
+// Checks
+// ====================
 
 - (void)moveCheck
 {
-    
+    NSLog(@"%@", worldNew[userNode][userOrientation]);
+	
 	//NSLog(@"%@",worldNew[userNode][userOrientation]);
 	
-    self.moveForward.hidden = worldNew[userNode][userOrientation][0] ? NO : YES;
+    self.moveForward.hidden = worldNew[userNode][userOrientation] ? NO : YES;
 	
-    self.moveAction.hidden = worldNode[userNode][userOrientation][11] ? NO : YES;
-    [_moveAction setTitle:worldNode[userNode][userOrientation][11] forState:UIControlStateNormal];
+	self.moveAction.hidden = YES;
+	
+    //[_moveAction setTitle:worldNew[userNode][userOrientation][1] forState:UIControlStateNormal];
     
     self.debugOrientation.text = worldOrientation[userOrientation];
     self.debugNode.text = [NSString stringWithFormat:@"%d",userNode];
@@ -159,7 +166,9 @@ int             userAction = 0;
 }
 
 
-// Interaction
+// ====================
+// Interactions
+// ====================
 
 - (void)actionRouting
 {
@@ -212,7 +221,9 @@ int             userAction = 0;
 
 
 
+// ====================
 // Tools
+// ====================
 
 -(void)fadeIn:(UIView*)viewToFadeIn t:(NSTimeInterval)duration
 {

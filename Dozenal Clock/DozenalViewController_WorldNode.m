@@ -11,65 +11,22 @@ NSDictionary *world;
 	
 	NSMutableArray *node = [NSMutableArray arrayWithObjects:@"String1",@"String2",@"String3",nil];
 	
-//	node[0][1] = [NSMutableArray arrayWithObjects:
-//				  @"nodeNext",
-//				  @"actionId",
-//				  @"actionName",
-//				  @"actionValue",
-//				  @"actionSolution",
-//				  nil];
-	
-	// =====================
+	// ====================
 	// Forest ( 0 - 11 )
 	// ====================	
-	
-	node[0]		= [NSMutableArray arrayWithObjects:[NSMutableArray arrayWithObjects:@"0",@"1",@"2",@"3",nil],[NSMutableArray arrayWithObjects:@"0",@"1",@"2",@"3",nil],[NSMutableArray arrayWithObjects:@"0",@"1",@"2",@"3",nil],[NSMutableArray arrayWithObjects:@"0",@"1",@"2",@"3",nil],nil];
-	node[0][0]	= [NSMutableArray arrayWithObjects:@"1",nil];
-	
-	node[1]		= [NSMutableArray arrayWithObjects:[NSMutableArray arrayWithObjects:@"0",@"1",@"2",@"3",nil],[NSMutableArray arrayWithObjects:@"0",@"1",@"2",@"3",nil],[NSMutableArray arrayWithObjects:@"0",@"1",@"2",@"3",nil],[NSMutableArray arrayWithObjects:@"0",@"1",@"2",@"3",nil],nil];
-	node[1][0]	= [NSMutableArray arrayWithObjects:@"2",nil];
-	node[1][2]	= [NSMutableArray arrayWithObjects:@"0",nil];
-	
-	node[2]		= [NSMutableArray arrayWithObjects:[NSMutableArray arrayWithObjects:@"0",@"1",@"2",@"3",nil],[NSMutableArray arrayWithObjects:@"0",@"1",@"2",@"3",nil],[NSMutableArray arrayWithObjects:@"0",@"1",@"2",@"3",nil],[NSMutableArray arrayWithObjects:@"0",@"1",@"2",@"3",nil],nil];
-	node[2][0]	= [NSMutableArray arrayWithObjects:@"3",nil];
-	node[2][2]	= [NSMutableArray arrayWithObjects:@"1",nil];
-	
-	node[3]		= [NSMutableArray arrayWithObjects:[NSMutableArray arrayWithObjects:@"0",@"1",@"2",@"3",nil],[NSMutableArray arrayWithObjects:@"0",@"1",@"2",@"3",nil],[NSMutableArray arrayWithObjects:@"0",@"1",@"2",@"3",nil],[NSMutableArray arrayWithObjects:@"0",@"1",@"2",@"3",nil],nil];
-	node[3][0]	= [NSMutableArray arrayWithObjects:@"11",nil];
-	node[3][1]	= [NSMutableArray arrayWithObjects:@"10",nil];
-	node[3][2]	= [NSMutableArray arrayWithObjects:@"2",nil];
-	node[3][3]	= [NSMutableArray arrayWithObjects:@"4",nil];
-	
-	node[4]		= [NSMutableArray arrayWithObjects:[NSMutableArray arrayWithObjects:@"0",@"1",@"2",@"3",nil],[NSMutableArray arrayWithObjects:@"0",@"1",@"2",@"3",nil],[NSMutableArray arrayWithObjects:@"0",@"1",@"2",@"3",nil],[NSMutableArray arrayWithObjects:@"0",@"1",@"2",@"3",nil],nil];
-	node[4][0]	= [NSMutableArray arrayWithObjects:@"5",nil];
-	node[4][1]	= [NSMutableArray arrayWithObjects:@"3",nil];
-	
-	node[5]		= [NSMutableArray arrayWithObjects:[NSMutableArray arrayWithObjects:@"0",@"1",@"2",@"3",nil],[NSMutableArray arrayWithObjects:@"0",@"1",@"2",@"3",nil],[NSMutableArray arrayWithObjects:@"0",@"1",@"2",@"3",nil],[NSMutableArray arrayWithObjects:@"0",@"1",@"2",@"3",nil],nil];
-	node[5][0]	= [NSMutableArray arrayWithObjects:@"6",nil];
-	node[5][2]	= [NSMutableArray arrayWithObjects:@"4",nil];
-	
-	node[6]		= [NSMutableArray arrayWithObjects:[NSMutableArray arrayWithObjects:@"0",@"1",@"2",@"3",nil],[NSMutableArray arrayWithObjects:@"0",@"1",@"2",@"3",nil],[NSMutableArray arrayWithObjects:@"0",@"1",@"2",@"3",nil],[NSMutableArray arrayWithObjects:@"0",@"1",@"2",@"3",nil],nil];
-	node[6][1]	= [NSMutableArray arrayWithObjects:@"7",nil];
-	node[6][2]	= [NSMutableArray arrayWithObjects:@"5",nil];
-	
-	node[7]		= [NSMutableArray arrayWithObjects:[NSMutableArray arrayWithObjects:@"0",@"1",@"2",@"3",nil],[NSMutableArray arrayWithObjects:@"0",@"1",@"2",@"3",nil],[NSMutableArray arrayWithObjects:@"0",@"1",@"2",@"3",nil],[NSMutableArray arrayWithObjects:@"0",@"1",@"2",@"3",nil],nil];
-	node[7][1]	= [NSMutableArray arrayWithObjects:@"8",nil];
-	node[7][3]	= [NSMutableArray arrayWithObjects:@"6",nil];
-	
-	node[8]		= [NSMutableArray arrayWithObjects:[NSMutableArray arrayWithObjects:@"0",@"1",@"2",@"3",nil],[NSMutableArray arrayWithObjects:@"0",@"1",@"2",@"3",nil],[NSMutableArray arrayWithObjects:@"0",@"1",@"2",@"3",nil],[NSMutableArray arrayWithObjects:@"0",@"1",@"2",@"3",nil],nil];
-	node[8][2]	= [NSMutableArray arrayWithObjects:@"9",nil];
-	node[8][3]	= [NSMutableArray arrayWithObjects:@"7",nil];
-	
-	node[9]		= [NSMutableArray arrayWithObjects:[NSMutableArray arrayWithObjects:@"0",@"1",@"2",@"3",nil],[NSMutableArray arrayWithObjects:@"0",@"1",@"2",@"3",nil],[NSMutableArray arrayWithObjects:@"0",@"1",@"2",@"3",nil],[NSMutableArray arrayWithObjects:@"0",@"1",@"2",@"3",nil],nil];
-	node[9][0]	= [NSMutableArray arrayWithObjects:@"8",nil];
-	node[9][2]	= [NSMutableArray arrayWithObjects:@"10",nil];
-	
-	node[10]	= [NSMutableArray arrayWithObjects:[NSMutableArray arrayWithObjects:@"0",@"1",@"2",@"3",nil],[NSMutableArray arrayWithObjects:@"0",@"1",@"2",@"3",nil],[NSMutableArray arrayWithObjects:@"0",@"1",@"2",@"3",nil],[NSMutableArray arrayWithObjects:@"0",@"1",@"2",@"3",nil],nil];
-	node[10][0]	= [NSMutableArray arrayWithObjects:@"9",nil];
-	node[10][3]	= [NSMutableArray arrayWithObjects:@"3",nil];
-	
-	node[11]	= [NSMutableArray arrayWithObjects:[NSMutableArray arrayWithObjects:@"0",@"1",@"2",@"3",nil],[NSMutableArray arrayWithObjects:@"0",@"1",@"2",@"3",nil],[NSMutableArray arrayWithObjects:@"0",@"1",@"2",@"3",nil],[NSMutableArray arrayWithObjects:@"0",@"1",@"2",@"3",nil],nil];
-	node[11][2]	= [NSMutableArray arrayWithObjects:@"3",nil];
+
+	node[0]		= [NSArray arrayWithObjects: @"1", @"0", @"0", @"0", nil];
+	node[1]		= [NSArray arrayWithObjects: @"2", @"0", @"0", @"0", nil];
+	node[2]		= [NSArray arrayWithObjects: @"3", @"0", @"1", @"0", nil];
+	node[3]		= [NSArray arrayWithObjects: @"11", @"10", @"2", @"4", nil];
+	node[4]		= [NSArray arrayWithObjects: @"5", @"3", @"0", @"0", nil];
+	node[5]		= [NSArray arrayWithObjects: @"6", @"0", @"4", @"0", nil];
+	node[6]		= [NSArray arrayWithObjects: @"0", @"7", @"5", @"0", nil];
+	node[7]		= [NSArray arrayWithObjects: @"0", @"8", @"0", @"6", nil];
+	node[8]		= [NSArray arrayWithObjects: @"0", @"0", @"9", @"7", nil];
+	node[9]		= [NSArray arrayWithObjects: @"8", @"0", @"10", @"0", nil];
+	node[10]	= [NSArray arrayWithObjects: @"9", @"0", @"0", @"3", nil];
+	node[11]	= [NSArray arrayWithObjects: @"0", @"0", @"3", @"0", nil];
 	
 	return node;
 }
