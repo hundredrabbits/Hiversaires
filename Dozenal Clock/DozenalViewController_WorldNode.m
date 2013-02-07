@@ -11,31 +11,54 @@ NSDictionary *world;
 	
 	NSMutableArray *node = [NSMutableArray arrayWithObjects:@"String1",@"String2",@"String3",nil];
 	
-	NSMutableArray *nodeOrientation = [NSMutableArray arrayWithObjects:0,1,2,3,nil];
-//	NSMutableArray *orientationStarage = [NSMutableArray arrayWithObjects:0,1,2,3,4,5,6,7,8,9,nil];
+//	node[0][1] = [NSMutableArray arrayWithObjects:
+//				  @"nodeNext",
+//				  @"actionId",
+//				  @"actionName",
+//				  @"actionValue",
+//				  @"actionSolution",
+//				  nil];
 	
-//	int nodeCount = 0;
-//	int orientationCount = 4;
-//	
-//	while ( nodeCount < 30 ) // Create 70 Nodes
-//	{
-//		node[nodeCount] = nodeOrientation;
-//		
-//		nodeCount++;
-//	}
-	
+	// =====================
 	// Forest ( 0 - 11 )
-	node[0] = [NSMutableArray arrayWithObjects:@"0",@"1",@"2",@"3",nil];
-	
-	node[0][2] = [NSMutableArray arrayWithObjects:@"0",@"1",@"2",@"3",nil];
-	node[0][2][2] = @"!!!";
+	// ====================
 	
 	
-	node[2] = nodeOrientation;
-	node[2][0] = @"else";
-	node[2][1] = @"else";
-	node[2][2] = @"else";
+	node[0]		= [NSMutableArray arrayWithObjects:0,1,2,3,nil];
+	node[0][0]	= [NSMutableArray arrayWithObjects:@"1",nil];
 	
+	node[1]		= [NSMutableArray arrayWithObjects:0,1,2,3,nil];
+	node[0][0]	= [NSMutableArray arrayWithObjects:@"1",nil];
+	
+	node[2]		= [NSMutableArray arrayWithObjects:0,1,2,3,nil];
+	node[0][0]	= [NSMutableArray arrayWithObjects:@"1",nil];
+	
+	node[3]		= [NSMutableArray arrayWithObjects:0,1,2,3,nil];
+	node[0][0]	= [NSMutableArray arrayWithObjects:@"1",nil];
+	
+	node[4]		= [NSMutableArray arrayWithObjects:0,1,2,3,nil];
+	node[0][0]	= [NSMutableArray arrayWithObjects:@"1",nil];
+	
+	node[5]		= [NSMutableArray arrayWithObjects:0,1,2,3,nil];
+	node[0][0]	= [NSMutableArray arrayWithObjects:@"1",nil];
+	
+	node[6]		= [NSMutableArray arrayWithObjects:0,1,2,3,nil];
+	node[0][0]	= [NSMutableArray arrayWithObjects:@"1",nil];
+	
+	node[7]		= [NSMutableArray arrayWithObjects:0,1,2,3,nil];
+	node[0][0]	= [NSMutableArray arrayWithObjects:@"1",nil];
+	
+	node[8]		= [NSMutableArray arrayWithObjects:0,1,2,3,nil];
+	node[0][0]	= [NSMutableArray arrayWithObjects:@"1",nil];
+	
+	node[9]		= [NSMutableArray arrayWithObjects:0,1,2,3,nil];
+	node[0][0]	= [NSMutableArray arrayWithObjects:@"1",nil];
+	
+	node[10]	= [NSMutableArray arrayWithObjects:0,1,2,3,nil];
+	node[0][0]	= [NSMutableArray arrayWithObjects:@"1",nil];
+	
+	node[11]	= [NSMutableArray arrayWithObjects:0,1,2,3,nil];
+	node[0][0]	= [NSMutableArray arrayWithObjects:@"1",nil];
 		
 	return node;
 }
