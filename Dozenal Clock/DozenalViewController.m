@@ -72,7 +72,8 @@ int             userAction = 0;
     
     [self actionCheck];
     [self moveCheck];
-	[self add];
+	//[self add];
+	NSLog( @"%@", [self add] );
 	
 }
 
