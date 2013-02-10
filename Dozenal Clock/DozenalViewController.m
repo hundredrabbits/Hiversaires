@@ -20,8 +20,10 @@ NSString		*worldNodeImgId;
 NSString        *userAction;
 int             userNode = 0;
 int             userOrientation;
+NSMutableArray	*userActionStorage;
 NSString        *userActionType;
 int				userActionId;
+
 
 @interface DozenalViewController ()
 @end
@@ -37,6 +39,8 @@ int				userActionId;
 	worldPath = [self worldPath];
 	worldAction = [self worldAction];
 	worldDocument = [self worldDocument];
+	
+	userActionStorage = [NSMutableArray arrayWithObjects:@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",nil];
 	
 	[self actionCheck];
     [self moveCheck];
@@ -117,8 +121,6 @@ int				userActionId;
 - (void)actionCheck
 {
     
-	[self solveCheck];
-    
     self.moveLeft.hidden = userAction ? YES : NO;
     self.moveRight.hidden = userAction ? YES : NO;
     self.moveForward.hidden = userAction ? YES : NO;
@@ -142,7 +144,14 @@ int				userActionId;
 
 - (void)solveCheck
 {
-		
+
+	if( [ worldAction[userActionId][1] intValue] == [userActionStorage[userActionId] intValue] ){
+		NSLog(@"Solved %@ - %@", worldAction[userActionId][1], userActionStorage[userActionId]);
+	}
+	else{
+		NSLog(@"Unsolved %@ - %@", worldAction[userActionId][1], userActionStorage[userActionId]);
+	}
+	
 }
 
 
@@ -157,15 +166,12 @@ int				userActionId;
 	userActionId  = [[userAction stringByReplacingOccurrencesOfString:userActionType withString:@""] intValue];
 	
 	if ([userAction rangeOfString:@"act"].location != NSNotFound) {
-		NSLog(@"%@", worldAction[userActionId]);
+		[self solveCheck];
 	}
 	else if ([userAction rangeOfString:@"doc"].location != NSNotFound) {
-		NSLog(@"%@", worldDocument[userActionId]);
+		//NSLog(@"%@", worldDocument[userActionId]);
 	}
-	else {
-		NSLog(@"%@",@"Unknown");
-	}
-	
+
 	self.action1.hidden = NO;
 	self.action2.hidden = NO;
     	
@@ -174,6 +180,9 @@ int				userActionId;
 - (IBAction)action1:(id)sender {
 	
 	// Increment
+	
+	//userActionStorage[userActionId] = [NSString stringWithFormat:@"%04d", [ userActionStorage[userActionId] intValue]+1 ];
+	userActionStorage[userActionId] = [NSString stringWithFormat:@"%d", [ userActionStorage[userActionId] intValue]+1 ];	
 	
 	[self solveCheck];
 	
@@ -189,13 +198,11 @@ int				userActionId;
 
 - (IBAction)action3:(id)sender {
 	
-	
 	[self solveCheck];
 	
 }
 
 - (IBAction)action4:(id)sender {
-	
 	
 	[self solveCheck];
 	
