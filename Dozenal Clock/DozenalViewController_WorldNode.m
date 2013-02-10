@@ -12,8 +12,8 @@
 	// Forest ( 0 - 11 )
 	// ====================	
 
-	node[0]		= [NSArray arrayWithObjects: @"1", @"e", @"0", @"0", nil];
-	node[1]		= [NSArray arrayWithObjects: @"2", @"0", @"0", @"0", nil];
+	node[0]		= [NSArray arrayWithObjects: @"1", @"act1", @"0", @"0", nil];
+	node[1]		= [NSArray arrayWithObjects: @"2", @"doc1", @"0", @"0", nil];
 	node[2]		= [NSArray arrayWithObjects: @"3", @"0", @"1", @"0", nil];
 	node[3]		= [NSArray arrayWithObjects: @"11", @"10", @"2", @"4", nil];
 	node[4]		= [NSArray arrayWithObjects: @"5", @"3", @"0", @"0", nil];
@@ -23,7 +23,7 @@
 	node[8]		= [NSArray arrayWithObjects: @"0", @"0", @"9", @"7", nil];
 	node[9]		= [NSArray arrayWithObjects: @"8", @"0", @"10", @"0", nil];
 	node[10]	= [NSArray arrayWithObjects: @"9", @"0", @"0", @"3", nil];
-	node[11]	= [NSArray arrayWithObjects: @"0", @"0", @"3", @"0", nil];
+	node[11]	= [NSArray arrayWithObjects: @"act1", @"0", @"3", @"0", nil];
 	
 	return node;
 }
@@ -51,6 +51,22 @@
 	puzzle[11]		= [NSArray arrayWithObjects: @"Name", @"Solution", @"State", nil];
 	
 	return puzzle;
+}
+
+
+- (NSMutableArray*) worldDocument
+{
+	
+	NSMutableArray *document = [NSMutableArray arrayWithObjects:@"",nil];
+	
+	// ====================
+	// Forest ( 1 - 3 )
+	// ====================
+	
+	document[0]		= [NSArray arrayWithObjects: @"First Puzzle", @"Text", @"Graphic", nil];
+	document[1]		= [NSArray arrayWithObjects: @"First Puzzle", @"Text", @"Graphic", nil];
+	
+	return document;
 }
 
 

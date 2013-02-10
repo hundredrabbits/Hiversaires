@@ -12,6 +12,7 @@
 // World
 NSArray			*worldPath;
 NSArray			*worldAction;
+NSArray			*worldDocument;
 NSString        *worldNodeImg = @"empty";
 NSString		*worldNodeImgId;
 
@@ -19,6 +20,8 @@ NSString		*worldNodeImgId;
 NSString        *userAction;
 int             userNode = 0;
 int             userOrientation;
+NSString        *userActionType;
+int				userActionId;
 
 @interface DozenalViewController ()
 @end
@@ -33,6 +36,7 @@ int             userOrientation;
     
 	worldPath = [self worldPath];
 	worldAction = [self worldAction];
+	worldDocument = [self worldDocument];
 	
 	[self actionCheck];
     [self moveCheck];
@@ -96,6 +100,10 @@ int             userOrientation;
 
 - (void)moveCheck
 {
+	self.debugNode.text = [NSString stringWithFormat:@"%d", userNode];
+	self.debugOrientation.text = [NSString stringWithFormat:@"%d", userOrientation];
+	self.debugAction.text = [NSString stringWithFormat:@"%@", worldPath[userNode][userOrientation]];
+	
 	self.moveAction.hidden = YES; [self fadeOut:_interfaceVignette t:1];
     self.moveForward.hidden = worldPath[userNode][userOrientation] ? NO : YES;
 	self.moveAction.hidden = [[NSCharacterSet letterCharacterSet] characterIsMember:[worldPath[userNode][userOrientation] characterAtIndex:0]] ? NO : YES;
@@ -145,8 +153,17 @@ int             userOrientation;
 - (void)actionRouting
 {
 	
-	if (userAction == @"e") {
-		NSLog(@"%@",worldAction[0]);
+	userActionType = [userAction substringWithRange:NSMakeRange(0, 3)];
+	userActionId  = [[userAction stringByReplacingOccurrencesOfString:userActionType withString:@""] intValue];
+	
+	if ([userAction rangeOfString:@"act"].location != NSNotFound) {
+		NSLog(@"%@", worldAction[userActionId]);
+	}
+	else if ([userAction rangeOfString:@"doc"].location != NSNotFound) {
+		NSLog(@"%@", worldDocument[userActionId]);
+	}
+	else {
+		NSLog(@"%@",@"Unknown");
 	}
 	
 	self.action1.hidden = NO;

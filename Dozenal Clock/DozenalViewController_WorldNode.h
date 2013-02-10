@@ -3,4 +3,5 @@
 @interface DozenalViewController (Math)
 -(NSMutableArray*) worldPath;
 -(NSMutableArray*) worldAction;
+-(NSMutableArray*) worldDocument;
 @end
