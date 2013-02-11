@@ -40,7 +40,7 @@ int				userActionId;
 	worldAction = [self worldAction];
 	worldDocument = [self worldDocument];
 	
-	userActionStorage = [NSMutableArray arrayWithObjects:@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",nil];
+	userActionStorage = [NSMutableArray arrayWithObjects:@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",nil];
 	
 	[self actionCheck];
     [self moveCheck];
@@ -177,14 +177,12 @@ int				userActionId;
 	
 }
 
-
-
 - (void)solveState2
 {
 	userNode = 12;
 	userAction = nil;
-	[self moveCheck];
 	[self actionCheck];
+	[self moveCheck];
 	
 }
 
@@ -241,8 +239,6 @@ int				userActionId;
 	[self solveCheck];
 	
 }
-
-
 
 
 // ====================
