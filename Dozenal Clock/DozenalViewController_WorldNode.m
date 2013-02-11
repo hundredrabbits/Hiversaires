@@ -25,6 +25,12 @@
 	node[10]	= [NSArray arrayWithObjects: @"9", @"0", @"doc4", @"3", nil];	// Doc4
 	node[11]	= [NSArray arrayWithObjects: @"act2", @"0", @"3", @"0", nil];	// Act 2
 	
+	// ====================
+	// Studio ( 0 - 11 )
+	// ====================
+
+	node[12]	= [NSArray arrayWithObjects: @"0", @"0", @"0", @"0", nil];	//
+	
 	return node;
 }
 
@@ -37,8 +43,8 @@
 	// Forest ( 1 - 3 )
 	// ====================
 	
-	puzzle[1]		= [NSArray arrayWithObjects: @"Monolith", @"1", @"0", nil];
-	puzzle[2]		= [NSArray arrayWithObjects: @"Monolith", @"3", @"0", nil];
+	puzzle[1]		= [NSArray arrayWithObjects: @"Monolith", @"1", nil];
+	puzzle[2]		= [NSArray arrayWithObjects: @"12", @"3", @"1", nil];
 	puzzle[3]		= [NSArray arrayWithObjects: @"Name", @"Solution", @"State", nil];
 	puzzle[4]		= [NSArray arrayWithObjects: @"Name", @"Solution", @"State", nil];
 	puzzle[5]		= [NSArray arrayWithObjects: @"Name", @"Solution", @"State", nil];
@@ -70,6 +76,5 @@
 	
 	return document;
 }
-
 
 @end

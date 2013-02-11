@@ -144,16 +144,49 @@ int				userActionId;
 
 - (void)solveCheck
 {
+	
+	self.debugAction.text = userActionStorage[userActionId];
+	self.debugActionValue.text = worldAction[userActionId][1];
+	
+	// 3 Consoles
 
-	if( [ worldAction[userActionId][1] intValue] == [userActionStorage[userActionId] intValue] ){
-		NSLog(@"Solved %@ - %@", worldAction[userActionId][1], userActionStorage[userActionId]);
+	// 2 Consoles
+	
+	// 1 Console
+	if( ([ worldAction[userActionId] count]-2) == 1){
+		if( [ worldAction[userActionId][1] intValue] == [userActionStorage[userActionId] intValue] && [worldAction[userActionId][2] intValue] == [userActionStorage[[worldAction[userActionId][2] intValue]] intValue] ){
+			[self solveRouter];
+		}
 	}
-	else{
-		NSLog(@"Unsolved %@ - %@", worldAction[userActionId][1], userActionStorage[userActionId]);
-	}
+	
+	// Default
 	
 }
 
+// ====================
+// Solution
+// ====================
+
+- (void)solveRouter
+{
+	
+	if(userActionId == 2){
+		[self solveState2];
+	}
+	
+	
+}
+
+
+
+- (void)solveState2
+{
+	userNode = 12;
+	userAction = nil;
+	[self moveCheck];
+	[self actionCheck];
+	
+}
 
 // ====================
 // Interactions
@@ -191,6 +224,7 @@ int				userActionId;
 - (IBAction)action2:(id)sender {
 	
 	// Decrement
+	userActionStorage[userActionId] = [NSString stringWithFormat:@"%d", [ userActionStorage[userActionId] intValue]-1 ];
 	
 	[self solveCheck];
 	
