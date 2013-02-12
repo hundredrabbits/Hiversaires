@@ -196,13 +196,17 @@ int				userActionId;
 
 - (void)actionTemplate
 {
-	
+	// Prepare elements for puzzle
 	// Reset
 	[self.action1 setImage: nil forState: UIControlStateNormal];
 	self.action1.frame = CGRectMake(170, 20, 75, 25);
+	[self rotate:self.action1 t:1.0 d:0];
+	
+	NSLog(@"%d",[userActionStorage[userActionId] intValue]);
 	
 	if(userAction == @"act1"){
 		
+		[self rotate:self.action1 t:0.5 d:( [userActionStorage[userActionId] intValue] *120 )];
 		[self.action1 setImage:[UIImage imageNamed:@"action0101.png"] forState:UIControlStateNormal];
 		self.action1.frame = CGRectMake(100, 200, 120, 120);
 		
@@ -213,9 +217,7 @@ int				userActionId;
 - (void)actionAnimation:sender
 {
 	if(userAction == @"act1"){
-		
-		[self rotate:sender t:3.0 d:180];
-	
+		[self rotate:sender t:0.5 d:( [userActionStorage[userActionId] intValue] *120 )];
 	}
 }
 
