@@ -112,6 +112,10 @@
                                     <action selector="moveAction:" destination="2" eventType="touchUpInside" id="LI0-43-8YJ"/>
                                 </connections>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="Fdf-Qf-zRl" userLabel="Graphic1">
+                                <rect key="frame" x="20" y="109" width="55" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="BmP-NF-uqb" userLabel="Item1">
                                 <rect key="frame" x="247" y="18" width="73" height="23"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="11"/>
@@ -220,6 +224,7 @@
                         <outlet property="debugActionValue" destination="3wH-tS-qGL" id="Ukk-4o-d0n"/>
                         <outlet property="debugNode" destination="mj8-4K-569" id="vOM-ju-j9i"/>
                         <outlet property="debugOrientation" destination="8Pn-4H-mjL" id="Rqj-TA-Mdh"/>
+                        <outlet property="graphic1" destination="Fdf-Qf-zRl" id="2gc-sV-1NC"/>
                         <outlet property="interfaceVignette" destination="bRy-kS-Rlz" id="VzD-TK-RLW"/>
                         <outlet property="moveAction" destination="fLw-eO-WBB" id="N5C-XO-9nC"/>
                         <outlet property="moveForward" destination="F1N-h8-Kf8" id="bvP-CE-vfF"/>
@@ -263,6 +268,7 @@
                 <relationship kind="outlet" name="debugLocation" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="debugNode" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="debugOrientation" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="graphic1" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="interfaceVignette" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="moveAction" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="moveForward" candidateClass="UIButton"/>

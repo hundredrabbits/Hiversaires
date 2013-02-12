@@ -56,6 +56,9 @@
 @property (weak, nonatomic) IBOutlet UIButton *Item1;
 @property (weak, nonatomic) IBOutlet UIButton *Item2;
 
+// Graphics
+
+@property (weak, nonatomic) IBOutlet UIImageView *graphic1;
 
 @end
 
