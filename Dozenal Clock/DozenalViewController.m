@@ -215,6 +215,21 @@ int				userActionId;
 		
 	}
 	
+	if([userAction isEqual: @"act2"]){
+		
+//		// Action 1
+//		[self.action1 setImage:[UIImage imageNamed:@"action0101.png"] forState:UIControlStateNormal];
+//		self.action1.frame = CGRectMake(90, 200, 140, 140);
+//		[self fadeIn:self.action1 t:1];
+//		[self rotate:self.action1 t:1 d:( [userActionStorage[userActionId] intValue] *120 )];
+//		
+//		// Graphic 1
+//		[self fadeIn:self.graphic1 t:2];
+//		self.graphic1.image = [UIImage imageNamed:@"action0102.png"];
+//		self.graphic1.frame = CGRectMake(90, 200, 140, 140);
+		
+	}
+	
 }
 
 - (void)actionAnimation:sender
@@ -234,7 +249,7 @@ int				userActionId;
 		[self solveCheck];
 	}
 	else if ([userAction rangeOfString:@"doc"].location != NSNotFound) {
-		//NSLog(@"%@", worldDocument[userActionId]);
+		NSLog(@"%@", worldDocument[userActionId]);
 	}
 
 	self.action1.hidden = NO;
@@ -246,7 +261,12 @@ int				userActionId;
 	
 	// Increment
 	
-	userActionStorage[userActionId] = [NSString stringWithFormat:@"%d", [ userActionStorage[userActionId] intValue]+1 ];	
+	userActionStorage[userActionId] = [NSString stringWithFormat:@"%d", [ userActionStorage[userActionId] intValue]+1 ];
+	
+	// Exceptions
+	
+	if([userAction isEqual: @"act1"]){	userActionStorage[userActionId] = [userActionStorage[userActionId] intValue] > 2 ? @"0" : userActionStorage[userActionId]; }
+	
 	[self actionAnimation:sender];
 	[self solveCheck];
 	
