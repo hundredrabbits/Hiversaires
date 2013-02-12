@@ -9,6 +9,10 @@
 #import "DozenalViewController.h"
 #import "DozenalViewController_WorldNode.h"
 
+// Extras
+#define M_PI   3.14159265358979323846264338327950288   /* pi */
+#define DEGREES_TO_RADIANS(angle) (angle / 180.0 * M_PI)
+
 // World
 NSArray			*worldPath;
 NSArray			*worldAction;
@@ -17,6 +21,7 @@ NSString        *worldNodeImg = @"empty";
 NSString		*worldNodeImgId;
 
 // User
+int             userId;
 NSString        *userAction;
 int             userNode = 0;
 int             userOrientation;
@@ -56,6 +61,22 @@ int				userActionId;
 // ====================
 // Movement
 // ====================
+
+- (void)moveCheck
+{
+	self.debugNode.text = [NSString stringWithFormat:@"%d", userNode];
+	self.debugOrientation.text = [NSString stringWithFormat:@"%d", userOrientation];
+	self.debugAction.text = [NSString stringWithFormat:@"%@", worldPath[userNode][userOrientation]];
+	
+	self.moveAction.hidden = YES; [self fadeOut:_interfaceVignette t:1];
+    self.moveForward.hidden = worldPath[userNode][userOrientation] ? NO : YES;
+	self.moveAction.hidden = [[NSCharacterSet letterCharacterSet] characterIsMember:[worldPath[userNode][userOrientation] characterAtIndex:0]] ? NO : YES;
+	
+	worldNodeImgId = [NSString stringWithFormat:@"%04d", (userNode*4)+userOrientation ];
+	worldNodeImg = [NSString stringWithFormat:@"%@%@%@", @"node.", worldNodeImgId, @".jpg"];
+	self.viewMain.image = [UIImage imageNamed:worldNodeImg];
+    
+}
 
 - (IBAction)moveLeft:(id)sender {
     
@@ -98,49 +119,10 @@ int				userActionId;
     
 }
 
-// ====================
-// Checks
-// ====================
 
-- (void)moveCheck
-{
-	self.debugNode.text = [NSString stringWithFormat:@"%d", userNode];
-	self.debugOrientation.text = [NSString stringWithFormat:@"%d", userOrientation];
-	self.debugAction.text = [NSString stringWithFormat:@"%@", worldPath[userNode][userOrientation]];
-	
-	self.moveAction.hidden = YES; [self fadeOut:_interfaceVignette t:1];
-    self.moveForward.hidden = worldPath[userNode][userOrientation] ? NO : YES;
-	self.moveAction.hidden = [[NSCharacterSet letterCharacterSet] characterIsMember:[worldPath[userNode][userOrientation] characterAtIndex:0]] ? NO : YES;
-	
-	worldNodeImgId = [NSString stringWithFormat:@"%04d", (userNode*4)+userOrientation ];
-	worldNodeImg = [NSString stringWithFormat:@"%@%@%@", @"node.", worldNodeImgId, @".jpg"];
-	self.viewMain.image = [UIImage imageNamed:worldNodeImg];
-    
-}
-
-- (void)actionCheck
-{
-    
-    self.moveLeft.hidden = userAction ? YES : NO;
-    self.moveRight.hidden = userAction ? YES : NO;
-    self.moveForward.hidden = userAction ? YES : NO;
-    self.moveReturn.hidden = userAction ? NO : YES;
-    self.moveAction.hidden = userAction ? YES : NO;
-	
-	self.action1.hidden = YES;
-	self.action2.hidden = YES;
-	self.action3.hidden = YES;
-	self.action4.hidden = YES;
-	
-    if( userAction ){
-        
-        [self actionRouting];
-		[self fadeIn:_interfaceVignette t:1];
-		[self fadeIn:_moveReturn t:1];
-		
-    }
-    
-}
+// ====================
+// Solution
+// ====================
 
 - (void)solveCheck
 {
@@ -149,7 +131,7 @@ int				userActionId;
 	self.debugActionValue.text = worldAction[userActionId][1];
 	
 	// 3 Consoles
-
+	
 	// 2 Consoles
 	
 	// 1 Console
@@ -162,10 +144,6 @@ int				userActionId;
 	// Default
 	
 }
-
-// ====================
-// Solution
-// ====================
 
 - (void)solveRouter
 {
@@ -190,6 +168,57 @@ int				userActionId;
 // Interactions
 // ====================
 
+- (void)actionCheck
+{
+    
+    self.moveLeft.hidden = userAction ? YES : NO;
+    self.moveRight.hidden = userAction ? YES : NO;
+    self.moveForward.hidden = userAction ? YES : NO;
+    self.moveReturn.hidden = userAction ? NO : YES;
+    self.moveAction.hidden = userAction ? YES : NO;
+	
+	self.action1.hidden = YES;
+	self.action2.hidden = YES;
+	self.action3.hidden = YES;
+	self.action4.hidden = YES;
+	self.action5.hidden = YES;
+	
+    if( userAction ){
+        
+		[self actionTemplate];
+        [self actionRouting];
+		[self fadeIn:_interfaceVignette t:1];
+		[self fadeIn:_moveReturn t:1];
+		
+    }
+    
+}
+
+- (void)actionTemplate
+{
+	
+	// Reset
+	[self.action1 setImage: nil forState: UIControlStateNormal];
+	self.action1.frame = CGRectMake(170, 20, 75, 25);
+	
+	if(userAction == @"act1"){
+		
+		[self.action1 setImage:[UIImage imageNamed:@"action0101.png"] forState:UIControlStateNormal];
+		self.action1.frame = CGRectMake(100, 200, 120, 120);
+		
+	}
+	
+}
+
+- (void)actionAnimation:sender
+{
+	if(userAction == @"act1"){
+		
+		[self rotate:sender t:3.0 d:180];
+	
+	}
+}
+
 - (void)actionRouting
 {
 	
@@ -212,9 +241,8 @@ int				userActionId;
 	
 	// Increment
 	
-	//userActionStorage[userActionId] = [NSString stringWithFormat:@"%04d", [ userActionStorage[userActionId] intValue]+1 ];
 	userActionStorage[userActionId] = [NSString stringWithFormat:@"%d", [ userActionStorage[userActionId] intValue]+1 ];	
-	
+	[self actionAnimation:sender];
 	[self solveCheck];
 	
 }
@@ -240,6 +268,9 @@ int				userActionId;
 	
 }
 
+- (IBAction)action5:(id)sender {
+}
+
 
 // ====================
 // Tools
@@ -255,13 +286,20 @@ int				userActionId;
 
 -(void)fadeOut:(UIView*)viewToFadeOut t:(NSTimeInterval)duration
 {
-	
 	[UIView beginAnimations: @"Fade Out" context:nil];
 	[UIView setAnimationDuration:duration];
 	viewToFadeOut.alpha = 0;
 	[UIView commitAnimations];
 }
-
-
+- (void)rotate:(UIButton *)viewToRotate t:(NSTimeInterval)duration d:(CGFloat)degrees
+{
+	[UIView beginAnimations:nil context:NULL];
+	[UIView setAnimationDuration:duration];
+	[UIView setAnimationCurve:UIViewAnimationCurveEaseIn];
+	[UIView setAnimationBeginsFromCurrentState:YES];
+	CGAffineTransform transform = CGAffineTransformMakeRotation(DEGREES_TO_RADIANS(degrees));
+	viewToRotate.transform = transform;
+	[UIView commitAnimations];
+}
 
 @end

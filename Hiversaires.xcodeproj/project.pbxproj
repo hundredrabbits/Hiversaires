@@ -369,6 +369,7 @@
 		0315424F16C7643200A1A97B /* node.0359.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 031540E716C7643200A1A97B /* node.0359.jpg */; };
 		0333141316C214E0009DD80A /* vignette.png in Resources */ = {isa = PBXBuildFile; fileRef = 0333141216C214E0009DD80A /* vignette.png */; };
 		0388224216C344BF0060C323 /* DozenalViewController_WorldNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 0388224116C344BF0060C323 /* DozenalViewController_WorldNode.m */; };
+		0389B39E16C9CBC7005D3D02 /* action0101.png in Resources */ = {isa = PBXBuildFile; fileRef = 0389B39D16C9CBC7005D3D02 /* action0101.png */; };
 		03E0DABF16BA86D700D0C40E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03E0DABE16BA86D700D0C40E /* UIKit.framework */; };
 		03E0DAC116BA86D700D0C40E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03E0DAC016BA86D700D0C40E /* Foundation.framework */; };
 		03E0DAC316BA86D700D0C40E /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03E0DAC216BA86D700D0C40E /* CoreGraphics.framework */; };
@@ -761,6 +762,7 @@
 		0333141216C214E0009DD80A /* vignette.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = vignette.png; path = interface/vignette.png; sourceTree = "<group>"; };
 		0388223F16C344840060C323 /* DozenalViewController_WorldNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DozenalViewController_WorldNode.h; sourceTree = "<group>"; };
 		0388224116C344BF0060C323 /* DozenalViewController_WorldNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DozenalViewController_WorldNode.m; sourceTree = "<group>"; };
+		0389B39D16C9CBC7005D3D02 /* action0101.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = action0101.png; path = graphics/action0101.png; sourceTree = "<group>"; };
 		03E0DABA16BA86D700D0C40E /* Hiversaires.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Hiversaires.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		03E0DABE16BA86D700D0C40E /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		03E0DAC016BA86D700D0C40E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -820,6 +822,7 @@
 		03D6AF7316C08A72000D0750 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				0389B39D16C9CBC7005D3D02 /* action0101.png */,
 				03153F8016C7643100A1A97B /* node.0000.jpg */,
 				03153F8116C7643100A1A97B /* node.0001.jpg */,
 				03153F8216C7643100A1A97B /* node.0002.jpg */,
@@ -1703,6 +1706,7 @@
 				0315424D16C7643200A1A97B /* node.0357.jpg in Resources */,
 				0315424E16C7643200A1A97B /* node.0358.jpg in Resources */,
 				0315424F16C7643200A1A97B /* node.0359.jpg in Resources */,
+				0389B39E16C9CBC7005D3D02 /* action0101.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

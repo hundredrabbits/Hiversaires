@@ -43,11 +43,13 @@
 @property (weak, nonatomic) IBOutlet UIButton *action2;
 @property (weak, nonatomic) IBOutlet UIButton *action3;
 @property (weak, nonatomic) IBOutlet UIButton *action4;
+@property (weak, nonatomic) IBOutlet UIButton *action5;
 
 - (IBAction)action1:(id)sender;
 - (IBAction)action2:(id)sender;
 - (IBAction)action3:(id)sender;
 - (IBAction)action4:(id)sender;
+- (IBAction)action5:(id)sender;
 
 // Items
 
