@@ -116,6 +116,7 @@ int				userActionId;
     
     [self actionCheck];
     [self moveCheck];
+	[self actionReset];
     
 }
 
@@ -199,7 +200,7 @@ int				userActionId;
 	
 	[self actionReset];
 	
-	if(userAction == @"act1"){
+	if([userAction isEqual: @"act1"]){
 		
 		// Action 1
 		[self fadeIn:self.action1 t:1];
@@ -218,7 +219,7 @@ int				userActionId;
 
 - (void)actionAnimation:sender
 {
-	if(userAction == @"act1"){
+	if([userAction isEqual: @"act1"]){
 		[self rotate:sender t:0.5 d:( [userActionStorage[userActionId] intValue] *120 )];
 	}
 }
