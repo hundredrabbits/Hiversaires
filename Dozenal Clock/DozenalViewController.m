@@ -217,16 +217,10 @@ int				userActionId;
 	
 	if([userAction isEqual: @"act2"]){
 		
-//		// Action 1
-//		[self.action1 setImage:[UIImage imageNamed:@"action0101.png"] forState:UIControlStateNormal];
-//		self.action1.frame = CGRectMake(90, 200, 140, 140);
-//		[self fadeIn:self.action1 t:1];
-//		[self rotate:self.action1 t:1 d:( [userActionStorage[userActionId] intValue] *120 )];
-//		
-//		// Graphic 1
-//		[self fadeIn:self.graphic1 t:2];
-//		self.graphic1.image = [UIImage imageNamed:@"action0102.png"];
-//		self.graphic1.frame = CGRectMake(90, 200, 140, 140);
+		// Graphic 1
+		[self fadeIn:self.graphic1 t:2];
+		self.graphic1.image = [UIImage imageNamed:@"action0201.png"];
+		self.graphic1.frame = CGRectMake(10, 110, 300, 300);
 		
 	}
 	

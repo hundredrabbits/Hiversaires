@@ -21,15 +21,15 @@
 	node[6]		= [NSArray arrayWithObjects: @"0", @"7", @"5", @"0", nil];
 	node[7]		= [NSArray arrayWithObjects: @"12", @"8", @"act1", @"6", nil];	// Act 1
 	node[8]		= [NSArray arrayWithObjects: @"0", @"0", @"9", @"7", nil];
-	node[9]		= [NSArray arrayWithObjects: @"8", @"doc3", @"10", @"0", nil];	// Doc3
-	node[10]	= [NSArray arrayWithObjects: @"9", @"0", @"doc4", @"3", nil];	// Doc4
+	node[9]		= [NSArray arrayWithObjects: @"8", @"doc3", @"10", @"0", nil];	// Doc 3
+	node[10]	= [NSArray arrayWithObjects: @"9", @"0", @"doc4", @"3", nil];	// Doc 4
 	node[11]	= [NSArray arrayWithObjects: @"act2", @"0", @"3", @"0", nil];	// Act 2
+	node[12]	= [NSArray arrayWithObjects: @"0", @"act3", @"7", @"0", nil];	// Act 3
 	
 	// ====================
 	// Studio ( 12 - 22 )
 	// ====================
 	
-	node[12]	= [NSArray arrayWithObjects: @"13", @"0", @"7", @"0", nil];		//
 	node[13]	= [NSArray arrayWithObjects: @"17", @"15", @"12", @"14", nil];		//
 	node[14]	= [NSArray arrayWithObjects: @"18", @"13", @"doc5", @"0", nil];		// doc5
 	node[15]	= [NSArray arrayWithObjects: @"16", @"doc6", @"doc7", @"13", nil];	// doc6 + doc7

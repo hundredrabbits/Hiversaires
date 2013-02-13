@@ -387,6 +387,8 @@
 		03E0DAE516BA86D700D0C40E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03E0DAC016BA86D700D0C40E /* Foundation.framework */; };
 		03E0DAED16BA86D700D0C40E /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 03E0DAEB16BA86D700D0C40E /* InfoPlist.strings */; };
 		03E0DAF016BA86D700D0C40E /* Dozenal_ClockTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 03E0DAEF16BA86D700D0C40E /* Dozenal_ClockTests.m */; };
+		03FAEFE416CB296200264A9B /* action0201.png in Resources */ = {isa = PBXBuildFile; fileRef = 03FAEFE316CB296200264A9B /* action0201.png */; };
+		03FAEFE616CB2B9200264A9B /* action0202.png in Resources */ = {isa = PBXBuildFile; fileRef = 03FAEFE516CB2B9200264A9B /* action0202.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -787,6 +789,8 @@
 		03E0DAEC16BA86D700D0C40E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		03E0DAEE16BA86D700D0C40E /* Dozenal_ClockTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Dozenal_ClockTests.h; sourceTree = "<group>"; };
 		03E0DAEF16BA86D700D0C40E /* Dozenal_ClockTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Dozenal_ClockTests.m; sourceTree = "<group>"; };
+		03FAEFE316CB296200264A9B /* action0201.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = action0201.png; path = graphics/action0201.png; sourceTree = "<group>"; };
+		03FAEFE516CB2B9200264A9B /* action0202.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = action0202.png; path = graphics/action0202.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -824,6 +828,8 @@
 		03D6AF7316C08A72000D0750 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				03FAEFE516CB2B9200264A9B /* action0202.png */,
+				03FAEFE316CB296200264A9B /* action0201.png */,
 				0389B3A016C9DFD2005D3D02 /* action0102.png */,
 				0389B39D16C9CBC7005D3D02 /* action0101.png */,
 				03153F8016C7643100A1A97B /* node.0000.jpg */,
@@ -1711,6 +1717,8 @@
 				0315424F16C7643200A1A97B /* node.0359.jpg in Resources */,
 				0389B39E16C9CBC7005D3D02 /* action0101.png in Resources */,
 				0389B3A116C9DFD2005D3D02 /* action0102.png in Resources */,
+				03FAEFE416CB296200264A9B /* action0201.png in Resources */,
+				03FAEFE616CB2B9200264A9B /* action0202.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
