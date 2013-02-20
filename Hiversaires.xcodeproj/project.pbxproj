@@ -389,6 +389,8 @@
 		03E0DAF016BA86D700D0C40E /* Dozenal_ClockTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 03E0DAEF16BA86D700D0C40E /* Dozenal_ClockTests.m */; };
 		03FAEFE416CB296200264A9B /* action0201.png in Resources */ = {isa = PBXBuildFile; fileRef = 03FAEFE316CB296200264A9B /* action0201.png */; };
 		03FAEFE616CB2B9200264A9B /* action0202.png in Resources */ = {isa = PBXBuildFile; fileRef = 03FAEFE516CB2B9200264A9B /* action0202.png */; };
+		03FF829C16D448D00076A619 /* tempNo.png in Resources */ = {isa = PBXBuildFile; fileRef = 03FF829A16D448D00076A619 /* tempNo.png */; };
+		03FF829D16D448D00076A619 /* tempYes.png in Resources */ = {isa = PBXBuildFile; fileRef = 03FF829B16D448D00076A619 /* tempYes.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -791,6 +793,8 @@
 		03E0DAEF16BA86D700D0C40E /* Dozenal_ClockTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Dozenal_ClockTests.m; sourceTree = "<group>"; };
 		03FAEFE316CB296200264A9B /* action0201.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = action0201.png; path = graphics/action0201.png; sourceTree = "<group>"; };
 		03FAEFE516CB2B9200264A9B /* action0202.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = action0202.png; path = graphics/action0202.png; sourceTree = "<group>"; };
+		03FF829A16D448D00076A619 /* tempNo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = tempNo.png; path = graphics/tempNo.png; sourceTree = "<group>"; };
+		03FF829B16D448D00076A619 /* tempYes.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = tempYes.png; path = graphics/tempYes.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -828,6 +832,8 @@
 		03D6AF7316C08A72000D0750 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				03FF829A16D448D00076A619 /* tempNo.png */,
+				03FF829B16D448D00076A619 /* tempYes.png */,
 				03FAEFE516CB2B9200264A9B /* action0202.png */,
 				03FAEFE316CB296200264A9B /* action0201.png */,
 				0389B3A016C9DFD2005D3D02 /* action0102.png */,
@@ -1719,6 +1725,8 @@
 				0389B3A116C9DFD2005D3D02 /* action0102.png in Resources */,
 				03FAEFE416CB296200264A9B /* action0201.png in Resources */,
 				03FAEFE616CB2B9200264A9B /* action0202.png in Resources */,
+				03FF829C16D448D00076A619 /* tempNo.png in Resources */,
+				03FF829D16D448D00076A619 /* tempYes.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

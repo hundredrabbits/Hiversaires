@@ -23,8 +23,8 @@
 	node[8]		= [NSArray arrayWithObjects: @"0", @"0", @"9", @"7", nil];
 	node[9]		= [NSArray arrayWithObjects: @"8", @"doc3", @"10", @"0", nil];	// Doc 3
 	node[10]	= [NSArray arrayWithObjects: @"9", @"0", @"doc4", @"3", nil];	// Doc 4
-	node[11]	= [NSArray arrayWithObjects: @"act2", @"0", @"3", @"0", nil];	// Act 2
-	node[12]	= [NSArray arrayWithObjects: @"0", @"act3", @"7", @"0", nil];	// Act 3
+	node[11]	= [NSArray arrayWithObjects: @"0", @"0", @"3", @"0", nil];	// 
+	node[12]	= [NSArray arrayWithObjects: @"act3", @"act2", @"7", @"0", nil];	// Act 2 + act3
 	
 	// ====================
 	// Studio ( 12 - 22 )
@@ -53,17 +53,15 @@
 	// Forest ( 1 - 3 )
 	// ====================
 	
-	puzzle[1]		= [NSArray arrayWithObjects: @"Monolith", @"1", nil];
-	puzzle[2]		= [NSArray arrayWithObjects: @"12", @"3", @"1", nil];
-	puzzle[3]		= [NSArray arrayWithObjects: @"Name", @"Solution", @"State", nil];
-	puzzle[4]		= [NSArray arrayWithObjects: @"Name", @"Solution", @"State", nil];
-	puzzle[5]		= [NSArray arrayWithObjects: @"Name", @"Solution", @"State", nil];
-	puzzle[6]		= [NSArray arrayWithObjects: @"Name", @"Solution", @"State", nil];
-	puzzle[7]		= [NSArray arrayWithObjects: @"Name", @"Solution", @"State", nil];
-	puzzle[8]		= [NSArray arrayWithObjects: @"Name", @"Solution", @"State", nil];
-	puzzle[9]		= [NSArray arrayWithObjects: @"Name", @"Solution", @"State", nil];
-	puzzle[10]		= [NSArray arrayWithObjects: @"Name", @"Solution", @"State", nil];
-	puzzle[11]		= [NSArray arrayWithObjects: @"Name", @"Solution", @"State", nil];
+	puzzle[1]		= @"2";
+	puzzle[2]		= @"4";
+	puzzle[3]		= @"13"; // Movement Node
+	puzzle[4]		= @"-";
+	puzzle[5]		= @"-";
+	puzzle[6]		= @"-";
+	puzzle[7]		= @"-";
+	puzzle[8]		= @"-";
+	puzzle[9]		= @"-";
 	
 	return puzzle;
 }

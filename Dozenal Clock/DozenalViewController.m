@@ -129,39 +129,29 @@ int				userActionId;
 {
 	
 	self.debugAction.text = userActionStorage[userActionId];
-	self.debugActionValue.text = worldAction[userActionId][1];
-	
-	// 3 Consoles
-	
-	// 2 Consoles
-	
-	// 1 Console
-	if( ([ worldAction[userActionId] count]-2) == 1){
-		if( [ worldAction[userActionId][1] intValue] == [userActionStorage[userActionId] intValue] && [worldAction[userActionId][2] intValue] == [userActionStorage[[worldAction[userActionId][2] intValue]] intValue] ){
-			[self solveRouter];
-		}
-	}
-	
-	// Default
+	self.debugActionValue.text = [NSString stringWithFormat:@"%@", worldAction[userActionId]];
+	[self solveRouter];
 	
 }
 
 - (void)solveRouter
 {
+	// trying to solve userActionId for door puzzles
 	
-	if(userActionId == 2){
-		[self solveState2];
+	if ( userActionId == 3 ) {
+		[self solveAction3];
 	}
-	
 	
 }
 
-- (void)solveState2
+- (void)solveAction3
 {
-	userNode = 12;
-	userAction = nil;
-	[self actionCheck];
-	[self moveCheck];
+	if( userActionId == 3 && [userActionStorage[1] isEqual: worldAction[1] ] && [userActionStorage[2] isEqual: worldAction[2] ] ){
+		userActionStorage[3] = @"SOLVED";
+	}
+	else{
+		userActionStorage[3] = [NSString stringWithFormat:@"%d", [userActionStorage[3] intValue]];
+	}
 	
 }
 
@@ -186,8 +176,8 @@ int				userActionId;
 	
     if( userAction ){
         
-		[self actionTemplate];
         [self actionRouting];
+		[self actionTemplate];
 		[self fadeIn:_interfaceVignette t:1];
 		[self fadeIn:_moveReturn t:1];
 		
@@ -200,27 +190,55 @@ int				userActionId;
 	
 	[self actionReset];
 	
+	// I. Dimensional Clock I
+	
 	if([userAction isEqual: @"act1"]){
 		
-		// Action 1
 		[self.action1 setImage:[UIImage imageNamed:@"action0101.png"] forState:UIControlStateNormal];
 		 self.action1.frame = CGRectMake(90, 200, 140, 140);
 		[self fadeIn:self.action1 t:1];
 		[self rotate:self.action1 t:1 d:( [userActionStorage[userActionId] intValue] *120 )];
 
-		// Graphic 1
 		[self fadeIn:self.graphic1 t:2];
 		 self.graphic1.image = [UIImage imageNamed:@"action0102.png"];
 		 self.graphic1.frame = CGRectMake(90, 200, 140, 140);
 		
 	}
 	
+	// II. Current Gauge
+	
 	if([userAction isEqual: @"act2"]){
 		
-		// Graphic 1
-		[self fadeIn:self.graphic1 t:2];
-		self.graphic1.image = [UIImage imageNamed:@"action0201.png"];
-		self.graphic1.frame = CGRectMake(10, 110, 300, 300);
+		[self.action1 setImage:[UIImage imageNamed:@"tempYes.png"] forState:UIControlStateNormal];
+		self.action1.frame = CGRectMake(145, 240, 40, 20);
+		[self fadeIn:self.action1 t:1];
+		
+		[self.action2 setImage:[UIImage imageNamed:@"tempNo.png"] forState:UIControlStateNormal];
+		self.action2.frame = CGRectMake(145, 265, 40, 20);
+		[self fadeIn:self.action2 t:1];
+
+		
+	}
+	
+	// III. Dimensional Gate I
+	
+	if([userAction isEqual: @"act3"]){
+		
+		if( [userActionStorage[userActionId] isEqual: @"SOLVED"] ){
+			[self.action3 setImage:[UIImage imageNamed:@"tempYes.png"] forState:UIControlStateNormal];
+			self.action3.frame = CGRectMake(158, 220, 20, 20);
+			[self fadeIn:self.action3 t:1];
+		}
+		else{
+			self.graphic1.image = [UIImage imageNamed:@"tempNo.png"];
+			[self fadeIn:self.graphic1 t:2];
+			self.graphic1.frame = CGRectMake(158, 220, 20, 20);
+		}
+		
+	}
+	
+	
+	if([userAction isEqual: @"act4"]){
 		
 	}
 	
@@ -248,6 +266,7 @@ int				userActionId;
 
 	self.action1.hidden = NO;
 	self.action2.hidden = NO;
+	self.action3.hidden = NO;
     	
 }
 
@@ -277,7 +296,13 @@ int				userActionId;
 
 - (IBAction)action3:(id)sender {
 	
-	[self solveCheck];
+	NSLog(@"1");
+	
+	userNode = 13;
+	userAction = nil;
+	
+	[self moveCheck];
+	[self actionCheck];
 	
 }
 
@@ -292,11 +317,21 @@ int				userActionId;
 
 - (void)actionReset
 {
+	
 	[self.action1 setImage: nil forState: UIControlStateNormal];
 	self.action1.frame = CGRectMake(170, 20, 75, 75);
 	[self rotate:self.action1 t:1.0 d:0];
-	[self fadeOut:self.action1 t:0];
+	
+	[self.action3 setImage: nil forState: UIControlStateNormal];
+	self.action3.frame = CGRectMake(170, 20, 75, 75);
+	[self rotate:self.action3 t:1.0 d:0];
+	
 	[self fadeOut:self.graphic1 t:0];
+	
+	[self fadeOut:self.action1 t:0];
+	[self fadeOut:self.action2 t:0];
+	
+	
 }
 
 
