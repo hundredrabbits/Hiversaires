@@ -64,6 +64,7 @@ int				userActionId;
 
 - (void)moveCheck
 {
+	
 	self.debugNode.text = [NSString stringWithFormat:@"%d", userNode];
 	self.debugOrientation.text = [NSString stringWithFormat:@"%d", userOrientation];
 	self.debugAction.text = [NSString stringWithFormat:@"%@", worldPath[userNode][userOrientation]];
@@ -76,12 +77,15 @@ int				userActionId;
 	worldNodeImg = [NSString stringWithFormat:@"%@%@%@", @"node.", worldNodeImgId, @".jpg"];
 	self.viewMain.image = [UIImage imageNamed:worldNodeImg];
     
+	NSLog(@"%d",[ worldPath[userNode][userOrientation] intValue]);
+	
 }
 
 - (IBAction)moveLeft:(id)sender {
     
     userOrientation = userOrientation == 0 ? 3 : userOrientation-1;
-    
+
+	[self turnLeft];
     [self moveCheck];
     
 }
@@ -90,6 +94,7 @@ int				userActionId;
     
     userOrientation = userOrientation < 3 ? userOrientation+1 : 0;
     
+	[self turnRight];
     [self moveCheck];
     
 }
@@ -98,6 +103,7 @@ int				userActionId;
 	
     userNode = [ worldPath[userNode][userOrientation] intValue] > 0 ? [ worldPath[userNode][userOrientation] intValue] : userNode;
     
+	[self turnForward];
     [self moveCheck];
     
 }
@@ -295,14 +301,12 @@ int				userActionId;
 }
 
 - (IBAction)action3:(id)sender {
-	
-	NSLog(@"1");
-	
+
 	userNode = 13;
 	userAction = nil;
 	
-	[self moveCheck];
 	[self actionCheck];
+	[self moveCheck];
 	
 }
 
@@ -335,7 +339,6 @@ int				userActionId;
 }
 
 
-
 // ====================
 // Tools
 // ====================
@@ -363,6 +366,42 @@ int				userActionId;
 	[UIView setAnimationBeginsFromCurrentState:YES];
 	CGAffineTransform transform = CGAffineTransformMakeRotation(DEGREES_TO_RADIANS(degrees));
 	viewToRotate.transform = transform;
+	[UIView commitAnimations];
+}
+
+-(void)turnLeft
+{
+	self.viewMain.alpha = 0.5;
+	self.viewMain.transform = CGAffineTransformMakeTranslation(-10, 0);
+	
+	[UIView beginAnimations: @"Turn Left" context:nil];
+	[UIView setAnimationDuration:0.2];
+	self.viewMain.transform = CGAffineTransformMakeTranslation(0, 0);
+	self.viewMain.alpha = 1;
+	[UIView commitAnimations];
+}
+
+-(void)turnRight
+{
+	self.viewMain.alpha = 0.5;
+	self.viewMain.transform = CGAffineTransformMakeTranslation(10, 0);
+	
+	[UIView beginAnimations: @"Turn Right" context:nil];
+	[UIView setAnimationDuration:0.2];
+	self.viewMain.transform = CGAffineTransformMakeTranslation(0, 0);
+	self.viewMain.alpha = 1;
+	[UIView commitAnimations];
+}
+
+-(void)turnForward
+{
+	self.viewMain.alpha = 0.5;
+	self.viewMain.transform = CGAffineTransformMakeTranslation(0, 2);
+	
+	[UIView beginAnimations: @"Turn Right" context:nil];
+	[UIView setAnimationDuration:0.2];
+	self.viewMain.transform = CGAffineTransformMakeTranslation(0, 0);
+	self.viewMain.alpha = 1;
 	[UIView commitAnimations];
 }
 

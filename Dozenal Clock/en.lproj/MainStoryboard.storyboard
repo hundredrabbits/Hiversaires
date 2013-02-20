@@ -7,7 +7,7 @@
         <!--Dozenal View Controller-->
         <scene sceneID="5">
             <objects>
-                <viewController id="2" customClass="DozenalViewController" sceneMemberID="viewController">
+                <viewController wantsFullScreenLayout="YES" id="2" customClass="DozenalViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="3">
                         <rect key="frame" x="0.0" y="20" width="320" height="460"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -210,7 +210,7 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" red="0.15045431385869568" green="0.15045431385869568" blue="0.15045431385869568" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <connections>
                         <outlet property="Item1" destination="BmP-NF-uqb" id="PPH-M7-jT9"/>
