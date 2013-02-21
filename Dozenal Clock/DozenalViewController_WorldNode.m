@@ -30,13 +30,13 @@
 	// Studio ( 12 - 22 )
 	// ====================
 	
-	node[13]	= [NSArray arrayWithObjects: @"17", @"15", @"12", @"0", nil];		//
+	node[13]	= [NSArray arrayWithObjects: @"17", @"15", @"act4", @"0", nil];		//
 	node[14]	= [NSArray arrayWithObjects: @"18", @"13", @"doc5", @"0", nil];		// doc5
 	node[15]	= [NSArray arrayWithObjects: @"16", @"doc6", @"doc7", @"13", nil];	// doc6 + doc7
 	node[16]	= [NSArray arrayWithObjects: @"21", @"22", @"15", @"17", nil];		//
 	node[17]	= [NSArray arrayWithObjects: @"20", @"16", @"13", @"0", nil];		//
 	node[18]	= [NSArray arrayWithObjects: @"19", @"17", @"0", @"act3", nil];	// act3
-	node[19]	= [NSArray arrayWithObjects: @"0", @"20", @"18", @"0", nil];		//
+	node[19]	= [NSArray arrayWithObjects: @"0", @"20", @"0", @"0", nil];		//
 	node[20]	= [NSArray arrayWithObjects: @"13", @"21", @"17", @"19", nil];	// act4
 	node[21]	= [NSArray arrayWithObjects: @"0", @"doc8", @"16", @"20", nil];		// doc8
 	node[22]	= [NSArray arrayWithObjects: @"0", @"act5", @"0", @"16", nil];		// act5

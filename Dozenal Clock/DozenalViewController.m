@@ -226,7 +226,7 @@ int				userActionId;
 		
 	}
 	
-	// III. Dimensional Gate I
+	// III. Dimensional Gate I - I.e
 	
 	if([userAction isEqual: @"act3"]){
 		
@@ -241,8 +241,7 @@ int				userActionId;
 			self.graphic1.frame = CGRectMake(158, 220, 20, 20);
 		}
 		
-	}
-	
+	}	
 	
 	if([userAction isEqual: @"act4"]){
 		
