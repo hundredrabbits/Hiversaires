@@ -47,14 +47,16 @@
 	// Circular
 	
 	node[22]	= [NSArray arrayWithObjects: @"0", @"23", @"0", @"16", nil];		// act5
-	node[23]	= [NSArray arrayWithObjects: @"30", @"0", @"24", @"0", nil];		// act5
+	node[23]	= [NSArray arrayWithObjects: @"30", @"0", @"24", @"22", nil];		// act5
 	node[24]	= [NSArray arrayWithObjects: @"23", @"0", @"25", @"0", nil];		// act5
-	node[25]	= [NSArray arrayWithObjects: @"24", @"0", @"26", @"0", nil];		// act5
+	node[25]	= [NSArray arrayWithObjects: @"24", @"0", @"26", @"31|2", nil];		// act5
 	node[26]	= [NSArray arrayWithObjects: @"25", @"0", @"27", @"0", nil];		// act5
 	node[27]	= [NSArray arrayWithObjects: @"26", @"0", @"28", @"0", nil];		// act5
 	node[28]	= [NSArray arrayWithObjects: @"27", @"0", @"29", @"0", nil];		// act5
 	node[29]	= [NSArray arrayWithObjects: @"28", @"0", @"30", @"0", nil];		// act5
 	node[30]	= [NSArray arrayWithObjects: @"29", @"0", @"23", @"0", nil];		// act5
+	
+	node[31]	= [NSArray arrayWithObjects: @"25|1", @"0", @"0", @"0", nil];		// act5
 	
 	return node;
 }

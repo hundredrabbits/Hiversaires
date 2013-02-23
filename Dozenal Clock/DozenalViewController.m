@@ -101,8 +101,14 @@ int				userActionId;
 
 - (IBAction)moveForward:(id)sender {
 	
-    userNode = [ worldPath[userNode][userOrientation] intValue] > 0 ? [ worldPath[userNode][userOrientation] intValue] : userNode;
-    
+	if ([worldPath[userNode][userOrientation] rangeOfString:@"|"].location == NSNotFound) {
+		userNode = [ worldPath[userNode][userOrientation] intValue] > 0 ? [ worldPath[userNode][userOrientation] intValue] : userNode;
+	} else {
+		NSArray *temp = [worldPath[userNode][userOrientation] componentsSeparatedByString:@"|"];
+		userNode = [ worldPath[userNode][userOrientation] intValue] > 0 ? [ temp[0] intValue] : userNode;
+		userOrientation = [ temp[1] intValue ];
+	}
+	
 	[self turnForward];
     [self moveCheck];
     
