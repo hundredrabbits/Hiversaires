@@ -56,7 +56,17 @@
 	node[29]	= [NSArray arrayWithObjects: @"28", @"0", @"30", @"0", nil];		// act5
 	node[30]	= [NSArray arrayWithObjects: @"29", @"0", @"23", @"0", nil];		// act5
 	
-	node[31]	= [NSArray arrayWithObjects: @"25|1", @"0", @"0", @"0", nil];		// act5
+	// Stones
+	
+	node[31]	= [NSArray arrayWithObjects: @"25|1", @"0", @"35", @"0", nil];		// act5
+	node[32]	= [NSArray arrayWithObjects: @"0", @"0", @"35", @"0", nil];		// act5
+	node[33]	= [NSArray arrayWithObjects: @"0", @"0", @"35", @"0", nil];		// act5
+	node[34]	= [NSArray arrayWithObjects: @"0", @"0", @"35", @"0", nil];		// act5
+	node[35]	= [NSArray arrayWithObjects: @"31", @"38", @"36", @"0", nil];		// act5
+	node[36]	= [NSArray arrayWithObjects: @"35", @"37", @"0", @"0", nil];		// act5
+	node[37]	= [NSArray arrayWithObjects: @"38", @"39", @"0", @"36", nil];		// act5
+	node[38]	= [NSArray arrayWithObjects: @"0", @"0", @"37", @"35", nil];		// act5
+	node[39]	= [NSArray arrayWithObjects: @"0", @"0", @"0", @"37", nil];		// act5
 	
 	return node;
 }
