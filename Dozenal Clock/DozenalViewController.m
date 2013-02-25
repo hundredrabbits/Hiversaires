@@ -80,8 +80,6 @@ int				userFold = 0;
 	worldNodeImgId = [NSString stringWithFormat:@"%04d", (userNode*4)+userOrientation ];
 	worldNodeImg = [NSString stringWithFormat:@"%@%@%@", @"node.", worldNodeImgId, @".jpg"];
 	self.viewMain.image = [UIImage imageNamed:worldNodeImg];
-    
-	NSLog(@"%d",[ worldPath[userNode][userOrientation] intValue]);
 	
 }
 
@@ -282,15 +280,15 @@ int				userFold = 0;
 	
 	if([userAction isEqual: @"act3"]){ // Forest-Studio Door
 		
-		if( [userActionStorage[userActionId] isEqual: @"SOLVED"] ){
-			[self.action3 setImage:[UIImage imageNamed:@"tempYes.png"] forState:UIControlStateNormal];
-			self.action3.frame = CGRectMake(158, 220, 20, 20);
-			[self fadeIn:self.action3 t:1];
+		if( [userActionStorage[2] intValue] > 1 ){
+			[self.action3 setImage:[UIImage imageNamed:@"door_unlocked.png"] forState:UIControlStateNormal];
+			self.action3.frame = CGRectMake(104, 144, 128, 128);
+			[self fadeHalf:self.action3 t:1];
 		}
 		else{
-			self.graphic1.image = [UIImage imageNamed:@"tempNo.png"];
-			[self fadeIn:self.graphic1 t:2];
-			self.graphic1.frame = CGRectMake(158, 220, 20, 20);
+			self.graphic1.image = [UIImage imageNamed:@"door_locked.png"];
+			[self fadeHalf:self.graphic1 t:1];
+			self.graphic1.frame = CGRectMake(104, 144, 128, 128);
 		}
 		
 	}
@@ -506,7 +504,7 @@ int				userFold = 0;
 
 	userEnergy = [userActionStorage[2] intValue];
 	
-	self.graphic2.alpha = 1.0;
+	self.graphic2.alpha = 0.3;
 	
 	// Check Seal Count
 	if( userEnergy == 0 ){
@@ -529,7 +527,6 @@ int				userFold = 0;
 	if( userEnergy == 4 ){
 		self.graphic1.image = [UIImage imageNamed:@"energy_slot4.png"];
 		self.graphic2.image = [UIImage imageNamed:@"energy_userslot0.png"];
-		self.graphic2.alpha = 0.3;
 	}
 	
 }
