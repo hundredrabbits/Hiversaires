@@ -15,7 +15,7 @@
 	node[0]		= [NSArray arrayWithObjects: @"1", @"0", @"0", @"0", nil];
 	
 	// Warp
-	// node[0]		= [NSArray arrayWithObjects: @"22", @"0", @"0", @"0", nil];
+	node[0]		= [NSArray arrayWithObjects: @"13", @"0", @"0", @"0", nil];
 	
 	node[1]		= [NSArray arrayWithObjects: @"2", @"doc1", @"0", @"0", nil];	// Doc 1
 	node[2]		= [NSArray arrayWithObjects: @"3", @"0", @"1", @"0", nil];
@@ -40,11 +40,13 @@
 	node[16]	= [NSArray arrayWithObjects: @"21", @"22", @"15", @"17", nil];		//
 	node[17]	= [NSArray arrayWithObjects: @"20", @"16", @"13", @"0", nil];		//
 	node[18]	= [NSArray arrayWithObjects: @"19", @"17", @"0", @"act3", nil];	// act3
-	node[19]	= [NSArray arrayWithObjects: @"0", @"20", @"0", @"0", nil];		//
-	node[20]	= [NSArray arrayWithObjects: @"13", @"21", @"17", @"19", nil];	// act4
-	node[21]	= [NSArray arrayWithObjects: @"0", @"doc8", @"16", @"20", nil];		// doc8
+	node[19]	= [NSArray arrayWithObjects: @"0", @"20", @"act5", @"0", nil];		//
+	node[20]	= [NSArray arrayWithObjects: @"act6", @"21", @"17", @"19", nil];	// act4
+	node[21]	= [NSArray arrayWithObjects: @"act4", @"doc8", @"16", @"20", nil];		// doc8
 	
-	// Circular
+	// ====================
+	// Studio ( 12 - 22 )
+	// ====================
 	
 	node[22]	= [NSArray arrayWithObjects: @"0", @"23", @"0", @"16", nil];		// act5
 	node[23]	= [NSArray arrayWithObjects: @"30", @"0", @"24", @"22", nil];		// act5

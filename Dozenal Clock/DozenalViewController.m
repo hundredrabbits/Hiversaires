@@ -320,6 +320,13 @@ int				userFold = 0;
 			
 	}
 	
+	if([userAction isEqual: @"act6"]){ // Forest Seal
+		
+		[self.action4 setImage:[UIImage imageNamed:@"tempYes.png"] forState:UIControlStateNormal];
+		self.action4.frame = CGRectMake(104, 144, 128, 128);
+		
+	}
+	
 	
 }
 
@@ -355,6 +362,7 @@ int				userFold = 0;
 	self.action1.hidden = NO;
 	self.action2.hidden = NO;
 	self.action3.hidden = NO;
+	self.action4.hidden = NO;
     	
 }
 
@@ -407,7 +415,8 @@ int				userFold = 0;
 }
 
 - (IBAction)action4:(id)sender {
-	
+
+	NSLog(@"Fold Gate");
 	[self solveCheck];
 	
 }
