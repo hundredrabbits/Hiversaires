@@ -150,11 +150,28 @@ int				userActionId;
 {
 	// trying to solve userActionId for door puzzles
 	
+	if ( userActionId == 1 ) {
+		[self solveAction1];
+	}
+	
 	if ( userActionId == 3 ) {
 		[self solveAction3];
 	}
 	
 }
+
+- (void)solveAction1
+{
+	
+	if( [userActionStorage[userActionId] intValue] == 1 ){
+		NSLog(@"!");
+	}
+	[self dimClock];
+		
+}
+
+
+
 
 - (void)solveAction3
 {
@@ -207,13 +224,14 @@ int				userActionId;
 	if([userAction isEqual: @"act1"]){
 		
 		[self.action1 setImage:[UIImage imageNamed:@"action0101.png"] forState:UIControlStateNormal];
-		 self.action1.frame = CGRectMake(90, 200, 140, 140);
+		 self.action1.frame = CGRectMake(80, 140, 160, 160);
 		[self fadeIn:self.action1 t:1];
-		[self rotate:self.action1 t:1 d:( [userActionStorage[userActionId] intValue] *120 )];
+		[self rotate:self.action1 t:2 d:( [userActionStorage[userActionId] intValue] *120 )];
 
-		[self fadeIn:self.graphic1 t:2];
+		[self fadeIn:self.graphic1 t:1];
 		 self.graphic1.image = [UIImage imageNamed:@"action0102.png"];
-		 self.graphic1.frame = CGRectMake(90, 200, 140, 140);
+		 self.graphic1.frame = CGRectMake(80, 140, 160, 160);
+		[self dimClock];
 		
 	}
 	
@@ -247,9 +265,15 @@ int				userActionId;
 			self.graphic1.frame = CGRectMake(158, 220, 20, 20);
 		}
 		
-	}	
+	}
+	
+	// Forest Seal
 	
 	if([userAction isEqual: @"act4"]){
+		
+		[self.action1 setImage:[UIImage imageNamed:@"seal64_forest.png"] forState:UIControlStateNormal];
+		self.action1.frame = CGRectMake(123, 190, 64, 64);
+		self.action1.alpha = 0.3;
 		
 	}
 	
@@ -258,7 +282,7 @@ int				userActionId;
 - (void)actionAnimation:sender
 {
 	if([userAction isEqual: @"act1"]){
-		[self rotate:sender t:0.5 d:( [userActionStorage[userActionId] intValue] *120 )];
+		[self rotate:sender t:1.0 d:( [userActionStorage[userActionId] intValue] *120 )];
 	}
 }
 
@@ -336,10 +360,54 @@ int				userActionId;
 	[self rotate:self.action3 t:1.0 d:0];
 	
 	[self fadeOut:self.graphic1 t:0];
+	[self fadeOut:self.graphic2 t:0];
+	[self fadeOut:self.graphic3 t:0];
+	[self fadeOut:self.graphic4 t:0];
 	
 	[self fadeOut:self.action1 t:0];
 	[self fadeOut:self.action2 t:0];
 	
+	
+}
+
+// ====================
+// DimClock
+// ====================
+
+-(void)dimClock
+{
+	
+	
+	self.graphic4.frame = CGRectMake(160, 320, 32, 32);
+	self.graphic3.frame = CGRectMake(130, 320, 32, 32);
+	
+	if( [userActionStorage[userActionId] intValue] == 0 ){
+		
+		[self fadeIn:self.graphic3 t:2];
+		self.graphic3.image = [UIImage imageNamed:@"seal32_studio.png"];
+		
+		[self fadeIn:self.graphic4 t:2];
+		self.graphic4.image = [UIImage imageNamed:@"seal32_antech.png"];
+		
+	}
+	else if ( [userActionStorage[userActionId] intValue] == 1 ){
+		
+		[self fadeIn:self.graphic3 t:2];
+		self.graphic3.image = [UIImage imageNamed:@"seal32_antech.png"];
+		
+		[self fadeIn:self.graphic4 t:2];
+		self.graphic4.image = [UIImage imageNamed:@"seal32_stones.png"];
+	
+	}
+	else if ( [userActionStorage[userActionId] intValue] == 2 ){
+		
+		[self fadeIn:self.graphic3 t:2];
+		self.graphic3.image = [UIImage imageNamed:@"seal32_stones.png"];
+		
+		[self fadeIn:self.graphic4 t:2];
+		self.graphic4.image = [UIImage imageNamed:@"seal32_studio.png"];
+		
+	}
 	
 }
 

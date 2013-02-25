@@ -116,6 +116,18 @@
                                 <rect key="frame" x="20" y="109" width="55" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="2g5-UF-av4" userLabel="Graphic2">
+                                <rect key="frame" x="20" y="149" width="55" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="w8y-pV-E3l" userLabel="Graphic3">
+                                <rect key="frame" x="20" y="189" width="55" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="V4e-2e-hID" userLabel="Graphic4">
+                                <rect key="frame" x="20" y="229" width="55" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="BmP-NF-uqb" userLabel="Item1">
                                 <rect key="frame" x="247" y="18" width="73" height="23"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="11"/>
@@ -225,6 +237,9 @@
                         <outlet property="debugNode" destination="mj8-4K-569" id="vOM-ju-j9i"/>
                         <outlet property="debugOrientation" destination="8Pn-4H-mjL" id="Rqj-TA-Mdh"/>
                         <outlet property="graphic1" destination="Fdf-Qf-zRl" id="2gc-sV-1NC"/>
+                        <outlet property="graphic2" destination="2g5-UF-av4" id="opw-m3-wwO"/>
+                        <outlet property="graphic3" destination="w8y-pV-E3l" id="PHP-u9-TP4"/>
+                        <outlet property="graphic4" destination="V4e-2e-hID" id="DDj-9V-csg"/>
                         <outlet property="interfaceVignette" destination="bRy-kS-Rlz" id="VzD-TK-RLW"/>
                         <outlet property="moveAction" destination="fLw-eO-WBB" id="N5C-XO-9nC"/>
                         <outlet property="moveForward" destination="F1N-h8-Kf8" id="bvP-CE-vfF"/>
@@ -269,6 +284,9 @@
                 <relationship kind="outlet" name="debugNode" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="debugOrientation" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="graphic1" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="graphic2" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="graphic3" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="graphic4" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="interfaceVignette" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="moveAction" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="moveForward" candidateClass="UIButton"/>

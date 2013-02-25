@@ -59,6 +59,9 @@
 // Graphics
 
 @property (weak, nonatomic) IBOutlet UIImageView *graphic1;
+@property (weak, nonatomic) IBOutlet UIImageView *graphic2;
+@property (weak, nonatomic) IBOutlet UIImageView *graphic3;
+@property (weak, nonatomic) IBOutlet UIImageView *graphic4;
 
 @end
 
