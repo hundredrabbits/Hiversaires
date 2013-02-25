@@ -31,7 +31,7 @@ int				userActionId;
 
 int				userSeal = 0;
 int				userEnergy = 0;
-int				userFold = 0;
+int				userFold = 1;
 
 
 @interface DozenalViewController ()
@@ -322,8 +322,15 @@ int				userFold = 0;
 	
 	if([userAction isEqual: @"act6"]){ // Forest Seal
 		
-		[self.action4 setImage:[UIImage imageNamed:@"tempYes.png"] forState:UIControlStateNormal];
-		self.action4.frame = CGRectMake(104, 144, 128, 128);
+		userNode = 13;
+		userAction = nil;
+		userFold = ( userFold > 3 ) ? userFold = 1 : userFold+1;
+		
+		NSLog(@"%d",userFold);
+		
+		[self actionCheck];
+		[self moveCheck];
+		[self actionReset];
 		
 	}
 	
@@ -415,9 +422,6 @@ int				userFold = 0;
 }
 
 - (IBAction)action4:(id)sender {
-
-	NSLog(@"Fold Gate");
-	[self solveCheck];
 	
 }
 
