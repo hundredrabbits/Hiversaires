@@ -320,6 +320,7 @@ int				userFold = 0;
 			
 	}
 	
+	
 }
 
 - (void)actionAnimation:sender
@@ -390,7 +391,14 @@ int				userFold = 0;
 
 - (IBAction)action3:(id)sender {
 
-	userNode = 13;
+	if( userNode == 13 ){
+		userNode = 12;
+	}
+	else if( userNode == 12 ){
+		userNode = 13;
+	}
+
+	
 	userAction = nil;
 	
 	[self actionCheck];

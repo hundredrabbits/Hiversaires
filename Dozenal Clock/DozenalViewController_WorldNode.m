@@ -34,7 +34,7 @@
 	// Studio ( 12 - 22 )
 	// ====================
 	
-	node[13]	= [NSArray arrayWithObjects: @"17", @"15", @"act4", @"0", nil];		//
+	node[13]	= [NSArray arrayWithObjects: @"17", @"15", @"act3", @"act2", nil];		//
 	node[14]	= [NSArray arrayWithObjects: @"18", @"13", @"doc5", @"0", nil];		// doc5
 	node[15]	= [NSArray arrayWithObjects: @"16", @"doc6", @"doc7", @"13", nil];	// doc6 + doc7
 	node[16]	= [NSArray arrayWithObjects: @"21", @"22", @"15", @"17", nil];		//
