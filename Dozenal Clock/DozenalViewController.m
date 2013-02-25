@@ -152,10 +152,13 @@ int				userFold = 0;
 
 - (void)solveRouter
 {
-	// trying to solve userActionId for door puzzles
 	
 	if ( userActionId == 1 ) {
 		[self solveAction1];
+	}
+	
+	if ( userActionId == 2 ) {
+		[self solveAction2];
 	}
 	
 	if ( userActionId == 3 ) {
@@ -176,6 +179,17 @@ int				userFold = 0;
 	}
 	[self dimClock];
 		
+}
+
+
+- (void)solveAction2
+{
+	
+	if( [userActionStorage[userActionId] intValue] == 1 ){
+		NSLog(@"!");
+	}
+	[self energyCount];
+	
 }
 
 
@@ -250,20 +264,23 @@ int				userFold = 0;
 		
 	}
 		
-	if([userAction isEqual: @"act2"]){ // II. Current Gauge
+	if([userAction isEqual: @"act2"]){ // Forest-Studio Door Lock
 		
-		[self.action1 setImage:[UIImage imageNamed:@"tempYes.png"] forState:UIControlStateNormal];
-		self.action1.frame = CGRectMake(145, 240, 40, 20);
+		self.action1.frame = CGRectMake(99, 174, 128, 128);
 		[self fadeIn:self.action1 t:1];
 		
-		[self.action2 setImage:[UIImage imageNamed:@"tempNo.png"] forState:UIControlStateNormal];
-		self.action2.frame = CGRectMake(145, 265, 40, 20);
-		[self fadeIn:self.action2 t:1];
-
+		self.graphic1.image = [UIImage imageNamed:@"energy_slot0.png"];
+		[self fadeIn:self.graphic1 t:0.4];
+		self.graphic1.frame = CGRectMake(99, 174, 128, 128);
+		
+		self.graphic2.image = [UIImage imageNamed:@"energy_userslot0.png"];
+		[self fadeIn:self.graphic2 t:1.0];
+		self.graphic2.frame = CGRectMake(99, 174, 128, 128);
+		[self energyCount];
 		
 	}
 	
-	if([userAction isEqual: @"act3"]){ // III. Dimensional Gate I - I.e
+	if([userAction isEqual: @"act3"]){ // Forest-Studio Door
 		
 		if( [userActionStorage[userActionId] isEqual: @"SOLVED"] ){
 			[self.action3 setImage:[UIImage imageNamed:@"tempYes.png"] forState:UIControlStateNormal];
@@ -351,6 +368,7 @@ int				userFold = 0;
 	// Exceptions
 	
 	if([userAction isEqual: @"act1"]){	userActionStorage[userActionId] = [userActionStorage[userActionId] intValue] > 2 ? @"0" : userActionStorage[userActionId]; }
+	if([userAction isEqual: @"act2"]){	userActionStorage[userActionId] = [userActionStorage[userActionId] intValue] > 4 ? @"0" : userActionStorage[userActionId]; }
 	if([userAction isEqual: @"act4"]){	userActionStorage[userActionId] = [userActionStorage[userActionId] intValue] > 1 ? @"0" : userActionStorage[userActionId]; }
 	
 	[self actionAnimation:sender];
@@ -361,7 +379,12 @@ int				userFold = 0;
 - (IBAction)action2:(id)sender {
 	
 	// Decrement
+	
 	userActionStorage[userActionId] = [NSString stringWithFormat:@"%d", [ userActionStorage[userActionId] intValue]-1 ];
+	
+	// Exceptions
+	
+	if([userAction isEqual: @"act2"]){	userActionStorage[userActionId] = [userActionStorage[userActionId] intValue] < 0 ? @"4" : userActionStorage[userActionId]; }
 	
 	[self solveCheck];
 	
@@ -392,6 +415,7 @@ int				userFold = 0;
 	[self.action1 setImage: nil forState: UIControlStateNormal];
 	self.action1.frame = CGRectMake(170, 20, 75, 75);
 	[self rotate:self.action1 t:1.0 d:0];
+	[_action1 setTitle:@"" forState:UIControlStateNormal];
 	
 	[self.action3 setImage: nil forState: UIControlStateNormal];
 	self.action3.frame = CGRectMake(170, 20, 75, 75);
@@ -475,6 +499,39 @@ int				userFold = 0;
 		self.graphic2.image = [UIImage imageNamed:@"seal_slot2.png"];
 	}
 
+}
+
+- (void)energyCount
+{
+
+	userEnergy = [userActionStorage[2] intValue];
+	
+	self.graphic2.alpha = 1.0;
+	
+	// Check Seal Count
+	if( userEnergy == 0 ){
+		self.graphic1.image = [UIImage imageNamed:@"energy_slot0.png"];
+		self.graphic2.image = [UIImage imageNamed:@"energy_userslot4.png"];
+		
+	}
+	if( userEnergy == 1 ){
+		self.graphic1.image = [UIImage imageNamed:@"energy_slot1.png"];
+		self.graphic2.image = [UIImage imageNamed:@"energy_userslot3.png"];
+	}
+	if( userEnergy == 2 ){
+		self.graphic1.image = [UIImage imageNamed:@"energy_slot2.png"];
+		self.graphic2.image = [UIImage imageNamed:@"energy_userslot2.png"];
+	}
+	if( userEnergy == 3 ){
+		self.graphic1.image = [UIImage imageNamed:@"energy_slot3.png"];
+		self.graphic2.image = [UIImage imageNamed:@"energy_userslot1.png"];
+	}
+	if( userEnergy == 4 ){
+		self.graphic1.image = [UIImage imageNamed:@"energy_slot4.png"];
+		self.graphic2.image = [UIImage imageNamed:@"energy_userslot0.png"];
+		self.graphic2.alpha = 0.3;
+	}
+	
 }
 
 // ====================
