@@ -380,6 +380,8 @@
 		03D4667816DB2EA200878D17 /* seal32_antech.png in Resources */ = {isa = PBXBuildFile; fileRef = 03D4667716DB2EA200878D17 /* seal32_antech.png */; };
 		03D4667A16DB385E00878D17 /* seal32_forest.png in Resources */ = {isa = PBXBuildFile; fileRef = 03D4667916DB385E00878D17 /* seal32_forest.png */; };
 		03D4667C16DB4B8800878D17 /* seal64_forest.png in Resources */ = {isa = PBXBuildFile; fileRef = 03D4667B16DB4B8800878D17 /* seal64_forest.png */; };
+		03D4667F16DB586E00878D17 /* seal_slot1.png in Resources */ = {isa = PBXBuildFile; fileRef = 03D4667D16DB586E00878D17 /* seal_slot1.png */; };
+		03D4668016DB586E00878D17 /* seal_slot2.png in Resources */ = {isa = PBXBuildFile; fileRef = 03D4667E16DB586E00878D17 /* seal_slot2.png */; };
 		03E0DABF16BA86D700D0C40E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03E0DABE16BA86D700D0C40E /* UIKit.framework */; };
 		03E0DAC116BA86D700D0C40E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03E0DAC016BA86D700D0C40E /* Foundation.framework */; };
 		03E0DAC316BA86D700D0C40E /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03E0DAC216BA86D700D0C40E /* CoreGraphics.framework */; };
@@ -787,6 +789,8 @@
 		03D4667716DB2EA200878D17 /* seal32_antech.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = seal32_antech.png; path = graphics/seal32_antech.png; sourceTree = "<group>"; };
 		03D4667916DB385E00878D17 /* seal32_forest.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = seal32_forest.png; path = graphics/seal32_forest.png; sourceTree = "<group>"; };
 		03D4667B16DB4B8800878D17 /* seal64_forest.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = seal64_forest.png; path = graphics/seal64_forest.png; sourceTree = "<group>"; };
+		03D4667D16DB586E00878D17 /* seal_slot1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = seal_slot1.png; path = graphics/seal_slot1.png; sourceTree = "<group>"; };
+		03D4667E16DB586E00878D17 /* seal_slot2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = seal_slot2.png; path = graphics/seal_slot2.png; sourceTree = "<group>"; };
 		03E0DABA16BA86D700D0C40E /* Hiversaires.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Hiversaires.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		03E0DABE16BA86D700D0C40E /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		03E0DAC016BA86D700D0C40E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -1236,6 +1240,8 @@
 		03D4667616DB2D5900878D17 /* Seals */ = {
 			isa = PBXGroup;
 			children = (
+				03D4667D16DB586E00878D17 /* seal_slot1.png */,
+				03D4667E16DB586E00878D17 /* seal_slot2.png */,
 				03D4667B16DB4B8800878D17 /* seal64_forest.png */,
 				03D4667916DB385E00878D17 /* seal32_forest.png */,
 				03D4667716DB2EA200878D17 /* seal32_antech.png */,
@@ -1795,6 +1801,8 @@
 				03D4667816DB2EA200878D17 /* seal32_antech.png in Resources */,
 				03D4667A16DB385E00878D17 /* seal32_forest.png in Resources */,
 				03D4667C16DB4B8800878D17 /* seal64_forest.png in Resources */,
+				03D4667F16DB586E00878D17 /* seal_slot1.png in Resources */,
+				03D4668016DB586E00878D17 /* seal_slot2.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -29,6 +29,10 @@ NSMutableArray	*userActionStorage;
 NSString        *userActionType;
 int				userActionId;
 
+int				userSeal = 0;
+int				userEnergy = 0;
+int				userFold = 0;
+
 
 @interface DozenalViewController ()
 @end
@@ -158,6 +162,10 @@ int				userActionId;
 		[self solveAction3];
 	}
 	
+	if ( userActionId == 4 ) {
+		[self solveAction4];
+	}
+	
 }
 
 - (void)solveAction1
@@ -181,6 +189,15 @@ int				userActionId;
 	else{
 		userActionStorage[3] = [NSString stringWithFormat:@"%d", [userActionStorage[3] intValue]];
 	}
+	
+}
+
+- (void)solveAction4
+{
+	
+	NSLog(@"!!");
+	
+	[self sealCount];
 	
 }
 
@@ -219,9 +236,7 @@ int				userActionId;
 	
 	[self actionReset];
 	
-	// I. Dimensional Clock I
-	
-	if([userAction isEqual: @"act1"]){
+	if([userAction isEqual: @"act1"]){ // I. Dimensional Clock I
 		
 		[self.action1 setImage:[UIImage imageNamed:@"action0101.png"] forState:UIControlStateNormal];
 		 self.action1.frame = CGRectMake(80, 140, 160, 160);
@@ -234,10 +249,8 @@ int				userActionId;
 		[self dimClock];
 		
 	}
-	
-	// II. Current Gauge
-	
-	if([userAction isEqual: @"act2"]){
+		
+	if([userAction isEqual: @"act2"]){ // II. Current Gauge
 		
 		[self.action1 setImage:[UIImage imageNamed:@"tempYes.png"] forState:UIControlStateNormal];
 		self.action1.frame = CGRectMake(145, 240, 40, 20);
@@ -250,9 +263,7 @@ int				userActionId;
 		
 	}
 	
-	// III. Dimensional Gate I - I.e
-	
-	if([userAction isEqual: @"act3"]){
+	if([userAction isEqual: @"act3"]){ // III. Dimensional Gate I - I.e
 		
 		if( [userActionStorage[userActionId] isEqual: @"SOLVED"] ){
 			[self.action3 setImage:[UIImage imageNamed:@"tempYes.png"] forState:UIControlStateNormal];
@@ -267,14 +278,31 @@ int				userActionId;
 		
 	}
 	
-	// Forest Seal
-	
-	if([userAction isEqual: @"act4"]){
+	if([userAction isEqual: @"act4"]){ // Forest Seal
 		
+		self.action1.alpha = 0.0;
 		[self.action1 setImage:[UIImage imageNamed:@"seal64_forest.png"] forState:UIControlStateNormal];
 		self.action1.frame = CGRectMake(123, 190, 64, 64);
-		self.action1.alpha = 0.3;
 		
+		if( [userActionStorage[userActionId] intValue] == 1 ){
+			self.action1.alpha = 1.0;
+		}
+		else{
+			self.action1.alpha = 0.2;
+		}
+		
+		// Slots
+		
+		self.graphic1.image = [UIImage imageNamed:@"seal_slot1.png"];
+		[self fadeHalf:self.graphic1 t:0.4];
+		self.graphic1.frame = CGRectMake(140, 246, 16, 16);
+		
+		self.graphic2.image = [UIImage imageNamed:@"seal_slot1.png"];
+		[self fadeHalf:self.graphic2 t:0.4];
+		self.graphic2.frame = CGRectMake(152, 246, 16, 16);
+		
+		[self sealCount];
+			
 	}
 	
 }
@@ -283,6 +311,15 @@ int				userActionId;
 {
 	if([userAction isEqual: @"act1"]){
 		[self rotate:sender t:1.0 d:( [userActionStorage[userActionId] intValue] *120 )];
+	}
+	
+	if([userAction isEqual: @"act4"]){
+		if( [userActionStorage[userActionId] intValue] == 1 ){
+			[self fadeIn:sender t:0.5];
+		}
+		else{
+			[self fadeHalf:sender t:0.5];
+		}
 	}
 }
 
@@ -314,6 +351,7 @@ int				userActionId;
 	// Exceptions
 	
 	if([userAction isEqual: @"act1"]){	userActionStorage[userActionId] = [userActionStorage[userActionId] intValue] > 2 ? @"0" : userActionStorage[userActionId]; }
+	if([userAction isEqual: @"act4"]){	userActionStorage[userActionId] = [userActionStorage[userActionId] intValue] > 1 ? @"0" : userActionStorage[userActionId]; }
 	
 	[self actionAnimation:sender];
 	[self solveCheck];
@@ -377,7 +415,6 @@ int				userActionId;
 -(void)dimClock
 {
 	
-	
 	self.graphic4.frame = CGRectMake(160, 320, 32, 32);
 	self.graphic3.frame = CGRectMake(130, 320, 32, 32);
 	
@@ -411,6 +448,34 @@ int				userActionId;
 	
 }
 
+- (void)sealCount
+{
+	
+	userSeal = 0;
+	
+	// Check Seal Count
+	if( [userActionStorage[4] intValue] == 1 ){
+		userSeal += 1;
+	}
+	
+	if( userSeal == 0 ){
+		self.graphic1.image = [UIImage imageNamed:@"seal_slot1.png"];
+		self.graphic2.image = [UIImage imageNamed:@"seal_slot1.png"];
+	}
+	else if( userSeal == 1 ){
+		self.graphic1.image = [UIImage imageNamed:@"seal_slot2.png"];
+		self.graphic2.image = [UIImage imageNamed:@"seal_slot1.png"];
+	}
+	else if( userSeal == 2 ){
+		self.graphic1.image = [UIImage imageNamed:@"seal_slot2.png"];
+		self.graphic2.image = [UIImage imageNamed:@"seal_slot2.png"];
+	}
+	else{
+		self.graphic1.image = [UIImage imageNamed:@"seal_slot2.png"];
+		self.graphic2.image = [UIImage imageNamed:@"seal_slot2.png"];
+	}
+
+}
 
 // ====================
 // Tools
@@ -429,6 +494,13 @@ int				userActionId;
 	[UIView beginAnimations: @"Fade Out" context:nil];
 	[UIView setAnimationDuration:duration];
 	viewToFadeOut.alpha = 0;
+	[UIView commitAnimations];
+}
+-(void)fadeHalf:(UIView*)viewToFadeOut t:(NSTimeInterval)duration
+{
+	[UIView beginAnimations: @"Fade Half" context:nil];
+	[UIView setAnimationDuration:duration];
+	viewToFadeOut.alpha = 0.2;
 	[UIView commitAnimations];
 }
 - (void)rotate:(UIButton *)viewToRotate t:(NSTimeInterval)duration d:(CGFloat)degrees
