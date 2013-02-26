@@ -190,11 +190,9 @@ int				userFold = 1;
 	
 }
 
-
-
-
 - (void)solveAction3
 {
+	
 	if( userActionId == 3 && [userActionStorage[1] isEqual: worldAction[1] ] && [userActionStorage[2] isEqual: worldAction[2] ] ){
 		userActionStorage[3] = @"SOLVED";
 	}
@@ -206,11 +204,7 @@ int				userFold = 1;
 
 - (void)solveAction4
 {
-	
-	NSLog(@"!!");
-	
 	[self sealCount];
-	
 }
 
 // ====================
@@ -334,6 +328,81 @@ int				userFold = 1;
 		
 	}
 	
+	if([userAction isEqual: @"act7"]){ // Studio-Circal Door
+		
+		if( [userActionStorage[1] intValue] == 2 || [userActionStorage[1] intValue] == 0 ){
+			[self.action3 setImage:[UIImage imageNamed:@"door_unlocked.png"] forState:UIControlStateNormal];
+			self.action3.frame = CGRectMake(104, 144, 128, 128);
+			[self fadeHalf:self.action3 t:1];
+		}
+		else{
+			self.graphic1.image = [UIImage imageNamed:@"door_locked.png"];
+			[self fadeHalf:self.graphic1 t:1];
+			self.graphic1.frame = CGRectMake(104, 144, 128, 128);
+		}
+		
+	}
+	
+	if([userAction isEqual: @"act8"]){ // Stones-Circal Door
+		
+		if( [userActionStorage[1] intValue] == 1 || [userActionStorage[1] intValue] == 2 ){
+			[self.action3 setImage:[UIImage imageNamed:@"door_unlocked.png"] forState:UIControlStateNormal];
+			self.action3.frame = CGRectMake(104, 144, 128, 128);
+			[self fadeHalf:self.action3 t:1];
+		}
+		else{
+			self.graphic1.image = [UIImage imageNamed:@"door_locked.png"];
+			[self fadeHalf:self.graphic1 t:1];
+			self.graphic1.frame = CGRectMake(104, 144, 128, 128);
+		}
+		
+	}
+	
+	if([userAction isEqual: @"act9"]){ // Antech-Circal Door
+		
+		if( [userActionStorage[1] intValue] == 1 || [userActionStorage[1] intValue] == 0 ){
+			[self.action3 setImage:[UIImage imageNamed:@"door_unlocked.png"] forState:UIControlStateNormal];
+			self.action3.frame = CGRectMake(104, 144, 128, 128);
+			[self fadeHalf:self.action3 t:1];
+		}
+		else{
+			self.graphic1.image = [UIImage imageNamed:@"door_locked.png"];
+			[self fadeHalf:self.graphic1 t:1];
+			self.graphic1.frame = CGRectMake(104, 144, 128, 128);
+		}
+		
+	}
+	
+	if([userAction isEqual: @"act10"]){ // Stones-Rainre Door Lock
+		
+		self.action1.frame = CGRectMake(99, 174, 128, 128);
+		[self fadeIn:self.action1 t:1];
+		
+		self.graphic1.image = [UIImage imageNamed:@"energy_slot0.png"];
+		[self fadeIn:self.graphic1 t:0.4];
+		self.graphic1.frame = CGRectMake(99, 174, 128, 128);
+		
+		self.graphic2.image = [UIImage imageNamed:@"energy_userslot0.png"];
+		[self fadeIn:self.graphic2 t:1.0];
+		self.graphic2.frame = CGRectMake(99, 174, 128, 128);
+		[self energyCount];
+		
+	}
+	
+	if([userAction isEqual: @"act11"]){ // Stones-Rainre Door
+		
+		NSLog(@"Openning Door");
+		
+	}
+	
+	if([userAction isEqual: @"act11"]){ // Stones-Rainre Door
+		
+		NSLog(@"Openning Door");
+		
+	}
+	
+	
+	
 	
 }
 
@@ -406,13 +475,14 @@ int				userFold = 1;
 
 - (IBAction)action3:(id)sender {
 
-	if( userNode == 13 ){
-		userNode = 12;
-	}
-	else if( userNode == 12 ){
-		userNode = 13;
-	}
-
+	if		( userNode == 13 ){ userNode = 12; }
+	else if	( userNode == 12 ){	userNode = 13; }
+	else if ( userNode == 16 ){	userNode = 22; }
+	else if	( userNode == 23 ){	userNode = 22; }
+	else if	( userNode == 25 ){	userNode = 31; userOrientation = 2;}
+	else if	( userNode == 35 ){	userNode = 31; userOrientation = 0;}
+	
+	NSLog(@"Traverse");
 	
 	userAction = nil;
 	
