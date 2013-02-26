@@ -2,15 +2,9 @@
 
 @implementation DozenalViewController (Templates)
 
-
--(void) templates
+-(void) loadTemplates
 {
-	NSLog(@"!!");
-}
-
--(void) test
-{
-	NSLog(@"PUBLIC");
+	NSLog(@"Templates Loaded");
 }
 
 @end

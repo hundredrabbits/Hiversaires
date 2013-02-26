@@ -1,6 +1,5 @@
 #import "DozenalViewController.h"
 
 @interface DozenalViewController (Templates)
--(void) templates;
--(void) test;
+-(void) loadTemplates;
 @end

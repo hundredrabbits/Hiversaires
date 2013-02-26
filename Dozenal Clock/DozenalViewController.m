@@ -55,8 +55,6 @@ int				userFold = 1;
 	[self actionCheck];
     [self moveCheck];
 	
-	[self test];
-	
 }
 
 
@@ -234,6 +232,7 @@ int				userFold = 1;
 {
 	
 	[self actionReset];
+	[self loadTemplates];
 	
 	if([userAction isEqual: @"act1"]){ // I. Dimensional Clock I
 		
