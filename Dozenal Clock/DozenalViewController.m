@@ -244,7 +244,7 @@ int				userFold = 1;
 	}
 		
 	
-	
+	// New Puzzles
 	
 	
 	
@@ -268,16 +268,15 @@ int				userFold = 1;
 	
 	if([userAction isEqual: @"act13"]){ // Seal Lock
 		
-		[self.action5 setImage:[UIImage imageNamed:@"seal64_forest.png"] forState:UIControlStateNormal];
+		[self.action5 setImage:[UIImage imageNamed:@"seal64_forest.png"] forState:UIControlStateNormal];		
 		
-		self.graphic1.image = [UIImage imageNamed:@"seal_slot0.png"];
-		self.graphic2.image = [UIImage imageNamed:@"seal_slot0.png"];
+		self.graphic1.image = [UIImage imageNamed:@"tempYes.png"];
 		
 		self.action5.frame = CGRectMake(128, 180, 64, 64);
-		self.graphic1.frame = CGRectMake(140, 246, 16, 16);
-		self.graphic2.frame = CGRectMake(152, 246, 16, 16);
+		self.graphic1.frame = CGRectMake(128, 244, 64, 16);
 		
 		[self fadeHalf:self.action5 t:1];
+		[self fadeHalf:self.graphic1 t:1];
 			
 		[self templateUpdateSeal];
 		
@@ -502,9 +501,7 @@ int				userFold = 1;
 
 - (IBAction)action5:(id)sender { // Seal Puzzle Action
 	
-	NSLog(@"ping");
 	userActionStorage[userActionId] = [userActionStorage[userActionId] intValue] > 1 ? @"0" : userActionStorage[userActionId];
-	
 	[self templateUpdateSeal];
 	
 }
@@ -524,13 +521,18 @@ int				userFold = 1;
 	[self.action4 setImage: nil forState: UIControlStateNormal];
 	[self.action5 setImage: nil forState: UIControlStateNormal];
 	
-	
+	self.action1.frame = CGRectMake(0, 0, 0, 0);
+	self.action2.frame = CGRectMake(0, 0, 0, 0);
+	self.action3.frame = CGRectMake(0, 0, 0, 0);
 	self.action4.frame = CGRectMake(0, 0, 0, 0);
+	self.action5.frame = CGRectMake(0, 0, 0, 0);
 	
-	self.action1.frame = CGRectMake(170, 20, 75, 75);
+	self.graphic1.frame = CGRectMake(0, 0, 0, 0);
+	self.graphic2.frame = CGRectMake(0, 0, 0, 0);
+	self.graphic3.frame = CGRectMake(0, 0, 0, 0);
+	self.graphic4.frame = CGRectMake(0, 0, 0, 0);
+	
 	[self rotate:self.action1 t:1.0 d:0];
-	
-	self.action3.frame = CGRectMake(170, 20, 75, 75);
 	[self rotate:self.action3 t:1.0 d:0];
 	
 	[self fadeOut:self.graphic1 t:0];
@@ -587,50 +589,13 @@ int				userFold = 1;
 	
 }
 
-- (void)sealCount
-{
-	
-	userSeal = 0;
-	
-	// Check Seal Count
-	if( [userActionStorage[4] intValue] == 1 ){
-		userSeal += 1;
-	}
-	if( [userActionStorage[13] intValue] == 1 ){
-		userSeal += 1;
-	}
-	
-	NSLog(@"%d",userSeal);
-	
-	if( userSeal == 0 ){
-		self.graphic1.image = [UIImage imageNamed:@"seal_slot1.png"];
-		self.graphic2.image = [UIImage imageNamed:@"seal_slot1.png"];
-	}
-	else if( userSeal == 1 ){
-		self.graphic1.image = [UIImage imageNamed:@"seal_slot2.png"];
-		self.graphic2.image = [UIImage imageNamed:@"seal_slot1.png"];
-	}
-	else if( userSeal == 2 ){
-		self.graphic1.image = [UIImage imageNamed:@"seal_slot2.png"];
-		self.graphic2.image = [UIImage imageNamed:@"seal_slot2.png"];
-	}
-	else{
-		self.graphic1.image = [UIImage imageNamed:@"seal_slot2.png"];
-		self.graphic2.image = [UIImage imageNamed:@"seal_slot2.png"];
-	}
-
-}
-
 - (void)templateUpdateSeal
 {
 	
-	if( [userActionStorage[userActionId] intValue] == 1 ){
-		self.action5.alpha = 1.0;
-	}
-	else{
-		self.action5.alpha = 0.2;
-	}
-
+	userSeal = [self sealCount];
+	self.action5.alpha = [userActionStorage[userActionId] intValue] == 1 ? 1.0 : 0.2;
+	self.graphic1.image = [UIImage imageNamed: [NSString stringWithFormat:@"seal_userslot%d.png", userSeal ] ];
+	
 }
 
 - (void)templateUpdateEnergy
@@ -643,6 +608,10 @@ int				userFold = 1;
 
 }
 
+// ====================
+// Counters
+// ====================
+
 - (int)energyCount
 {
 	userEnergy = 0;
@@ -651,6 +620,20 @@ int				userFold = 1;
 	userEnergy = 4-userEnergy;
 	
 	return userEnergy;
+}
+
+- (int)sealCount
+{
+	
+	userSeal = 0;
+	userSeal += [userActionStorage[4] intValue];
+	userSeal += [userActionStorage[12] intValue];
+	userSeal += [userActionStorage[13] intValue];
+	userSeal += [userActionStorage[14] intValue];
+	userSeal = 2-userSeal;
+	
+	return userSeal;
+	
 }
 
 // ====================

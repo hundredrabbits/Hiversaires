@@ -50,7 +50,7 @@
 	node[18]	= [NSArray arrayWithObjects: @"19", @"17", @"0", @"act3", nil];
 	node[19]	= [NSArray arrayWithObjects: @"0", @"20", @"act5", @"0", nil];
 	node[20]	= [NSArray arrayWithObjects: @"act6", @"21", @"17", @"19", nil];
-	node[21]	= [NSArray arrayWithObjects: @"act4", @"doc8", @"16", @"20", nil];
+	node[21]	= [NSArray arrayWithObjects: @"act14", @"doc8", @"16", @"20", nil];
 	
 	// ====================
 	// Studio ( 12 - 22 )
