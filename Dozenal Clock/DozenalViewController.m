@@ -8,6 +8,7 @@
 
 #import "DozenalViewController.h"
 #import "DozenalViewController_WorldNode.h"
+#import "DozenalViewController_Templates.h"
 
 // Extras
 #define M_PI   3.14159265358979323846264338327950288   /* pi */
@@ -53,6 +54,8 @@ int				userFold = 1;
 	
 	[self actionCheck];
     [self moveCheck];
+	
+	[self test];
 	
 }
 
