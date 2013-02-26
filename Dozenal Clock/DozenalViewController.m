@@ -157,7 +157,7 @@ int				userFold = 1;
 	}
 	
 	if ( userActionId == 2 || userActionId == 10) {
-		[self interfaceEnergy];
+		//[self templateUpdateEnergy];
 	}
 	
 	if ( userActionId == 3 ) {
@@ -249,8 +249,8 @@ int				userFold = 1;
 		
 	if([userAction isEqual: @"act2"]){ // Forest-Studio Door Lock
 		
-		self.action1.frame = CGRectMake(99, 174, 128, 128);
-		[self fadeIn:self.action1 t:1];
+		self.action4.frame = CGRectMake(99, 174, 128, 128);
+		[self fadeIn:self.action4 t:1];
 		
 		self.graphic1.image = [UIImage imageNamed:@"energy_slot0.png"];
 		[self fadeIn:self.graphic1 t:0.4];
@@ -259,6 +259,8 @@ int				userFold = 1;
 		self.graphic2.image = [UIImage imageNamed:@"energy_userslot0.png"];
 		[self fadeIn:self.graphic2 t:1.0];
 		self.graphic2.frame = CGRectMake(99, 174, 128, 128);
+		
+		[self templateUpdateEnergy];
 	}
 	
 	if([userAction isEqual: @"act3"]){ // Forest-Studio Door
@@ -432,35 +434,7 @@ int				userFold = 1;
 
 - (IBAction)action1:(id)sender {
 	
-	
-	
-	
-	
-	
-	if([userAction isEqual: @"act2"]){
-		
-		
-		if( [userActionStorage[userActionId] intValue] > 4){
-			userActionStorage[userActionId] = 0;
-		}
-		if( [self energyCount] > 0){
-			userActionStorage[userActionId] = [NSString stringWithFormat:@"%d", [ userActionStorage[userActionId] intValue]+1 ];
-		}
-		else{
-			userActionStorage[userActionId] = @"0";
-		}
-			
-		userActionStorage[userActionId] = [userActionStorage[userActionId] intValue] > (4 - [self energyCount]) ? @"0" : userActionStorage[userActionId];
-		NSLog(@"%d/%d",[userActionStorage[userActionId] intValue],[self energyCount]);
-		
-	}
-	else{
-	
-		userActionStorage[userActionId] = [NSString stringWithFormat:@"%d", [ userActionStorage[userActionId] intValue]+1 ];
-	
-	}
-	
-	
+	userActionStorage[userActionId] = [NSString stringWithFormat:@"%d", [ userActionStorage[userActionId] intValue]+1 ];	
 	
 	// [self energyCount]
 	
@@ -509,6 +483,21 @@ int				userFold = 1;
 
 - (IBAction)action4:(id)sender {
 	
+	if( [userActionStorage[userActionId] intValue] > 4){
+		userActionStorage[userActionId] = 0;
+	}
+	if( [self energyCount] > 0){
+		userActionStorage[userActionId] = [NSString stringWithFormat:@"%d", [ userActionStorage[userActionId] intValue]+1 ];
+	}
+	else{
+		userActionStorage[userActionId] = @"0";
+	}
+	
+	userActionStorage[userActionId] = [userActionStorage[userActionId] intValue] > (4 - [self energyCount]) ? @"0" : userActionStorage[userActionId];
+	
+	[self templateUpdateEnergy];
+	NSLog(@"FUCK");
+	
 }
 
 - (IBAction)action5:(id)sender {
@@ -517,12 +506,24 @@ int				userFold = 1;
 - (void)actionReset
 {
 	
+	[_action1 setTitle:@"" forState:UIControlStateNormal];
+	[_action2 setTitle:@"" forState:UIControlStateNormal];
+	[_action3 setTitle:@"" forState:UIControlStateNormal];
+	[_action4 setTitle:@"" forState:UIControlStateNormal];
+	
 	[self.action1 setImage: nil forState: UIControlStateNormal];
+	[self.action2 setImage: nil forState: UIControlStateNormal];
+	[self.action3 setImage: nil forState: UIControlStateNormal];
+	[self.action4 setImage: nil forState: UIControlStateNormal];
+	
+	
+	self.action4.frame = CGRectMake(0, 0, 0, 0);
+	
 	self.action1.frame = CGRectMake(170, 20, 75, 75);
 	[self rotate:self.action1 t:1.0 d:0];
-	[_action1 setTitle:@"" forState:UIControlStateNormal];
 	
-	[self.action3 setImage: nil forState: UIControlStateNormal];
+	
+	
 	self.action3.frame = CGRectMake(170, 20, 75, 75);
 	[self rotate:self.action3 t:1.0 d:0];
 	
@@ -533,6 +534,8 @@ int				userFold = 1;
 	
 	[self fadeOut:self.action1 t:0];
 	[self fadeOut:self.action2 t:0];
+	[self fadeOut:self.action3 t:0];
+	[self fadeOut:self.action4 t:0];
 	
 	
 }
@@ -606,15 +609,14 @@ int				userFold = 1;
 
 }
 
-- (void)interfaceEnergy
+- (void)templateUpdateEnergy
 {
 	
 	userEnergy = [self energyCount];
 	self.graphic2.alpha = 0.3;
 	self.graphic1.image = [UIImage imageNamed: [NSString stringWithFormat:@"energy_slot%d.png", [userActionStorage[userActionId] intValue] ] ];
 	self.graphic2.image = [UIImage imageNamed: [NSString stringWithFormat:@"energy_userslot%d.png", userEnergy] ];
-	
-	//NSLog(@"userEnergy:%d",userEnergy);
+
 }
 
 - (int)energyCount
