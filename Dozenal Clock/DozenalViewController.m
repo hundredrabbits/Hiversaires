@@ -158,7 +158,6 @@ int				userFold = 1;
 	
 	if ( userActionId == 2 || userActionId == 10) {
 		[self interfaceEnergy];
-		NSLog(@"here");
 	}
 	
 	if ( userActionId == 3 ) {
@@ -433,14 +432,41 @@ int				userFold = 1;
 
 - (IBAction)action1:(id)sender {
 	
-	// Increment
 	
-	userActionStorage[userActionId] = [NSString stringWithFormat:@"%d", [ userActionStorage[userActionId] intValue]+1 ];
+	
+	
+	
+	
+	if([userAction isEqual: @"act2"]){
+		
+		
+		if( [userActionStorage[userActionId] intValue] > 4){
+			userActionStorage[userActionId] = 0;
+		}
+		if( [self energyCount] > 0){
+			userActionStorage[userActionId] = [NSString stringWithFormat:@"%d", [ userActionStorage[userActionId] intValue]+1 ];
+		}
+		else{
+			userActionStorage[userActionId] = @"0";
+		}
+			
+		userActionStorage[userActionId] = [userActionStorage[userActionId] intValue] > (4 - [self energyCount]) ? @"0" : userActionStorage[userActionId];
+		NSLog(@"%d/%d",[userActionStorage[userActionId] intValue],[self energyCount]);
+		
+	}
+	else{
+	
+		userActionStorage[userActionId] = [NSString stringWithFormat:@"%d", [ userActionStorage[userActionId] intValue]+1 ];
+	
+	}
+	
+	
+	
+	// [self energyCount]
 	
 	// Exceptions
 	
 	if([userAction isEqual: @"act1"]){	userActionStorage[userActionId] = [userActionStorage[userActionId] intValue] > 2 ? @"0" : userActionStorage[userActionId]; }
-	if([userAction isEqual: @"act2"]){	userActionStorage[userActionId] = [userActionStorage[userActionId] intValue] > [self energyCount] ? @"0" : userActionStorage[userActionId]; }
 	if([userAction isEqual: @"act4"]){	userActionStorage[userActionId] = [userActionStorage[userActionId] intValue] > 1 ? @"0" : userActionStorage[userActionId]; }
 	if([userAction isEqual: @"act10"]){	userActionStorage[userActionId] = [userActionStorage[userActionId] intValue] > [self energyCount] ? @"0" : userActionStorage[userActionId]; }
 	
@@ -588,7 +614,7 @@ int				userFold = 1;
 	self.graphic1.image = [UIImage imageNamed: [NSString stringWithFormat:@"energy_slot%d.png", [userActionStorage[userActionId] intValue] ] ];
 	self.graphic2.image = [UIImage imageNamed: [NSString stringWithFormat:@"energy_userslot%d.png", userEnergy] ];
 	
-	NSLog(@"userEnergy:%d",userEnergy);
+	//NSLog(@"userEnergy:%d",userEnergy);
 }
 
 - (int)energyCount
