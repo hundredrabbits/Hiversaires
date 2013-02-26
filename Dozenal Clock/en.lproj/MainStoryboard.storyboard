@@ -203,22 +203,22 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="action4:" destination="2" eventType="touchUpInside" id="ebL-gx-Rfp"/>
+                                    <action selector="action4:" destination="2" eventType="touchUpInside" id="FQ6-Gm-Qgi"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="GJN-OT-JPd" userLabel="Action5">
-                                <rect key="frame" x="172" y="98" width="73" height="23"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="1GV-g6-beK" userLabel="Action5">
+                                <rect key="frame" x="172" y="97" width="73" height="44"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="11"/>
-                                <state key="normal" title="Action5">
-                                    <color key="titleColor" red="0.96566026149999995" green="1" blue="0.98213638390000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Button">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <state key="highlighted">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="action4:" destination="2" eventType="touchUpInside" id="YnQ-Jt-fFB"/>
-                                    <action selector="action5:" destination="2" eventType="touchUpInside" id="7kY-rs-2T8"/>
+                                    <action selector="action5:" destination="2" eventType="touchUpInside" id="FaW-rQ-9Gd"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -231,7 +231,7 @@
                         <outlet property="action2" destination="3WG-x1-jdW" id="yAh-fb-S3A"/>
                         <outlet property="action3" destination="DVQ-gd-NUz" id="rex-4B-gpo"/>
                         <outlet property="action4" destination="vd3-Z9-bxk" id="Epp-oT-0qT"/>
-                        <outlet property="action5" destination="GJN-OT-JPd" id="BAL-Ga-rLw"/>
+                        <outlet property="action5" destination="1GV-g6-beK" id="MLz-lW-8z3"/>
                         <outlet property="debugAction" destination="gRh-4u-m9X" id="NEV-d4-VSJ"/>
                         <outlet property="debugActionValue" destination="3wH-tS-qGL" id="Ukk-4o-d0n"/>
                         <outlet property="debugNode" destination="mj8-4K-569" id="vOM-ju-j9i"/>
