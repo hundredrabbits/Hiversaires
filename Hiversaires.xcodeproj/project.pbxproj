@@ -1359,12 +1359,12 @@
 			isa = PBXGroup;
 			children = (
 				03E0DACD16BA86D700D0C40E /* DozenalAppDelegate.h */,
-				03E0DACE16BA86D700D0C40E /* DozenalAppDelegate.m */,
 				03E0DAD916BA86D700D0C40E /* DozenalViewController.h */,
-				03E0DADA16BA86D700D0C40E /* DozenalViewController.m */,
 				0388223F16C344840060C323 /* DozenalViewController_WorldNode.h */,
-				0388224116C344BF0060C323 /* DozenalViewController_WorldNode.m */,
 				03BECB4E16DC72E70077BE45 /* DozenalViewController_Templates.h */,
+				03E0DACE16BA86D700D0C40E /* DozenalAppDelegate.m */,
+				03E0DADA16BA86D700D0C40E /* DozenalViewController.m */,
+				0388224116C344BF0060C323 /* DozenalViewController_WorldNode.m */,
 				03BECB4F16DC72E70077BE45 /* DozenalViewController_Templates.m */,
 				03E0DAC516BA86D700D0C40E /* Supporting Files */,
 				03E0DAD616BA86D700D0C40E /* MainStoryboard.storyboard */,

@@ -243,6 +243,11 @@ int				userFold = 1;
 		
 	}
 		
+	
+	
+	
+	
+	
 	if( [userAction isEqual: @"act2"] || [userAction isEqual: @"act10"] ){ // Energy Lock
 		
 		self.graphic1.image = [UIImage imageNamed:@"energy_slot0.png"];		
@@ -259,6 +264,30 @@ int				userFold = 1;
 		[self templateUpdateEnergy];
 		
 	}
+	
+	
+	if([userAction isEqual: @"act13"]){ // Seal Lock
+		
+		[self.action5 setImage:[UIImage imageNamed:@"seal64_forest.png"] forState:UIControlStateNormal];
+		
+		self.graphic1.image = [UIImage imageNamed:@"seal_slot0.png"];
+		self.graphic2.image = [UIImage imageNamed:@"seal_slot0.png"];
+		
+		self.action5.frame = CGRectMake(128, 180, 64, 64);
+		self.graphic1.frame = CGRectMake(140, 246, 16, 16);
+		self.graphic2.frame = CGRectMake(152, 246, 16, 16);
+		
+		[self fadeHalf:self.action5 t:1];
+			
+		[self templateUpdateSeal];
+		
+	}
+	
+	
+	
+	//
+	//
+	// Old puzzles
 	
 	if([userAction isEqual: @"act3"]){ // Forest-Studio Door
 		
@@ -363,15 +392,20 @@ int				userFold = 1;
 	
 	if([userAction isEqual: @"act11"]){ // Stones-Rainre Door
 		
-		NSLog(@"Openning Door");
+		if( [userActionStorage[10] intValue] > 1 ){
+			[self.action3 setImage:[UIImage imageNamed:@"door_unlocked.png"] forState:UIControlStateNormal];
+			self.action3.frame = CGRectMake(104, 144, 128, 128);
+			[self fadeHalf:self.action3 t:1];
+		}
+		else{
+			self.graphic1.image = [UIImage imageNamed:@"door_locked.png"];
+			[self fadeHalf:self.graphic1 t:1];
+			self.graphic1.frame = CGRectMake(104, 144, 128, 128);
+		}
 		
 	}
 	
-	if([userAction isEqual: @"act11"]){ // Stones-Rainre Door
-		
-		NSLog(@"Openning Door");
-		
-	}
+	
 	
 	
 	
@@ -411,6 +445,7 @@ int				userFold = 1;
 	self.action2.hidden = NO;
 	self.action3.hidden = NO;
 	self.action4.hidden = NO;
+	self.action5.hidden = NO;
     	
 }
 
@@ -446,6 +481,7 @@ int				userFold = 1;
 	else if	( userNode == 23 ){	userNode = 22; }
 	else if	( userNode == 25 ){	userNode = 31; userOrientation = 2;}
 	else if	( userNode == 35 ){	userNode = 31; userOrientation = 0;}
+	else if	( userNode == 39 ){	userNode = 45; }
 	
 	NSLog(@"Traverse");
 	
@@ -464,7 +500,13 @@ int				userFold = 1;
 	
 }
 
-- (IBAction)action5:(id)sender {
+- (IBAction)action5:(id)sender { // Seal Puzzle Action
+	
+	NSLog(@"ping");
+	userActionStorage[userActionId] = [userActionStorage[userActionId] intValue] > 1 ? @"0" : userActionStorage[userActionId];
+	
+	[self templateUpdateSeal];
+	
 }
 
 - (void)actionReset
@@ -474,11 +516,13 @@ int				userFold = 1;
 	[_action2 setTitle:@"" forState:UIControlStateNormal];
 	[_action3 setTitle:@"" forState:UIControlStateNormal];
 	[_action4 setTitle:@"" forState:UIControlStateNormal];
+	[_action5 setTitle:@"" forState:UIControlStateNormal];
 	
 	[self.action1 setImage: nil forState: UIControlStateNormal];
 	[self.action2 setImage: nil forState: UIControlStateNormal];
 	[self.action3 setImage: nil forState: UIControlStateNormal];
 	[self.action4 setImage: nil forState: UIControlStateNormal];
+	[self.action5 setImage: nil forState: UIControlStateNormal];
 	
 	
 	self.action4.frame = CGRectMake(0, 0, 0, 0);
@@ -498,6 +542,7 @@ int				userFold = 1;
 	[self fadeOut:self.action2 t:0];
 	[self fadeOut:self.action3 t:0];
 	[self fadeOut:self.action4 t:0];
+	[self fadeOut:self.action5 t:0];
 	
 	
 }
@@ -551,6 +596,11 @@ int				userFold = 1;
 	if( [userActionStorage[4] intValue] == 1 ){
 		userSeal += 1;
 	}
+	if( [userActionStorage[13] intValue] == 1 ){
+		userSeal += 1;
+	}
+	
+	NSLog(@"%d",userSeal);
 	
 	if( userSeal == 0 ){
 		self.graphic1.image = [UIImage imageNamed:@"seal_slot1.png"];
@@ -567,6 +617,18 @@ int				userFold = 1;
 	else{
 		self.graphic1.image = [UIImage imageNamed:@"seal_slot2.png"];
 		self.graphic2.image = [UIImage imageNamed:@"seal_slot2.png"];
+	}
+
+}
+
+- (void)templateUpdateSeal
+{
+	
+	if( [userActionStorage[userActionId] intValue] == 1 ){
+		self.action5.alpha = 1.0;
+	}
+	else{
+		self.action5.alpha = 0.2;
 	}
 
 }

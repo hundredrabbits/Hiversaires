@@ -206,7 +206,7 @@
                                     <action selector="action4:" destination="2" eventType="touchUpInside" id="ebL-gx-Rfp"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="GJN-OT-JPd" userLabel="Action4">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="GJN-OT-JPd" userLabel="Action5">
                                 <rect key="frame" x="172" y="98" width="73" height="23"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="11"/>
                                 <state key="normal" title="Action5">
