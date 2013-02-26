@@ -156,10 +156,6 @@ int				userFold = 1;
 		[self solveAction1];
 	}
 	
-	if ( userActionId == 2 || userActionId == 10) {
-		//[self templateUpdateEnergy];
-	}
-	
 	if ( userActionId == 3 ) {
 		[self solveAction3];
 	}
@@ -247,20 +243,21 @@ int				userFold = 1;
 		
 	}
 		
-	if([userAction isEqual: @"act2"]){ // Forest-Studio Door Lock
+	if( [userAction isEqual: @"act2"] || [userAction isEqual: @"act10"] ){ // Energy Lock
 		
-		self.action4.frame = CGRectMake(99, 174, 128, 128);
-		[self fadeIn:self.action4 t:1];
-		
-		self.graphic1.image = [UIImage imageNamed:@"energy_slot0.png"];
-		[self fadeIn:self.graphic1 t:0.4];
-		self.graphic1.frame = CGRectMake(99, 174, 128, 128);
-		
+		self.graphic1.image = [UIImage imageNamed:@"energy_slot0.png"];		
 		self.graphic2.image = [UIImage imageNamed:@"energy_userslot0.png"];
-		[self fadeIn:self.graphic2 t:1.0];
+		
+		self.graphic1.frame = CGRectMake(99, 174, 128, 128);
 		self.graphic2.frame = CGRectMake(99, 174, 128, 128);
+		self.action4.frame = CGRectMake(99, 174, 128, 128);
+		
+		[self fadeIn:self.action4 t:1];
+		[self fadeIn:self.graphic1 t:0.4];
+		[self fadeIn:self.graphic2 t:1.0];
 		
 		[self templateUpdateEnergy];
+		
 	}
 	
 	if([userAction isEqual: @"act3"]){ // Forest-Studio Door
@@ -364,21 +361,6 @@ int				userFold = 1;
 		
 	}
 	
-	if([userAction isEqual: @"act10"]){ // Stones-Rainre Door Lock
-		
-		self.action1.frame = CGRectMake(99, 174, 128, 128);
-		[self fadeIn:self.action1 t:1];
-		
-		self.graphic1.image = [UIImage imageNamed:@"energy_slot0.png"];
-		[self fadeIn:self.graphic1 t:0.4];
-		self.graphic1.frame = CGRectMake(99, 174, 128, 128);
-		
-		self.graphic2.image = [UIImage imageNamed:@"energy_userslot0.png"];
-		[self fadeIn:self.graphic2 t:1.0];
-		self.graphic2.frame = CGRectMake(99, 174, 128, 128);
-		
-	}
-	
 	if([userAction isEqual: @"act11"]){ // Stones-Rainre Door
 		
 		NSLog(@"Openning Door");
@@ -449,16 +431,9 @@ int				userFold = 1;
 	
 }
 
-- (IBAction)action2:(id)sender {
-	
-	// Decrement
+- (IBAction)action2:(id)sender { // Decrement
 	
 	userActionStorage[userActionId] = [NSString stringWithFormat:@"%d", [ userActionStorage[userActionId] intValue]-1 ];
-	
-	// Exceptions
-	
-	if([userAction isEqual: @"act2"]){	userActionStorage[userActionId] = [userActionStorage[userActionId] intValue] < 0 ? @"4" : userActionStorage[userActionId]; }
-	
 	[self solveCheck];
 	
 }
@@ -481,22 +456,11 @@ int				userFold = 1;
 	
 }
 
-- (IBAction)action4:(id)sender {
+- (IBAction)action4:(id)sender { // Energy Puzzle Action
 	
-	if( [userActionStorage[userActionId] intValue] > 4){
-		userActionStorage[userActionId] = 0;
-	}
-	if( [self energyCount] > 0){
-		userActionStorage[userActionId] = [NSString stringWithFormat:@"%d", [ userActionStorage[userActionId] intValue]+1 ];
-	}
-	else{
-		userActionStorage[userActionId] = @"0";
-	}
-	
-	userActionStorage[userActionId] = [userActionStorage[userActionId] intValue] > (4 - [self energyCount]) ? @"0" : userActionStorage[userActionId];
-	
+	userActionStorage[userActionId] = [self energyCount] > 0 ? [NSString stringWithFormat:@"%d", [ userActionStorage[userActionId] intValue]+1 ] : @"0" ;
+	userActionStorage[userActionId] = [userActionStorage[userActionId] intValue] > 4 ? 0 : userActionStorage[userActionId];
 	[self templateUpdateEnergy];
-	NSLog(@"FUCK");
 	
 }
 
@@ -521,8 +485,6 @@ int				userFold = 1;
 	
 	self.action1.frame = CGRectMake(170, 20, 75, 75);
 	[self rotate:self.action1 t:1.0 d:0];
-	
-	
 	
 	self.action3.frame = CGRectMake(170, 20, 75, 75);
 	[self rotate:self.action3 t:1.0 d:0];
