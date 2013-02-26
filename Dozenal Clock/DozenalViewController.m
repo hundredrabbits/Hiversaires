@@ -155,8 +155,9 @@ int				userFold = 1;
 		[self solveAction1];
 	}
 	
-	if ( userActionId == 2 ) {
-		[self solveAction2];
+	if ( userActionId == 2 || userActionId == 10) {
+		[self interfaceEnergy];
+		NSLog(@"here");
 	}
 	
 	if ( userActionId == 3 ) {
@@ -177,17 +178,6 @@ int				userFold = 1;
 	}
 	[self dimClock];
 		
-}
-
-
-- (void)solveAction2
-{
-	
-	if( [userActionStorage[userActionId] intValue] == 1 ){
-		NSLog(@"!");
-	}
-	[self energyCount];
-	
 }
 
 - (void)solveAction3
@@ -268,8 +258,6 @@ int				userFold = 1;
 		self.graphic2.image = [UIImage imageNamed:@"energy_userslot0.png"];
 		[self fadeIn:self.graphic2 t:1.0];
 		self.graphic2.frame = CGRectMake(99, 174, 128, 128);
-		[self energyCount];
-		
 	}
 	
 	if([userAction isEqual: @"act3"]){ // Forest-Studio Door
@@ -385,7 +373,6 @@ int				userFold = 1;
 		self.graphic2.image = [UIImage imageNamed:@"energy_userslot0.png"];
 		[self fadeIn:self.graphic2 t:1.0];
 		self.graphic2.frame = CGRectMake(99, 174, 128, 128);
-		[self energyCount];
 		
 	}
 	
@@ -451,8 +438,9 @@ int				userFold = 1;
 	// Exceptions
 	
 	if([userAction isEqual: @"act1"]){	userActionStorage[userActionId] = [userActionStorage[userActionId] intValue] > 2 ? @"0" : userActionStorage[userActionId]; }
-	if([userAction isEqual: @"act2"]){	userActionStorage[userActionId] = [userActionStorage[userActionId] intValue] > 4 ? @"0" : userActionStorage[userActionId]; }
+	if([userAction isEqual: @"act2"]){	userActionStorage[userActionId] = [userActionStorage[userActionId] intValue] > [self energyCount] ? @"0" : userActionStorage[userActionId]; }
 	if([userAction isEqual: @"act4"]){	userActionStorage[userActionId] = [userActionStorage[userActionId] intValue] > 1 ? @"0" : userActionStorage[userActionId]; }
+	if([userAction isEqual: @"act10"]){	userActionStorage[userActionId] = [userActionStorage[userActionId] intValue] > [self energyCount] ? @"0" : userActionStorage[userActionId]; }
 	
 	[self actionAnimation:sender];
 	[self solveCheck];
@@ -590,36 +578,25 @@ int				userFold = 1;
 
 }
 
-- (void)energyCount
+- (void)interfaceEnergy
 {
-
-	userEnergy = [userActionStorage[2] intValue];
 	
+	userEnergy = [self energyCount];
 	self.graphic2.alpha = 0.3;
+	self.graphic1.image = [UIImage imageNamed: [NSString stringWithFormat:@"energy_slot%d.png", [userActionStorage[userActionId] intValue] ] ];
+	self.graphic2.image = [UIImage imageNamed: [NSString stringWithFormat:@"energy_userslot%d.png", userEnergy] ];
 	
-	// Check Seal Count
-	if( userEnergy == 0 ){
-		self.graphic1.image = [UIImage imageNamed:@"energy_slot0.png"];
-		self.graphic2.image = [UIImage imageNamed:@"energy_userslot4.png"];
-		
-	}
-	if( userEnergy == 1 ){
-		self.graphic1.image = [UIImage imageNamed:@"energy_slot1.png"];
-		self.graphic2.image = [UIImage imageNamed:@"energy_userslot3.png"];
-	}
-	if( userEnergy == 2 ){
-		self.graphic1.image = [UIImage imageNamed:@"energy_slot2.png"];
-		self.graphic2.image = [UIImage imageNamed:@"energy_userslot2.png"];
-	}
-	if( userEnergy == 3 ){
-		self.graphic1.image = [UIImage imageNamed:@"energy_slot3.png"];
-		self.graphic2.image = [UIImage imageNamed:@"energy_userslot1.png"];
-	}
-	if( userEnergy == 4 ){
-		self.graphic1.image = [UIImage imageNamed:@"energy_slot4.png"];
-		self.graphic2.image = [UIImage imageNamed:@"energy_userslot0.png"];
-	}
+	NSLog(@"userEnergy:%d",userEnergy);
+}
+
+- (int)energyCount
+{
+	userEnergy = 0;
+	userEnergy += [userActionStorage[2] intValue];
+	userEnergy += [userActionStorage[10] intValue];
+	userEnergy = 4-userEnergy;
 	
+	return userEnergy;
 }
 
 // ====================

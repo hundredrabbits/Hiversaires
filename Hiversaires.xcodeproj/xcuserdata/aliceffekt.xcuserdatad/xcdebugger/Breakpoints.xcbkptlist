@@ -30,12 +30,12 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Dozenal Clock/DozenalViewController.m"
-         timestampString = "383538019.971822"
+         timestampString = "383545801.340893"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "415"
-         endingLineNumber = "415"
-         landmarkName = "-actionRouting"
+         startingLineNumber = "402"
+         endingLineNumber = "402"
+         landmarkName = "-actionAnimation:"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>
