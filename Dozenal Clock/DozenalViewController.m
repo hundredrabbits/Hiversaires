@@ -288,7 +288,14 @@ int				userFold = 1;
 		
 		if ( [userActionStorage[4] intValue] == 1 && [userActionStorage[13] intValue] == 1 ) {
 			
-			NSLog(@"Unlocked");
+			userNode = 85;
+			userOrientation = 2;
+			userAction = nil;
+			
+			[self actionCheck];
+			[self moveCheck];
+			[self actionReset];
+			
 			
 		}
 		
