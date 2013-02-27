@@ -223,7 +223,11 @@ int				userFold = 1;
 	[self actionReset];
 	[self loadTemplates];
 	
-	if([userAction isEqual: @"act1"]){ // I. Dimensional Clock I
+	// ====================
+	// Clock Terminal
+	// ====================
+	
+	if([userAction isEqual: @"act1"]){
 		
 		[self.action1 setImage:[UIImage imageNamed:@"action0101.png"] forState:UIControlStateNormal];
 		 self.action1.frame = CGRectMake(80, 140, 160, 160);
@@ -236,13 +240,30 @@ int				userFold = 1;
 		[self dimClock];
 		
 	}
+	
+	// ====================
+	// Seal Terminal
+	// ====================
+	
+	if( [userAction isEqual: @"act13"] || [userAction isEqual: @"act4"] ){
 		
+		[self.action5 setImage:[UIImage imageNamed:@"seal64_forest.png"] forState:UIControlStateNormal];
+		
+		self.action5.frame = CGRectMake(128, 180, 64, 64);
+		self.graphic1.frame = CGRectMake(128, 244, 64, 16);
+		
+		[self fadeHalf:self.action5 t:1];
+		[self fadeHalf:self.graphic1 t:1];
+		
+		[self templateUpdateSeal];
+		
+	}
+		
+	// ====================
+	// Energy Terminal
+	// ====================
 	
-	// New Puzzles
-	
-	
-	
-	if( [userAction isEqual: @"act2"] || [userAction isEqual: @"act10"] ){ // Energy Lock
+	if( [userAction isEqual: @"act2"] || [userAction isEqual: @"act10"] ){
 		
 		self.graphic1.image = [UIImage imageNamed:@"energy_slot0.png"];		
 		self.graphic2.image = [UIImage imageNamed:@"energy_userslot0.png"];
@@ -257,35 +278,27 @@ int				userFold = 1;
 		
 		[self templateUpdateEnergy];
 		
-		NSLog(@"OUPS");
-		
 	}
 	
+	// ====================
+	// Seal Gate
+	// ====================
 	
-	if( [userAction isEqual: @"act13"] || [userAction isEqual: @"act4"] ){ // Seal Lock
+	if( [userAction isEqual: @"act15"] ){
 		
-		[self.action5 setImage:[UIImage imageNamed:@"seal64_forest.png"] forState:UIControlStateNormal];		
-		
-		self.graphic1.image = [UIImage imageNamed:@"tempYes.png"];
-		
-		self.action5.frame = CGRectMake(128, 180, 64, 64);
-		
-		
-		
-		self.graphic1.frame = CGRectMake(128, 244, 64, 16);
-		
-		[self fadeHalf:self.action5 t:1];
-		[self fadeHalf:self.graphic1 t:1];
+		if ( [userActionStorage[4] intValue] == 1 && [userActionStorage[13] intValue] == 1 ) {
 			
-		[self templateUpdateSeal];
+			NSLog(@"Unlocked");
+			
+		}
 		
-		self.action4.hidden = YES;
-		
-		[self.action4 setImage:[UIImage imageNamed:@"tempYes.png"] forState:UIControlStateNormal];
-		self.action4.frame = CGRectMake(0, 0, 64, 64);
+		NSLog(@"%d-%d",[userActionStorage[4] intValue],[userActionStorage[13] intValue]);
 		
 		
 	}
+
+	
+	
 	
 	
 	
@@ -322,6 +335,26 @@ int				userFold = 1;
 		[self actionReset];
 		
 	}
+	
+	
+	if([userAction isEqual: @"act11"]){ // Stones-Rainre Door
+		
+		if( [userActionStorage[10] intValue] > 1 ){
+			[self.action3 setImage:[UIImage imageNamed:@"door_unlocked.png"] forState:UIControlStateNormal];
+			self.action3.frame = CGRectMake(104, 144, 128, 128);
+			[self fadeHalf:self.action3 t:1];
+		}
+		else{
+			self.graphic1.image = [UIImage imageNamed:@"door_locked.png"];
+			[self fadeHalf:self.graphic1 t:1];
+			self.graphic1.frame = CGRectMake(104, 144, 128, 128);
+		}
+		
+	}
+	
+	// ====================
+	// Circle Doors
+	// ====================
 	
 	if([userAction isEqual: @"act7"]){ // Studio-Circal Door
 		
@@ -367,26 +400,6 @@ int				userFold = 1;
 		}
 		
 	}
-	
-	if([userAction isEqual: @"act11"]){ // Stones-Rainre Door
-		
-		if( [userActionStorage[10] intValue] > 1 ){
-			[self.action3 setImage:[UIImage imageNamed:@"door_unlocked.png"] forState:UIControlStateNormal];
-			self.action3.frame = CGRectMake(104, 144, 128, 128);
-			[self fadeHalf:self.action3 t:1];
-		}
-		else{
-			self.graphic1.image = [UIImage imageNamed:@"door_locked.png"];
-			[self fadeHalf:self.graphic1 t:1];
-			self.graphic1.frame = CGRectMake(104, 144, 128, 128);
-		}
-		
-	}
-	
-	
-	
-	
-	
 	
 }
 
@@ -568,6 +581,10 @@ int				userFold = 1;
 	}
 	
 }
+
+// ====================
+// Actions with interactions
+// ====================
 
 - (void)templateUpdateSeal
 {

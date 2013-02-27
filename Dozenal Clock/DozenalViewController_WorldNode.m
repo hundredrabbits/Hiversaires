@@ -23,7 +23,7 @@
 	node[0]		= [NSArray arrayWithObjects: @"1", @"0", @"0", @"0", nil];
 	
 	// Warp
-	//node[0]		= [NSArray arrayWithObjects: @"45", @"0", @"0", @"0", nil];
+	//node[0]		= [NSArray arrayWithObjects: @"46", @"0", @"0", @"0", nil];
 	
 	node[1]		= [NSArray arrayWithObjects: @"2", @"doc1", @"0", @"0", nil];	// Doc 1
 	node[2]		= [NSArray arrayWithObjects: @"3", @"0", @"1", @"0", nil];
@@ -83,7 +83,7 @@
 	node[43]	= [NSArray arrayWithObjects: @"0", @"42", @"0", @"0", nil];
 	node[44]	= [NSArray arrayWithObjects: @"42", @"0", @"46", @"0", nil];
 	node[45]	= [NSArray arrayWithObjects: @"act13", @"0", @"0", @"39", nil];
-	node[46]	= [NSArray arrayWithObjects: @"44", @"0", @"0", @"0", nil];
+	node[46]	= [NSArray arrayWithObjects: @"44", @"0", @"act15", @"0", nil];
 	
 	//node[64]	= [NSArray arrayWithObjects: @"0", @"0", @"0", @"0", nil];		// act5
 	
@@ -112,6 +112,9 @@
 	puzzle[11]		= @"-";
 	puzzle[12]		= @"-";
 	puzzle[13]		= @"-";
+	puzzle[14]		= @"-";
+	puzzle[15]		= @"-";
+	puzzle[16]		= @"-";
 	
 	return puzzle;
 }
