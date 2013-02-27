@@ -23,7 +23,7 @@
 	node[0]		= [NSArray arrayWithObjects: @"1", @"0", @"0", @"0", nil];
 	
 	// Warp
-	//node[0]		= [NSArray arrayWithObjects: @"46", @"0", @"0", @"0", nil];
+	// node[0]		= [NSArray arrayWithObjects: @"69", @"0", @"0", @"0", nil];
 	
 	node[1]		= [NSArray arrayWithObjects: @"2", @"doc1", @"0", @"0", nil];	// Doc 1
 	node[2]		= [NSArray arrayWithObjects: @"3", @"0", @"1", @"0", nil];
@@ -69,12 +69,12 @@
 	// Stones
 	
 	node[31]	= [NSArray arrayWithObjects: @"25|1", @"0", @"35", @"0", nil];
-	node[32]	= [NSArray arrayWithObjects: @"0", @"0", @"35", @"0", nil];	
+	node[32]	= [NSArray arrayWithObjects: @"0", @"52", @"35", @"27|1", nil];	
 	node[33]	= [NSArray arrayWithObjects: @"0", @"0", @"29|1", @"0", nil];	
 	node[34]	= [NSArray arrayWithObjects: @"0", @"0", @"35", @"0", nil];		
 	node[35]	= [NSArray arrayWithObjects: @"act8", @"38", @"36", @"0", nil];		
 	node[36]	= [NSArray arrayWithObjects: @"35", @"37", @"0", @"0", nil];		
-	node[37]	= [NSArray arrayWithObjects: @"38", @"39", @"0", @"36", nil];		
+	node[37]	= [NSArray arrayWithObjects: @"38", @"39", @"0", @"36", nil];
 	node[38]	= [NSArray arrayWithObjects: @"act12", @"0", @"37", @"35", nil];		
 	node[39]	= [NSArray arrayWithObjects: @"act10", @"act11", @"40", @"37", nil];
 	node[40]	= [NSArray arrayWithObjects: @"39", @"0", @"41", @"0", nil];
@@ -85,6 +85,18 @@
 	node[45]	= [NSArray arrayWithObjects: @"act13", @"0", @"0", @"39", nil];
 	node[46]	= [NSArray arrayWithObjects: @"44", @"0", @"act15", @"0", nil];
 	
+	node[52]	= [NSArray arrayWithObjects: @"54", @"53", @"0", @"act9", nil];
+	node[53]	= [NSArray arrayWithObjects: @"55", @"0", @"0", @"52", nil];
+	node[54]	= [NSArray arrayWithObjects: @"57", @"55", @"52", @"0", nil];
+	node[55]	= [NSArray arrayWithObjects: @"0", @"56", @"53", @"54", nil];
+	node[56]	= [NSArray arrayWithObjects: @"58", @"0", @"0", @"55", nil];
+	
+	node[57]	= [NSArray arrayWithObjects: @"59", @"0", @"54", @"0", nil];
+	node[58]	= [NSArray arrayWithObjects: @"60", @"0", @"56", @"0", nil];
+	node[59]	= [NSArray arrayWithObjects: @"61", @"0", @"57", @"0", nil];
+	node[60]	= [NSArray arrayWithObjects: @"62", @"0", @"56", @"0", nil];
+	node[61]	= [NSArray arrayWithObjects: @"0", @"0", @"59", @"72", nil];
+	node[62]	= [NSArray arrayWithObjects: @"0", @"0", @"60", @"0", nil];
 	node[63]	= [NSArray arrayWithObjects: @"73", @"69", @"64", @"67", nil];
 	node[64]	= [NSArray arrayWithObjects: @"63", @"0", @"0", @"0", nil];
 	node[67]	= [NSArray arrayWithObjects: @"74", @"63", @"0", @"70", nil];
@@ -92,12 +104,13 @@
 	node[69]	= [NSArray arrayWithObjects: @"act18", @"act19", @"0", @"63", nil];
 	
 	node[70]	= [NSArray arrayWithObjects: @"75", @"67", @"0", @"0", nil];
+	node[72]	= [NSArray arrayWithObjects: @"0", @"61", @"0", @"69", nil];
 	node[73]	= [NSArray arrayWithObjects: @"act17", @"0", @"63", @"0", nil];
 	node[74]	= [NSArray arrayWithObjects: @"80", @"0", @"67", @"0", nil];
 	node[75]	= [NSArray arrayWithObjects: @"76", @"0", @"70", @"0", nil];
 	node[76]	= [NSArray arrayWithObjects: @"0", @"0", @"75", @"act16", nil];
 	node[80]	= [NSArray arrayWithObjects: @"85", @"0", @"74", @"0", nil];
-	node[85]	= [NSArray arrayWithObjects: @"0", @"0", @"80", @"86", nil];
+	node[85]	= [NSArray arrayWithObjects: @"act15", @"0", @"80", @"86", nil];
 	node[86]	= [NSArray arrayWithObjects: @"0", @"85", @"0", @"act1", nil];
 	
 	return node;

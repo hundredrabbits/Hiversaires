@@ -21,6 +21,10 @@ NSArray			*worldDocument;
 NSString        *worldNodeImg = @"empty";
 NSString		*worldNodeImgId;
 
+// Puzzle
+int				puzzleTerminal;
+int				puzzleState;
+
 // User
 int             userId;
 NSString        *userAction;
@@ -162,7 +166,6 @@ int				userFold = 1;
 		[self solveAction3];
 	}
 	
-	
 }
 
 - (void)solveAction1
@@ -263,7 +266,7 @@ int				userFold = 1;
 	// Energy Terminal
 	// ====================
 	
-	if( [userAction isEqual: @"act2"] || [userAction isEqual: @"act10"] ){
+	if( [userAction isEqual: @"act2"] || [userAction isEqual: @"act10"] || [userAction isEqual: @"act18"] ){
 		
 		self.graphic1.image = [UIImage imageNamed:@"energy_slot0.png"];		
 		self.graphic2.image = [UIImage imageNamed:@"energy_userslot0.png"];
@@ -288,34 +291,76 @@ int				userFold = 1;
 		
 		if ( [userActionStorage[4] intValue] == 1 && [userActionStorage[13] intValue] == 1 ) {
 			
-			userNode = 85;
-			userOrientation = 2;
+			if( userNode == 46 ){
+				userNode = 85;
+				userOrientation = 2;
+			}
+			else{
+				userNode = 46;
+				userOrientation = 0;
+			}
+			
 			userAction = nil;
 			
 			[self actionCheck];
 			[self moveCheck];
 			[self actionReset];
-			
-			
 		}
 		
 		NSLog(@"%d-%d",[userActionStorage[4] intValue],[userActionStorage[13] intValue]);
 		
+	}
+
+	// ====================
+	// Energy Gate
+	// ====================
+	
+	if([userAction isEqual: @"act3"] || [userAction isEqual: @"act11"] || [userAction isEqual: @"act19"]){
+		
+		if([userAction isEqual: @"act3"]){ puzzleTerminal = 2; }
+		if([userAction isEqual: @"act11"]){ puzzleTerminal = 10; }
+		if([userAction isEqual: @"act19"]){ puzzleTerminal = 18; }
+		
+		if( [userActionStorage[puzzleTerminal] intValue] > 1 ){
+			[self.action3 setImage:[UIImage imageNamed:@"door_unlocked.png"] forState:UIControlStateNormal];
+			self.action3.frame = CGRectMake(104, 144, 128, 128);
+			[self fadeHalf:self.action3 t:1];
+		}
+		else{
+			self.graphic1.image = [UIImage imageNamed:@"door_locked.png"];
+			[self fadeHalf:self.graphic1 t:1];
+			self.graphic1.frame = CGRectMake(104, 144, 128, 128);
+		}
 		
 	}
 
+	// ====================
+	// Clock Doors
+	// ====================
 	
-	
-	
-	
-	
-	//
-	//
-	// Old puzzles
-	
-	if([userAction isEqual: @"act3"]){ // Forest-Studio Door
+	if( [userAction isEqual: @"act7"] || [userAction isEqual: @"act8"] || [userAction isEqual: @"act9"]){
 		
-		if( [userActionStorage[2] intValue] > 1 ){
+		puzzleState = 0;
+		
+		if([userAction isEqual: @"act7"]){
+			if( [userActionStorage[1] intValue] == 2 || [userActionStorage[1] intValue] == 0 ){
+				puzzleState = 1;
+			}
+		}
+		
+		if([userAction isEqual: @"act8"]){
+			if( [userActionStorage[1] intValue] == 1 || [userActionStorage[1] intValue] == 2 ){
+				puzzleState = 1;
+			}
+		}
+		
+		if([userAction isEqual: @"act9"]){
+			if( [userActionStorage[1] intValue] == 1 || [userActionStorage[1] intValue] == 0 ){
+				puzzleState = 1;
+			}
+		}
+		
+		if( puzzleState == 1 ){
 			[self.action3 setImage:[UIImage imageNamed:@"door_unlocked.png"] forState:UIControlStateNormal];
 			self.action3.frame = CGRectMake(104, 144, 128, 128);
 			[self fadeHalf:self.action3 t:1];
@@ -340,71 +385,6 @@ int				userFold = 1;
 		[self actionCheck];
 		[self moveCheck];
 		[self actionReset];
-		
-	}
-	
-	
-	if([userAction isEqual: @"act11"]){ // Stones-Rainre Door
-		
-		if( [userActionStorage[10] intValue] > 1 ){
-			[self.action3 setImage:[UIImage imageNamed:@"door_unlocked.png"] forState:UIControlStateNormal];
-			self.action3.frame = CGRectMake(104, 144, 128, 128);
-			[self fadeHalf:self.action3 t:1];
-		}
-		else{
-			self.graphic1.image = [UIImage imageNamed:@"door_locked.png"];
-			[self fadeHalf:self.graphic1 t:1];
-			self.graphic1.frame = CGRectMake(104, 144, 128, 128);
-		}
-		
-	}
-	
-	// ====================
-	// Circle Doors
-	// ====================
-	
-	if([userAction isEqual: @"act7"]){ // Studio-Circal Door
-		
-		if( [userActionStorage[1] intValue] == 2 || [userActionStorage[1] intValue] == 0 ){
-			[self.action3 setImage:[UIImage imageNamed:@"door_unlocked.png"] forState:UIControlStateNormal];
-			self.action3.frame = CGRectMake(104, 144, 128, 128);
-			[self fadeHalf:self.action3 t:1];
-		}
-		else{
-			self.graphic1.image = [UIImage imageNamed:@"door_locked.png"];
-			[self fadeHalf:self.graphic1 t:1];
-			self.graphic1.frame = CGRectMake(104, 144, 128, 128);
-		}
-		
-	}
-	
-	if([userAction isEqual: @"act8"]){ // Stones-Circal Door
-		
-		if( [userActionStorage[1] intValue] == 1 || [userActionStorage[1] intValue] == 2 ){
-			[self.action3 setImage:[UIImage imageNamed:@"door_unlocked.png"] forState:UIControlStateNormal];
-			self.action3.frame = CGRectMake(104, 144, 128, 128);
-			[self fadeHalf:self.action3 t:1];
-		}
-		else{
-			self.graphic1.image = [UIImage imageNamed:@"door_locked.png"];
-			[self fadeHalf:self.graphic1 t:1];
-			self.graphic1.frame = CGRectMake(104, 144, 128, 128);
-		}
-		
-	}
-	
-	if([userAction isEqual: @"act9"]){ // Antech-Circal Door
-		
-		if( [userActionStorage[1] intValue] == 1 || [userActionStorage[1] intValue] == 0 ){
-			[self.action3 setImage:[UIImage imageNamed:@"door_unlocked.png"] forState:UIControlStateNormal];
-			self.action3.frame = CGRectMake(104, 144, 128, 128);
-			[self fadeHalf:self.action3 t:1];
-		}
-		else{
-			self.graphic1.image = [UIImage imageNamed:@"door_locked.png"];
-			[self fadeHalf:self.graphic1 t:1];
-			self.graphic1.frame = CGRectMake(104, 144, 128, 128);
-		}
 		
 	}
 	
@@ -472,15 +452,18 @@ int				userFold = 1;
 	else if ( userNode == 16 ){	userNode = 22; }
 	else if	( userNode == 23 ){	userNode = 22; }
 	else if	( userNode == 25 ){	userNode = 31; userOrientation = 2;}
+	else if	( userNode == 27 ){	userNode = 32; userOrientation = 1;}
 	else if	( userNode == 35 ){	userNode = 31; userOrientation = 0;}
 	else if	( userNode == 39 ){	userNode = 45; }
+	else if	( userNode == 52 ){	userNode = 32; userOrientation = 3;}
+	else if	( userNode == 69 ){	userNode = 72; }
 	
 	userAction = nil;
 	
 	[self actionCheck];
 	[self moveCheck];
 	
-	NSLog(@"Action3");
+	NSLog(@"Action3: from %d", userNode);
 	
 }
 
@@ -620,6 +603,7 @@ int				userFold = 1;
 	userEnergy = 0;
 	userEnergy += [userActionStorage[2] intValue];
 	userEnergy += [userActionStorage[10] intValue];
+	userEnergy += [userActionStorage[18] intValue];
 	userEnergy = 4-userEnergy;
 	
 	return userEnergy;
