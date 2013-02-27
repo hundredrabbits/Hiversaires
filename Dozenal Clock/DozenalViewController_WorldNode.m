@@ -23,7 +23,7 @@
 	node[0]		= [NSArray arrayWithObjects: @"1", @"0", @"0", @"0", nil];
 	
 	// Warp
-	// node[0]		= [NSArray arrayWithObjects: @"69", @"0", @"0", @"0", nil];
+	//node[0]		= [NSArray arrayWithObjects: @"61", @"0", @"0", @"0", nil];
 	
 	node[1]		= [NSArray arrayWithObjects: @"2", @"doc1", @"0", @"0", nil];	// Doc 1
 	node[2]		= [NSArray arrayWithObjects: @"3", @"0", @"1", @"0", nil];
@@ -95,7 +95,7 @@
 	node[58]	= [NSArray arrayWithObjects: @"60", @"0", @"56", @"0", nil];
 	node[59]	= [NSArray arrayWithObjects: @"61", @"0", @"57", @"0", nil];
 	node[60]	= [NSArray arrayWithObjects: @"62", @"0", @"56", @"0", nil];
-	node[61]	= [NSArray arrayWithObjects: @"0", @"0", @"59", @"72", nil];
+	node[61]	= [NSArray arrayWithObjects: @"0", @"0", @"59", @"act19", nil];
 	node[62]	= [NSArray arrayWithObjects: @"0", @"0", @"60", @"0", nil];
 	node[63]	= [NSArray arrayWithObjects: @"73", @"69", @"64", @"67", nil];
 	node[64]	= [NSArray arrayWithObjects: @"63", @"0", @"0", @"0", nil];
@@ -105,11 +105,15 @@
 	
 	node[70]	= [NSArray arrayWithObjects: @"75", @"67", @"0", @"0", nil];
 	node[72]	= [NSArray arrayWithObjects: @"0", @"61", @"0", @"69", nil];
-	node[73]	= [NSArray arrayWithObjects: @"act17", @"0", @"63", @"0", nil];
+	node[73]	= [NSArray arrayWithObjects: @"81", @"0", @"63", @"0", nil];
 	node[74]	= [NSArray arrayWithObjects: @"80", @"0", @"67", @"0", nil];
 	node[75]	= [NSArray arrayWithObjects: @"76", @"0", @"70", @"0", nil];
 	node[76]	= [NSArray arrayWithObjects: @"0", @"0", @"75", @"act16", nil];
+	node[78]	= [NSArray arrayWithObjects: @"83", @"0", @"0", @"81", nil];
 	node[80]	= [NSArray arrayWithObjects: @"85", @"0", @"74", @"0", nil];
+	node[81]	= [NSArray arrayWithObjects: @"82", @"78", @"73", @"0", nil];
+	node[82]	= [NSArray arrayWithObjects: @"0", @"83", @"81", @"0", nil];
+	node[83]	= [NSArray arrayWithObjects: @"0", @"0", @"78", @"82", nil];
 	node[85]	= [NSArray arrayWithObjects: @"act15", @"0", @"80", @"86", nil];
 	node[86]	= [NSArray arrayWithObjects: @"0", @"85", @"0", @"act1", nil];
 	

@@ -139,57 +139,6 @@ int				userFold = 1;
     
 }
 
-
-
-
-// ====================
-// Solution
-// ====================
-
-- (void)solveCheck
-{
-	
-	self.debugAction.text = userActionStorage[userActionId];
-	self.debugActionValue.text = [NSString stringWithFormat:@"%@", worldAction[userActionId]];
-	[self solveRouter];
-	
-}
-
-- (void)solveRouter
-{
-	
-	if ( userActionId == 1 ) {
-		[self solveAction1];
-	}
-	
-	if ( userActionId == 3 ) {
-		[self solveAction3];
-	}
-	
-}
-
-- (void)solveAction1
-{
-	
-	if( [userActionStorage[userActionId] intValue] == 1 ){
-		NSLog(@"!");
-	}
-	[self dimClock];
-		
-}
-
-- (void)solveAction3
-{
-	
-	if( userActionId == 3 && [userActionStorage[1] isEqual: worldAction[1] ] && [userActionStorage[2] isEqual: worldAction[2] ] ){
-		userActionStorage[3] = @"SOLVED";
-	}
-	else{
-		userActionStorage[3] = [NSString stringWithFormat:@"%d", [userActionStorage[3] intValue]];
-	}
-	
-}
-
 // ====================
 // Interactions
 // ====================
@@ -373,6 +322,9 @@ int				userFold = 1;
 		
 	}
 	
+	// ====================
+	// Fold Gate
+	// ====================
 	
 	if([userAction isEqual: @"act6"]){ // Fold Gate
 		
@@ -403,13 +355,6 @@ int				userFold = 1;
 	
 	userActionType = [userAction substringWithRange:NSMakeRange(0, 3)];
 	userActionId  = [[userAction stringByReplacingOccurrencesOfString:userActionType withString:@""] intValue];
-	
-	if ([userAction rangeOfString:@"act"].location != NSNotFound) {
-		[self solveCheck];
-	}
-	else if ([userAction rangeOfString:@"doc"].location != NSNotFound) {
-		NSLog(@"%@", worldDocument[userActionId]);
-	}
 
 	self.action1.hidden = NO;
 	self.action2.hidden = NO;
@@ -431,7 +376,6 @@ int				userFold = 1;
 	if([userAction isEqual: @"act10"]){	userActionStorage[userActionId] = [userActionStorage[userActionId] intValue] > [self energyCount] ? @"0" : userActionStorage[userActionId]; }
 	
 	[self actionAnimation:sender];
-	[self solveCheck];
 	
 	NSLog(@"Action1");
 	
@@ -440,7 +384,6 @@ int				userFold = 1;
 - (IBAction)action2:(id)sender { // Decrement
 	
 	userActionStorage[userActionId] = [NSString stringWithFormat:@"%d", [ userActionStorage[userActionId] intValue]-1 ];
-	[self solveCheck];
 	NSLog(@"Action2");
 	
 }
@@ -456,6 +399,7 @@ int				userFold = 1;
 	else if	( userNode == 35 ){	userNode = 31; userOrientation = 0;}
 	else if	( userNode == 39 ){	userNode = 45; }
 	else if	( userNode == 52 ){	userNode = 32; userOrientation = 3;}
+	else if	( userNode == 61 ){	userNode = 72; }
 	else if	( userNode == 69 ){	userNode = 72; }
 	
 	userAction = nil;
