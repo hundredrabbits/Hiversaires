@@ -16,7 +16,7 @@
 
 // World
 NSArray			*worldPath;
-NSArray			*worldAction;
+NSArray			*worldActionType;
 NSArray			*worldDocument;
 NSString        *worldNodeImg = @"empty";
 NSString		*worldNodeImgId;
@@ -51,7 +51,6 @@ int				userFold = 1;
     [super viewDidLoad];
     
 	worldPath = [self worldPath];
-	worldAction = [self worldAction];
 	worldDocument = [self worldDocument];
 	
 	userActionStorage = [NSMutableArray arrayWithObjects:@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",nil];

@@ -112,7 +112,7 @@
 	node[78]	= [NSArray arrayWithObjects: @"83", @"0", @"0", @"81", nil];
 	node[80]	= [NSArray arrayWithObjects: @"85", @"0", @"74", @"0", nil];
 	node[81]	= [NSArray arrayWithObjects: @"82", @"78", @"73", @"0", nil];
-	node[82]	= [NSArray arrayWithObjects: @"0", @"83", @"81", @"0", nil];
+	node[82]	= [NSArray arrayWithObjects: @"0", @"83", @"81", @"act20", nil];
 	node[83]	= [NSArray arrayWithObjects: @"0", @"0", @"78", @"82", nil];
 	node[85]	= [NSArray arrayWithObjects: @"act15", @"0", @"80", @"86", nil];
 	node[86]	= [NSArray arrayWithObjects: @"0", @"85", @"0", @"act1", nil];
@@ -120,36 +120,35 @@
 	return node;
 }
 
-- (NSMutableArray*) worldAction
+- (NSMutableArray*) worldActionType
 {
 	
 	NSMutableArray *puzzle = [NSMutableArray arrayWithObjects:@"",nil];
 	
-	// ====================
-	// Forest ( 1 - 3 )
-	// ====================
-	
-	puzzle[1]		= @"2";
-	puzzle[2]		= @"4";
-	puzzle[3]		= @"13"; // Movement Node
-	puzzle[4]		= @"-";
-	puzzle[5]		= @"-";
-	puzzle[6]		= @"-";
-	puzzle[7]		= @"-";
-	puzzle[8]		= @"-";
-	puzzle[9]		= @"-";
-	puzzle[10]		= @"-";
-	puzzle[11]		= @"-";
-	puzzle[12]		= @"-";
-	puzzle[13]		= @"-";
-	puzzle[14]		= @"-";
-	puzzle[15]		= @"-";
-	puzzle[16]		= @"-";
-	puzzle[17]		= @"-";
-	puzzle[18]		= @"-";
-	puzzle[19]		= @"-";
-	puzzle[20]		= @"-";
+	puzzle[1]		= @"clockTerminal";
+	puzzle[2]		= @"energyTerminal";
+	puzzle[3]		= @"energyDoor";
+	puzzle[4]		= @"sealTerminal";
+	puzzle[5]		= @"foldTerminal";
+	puzzle[6]		= @"foldDoor";
+	puzzle[7]		= @"clockDoor";
+	puzzle[8]		= @"clockDoor";
+	puzzle[9]		= @"clockDoor";
+	puzzle[10]		= @"energyTerminal";
+	puzzle[11]		= @"energyDoor";
+	puzzle[12]		= @"sealTerminal";
+	puzzle[13]		= @"sealTerminal";
+	puzzle[14]		= @"sealTerminal";
+	puzzle[15]		= @"sealDoor";
+	puzzle[16]		= @"unused";
+	puzzle[17]		= @"unused";
+	puzzle[18]		= @"energyTerminal";
+	puzzle[19]		= @"energyDoor";
+	puzzle[20]		= @"sealTerminal";
 	puzzle[21]		= @"-";
+	puzzle[22]		= @"-";
+	puzzle[23]		= @"-";
+	puzzle[24]		= @"-";
 	
 	return puzzle;
 }
