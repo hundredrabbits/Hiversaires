@@ -52,6 +52,7 @@ int				userFold = 1;
     
 	worldPath = [self worldPath];
 	worldDocument = [self worldDocument];
+	worldActionType = [self worldActionType];
 	
 	userActionStorage = [NSMutableArray arrayWithObjects:@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",nil];
 	
@@ -178,16 +179,16 @@ int				userFold = 1;
 	// Clock Terminal
 	// ====================
 	
-	if([userAction isEqual: @"act1"]){
+	if( [worldActionType[userActionId] isEqual: @"clockTerminal"]){
 		
 		[self.action1 setImage:[UIImage imageNamed:@"action0101.png"] forState:UIControlStateNormal];
-		 self.action1.frame = CGRectMake(80, 140, 160, 160);
+		self.action1.frame = CGRectMake(80, 140, 160, 160);
 		[self fadeIn:self.action1 t:1];
 		[self rotate:self.action1 t:2 d:( [userActionStorage[userActionId] intValue] *120 )];
-
+		
 		[self fadeIn:self.graphic1 t:1];
-		 self.graphic1.image = [UIImage imageNamed:@"action0102.png"];
-		 self.graphic1.frame = CGRectMake(80, 140, 160, 160);
+		self.graphic1.image = [UIImage imageNamed:@"action0102.png"];
+		self.graphic1.frame = CGRectMake(80, 140, 160, 160);
 		[self dimClock];
 		
 	}
@@ -196,7 +197,7 @@ int				userFold = 1;
 	// Seal Terminal
 	// ====================
 	
-	if( [userAction isEqual: @"act13"] || [userAction isEqual: @"act4"] ){
+	if( [worldActionType[userActionId] isEqual: @"sealTerminal"]){
 		
 		[self.action5 setImage:[UIImage imageNamed:@"seal64_forest.png"] forState:UIControlStateNormal];
 		
@@ -214,7 +215,7 @@ int				userFold = 1;
 	// Energy Terminal
 	// ====================
 	
-	if( [userAction isEqual: @"act2"] || [userAction isEqual: @"act10"] || [userAction isEqual: @"act18"] ){
+	if( [worldActionType[userActionId] isEqual: @"energyTerminal"]){
 		
 		self.graphic1.image = [UIImage imageNamed:@"energy_slot0.png"];		
 		self.graphic2.image = [UIImage imageNamed:@"energy_userslot0.png"];
@@ -235,7 +236,7 @@ int				userFold = 1;
 	// Seal Gate
 	// ====================
 	
-	if( [userAction isEqual: @"act15"] ){
+	if( [worldActionType[userActionId] isEqual: @"sealDoor"]){
 		
 		if ( [userActionStorage[4] intValue] == 1 && [userActionStorage[13] intValue] == 1 ) {
 			
@@ -263,7 +264,7 @@ int				userFold = 1;
 	// Energy Gate
 	// ====================
 	
-	if([userAction isEqual: @"act3"] || [userAction isEqual: @"act11"] || [userAction isEqual: @"act19"]){
+	if( [worldActionType[userActionId] isEqual: @"energyDoor"]){
 		
 		if([userAction isEqual: @"act3"]){ puzzleTerminal = 2; }
 		if([userAction isEqual: @"act11"]){ puzzleTerminal = 10; }
@@ -286,7 +287,7 @@ int				userFold = 1;
 	// Clock Doors
 	// ====================
 	
-	if( [userAction isEqual: @"act7"] || [userAction isEqual: @"act8"] || [userAction isEqual: @"act9"]){
+	if( [worldActionType[userActionId] isEqual: @"clockDoor"]){
 		
 		puzzleState = 0;
 		

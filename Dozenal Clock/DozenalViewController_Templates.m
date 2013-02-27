@@ -4,7 +4,7 @@
 
 -(void) loadTemplates
 {
-	NSLog(@"Templates Loaded");
+	// NSLog(@"Templates Loaded");
 }
 
 @end
