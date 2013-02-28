@@ -9,6 +9,7 @@
 #import "DozenalViewController.h"
 #import "DozenalViewController_WorldNode.h"
 #import "DozenalViewController_Templates.h"
+#import <AudioToolbox/AudioToolbox.h>
 
 // Extras
 #define M_PI   3.14159265358979323846264338327950288   /* pi */
@@ -54,8 +55,8 @@ int				userFold = 1;
 	
 	userActionStorage = [NSMutableArray arrayWithObjects:@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",nil];
 	
-	userActionStorage[13] = @"1";
-	userActionStorage[20] = @"1";
+//	userActionStorage[13] = @"1";
+//	userActionStorage[20] = @"1";
 	
 	[self actionCheck];
     [self moveCheck];
@@ -249,6 +250,7 @@ int				userFold = 1;
 			[self actionCheck];
 			[self moveCheck];
 			[self actionReset];
+			[self vibrate];
 		}
 		
 		// Metamondst + Rainre
@@ -261,6 +263,7 @@ int				userFold = 1;
 			[self actionCheck];
 			[self moveCheck];
 			[self actionReset];
+			[self vibrate];
 			
 		}
 		
@@ -569,7 +572,7 @@ int				userFold = 1;
 	userSeal += [userActionStorage[4] intValue];
 	userSeal += [userActionStorage[13] intValue];
 	userSeal += [userActionStorage[14] intValue];
-//	userSeal += [userActionStorage[20] intValue];
+	userSeal += [userActionStorage[20] intValue];
 //	userSeal += [userActionStorage[21] intValue];
 //	userSeal += [userActionStorage[22] intValue];
 //	userSeal += [userActionStorage[23] intValue];
@@ -651,6 +654,11 @@ int				userFold = 1;
 	self.viewMain.transform = CGAffineTransformMakeTranslation(0, 0);
 	self.viewMain.alpha = 1;
 	[UIView commitAnimations];
+}
+
+-(void)vibrate
+{
+	AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
 }
 
 @end
