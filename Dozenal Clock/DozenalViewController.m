@@ -17,7 +17,6 @@
 // World
 NSArray			*worldPath;
 NSArray			*worldActionType;
-NSArray			*worldDocument;
 NSString        *worldNodeImg = @"empty";
 NSString		*worldNodeImgId;
 
@@ -51,10 +50,12 @@ int				userFold = 1;
     [super viewDidLoad];
     
 	worldPath = [self worldPath];
-	worldDocument = [self worldDocument];
 	worldActionType = [self worldActionType];
 	
-	userActionStorage = [NSMutableArray arrayWithObjects:@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",nil];
+	userActionStorage = [NSMutableArray arrayWithObjects:@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",nil];
+	
+	userActionStorage[13] = @"1";
+	userActionStorage[20] = @"1";
 	
 	[self actionCheck];
     [self moveCheck];
@@ -238,30 +239,35 @@ int				userFold = 1;
 	
 	if( [worldActionType[userActionId] isEqual: @"sealDoor"]){
 		
+		// Forest + Rainre
+		
 		if ( [userActionStorage[4] intValue] == 1 && [userActionStorage[13] intValue] == 1 ) {
 			
-			if( userNode == 46 ){
-				userNode = 85;
-				userOrientation = 2;
-			}
-			else{
-				userNode = 46;
-				userOrientation = 0;
-			}
-			
+			if( userNode == 46 )		{ userNode = 85; userOrientation = 2; }
+			else if( userNode == 85 )	{ userNode = 46; userOrientation = 0; }
 			userAction = nil;
-			
 			[self actionCheck];
 			[self moveCheck];
 			[self actionReset];
 		}
 		
-		NSLog(@"%d-%d",[userActionStorage[4] intValue],[userActionStorage[13] intValue]);
+		// Metamondst + Rainre
+		
+		if ( [userActionStorage[20] intValue] == 1 && [userActionStorage[13] intValue] == 1 ) {
+			
+			if( userNode == 11 )		{ userNode = 48; userOrientation = 2; }
+			else if( userNode == 48 )	{ userNode = 11; userOrientation = 2; }
+			userAction = nil;
+			[self actionCheck];
+			[self moveCheck];
+			[self actionReset];
+			
+		}
 		
 	}
 
 	// ====================
-	// Energy Gate
+	// Energy Door
 	// ====================
 	
 	if( [worldActionType[userActionId] isEqual: @"energyDoor"]){
@@ -269,6 +275,7 @@ int				userFold = 1;
 		if([userAction isEqual: @"act3"]){ puzzleTerminal = 2; }
 		if([userAction isEqual: @"act11"]){ puzzleTerminal = 10; }
 		if([userAction isEqual: @"act19"]){ puzzleTerminal = 18; }
+		if([userAction isEqual: @"act26"]){ puzzleTerminal = 27; }
 		
 		if( [userActionStorage[puzzleTerminal] intValue] > 1 ){
 			[self.action3 setImage:[UIImage imageNamed:@"door_unlocked.png"] forState:UIControlStateNormal];
@@ -284,7 +291,7 @@ int				userFold = 1;
 	}
 
 	// ====================
-	// Clock Doors
+	// Clock Door
 	// ====================
 	
 	if( [worldActionType[userActionId] isEqual: @"clockDoor"]){
@@ -400,7 +407,9 @@ int				userFold = 1;
 	else if	( userNode == 39 ){	userNode = 45; }
 	else if	( userNode == 52 ){	userNode = 32; userOrientation = 3;}
 	else if	( userNode == 61 ){	userNode = 72; }
+	else if	( userNode == 62 ){	userNode = 77; }
 	else if	( userNode == 69 ){	userNode = 72; }
+	else if	( userNode == 77 ){	userNode = 62; }
 	
 	userAction = nil;
 	
@@ -535,7 +544,6 @@ int				userFold = 1;
 	self.graphic2.alpha = 0.3;
 	self.graphic1.image = [UIImage imageNamed: [NSString stringWithFormat:@"energy_slot%d.png", [userActionStorage[userActionId] intValue] ] ];
 	self.graphic2.image = [UIImage imageNamed: [NSString stringWithFormat:@"energy_userslot%d.png", userEnergy] ];
-
 }
 
 // ====================
@@ -548,6 +556,7 @@ int				userFold = 1;
 	userEnergy += [userActionStorage[2] intValue];
 	userEnergy += [userActionStorage[10] intValue];
 	userEnergy += [userActionStorage[18] intValue];
+	userEnergy += [userActionStorage[27] intValue];
 	userEnergy = 4-userEnergy;
 	
 	return userEnergy;
@@ -559,6 +568,12 @@ int				userFold = 1;
 	userSeal = 0;
 	userSeal += [userActionStorage[4] intValue];
 	userSeal += [userActionStorage[13] intValue];
+	userSeal += [userActionStorage[14] intValue];
+//	userSeal += [userActionStorage[20] intValue];
+//	userSeal += [userActionStorage[21] intValue];
+//	userSeal += [userActionStorage[22] intValue];
+//	userSeal += [userActionStorage[23] intValue];
+//	userSeal += [userActionStorage[24] intValue];
 	userSeal = 2-userSeal;
 	
 	return userSeal;
