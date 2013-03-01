@@ -128,28 +128,6 @@
                                 <rect key="frame" x="20" y="229" width="55" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="BmP-NF-uqb" userLabel="Item1">
-                                <rect key="frame" x="247" y="18" width="73" height="23"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="11"/>
-                                <state key="normal" title="Item1">
-                                    <color key="titleColor" red="0.96566026153071749" green="1" blue="0.98213638386803137" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="highlighted">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="UWw-df-hB2" userLabel="Item2">
-                                <rect key="frame" x="247" y="38" width="73" height="23"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="11"/>
-                                <state key="normal" title="Item2">
-                                    <color key="titleColor" red="0.96566026149999995" green="1" blue="0.98213638390000002" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="highlighted">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Cn8-VS-3Wf" userLabel="Action1">
                                 <rect key="frame" x="172" y="18" width="73" height="23"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="11"/>
@@ -225,8 +203,6 @@
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <connections>
-                        <outlet property="Item1" destination="BmP-NF-uqb" id="PPH-M7-jT9"/>
-                        <outlet property="Item2" destination="UWw-df-hB2" id="kgv-bo-feC"/>
                         <outlet property="action1" destination="Cn8-VS-3Wf" id="gQ5-n9-TRj"/>
                         <outlet property="action2" destination="3WG-x1-jdW" id="yAh-fb-S3A"/>
                         <outlet property="action3" destination="DVQ-gd-NUz" id="rex-4B-gpo"/>
@@ -271,8 +247,6 @@
                 <relationship kind="action" name="moveLeft:"/>
                 <relationship kind="action" name="moveReturn:"/>
                 <relationship kind="action" name="moveRight:"/>
-                <relationship kind="outlet" name="Item1" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="Item2" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="action1" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="action2" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="action3" candidateClass="UIButton"/>
@@ -283,6 +257,8 @@
                 <relationship kind="outlet" name="debugLocation" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="debugNode" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="debugOrientation" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="debugSeal1" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="debugSeal2" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="graphic1" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="graphic2" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="graphic3" candidateClass="UIImageView"/>

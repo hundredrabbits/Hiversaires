@@ -39,7 +39,6 @@ int				userEnergy = 0;
 int				userFold = 1;
 int				userCollectible = 1;
 
-
 @interface DozenalViewController ()
 @end
 
@@ -294,7 +293,7 @@ int				userCollectible = 1;
 		if([userAction isEqual: @"act19"]){ puzzleTerminal = 18; }
 		if([userAction isEqual: @"act26"]){ puzzleTerminal = 27; }
 		
-		if([userAction isEqual: @"act28"]){ puzzleTerminal = 5; NSLog(@"%d", [userActionStorage[puzzleTerminal] intValue] );}
+		if([userAction isEqual: @"act28"]){ puzzleTerminal = 5; }
 		if([userAction isEqual: @"act29"]){ puzzleTerminal = 5; }
 		if([userAction isEqual: @"act30"]){ puzzleTerminal = 5; }
 		
@@ -439,6 +438,8 @@ int				userCollectible = 1;
 	
 	NSLog(@"Action1 : %@", userActionStorage[userActionId]);
 	
+	NSLog(@"%@", userActionStorage);
+	
 }
 
 - (IBAction)action2:(id)sender { // Decrement
@@ -491,13 +492,16 @@ int				userCollectible = 1;
 
 - (IBAction)action5:(id)sender {
 	
-	NSLog(@"%@",userActionStorage[userActionId]);
-	userActionStorage[userActionId] = ![userActionStorage[userActionId] isEqual: @"1"] ? @"1" : @"0";
+	if( [userActionStorage[userActionId] isEqual:@"1"] || [self sealCount] > 0 ){
+		userActionStorage[userActionId] = ![userActionStorage[userActionId] isEqual: @"1"] ? @"1" : @"0";
+	}
+	else{
+		NSLog(@"No more seal slots.");
+	}
 	
 	[self templateUpdateSeal];
 	
 	NSLog(@"Action5: %@", userActionStorage[userActionId]);
-	
 	
 }
 

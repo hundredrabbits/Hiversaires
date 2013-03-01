@@ -14,7 +14,6 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *debugOrientation;
 @property (weak, nonatomic) IBOutlet UILabel *debugNode;
-@property (weak, nonatomic) IBOutlet UILabel *debugLocation;
 @property (weak, nonatomic) IBOutlet UILabel *debugAction;
 @property (weak, nonatomic) IBOutlet UILabel *debugActionValue;
 
@@ -50,11 +49,6 @@
 - (IBAction)action3:(id)sender;
 - (IBAction)action4:(id)sender;
 - (IBAction)action5:(id)sender;
-
-// Items
-
-@property (weak, nonatomic) IBOutlet UIButton *Item1;
-@property (weak, nonatomic) IBOutlet UIButton *Item2;
 
 // Graphics
 
