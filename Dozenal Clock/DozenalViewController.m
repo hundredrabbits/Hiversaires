@@ -55,8 +55,8 @@ int				userCollectible = 1;
 	
 	userActionStorage = [NSMutableArray arrayWithObjects:@"",@"",@"",@"",@"",@"0",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",nil];
 	
-	userActionStorage[12] = @"1";
-	userActionStorage[21] = @"1";
+//	userActionStorage[12] = @"1";
+//	userActionStorage[21] = @"1";
 	
 	[self actionCheck];
     [self moveCheck];
@@ -240,11 +240,11 @@ int				userCollectible = 1;
 	
 	if( [worldActionType[userActionId] isEqual: @"sealDoor"]){
 		
-		// Forest + Rainre
+		// Forest + Rainre ( Stones Monolith )
 		
 		if ( [userActionStorage[4] intValue] == 1 && [userActionStorage[13] intValue] == 1 ) {
 			
-			if( userNode == 46 )		{ userNode = 85; userOrientation = 2; }
+			if( userNode == 46 )	{ userNode = 85; userOrientation = 2; }
 			else if( userNode == 85 )	{ userNode = 46; userOrientation = 0; }
 			userAction = nil;
 			[self actionCheck];
@@ -253,7 +253,20 @@ int				userCollectible = 1;
 			[self vibrate];
 		}
 		
-		// Metamondst + Rainre
+		// Antechannel + Rainre ( Metamondst Door )
+		
+		if ( [userActionStorage[21] intValue] == 1 && [userActionStorage[13] intValue] == 1 ) {
+			
+			if( userNode == 85 )	{ userNode = 46; userOrientation = 0; }
+			else if( userNode == 46 )	{ userNode = 85; userOrientation = 2; }
+			userAction = nil;
+			[self actionCheck];
+			[self moveCheck];
+			[self actionReset];
+			[self vibrate];
+		}
+		
+		// Metamondst + Rainre ( Forest Monolith )
 		
 		if ( [userActionStorage[20] intValue] == 1 && [userActionStorage[13] intValue] == 1 ) {
 			
@@ -502,6 +515,8 @@ int				userCollectible = 1;
 	[self templateUpdateSeal];
 	
 	NSLog(@"Action5: %@", userActionStorage[userActionId]);
+	
+	NSLog(@"%@",userActionStorage);
 	
 }
 
