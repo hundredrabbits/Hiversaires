@@ -53,10 +53,10 @@ int				userFold = 1;
 	worldPath = [self worldPath];
 	worldActionType = [self worldActionType];
 	
-	userActionStorage = [NSMutableArray arrayWithObjects:@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",nil];
+	userActionStorage = [NSMutableArray arrayWithObjects:@"",@"",@"",@"",@"",@"0",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",nil];
 	
-//	userActionStorage[13] = @"1";
-//	userActionStorage[20] = @"1";
+	userActionStorage[12] = @"1";
+	userActionStorage[21] = @"1";
 	
 	[self actionCheck];
     [self moveCheck];
@@ -267,6 +267,19 @@ int				userFold = 1;
 			
 		}
 		
+		// Antechannel + Stones
+		
+		if ( [userActionStorage[21] intValue] == 1 && [userActionStorage[12] intValue] == 1 ) {
+			
+			[self.action1 setImage:[UIImage imageNamed:@"tempYes.png"] forState:UIControlStateNormal];
+			self.action1.frame = CGRectMake(80, 140, 160, 160);
+			[self fadeIn:self.action1 t:1];
+			
+			[self templateUpdateStudioTerminal];
+			[self vibrate];
+			
+		}
+		
 	}
 
 	// ====================
@@ -279,6 +292,10 @@ int				userFold = 1;
 		if([userAction isEqual: @"act11"]){ puzzleTerminal = 10; }
 		if([userAction isEqual: @"act19"]){ puzzleTerminal = 18; }
 		if([userAction isEqual: @"act26"]){ puzzleTerminal = 27; }
+		
+		if([userAction isEqual: @"act28"]){ puzzleTerminal = 5; NSLog(@"%d", [userActionStorage[puzzleTerminal] intValue] );}
+		if([userAction isEqual: @"act29"]){ puzzleTerminal = 5; }
+		if([userAction isEqual: @"act30"]){ puzzleTerminal = 5; }
 		
 		if( [userActionStorage[puzzleTerminal] intValue] > 1 ){
 			[self.action3 setImage:[UIImage imageNamed:@"door_unlocked.png"] forState:UIControlStateNormal];
@@ -377,17 +394,16 @@ int				userFold = 1;
 - (IBAction)action1:(id)sender {
 	
 	userActionStorage[userActionId] = [NSString stringWithFormat:@"%d", [ userActionStorage[userActionId] intValue]+1 ];	
-	
-	// [self energyCount]
-	
+		
 	// Exceptions
 	
 	if([userAction isEqual: @"act1"]){	userActionStorage[userActionId] = [userActionStorage[userActionId] intValue] > 2 ? @"0" : userActionStorage[userActionId]; }
 	if([userAction isEqual: @"act10"]){	userActionStorage[userActionId] = [userActionStorage[userActionId] intValue] > [self energyCount] ? @"0" : userActionStorage[userActionId]; }
+	if([userAction isEqual: @"act5"]){	userActionStorage[userActionId] = [userActionStorage[userActionId] intValue] > 1 ? @"0" : @"2"; [self templateUpdateStudioTerminal];}
 	
 	[self actionAnimation:sender];
 	
-	NSLog(@"Action1");
+	NSLog(@"Action1 : %@", userActionStorage[userActionId]);
 	
 }
 
@@ -398,9 +414,10 @@ int				userFold = 1;
 	
 }
 
-- (IBAction)action3:(id)sender {
+- (IBAction)action3:(id)sender { // Warp Action
 
-	if		( userNode == 13 ){ userNode = 12; }
+	if	( userNode == 1 ){	userNode = 66; }
+	else if	( userNode == 13 ){ userNode = 12; }
 	else if	( userNode == 12 ){	userNode = 13; }
 	else if ( userNode == 16 ){	userNode = 22; }
 	else if	( userNode == 23 ){	userNode = 22; }
@@ -408,18 +425,23 @@ int				userFold = 1;
 	else if	( userNode == 27 ){	userNode = 32; userOrientation = 1;}
 	else if	( userNode == 35 ){	userNode = 31; userOrientation = 0;}
 	else if	( userNode == 39 ){	userNode = 45; }
+	else if	( userNode == 45 ){	userNode = 51; }
+	else if	( userNode == 46 ){	userNode = 1; }
+	else if	( userNode == 51 ){	userNode = 45; }
 	else if	( userNode == 52 ){	userNode = 32; userOrientation = 3;}
 	else if	( userNode == 61 ){	userNode = 72; }
 	else if	( userNode == 62 ){	userNode = 77; }
 	else if	( userNode == 69 ){	userNode = 72; }
+	else if	( userNode == 76 ){	userNode = 87; }
 	else if	( userNode == 77 ){	userNode = 62; }
+	else if	( userNode == 87 ){	userNode = 76; }
 	
 	userAction = nil;
 	
 	[self actionCheck];
 	[self moveCheck];
 	
-	NSLog(@"Action3: from %d", userNode);
+	NSLog(@"Action3: %@", userActionStorage[userActionId]);
 	
 }
 
@@ -429,7 +451,7 @@ int				userFold = 1;
 	userActionStorage[userActionId] = [userActionStorage[userActionId] intValue] > 4 ? 0 : userActionStorage[userActionId];
 	[self templateUpdateEnergy];
 	
-	NSLog(@"Action4");
+	NSLog(@"Action4: %@", userActionStorage[userActionId]);
 	
 }
 
@@ -440,7 +462,7 @@ int				userFold = 1;
 	
 	[self templateUpdateSeal];
 	
-	NSLog(@"Action5");
+	NSLog(@"Action5: %@", userActionStorage[userActionId]);
 	
 	
 }
@@ -537,16 +559,25 @@ int				userFold = 1;
 	userSeal = [self sealCount];
 	self.action5.alpha = [userActionStorage[userActionId] intValue] == 1 ? 1.0 : 0.2;
 	self.graphic1.image = [UIImage imageNamed: [NSString stringWithFormat:@"seal_userslot%d.png", userSeal ] ];
-	
 }
 
 - (void)templateUpdateEnergy
 {
-	
 	userEnergy = [self energyCount];
 	self.graphic2.alpha = 0.3;
 	self.graphic1.image = [UIImage imageNamed: [NSString stringWithFormat:@"energy_slot%d.png", [userActionStorage[userActionId] intValue] ] ];
 	self.graphic2.image = [UIImage imageNamed: [NSString stringWithFormat:@"energy_userslot%d.png", userEnergy] ];
+}
+
+- (void)templateUpdateStudioTerminal
+{
+	if( [userActionStorage[userActionId] intValue] == 1 ){
+		[self.action1 setImage:[UIImage imageNamed:@"tempYes.png"] forState:UIControlStateNormal];
+	}
+	else{
+		[self.action1 setImage:[UIImage imageNamed:@"tempNo.png"] forState:UIControlStateNormal];
+	}
+
 }
 
 // ====================
@@ -570,16 +601,16 @@ int				userFold = 1;
 	
 	userSeal = 0;
 	userSeal += [userActionStorage[4] intValue];
+	userSeal += [userActionStorage[12] intValue];
 	userSeal += [userActionStorage[13] intValue];
 	userSeal += [userActionStorage[14] intValue];
 	userSeal += [userActionStorage[20] intValue];
-//	userSeal += [userActionStorage[21] intValue];
-//	userSeal += [userActionStorage[22] intValue];
-//	userSeal += [userActionStorage[23] intValue];
-//	userSeal += [userActionStorage[24] intValue];
+	userSeal += [userActionStorage[21] intValue];
 	userSeal = 2-userSeal;
 	
 	return userSeal;
+	
+	NSLog(@"%d",userSeal);
 	
 }
 
