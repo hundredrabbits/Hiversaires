@@ -37,6 +37,7 @@ int				userActionId;
 int				userSeal = 0;
 int				userEnergy = 0;
 int				userFold = 1;
+int				userCollectible = 1;
 
 
 @interface DozenalViewController ()
@@ -53,7 +54,7 @@ int				userFold = 1;
 	worldPath = [self worldPath];
 	worldActionType = [self worldActionType];
 	
-	userActionStorage = [NSMutableArray arrayWithObjects:@"",@"",@"",@"",@"",@"0",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",nil];
+	userActionStorage = [NSMutableArray arrayWithObjects:@"",@"",@"",@"",@"",@"0",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",nil];
 	
 	userActionStorage[12] = @"1";
 	userActionStorage[21] = @"1";
@@ -372,6 +373,16 @@ int				userFold = 1;
 	}
 	
 	// ====================
+	// Progress Report | Endgame
+	// ====================
+	
+	if( [worldActionType[userActionId] isEqual: @"progressReport"]){
+		
+		NSLog(@"Collectibles: %d/%d",[self collectibleCount], 10);
+		
+	}
+	
+	// ====================
 	// Fold Gate
 	// ====================
 	
@@ -621,7 +632,6 @@ int				userFold = 1;
 
 - (int)sealCount
 {
-	
 	userSeal = 0;
 	userSeal += [userActionStorage[4] intValue];
 	userSeal += [userActionStorage[12] intValue];
@@ -632,9 +642,23 @@ int				userFold = 1;
 	userSeal = 2-userSeal;
 	
 	return userSeal;
+}
+
+- (int)collectibleCount
+{
+	userCollectible = 0;
+	userCollectible += [userActionStorage[31] intValue];
+	userCollectible += [userActionStorage[32] intValue];
+	userCollectible += [userActionStorage[33] intValue];
+	userCollectible += [userActionStorage[34] intValue];
+	userCollectible += [userActionStorage[35] intValue];
+	userCollectible += [userActionStorage[37] intValue];
+	userCollectible += [userActionStorage[38] intValue];
+	userCollectible += [userActionStorage[39] intValue];
+	userCollectible += [userActionStorage[40] intValue];
+	userCollectible += [userActionStorage[41] intValue];
 	
-	NSLog(@"%d",userSeal);
-	
+	return userCollectible;
 }
 
 // ====================
