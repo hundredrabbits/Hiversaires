@@ -33,9 +33,9 @@
 	node[6]		= [NSArray arrayWithObjects: @"7|1", @"0", @"5", @"0", nil];
 	node[7]		= [NSArray arrayWithObjects: @"12", @"8|0", @"act1", @"6|2", nil];	// Act 1
 	node[8]		= [NSArray arrayWithObjects: @"9|2", @"0", @"7|3", @"0", nil];
-	node[9]		= [NSArray arrayWithObjects: @"8|2", @"doc3", @"10|0", @"0", nil];	// Doc 3
+	node[9]		= [NSArray arrayWithObjects: @"8|2", @"act32", @"10|0", @"0", nil];	// Doc 3
 	
-	node[10]	= [NSArray arrayWithObjects: @"3|3", @"0", @"9|0", @"act32", nil];	// Doc 4
+	node[10]	= [NSArray arrayWithObjects: @"3|3", @"0", @"9|0", @"0", nil];	// Doc 4
 	node[11]	= [NSArray arrayWithObjects: @"act25", @"0", @"3", @"0", nil];	// 
 	node[12]	= [NSArray arrayWithObjects: @"act3", @"act2", @"7", @"0", nil];	// Act 2 + act3
 	node[13]	= [NSArray arrayWithObjects: @"17", @"15", @"act3", @"act2", nil];
@@ -150,9 +150,26 @@
 	puzzle[25]		= @"sealDoor";
 	puzzle[26]		= @"energyDoor";
 	puzzle[27]		= @"energyTerminal";
-	puzzle[28]		= @"energyDoor"; // Studio
-	puzzle[29]		= @"energyDoor"; // Studio
-	puzzle[30]		= @"energyDoor"; // Studio
+	
+	// Studio Lock
+	
+	puzzle[28]		= @"energyDoor"; 
+	puzzle[29]		= @"energyDoor";
+	puzzle[30]		= @"energyDoor";
+	
+	// Collectibles
+	
+	puzzle[31]		= @"collectible";
+	puzzle[32]		= @"collectible";
+	puzzle[33]		= @"collectible";
+	puzzle[34]		= @"collectible";
+	puzzle[35]		= @"collectible";
+	puzzle[36]		= @"collectible";
+	puzzle[37]		= @"collectible";
+	puzzle[38]		= @"collectible";
+	puzzle[39]		= @"collectible";
+	puzzle[40]		= @"collectible";
+	puzzle[41]		= @"collectible";
 	
 	return puzzle;
 }

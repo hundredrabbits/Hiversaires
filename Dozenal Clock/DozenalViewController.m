@@ -267,7 +267,7 @@ int				userFold = 1;
 			
 		}
 		
-		// Antechannel + Stones
+		// Antechannel + Stones ( Studio Terminal )
 		
 		if ( [userActionStorage[21] intValue] == 1 && [userActionStorage[12] intValue] == 1 ) {
 			
@@ -308,7 +308,10 @@ int				userFold = 1;
 			self.graphic1.frame = CGRectMake(104, 144, 128, 128);
 		}
 		
+		// Studio Puzzle
+		
 	}
+	
 
 	// ====================
 	// Clock Door
@@ -350,6 +353,25 @@ int				userFold = 1;
 	}
 	
 	// ====================
+	// Collectible
+	// ====================
+	
+	if( [worldActionType[userActionId] isEqual: @"collectible"]){
+		
+		if( [userActionStorage[5] intValue] > 1 && ![userActionStorage[userActionId] isEqual: @"1"] ){
+			userActionStorage[userActionId] = @"1";
+			NSLog(@"Collectible #%d Unlocked", userActionId);
+		}
+		else if( [userActionStorage[5] intValue] > 1 && [userActionStorage[userActionId] isEqual: @"1"] ){
+			NSLog(@"Collectible #%d already Unlocked", userActionId);
+		}
+		else{
+			NSLog(@"Collectibles Inactive");
+		}
+		
+	}
+	
+	// ====================
 	// Fold Gate
 	// ====================
 	
@@ -366,6 +388,7 @@ int				userFold = 1;
 		[self actionReset];
 		
 	}
+	
 	
 }
 
@@ -571,7 +594,7 @@ int				userFold = 1;
 
 - (void)templateUpdateStudioTerminal
 {
-	if( [userActionStorage[userActionId] intValue] == 1 ){
+	if( [userActionStorage[userActionId] intValue] == 2 ){
 		[self.action1 setImage:[UIImage imageNamed:@"tempYes.png"] forState:UIControlStateNormal];
 	}
 	else{
