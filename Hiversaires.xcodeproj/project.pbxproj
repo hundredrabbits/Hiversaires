@@ -373,6 +373,8 @@
 		0315424F16C7643200A1A97B /* node.0359.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 031540E716C7643200A1A97B /* node.0359.jpg */; };
 		03163B1D16DF2C2A0076BBE5 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03163B1C16DF2C2A0076BBE5 /* AudioToolbox.framework */; };
 		0333141316C214E0009DD80A /* vignette.png in Resources */ = {isa = PBXBuildFile; fileRef = 0333141216C214E0009DD80A /* vignette.png */; };
+		037908EE16E437FE00136A90 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 037908ED16E437FE00136A90 /* AVFoundation.framework */; };
+		037908F016E4391100136A90 /* test.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 037908EF16E4391100136A90 /* test.mp3 */; };
 		0388224216C344BF0060C323 /* DozenalViewController_WorldNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 0388224116C344BF0060C323 /* DozenalViewController_WorldNode.m */; };
 		0389B39E16C9CBC7005D3D02 /* action0101.png in Resources */ = {isa = PBXBuildFile; fileRef = 0389B39D16C9CBC7005D3D02 /* action0101.png */; };
 		0389B3A116C9DFD2005D3D02 /* action0102.png in Resources */ = {isa = PBXBuildFile; fileRef = 0389B3A016C9DFD2005D3D02 /* action0102.png */; };
@@ -796,6 +798,8 @@
 		031540E716C7643200A1A97B /* node.0359.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = node.0359.jpg; path = graphics/node.0359.jpg; sourceTree = "<group>"; };
 		03163B1C16DF2C2A0076BBE5 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		0333141216C214E0009DD80A /* vignette.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = vignette.png; path = interface/vignette.png; sourceTree = "<group>"; };
+		037908ED16E437FE00136A90 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		037908EF16E4391100136A90 /* test.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = test.mp3; path = sounds/test.mp3; sourceTree = "<group>"; };
 		0388223F16C344840060C323 /* DozenalViewController_WorldNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DozenalViewController_WorldNode.h; sourceTree = "<group>"; };
 		0388224116C344BF0060C323 /* DozenalViewController_WorldNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DozenalViewController_WorldNode.m; sourceTree = "<group>"; };
 		0389B39D16C9CBC7005D3D02 /* action0101.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = action0101.png; path = graphics/action0101.png; sourceTree = "<group>"; };
@@ -855,6 +859,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				037908EE16E437FE00136A90 /* AVFoundation.framework in Frameworks */,
 				03163B1D16DF2C2A0076BBE5 /* AudioToolbox.framework in Frameworks */,
 				03E0DABF16BA86D700D0C40E /* UIKit.framework in Frameworks */,
 				03E0DAC116BA86D700D0C40E /* Foundation.framework in Frameworks */,
@@ -1269,6 +1274,14 @@
 			name = Interface;
 			sourceTree = "<group>";
 		};
+		037908F116E4391400136A90 /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+				037908EF16E4391100136A90 /* test.mp3 */,
+			);
+			name = Sounds;
+			sourceTree = "<group>";
+		};
 		039F1F2316DB72D200DE1938 /* Doors */ = {
 			isa = PBXGroup;
 			children = (
@@ -1332,6 +1345,7 @@
 		03E0DAAF16BA86D700D0C40E = {
 			isa = PBXGroup;
 			children = (
+				037908ED16E437FE00136A90 /* AVFoundation.framework */,
 				03163B1C16DF2C2A0076BBE5 /* AudioToolbox.framework */,
 				030303E016D5B8E9004F377C /* icon-57.png */,
 				030303DA16D5B8A1004F377C /* icon.png */,
@@ -1382,6 +1396,7 @@
 		03E0DAC516BA86D700D0C40E /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				037908F116E4391400136A90 /* Sounds */,
 				0333141116C214D6009DD80A /* Interface */,
 				03D6AF7316C08A72000D0750 /* Images */,
 				03E0DAC616BA86D700D0C40E /* Hiversaires-Info.plist */,
@@ -1880,6 +1895,7 @@
 				03BECB5416DCB87E0077BE45 /* seal_userslot0.png in Resources */,
 				03BECB5516DCB87E0077BE45 /* seal_userslot1.png in Resources */,
 				03BECB5616DCB87E0077BE45 /* seal_userslot2.png in Resources */,
+				037908F016E4391100136A90 /* test.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
