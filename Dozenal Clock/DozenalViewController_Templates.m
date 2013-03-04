@@ -15,26 +15,8 @@ AVAudioPlayer *player;
 {
 	NSLog(@"[audioFootLeft]");
 	
-	NSString* resourcePath = [[NSBundle mainBundle] resourcePath];
-	resourcePath = [resourcePath stringByAppendingString:@"/test.mp3"];
-	NSLog(@"Path to play: %@", resourcePath);
-	NSError* err;
-	
-	//Initialize our player pointing to the path to our resource
-	player = [[AVAudioPlayer alloc] initWithContentsOfURL:
-			  [NSURL fileURLWithPath:resourcePath] error:&err];
-	
-	if( err ){
-		//bail!
-		NSLog(@"Failed with reason: %@", [err localizedDescription]);
-	}
-	else{
-		//set our delegate and begin playback
-		//player.delegate = self;
-		[player play];
-	}
-	
-	
+	[self  soundPlayer:@"test"];
+		
 }
 
 -(void)audioFootRight
@@ -251,7 +233,14 @@ AVAudioPlayer *player;
 	NSLog(@"[ambientRainre]");
 }
 
-
+-(void)soundPlayer: (NSString *)filename;
+{
+	NSString* resourcePath = [[NSBundle mainBundle] resourcePath];
+	resourcePath = [resourcePath stringByAppendingString: [NSString stringWithFormat:@"/%@.mp3", filename] ];
+	NSError* err;
+	player = [[AVAudioPlayer alloc] initWithContentsOfURL: [NSURL fileURLWithPath:resourcePath] error:&err];
+	[player play];
+}
 
 
 @end
