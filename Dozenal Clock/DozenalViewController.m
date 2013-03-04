@@ -56,7 +56,7 @@ int				userFootstep = 0;
 	worldPath = [self worldPath];
 	worldActionType = [self worldActionType];
 	
-	userActionStorage = [NSMutableArray arrayWithObjects:@"",@"",@"",@"",@"",@"0",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",nil];
+	userActionStorage = [NSMutableArray arrayWithObjects:@"",@"1",@"",@"",@"",@"0",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",nil];
 	
 //	userActionStorage[12] = @"1";
 //	userActionStorage[21] = @"1";
