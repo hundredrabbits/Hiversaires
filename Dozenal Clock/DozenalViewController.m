@@ -466,16 +466,13 @@ int				userFootstep = 0;
 - (IBAction)action1:(id)sender {
 	
 	userActionStorage[userActionId] = [NSString stringWithFormat:@"%d", [ userActionStorage[userActionId] intValue]+1 ];	
-		
+	
 	// Exceptions
 	
-	if([userAction isEqual: @"act1"]){	userActionStorage[userActionId] = [userActionStorage[userActionId] intValue] > 2 ? @"0" : userActionStorage[userActionId]; }
-	if([userAction isEqual: @"act10"]){	userActionStorage[userActionId] = [userActionStorage[userActionId] intValue] > [self energyCount] ? @"0" : userActionStorage[userActionId]; }
-	if([userAction isEqual: @"act5"]){	userActionStorage[userActionId] = [userActionStorage[userActionId] intValue] > 1 ? @"0" : @"2"; [self templateUpdateStudioTerminal];}
+	if([userAction isEqual: @"act1"]){	userActionStorage[userActionId] = [userActionStorage[userActionId] intValue] > 2 ? @"0" : userActionStorage[userActionId]; [self audioClockTurn]; }
+	if([userAction isEqual: @"act5"]){	userActionStorage[userActionId] = [userActionStorage[userActionId] intValue] > 1 ? @"0" : @"2"; [self templateUpdateStudioTerminal]; [self audioTerminalActive];}
 	
 	[self actionAnimation:sender];
-	
-	NSLog(@"Action1 : %@", userActionStorage[userActionId]);
 	
 }
 

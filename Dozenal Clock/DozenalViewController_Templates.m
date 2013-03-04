@@ -15,7 +15,7 @@ AVAudioPlayer *player;
 {
 	NSLog(@"[audioFootLeft]");
 	
-	[self  soundPlayer:@"test"];
+	[self  soundPlayer:@"aaa"];
 		
 }
 
@@ -239,7 +239,8 @@ AVAudioPlayer *player;
 	resourcePath = [resourcePath stringByAppendingString: [NSString stringWithFormat:@"/%@.mp3", filename] ];
 	NSError* err;
 	player = [[AVAudioPlayer alloc] initWithContentsOfURL: [NSURL fileURLWithPath:resourcePath] error:&err];
-	[player play];
+	if(err)	{ NSLog(@"%@",err); }
+	else	{ [player play]; }
 }
 
 
