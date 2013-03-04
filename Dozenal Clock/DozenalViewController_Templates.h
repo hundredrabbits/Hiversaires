@@ -1,19 +1,39 @@
 #import "DozenalViewController.h"
 
 @interface DozenalViewController (Templates)
--(void) loadTemplates;
+
 -(void) audioFootLeft;
 -(void) audioFootRight;
+-(void) audioTurn;
+-(void) audioReturn;
 -(void) audioCollide;
--(void) audioEnergyActive;
--(void) audioEnergyInactive;
--(void) audioEnergyStack;
--(void) audioCollectible;
+
+-(void) audioClockInit;
 -(void) audioClockActive;
 -(void) audioClockInactive;
 -(void) audioClockTurn;
--(void) audioDoorEnergy;
+
+-(void) audioSealInit;
+-(void) audioSealActive;
+-(void) audioSealInactive;
+-(void) audioSealStack;
+
+-(void) audioEnergyInit;
+-(void) audioEnergyActive;
+-(void) audioEnergyInactive;
+-(void) audioEnergyStack;
+
+-(void) audioTerminalInit;
 -(void) audioTerminalActive;
 -(void) audioTerminalInactive;
+
+-(void) audioDoorInit;
+-(void) audioDoorActive;
+-(void) audioDoorInactive;
+-(void) audioDoorEnter;
+
+-(void) audioCollectibleInit;
+
+
 
 @end

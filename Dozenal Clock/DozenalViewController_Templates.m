@@ -1,11 +1,6 @@
 #import "DozenalViewController_templates.h"
 
-@implementation DozenalViewController (Templates)
-
--(void) loadTemplates
-{
-	// NSLog(@"Templates Loaded");
-}
+@implementation DozenalViewController (Audio)
 
 // ====================
 // Movement
@@ -18,7 +13,17 @@
 
 -(void)audioFootRight
 {
-	NSLog(@"[audioFootLeft]");
+	NSLog(@"[audioFootRight]");
+}
+
+-(void)audioTurn
+{
+	NSLog(@"[audioTurn]");
+}
+
+-(void)audioReturn
+{
+	NSLog(@"[audioReturn]");
 }
 
 -(void)audioCollide
@@ -29,6 +34,11 @@
 // ====================
 // Energy
 // ====================
+
+-(void)audioEnergyInit
+{
+	NSLog(@"[audioEnergyInit]");
+}
 
 -(void)audioEnergyActive
 {
@@ -49,6 +59,11 @@
 // Seals
 // ====================
 
+-(void)audioSealInit
+{
+	NSLog(@"[audioSealInit]");
+}
+
 -(void)audioSealActive
 {
 	NSLog(@"[audioSealActive]");
@@ -68,14 +83,19 @@
 // Collectibles
 // ====================
 
--(void)audioCollectible
+-(void)audioCollectibleInit
 {
-	NSLog(@"[audioCollectible]");
+	NSLog(@"[audioCollectibleInit]");
 }
 
 // ====================
 // Clock
 // ====================
+
+-(void)audioClockInit
+{
+	NSLog(@"[audioClockInit]");
+}
 
 -(void)audioClockActive
 {
@@ -93,25 +113,117 @@
 }
 
 // ====================
-// Doors
+// Terminal
 // ====================
 
--(void)audioDoorEnergy
+-(void)audioTerminalInit
 {
-	NSLog(@"[audioDoorEnergy]");
+	NSLog(@"[audioTerminalInit]");
 }
-
-// ====================
-// Misc
-// ====================
 
 -(void)audioTerminalActive
 {
 	NSLog(@"[audioTerminalActive]");
 }
+
 -(void)audioTerminalInactive
 {
 	NSLog(@"[audioTerminalInactive]");
 }
+
+// ====================
+// Doors
+// ====================
+
+-(void)audioDoorInit
+{
+	NSLog(@"[audioDoorInit]");
+}
+
+-(void)audioDoorActive
+{
+	NSLog(@"[audioDoorActive]");
+}
+
+-(void)audioDoorInactive
+{
+	NSLog(@"[audioDoorInactive]");
+}
+
+-(void)audioDoorEnter
+{
+	NSLog(@"[audioDoorEnter]");
+}
+
+// ====================
+// Doors
+// ====================
+
+-(void)audioMiscActive
+{
+	NSLog(@"[audioMiscActive]");
+}
+
+
+-(void)audioMiscInactive
+{
+	NSLog(@"[audioMiscInactive]");
+}
+
+
+// ====================
+// Ambient
+// ====================
+
+-(void)ambientForest
+{
+	NSLog(@"[ambientForest]");
+}
+
+-(void)ambientStudio
+{
+	NSLog(@"[ambientStudio]");
+}
+
+-(void)ambientCircular
+{
+	NSLog(@"[ambientCircular]");
+}
+
+-(void)ambientStones
+{
+	NSLog(@"[ambientStones]");
+}
+
+-(void)ambientMetamondst
+{
+	NSLog(@"[ambientMetamondst]");
+}
+
+-(void)ambientAntechannel
+{
+	NSLog(@"[ambientAntechannel]");
+}
+
+-(void)ambientCapsule
+{
+	NSLog(@"[ambientCapsule]");
+}
+
+-(void)ambientNether
+{
+	NSLog(@"[ambientNether]");
+}
+
+-(void)ambientEntente
+{
+	NSLog(@"[ambientEntente]");
+}
+
+-(void)ambientRainre
+{
+	NSLog(@"[ambientRainre]");
+}
+
 
 @end

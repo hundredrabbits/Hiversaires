@@ -39,6 +39,8 @@ int				userEnergy = 0;
 int				userFold = 1;
 int				userCollectible = 1;
 
+int				userFootstep = 0;
+
 @interface DozenalViewController ()
 @end
 
@@ -92,6 +94,8 @@ int				userCollectible = 1;
 
 - (IBAction)moveLeft:(id)sender {
     
+	[self audioTurn];
+	
     userOrientation = userOrientation == 0 ? 3 : userOrientation-1;
 
 	[self turnLeft];
@@ -101,6 +105,8 @@ int				userCollectible = 1;
 
 - (IBAction)moveRight:(id)sender {
     
+	[self audioTurn];
+	
     userOrientation = userOrientation < 3 ? userOrientation+1 : 0;
     
 	[self turnRight];
@@ -135,6 +141,8 @@ int				userCollectible = 1;
 
 - (IBAction)moveReturn:(id)sender {
     
+	[self audioReturn];
+	
     userAction = nil;
     
     [self actionCheck];
@@ -184,6 +192,8 @@ int				userCollectible = 1;
 	
 	if( [worldActionType[userActionId] isEqual: @"clockTerminal"]){
 		
+		[self audioClockInit];
+		
 		[self.action1 setImage:[UIImage imageNamed:@"action0101.png"] forState:UIControlStateNormal];
 		self.action1.frame = CGRectMake(80, 140, 160, 160);
 		[self fadeIn:self.action1 t:1];
@@ -202,6 +212,8 @@ int				userCollectible = 1;
 	
 	if( [worldActionType[userActionId] isEqual: @"sealTerminal"]){
 		
+		[self audioSealInit];
+		
 		[self.action5 setImage:[UIImage imageNamed:@"seal64_forest.png"] forState:UIControlStateNormal];
 		
 		self.action5.frame = CGRectMake(128, 180, 64, 64);
@@ -219,6 +231,8 @@ int				userCollectible = 1;
 	// ====================
 	
 	if( [worldActionType[userActionId] isEqual: @"energyTerminal"]){
+		
+		[self audioEnergyInit];
 		
 		self.graphic1.image = [UIImage imageNamed:@"energy_slot0.png"];		
 		self.graphic2.image = [UIImage imageNamed:@"energy_userslot0.png"];
@@ -240,6 +254,8 @@ int				userCollectible = 1;
 	// ====================
 	
 	if( [worldActionType[userActionId] isEqual: @"sealDoor"] ){
+		
+		[self audioDoorInit];
 		
 		// Forest + Rainre ( Stones Monolith )
 		
@@ -302,6 +318,8 @@ int				userCollectible = 1;
 	
 	if( [worldActionType[userActionId] isEqual: @"energyDoor"]){
 		
+		[self audioDoorInit];
+		
 		if([userAction isEqual: @"act3"]){ puzzleTerminal = 2; }
 		if([userAction isEqual: @"act11"]){ puzzleTerminal = 10; }
 		if([userAction isEqual: @"act19"]){ puzzleTerminal = 18; }
@@ -332,6 +350,8 @@ int				userCollectible = 1;
 	// ====================
 	
 	if( [worldActionType[userActionId] isEqual: @"clockDoor"]){
+		
+		[self audioDoorInit];
 		
 		puzzleState = 0;
 		
@@ -372,6 +392,8 @@ int				userCollectible = 1;
 	
 	if( [worldActionType[userActionId] isEqual: @"collectible"]){
 		
+		[self audioCollectibleInit];
+		
 		if( [userActionStorage[5] intValue] > 1 && ![userActionStorage[userActionId] isEqual: @"1"] ){
 			userActionStorage[userActionId] = @"1";
 			NSLog(@"Collectible #%d Unlocked", userActionId);
@@ -390,6 +412,8 @@ int				userCollectible = 1;
 	// ====================
 	
 	if( [worldActionType[userActionId] isEqual: @"progressReport"]){
+		
+		[self audioTerminalInit];
 		
 		NSLog(@"Collectibles: %d/%d",[self collectibleCount], 10);
 		
@@ -452,8 +476,6 @@ int				userCollectible = 1;
 	
 	NSLog(@"Action1 : %@", userActionStorage[userActionId]);
 	
-	NSLog(@"%@", userActionStorage);
-	
 }
 
 - (IBAction)action2:(id)sender { // Decrement
@@ -464,7 +486,9 @@ int				userCollectible = 1;
 }
 
 - (IBAction)action3:(id)sender { // Warp Action
-
+	
+	[self audioDoorEnter];
+	
 	if	( userNode == 1 ){	userNode = 66; }
 	else if	( userNode == 13 ){ userNode = 12; }
 	else if	( userNode == 12 ){	userNode = 13; }
@@ -490,34 +514,49 @@ int				userCollectible = 1;
 	[self actionCheck];
 	[self moveCheck];
 	
-	NSLog(@"Action3: %@", userActionStorage[userActionId]);
-	
 }
 
-- (IBAction)action4:(id)sender {
+- (IBAction)action4:(id)sender { // Energy Action
 	
-	userActionStorage[userActionId] = [self energyCount] > 0 ? [NSString stringWithFormat:@"%d", [ userActionStorage[userActionId] intValue]+1 ] : @"0" ;
-	userActionStorage[userActionId] = [userActionStorage[userActionId] intValue] > 4 ? 0 : userActionStorage[userActionId];
-	[self templateUpdateEnergy];
-	
-	NSLog(@"Action4: %@", userActionStorage[userActionId]);
-	
-}
-
-- (IBAction)action5:(id)sender {
-	
-	if( [userActionStorage[userActionId] isEqual:@"1"] || [self sealCount] > 0 ){
-		userActionStorage[userActionId] = ![userActionStorage[userActionId] isEqual: @"1"] ? @"1" : @"0";
+	if( [self energyCount] > 0 ){
+		userActionStorage[userActionId] = [NSString stringWithFormat:@"%d", [ userActionStorage[userActionId] intValue]+1 ];
 	}
 	else{
+		[self audioEnergyStack];
+		userActionStorage[userActionId] = @"0";
+	}
+	
+	if( [userActionStorage[userActionId] intValue] > 4 ){
+		[self audioEnergyInactive];
+		userActionStorage[userActionId] = 0;
+	}
+	else{
+		[self audioEnergyActive];
+		userActionStorage[userActionId] = userActionStorage[userActionId];
+	}
+	
+	[self templateUpdateEnergy];
+	
+}
+
+- (IBAction)action5:(id)sender { // Seal Action
+	
+	if( [userActionStorage[userActionId] isEqual:@"1"] || [self sealCount] > 0 ){
+		if( ![userActionStorage[userActionId] isEqual: @"1"] ){
+			[self audioSealActive];
+			userActionStorage[userActionId] = @"1";
+		}
+		else{
+			[self audioSealInactive];
+			userActionStorage[userActionId] = @"0";
+		}
+	}
+	else{
+		[self audioEnergyStack];
 		NSLog(@"No more seal slots.");
 	}
 	
 	[self templateUpdateSeal];
-	
-	NSLog(@"Action5: %@", userActionStorage[userActionId]);
-	
-	NSLog(@"%@",userActionStorage);
 	
 }
 
@@ -764,18 +803,17 @@ int				userCollectible = 1;
 
 -(void)audioRouterMove
 {
-	if ( [worldPath[userNode][userOrientation] rangeOfString:@"|"].location != NSNotFound ) {
-		NSLog(@"[audioMove]");
-	}
-	else if( [worldPath[userNode][userOrientation] intValue] > 0){
-		NSLog(@"[audioMove]");
-	}
-	else if ( [worldPath[userNode][userOrientation] rangeOfString:@"act"].location != NSNotFound ) {
-		NSLog(@"[audioAction]");
+	userFootstep += 1;
+	if ( [worldPath[userNode][userOrientation] rangeOfString:@"|"].location != NSNotFound || [worldPath[userNode][userOrientation] intValue] > 0) {
+		if (userFootstep & 1) {
+			[self audioFootLeft];
+		} else {
+			[self audioFootRight];
+		}
 	}
 	else {
 		[self audioCollide];
-	}
+	}	
 }
 
 @end
