@@ -297,6 +297,11 @@ int				userFootstep = 0;
 			[self vibrate];
 			
 		}
+		else if( userActionId == 25 ){
+			
+			[self templateUpdateForestGate];
+			
+		}
 		
 		// Antechannel + Stones ( Studio Terminal )
 		
@@ -308,6 +313,11 @@ int				userFootstep = 0;
 			
 			[self templateUpdateStudioTerminal];
 			[self vibrate];
+			
+		}
+		else if( userActionId == 5 ){
+			
+			[self templateUpdateStudioTerminal];
 			
 		}
 		
@@ -661,13 +671,54 @@ int				userFootstep = 0;
 
 - (void)templateUpdateStudioTerminal
 {
+	
+	[self fadeHalf:self.graphic1 t:1];
+	self.graphic1.image = [UIImage imageNamed:@"seal32_antech.png"];
+	self.graphic1.frame = CGRectMake(135, 130, 45, 45);
+	
+	[self fadeHalf:self.graphic2 t:1];
+	self.graphic2.image = [UIImage imageNamed:@"seal32_stones.png"];
+	self.graphic2.frame = CGRectMake(185, 130, 45, 45);
+	
+	if ( [userActionStorage[21] intValue] == 1 ) {
+		[self fadeIn:self.graphic1 t:1];
+	}
+	
+	if ( [userActionStorage[12] intValue] == 1 ) {
+		[self fadeIn:self.graphic2 t:1];
+	}
+	
 	if( [userActionStorage[userActionId] intValue] == 2 ){
 		[self.action1 setImage:[UIImage imageNamed:@"tempYes.png"] forState:UIControlStateNormal];
 	}
 	else{
 		[self.action1 setImage:[UIImage imageNamed:@"tempNo.png"] forState:UIControlStateNormal];
 	}
+	
+	NSLog(@"worked");
+	
 
+}
+
+- (void)templateUpdateForestGate
+{
+	
+	[self fadeHalf:self.graphic1 t:1];
+	self.graphic1.image = [UIImage imageNamed:@"seal32_metamondst.png"];
+	self.graphic1.frame = CGRectMake(115, 140, 90, 90);
+	
+	[self fadeHalf:self.graphic2 t:1];
+	self.graphic2.image = [UIImage imageNamed:@"seal32_rainre.png"];
+	self.graphic2.frame = CGRectMake(115, 260, 90, 90);
+	
+	if ( [userActionStorage[20] intValue] == 1 ) {
+		[self fadeIn:self.graphic1 t:1];
+	}
+	
+	if ( [userActionStorage[13] intValue] == 1 ) {
+		[self fadeIn:self.graphic2 t:1];
+	}
+		
 }
 
 // ====================
