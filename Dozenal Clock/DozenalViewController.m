@@ -110,6 +110,8 @@ int				userCollectible = 1;
 
 - (IBAction)moveForward:(id)sender {
 	
+    [self audioRouterMove];
+	
 	if ([worldPath[userNode][userOrientation] rangeOfString:@"|"].location == NSNotFound) {
 		userNode = [ worldPath[userNode][userOrientation] intValue] > 0 ? [ worldPath[userNode][userOrientation] intValue] : userNode;
 	} else {
@@ -120,7 +122,7 @@ int				userCollectible = 1;
 	
 	[self turnForward];
     [self moveCheck];
-    
+	
 }
 
 - (IBAction)moveAction:(id)sender {
@@ -175,7 +177,6 @@ int				userCollectible = 1;
 {
 	
 	[self actionReset];
-	[self loadTemplates];
 	
 	// ====================
 	// Clock Terminal
@@ -238,7 +239,7 @@ int				userCollectible = 1;
 	// Seal Gate
 	// ====================
 	
-	if( [worldActionType[userActionId] isEqual: @"sealDoor"]){
+	if( [worldActionType[userActionId] isEqual: @"sealDoor"] ){
 		
 		// Forest + Rainre ( Stones Monolith )
 		
@@ -560,7 +561,6 @@ int				userCollectible = 1;
 	[self fadeOut:self.action4 t:0];
 	[self fadeOut:self.action5 t:0];
 	
-	
 }
 
 // ====================
@@ -756,6 +756,26 @@ int				userCollectible = 1;
 -(void)vibrate
 {
 	AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
+}
+
+// ====================
+// Audio
+// ====================
+
+-(void)audioRouterMove
+{
+	if ( [worldPath[userNode][userOrientation] rangeOfString:@"|"].location != NSNotFound ) {
+		NSLog(@"[audioMove]");
+	}
+	else if( [worldPath[userNode][userOrientation] intValue] > 0){
+		NSLog(@"[audioMove]");
+	}
+	else if ( [worldPath[userNode][userOrientation] rangeOfString:@"act"].location != NSNotFound ) {
+		NSLog(@"[audioAction]");
+	}
+	else {
+		[self audioCollide];
+	}
 }
 
 @end

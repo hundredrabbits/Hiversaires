@@ -123,6 +123,7 @@
 	
 	NSMutableArray *puzzle = [NSMutableArray arrayWithObjects:@"",nil];
 	
+	puzzle[0]		= @"";
 	puzzle[1]		= @"clockTerminal";
 	puzzle[2]		= @"energyTerminal";
 	puzzle[3]		= @"energyDoor";
