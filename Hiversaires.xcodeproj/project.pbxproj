@@ -386,6 +386,8 @@
 		03BECB5416DCB87E0077BE45 /* seal_userslot0.png in Resources */ = {isa = PBXBuildFile; fileRef = 03BECB5116DCB87E0077BE45 /* seal_userslot0.png */; };
 		03BECB5516DCB87E0077BE45 /* seal_userslot1.png in Resources */ = {isa = PBXBuildFile; fileRef = 03BECB5216DCB87E0077BE45 /* seal_userslot1.png */; };
 		03BECB5616DCB87E0077BE45 /* seal_userslot2.png in Resources */ = {isa = PBXBuildFile; fileRef = 03BECB5316DCB87E0077BE45 /* seal_userslot2.png */; };
+		03C5493A16E5A14E00573DD9 /* door_dot.png in Resources */ = {isa = PBXBuildFile; fileRef = 03C5493916E5A14E00573DD9 /* door_dot.png */; };
+		03C5493C16E5A20F00573DD9 /* door_dotunlocked.png in Resources */ = {isa = PBXBuildFile; fileRef = 03C5493B16E5A20F00573DD9 /* door_dotunlocked.png */; };
 		03D4667416DB2D5500878D17 /* seal32_stones.png in Resources */ = {isa = PBXBuildFile; fileRef = 03D4667216DB2D5500878D17 /* seal32_stones.png */; };
 		03D4667516DB2D5500878D17 /* seal32_studio.png in Resources */ = {isa = PBXBuildFile; fileRef = 03D4667316DB2D5500878D17 /* seal32_studio.png */; };
 		03D4667816DB2EA200878D17 /* seal32_antech.png in Resources */ = {isa = PBXBuildFile; fileRef = 03D4667716DB2EA200878D17 /* seal32_antech.png */; };
@@ -815,6 +817,8 @@
 		03BECB5116DCB87E0077BE45 /* seal_userslot0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = seal_userslot0.png; path = graphics/seal_userslot0.png; sourceTree = "<group>"; };
 		03BECB5216DCB87E0077BE45 /* seal_userslot1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = seal_userslot1.png; path = graphics/seal_userslot1.png; sourceTree = "<group>"; };
 		03BECB5316DCB87E0077BE45 /* seal_userslot2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = seal_userslot2.png; path = graphics/seal_userslot2.png; sourceTree = "<group>"; };
+		03C5493916E5A14E00573DD9 /* door_dot.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = door_dot.png; path = graphics/door_dot.png; sourceTree = "<group>"; };
+		03C5493B16E5A20F00573DD9 /* door_dotunlocked.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = door_dotunlocked.png; path = graphics/door_dotunlocked.png; sourceTree = "<group>"; };
 		03D4667216DB2D5500878D17 /* seal32_stones.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = seal32_stones.png; path = graphics/seal32_stones.png; sourceTree = "<group>"; };
 		03D4667316DB2D5500878D17 /* seal32_studio.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = seal32_studio.png; path = graphics/seal32_studio.png; sourceTree = "<group>"; };
 		03D4667716DB2EA200878D17 /* seal32_antech.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = seal32_antech.png; path = graphics/seal32_antech.png; sourceTree = "<group>"; };
@@ -1289,6 +1293,8 @@
 		039F1F2316DB72D200DE1938 /* Doors */ = {
 			isa = PBXGroup;
 			children = (
+				03C5493B16E5A20F00573DD9 /* door_dotunlocked.png */,
+				03C5493916E5A14E00573DD9 /* door_dot.png */,
 				039F1F2416DB73AC00DE1938 /* door_locked.png */,
 				039F1F2116DB72CF00DE1938 /* door_unlocked.png */,
 			);
@@ -1904,6 +1910,8 @@
 				037908F016E4391100136A90 /* test.mp3 in Resources */,
 				037908F416E46B5800136A90 /* seal32_metamondst.png in Resources */,
 				037908F516E46B5800136A90 /* seal32_rainre.png in Resources */,
+				03C5493A16E5A14E00573DD9 /* door_dot.png in Resources */,
+				03C5493C16E5A20F00573DD9 /* door_dotunlocked.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

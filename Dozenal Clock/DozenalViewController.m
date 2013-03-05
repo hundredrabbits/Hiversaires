@@ -56,7 +56,7 @@ int				userFootstep = 0;
 	worldPath = [self worldPath];
 	worldActionType = [self worldActionType];
 	
-	userActionStorage = [NSMutableArray arrayWithObjects:@"",@"1",@"",@"",@"",@"0",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",nil];
+	userActionStorage = [NSMutableArray arrayWithObjects:@"",@"0",@"",@"",@"",@"0",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",nil];
 	
 //	userActionStorage[12] = @"1";
 //	userActionStorage[21] = @"1";
@@ -78,6 +78,7 @@ int				userFootstep = 0;
 
 - (void)moveCheck
 {
+	[self actionReset];
 	
 	self.debugNode.text = [NSString stringWithFormat:@"%d", userNode];
 	self.debugOrientation.text = [NSString stringWithFormat:@"%d", userOrientation];
@@ -385,15 +386,17 @@ int				userFootstep = 0;
 		}
 		
 		if( puzzleState == 1 ){
-			[self.action3 setImage:[UIImage imageNamed:@"door_unlocked.png"] forState:UIControlStateNormal];
-			self.action3.frame = CGRectMake(104, 144, 128, 128);
+			
+			self.action3.frame = CGRectMake(75, 100, 170, 200);
 			[self fadeHalf:self.action3 t:1];
+			
+			self.graphic1.frame = CGRectMake(143, 172, 35, 35);
+			self.graphic1.image = [UIImage imageNamed:@"door_dotunlocked.png"];
+			[self fadeIn:self.graphic1 t:1];
+			
 		}
-		else{
-			self.graphic1.image = [UIImage imageNamed:@"door_locked.png"];
-			[self fadeHalf:self.graphic1 t:1];
-			self.graphic1.frame = CGRectMake(104, 144, 128, 128);
-		}
+		
+		[self templateUpdateClockDoor];
 		
 	}
 	
@@ -721,6 +724,32 @@ int				userFootstep = 0;
 		
 }
 
+-(void)templateUpdateClockDoor
+{
+	
+	self.graphic2.frame = CGRectMake(85, 140, 35, 35);
+	self.graphic3.frame = CGRectMake(198, 140, 35, 35);
+	self.graphic4.frame = CGRectMake(143, 237, 35, 35);
+	
+	self.graphic2.image = [UIImage imageNamed:@"door_dot.png"];
+	self.graphic3.image = [UIImage imageNamed:@"door_dot.png"];
+	self.graphic4.image = [UIImage imageNamed:@"door_dot.png"];
+	
+	if( [userActionStorage[1] intValue] == 0 ){
+		[self fadeIn:self.graphic2 t:1];
+		[self fadeIn:self.graphic3 t:1];
+	}
+	else if( [userActionStorage[1] intValue] == 1 ){
+		[self fadeIn:self.graphic3 t:1];
+		[self fadeIn:self.graphic4 t:1];
+	}
+	else if( [userActionStorage[1] intValue] == 2 ){
+		[self fadeIn:self.graphic2 t:1];
+		[self fadeIn:self.graphic4 t:1];
+	}
+	
+}
+
 // ====================
 // Counters
 // ====================
@@ -808,7 +837,7 @@ int				userFootstep = 0;
 -(void)turnLeft
 {
 	self.viewMain.alpha = 0.5;
-	self.viewMain.transform = CGAffineTransformMakeTranslation(-10, 0);
+	self.viewMain.transform = CGAffineTransformMakeTranslation(-15, 0);
 	
 	[UIView beginAnimations: @"Turn Left" context:nil];
 	[UIView setAnimationDuration:0.2];
@@ -820,7 +849,7 @@ int				userFootstep = 0;
 -(void)turnRight
 {
 	self.viewMain.alpha = 0.5;
-	self.viewMain.transform = CGAffineTransformMakeTranslation(10, 0);
+	self.viewMain.transform = CGAffineTransformMakeTranslation(15, 0);
 	
 	[UIView beginAnimations: @"Turn Right" context:nil];
 	[UIView setAnimationDuration:0.2];
