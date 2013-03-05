@@ -385,18 +385,20 @@ int				userFootstep = 0;
 			}
 		}
 		
+		[self templateUpdateClockDoor];
+		
 		if( puzzleState == 1 ){
 			
 			self.action3.frame = CGRectMake(75, 100, 170, 200);
 			[self fadeHalf:self.action3 t:1];
 			
-			self.graphic1.frame = CGRectMake(143, 172, 35, 35);
+			self.graphic1.frame = CGRectMake(143, 175, 35, 35);
 			self.graphic1.image = [UIImage imageNamed:@"door_dotunlocked.png"];
 			[self fadeIn:self.graphic1 t:1];
 			
 		}
 		
-		[self templateUpdateClockDoor];
+		
 		
 	}
 	
