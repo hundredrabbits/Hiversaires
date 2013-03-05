@@ -219,7 +219,7 @@ int				userFootstep = 0;
 		[self.action5 setImage:[UIImage imageNamed:@"seal64_forest.png"] forState:UIControlStateNormal];
 		
 		self.action5.frame = CGRectMake(128, 180, 64, 64);
-		self.graphic1.frame = CGRectMake(128, 244, 64, 16);
+		self.graphic1.frame = CGRectMake(128, 232, 64, 16);
 		
 		[self fadeHalf:self.action5 t:1];
 		[self fadeHalf:self.graphic1 t:1];
