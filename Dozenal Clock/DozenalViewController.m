@@ -270,6 +270,10 @@ int				userFootstep = 0;
 			[self moveCheck];
 			[self actionReset];
 			[self vibrate];
+			
+		}
+		else if( userActionId == 15 ){
+			[self templateUpdateStonesGate];
 		}
 		
 		// Antechannel + Rainre ( Metamondst Door )
@@ -702,7 +706,6 @@ int				userFootstep = 0;
 	
 	NSLog(@"worked");
 	
-
 }
 
 - (void)templateUpdateForestGate
@@ -724,6 +727,28 @@ int				userFootstep = 0;
 		[self fadeIn:self.graphic2 t:1];
 	}
 		
+}
+
+- (void)templateUpdateStonesGate
+{
+	[self fadeHalf:self.graphic1 t:1];
+	self.graphic1.image = [UIImage imageNamed:@"seal32_forest.png"];
+	self.graphic1.frame = CGRectMake(115, 140, 90, 90);
+	
+	[self fadeHalf:self.graphic2 t:1];
+	self.graphic2.image = [UIImage imageNamed:@"seal32_rainre.png"];
+	self.graphic2.frame = CGRectMake(115, 260, 90, 90);
+	
+	if ( [userActionStorage[4] intValue] == 1 ) {
+		[self fadeIn:self.graphic1 t:1];
+	}
+	
+	if ( [userActionStorage[13] intValue] == 1 ) {
+		[self fadeIn:self.graphic2 t:1];
+	}
+	
+	NSLog(@"%@",userActionStorage);
+
 }
 
 -(void)templateUpdateClockDoor

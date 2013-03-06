@@ -24,7 +24,7 @@
 	
 	// Warp
 	
-	node[0]		= [NSArray arrayWithObjects: @"38", @"0", @"0", @"0", nil];
+	//node[0]		= [NSArray arrayWithObjects: @"38", @"0", @"0", @"0", nil];
 	
 	node[1]		= [NSArray arrayWithObjects: @"2", @"0", @"act28", @"0", nil];
 	node[2]		= [NSArray arrayWithObjects: @"3", @"0", @"1", @"0", nil];
@@ -55,8 +55,8 @@
 	node[25]	= [NSArray arrayWithObjects: @"24", @"0", @"26", @"act8", nil];		
 	node[26]	= [NSArray arrayWithObjects: @"25", @"0", @"27", @"0", nil];		
 	node[27]	= [NSArray arrayWithObjects: @"26", @"0", @"28", @"act9", nil];		
-	node[28]	= [NSArray arrayWithObjects: @"27", @"0", @"29", @"act17", nil];		
-	node[29]	= [NSArray arrayWithObjects: @"28", @"0", @"30", @"act40", nil];		
+	node[28]	= [NSArray arrayWithObjects: @"27", @"0", @"29", @"act40", nil];		
+	node[29]	= [NSArray arrayWithObjects: @"28", @"0", @"30", @"33|0", nil];	// Must add act40 somewhere in circ
 	
 	node[30]	= [NSArray arrayWithObjects: @"29", @"0", @"23", @"0", nil];		
 	node[31]	= [NSArray arrayWithObjects: @"25|1", @"0", @"35", @"0", nil];
