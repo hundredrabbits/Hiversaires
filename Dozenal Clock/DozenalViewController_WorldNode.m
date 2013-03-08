@@ -24,7 +24,7 @@
 	
 	// Warp
 	
-	node[0]		= [NSArray arrayWithObjects: @"77", @"0", @"0", @"0", nil];
+	//node[0]		= [NSArray arrayWithObjects: @"77", @"0", @"0", @"0", nil];
 	
 	node[1]		= [NSArray arrayWithObjects: @"2", @"0", @"act28", @"0", nil];
 	node[2]		= [NSArray arrayWithObjects: @"3", @"0", @"1", @"0", nil];
@@ -72,7 +72,7 @@
 	node[40]	= [NSArray arrayWithObjects: @"39", @"0", @"41", @"0", nil];
 	node[41]	= [NSArray arrayWithObjects: @"40", @"0", @"0", @"42", nil];
 	node[42]	= [NSArray arrayWithObjects: @"0", @"41", @"44", @"43", nil];
-	node[43]	= [NSArray arrayWithObjects: @"0", @"42", @"0", @"act34", nil];
+	node[43]	= [NSArray arrayWithObjects: @"act22", @"42", @"0", @"act34", nil];
 	node[44]	= [NSArray arrayWithObjects: @"42", @"0", @"46", @"0", nil];
 	node[45]	= [NSArray arrayWithObjects: @"act13", @"act41", @"act29", @"39", nil];
 	node[46]	= [NSArray arrayWithObjects: @"44", @"0", @"act15", @"0", nil];
@@ -147,7 +147,7 @@
 	puzzle[19]		= @"energyDoor";
 	puzzle[20]		= @"sealTerminal";
 	puzzle[21]		= @"sealTerminal";
-	puzzle[22]		= @"-";
+	puzzle[22]		= @"map";
 	puzzle[23]		= @"-";
 	puzzle[24]		= @"-";
 	puzzle[25]		= @"sealDoor";
