@@ -58,8 +58,10 @@ int				userFootstep = 0;
 	
 	userActionStorage = [NSMutableArray arrayWithObjects:@"",@"0",@"",@"",@"",@"0",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",nil];
 	
-//	userActionStorage[12] = @"1";
-//	userActionStorage[21] = @"1";
+	userActionStorage[12] = @"1";
+	userActionStorage[21] = @"1";
+	
+	userActionStorage[5] = @"2";
 	
 	[self actionCheck];
     [self moveCheck];
@@ -308,7 +310,7 @@ int				userFootstep = 0;
 			
 		}
 		
-		// Antechannel + Stones ( Studio Terminal )
+		// Antechannel + Stones ( Terminal Seal )
 		
 		if ( [userActionStorage[21] intValue] == 1 && [userActionStorage[12] intValue] == 1 ) {
 			
@@ -355,8 +357,6 @@ int				userFootstep = 0;
 			[self fadeHalf:self.graphic1 t:1];
 			self.graphic1.frame = CGRectMake(104, 144, 128, 128);
 		}
-		
-		// Studio Puzzle
 		
 	}
 	
@@ -506,7 +506,7 @@ int				userFootstep = 0;
 	
 	[self audioDoorEnter];
 	
-	if	( userNode == 1 ){	userNode = 66; }
+	if	( userNode == 1 ){	userNode = 103; }
 	else if	( userNode == 13 ){ userNode = 12; }
 	else if	( userNode == 12 ){	userNode = 13; }
 	else if ( userNode == 16 ){	userNode = 22; }

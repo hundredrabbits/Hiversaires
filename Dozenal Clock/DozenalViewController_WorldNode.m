@@ -10,7 +10,7 @@
 	
 	int myCount = 0;
 	
-	while ( myCount < 100 )
+	while ( myCount < 140 )
 	{
 		myCount++;
 		node[myCount] = [NSArray arrayWithObjects: @"0", @"0", @"0", @"0", nil];
@@ -116,6 +116,11 @@
 	node[85]	= [NSArray arrayWithObjects: @"act15", @"0", @"80", @"86", nil];
 	node[86]	= [NSArray arrayWithObjects: @"0", @"85", @"0", @"act1", nil];
 	node[87]	= [NSArray arrayWithObjects: @"0", @"0", @"act39", @"0", nil];
+		
+	node[89]	= [NSArray arrayWithObjects: @"103", @"0", @"90", @"0", nil];
+	node[90]	= [NSArray arrayWithObjects: @"89", @"0", @"91", @"0", nil];
+	node[91]	= [NSArray arrayWithObjects: @"90", @"act23", @"103", @"act31", nil];
+	node[103]	= [NSArray arrayWithObjects: @"91", @"0", @"89", @"0", nil];
 	
 	return node;
 }
@@ -147,8 +152,8 @@
 	puzzle[19]		= @"energyDoor";
 	puzzle[20]		= @"sealTerminal";
 	puzzle[21]		= @"sealTerminal";
-	puzzle[22]		= @"map";
-	puzzle[23]		= @"-";
+	puzzle[22]		= @"worldMap";
+	puzzle[23]		= @"ententeMap";
 	puzzle[24]		= @"-";
 	puzzle[25]		= @"sealDoor";
 	puzzle[26]		= @"energyDoor";
