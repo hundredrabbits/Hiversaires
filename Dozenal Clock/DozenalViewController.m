@@ -58,8 +58,8 @@ int				userFootstep = 0;
 	
 	userActionStorage = [NSMutableArray arrayWithObjects:@"",@"0",@"",@"",@"",@"0",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",nil];
 	
-	userActionStorage[12] = @"1";
-	userActionStorage[21] = @"1";
+//	userActionStorage[12] = @"1";
+//	userActionStorage[21] = @"1";
 	
 //	userActionStorage[23] = @"17";
 //	userActionStorage[24] = @"17";
@@ -358,6 +358,26 @@ int				userFootstep = 0;
 			}
 			else if( [userAction isEqual: @"act3"] && userNode == 13 ){
 				[self.action3 setImage:[UIImage imageNamed:@"node.0471.jpg"] forState:UIControlStateNormal];
+			}
+			else if( [userAction isEqual: @"act19"] && userNode == 69 ){
+				[self.action3 setImage:[UIImage imageNamed:@"node.0478.jpg"] forState:UIControlStateNormal];
+			}
+			else if( [userAction isEqual: @"act19"] && userNode == 61 ){ // Issue
+				NSLog(@"!!");
+				[self.action3 setImage:[UIImage imageNamed:@"node.0479.jpg"] forState:UIControlStateNormal];
+			}
+			else if( [userAction isEqual: @"act26"] && userNode == 62 ){
+				[self.action3 setImage:[UIImage imageNamed:@"node.0480.jpg"] forState:UIControlStateNormal];
+			}
+			else if( [userAction isEqual: @"act26"] && userNode == 77 ){
+				[self.action3 setImage:[UIImage imageNamed:@"node.0481.jpg"] forState:UIControlStateNormal];
+			}
+			
+			else if( [userAction isEqual: @"act30"] && userNode == 76 ){
+				[self.action3 setImage:[UIImage imageNamed:@"node.0482.jpg"] forState:UIControlStateNormal];
+			}
+			else if( [userAction isEqual: @"act30"] && userNode == 87 ){
+				[self.action3 setImage:[UIImage imageNamed:@"node.0483.jpg"] forState:UIControlStateNormal];
 			}
 			
 			

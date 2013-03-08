@@ -24,7 +24,7 @@
 	
 	// Warp
 	
-	//node[0]		= [NSArray arrayWithObjects: @"77", @"0", @"0", @"0", nil];
+	node[0]		= [NSArray arrayWithObjects: @"69", @"0", @"0", @"0", nil];
 	
 	node[1]		= [NSArray arrayWithObjects: @"2", @"0", @"act28", @"0", nil];
 	node[2]		= [NSArray arrayWithObjects: @"3", @"0", @"1", @"0", nil];
@@ -107,6 +107,7 @@
 	node[76]	= [NSArray arrayWithObjects: @"0", @"0", @"75", @"act30", nil];
 	node[77]	= [NSArray arrayWithObjects: @"47", @"49", @"act26", @"act27", nil];
 	node[78]	= [NSArray arrayWithObjects: @"83", @"0", @"0", @"81", nil];
+	node[79]	= [NSArray arrayWithObjects: @"0", @"0", @"87", @"0", nil];
 	
 	node[80]	= [NSArray arrayWithObjects: @"85", @"0", @"74", @"0", nil];
 	node[81]	= [NSArray arrayWithObjects: @"82", @"78", @"73", @"0", nil];
@@ -115,7 +116,8 @@
 	node[84]	= [NSArray arrayWithObjects: @"56", @"0", @"0", @"53", nil];
 	node[85]	= [NSArray arrayWithObjects: @"act15", @"0", @"80", @"86", nil];
 	node[86]	= [NSArray arrayWithObjects: @"0", @"85", @"0", @"act1", nil];
-	node[87]	= [NSArray arrayWithObjects: @"0", @"0", @"act39", @"0", nil];
+	node[87]	= [NSArray arrayWithObjects: @"79", @"act30", @"act39", @"88", nil];
+	node[88]	= [NSArray arrayWithObjects: @"0", @"87", @"0", @"0", nil];
 		
 	node[89]	= [NSArray arrayWithObjects: @"act42", @"0", @"90", @"0", nil];
 	node[90]	= [NSArray arrayWithObjects: @"89", @"0", @"91", @"0", nil];
