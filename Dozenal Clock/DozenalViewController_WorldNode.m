@@ -136,7 +136,7 @@
 	node[102]	= [NSArray arrayWithObjects: @"0", @"101", @"0", @"act45", nil];
 	
 	node[104]	= [NSArray arrayWithObjects: @"0", @"100", @"0", @"105", nil];
-	node[105]	= [NSArray arrayWithObjects: @"0", @"104", @"0", @"106", nil];
+	node[105]	= [NSArray arrayWithObjects: @"0", @"104", @"act24", @"106", nil];
 	node[106]	= [NSArray arrayWithObjects: @"0", @"105", @"0", @"107", nil];
 	node[107]	= [NSArray arrayWithObjects: @"0", @"106", @"0", @"108", nil];
 	node[108]	= [NSArray arrayWithObjects: @"0", @"107", @"0", @"109", nil];

@@ -61,8 +61,8 @@ int				userFootstep = 0;
 	userActionStorage[12] = @"1";
 	userActionStorage[21] = @"1";
 	
-	userActionStorage[23] = @"17";
-	userActionStorage[24] = @"17";
+//	userActionStorage[23] = @"17";
+//	userActionStorage[24] = @"17";
 	userActionStorage[5] = @"2";
 	
 	[self actionCheck];
@@ -350,9 +350,25 @@ int				userFootstep = 0;
 		if([userAction isEqual: @"act30"]){ puzzleTerminal = 5; }
 		
 		if( [userActionStorage[puzzleTerminal] intValue] > 1 ){
-			[self.action3 setImage:[UIImage imageNamed:@"door_unlocked.png"] forState:UIControlStateNormal];
-			self.action3.frame = CGRectMake(104, 144, 128, 128);
-			[self fadeHalf:self.action3 t:1];
+			if( [userAction isEqual: @"act28"] ){
+				[self.action3 setImage:[UIImage imageNamed:@"node.0366.jpg"] forState:UIControlStateNormal];
+			}
+			else if( [userAction isEqual: @"act3"] && userNode == 12 ){
+				[self.action3 setImage:[UIImage imageNamed:@"node.0470.jpg"] forState:UIControlStateNormal];
+			}
+			else if( [userAction isEqual: @"act3"] && userNode == 13 ){
+				[self.action3 setImage:[UIImage imageNamed:@"node.0471.jpg"] forState:UIControlStateNormal];
+			}
+			
+			
+			self.action3.frame = CGRectMake(0, 10, 320, 460);
+			[self fadeIn:self.action3 t:0.5];
+			
+//			else{
+//				[self.action3 setImage:[UIImage imageNamed:@"door_unlocked.png"] forState:UIControlStateNormal];
+//				self.action3.frame = CGRectMake(104, 144, 128, 128);
+//				[self fadeHalf:self.action3 t:1];
+//			}
 		}
 		else{
 			self.graphic1.image = [UIImage imageNamed:@"door_locked.png"];
