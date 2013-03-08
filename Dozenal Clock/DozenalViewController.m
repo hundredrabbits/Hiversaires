@@ -61,6 +61,8 @@ int				userFootstep = 0;
 	userActionStorage[12] = @"1";
 	userActionStorage[21] = @"1";
 	
+	userActionStorage[23] = @"17";
+	userActionStorage[24] = @"17";
 	userActionStorage[5] = @"2";
 	
 	[self actionCheck];
@@ -438,6 +440,150 @@ int				userFootstep = 0;
 		NSLog(@"Collectibles: %d/%d",[self collectibleCount], 10);
 		
 	}
+	
+	// ====================
+	// Entente
+	// ====================
+	
+	if( [userAction isEqual: @"act23"] ){ // Display Location Part I
+		
+		if( [ userActionStorage[23] intValue] > 17 ){
+			self.graphic1.image = [UIImage imageNamed:@"ententeHi.png"];
+		}
+		else if( [ userActionStorage[23] intValue] < 17 ){
+			self.graphic1.image = [UIImage imageNamed:@"ententeLo.png"];
+		}
+		else{
+			self.graphic1.image = [UIImage imageNamed:@"ententeOn.png"];
+		}
+		
+		self.graphic1.frame = CGRectMake(116, 200, 90, 90);
+		[self fadeHalf:self.graphic1 t:1];
+		
+	}
+	
+	if( [userAction isEqual: @"act24"] ){ // Display Location Part II
+		
+		if( [ userActionStorage[24] intValue] > 17 ){
+			self.graphic1.image = [UIImage imageNamed:@"ententeHi.png"];
+		}
+		else if( [ userActionStorage[24] intValue] < 17 ){
+			self.graphic1.image = [UIImage imageNamed:@"ententeLo.png"];
+		}
+		else{
+			self.graphic1.image = [UIImage imageNamed:@"ententeOn.png"];
+		}
+		
+		NSLog(@"%@",userActionStorage[24]);
+		
+		self.graphic1.frame = CGRectMake(116, 200, 90, 90);
+		[self fadeHalf:self.graphic1 t:1];
+		
+	}
+		
+	if( [userAction isEqual: @"act43"] ){ // Part I - Increment +3
+		
+		if( [userActionStorage[23] isEqual: @"17"] ){
+			userNode = 93;
+			userAction = nil;
+			[self actionCheck];
+			[self moveCheck];
+			[self actionReset];
+		}
+		else{
+			userNode = 89;
+			userAction = nil;
+			
+			if( [ userActionStorage[23] intValue] < 30 ){
+				userActionStorage[23] = [NSString stringWithFormat:@"%d", [ userActionStorage[23] intValue]+3 ];
+			}
+			
+			NSLog(@"%@",userActionStorage[23]);
+			
+			[self actionCheck];
+			[self moveCheck];
+			[self actionReset];
+		}
+
+	}
+	
+	if([userAction isEqual: @"act42"]){ // Part I - Decrement -1
+		
+		userNode = 103;
+		userAction = nil;
+		
+		if( [ userActionStorage[23] intValue] > 0 ){
+			userActionStorage[23] = [NSString stringWithFormat:@"%d", [ userActionStorage[23] intValue]-1 ];
+		}
+		
+		NSLog(@"%@",userActionStorage[23]);
+		
+		[self actionCheck];
+		[self moveCheck];
+		[self actionReset];
+		
+	}
+	
+	if([userAction isEqual: @"act44"]){ // Part II - Decrement -1
+		
+		userNode = 91;
+		userOrientation = 2;
+		userAction = nil;
+		
+		if( [ userActionStorage[24] intValue] > 0 ){
+			userActionStorage[24] = [NSString stringWithFormat:@"%d", [ userActionStorage[24] intValue]-1 ];
+		}
+		
+		NSLog(@"%@",userActionStorage[24]);
+		
+		[self actionCheck];
+		[self moveCheck];
+		[self actionReset];
+		
+	}
+	
+	if([userAction isEqual: @"act45"]){ // Part II - Increment +4
+		
+		userNode = 91;
+		userOrientation = 2;
+		userAction = nil;
+		
+		if( [ userActionStorage[24] intValue] < 32 ){
+			userActionStorage[24] = [NSString stringWithFormat:@"%d", [ userActionStorage[24] intValue]+4 ];
+		}
+		
+		NSLog(@"%@",userActionStorage[24]);
+		
+		[self actionCheck];
+		[self moveCheck];
+		[self actionReset];
+		
+	}
+	
+	if([userAction isEqual: @"act46"]){ // Part II - Exit
+		
+		if( [userActionStorage[23] intValue] == 17 && [userActionStorage[24] intValue] == 17 ){
+			userNode = 104;
+			userOrientation = 3;
+			NSLog(@"OUT!");
+		}
+		else{
+			userNode = 92;
+		}
+		
+		
+		userAction = nil;
+		
+		NSLog(@"%@",userActionStorage[24]);
+		
+		[self actionCheck];
+		[self moveCheck];
+		[self actionReset];
+		
+	}
+	
+	
+
 	
 	// ====================
 	// Fold Gate

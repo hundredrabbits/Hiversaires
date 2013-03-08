@@ -117,10 +117,32 @@
 	node[86]	= [NSArray arrayWithObjects: @"0", @"85", @"0", @"act1", nil];
 	node[87]	= [NSArray arrayWithObjects: @"0", @"0", @"act39", @"0", nil];
 		
-	node[89]	= [NSArray arrayWithObjects: @"103", @"0", @"90", @"0", nil];
+	node[89]	= [NSArray arrayWithObjects: @"act42", @"0", @"90", @"0", nil];
 	node[90]	= [NSArray arrayWithObjects: @"89", @"0", @"91", @"0", nil];
 	node[91]	= [NSArray arrayWithObjects: @"90", @"act23", @"103", @"act31", nil];
-	node[103]	= [NSArray arrayWithObjects: @"91", @"0", @"89", @"0", nil];
+	
+	node[103]	= [NSArray arrayWithObjects: @"91", @"0", @"act43", @"0", nil];
+	
+	node[92]	= [NSArray arrayWithObjects: @"91", @"0", @"93", @"0", nil];
+	node[93]	= [NSArray arrayWithObjects: @"act46", @"0", @"94", @"0", nil];
+	node[94]	= [NSArray arrayWithObjects: @"93", @"0", @"95", @"0", nil];
+	node[95]	= [NSArray arrayWithObjects: @"94", @"act24", @"96", @"0", nil];
+	node[96]	= [NSArray arrayWithObjects: @"95", @"0", @"97", @"0", nil];
+	node[97]	= [NSArray arrayWithObjects: @"96", @"0", @"98", @"0", nil];
+	node[98]	= [NSArray arrayWithObjects: @"97", @"99", @"0", @"101", nil];
+	node[99]	= [NSArray arrayWithObjects: @"0", @"100", @"0", @"98", nil];
+	node[100]	= [NSArray arrayWithObjects: @"0", @"act44", @"0", @"99", nil];
+	node[101]	= [NSArray arrayWithObjects: @"0", @"98", @"0", @"102", nil];
+	node[102]	= [NSArray arrayWithObjects: @"0", @"101", @"0", @"act45", nil];
+	
+	node[104]	= [NSArray arrayWithObjects: @"0", @"100", @"0", @"105", nil];
+	node[105]	= [NSArray arrayWithObjects: @"0", @"104", @"0", @"106", nil];
+	node[106]	= [NSArray arrayWithObjects: @"0", @"105", @"0", @"107", nil];
+	node[107]	= [NSArray arrayWithObjects: @"0", @"106", @"0", @"108", nil];
+	node[108]	= [NSArray arrayWithObjects: @"0", @"107", @"0", @"109", nil];
+	node[109]	= [NSArray arrayWithObjects: @"0", @"108", @"0", @"110", nil];
+	node[110]	= [NSArray arrayWithObjects: @"0", @"109", @"0", @"111", nil];
+	node[111]	= [NSArray arrayWithObjects: @"0", @"110", @"0", @"1|0", nil];
 	
 	return node;
 }
@@ -153,8 +175,8 @@
 	puzzle[20]		= @"sealTerminal";
 	puzzle[21]		= @"sealTerminal";
 	puzzle[22]		= @"worldMap";
-	puzzle[23]		= @"ententeMap";
-	puzzle[24]		= @"-";
+	puzzle[23]		= @"ententeTerminal";
+	puzzle[24]		= @"ententeTerminal";
 	puzzle[25]		= @"sealDoor";
 	puzzle[26]		= @"energyDoor";
 	puzzle[27]		= @"energyTerminal";
@@ -178,6 +200,15 @@
 	puzzle[39]		= @"collectible";
 	puzzle[40]		= @"collectible";
 	puzzle[41]		= @"collectible";
+	
+	// Entente Puzzle
+	
+	puzzle[42]		= @"entente";
+	puzzle[43]		= @"entente";
+	puzzle[44]		= @"entente";
+	puzzle[45]		= @"entente";
+	puzzle[46]		= @"entente";
+	
 	
 	return puzzle;
 }
