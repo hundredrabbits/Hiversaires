@@ -24,7 +24,7 @@
 	
 	// Warp
 	
-	node[0]		= [NSArray arrayWithObjects: @"69", @"0", @"0", @"0", nil];
+//	node[0]		= [NSArray arrayWithObjects: @"69", @"0", @"0", @"0", nil];
 	
 	node[1]		= [NSArray arrayWithObjects: @"2", @"0", @"act28", @"0", nil];
 	node[2]		= [NSArray arrayWithObjects: @"3", @"0", @"1", @"0", nil];

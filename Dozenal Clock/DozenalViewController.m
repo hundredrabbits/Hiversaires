@@ -208,6 +208,7 @@ int				userFootstep = 0;
 		[self fadeIn:self.graphic1 t:1];
 		self.graphic1.image = [UIImage imageNamed:@"action0102.png"];
 		self.graphic1.frame = CGRectMake(80, 140, 160, 160);
+		
 		[self dimClock];
 		
 	}
@@ -340,55 +341,29 @@ int				userFootstep = 0;
 		
 		[self audioDoorInit];
 		
-		if([userAction isEqual: @"act3"]){ puzzleTerminal = 2; }
+		if([userAction isEqual: @"act3"]) { puzzleTerminal = 2;  }
 		if([userAction isEqual: @"act11"]){ puzzleTerminal = 10; }
 		if([userAction isEqual: @"act19"]){ puzzleTerminal = 18; }
 		if([userAction isEqual: @"act26"]){ puzzleTerminal = 27; }
 		
-		if([userAction isEqual: @"act28"]){ puzzleTerminal = 5; }
-		if([userAction isEqual: @"act29"]){ puzzleTerminal = 5; }
-		if([userAction isEqual: @"act30"]){ puzzleTerminal = 5; }
+		if([userAction isEqual: @"act28"]){ puzzleTerminal = 5;  }
+		if([userAction isEqual: @"act29"]){ puzzleTerminal = 5;  }
+		if([userAction isEqual: @"act30"]){ puzzleTerminal = 5;  }
 		
 		if( [userActionStorage[puzzleTerminal] intValue] > 1 ){
-			if( [userAction isEqual: @"act28"] ){
-				[self.action3 setImage:[UIImage imageNamed:@"node.0366.jpg"] forState:UIControlStateNormal];
-			}
-			else if( [userAction isEqual: @"act3"] && userNode == 12 ){
-				[self.action3 setImage:[UIImage imageNamed:@"node.0470.jpg"] forState:UIControlStateNormal];
-			}
-			else if( [userAction isEqual: @"act3"] && userNode == 13 ){
-				[self.action3 setImage:[UIImage imageNamed:@"node.0471.jpg"] forState:UIControlStateNormal];
-			}
-			else if( [userAction isEqual: @"act19"] && userNode == 69 ){
-				[self.action3 setImage:[UIImage imageNamed:@"node.0478.jpg"] forState:UIControlStateNormal];
-			}
-			else if( [userAction isEqual: @"act19"] && userNode == 61 ){ // Issue
-				NSLog(@"!!");
-				[self.action3 setImage:[UIImage imageNamed:@"node.0479.jpg"] forState:UIControlStateNormal];
-			}
-			else if( [userAction isEqual: @"act26"] && userNode == 62 ){
-				[self.action3 setImage:[UIImage imageNamed:@"node.0480.jpg"] forState:UIControlStateNormal];
-			}
-			else if( [userAction isEqual: @"act26"] && userNode == 77 ){
-				[self.action3 setImage:[UIImage imageNamed:@"node.0481.jpg"] forState:UIControlStateNormal];
-			}
 			
-			else if( [userAction isEqual: @"act30"] && userNode == 76 ){
-				[self.action3 setImage:[UIImage imageNamed:@"node.0482.jpg"] forState:UIControlStateNormal];
-			}
-			else if( [userAction isEqual: @"act30"] && userNode == 87 ){
-				[self.action3 setImage:[UIImage imageNamed:@"node.0483.jpg"] forState:UIControlStateNormal];
-			}
-			
+			[self  templateUpdateState:12:@"0470":@"act3"];
+			[self  templateUpdateState:13:@"0470":@"act3"];
+			[self  templateUpdateState:69:@"0478":@"act19"];
+			[self  templateUpdateState:61:@"0479":@"act19"];
+			[self  templateUpdateState:62:@"0480":@"act26"];
+			[self  templateUpdateState:77:@"0481":@"act26"];
+			[self  templateUpdateState:76:@"0482":@"act30"];
+			[self  templateUpdateState:87:@"0483":@"act30"];
 			
 			self.action3.frame = CGRectMake(0, 10, 320, 460);
 			[self fadeIn:self.action3 t:0.5];
 			
-//			else{
-//				[self.action3 setImage:[UIImage imageNamed:@"door_unlocked.png"] forState:UIControlStateNormal];
-//				self.action3.frame = CGRectMake(104, 144, 128, 128);
-//				[self fadeHalf:self.action3 t:1];
-//			}
 		}
 		else{
 			self.graphic1.image = [UIImage imageNamed:@"door_locked.png"];
@@ -427,20 +402,16 @@ int				userFootstep = 0;
 			}
 		}
 		
-		[self templateUpdateClockDoor];
-		
 		if( puzzleState == 1 ){
 			
-			self.action3.frame = CGRectMake(75, 100, 170, 200);
-			[self fadeHalf:self.action3 t:1];
-			
-			self.graphic1.frame = CGRectMake(143, 175, 35, 35);
-			self.graphic1.image = [UIImage imageNamed:@"door_dotunlocked.png"];
-			[self fadeIn:self.graphic1 t:1];
+			[self  templateUpdateState:16:@"0472":@"act7"];
+			[self  templateUpdateState:23:@"0473":@"act7"];
+			[self  templateUpdateState:25:@"0474":@"act8"];
+			[self  templateUpdateState:35:@"0475":@"act8"];
+			[self  templateUpdateState:27:@"0476":@"act9"];
+			[self  templateUpdateState:52:@"0477":@"act9"];
 			
 		}
-		
-		
 		
 	}
 	
@@ -808,6 +779,9 @@ int				userFootstep = 0;
 -(void)dimClock
 {
 	
+	
+	
+	
 	self.graphic4.frame = CGRectMake(160, 320, 32, 32);
 	self.graphic3.frame = CGRectMake(130, 320, 32, 32);
 	
@@ -933,30 +907,13 @@ int				userFootstep = 0;
 
 }
 
--(void)templateUpdateClockDoor
+- (void)templateUpdateState :(int)node :(NSString*)img :(NSString*)act
 {
-	
-	self.graphic2.frame = CGRectMake(85, 140, 35, 35);
-	self.graphic3.frame = CGRectMake(198, 140, 35, 35);
-	self.graphic4.frame = CGRectMake(143, 237, 35, 35);
-	
-	self.graphic2.image = [UIImage imageNamed:@"door_dot.png"];
-	self.graphic3.image = [UIImage imageNamed:@"door_dot.png"];
-	self.graphic4.image = [UIImage imageNamed:@"door_dot.png"];
-	
-	if( [userActionStorage[1] intValue] == 0 ){
-		[self fadeIn:self.graphic2 t:1];
-		[self fadeIn:self.graphic3 t:1];
+	if( userNode == node && [userAction isEqual: act]){
+		[self.action3 setImage:[UIImage imageNamed: [NSString stringWithFormat:@"node.%@.jpg", img] ] forState:UIControlStateNormal];
 	}
-	else if( [userActionStorage[1] intValue] == 1 ){
-		[self fadeIn:self.graphic3 t:1];
-		[self fadeIn:self.graphic4 t:1];
-	}
-	else if( [userActionStorage[1] intValue] == 2 ){
-		[self fadeIn:self.graphic2 t:1];
-		[self fadeIn:self.graphic4 t:1];
-	}
-	
+	self.action3.frame = CGRectMake(0, 10, 320, 460);
+	[self fadeIn:self.action3 t:0.5];
 }
 
 // ====================
