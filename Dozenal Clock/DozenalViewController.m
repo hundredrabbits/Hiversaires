@@ -267,31 +267,19 @@ int				userFootstep = 0;
 		// Forest + Rainre ( Stones Monolith )
 		
 		if ( [userActionStorage[4] intValue] == 1 && [userActionStorage[13] intValue] == 1 ) {
+
+			[self  templateUpdateState:46:@"0486":@"act15"];
+			[self  templateUpdateState:85:@"0485":@"act15"];
 			
-			if( userNode == 46 )	{ userNode = 85; userOrientation = 2; }
-			else if( userNode == 85 )	{ userNode = 46; userOrientation = 0; }
-			userAction = nil;
-			[self actionCheck];
-			[self moveCheck];
-			[self actionReset];
-			[self vibrate];
-			
-		}
-		else if( userActionId == 15 ){
-			[self templateUpdateStonesGate];
 		}
 		
 		// Antechannel + Rainre ( Metamondst Door )
 		
 		if ( [userActionStorage[21] intValue] == 1 && [userActionStorage[13] intValue] == 1 ) {
 			
-			if( userNode == 85 )	{ userNode = 46; userOrientation = 0; }
-			else if( userNode == 46 )	{ userNode = 85; userOrientation = 2; }
-			userAction = nil;
-			[self actionCheck];
-			[self moveCheck];
-			[self actionReset];
-			[self vibrate];
+			[self  templateUpdateState:46:@"0486":@"act15"];
+			[self  templateUpdateState:85:@"0485":@"act15"];
+
 		}
 		
 		// Metamondst + Rainre ( Forest Monolith )
@@ -588,10 +576,7 @@ int				userFootstep = 0;
 		[self actionReset];
 		
 	}
-	
-	
-
-	
+		
 	// ====================
 	// Fold Gate
 	// ====================
@@ -669,7 +654,7 @@ int				userFootstep = 0;
 	else if	( userNode == 35 ){	userNode = 31; userOrientation = 0;}
 	else if	( userNode == 39 ){	userNode = 45; }
 	else if	( userNode == 45 ){	userNode = 51; }
-	else if	( userNode == 46 ){	userNode = 1; }
+	else if	( userNode == 46 ){	userNode = 85; userOrientation = 2; }
 	else if	( userNode == 51 ){	userNode = 45; }
 	else if	( userNode == 52 ){	userNode = 32; userOrientation = 3;}
 	else if	( userNode == 61 ){	userNode = 72; }
@@ -677,6 +662,7 @@ int				userFootstep = 0;
 	else if	( userNode == 69 ){	userNode = 72; }
 	else if	( userNode == 76 ){	userNode = 87; }
 	else if	( userNode == 77 ){	userNode = 62; }
+	else if	( userNode == 85 ){	userNode = 46; userOrientation = 0; }
 	else if	( userNode == 87 ){	userNode = 76; }
 	
 	userAction = nil;
@@ -883,28 +869,6 @@ int				userFootstep = 0;
 		[self fadeIn:self.graphic2 t:1];
 	}
 		
-}
-
-- (void)templateUpdateStonesGate
-{
-	[self fadeHalf:self.graphic1 t:1];
-	self.graphic1.image = [UIImage imageNamed:@"seal32_forest.png"];
-	self.graphic1.frame = CGRectMake(115, 140, 90, 90);
-	
-	[self fadeHalf:self.graphic2 t:1];
-	self.graphic2.image = [UIImage imageNamed:@"seal32_rainre.png"];
-	self.graphic2.frame = CGRectMake(115, 260, 90, 90);
-	
-	if ( [userActionStorage[4] intValue] == 1 ) {
-		[self fadeIn:self.graphic1 t:1];
-	}
-	
-	if ( [userActionStorage[13] intValue] == 1 ) {
-		[self fadeIn:self.graphic2 t:1];
-	}
-	
-	NSLog(@"%@",userActionStorage);
-
 }
 
 - (void)templateUpdateState :(int)node :(NSString*)img :(NSString*)act
