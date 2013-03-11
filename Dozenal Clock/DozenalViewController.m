@@ -37,7 +37,7 @@ int				userActionId;
 
 int				userSeal = 0;
 int				userEnergy = 0;
-int				userFold = 1;
+int				userFold = 0;
 int				userCollectible = 1;
 
 int				userFootstep = 0;
@@ -58,12 +58,13 @@ int				userFootstep = 0;
 	
 	userActionStorage = [NSMutableArray arrayWithObjects:@"",@"0",@"",@"",@"",@"0",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",nil];
 	
-	userActionStorage[20] = @"1";
-	userActionStorage[13] = @"1";
+//	userActionStorage[20] = @"1";
+//	userActionStorage[13] = @"1";
+//	userActionStorage[22] = @"1"; // Map
 	
 //	userActionStorage[23] = @"17";
 //	userActionStorage[24] = @"17";
-	userActionStorage[5] = @"2";
+//	userActionStorage[5] = @"2";
 	
 	[self actionCheck];
     [self moveCheck];
@@ -564,9 +565,10 @@ int				userFootstep = 0;
 	
 	if([userAction isEqual: @"act6"]){ // Fold Gate
 		
-		userNode = 13;
+		userNode = 20;
+		userOrientation = 2;
 		userAction = nil;
-		userFold = ( userFold > 3 ) ? userFold = 1 : userFold+1;
+		userFold = ( userFold == 1 ) ? 0 : 1;
 		
 		NSLog(@"%d",userFold);
 		
@@ -597,6 +599,7 @@ int				userFootstep = 0;
 		self.graphic10.image = [UIImage imageNamed:@"progress_forest.png"];
 		self.graphic11.image = [UIImage imageNamed:@"progress_stones.png"];
 		self.graphic12.image = [UIImage imageNamed:@"progress_rainre.png"];
+		self.graphic13.image = [UIImage imageNamed:@"progress_map.png"];
 		
 		self.graphic14.image = [UIImage imageNamed:@"progress_entente.png"];
 		self.graphic15.image = [UIImage imageNamed:@"progress_bonus6.png"];
@@ -636,7 +639,7 @@ int				userFootstep = 0;
 		if( [userActionStorage[4] isEqual: @"1"] ) {	[self fadeIn:self.graphic10 t:1]; }
 		if( [userActionStorage[12] isEqual: @"1"] ){	[self fadeIn:self.graphic11 t:1]; }
 		if( [userActionStorage[13] isEqual: @"1"] ){	[self fadeIn:self.graphic12 t:1]; }
-		if( [userActionStorage[23] isEqual: @"1"] ){	[self fadeIn:self.graphic13 t:1]; }
+		// Nothing
 		
 		if( [userActionStorage[22] isEqual: @"1"] ) {	[self fadeIn:self.graphic14 t:1]; }
 		// 15
@@ -644,23 +647,8 @@ int				userFootstep = 0;
 		// 17
 		
 		
-//		[self fadeIn:self.graphic2 t:1];
-//		[self fadeIn:self.graphic3 t:1];
-//		[self fadeIn:self.graphic4 t:1];
-//		[self fadeIn:self.graphic5 t:1];
-//		[self fadeIn:self.graphic6 t:1];
-//		[self fadeIn:self.graphic7 t:1];
-//		[self fadeIn:self.graphic8 t:1];
-//		[self fadeIn:self.graphic9 t:1];
-//		[self fadeIn:self.graphic10 t:1];
-//		[self fadeIn:self.graphic11 t:1];
-//		[self fadeIn:self.graphic12 t:1];
-//		[self fadeIn:self.graphic13 t:1];
-//		[self fadeIn:self.graphic14 t:1];
-//		[self fadeIn:self.graphic15 t:1];
-//		[self fadeIn:self.graphic16 t:1];
-//		[self fadeIn:self.graphic17 t:1];
-		
+		if( [userActionStorage[22] isEqual: @"1"] ){	[self fadeIn:self.graphic13 t:1]; }
+	
 	}
 	
 }
@@ -684,7 +672,14 @@ int				userFootstep = 0;
 	self.action3.hidden = NO;
 	self.action4.hidden = NO;
 	self.action5.hidden = NO;
-    	
+    
+	// Unlock Map
+	
+	if([userAction isEqual: @"act22"]){
+		userActionStorage[22] = @"1";
+		NSLog(@"Map Unlocked");
+	}
+	
 }
 
 - (IBAction)action1:(id)sender {

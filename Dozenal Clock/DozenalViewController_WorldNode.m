@@ -72,13 +72,13 @@
 	node[40]	= [NSArray arrayWithObjects: @"39", @"0", @"41", @"0", nil];
 	node[41]	= [NSArray arrayWithObjects: @"40", @"0", @"0", @"42", nil];
 	node[42]	= [NSArray arrayWithObjects: @"0", @"41", @"44", @"43", nil];
-	node[43]	= [NSArray arrayWithObjects: @"act22", @"42", @"0", @"act34", nil];
+	node[43]	= [NSArray arrayWithObjects: @"0", @"42", @"0", @"act34", nil];
 	node[44]	= [NSArray arrayWithObjects: @"42", @"0", @"46", @"0", nil];
 	node[45]	= [NSArray arrayWithObjects: @"act13", @"act41", @"act29", @"39", nil];
 	node[46]	= [NSArray arrayWithObjects: @"44", @"0", @"act15", @"0", nil];
 	node[47]	= [NSArray arrayWithObjects: @"act38", @"48", @"77", @"0", nil];
 	node[48]	= [NSArray arrayWithObjects: @"act25", @"0", @"49", @"47", nil];
-	node[49]	= [NSArray arrayWithObjects: @"48", @"0", @"act21", @"77", nil];
+	node[49]	= [NSArray arrayWithObjects: @"48", @"act22", @"act21", @"77", nil];
 	node[51]	= [NSArray arrayWithObjects: @"0", @"act35", @"0", @"0", nil];
 	
 	node[52]	= [NSArray arrayWithObjects: @"54", @"53", @"0", @"act9", nil];
