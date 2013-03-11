@@ -58,8 +58,8 @@ int				userFootstep = 0;
 	
 	userActionStorage = [NSMutableArray arrayWithObjects:@"",@"0",@"",@"",@"",@"0",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",nil];
 	
-//	userActionStorage[12] = @"1";
-//	userActionStorage[21] = @"1";
+	userActionStorage[20] = @"1";
+	userActionStorage[13] = @"1";
 	
 //	userActionStorage[23] = @"17";
 //	userActionStorage[24] = @"17";
@@ -264,46 +264,29 @@ int				userFootstep = 0;
 		
 		[self audioDoorInit];
 		
-		// Forest + Rainre ( Stones Monolith )
 		
-		if ( [userActionStorage[4] intValue] == 1 && [userActionStorage[13] intValue] == 1 ) {
-
+		
+		if ( [userActionStorage[4] intValue] == 1 && [userActionStorage[13] intValue] == 1 ) { // Forest + Rainre ( Stones Monolith )
 			[self  templateUpdateState:46:@"0486":@"act15"];
 			[self  templateUpdateState:85:@"0485":@"act15"];
-			
 		}
 		
-		// Antechannel + Rainre ( Metamondst Door )
-		
-		if ( [userActionStorage[21] intValue] == 1 && [userActionStorage[13] intValue] == 1 ) {
-			
+		if ( [userActionStorage[21] intValue] == 1 && [userActionStorage[13] intValue] == 1 ) { // Antechannel + Rainre ( Metamondst Door )
 			[self  templateUpdateState:46:@"0486":@"act15"];
 			[self  templateUpdateState:85:@"0485":@"act15"];
-
 		}
 		
-		// Metamondst + Rainre ( Forest Monolith )
-		
-		if ( [userActionStorage[20] intValue] == 1 && [userActionStorage[13] intValue] == 1 ) {
-			
-			if( userNode == 11 )		{ userNode = 48; userOrientation = 2; }
-			else if( userNode == 48 )	{ userNode = 11; userOrientation = 2; }
-			userAction = nil;
-			[self actionCheck];
-			[self moveCheck];
-			[self actionReset];
-			[self vibrate];
-			
-		}
-		else if( userActionId == 25 ){
-			
-			[self templateUpdateForestGate];
-			
+		if ( [userActionStorage[20] intValue] == 1 && [userActionStorage[13] intValue] == 1 ) { // Metamondst + Rainre ( Forest Monolith )
+			[self  templateUpdateState:11:@"0487":@"act25"];
+			[self  templateUpdateState:48:@"0488":@"act25"];
 		}
 		
-		// Antechannel + Stones ( Terminal Seal )
 		
-		if ( [userActionStorage[21] intValue] == 1 && [userActionStorage[12] intValue] == 1 ) {
+		
+		
+		
+		
+		if ( [userActionStorage[21] intValue] == 1 && [userActionStorage[12] intValue] == 1 ) { // Antechannel + Stones ( Terminal Seal )
 			
 			[self.action1 setImage:[UIImage imageNamed:@"tempYes.png"] forState:UIControlStateNormal];
 			self.action1.frame = CGRectMake(80, 140, 160, 160);
@@ -354,9 +337,7 @@ int				userFootstep = 0;
 			
 		}
 		else{
-			self.graphic1.image = [UIImage imageNamed:@"door_locked.png"];
-			[self fadeHalf:self.graphic1 t:1];
-			self.graphic1.frame = CGRectMake(104, 144, 128, 128);
+			[self audioDoorInactive];
 		}
 		
 	}
@@ -731,6 +712,7 @@ int				userFootstep = 0;
 	[self audioDoorEnter];
 	
 	if	( userNode == 1 ){	userNode = 103; }
+	else if	( userNode == 11 ){ userNode = 48; userOrientation = 2; }
 	else if	( userNode == 13 ){ userNode = 12; }
 	else if	( userNode == 12 ){	userNode = 13; }
 	else if ( userNode == 16 ){	userNode = 22; }
@@ -741,6 +723,7 @@ int				userFootstep = 0;
 	else if	( userNode == 39 ){	userNode = 45; }
 	else if	( userNode == 45 ){	userNode = 51; }
 	else if	( userNode == 46 ){	userNode = 85; userOrientation = 2; }
+	else if	( userNode == 48 ){	userNode = 11; userOrientation = 2; }
 	else if	( userNode == 51 ){	userNode = 45; }
 	else if	( userNode == 52 ){	userNode = 32; userOrientation = 3;}
 	else if	( userNode == 61 ){	userNode = 72; }
@@ -750,7 +733,7 @@ int				userFootstep = 0;
 	else if	( userNode == 77 ){	userNode = 62; }
 	else if	( userNode == 85 ){	userNode = 46; userOrientation = 0; }
 	else if	( userNode == 87 ){	userNode = 76; }
-	
+		
 	userAction = nil;
 	
 	[self actionCheck];
