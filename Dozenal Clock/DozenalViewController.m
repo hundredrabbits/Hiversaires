@@ -595,7 +595,6 @@ int				userFootstep = 0;
 		
 	}
 	
-	
 }
 
 - (void)actionAnimation:sender
