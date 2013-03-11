@@ -62,8 +62,8 @@ int				userFootstep = 0;
 //	userActionStorage[13] = @"1";
 //	userActionStorage[22] = @"1"; // Map
 	
-//	userActionStorage[23] = @"17";
-//	userActionStorage[24] = @"17";
+	userActionStorage[21] = @"1";
+	userActionStorage[12] = @"1";
 //	userActionStorage[5] = @"2";
 	
 	[self actionCheck];
@@ -283,15 +283,14 @@ int				userFootstep = 0;
 		}
 		
 		
-		
-		
-		
-		
 		if ( [userActionStorage[21] intValue] == 1 && [userActionStorage[12] intValue] == 1 ) { // Antechannel + Stones ( Terminal Seal )
 			
-			[self.action1 setImage:[UIImage imageNamed:@"tempYes.png"] forState:UIControlStateNormal];
+			self.graphic1.image = [UIImage imageNamed:@"node.0489.jpg"];
+			self.graphic1.frame = CGRectMake(0, 10, 320, 460);
+			
+			[self.action1 setImage: nil forState: UIControlStateNormal];
 			self.action1.frame = CGRectMake(80, 140, 160, 160);
-			[self fadeIn:self.action1 t:1];
+			[self fadeIn:self.action1 t:0];
 			
 			[self templateUpdateStudioTerminal];
 			[self vibrate];
@@ -912,31 +911,17 @@ int				userFootstep = 0;
 
 - (void)templateUpdateStudioTerminal
 {
-	
-	[self fadeHalf:self.graphic1 t:1];
-	self.graphic1.image = [UIImage imageNamed:@"seal32_antech.png"];
-	self.graphic1.frame = CGRectMake(135, 130, 45, 45);
-	
-	[self fadeHalf:self.graphic2 t:1];
-	self.graphic2.image = [UIImage imageNamed:@"seal32_stones.png"];
-	self.graphic2.frame = CGRectMake(185, 130, 45, 45);
-	
-	if ( [userActionStorage[21] intValue] == 1 ) {
-		[self fadeIn:self.graphic1 t:1];
-	}
-	
-	if ( [userActionStorage[12] intValue] == 1 ) {
-		[self fadeIn:self.graphic2 t:1];
-	}
-	
+		
 	if( [userActionStorage[userActionId] intValue] == 2 ){
-		[self.action1 setImage:[UIImage imageNamed:@"tempYes.png"] forState:UIControlStateNormal];
+		
+		[self fadeIn:self.graphic1 t:1];
+		
 	}
 	else{
-		[self.action1 setImage:[UIImage imageNamed:@"tempNo.png"] forState:UIControlStateNormal];
+		
+		[self fadeOut:self.graphic1 t:1];
+		
 	}
-	
-	NSLog(@"worked");
 	
 }
 

@@ -265,7 +265,6 @@
                         <outlet property="graphic14" destination="PC0-2b-xit" id="KCR-hx-S2H"/>
                         <outlet property="graphic15" destination="sbQ-EL-ls8" id="kll-b3-cUU"/>
                         <outlet property="graphic16" destination="Ouz-Ue-pLZ" id="Qdb-WY-JFK"/>
-                        <outlet property="graphic17" destination="L7z-23-yDC" id="ktG-O9-aVR"/>
                         <outlet property="graphic2" destination="2g5-UF-av4" id="opw-m3-wwO"/>
                         <outlet property="graphic3" destination="w8y-pV-E3l" id="PHP-u9-TP4"/>
                         <outlet property="graphic4" destination="V4e-2e-hID" id="DDj-9V-csg"/>
