@@ -595,6 +595,93 @@ int				userFootstep = 0;
 		
 	}
 	
+	// ====================
+	// Progress Terminal
+	// ====================
+	
+	if([userAction isEqual: @"act16"]){
+		
+		self.graphic1.image = [UIImage imageNamed:@"progress_shadows.png"];
+		
+		self.graphic2.image = [UIImage imageNamed:@"progress_capsule.png"];
+		self.graphic3.image = [UIImage imageNamed:@"progress_metamondst.png"];
+		self.graphic4.image = [UIImage imageNamed:@"progress_bonus1.png"];
+		self.graphic5.image = [UIImage imageNamed:@"progress_bonus2.png"];
+		
+		self.graphic6.image = [UIImage imageNamed:@"progress_studio.png"];
+		self.graphic7.image = [UIImage imageNamed:@"progress_circle.png"];
+		self.graphic8.image = [UIImage imageNamed:@"progress_antechannel.png"];
+		self.graphic9.image = [UIImage imageNamed:@"progress_bonus3.png"];
+		
+		self.graphic10.image = [UIImage imageNamed:@"progress_forest.png"];
+		self.graphic11.image = [UIImage imageNamed:@"progress_stones.png"];
+		self.graphic12.image = [UIImage imageNamed:@"progress_rainre.png"];
+		
+		self.graphic14.image = [UIImage imageNamed:@"progress_entente.png"];
+		self.graphic15.image = [UIImage imageNamed:@"progress_bonus6.png"];
+		self.graphic16.image = [UIImage imageNamed:@"progress_bonus5.png"];
+		self.graphic17.image = [UIImage imageNamed:@"progress_bonus4.png"];
+		
+		self.graphic1.frame = CGRectMake(61, 70, 200, 314);
+		self.graphic2.frame = CGRectMake(61, 70, 200, 314);
+		self.graphic3.frame = CGRectMake(61, 70, 200, 314);
+		self.graphic4.frame = CGRectMake(61, 70, 200, 314);
+		self.graphic5.frame = CGRectMake(61, 70, 200, 314);
+		self.graphic6.frame = CGRectMake(61, 70, 200, 314);
+		self.graphic7.frame = CGRectMake(61, 70, 200, 314);
+		self.graphic8.frame = CGRectMake(61, 70, 200, 314);
+		self.graphic9.frame = CGRectMake(61, 70, 200, 314);
+		self.graphic10.frame = CGRectMake(61, 70, 200, 314);
+		self.graphic11.frame = CGRectMake(61, 70, 200, 314);
+		self.graphic12.frame = CGRectMake(61, 70, 200, 314);
+		self.graphic13.frame = CGRectMake(61, 70, 200, 314);
+		self.graphic14.frame = CGRectMake(61, 70, 200, 314);
+		self.graphic15.frame = CGRectMake(61, 70, 200, 314);
+		self.graphic16.frame = CGRectMake(61, 70, 200, 314);
+		self.graphic17.frame = CGRectMake(61, 70, 200, 314);
+		
+		[self fadeIn:self.graphic1 t:1];
+		
+		if( [userActionStorage[24] isEqual: @"1"] ){	[self fadeIn:self.graphic2 t:1]; }
+		if( [userActionStorage[20] isEqual: @"1"] ){	[self fadeIn:self.graphic3 t:1]; }
+		// 4
+		// 5
+		
+		if( [userActionStorage[14] isEqual: @"1"] ){	[self fadeIn:self.graphic6 t:1]; }
+		// 7
+		if( [userActionStorage[21] isEqual: @"1"] ){	[self fadeIn:self.graphic8 t:1]; }
+		// 9
+		
+		if( [userActionStorage[4] isEqual: @"1"] ) {	[self fadeIn:self.graphic10 t:1]; }
+		if( [userActionStorage[12] isEqual: @"1"] ){	[self fadeIn:self.graphic11 t:1]; }
+		if( [userActionStorage[13] isEqual: @"1"] ){	[self fadeIn:self.graphic12 t:1]; }
+		if( [userActionStorage[23] isEqual: @"1"] ){	[self fadeIn:self.graphic13 t:1]; }
+		
+		if( [userActionStorage[22] isEqual: @"1"] ) {	[self fadeIn:self.graphic14 t:1]; }
+		// 15
+		// 16
+		// 17
+		
+		
+//		[self fadeIn:self.graphic2 t:1];
+//		[self fadeIn:self.graphic3 t:1];
+//		[self fadeIn:self.graphic4 t:1];
+//		[self fadeIn:self.graphic5 t:1];
+//		[self fadeIn:self.graphic6 t:1];
+//		[self fadeIn:self.graphic7 t:1];
+//		[self fadeIn:self.graphic8 t:1];
+//		[self fadeIn:self.graphic9 t:1];
+//		[self fadeIn:self.graphic10 t:1];
+//		[self fadeIn:self.graphic11 t:1];
+//		[self fadeIn:self.graphic12 t:1];
+//		[self fadeIn:self.graphic13 t:1];
+//		[self fadeIn:self.graphic14 t:1];
+//		[self fadeIn:self.graphic15 t:1];
+//		[self fadeIn:self.graphic16 t:1];
+//		[self fadeIn:self.graphic17 t:1];
+		
+	}
+	
 }
 
 - (void)actionAnimation:sender
@@ -740,6 +827,19 @@ int				userFootstep = 0;
 	self.graphic2.frame = CGRectMake(0, 0, 0, 0);
 	self.graphic3.frame = CGRectMake(0, 0, 0, 0);
 	self.graphic4.frame = CGRectMake(0, 0, 0, 0);
+	self.graphic5.frame = CGRectMake(0, 0, 0, 0);
+	self.graphic6.frame = CGRectMake(0, 0, 0, 0);
+	self.graphic7.frame = CGRectMake(0, 0, 0, 0);
+	self.graphic8.frame = CGRectMake(0, 0, 0, 0);
+	self.graphic9.frame = CGRectMake(0, 0, 0, 0);
+	self.graphic10.frame = CGRectMake(0, 0, 0, 0);
+	self.graphic11.frame = CGRectMake(0, 0, 0, 0);
+	self.graphic12.frame = CGRectMake(0, 0, 0, 0);
+	self.graphic13.frame = CGRectMake(0, 0, 0, 0);
+	self.graphic14.frame = CGRectMake(0, 0, 0, 0);
+	self.graphic15.frame = CGRectMake(0, 0, 0, 0);
+	self.graphic16.frame = CGRectMake(0, 0, 0, 0);
+	self.graphic17.frame = CGRectMake(0, 0, 0, 0);
 	
 	[self rotate:self.action1 t:1.0 d:0];
 	[self rotate:self.action3 t:1.0 d:0];
@@ -748,6 +848,19 @@ int				userFootstep = 0;
 	[self fadeOut:self.graphic2 t:0];
 	[self fadeOut:self.graphic3 t:0];
 	[self fadeOut:self.graphic4 t:0];
+	[self fadeOut:self.graphic5 t:0];
+	[self fadeOut:self.graphic6 t:0];
+	[self fadeOut:self.graphic7 t:0];
+	[self fadeOut:self.graphic8 t:0];
+	[self fadeOut:self.graphic9 t:0];
+	[self fadeOut:self.graphic10 t:0];
+	[self fadeOut:self.graphic11 t:0];
+	[self fadeOut:self.graphic12 t:0];
+	[self fadeOut:self.graphic13 t:0];
+	[self fadeOut:self.graphic14 t:0];
+	[self fadeOut:self.graphic15 t:0];
+	[self fadeOut:self.graphic16 t:0];
+	[self fadeOut:self.graphic17 t:0];
 	
 	[self fadeOut:self.action1 t:0];
 	[self fadeOut:self.action2 t:0];

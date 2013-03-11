@@ -372,6 +372,22 @@
 		0315424E16C7643200A1A97B /* node.0358.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 031540E616C7643200A1A97B /* node.0358.jpg */; };
 		0315424F16C7643200A1A97B /* node.0359.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 031540E716C7643200A1A97B /* node.0359.jpg */; };
 		03163B1D16DF2C2A0076BBE5 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03163B1C16DF2C2A0076BBE5 /* AudioToolbox.framework */; };
+		032CCCB616ED94ED00F7F11E /* progress_antechannel.png in Resources */ = {isa = PBXBuildFile; fileRef = 032CCCA716ED94ED00F7F11E /* progress_antechannel.png */; };
+		032CCCB716ED94ED00F7F11E /* progress_bonus1.png in Resources */ = {isa = PBXBuildFile; fileRef = 032CCCA816ED94ED00F7F11E /* progress_bonus1.png */; };
+		032CCCB816ED94ED00F7F11E /* progress_bonus2.png in Resources */ = {isa = PBXBuildFile; fileRef = 032CCCA916ED94ED00F7F11E /* progress_bonus2.png */; };
+		032CCCB916ED94ED00F7F11E /* progress_bonus3.png in Resources */ = {isa = PBXBuildFile; fileRef = 032CCCAA16ED94ED00F7F11E /* progress_bonus3.png */; };
+		032CCCBA16ED94ED00F7F11E /* progress_bonus4.png in Resources */ = {isa = PBXBuildFile; fileRef = 032CCCAB16ED94ED00F7F11E /* progress_bonus4.png */; };
+		032CCCBB16ED94ED00F7F11E /* progress_bonus5.png in Resources */ = {isa = PBXBuildFile; fileRef = 032CCCAC16ED94ED00F7F11E /* progress_bonus5.png */; };
+		032CCCBC16ED94ED00F7F11E /* progress_bonus6.png in Resources */ = {isa = PBXBuildFile; fileRef = 032CCCAD16ED94ED00F7F11E /* progress_bonus6.png */; };
+		032CCCBD16ED94ED00F7F11E /* progress_capsule.png in Resources */ = {isa = PBXBuildFile; fileRef = 032CCCAE16ED94ED00F7F11E /* progress_capsule.png */; };
+		032CCCBE16ED94ED00F7F11E /* progress_circle.png in Resources */ = {isa = PBXBuildFile; fileRef = 032CCCAF16ED94ED00F7F11E /* progress_circle.png */; };
+		032CCCBF16ED94ED00F7F11E /* progress_entente.png in Resources */ = {isa = PBXBuildFile; fileRef = 032CCCB016ED94ED00F7F11E /* progress_entente.png */; };
+		032CCCC016ED94ED00F7F11E /* progress_forest.png in Resources */ = {isa = PBXBuildFile; fileRef = 032CCCB116ED94ED00F7F11E /* progress_forest.png */; };
+		032CCCC116ED94ED00F7F11E /* progress_metamondst.png in Resources */ = {isa = PBXBuildFile; fileRef = 032CCCB216ED94ED00F7F11E /* progress_metamondst.png */; };
+		032CCCC216ED94ED00F7F11E /* progress_rainre.png in Resources */ = {isa = PBXBuildFile; fileRef = 032CCCB316ED94ED00F7F11E /* progress_rainre.png */; };
+		032CCCC316ED94ED00F7F11E /* progress_stones.png in Resources */ = {isa = PBXBuildFile; fileRef = 032CCCB416ED94ED00F7F11E /* progress_stones.png */; };
+		032CCCC416ED94ED00F7F11E /* progress_studio.png in Resources */ = {isa = PBXBuildFile; fileRef = 032CCCB516ED94ED00F7F11E /* progress_studio.png */; };
+		032CCCC616ED952500F7F11E /* progress_shadows.png in Resources */ = {isa = PBXBuildFile; fileRef = 032CCCC516ED952500F7F11E /* progress_shadows.png */; };
 		0333141316C214E0009DD80A /* vignette.png in Resources */ = {isa = PBXBuildFile; fileRef = 0333141216C214E0009DD80A /* vignette.png */; };
 		03777AD116E9DC69006882C6 /* node.0360.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 03777A9616E9DC69006882C6 /* node.0360.jpg */; };
 		03777AD216E9DC69006882C6 /* node.0361.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 03777A9716E9DC69006882C6 /* node.0361.jpg */; };
@@ -933,6 +949,22 @@
 		031540E616C7643200A1A97B /* node.0358.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = node.0358.jpg; path = graphics/node.0358.jpg; sourceTree = "<group>"; };
 		031540E716C7643200A1A97B /* node.0359.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = node.0359.jpg; path = graphics/node.0359.jpg; sourceTree = "<group>"; };
 		03163B1C16DF2C2A0076BBE5 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		032CCCA716ED94ED00F7F11E /* progress_antechannel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = progress_antechannel.png; path = graphics/progress_antechannel.png; sourceTree = "<group>"; };
+		032CCCA816ED94ED00F7F11E /* progress_bonus1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = progress_bonus1.png; path = graphics/progress_bonus1.png; sourceTree = "<group>"; };
+		032CCCA916ED94ED00F7F11E /* progress_bonus2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = progress_bonus2.png; path = graphics/progress_bonus2.png; sourceTree = "<group>"; };
+		032CCCAA16ED94ED00F7F11E /* progress_bonus3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = progress_bonus3.png; path = graphics/progress_bonus3.png; sourceTree = "<group>"; };
+		032CCCAB16ED94ED00F7F11E /* progress_bonus4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = progress_bonus4.png; path = graphics/progress_bonus4.png; sourceTree = "<group>"; };
+		032CCCAC16ED94ED00F7F11E /* progress_bonus5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = progress_bonus5.png; path = graphics/progress_bonus5.png; sourceTree = "<group>"; };
+		032CCCAD16ED94ED00F7F11E /* progress_bonus6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = progress_bonus6.png; path = graphics/progress_bonus6.png; sourceTree = "<group>"; };
+		032CCCAE16ED94ED00F7F11E /* progress_capsule.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = progress_capsule.png; path = graphics/progress_capsule.png; sourceTree = "<group>"; };
+		032CCCAF16ED94ED00F7F11E /* progress_circle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = progress_circle.png; path = graphics/progress_circle.png; sourceTree = "<group>"; };
+		032CCCB016ED94ED00F7F11E /* progress_entente.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = progress_entente.png; path = graphics/progress_entente.png; sourceTree = "<group>"; };
+		032CCCB116ED94ED00F7F11E /* progress_forest.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = progress_forest.png; path = graphics/progress_forest.png; sourceTree = "<group>"; };
+		032CCCB216ED94ED00F7F11E /* progress_metamondst.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = progress_metamondst.png; path = graphics/progress_metamondst.png; sourceTree = "<group>"; };
+		032CCCB316ED94ED00F7F11E /* progress_rainre.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = progress_rainre.png; path = graphics/progress_rainre.png; sourceTree = "<group>"; };
+		032CCCB416ED94ED00F7F11E /* progress_stones.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = progress_stones.png; path = graphics/progress_stones.png; sourceTree = "<group>"; };
+		032CCCB516ED94ED00F7F11E /* progress_studio.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = progress_studio.png; path = graphics/progress_studio.png; sourceTree = "<group>"; };
+		032CCCC516ED952500F7F11E /* progress_shadows.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = progress_shadows.png; path = graphics/progress_shadows.png; sourceTree = "<group>"; };
 		0333141216C214E0009DD80A /* vignette.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = vignette.png; path = interface/vignette.png; sourceTree = "<group>"; };
 		03777A9616E9DC69006882C6 /* node.0360.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = node.0360.jpg; path = graphics/node.0360.jpg; sourceTree = "<group>"; };
 		03777A9716E9DC69006882C6 /* node.0361.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = node.0361.jpg; path = graphics/node.0361.jpg; sourceTree = "<group>"; };
@@ -1667,6 +1699,29 @@
 			name = Loaders;
 			sourceTree = "<group>";
 		};
+		032CCCA616ED94DD00F7F11E /* ProgressTerminal */ = {
+			isa = PBXGroup;
+			children = (
+				032CCCC516ED952500F7F11E /* progress_shadows.png */,
+				032CCCA716ED94ED00F7F11E /* progress_antechannel.png */,
+				032CCCA816ED94ED00F7F11E /* progress_bonus1.png */,
+				032CCCA916ED94ED00F7F11E /* progress_bonus2.png */,
+				032CCCAA16ED94ED00F7F11E /* progress_bonus3.png */,
+				032CCCAB16ED94ED00F7F11E /* progress_bonus4.png */,
+				032CCCAC16ED94ED00F7F11E /* progress_bonus5.png */,
+				032CCCAD16ED94ED00F7F11E /* progress_bonus6.png */,
+				032CCCAE16ED94ED00F7F11E /* progress_capsule.png */,
+				032CCCAF16ED94ED00F7F11E /* progress_circle.png */,
+				032CCCB016ED94ED00F7F11E /* progress_entente.png */,
+				032CCCB116ED94ED00F7F11E /* progress_forest.png */,
+				032CCCB216ED94ED00F7F11E /* progress_metamondst.png */,
+				032CCCB316ED94ED00F7F11E /* progress_rainre.png */,
+				032CCCB416ED94ED00F7F11E /* progress_stones.png */,
+				032CCCB516ED94ED00F7F11E /* progress_studio.png */,
+			);
+			name = ProgressTerminal;
+			sourceTree = "<group>";
+		};
 		0333141116C214D6009DD80A /* Interface */ = {
 			isa = PBXGroup;
 			children = (
@@ -1741,6 +1796,7 @@
 		03D6AF7316C08A72000D0750 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				032CCCA616ED94DD00F7F11E /* ProgressTerminal */,
 				03777B1216E9EB26006882C6 /* Misc */,
 				039F1F2316DB72D200DE1938 /* Doors */,
 				03D4668316DB62CD00878D17 /* Energies */,
@@ -2448,6 +2504,22 @@
 				03777B9C16EA2385006882C6 /* node.0486.jpg in Resources */,
 				03777B9D16EA2385006882C6 /* node.0487.jpg in Resources */,
 				03777B9E16EA2385006882C6 /* node.0488.jpg in Resources */,
+				032CCCB616ED94ED00F7F11E /* progress_antechannel.png in Resources */,
+				032CCCB716ED94ED00F7F11E /* progress_bonus1.png in Resources */,
+				032CCCB816ED94ED00F7F11E /* progress_bonus2.png in Resources */,
+				032CCCB916ED94ED00F7F11E /* progress_bonus3.png in Resources */,
+				032CCCBA16ED94ED00F7F11E /* progress_bonus4.png in Resources */,
+				032CCCBB16ED94ED00F7F11E /* progress_bonus5.png in Resources */,
+				032CCCBC16ED94ED00F7F11E /* progress_bonus6.png in Resources */,
+				032CCCBD16ED94ED00F7F11E /* progress_capsule.png in Resources */,
+				032CCCBE16ED94ED00F7F11E /* progress_circle.png in Resources */,
+				032CCCBF16ED94ED00F7F11E /* progress_entente.png in Resources */,
+				032CCCC016ED94ED00F7F11E /* progress_forest.png in Resources */,
+				032CCCC116ED94ED00F7F11E /* progress_metamondst.png in Resources */,
+				032CCCC216ED94ED00F7F11E /* progress_rainre.png in Resources */,
+				032CCCC316ED94ED00F7F11E /* progress_stones.png in Resources */,
+				032CCCC416ED94ED00F7F11E /* progress_studio.png in Resources */,
+				032CCCC616ED952500F7F11E /* progress_shadows.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

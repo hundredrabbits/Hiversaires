@@ -15,7 +15,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *debugOrientation;
 @property (weak, nonatomic) IBOutlet UILabel *debugNode;
 @property (weak, nonatomic) IBOutlet UILabel *debugAction;
-@property (weak, nonatomic) IBOutlet UILabel *debugActionValue;
 
 // Interface
 
@@ -56,6 +55,19 @@
 @property (weak, nonatomic) IBOutlet UIImageView *graphic2;
 @property (weak, nonatomic) IBOutlet UIImageView *graphic3;
 @property (weak, nonatomic) IBOutlet UIImageView *graphic4;
+@property (weak, nonatomic) IBOutlet UIImageView *graphic5;
+@property (weak, nonatomic) IBOutlet UIImageView *graphic6;
+@property (weak, nonatomic) IBOutlet UIImageView *graphic7;
+@property (weak, nonatomic) IBOutlet UIImageView *graphic8;
+@property (weak, nonatomic) IBOutlet UIImageView *graphic9;
+@property (weak, nonatomic) IBOutlet UIImageView *graphic10;
+@property (weak, nonatomic) IBOutlet UIImageView *graphic11;
+@property (weak, nonatomic) IBOutlet UIImageView *graphic12;
+@property (weak, nonatomic) IBOutlet UIImageView *graphic13;
+@property (weak, nonatomic) IBOutlet UIImageView *graphic14;
+@property (weak, nonatomic) IBOutlet UIImageView *graphic15;
+@property (weak, nonatomic) IBOutlet UIImageView *graphic16;
+@property (weak, nonatomic) IBOutlet UIImageView *graphic17;
 
 @end
 
