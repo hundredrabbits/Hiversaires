@@ -37,7 +37,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="OaR-be-2E9" userLabel="moveRight">
-                                <rect key="frame" x="260" y="220" width="60" height="240"/>
+                                <rect key="frame" x="245" y="220" width="75" height="240"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="11"/>
                                 <state key="normal">
                                     <color key="titleColor" red="1" green="0.97045334869341082" blue="0.99905151253527547" alpha="1" colorSpace="calibratedRGB"/>
@@ -51,7 +51,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="HZM-Xl-Bax" userLabel="moveLeft">
-                                <rect key="frame" x="0.0" y="220" width="60" height="240"/>
+                                <rect key="frame" x="0.0" y="220" width="75" height="240"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="11"/>
                                 <state key="normal">
                                     <color key="titleColor" red="1" green="0.9704533487" blue="0.99905151250000002" alpha="1" colorSpace="calibratedRGB"/>

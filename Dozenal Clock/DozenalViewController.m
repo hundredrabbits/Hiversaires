@@ -58,16 +58,13 @@ int				userFootstep = 0;
 	
 	userActionStorage = [NSMutableArray arrayWithObjects:@"",@"0",@"",@"",@"",@"0",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",nil];
 	
-//	userActionStorage[20] = @"1";
-//	userActionStorage[13] = @"1";
-//	userActionStorage[22] = @"1"; // Map
-	
-	userActionStorage[21] = @"1";
-	userActionStorage[12] = @"1";
-	userActionStorage[5] = @"2";
+//	userActionStorage[21] = @"1";
+//	userActionStorage[12] = @"1";
+//	userActionStorage[5] = @"2";
 	
 	[self actionCheck];
     [self moveCheck];
+	
 	
 }
 
@@ -88,6 +85,10 @@ int				userFootstep = 0;
 	self.debugNode.text = [NSString stringWithFormat:@"%d", userNode];
 	self.debugOrientation.text = [NSString stringWithFormat:@"%d", userOrientation];
 	self.debugAction.text = [NSString stringWithFormat:@"%@", worldPath[userNode][userOrientation]];
+	
+	self.debugNode.alpha = 0;
+	self.debugOrientation.alpha = 0;
+	self.debugAction.alpha = 0;
 	
 	self.moveAction.hidden = YES; [self fadeOut:_interfaceVignette t:1];
     self.moveForward.hidden = worldPath[userNode][userOrientation] ? NO : YES;
@@ -193,6 +194,24 @@ int				userFootstep = 0;
 	
 	[self actionReset];
 	
+	
+	
+	// ====================
+	// Splash
+	// ====================
+	
+	if( userActionId == 32 ){
+		
+		[self.action1 setImage:[UIImage imageNamed:@"tempYes.png"] forState:UIControlStateNormal];
+		self.action1.frame = CGRectMake(0, 10, 320, 460);
+		[self fadeIn:self.action1 t:1];
+		
+		NSLog(@"!!");
+		
+	}
+	
+	
+	
 	// ====================
 	// Clock Terminal
 	// ====================
@@ -209,8 +228,6 @@ int				userFootstep = 0;
 		[self fadeIn:self.graphic1 t:1];
 		self.graphic1.image = [UIImage imageNamed:@"action0102.png"];
 		self.graphic1.frame = CGRectMake(80, 140, 160, 160);
-		
-		[self dimClock];
 		
 	}
 	
@@ -735,9 +752,6 @@ int				userFootstep = 0;
 	else if	( userNode == 85 ){	userNode = 46; userOrientation = 0; }
 	else if	( userNode == 87 ){	userNode = 76; }
 	
-	
-	
-		
 	userAction = nil;
 	
 	[self actionCheck];
@@ -854,49 +868,6 @@ int				userFootstep = 0;
 	[self fadeOut:self.action3 t:0];
 	[self fadeOut:self.action4 t:0];
 	[self fadeOut:self.action5 t:0];
-	
-}
-
-// ====================
-// DimClock
-// ====================
-
--(void)dimClock
-{
-	
-	
-	
-	
-	self.graphic4.frame = CGRectMake(160, 320, 32, 32);
-	self.graphic3.frame = CGRectMake(130, 320, 32, 32);
-	
-	if( [userActionStorage[userActionId] intValue] == 0 ){
-		
-		[self fadeIn:self.graphic3 t:2];
-		self.graphic3.image = [UIImage imageNamed:@"seal32_studio.png"];
-		
-		[self fadeIn:self.graphic4 t:2];
-		self.graphic4.image = [UIImage imageNamed:@"seal32_antech.png"];
-		
-	}
-	else if ( [userActionStorage[userActionId] intValue] == 1 ){
-		
-		[self fadeIn:self.graphic3 t:2];
-		self.graphic3.image = [UIImage imageNamed:@"seal32_antech.png"];
-		
-		[self fadeIn:self.graphic4 t:2];
-		self.graphic4.image = [UIImage imageNamed:@"seal32_stones.png"];
-	
-	}
-	else if ( [userActionStorage[userActionId] intValue] == 2 ){
-		
-		[self fadeIn:self.graphic3 t:2];
-		self.graphic3.image = [UIImage imageNamed:@"seal32_stones.png"];
-		
-		[self fadeIn:self.graphic4 t:2];
-		self.graphic4.image = [UIImage imageNamed:@"seal32_studio.png"];
-		
-	}
 	
 }
 
