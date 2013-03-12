@@ -64,7 +64,7 @@ int				userFootstep = 0;
 	
 	userActionStorage[21] = @"1";
 	userActionStorage[12] = @"1";
-//	userActionStorage[5] = @"2";
+	userActionStorage[5] = @"2";
 	
 	[self actionCheck];
     [self moveCheck];
@@ -265,8 +265,6 @@ int				userFootstep = 0;
 		
 		[self audioDoorInit];
 		
-		
-		
 		if ( [userActionStorage[4] intValue] == 1 && [userActionStorage[13] intValue] == 1 ) { // Forest + Rainre ( Stones Monolith )
 			[self  templateUpdateState:46:@"0486":@"act15"];
 			[self  templateUpdateState:85:@"0485":@"act15"];
@@ -331,6 +329,14 @@ int				userFootstep = 0;
 			[self  templateUpdateState:77:@"0481":@"act26"];
 			[self  templateUpdateState:76:@"0482":@"act30"];
 			[self  templateUpdateState:87:@"0483":@"act30"];
+			
+			// Nether Door
+			if( [userActionStorage[5] isEqual: @"2"] && userFold == 1 ){
+				[self  templateUpdateState:39:@"0491":@"act11"];
+			}
+			else{
+				[self  templateUpdateState:39:@"0490":@"act11"];
+			}
 			
 			self.action3.frame = CGRectMake(0, 10, 320, 460);
 			[self fadeIn:self.action3 t:0.5];
@@ -562,7 +568,7 @@ int				userFootstep = 0;
 	// Fold Gate
 	// ====================
 	
-	if([userAction isEqual: @"act6"]){ // Fold Gate
+	if([userAction isEqual: @"act6"] && [userActionStorage[5] isEqual: @"2"] ){ // Fold Gate
 		
 		userNode = 20;
 		userOrientation = 2;
@@ -714,6 +720,7 @@ int				userFootstep = 0;
 	else if	( userNode == 25 ){	userNode = 31; userOrientation = 2;}
 	else if	( userNode == 27 ){	userNode = 32; userOrientation = 1;}
 	else if	( userNode == 35 ){	userNode = 31; userOrientation = 0;}
+	else if	( userNode == 39 && userFold == 1 ) { userNode = 34; NSLog(@"!!"); }
 	else if	( userNode == 39 ){	userNode = 45; }
 	else if	( userNode == 45 ){	userNode = 51; }
 	else if	( userNode == 46 ){	userNode = 85; userOrientation = 2; }
@@ -727,6 +734,9 @@ int				userFootstep = 0;
 	else if	( userNode == 77 ){	userNode = 62; }
 	else if	( userNode == 85 ){	userNode = 46; userOrientation = 0; }
 	else if	( userNode == 87 ){	userNode = 76; }
+	
+	
+	
 		
 	userAction = nil;
 	
