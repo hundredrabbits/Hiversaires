@@ -239,13 +239,9 @@ int				userFootstep = 0;
 		
 		[self audioSealInit];
 		
-		[self.action5 setImage:[UIImage imageNamed:@"seal64_forest.png"] forState:UIControlStateNormal];
-		
+		[self.action5 setImage:nil forState:UIControlStateNormal];
 		self.action5.frame = CGRectMake(128, 180, 64, 64);
-		self.graphic1.frame = CGRectMake(128, 232, 64, 16);
-		
 		[self fadeHalf:self.action5 t:1];
-		[self fadeHalf:self.graphic1 t:1];
 		
 		[self templateUpdateSeal];
 		
@@ -877,9 +873,29 @@ int				userFootstep = 0;
 
 - (void)templateUpdateSeal
 {
+	
 	userSeal = [self sealCount];
-	self.action5.alpha = [userActionStorage[userActionId] intValue] == 1 ? 1.0 : 0.2;
-	self.graphic1.image = [UIImage imageNamed: [NSString stringWithFormat:@"seal_userslot%d.png", userSeal ] ];
+	[self fadeOut:self.graphic1 t:1];
+	
+	if( [userActionStorage[userActionId] intValue] == 1 ){
+		
+		if( userSeal == 1 ){
+			[self  templateUpdateNode:5:@"0493":@"act4"];
+			[self  templateUpdateNode:38:@"0496":@"act12"];
+			[self  templateUpdateNode:45:@"0502":@"act13"];
+			[self  templateUpdateNode:49:@"0505":@"act21"];
+			[self  templateUpdateNode:82:@"0499":@"act20"];
+		}
+		else{
+			[self  templateUpdateNode:5:@"0494":@"act4"];
+			[self  templateUpdateNode:38:@"0497":@"act12"];
+			[self  templateUpdateNode:45:@"0503":@"act13"];
+			[self  templateUpdateNode:49:@"0506":@"act21"];
+			[self  templateUpdateNode:82:@"0500":@"act20"];
+		}
+		
+	}
+	
 }
 
 - (void)templateUpdateEnergy
@@ -934,6 +950,16 @@ int				userFootstep = 0;
 	}
 	self.action3.frame = CGRectMake(0, 10, 320, 460);
 	[self fadeIn:self.action3 t:0.5];
+}
+
+- (void)templateUpdateNode :(int)node :(NSString*)img :(NSString*)act
+{
+	if( userNode == node && [userAction isEqual: act]){
+		self.graphic1.image = [UIImage imageNamed: [NSString stringWithFormat:@"node.%@.jpg", img] ];
+	}
+	self.graphic1.frame = CGRectMake(0, 10, 320, 460);
+	[self fadeIn:self.graphic1 t:0.5];
+
 }
 
 // ====================
