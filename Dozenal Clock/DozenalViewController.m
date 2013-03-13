@@ -86,9 +86,9 @@ int				userFootstep = 0;
 	self.debugOrientation.text = [NSString stringWithFormat:@"%d", userOrientation];
 	self.debugAction.text = [NSString stringWithFormat:@"%@", worldPath[userNode][userOrientation]];
 	
-	self.debugNode.alpha = 0;
-	self.debugOrientation.alpha = 0;
-	self.debugAction.alpha = 0;
+//	self.debugNode.alpha = 0;
+//	self.debugOrientation.alpha = 0;
+//	self.debugAction.alpha = 0;
 	
 	self.moveAction.hidden = YES; [self fadeOut:_interfaceVignette t:1];
     self.moveForward.hidden = worldPath[userNode][userOrientation] ? NO : YES;
@@ -339,7 +339,7 @@ int				userFootstep = 0;
 		if( [userActionStorage[puzzleTerminal] intValue] > 1 ){
 			
 			[self  templateUpdateState:12:@"0470":@"act3"];
-			[self  templateUpdateState:13:@"0470":@"act3"];
+			[self  templateUpdateState:13:@"0471":@"act3"];
 			[self  templateUpdateState:69:@"0478":@"act19"];
 			[self  templateUpdateState:61:@"0479":@"act19"];
 			[self  templateUpdateState:62:@"0480":@"act26"];
