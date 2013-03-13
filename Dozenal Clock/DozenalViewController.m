@@ -194,24 +194,6 @@ int				userFootstep = 0;
 	
 	[self actionReset];
 	
-	
-	
-	// ====================
-	// Splash
-	// ====================
-	
-	if( userActionId == 32 ){
-		
-		[self.action1 setImage:[UIImage imageNamed:@"tempYes.png"] forState:UIControlStateNormal];
-		self.action1.frame = CGRectMake(0, 10, 320, 460);
-		[self fadeIn:self.action1 t:1];
-		
-		NSLog(@"!!");
-		
-	}
-	
-	
-	
 	// ====================
 	// Clock Terminal
 	// ====================
@@ -421,6 +403,15 @@ int				userFootstep = 0;
 		else{
 			NSLog(@"Collectibles Inactive");
 		}
+		
+		if( [userActionStorage[5] intValue] > 1 ){
+			
+			[self  templateUpdateNode:9:@"0514":@"act32"];
+			
+		}
+		
+		
+		NSLog(@"!!");
 		
 	}
 	
