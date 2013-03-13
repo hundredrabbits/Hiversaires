@@ -222,7 +222,7 @@ int				userFootstep = 0;
 		[self audioSealInit];
 		
 		[self.action5 setImage:nil forState:UIControlStateNormal];
-		self.action5.frame = CGRectMake(128, 180, 64, 64);
+		self.action5.frame = CGRectMake(90, 140, 140, 180);
 		[self fadeHalf:self.action5 t:1];
 		
 		[self templateUpdateSeal];
