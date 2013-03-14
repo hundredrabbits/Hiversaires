@@ -256,7 +256,7 @@ int				userFootstep = 0;
 	}
 	
 	// ====================
-	// Seal Gate
+	// Seal Door
 	// ====================
 	
 	if( [worldActionType[userActionId] isEqual: @"sealDoor"] ){
@@ -266,6 +266,8 @@ int				userFootstep = 0;
 		if ( [userActionStorage[4] intValue] == 1 && [userActionStorage[13] intValue] == 1 ) { // Forest + Rainre ( Stones Monolith )
 			[self  templateUpdateState:46:@"0486":@"act15"];
 			[self  templateUpdateState:85:@"0485":@"act15"];
+			[self templateAmbientAssoc:46:@"metamondst":@"act15"];
+			[self templateAmbientAssoc:85:@"stones":@"act15"];
 		}
 		
 		if ( [userActionStorage[21] intValue] == 1 && [userActionStorage[13] intValue] == 1 ) { // Antechannel + Rainre ( Metamondst Door )
@@ -276,6 +278,8 @@ int				userFootstep = 0;
 		if ( [userActionStorage[20] intValue] == 1 && [userActionStorage[13] intValue] == 1 ) { // Metamondst + Rainre ( Forest Monolith )
 			[self  templateUpdateState:11:@"0487":@"act25"];
 			[self  templateUpdateState:48:@"0488":@"act25"];
+			[self templateAmbientAssoc:11:@"antechannel":@"act25"];
+			[self templateAmbientAssoc:48:@"forest":@"act25"];
 		}
 		
 		
@@ -330,13 +334,18 @@ int				userFootstep = 0;
 			
 			[self templateAmbientAssoc:12:@"studio":@"act3"];
 			[self templateAmbientAssoc:13:@"forest":@"act3"];
+			[self templateAmbientAssoc:69:@"antechannel":@"act19"];
+			[self templateAmbientAssoc:61:@"metamondst":@"act19"];
 			
 			// Nether Door
 			if( [userActionStorage[5] isEqual: @"2"] && userFold == 1 ){
 				[self  templateUpdateState:39:@"0491":@"act11"];
+				[self templateAmbientAssoc:39:@"nether":@"act11"];
+				
 			}
 			else{
 				[self  templateUpdateState:39:@"0490":@"act11"];
+				[self templateAmbientAssoc:39:@"rainre":@"act11"];
 			}
 			
 			self.action3.frame = CGRectMake(0, 10, 320, 460);
@@ -970,9 +979,13 @@ int				userFootstep = 0;
 {
 	if( userNode == node && [userAction isEqual: act]){
 		
-		if( [track isEqual: @"forest"])		{ [self ambientForest]; }
-		if( [track isEqual: @"studio"])		{ [self ambientStudio]; }
-		if( [track isEqual: @"circular"])	{ [self ambientCircular]; }
+		if( [track isEqual: @"forest"])			{ [self ambientForest]; }
+		if( [track isEqual: @"studio"])			{ [self ambientStudio]; }
+		if( [track isEqual: @"circular"])		{ [self ambientCircular]; }
+		if( [track isEqual: @"antechannel"])	{ [self ambientAntechannel]; }
+		if( [track isEqual: @"metamondst"])		{ [self ambientMetamondst]; }
+		if( [track isEqual: @"stones"])			{ [self ambientStones]; }
+		if( [track isEqual: @"rainre"])			{ [self ambientRainre]; }
 		
 		NSLog(@"!!!");
 		

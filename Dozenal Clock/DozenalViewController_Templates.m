@@ -226,16 +226,19 @@ AVAudioPlayer *playerAmbient;
 -(void)ambientStones
 {
 	NSLog(@"[ambientStones]");
+	[self ambientPlayer:@"ambient_stones"];
 }
 
 -(void)ambientMetamondst
 {
 	NSLog(@"[ambientMetamondst]");
+	[self ambientPlayer:@"ambient_metamondst"];
 }
 
 -(void)ambientAntechannel
 {
 	NSLog(@"[ambientAntechannel]");
+	[self ambientPlayer:@"ambient_antechannel"];
 }
 
 -(void)ambientCapsule
@@ -256,6 +259,7 @@ AVAudioPlayer *playerAmbient;
 -(void)ambientRainre
 {
 	NSLog(@"[ambientRainre]");
+	[self ambientPlayer:@"ambient_rainre"];
 }
 
 -(void)soundPlayer: (NSString *)filename;
@@ -277,7 +281,7 @@ AVAudioPlayer *playerAmbient;
 	if(err)	{ NSLog(@"%@",err); }
 	else	{
 		playerAmbient.numberOfLoops = -1; //infinite
-		playerAmbient.volume = 0.4;
+		playerAmbient.volume = 0.2;
 		[playerAmbient play];
 	}
 }

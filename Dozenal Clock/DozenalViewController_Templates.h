@@ -37,6 +37,9 @@
 -(void) ambientStudio;
 -(void) ambientCircular;
 -(void) ambientAntechannel;
+-(void) ambientStones;
+-(void) ambientMetamondst;
+-(void) ambientRainre;
 
 -(void) audioCollectibleInit;
 
