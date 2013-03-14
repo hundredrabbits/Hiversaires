@@ -4,6 +4,7 @@
 #import "DozenalViewController_templates.h"
 
 AVAudioPlayer *player;
+AVAudioPlayer *playerAmbient;
 
 @implementation DozenalViewController (Audio)
 
@@ -207,16 +208,19 @@ AVAudioPlayer *player;
 -(void)ambientForest
 {
 	NSLog(@"[ambientForest]");
+	[self ambientPlayer:@"ambient_forest"];
 }
 
 -(void)ambientStudio
 {
 	NSLog(@"[ambientStudio]");
+	[self ambientPlayer:@"ambient_studio"];
 }
 
 -(void)ambientCircular
 {
 	NSLog(@"[ambientCircular]");
+	[self ambientPlayer:@"ambient_circular"];
 }
 
 -(void)ambientStones
@@ -262,6 +266,20 @@ AVAudioPlayer *player;
 	player = [[AVAudioPlayer alloc] initWithContentsOfURL: [NSURL fileURLWithPath:resourcePath] error:&err];
 	if(err)	{ NSLog(@"%@",err); }
 	else	{ [player play]; }
+}
+
+-(void)ambientPlayer: (NSString *)filename;
+{
+	NSString* resourcePath = [[NSBundle mainBundle] resourcePath];
+	resourcePath = [resourcePath stringByAppendingString: [NSString stringWithFormat:@"/%@.aif", filename] ];
+	NSError* err;
+	playerAmbient = [[AVAudioPlayer alloc] initWithContentsOfURL: [NSURL fileURLWithPath:resourcePath] error:&err];
+	if(err)	{ NSLog(@"%@",err); }
+	else	{
+		playerAmbient.numberOfLoops = -1; //infinite
+		playerAmbient.volume = 0.4;
+		[playerAmbient play];
+	}
 }
 
 

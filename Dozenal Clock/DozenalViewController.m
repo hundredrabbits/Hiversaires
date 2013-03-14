@@ -62,8 +62,11 @@ int				userFootstep = 0;
 //	userActionStorage[12] = @"1";
 //	userActionStorage[5] = @"2";
 	
+	[self ambientForest];
+	
 	[self actionCheck];
     [self moveCheck];
+	
 	
 	
 }
@@ -325,6 +328,9 @@ int				userFootstep = 0;
 			[self  templateUpdateState:76:@"0482":@"act30"];
 			[self  templateUpdateState:87:@"0483":@"act30"];
 			
+			[self templateAmbientAssoc:12:@"studio":@"act3"];
+			[self templateAmbientAssoc:13:@"forest":@"act3"];
+			
 			// Nether Door
 			if( [userActionStorage[5] isEqual: @"2"] && userFold == 1 ){
 				[self  templateUpdateState:39:@"0491":@"act11"];
@@ -380,6 +386,13 @@ int				userFootstep = 0;
 			[self  templateUpdateState:35:@"0475":@"act8"];
 			[self  templateUpdateState:27:@"0476":@"act9"];
 			[self  templateUpdateState:52:@"0477":@"act9"];
+			
+			[self templateAmbientAssoc:16:@"circular":@"act7"];
+			[self templateAmbientAssoc:23:@"studio":@"act7"];
+			[self templateAmbientAssoc:25:@"stones":@"act8"];
+			[self templateAmbientAssoc:35:@"circular":@"act8"];
+			[self templateAmbientAssoc:27:@"antechannel":@"act9"];
+			[self templateAmbientAssoc:52:@"circular":@"act9"];
 			
 		}
 		
@@ -951,6 +964,20 @@ int				userFootstep = 0;
 	self.graphic1.frame = CGRectMake(0, 10, 320, 460);
 	[self fadeIn:self.graphic1 t:0.5];
 
+}
+
+- (void)templateAmbientAssoc :(int)node :(NSString*)track :(NSString*)act
+{
+	if( userNode == node && [userAction isEqual: act]){
+		
+		if( [track isEqual: @"forest"])		{ [self ambientForest]; }
+		if( [track isEqual: @"studio"])		{ [self ambientStudio]; }
+		if( [track isEqual: @"circular"])	{ [self ambientCircular]; }
+		
+		NSLog(@"!!!");
+		
+	}
+	
 }
 
 // ====================

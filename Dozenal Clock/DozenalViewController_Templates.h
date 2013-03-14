@@ -32,6 +32,12 @@
 -(void) audioDoorInactive;
 -(void) audioDoorEnter;
 
+-(void) ambientPlayer;
+-(void) ambientForest;
+-(void) ambientStudio;
+-(void) ambientCircular;
+-(void) ambientAntechannel;
+
 -(void) audioCollectibleInit;
 
 
