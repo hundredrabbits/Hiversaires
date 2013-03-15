@@ -1159,9 +1159,9 @@ CGRect			screenBound;
 	self.moveRight.frame = CGRectMake( screenWidthThird*2, 0, screenWidthThird, screenHeight );
 	self.moveLeft.frame = CGRectMake(0, 0, screenWidthThird, screenHeight );
 	
-	self.moveForward.alpha = 0.1;
-	self.moveRight.alpha = 0.1;
-	self.moveLeft.alpha = 0.1;
+	self.moveForward.alpha = 0;
+	self.moveRight.alpha = 0;
+	self.moveLeft.alpha = 0;
 	
 	//
 	
