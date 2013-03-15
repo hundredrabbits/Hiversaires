@@ -41,6 +41,8 @@ int				userCollectible = 1;
 
 int				userFootstep = 0;
 
+float			screenWidthHalf = 100;
+float			screenHeightHalf = 100;
 float			screenWidthThird = 100;
 float			screenHeightThird = 100;
 float			screenWidthFourth = 100;
@@ -91,15 +93,11 @@ CGRect			screenBound;
 	
 	userAction = nil;
 	
-	// Debug
-	
 	self.debugNode.text = [NSString stringWithFormat:@"%d", userNode];
 	self.debugOrientation.text = [NSString stringWithFormat:@"%d", userOrientation];
 	self.debugAction.text = [NSString stringWithFormat:@"%@", worldPath[userNode][userOrientation]];
-	
+
     self.moveForward.hidden = worldPath[userNode][userOrientation] ? NO : YES;
-	
-	// Change Node View
 	
 	worldNodeImgId = [NSString stringWithFormat:@"%04d", (userNode*4)+userOrientation ];
 	worldNodeImg = [NSString stringWithFormat:@"%@%@%@", @"node.", worldNodeImgId, @".jpg"];
@@ -178,7 +176,6 @@ CGRect			screenBound;
     if( userAction ){
 	
 		[self actionTemplate];
-		[self fadeIn:_interfaceVignette t:1];
 		
     }
     
@@ -197,14 +194,18 @@ CGRect			screenBound;
 		
 		[self audioClockInit];
 		
-		[self.action1 setImage:[UIImage imageNamed:@"action0101.png"] forState:UIControlStateNormal];
-		self.action1.frame = CGRectMake(80, 140, 160, 160);
-		[self fadeIn:self.action1 t:1];
-		[self rotate:self.action1 t:2 d:( [userActionStorage[userActionId] intValue] *120 )];
+		self.graphic2.frame = CGRectMake(screenWidthHalf/2, screenHeightHalf-(screenWidthHalf/2), screenWidthHalf, screenWidthHalf); // interface
+		self.graphic2.image = [UIImage imageNamed:@"action0102.png"];
+		self.graphic2.alpha = 1.0;
 		
-		[self fadeIn:self.graphic1 t:1];
-		self.graphic1.image = [UIImage imageNamed:@"action0102.png"];
-		self.graphic1.frame = CGRectMake(80, 140, 160, 160);
+		self.graphic3.frame = CGRectMake(screenWidthHalf/2, screenHeightHalf-(screenWidthHalf/2), screenWidthHalf, screenWidthHalf); // interface
+		self.graphic3.image = [UIImage imageNamed:@"action0101.png"];
+		self.graphic3.alpha = 1.0;
+		
+		self.action1.hidden = NO;
+		self.action1.alpha = 1.0;
+		
+		[self templateUpdateClock];
 		
 	}
 	
@@ -232,6 +233,7 @@ CGRect			screenBound;
 		// Display Interactions
 		
 		self.action4.hidden = NO;
+		self.graphic1.hidden = NO;
 		
 		// Audio
 		
@@ -249,6 +251,10 @@ CGRect			screenBound;
 		[self audioDoorInit];
 		
 		if ( [userActionStorage[4] intValue] == 1 && [userActionStorage[13] intValue] == 1 ) { // Forest + Rainre ( Stones Monolith )
+			
+			self.action3.hidden = NO;
+			self.action3.alpha = 1.0;
+			
 			[self  templateUpdateNode:46:@"0486":@"act15"];
 			[self  templateUpdateNode:85:@"0485":@"act15"];
 			[self templateAmbientAssoc:46:@"metamondst":@"act15"];
@@ -256,11 +262,19 @@ CGRect			screenBound;
 		}
 		
 		if ( [userActionStorage[21] intValue] == 1 && [userActionStorage[13] intValue] == 1 ) { // Antechannel + Rainre ( Metamondst Door )
+			
+			self.action3.hidden = NO;
+			self.action3.alpha = 1.0;
+			
 			[self  templateUpdateNode:46:@"0486":@"act15"];
 			[self  templateUpdateNode:85:@"0485":@"act15"];
 		}
 		
 		if ( [userActionStorage[20] intValue] == 1 && [userActionStorage[13] intValue] == 1 ) { // Metamondst + Rainre ( Forest Monolith )
+			
+			self.action3.hidden = NO;
+			self.action3.alpha = 1.0;
+			
 			[self  templateUpdateNode:11:@"0487":@"act25"];
 			[self  templateUpdateNode:48:@"0488":@"act25"];
 			[self templateAmbientAssoc:11:@"antechannel":@"act25"];
@@ -295,14 +309,11 @@ CGRect			screenBound;
 	
 	if( [worldActionType[userActionId] isEqual: @"energyDoor"]){
 		
-		// Log
-		
-		NSLog(@"FOUND");
-		
 		// Display Interactions
-		
-		self.action3.hidden = NO;
-		
+
+		self.action3.hidden = YES;
+		self.graphic1.hidden = YES;
+			
 		// Audio
 		
 		[self audioDoorInit];
@@ -320,6 +331,9 @@ CGRect			screenBound;
 		
 		if( [userActionStorage[puzzleTerminal] intValue] == 1 ){
 			
+			self.action2.hidden = NO;
+			self.action2.alpha = 1.0;
+			
 			[self  templateUpdateNode:12:@"0470":@"act3"];
 			[self  templateUpdateNode:13:@"0471":@"act3"];
 			[self  templateUpdateNode:69:@"0478":@"act19"];
@@ -335,10 +349,10 @@ CGRect			screenBound;
 			[self templateAmbientAssoc:61:@"metamondst":@"act19"];
 			
 			// Nether Door
+			
 			if( [userActionStorage[5] isEqual: @"2"] && userFold == 1 ){
 				[self  templateUpdateNode:39:@"0491":@"act11"];
 				[self templateAmbientAssoc:39:@"nether":@"act11"];
-				
 			}
 			else{
 				[self  templateUpdateNode:39:@"0490":@"act11"];
@@ -361,7 +375,16 @@ CGRect			screenBound;
 	
 	if( [worldActionType[userActionId] isEqual: @"clockDoor"]){
 		
+		// Display Interactions
+		
+		self.action3.hidden = YES;
+		self.graphic1.hidden = YES;
+		
+		// Audio
+		
 		[self audioDoorInit];
+		
+		// Templates
 		
 		puzzleState = 0;
 		
@@ -384,6 +407,9 @@ CGRect			screenBound;
 		}
 		
 		if( puzzleState == 1 ){
+			
+			self.action2.hidden = NO;
+			self.action2.alpha = 1.0;
 			
 			[self  templateUpdateNode:16:@"0472":@"act7"];
 			[self  templateUpdateNode:23:@"0473":@"act7"];
@@ -680,31 +706,25 @@ CGRect			screenBound;
 	
 }
 
-- (void)actionAnimation:sender
-{
-	if([userAction isEqual: @"act1"]){
-		[self rotate:sender t:1.0 d:( [userActionStorage[userActionId] intValue] *120 )];
-	}
-	
-}
-
 - (IBAction)action1:(id)sender {
 	
 	userActionStorage[userActionId] = [NSString stringWithFormat:@"%d", [ userActionStorage[userActionId] intValue]+1 ];	
 	
 	// Exceptions
 	
-	if([userAction isEqual: @"act1"]){	userActionStorage[userActionId] = [userActionStorage[userActionId] intValue] > 2 ? @"0" : userActionStorage[userActionId]; [self audioClockTurn]; }
+	if([userAction isEqual: @"act1"]){	userActionStorage[userActionId] = [userActionStorage[userActionId] intValue] > 2 ? @"0" : userActionStorage[userActionId]; [self audioClockTurn];  [self templateUpdateClock]; }
 	if([userAction isEqual: @"act5"]){	userActionStorage[userActionId] = [userActionStorage[userActionId] intValue] > 1 ? @"0" : @"2"; [self templateUpdateStudioTerminal]; [self audioTerminalActive];}
-	
-	[self actionAnimation:sender];
 	
 }
 
 - (IBAction)action2:(id)sender { // Decrement
 	
-	userActionStorage[userActionId] = [NSString stringWithFormat:@"%d", [ userActionStorage[userActionId] intValue]-1 ];
-	NSLog(@"Action2");
+	self.graphic1.hidden = NO;
+	self.action3.hidden = NO;
+	
+	self.action2.hidden = YES;
+	
+	self.action3.alpha = 1.0;
 	
 }
 
@@ -822,6 +842,7 @@ CGRect			screenBound;
 	
 	[self rotate:self.action1 t:1.0 d:0];
 	[self rotate:self.action3 t:1.0 d:0];
+	[self rotate:self.graphic3 t:1.0 d:0];
 	
 	[self fadeOut:self.graphic1 t:0];
 	[self fadeOut:self.graphic2 t:0];
@@ -852,6 +873,13 @@ CGRect			screenBound;
 // ====================
 // Actions with interactions
 // ====================
+
+- (void)templateUpdateClock
+{
+	
+	[self rotate:self.graphic3 t:0.5 d:( [userActionStorage[userActionId] intValue] *120 )];
+	
+}
 
 - (void)templateUpdateSeal
 {
@@ -889,14 +917,10 @@ CGRect			screenBound;
 	if( [userActionStorage[userActionId] intValue] == 1 ){
 		[self templateUpdateNode:12:@"0516":@"act2"];
 		[self templateUpdateNode:13:@"0517":@"act2"];
-		
-//		[self  templateUpdateState:69:@"0478":@"act19"];
-//		[self  templateUpdateState:61:@"0479":@"act19"];
-//		[self  templateUpdateState:62:@"0480":@"act26"];
-//		[self  templateUpdateState:77:@"0481":@"act26"];
-//		[self  templateUpdateState:76:@"0482":@"act30"];
-//		[self  templateUpdateState:87:@"0483":@"act30"];
-		
+		[self templateUpdateNode:69:@"0518":@"act18"];
+		[self templateUpdateNode:39:@"0519":@"act10"];
+		[self templateUpdateNode:77:@"0520":@"act27"];
+				
 	}
 	else{
 		self.graphic1.alpha = 0;
@@ -1048,7 +1072,7 @@ CGRect			screenBound;
 	viewToFadeOut.alpha = 0.2;
 	[UIView commitAnimations];
 }
-- (void)rotate:(UIButton *)viewToRotate t:(NSTimeInterval)duration d:(CGFloat)degrees
+- (void)rotate:(UIView *)viewToRotate t:(NSTimeInterval)duration d:(CGFloat)degrees
 {
 	[UIView beginAnimations:nil context:NULL];
 	[UIView setAnimationDuration:duration];
@@ -1129,9 +1153,11 @@ CGRect			screenBound;
 	//
 	
 	screenWidth = screenBound.size.width;
+	screenWidthHalf = screenBound.size.width/2;
 	screenWidthThird = screenBound.size.width/3;
 	
 	screenHeight = screenBound.size.height;
+	screenHeightHalf = screenBound.size.height/2;
 	screenHeightThird = screenBound.size.height/3;
 	screenHeightFourth = screenBound.size.height/4;
 	
@@ -1145,16 +1171,22 @@ CGRect			screenBound;
 	self.moveRight.frame = CGRectMake( screenWidthThird*2, 0, screenWidthThird, screenHeight );
 	self.moveLeft.frame = CGRectMake(0, 0, screenWidthThird, screenHeight );	
 	
-	[self.action3 setImage:[UIImage imageNamed: [NSString stringWithFormat:@"tempYes.png"] ] forState:UIControlStateNormal];
-
+	//[self.action3 setImage:[UIImage imageNamed: [NSString stringWithFormat:@"tempYes.png"] ] forState:UIControlStateNormal];
+	
+	// Action Clock Terminal
+	self.action1.frame = CGRectMake( screenWidthThird, screenHeightThird, screenWidthThird, screenHeightThird );
+	// Action Clock Terminal
+	self.action2.frame = CGRectMake( screenWidthThird, screenHeightThird, screenWidthThird, screenHeightThird );
+	// Action Door
 	self.action3.frame = CGRectMake( screenWidthThird, screenHeightThird, screenWidthThird, screenHeightThird );
+	// Action Energy Terminal
 	self.action4.frame = CGRectMake( screenWidthThird, screenHeightThird, screenWidthThird, screenHeightThird );
+	// Action Seal Terminal
 	self.action5.frame = CGRectMake( screenWidthThird, screenHeightThird, screenWidthThird, screenHeightThird );
 	
 	
 	// Graphics
-	
-	self.graphic1.frame = CGRectMake(0, 0, screenBound.size.width, screenBound.size.height);
+	self.graphic1.frame = CGRectMake(0, 0, screenBound.size.width, screenBound.size.height); // full
 	
 }
 

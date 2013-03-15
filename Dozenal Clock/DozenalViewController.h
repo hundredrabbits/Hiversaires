@@ -16,10 +16,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *debugNode;
 @property (weak, nonatomic) IBOutlet UILabel *debugAction;
 
-// Interface
-
-@property (weak, nonatomic) IBOutlet UIImageView *interfaceVignette;
-
 // Movement
 
 @property (weak, nonatomic) IBOutlet UIButton *moveLeft;

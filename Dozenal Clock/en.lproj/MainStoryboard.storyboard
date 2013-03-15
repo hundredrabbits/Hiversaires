@@ -15,9 +15,6 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" id="qDH-p4-ZxP" userLabel="NodeView">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="460"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" image="vignette.png" id="bRy-kS-Rlz" userLabel="ActionVignette">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="460"/>
-                            </imageView>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Orientation" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="8Pn-4H-mjL" userLabel="DebugOrientation">
                                 <rect key="frame" x="55" y="20" width="84" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="11"/>
@@ -245,7 +242,6 @@
                         <outlet property="graphic7" destination="clZ-hT-gju" id="WYf-IY-Zle"/>
                         <outlet property="graphic8" destination="ae8-Ty-x7X" id="3KA-fV-sZI"/>
                         <outlet property="graphic9" destination="Ea1-xI-b67" id="plQ-bT-reT"/>
-                        <outlet property="interfaceVignette" destination="bRy-kS-Rlz" id="VzD-TK-RLW"/>
                         <outlet property="moveForward" destination="F1N-h8-Kf8" id="bvP-CE-vfF"/>
                         <outlet property="moveLeft" destination="HZM-Xl-Bax" id="6TD-nD-FZH"/>
                         <outlet property="moveRight" destination="OaR-be-2E9" id="Hts-zM-ZXf"/>
@@ -257,54 +253,6 @@
             <point key="canvasLocation" x="281" y="36"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="vignette.png" width="640" height="920"/>
-    </resources>
-    <classes>
-        <class className="DozenalViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/DozenalViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="action1:"/>
-                <relationship kind="action" name="action2:"/>
-                <relationship kind="action" name="action3:"/>
-                <relationship kind="action" name="action4:"/>
-                <relationship kind="action" name="action5:"/>
-                <relationship kind="action" name="moveForward:"/>
-                <relationship kind="action" name="moveLeft:"/>
-                <relationship kind="action" name="moveRight:"/>
-                <relationship kind="outlet" name="action1" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="action2" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="action3" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="action4" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="action5" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="debugAction" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="debugNode" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="debugOrientation" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="graphic1" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="graphic10" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="graphic11" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="graphic12" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="graphic13" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="graphic14" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="graphic15" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="graphic16" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="graphic17" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="graphic2" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="graphic3" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="graphic4" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="graphic5" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="graphic6" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="graphic7" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="graphic8" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="graphic9" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="interfaceVignette" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="moveForward" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="moveLeft" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="moveRight" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="viewMain" candidateClass="UIImageView"/>
-            </relationships>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
