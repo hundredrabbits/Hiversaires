@@ -250,10 +250,14 @@ CGRect			screenBound;
 		
 		[self audioDoorInit];
 		
+		self.action3.hidden = YES;
+		self.graphic1.hidden = YES;
+		
+		
 		if ( [userActionStorage[4] intValue] == 1 && [userActionStorage[13] intValue] == 1 ) { // Forest + Rainre ( Stones Monolith )
 			
-			self.action3.hidden = NO;
-			self.action3.alpha = 1.0;
+			self.action2.hidden = NO;
+			self.action2.alpha = 1.0;
 			
 			[self  templateUpdateNode:46:@"0486":@"act15"];
 			[self  templateUpdateNode:85:@"0485":@"act15"];
@@ -263,8 +267,8 @@ CGRect			screenBound;
 		
 		if ( [userActionStorage[21] intValue] == 1 && [userActionStorage[13] intValue] == 1 ) { // Antechannel + Rainre ( Metamondst Door )
 			
-			self.action3.hidden = NO;
-			self.action3.alpha = 1.0;
+			self.action2.hidden = NO;
+			self.action2.alpha = 1.0;
 			
 			[self  templateUpdateNode:46:@"0486":@"act15"];
 			[self  templateUpdateNode:85:@"0485":@"act15"];
@@ -272,8 +276,8 @@ CGRect			screenBound;
 		
 		if ( [userActionStorage[20] intValue] == 1 && [userActionStorage[13] intValue] == 1 ) { // Metamondst + Rainre ( Forest Monolith )
 			
-			self.action3.hidden = NO;
-			self.action3.alpha = 1.0;
+			self.action2.hidden = NO;
+			self.action2.alpha = 1.0;
 			
 			[self  templateUpdateNode:11:@"0487":@"act25"];
 			[self  templateUpdateNode:48:@"0488":@"act25"];
