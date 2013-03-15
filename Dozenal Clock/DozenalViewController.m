@@ -42,6 +42,15 @@ int				userCollectible = 1;
 
 int				userFootstep = 0;
 
+float			screenWidthThird = 100;
+float			screenHeightThird = 100;
+float			screenWidthFourth = 100;
+float			screenHeightFourth = 100;
+float			screenHeight = 0;
+float			screenWidth = 0;
+
+CGRect			screenBound;
+
 @interface DozenalViewController ()
 @end
 
@@ -53,20 +62,16 @@ int				userFootstep = 0;
     
     [super viewDidLoad];
     
+	
 	worldPath = [self worldPath];
 	worldActionType = [self worldActionType];
 	
 	userActionStorage = [NSMutableArray arrayWithObjects:@"",@"0",@"",@"",@"",@"0",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",nil];
 	
-//	userActionStorage[21] = @"1";
-//	userActionStorage[12] = @"1";
-//	userActionStorage[5] = @"2";
-	
 	[self ambientForest];
 	
 	[self actionCheck];
     [self moveCheck];
-	
 	
 	
 }
@@ -85,21 +90,32 @@ int				userFootstep = 0;
 {
 	[self actionReset];
 	
+	userAction = nil;
+	
+	// Debug
+	
 	self.debugNode.text = [NSString stringWithFormat:@"%d", userNode];
 	self.debugOrientation.text = [NSString stringWithFormat:@"%d", userOrientation];
 	self.debugAction.text = [NSString stringWithFormat:@"%@", worldPath[userNode][userOrientation]];
 	
-//	self.debugNode.alpha = 0;
-//	self.debugOrientation.alpha = 0;
-//	self.debugAction.alpha = 0;
-	
-	self.moveAction.hidden = YES; [self fadeOut:_interfaceVignette t:1];
     self.moveForward.hidden = worldPath[userNode][userOrientation] ? NO : YES;
-	self.moveAction.hidden = [[NSCharacterSet letterCharacterSet] characterIsMember:[worldPath[userNode][userOrientation] characterAtIndex:0]] ? NO : YES;
+	
+	// Change Node View
 	
 	worldNodeImgId = [NSString stringWithFormat:@"%04d", (userNode*4)+userOrientation ];
 	worldNodeImg = [NSString stringWithFormat:@"%@%@%@", @"node.", worldNodeImgId, @".jpg"];
 	self.viewMain.image = [UIImage imageNamed:worldNodeImg];
+	
+	// Trigger Action
+	
+	if ([worldPath[userNode][userOrientation] rangeOfString:@"act"].location != NSNotFound) {
+		userAction = worldPath[userNode][userOrientation];
+		[self actionCheck];
+	}
+	
+	// Resize
+	
+	[self prefPositioning];
 	
 }
 
@@ -139,27 +155,8 @@ int				userFootstep = 0;
 	
 	[self turnForward];
     [self moveCheck];
+	[self actionCheck];
 	
-}
-
-- (IBAction)moveAction:(id)sender {
-    
-    userAction = worldPath[userNode][userOrientation];
-    	
-    [self actionCheck];
-
-}
-
-- (IBAction)moveReturn:(id)sender {
-    
-	[self audioReturn];
-	
-    userAction = nil;
-    
-    [self actionCheck];
-    [self moveCheck];
-	[self actionReset];
-    
 }
 
 // ====================
@@ -168,12 +165,10 @@ int				userFootstep = 0;
 
 - (void)actionCheck
 {
-    
-    self.moveLeft.hidden = userAction ? YES : NO;
-    self.moveRight.hidden = userAction ? YES : NO;
+        
+    self.moveLeft.hidden = NO;
+    self.moveRight.hidden = NO;
     self.moveForward.hidden = userAction ? YES : NO;
-    self.moveReturn.hidden = userAction ? NO : YES;
-    self.moveAction.hidden = userAction ? YES : NO;
 	
 	self.action1.hidden = YES;
 	self.action2.hidden = YES;
@@ -186,7 +181,6 @@ int				userFootstep = 0;
         [self actionRouting];
 		[self actionTemplate];
 		[self fadeIn:_interfaceVignette t:1];
-		[self fadeIn:_moveReturn t:1];
 		
     }
     
@@ -224,9 +218,8 @@ int				userFootstep = 0;
 		
 		[self audioSealInit];
 		
-		[self.action5 setImage:nil forState:UIControlStateNormal];
-		self.action5.frame = CGRectMake(90, 140, 140, 180);
-		[self fadeHalf:self.action5 t:1];
+		self.action5.hidden = NO;
+		self.action5.alpha = 1.0;
 		
 		[self templateUpdateSeal];
 		
@@ -970,7 +963,6 @@ int				userFootstep = 0;
 	if( userNode == node && [userAction isEqual: act]){
 		self.graphic1.image = [UIImage imageNamed: [NSString stringWithFormat:@"node.%@.jpg", img] ];
 	}
-	self.graphic1.frame = CGRectMake(0, 10, 320, 460);
 	[self fadeIn:self.graphic1 t:0.5];
 
 }
@@ -1135,6 +1127,52 @@ int				userFootstep = 0;
 	else {
 		[self audioCollide];
 	}	
+}
+
+
+
+-(void) prefPositioning
+{
+	
+	CGRect screenBound = [[UIScreen mainScreen] bounds];
+	
+	//
+	
+	screenWidth = screenBound.size.width;
+	screenWidthThird = screenBound.size.width/3;
+	
+	screenHeight = screenBound.size.height;
+	screenHeightThird = screenBound.size.height/3;
+	screenHeightFourth = screenBound.size.height/4;
+	
+	// Core
+	
+	self.viewMain.frame = CGRectMake(0, 0, screenBound.size.width, screenBound.size.height);
+	
+	// Movement
+	
+	[self.moveForward setImage:[UIImage imageNamed:@"tempNo.png"] forState:UIControlStateNormal];
+	[self.moveRight setImage:[UIImage imageNamed:@"tempYes.png"] forState:UIControlStateNormal];
+	[self.moveLeft setImage:[UIImage imageNamed:@"tempYes.png"] forState:UIControlStateNormal];
+	
+	self.moveForward.frame = CGRectMake( screenWidthThird, 0, screenWidthThird, screenHeight );
+	self.moveRight.frame = CGRectMake( screenWidthThird*2, 0, screenWidthThird, screenHeight );
+	self.moveLeft.frame = CGRectMake(0, 0, screenWidthThird, screenHeight );
+	
+	self.moveForward.alpha = 0.1;
+	self.moveRight.alpha = 0.1;
+	self.moveLeft.alpha = 0.1;
+	
+	//
+	
+	
+	self.action5.frame = CGRectMake( screenWidthThird, screenHeightThird, screenWidthThird, screenHeightThird );
+	
+	
+	// Graphics
+	
+	self.graphic1.frame = CGRectMake(0, 0, screenBound.size.width, screenBound.size.height);
+	
 }
 
 @end

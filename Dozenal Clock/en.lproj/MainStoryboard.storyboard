@@ -36,7 +36,7 @@
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="OaR-be-2E9" userLabel="moveRight">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="fill" lineBreakMode="middleTruncation" id="OaR-be-2E9" userLabel="moveRight">
                                 <rect key="frame" x="245" y="220" width="75" height="240"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="11"/>
                                 <state key="normal">
@@ -50,7 +50,7 @@
                                     <action selector="moveRight:" destination="2" eventType="touchUpInside" id="u3R-UH-LAS"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="HZM-Xl-Bax" userLabel="moveLeft">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="fill" lineBreakMode="middleTruncation" id="HZM-Xl-Bax" userLabel="moveLeft">
                                 <rect key="frame" x="0.0" y="220" width="75" height="240"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="11"/>
                                 <state key="normal">
@@ -64,7 +64,7 @@
                                     <action selector="moveLeft:" destination="2" eventType="touchUpInside" id="p3K-8y-Lom"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="F1N-h8-Kf8" userLabel="moveForward">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="fill" lineBreakMode="middleTruncation" id="F1N-h8-Kf8" userLabel="moveForward">
                                 <rect key="frame" x="60" y="70" width="200" height="310"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="11"/>
                                 <state key="normal">
@@ -78,35 +78,7 @@
                                     <action selector="moveForward:" destination="2" eventType="touchUpInside" id="acz-2G-B0P"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Wz6-UY-8qt" userLabel="moveReturn">
-                                <rect key="frame" x="60" y="377" width="200" height="78"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="11"/>
-                                <state key="normal" title="RETURN">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="highlighted">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="moveReturn:" destination="2" eventType="touchUpInside" id="nxW-Uk-DRD"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="fLw-eO-WBB" userLabel="moveAction">
-                                <rect key="frame" x="60" y="70" width="200" height="310"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="11"/>
-                                <state key="normal">
-                                    <color key="titleColor" red="1" green="0.69522645923565818" blue="0.25447518953864934" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="highlighted">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="moveAction:" destination="2" eventType="touchUpInside" id="LI0-43-8YJ"/>
-                                </connections>
-                            </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="Fdf-Qf-zRl" userLabel="Graphic1">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" id="Fdf-Qf-zRl" userLabel="Graphic1">
                                 <rect key="frame" x="20" y="109" width="55" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
@@ -232,7 +204,7 @@
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="1GV-g6-beK" userLabel="Action5">
                                 <rect key="frame" x="172" y="97" width="73" height="44"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="11"/>
                                 <state key="normal" title="Button">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -274,10 +246,8 @@
                         <outlet property="graphic8" destination="ae8-Ty-x7X" id="3KA-fV-sZI"/>
                         <outlet property="graphic9" destination="Ea1-xI-b67" id="plQ-bT-reT"/>
                         <outlet property="interfaceVignette" destination="bRy-kS-Rlz" id="VzD-TK-RLW"/>
-                        <outlet property="moveAction" destination="fLw-eO-WBB" id="N5C-XO-9nC"/>
                         <outlet property="moveForward" destination="F1N-h8-Kf8" id="bvP-CE-vfF"/>
                         <outlet property="moveLeft" destination="HZM-Xl-Bax" id="6TD-nD-FZH"/>
-                        <outlet property="moveReturn" destination="Wz6-UY-8qt" id="qka-af-Pmg"/>
                         <outlet property="moveRight" destination="OaR-be-2E9" id="Hts-zM-ZXf"/>
                         <outlet property="viewMain" destination="qDH-p4-ZxP" id="Y81-cI-mlc"/>
                     </connections>
@@ -299,10 +269,8 @@
                 <relationship kind="action" name="action3:"/>
                 <relationship kind="action" name="action4:"/>
                 <relationship kind="action" name="action5:"/>
-                <relationship kind="action" name="moveAction:"/>
                 <relationship kind="action" name="moveForward:"/>
                 <relationship kind="action" name="moveLeft:"/>
-                <relationship kind="action" name="moveReturn:"/>
                 <relationship kind="action" name="moveRight:"/>
                 <relationship kind="outlet" name="action1" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="action2" candidateClass="UIButton"/>
@@ -330,10 +298,8 @@
                 <relationship kind="outlet" name="graphic8" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="graphic9" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="interfaceVignette" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="moveAction" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="moveForward" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="moveLeft" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="moveReturn" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="moveRight" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="viewMain" candidateClass="UIImageView"/>
             </relationships>
