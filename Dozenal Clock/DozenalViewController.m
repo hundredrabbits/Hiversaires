@@ -32,7 +32,6 @@ NSString        *userAction;
 int             userNode = 0;
 int             userOrientation;
 NSMutableArray	*userActionStorage;
-NSString        *userActionType;
 int				userActionId;
 
 int				userSeal = 0;
@@ -110,6 +109,7 @@ CGRect			screenBound;
 	
 	if ([worldPath[userNode][userOrientation] rangeOfString:@"act"].location != NSNotFound) {
 		userAction = worldPath[userNode][userOrientation];
+		userActionId  = [[userAction stringByReplacingOccurrencesOfString:@"act" withString:@""] intValue];
 		[self actionCheck];
 	}
 	
@@ -155,7 +155,6 @@ CGRect			screenBound;
 	
 	[self turnForward];
     [self moveCheck];
-	[self actionCheck];
 	
 }
 
@@ -177,8 +176,7 @@ CGRect			screenBound;
 	self.action5.hidden = YES;
 	
     if( userAction ){
-        
-        [self actionRouting];
+	
 		[self actionTemplate];
 		[self fadeIn:_interfaceVignette t:1];
 		
@@ -231,19 +229,13 @@ CGRect			screenBound;
 	
 	if( [worldActionType[userActionId] isEqual: @"energyTerminal"]){
 		
+		// Display Interactions
+		
+		self.action4.hidden = NO;
+		
+		// Audio
+		
 		[self audioEnergyInit];
-		
-		self.graphic1.image = [UIImage imageNamed:@"energy_slot0.png"];		
-		self.graphic2.image = [UIImage imageNamed:@"energy_userslot0.png"];
-		
-		self.graphic1.frame = CGRectMake(99, 174, 128, 128);
-		self.graphic2.frame = CGRectMake(99, 174, 128, 128);
-		self.action4.frame = CGRectMake(99, 174, 128, 128);
-		
-		[self fadeIn:self.action4 t:1];
-		[self fadeIn:self.graphic1 t:0.4];
-		[self fadeIn:self.graphic2 t:1.0];
-		
 		[self templateUpdateEnergy];
 		
 	}
@@ -257,20 +249,20 @@ CGRect			screenBound;
 		[self audioDoorInit];
 		
 		if ( [userActionStorage[4] intValue] == 1 && [userActionStorage[13] intValue] == 1 ) { // Forest + Rainre ( Stones Monolith )
-			[self  templateUpdateState:46:@"0486":@"act15"];
-			[self  templateUpdateState:85:@"0485":@"act15"];
+			[self  templateUpdateNode:46:@"0486":@"act15"];
+			[self  templateUpdateNode:85:@"0485":@"act15"];
 			[self templateAmbientAssoc:46:@"metamondst":@"act15"];
 			[self templateAmbientAssoc:85:@"stones":@"act15"];
 		}
 		
 		if ( [userActionStorage[21] intValue] == 1 && [userActionStorage[13] intValue] == 1 ) { // Antechannel + Rainre ( Metamondst Door )
-			[self  templateUpdateState:46:@"0486":@"act15"];
-			[self  templateUpdateState:85:@"0485":@"act15"];
+			[self  templateUpdateNode:46:@"0486":@"act15"];
+			[self  templateUpdateNode:85:@"0485":@"act15"];
 		}
 		
 		if ( [userActionStorage[20] intValue] == 1 && [userActionStorage[13] intValue] == 1 ) { // Metamondst + Rainre ( Forest Monolith )
-			[self  templateUpdateState:11:@"0487":@"act25"];
-			[self  templateUpdateState:48:@"0488":@"act25"];
+			[self  templateUpdateNode:11:@"0487":@"act25"];
+			[self  templateUpdateNode:48:@"0488":@"act25"];
 			[self templateAmbientAssoc:11:@"antechannel":@"act25"];
 			[self templateAmbientAssoc:48:@"forest":@"act25"];
 		}
@@ -303,7 +295,19 @@ CGRect			screenBound;
 	
 	if( [worldActionType[userActionId] isEqual: @"energyDoor"]){
 		
+		// Log
+		
+		NSLog(@"FOUND");
+		
+		// Display Interactions
+		
+		self.action3.hidden = NO;
+		
+		// Audio
+		
 		[self audioDoorInit];
+		
+		// Templates
 		
 		if([userAction isEqual: @"act3"]) { puzzleTerminal = 2;  }
 		if([userAction isEqual: @"act11"]){ puzzleTerminal = 10; }
@@ -314,16 +318,16 @@ CGRect			screenBound;
 		if([userAction isEqual: @"act29"]){ puzzleTerminal = 5;  }
 		if([userAction isEqual: @"act30"]){ puzzleTerminal = 5;  }
 		
-		if( [userActionStorage[puzzleTerminal] intValue] > 1 ){
+		if( [userActionStorage[puzzleTerminal] intValue] == 1 ){
 			
-			[self  templateUpdateState:12:@"0470":@"act3"];
-			[self  templateUpdateState:13:@"0471":@"act3"];
-			[self  templateUpdateState:69:@"0478":@"act19"];
-			[self  templateUpdateState:61:@"0479":@"act19"];
-			[self  templateUpdateState:62:@"0480":@"act26"];
-			[self  templateUpdateState:77:@"0481":@"act26"];
-			[self  templateUpdateState:76:@"0482":@"act30"];
-			[self  templateUpdateState:87:@"0483":@"act30"];
+			[self  templateUpdateNode:12:@"0470":@"act3"];
+			[self  templateUpdateNode:13:@"0471":@"act3"];
+			[self  templateUpdateNode:69:@"0478":@"act19"];
+			[self  templateUpdateNode:61:@"0479":@"act19"];
+			[self  templateUpdateNode:62:@"0480":@"act26"];
+			[self  templateUpdateNode:77:@"0481":@"act26"];
+			[self  templateUpdateNode:76:@"0482":@"act30"];
+			[self  templateUpdateNode:87:@"0483":@"act30"];
 			
 			[self templateAmbientAssoc:12:@"studio":@"act3"];
 			[self templateAmbientAssoc:13:@"forest":@"act3"];
@@ -332,18 +336,17 @@ CGRect			screenBound;
 			
 			// Nether Door
 			if( [userActionStorage[5] isEqual: @"2"] && userFold == 1 ){
-				[self  templateUpdateState:39:@"0491":@"act11"];
+				[self  templateUpdateNode:39:@"0491":@"act11"];
 				[self templateAmbientAssoc:39:@"nether":@"act11"];
 				
 			}
 			else{
-				[self  templateUpdateState:39:@"0490":@"act11"];
+				[self  templateUpdateNode:39:@"0490":@"act11"];
 				[self templateAmbientAssoc:39:@"rainre":@"act11"];
 			}
 			
-			self.action3.frame = CGRectMake(0, 10, 320, 460);
-			[self fadeIn:self.action3 t:0.5];
-			
+			self.action3.alpha = 1.0;
+
 		}
 		else{
 			[self audioDoorInactive];
@@ -382,12 +385,12 @@ CGRect			screenBound;
 		
 		if( puzzleState == 1 ){
 			
-			[self  templateUpdateState:16:@"0472":@"act7"];
-			[self  templateUpdateState:23:@"0473":@"act7"];
-			[self  templateUpdateState:25:@"0474":@"act8"];
-			[self  templateUpdateState:35:@"0475":@"act8"];
-			[self  templateUpdateState:27:@"0476":@"act9"];
-			[self  templateUpdateState:52:@"0477":@"act9"];
+			[self  templateUpdateNode:16:@"0472":@"act7"];
+			[self  templateUpdateNode:23:@"0473":@"act7"];
+			[self  templateUpdateNode:25:@"0474":@"act8"];
+			[self  templateUpdateNode:35:@"0475":@"act8"];
+			[self  templateUpdateNode:27:@"0476":@"act9"];
+			[self  templateUpdateNode:52:@"0477":@"act9"];
 			
 			[self templateAmbientAssoc:16:@"circular":@"act7"];
 			[self templateAmbientAssoc:23:@"studio":@"act7"];
@@ -685,27 +688,6 @@ CGRect			screenBound;
 	
 }
 
-- (void)actionRouting
-{
-	
-	userActionType = [userAction substringWithRange:NSMakeRange(0, 3)];
-	userActionId  = [[userAction stringByReplacingOccurrencesOfString:userActionType withString:@""] intValue];
-
-	self.action1.hidden = NO;
-	self.action2.hidden = NO;
-	self.action3.hidden = NO;
-	self.action4.hidden = NO;
-	self.action5.hidden = NO;
-    
-	// Unlock Map
-	
-	if([userAction isEqual: @"act22"]){
-		userActionStorage[22] = @"1";
-		NSLog(@"Map Unlocked");
-	}
-	
-}
-
 - (IBAction)action1:(id)sender {
 	
 	userActionStorage[userActionId] = [NSString stringWithFormat:@"%d", [ userActionStorage[userActionId] intValue]+1 ];	
@@ -763,22 +745,16 @@ CGRect			screenBound;
 
 - (IBAction)action4:(id)sender { // Energy Action
 	
-	if( [self energyCount] > 0 ){
-		userActionStorage[userActionId] = [NSString stringWithFormat:@"%d", [ userActionStorage[userActionId] intValue]+1 ];
-	}
-	else{
-		[self audioEnergyStack];
+	
+	
+	if( [userActionStorage[userActionId] isEqual: @"1"] ){
 		userActionStorage[userActionId] = @"0";
 	}
-	
-	if( [userActionStorage[userActionId] intValue] > 4 ){
-		[self audioEnergyInactive];
-		userActionStorage[userActionId] = 0;
-	}
 	else{
-		[self audioEnergyActive];
-		userActionStorage[userActionId] = userActionStorage[userActionId];
+		userActionStorage[userActionId] = @"1";
 	}
+	
+	NSLog(@"%@",userActionStorage[userActionId]);
 	
 	[self templateUpdateEnergy];
 	
@@ -907,9 +883,25 @@ CGRect			screenBound;
 - (void)templateUpdateEnergy
 {
 	userEnergy = [self energyCount];
-	self.graphic2.alpha = 0.3;
-	self.graphic1.image = [UIImage imageNamed: [NSString stringWithFormat:@"energy_slot%d.png", [userActionStorage[userActionId] intValue] ] ];
-	self.graphic2.image = [UIImage imageNamed: [NSString stringWithFormat:@"energy_userslot%d.png", userEnergy] ];
+
+	self.action4.alpha = 1.0;
+	
+	if( [userActionStorage[userActionId] intValue] == 1 ){
+		[self templateUpdateNode:12:@"0516":@"act2"];
+		[self templateUpdateNode:13:@"0517":@"act2"];
+		
+//		[self  templateUpdateState:69:@"0478":@"act19"];
+//		[self  templateUpdateState:61:@"0479":@"act19"];
+//		[self  templateUpdateState:62:@"0480":@"act26"];
+//		[self  templateUpdateState:77:@"0481":@"act26"];
+//		[self  templateUpdateState:76:@"0482":@"act30"];
+//		[self  templateUpdateState:87:@"0483":@"act30"];
+		
+	}
+	else{
+		self.graphic1.alpha = 0;
+	}
+	
 }
 
 - (void)templateUpdateStudioTerminal
@@ -955,7 +947,7 @@ CGRect			screenBound;
 		[self.action3 setImage:[UIImage imageNamed: [NSString stringWithFormat:@"node.%@.jpg", img] ] forState:UIControlStateNormal];
 	}
 	self.action3.frame = CGRectMake(0, 10, 320, 460);
-	[self fadeIn:self.action3 t:0.5];
+	[self fadeIn:self.action3 t:0.0];
 }
 
 - (void)templateUpdateNode :(int)node :(NSString*)img :(NSString*)act
@@ -963,7 +955,7 @@ CGRect			screenBound;
 	if( userNode == node && [userAction isEqual: act]){
 		self.graphic1.image = [UIImage imageNamed: [NSString stringWithFormat:@"node.%@.jpg", img] ];
 	}
-	[self fadeIn:self.graphic1 t:0.5];
+	[self fadeIn:self.graphic1 t:0.0];
 
 }
 
@@ -978,8 +970,6 @@ CGRect			screenBound;
 		if( [track isEqual: @"metamondst"])		{ [self ambientMetamondst]; }
 		if( [track isEqual: @"stones"])			{ [self ambientStones]; }
 		if( [track isEqual: @"rainre"])			{ [self ambientRainre]; }
-		
-		NSLog(@"!!!");
 		
 	}
 	
@@ -1151,21 +1141,14 @@ CGRect			screenBound;
 	
 	// Movement
 	
-	[self.moveForward setImage:[UIImage imageNamed:@"tempNo.png"] forState:UIControlStateNormal];
-	[self.moveRight setImage:[UIImage imageNamed:@"tempYes.png"] forState:UIControlStateNormal];
-	[self.moveLeft setImage:[UIImage imageNamed:@"tempYes.png"] forState:UIControlStateNormal];
-	
 	self.moveForward.frame = CGRectMake( screenWidthThird, 0, screenWidthThird, screenHeight );
 	self.moveRight.frame = CGRectMake( screenWidthThird*2, 0, screenWidthThird, screenHeight );
-	self.moveLeft.frame = CGRectMake(0, 0, screenWidthThird, screenHeight );
+	self.moveLeft.frame = CGRectMake(0, 0, screenWidthThird, screenHeight );	
 	
-	self.moveForward.alpha = 0;
-	self.moveRight.alpha = 0;
-	self.moveLeft.alpha = 0;
-	
-	//
-	
-	
+	[self.action3 setImage:[UIImage imageNamed: [NSString stringWithFormat:@"tempYes.png"] ] forState:UIControlStateNormal];
+
+	self.action3.frame = CGRectMake( screenWidthThird, screenHeightThird, screenWidthThird, screenHeightThird );
+	self.action4.frame = CGRectMake( screenWidthThird, screenHeightThird, screenWidthThird, screenHeightThird );
 	self.action5.frame = CGRectMake( screenWidthThird, screenHeightThird, screenWidthThird, screenHeightThird );
 	
 	
