@@ -475,6 +475,13 @@ CGRect			screenBound;
 		
 	}
 	
+	if( [userAction isEqual: @"act22"] ){ // Unlock Map
+			
+		userActionStorage[22] = @"1";
+		NSLog(@"map unlocked");
+		
+	}
+	
 	// ====================
 	// Entente
 	// ====================
@@ -641,6 +648,8 @@ CGRect			screenBound;
 	
 	if([userAction isEqual: @"act16"]){
 		
+		CGRect screenBound = [[UIScreen mainScreen] bounds];
+		
 		self.graphic1.image = [UIImage imageNamed:@"progress_shadows.png"];
 		
 		self.graphic2.image = [UIImage imageNamed:@"progress_capsule.png"];
@@ -698,14 +707,14 @@ CGRect			screenBound;
 		if( [userActionStorage[13] isEqual: @"1"] ){	[self fadeIn:self.graphic12 t:1]; }
 		// Nothing
 		
-		if( [userActionStorage[22] isEqual: @"1"] ) {	[self fadeIn:self.graphic14 t:1]; }
+		// if( [userActionStorage[22] isEqual: @"1"] ) {	[self fadeIn:self.graphic14 t:1]; }
 		// 15
 		// 16
 		// 17
 		
 		
 		if( [userActionStorage[22] isEqual: @"1"] ){	[self fadeIn:self.graphic13 t:1]; }
-	
+
 	}
 	
 }

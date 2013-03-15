@@ -87,59 +87,59 @@
                                 <rect key="frame" x="20" y="189" width="55" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="V4e-2e-hID" userLabel="Graphic4">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" id="V4e-2e-hID" userLabel="Graphic4">
                                 <rect key="frame" x="20" y="229" width="55" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="8uA-Dh-2F0" userLabel="Graphic5">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" id="8uA-Dh-2F0" userLabel="Graphic5">
                                 <rect key="frame" x="20" y="269" width="55" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="80J-OR-Wpd" userLabel="Graphic6">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" id="80J-OR-Wpd" userLabel="Graphic6">
                                 <rect key="frame" x="20" y="269" width="55" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="clZ-hT-gju" userLabel="Graphic7">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" id="clZ-hT-gju" userLabel="Graphic7">
                                 <rect key="frame" x="20" y="269" width="55" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="ae8-Ty-x7X" userLabel="Graphic8">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" id="ae8-Ty-x7X" userLabel="Graphic8">
                                 <rect key="frame" x="20" y="269" width="55" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="Ea1-xI-b67" userLabel="Graphic9">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" id="Ea1-xI-b67" userLabel="Graphic9">
                                 <rect key="frame" x="20" y="309" width="55" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="KcO-eM-DxU" userLabel="Graphic10">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" id="KcO-eM-DxU" userLabel="Graphic10">
                                 <rect key="frame" x="20" y="309" width="55" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="i7h-zs-OeS" userLabel="Graphic11">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" id="i7h-zs-OeS" userLabel="Graphic11">
                                 <rect key="frame" x="20" y="309" width="55" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="HC5-ur-WUP" userLabel="Graphic12">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" id="HC5-ur-WUP" userLabel="Graphic12">
                                 <rect key="frame" x="20" y="309" width="55" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="lbp-Ek-PBi" userLabel="Graphic13">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" id="lbp-Ek-PBi" userLabel="Graphic13">
                                 <rect key="frame" x="20" y="348" width="55" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="PC0-2b-xit" userLabel="Graphic14">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" id="PC0-2b-xit" userLabel="Graphic14">
                                 <rect key="frame" x="20" y="348" width="55" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="sbQ-EL-ls8" userLabel="Graphic15">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" id="sbQ-EL-ls8" userLabel="Graphic15">
                                 <rect key="frame" x="20" y="348" width="55" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="Ouz-Ue-pLZ" userLabel="Graphic16">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" id="Ouz-Ue-pLZ" userLabel="Graphic16">
                                 <rect key="frame" x="20" y="348" width="55" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="L7z-23-yDC" userLabel="Graphic17">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" id="L7z-23-yDC" userLabel="Graphic17">
                                 <rect key="frame" x="20" y="348" width="55" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
@@ -253,6 +253,50 @@
             <point key="canvasLocation" x="281" y="36"/>
         </scene>
     </scenes>
+    <classes>
+        <class className="DozenalViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/DozenalViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="action1:"/>
+                <relationship kind="action" name="action2:"/>
+                <relationship kind="action" name="action3:"/>
+                <relationship kind="action" name="action4:"/>
+                <relationship kind="action" name="action5:"/>
+                <relationship kind="action" name="moveForward:"/>
+                <relationship kind="action" name="moveLeft:"/>
+                <relationship kind="action" name="moveRight:"/>
+                <relationship kind="outlet" name="action1" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="action2" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="action3" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="action4" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="action5" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="debugAction" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="debugNode" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="debugOrientation" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="graphic1" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="graphic10" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="graphic11" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="graphic12" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="graphic13" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="graphic14" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="graphic15" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="graphic16" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="graphic17" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="graphic2" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="graphic3" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="graphic4" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="graphic5" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="graphic6" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="graphic7" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="graphic8" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="graphic9" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="moveForward" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="moveLeft" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="moveRight" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="viewMain" candidateClass="UIImageView"/>
+            </relationships>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
