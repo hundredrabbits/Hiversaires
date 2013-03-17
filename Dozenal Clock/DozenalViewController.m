@@ -67,7 +67,7 @@ CGRect			screenBound;
 	worldPath = [self worldPath];
 	worldActionType = [self worldActionType];
 	
-	userActionStorage = [NSMutableArray arrayWithObjects:@"",@"0",@"",@"",@"",@"0",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",nil];
+	userActionStorage = [NSMutableArray arrayWithObjects:@"",@"0",@"1",@"",@"",@"0",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",nil];
 	
 	userActionStorage[12] = @"1";
 	userActionStorage[21] = @"1";
@@ -750,12 +750,14 @@ CGRect			screenBound;
 
 	if( [userActionStorage[userActionId] isEqual: @"1"] ){
 		userActionStorage[userActionId] = @"0";
+		userEnergy += 1;
 	}
-	else if( [self energyCount] > 0 ){
+	else if( userEnergy > 0 ){
 		userActionStorage[userActionId] = @"1";
+		userEnergy -= 1;
 	}
 	
-	NSLog(@"%d", [self energyCount] );
+	NSLog(@"%d", userEnergy );
 	
 	[self templateUpdateEnergy];
 	
@@ -904,7 +906,6 @@ CGRect			screenBound;
 
 - (void)templateUpdateEnergy
 {
-	userEnergy = [self energyCount];
 	
 	self.action4.alpha = 1.0;
 	
@@ -997,18 +998,6 @@ CGRect			screenBound;
 // ====================
 // Counters
 // ====================
-
-- (int)energyCount
-{
-	userEnergy = 0;
-	userEnergy += [userActionStorage[2] intValue];
-	userEnergy += [userActionStorage[10] intValue];
-	userEnergy += [userActionStorage[18] intValue];
-	userEnergy += [userActionStorage[27] intValue];
-	userEnergy = 2-userEnergy;
-	
-	return userEnergy;
-}
 
 - (int)sealCount
 {
