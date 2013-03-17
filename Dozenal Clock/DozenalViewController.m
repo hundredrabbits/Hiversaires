@@ -196,14 +196,12 @@ CGRect			screenBound;
 		
 		self.graphic2.frame = CGRectMake(screenWidthHalf/2, screenHeightHalf-(screenWidthHalf/2), screenWidthHalf, screenWidthHalf); // interface
 		self.graphic2.image = [UIImage imageNamed:@"action0102.png"];
-		self.graphic2.alpha = 1.0;
 		
 		self.graphic3.frame = CGRectMake(screenWidthHalf/2, screenHeightHalf-(screenWidthHalf/2), screenWidthHalf, screenWidthHalf); // interface
 		self.graphic3.image = [UIImage imageNamed:@"action0101.png"];
-		self.graphic3.alpha = 1.0;
 		
-		self.action1.hidden = NO;
-		self.action1.alpha = 1.0;
+		[self fadeDelay:self.graphic2 d:0.3 t:0.3];
+		[self fadeDelay:self.graphic3 d:0.6 t:0.3];
 		
 		[self templateUpdateClock];
 		
@@ -462,19 +460,7 @@ CGRect			screenBound;
 		NSLog(@"!!");
 		
 	}
-	
-	// ====================
-	// Progress Report | Endgame
-	// ====================
-	
-	if( [worldActionType[userActionId] isEqual: @"progressReport"]){
-		
-		[self audioTerminalInit];
-		
-		NSLog(@"Collectibles: %d/%d",[self collectibleCount], 10);
-		
-	}
-	
+
 	if( [userAction isEqual: @"act22"] ){ // Unlock Map
 			
 		userActionStorage[22] = @"1";
@@ -713,6 +699,11 @@ CGRect			screenBound;
 		// 17
 		
 		
+		NSLog(@"Collectibles: %d/%d",[self collectibleCount], 10);
+	
+		self.graphic1.alpha = 1.0;
+		self.graphic1.hidden = NO;
+		
 		if( [userActionStorage[22] isEqual: @"1"] ){	[self fadeIn:self.graphic13 t:1]; }
 
 	}
@@ -783,11 +774,11 @@ CGRect			screenBound;
 	if( [userActionStorage[userActionId] isEqual: @"1"] ){
 		userActionStorage[userActionId] = @"0";
 	}
-	else{
+	else if( [self energyCount] > 0 ){
 		userActionStorage[userActionId] = @"1";
 	}
 	
-	NSLog(@"%@",userActionStorage[userActionId]);
+	NSLog(@"%d", [self energyCount] );
 	
 	[self templateUpdateEnergy];
 	
@@ -1023,7 +1014,7 @@ CGRect			screenBound;
 	userEnergy += [userActionStorage[10] intValue];
 	userEnergy += [userActionStorage[18] intValue];
 	userEnergy += [userActionStorage[27] intValue];
-	userEnergy = 4-userEnergy;
+	userEnergy = 2-userEnergy;
 	
 	return userEnergy;
 }
@@ -1063,6 +1054,15 @@ CGRect			screenBound;
 // Tools
 // ====================
 
+-(void)fadeDelay:(UIView*)viewToFadeIn d:(NSTimeInterval)delay t:(NSTimeInterval)duration
+{
+	[UIView beginAnimations: @"Fade Delay" context:nil];
+	[UIView setAnimationDuration:duration];
+	[UIView setAnimationDelay:delay];
+	viewToFadeIn.alpha = 1;
+	[UIView commitAnimations];
+}
+
 -(void)fadeIn:(UIView*)viewToFadeIn t:(NSTimeInterval)duration
 {
 	[UIView beginAnimations: @"Fade In" context:nil];
@@ -1078,6 +1078,7 @@ CGRect			screenBound;
 	viewToFadeOut.alpha = 0;
 	[UIView commitAnimations];
 }
+
 -(void)fadeHalf:(UIView*)viewToFadeOut t:(NSTimeInterval)duration
 {
 	[UIView beginAnimations: @"Fade Half" context:nil];
@@ -1085,6 +1086,7 @@ CGRect			screenBound;
 	viewToFadeOut.alpha = 0.2;
 	[UIView commitAnimations];
 }
+
 - (void)rotate:(UIView *)viewToRotate t:(NSTimeInterval)duration d:(CGFloat)degrees
 {
 	[UIView beginAnimations:nil context:NULL];

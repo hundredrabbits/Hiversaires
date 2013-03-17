@@ -93,7 +93,7 @@
 	node[60]	= [NSArray arrayWithObjects: @"62", @"0", @"56", @"0", @"silence", nil];
 	node[61]	= [NSArray arrayWithObjects: @"0", @"0", @"59", @"act19", @"silence", nil];
 	node[62]	= [NSArray arrayWithObjects: @"act26", @"0", @"60", @"0", @"silence", nil];
-	node[63]	= [NSArray arrayWithObjects: @"73", @"69", @"64", @"67", @"silence", nil];
+	node[63]	= [NSArray arrayWithObjects: @"73", @"69", @"0", @"67", @"silence", nil];
 	node[64]	= [NSArray arrayWithObjects: @"63", @"0", @"0", @"0", @"silence", nil];
 	node[65]	= [NSArray arrayWithObjects: @"0", @"act31", @"0", @"0", @"silence", nil];
 	node[67]	= [NSArray arrayWithObjects: @"74", @"63", @"0", @"70", @"silence", nil];
