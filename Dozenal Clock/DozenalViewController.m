@@ -63,20 +63,19 @@ CGRect			screenBound;
     
     [super viewDidLoad];
     
-	
 	worldPath = [self worldPath];
 	worldActionType = [self worldActionType];
 	
-	userActionStorage = [NSMutableArray arrayWithObjects:@"",@"0",@"1",@"",@"",@"0",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",nil];
+	userActionStorage = [NSMutableArray arrayWithObjects:@"",@"0",@"0",@"",@"",@"0",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",nil];
 	
-	userActionStorage[12] = @"1";
-	userActionStorage[21] = @"1";
+	// Starting fuses
+	userActionStorage[2] = @"1";
+	userActionStorage[47] = @"1";
 	
 	[self ambientForest];
 	
 	[self actionCheck];
     [self moveCheck];
-	
 	
 }
 
@@ -601,7 +600,7 @@ CGRect			screenBound;
 		
 		self.action3.hidden = YES;
 		self.graphic1.hidden = YES;
-		[self templateUpdateNode:20:@"0486":@"act6"];
+		[self templateUpdateNode:20:@"0528":@"act6"];
 		
 		[self templateUpdateDoorknob:20:20:_action2];
 		
@@ -915,6 +914,7 @@ CGRect			screenBound;
 		[self templateUpdateNode:69:@"0518":@"act18"];
 		[self templateUpdateNode:39:@"0519":@"act10"];
 		[self templateUpdateNode:77:@"0520":@"act27"];
+		[self templateUpdateNode:84:@"0527":@"act47"];
 	}
 	else{
 		[self templateUpdateNode:12:@"0521":@"act2"];
@@ -922,6 +922,7 @@ CGRect			screenBound;
 		[self templateUpdateNode:69:@"0523":@"act18"];
 		[self templateUpdateNode:39:@"0524":@"act10"];
 		[self templateUpdateNode:77:@"0525":@"act27"];
+		[self templateUpdateNode:84:@"0526":@"act47"];
 	}
 	
 }
@@ -929,18 +930,14 @@ CGRect			screenBound;
 - (void)templateUpdateStudioTerminal
 {
 	
-	NSLog(@"Check ");
-	
 	if( [userActionStorage[userActionId] intValue] == 2 ){
 		
 		self.graphic1.alpha = 1.0;
 		self.graphic1.hidden = NO;
 		[self templateUpdateNode:19:@"0489":@"act5"];
 		
-		
 	}
 	else{
-		
 		
 		self.graphic1.alpha = 0.0;
 		self.graphic1.hidden = YES;

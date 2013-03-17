@@ -24,7 +24,7 @@
 	
 	// Warp
 	
-//	node[0]		= [NSArray arrayWithObjects: @"48", @"0", @"0", @"0", nil];
+//	node[0]		= [NSArray arrayWithObjects: @"44", @"0", @"0", @"0", nil];
 	
 	node[1]		= [NSArray arrayWithObjects: @"2", @"0", @"act28", @"0", @"forest", nil];
 	node[2]		= [NSArray arrayWithObjects: @"3", @"0", @"1", @"0", @"forest", nil];
@@ -113,7 +113,7 @@
 	node[81]	= [NSArray arrayWithObjects: @"82", @"78", @"73", @"0", @"silence", nil];
 	node[82]	= [NSArray arrayWithObjects: @"0", @"83", @"81", @"act20", @"silence", nil];
 	node[83]	= [NSArray arrayWithObjects: @"act37", @"0", @"78", @"82", @"silence", nil];
-	node[84]	= [NSArray arrayWithObjects: @"56", @"0", @"0", @"53", @"silence", nil];
+	node[84]	= [NSArray arrayWithObjects: @"56", @"0", @"act47", @"53", @"silence", nil];
 	node[85]	= [NSArray arrayWithObjects: @"act15", @"0", @"80", @"86", @"silence", nil];
 	node[86]	= [NSArray arrayWithObjects: @"0", @"85", @"0", @"act1", @"silence", nil];
 	node[87]	= [NSArray arrayWithObjects: @"79", @"act30", @"act39", @"88", @"silence", nil];
@@ -210,6 +210,10 @@
 	puzzle[44]		= @"entente";
 	puzzle[45]		= @"entente";
 	puzzle[46]		= @"entente";
+	
+	// Spare Fuse
+	
+	puzzle[47]		= @"energyTerminal";
 	
 	
 	return puzzle;
