@@ -69,6 +69,9 @@ CGRect			screenBound;
 	
 	userActionStorage = [NSMutableArray arrayWithObjects:@"",@"0",@"",@"",@"",@"0",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",nil];
 	
+	userActionStorage[12] = @"1";
+	userActionStorage[21] = @"1";
+	
 	[self ambientForest];
 	
 	[self actionCheck];
@@ -200,8 +203,11 @@ CGRect			screenBound;
 		self.graphic3.frame = CGRectMake(screenWidthHalf/2, screenHeightHalf-(screenWidthHalf/2), screenWidthHalf, screenWidthHalf); // interface
 		self.graphic3.image = [UIImage imageNamed:@"action0101.png"];
 		
-		[self fadeDelay:self.graphic2 d:0.3 t:0.3];
-		[self fadeDelay:self.graphic3 d:0.6 t:0.3];
+		[self fadeDelay:self.graphic2 d:0.1 t:0.2];
+		[self fadeDelay:self.graphic3 d:0.2 t:0.2];
+		
+		self.action1.hidden = NO;
+		self.action1.alpha = 1.0;
 		
 		[self templateUpdateClock];
 		
@@ -213,11 +219,9 @@ CGRect			screenBound;
 	
 	if( [worldActionType[userActionId] isEqual: @"sealTerminal"]){
 		
+		self.graphic1.hidden = NO;
+		
 		[self audioSealInit];
-		
-		self.action5.hidden = NO;
-		self.action5.alpha = 1.0;
-		
 		[self templateUpdateSeal];
 		
 	}
@@ -228,15 +232,18 @@ CGRect			screenBound;
 	
 	if( [worldActionType[userActionId] isEqual: @"energyTerminal"]){
 		
-		// Display Interactions
+		self.graphic1.hidden = NO;
+		
+		// Terminal Doorknob
+		
+		self.action2.hidden = NO;
+		self.action2.alpha = 1.0;
 		
 		self.action4.hidden = NO;
-		self.graphic1.hidden = NO;
 		
 		// Audio
 		
 		[self audioEnergyInit];
-		[self templateUpdateEnergy];
 		
 	}
 	
@@ -251,57 +258,38 @@ CGRect			screenBound;
 		self.action3.hidden = YES;
 		self.graphic1.hidden = YES;
 		
-		
-		if ( [userActionStorage[4] intValue] == 1 && [userActionStorage[13] intValue] == 1 ) { // Forest + Rainre ( Stones Monolith )
+		if ( ([userActionStorage[4] intValue] == 1 && [userActionStorage[13] intValue] == 1) || ([userActionStorage[21] intValue] == 1 && [userActionStorage[13] intValue] == 1) ) { // Forest + Rainre ( Stones Monolith ) || Antechannel + Rainre ( Metamondst Door )
 			
-			self.action2.hidden = NO;
-			self.action2.alpha = 1.0;
+			[self templateUpdateDoorknob:46:85:_action2];
 			
 			[self  templateUpdateNode:46:@"0486":@"act15"];
 			[self  templateUpdateNode:85:@"0485":@"act15"];
 			[self templateAmbientAssoc:46:@"metamondst":@"act15"];
 			[self templateAmbientAssoc:85:@"stones":@"act15"];
-		}
-		
-		if ( [userActionStorage[21] intValue] == 1 && [userActionStorage[13] intValue] == 1 ) { // Antechannel + Rainre ( Metamondst Door )
 			
-			self.action2.hidden = NO;
-			self.action2.alpha = 1.0;
-			
-			[self  templateUpdateNode:46:@"0486":@"act15"];
-			[self  templateUpdateNode:85:@"0485":@"act15"];
 		}
 		
 		if ( [userActionStorage[20] intValue] == 1 && [userActionStorage[13] intValue] == 1 ) { // Metamondst + Rainre ( Forest Monolith )
 			
-			self.action2.hidden = NO;
-			self.action2.alpha = 1.0;
+			[self templateUpdateDoorknob:48:11:_action2];
 			
 			[self  templateUpdateNode:11:@"0487":@"act25"];
 			[self  templateUpdateNode:48:@"0488":@"act25"];
 			[self templateAmbientAssoc:11:@"antechannel":@"act25"];
 			[self templateAmbientAssoc:48:@"forest":@"act25"];
+			
 		}
 		
 		
 		if ( [userActionStorage[21] intValue] == 1 && [userActionStorage[12] intValue] == 1 ) { // Antechannel + Stones ( Terminal Seal )
 			
-			self.graphic1.image = [UIImage imageNamed:@"node.0489.jpg"];
-			self.graphic1.frame = CGRectMake(0, 10, 320, 460);
-			
-			[self.action1 setImage: nil forState: UIControlStateNormal];
-			self.action1.frame = CGRectMake(80, 140, 160, 160);
-			[self fadeIn:self.action1 t:0];
+			self.action1.alpha = 1.0;
+			self.action1.hidden = NO;
 			
 			[self templateUpdateStudioTerminal];
-			[self vibrate];
-			
+
 		}
-		else if( userActionId == 5 ){
-			
-			[self templateUpdateStudioTerminal];
-			
-		}
+
 		
 	}
 
@@ -456,9 +444,6 @@ CGRect			screenBound;
 			
 		}
 		
-		
-		NSLog(@"!!");
-		
 	}
 
 	if( [userAction isEqual: @"act22"] ){ // Unlock Map
@@ -598,7 +583,6 @@ CGRect			screenBound;
 			userNode = 92;
 		}
 		
-		
 		userAction = nil;
 		
 		NSLog(@"%@",userActionStorage[24]);
@@ -615,16 +599,11 @@ CGRect			screenBound;
 	
 	if([userAction isEqual: @"act6"] && [userActionStorage[5] isEqual: @"2"] ){ // Fold Gate
 		
-		userNode = 20;
-		userOrientation = 2;
-		userAction = nil;
-		userFold = ( userFold == 1 ) ? 0 : 1;
+		self.action3.hidden = YES;
+		self.graphic1.hidden = YES;
+		[self templateUpdateNode:20:@"0486":@"act6"];
 		
-		NSLog(@"%d",userFold);
-		
-		[self actionCheck];
-		[self moveCheck];
-		[self actionReset];
+		[self templateUpdateDoorknob:20:20:_action2];
 		
 	}
 	
@@ -721,15 +700,14 @@ CGRect			screenBound;
 	
 }
 
-- (IBAction)action2:(id)sender { // Decrement
+- (IBAction)action2:(id)sender { // Door to display action3
 	
 	self.graphic1.hidden = NO;
 	self.action3.hidden = NO;
-	
 	self.action2.hidden = YES;
-	
 	self.action3.alpha = 1.0;
-	
+	[self templateUpdateEnergy];
+		
 }
 
 - (IBAction)action3:(id)sender { // Warp Action
@@ -741,11 +719,12 @@ CGRect			screenBound;
 	else if	( userNode == 13 ){ userNode = 12; }
 	else if	( userNode == 12 ){	userNode = 13; }
 	else if ( userNode == 16 ){	userNode = 22; }
+	else if	( userNode == 20 ){	userNode = 20; userOrientation = 2; userFold = ( userFold == 1 ) ? 0 : 1; }
 	else if	( userNode == 23 ){	userNode = 22; }
 	else if	( userNode == 25 ){	userNode = 31; userOrientation = 2;}
 	else if	( userNode == 27 ){	userNode = 32; userOrientation = 1;}
 	else if	( userNode == 35 ){	userNode = 31; userOrientation = 0;}
-	else if	( userNode == 39 && userFold == 1 ) { userNode = 34; NSLog(@"!!"); }
+	else if	( userNode == 39 && userFold == 1 ) { userNode = 34; }
 	else if	( userNode == 39 ){	userNode = 45; }
 	else if	( userNode == 45 ){	userNode = 51; }
 	else if	( userNode == 46 ){	userNode = 85; userOrientation = 2; }
@@ -767,10 +746,8 @@ CGRect			screenBound;
 	
 }
 
-- (IBAction)action4:(id)sender { // Energy Action
-	
-	
-	
+- (IBAction)action4:(id)sender { // Fuse(energy) Action
+
 	if( [userActionStorage[userActionId] isEqual: @"1"] ){
 		userActionStorage[userActionId] = @"0";
 	}
@@ -878,6 +855,15 @@ CGRect			screenBound;
 // Actions with interactions
 // ====================
 
+
+- (void)templateUpdateDoorknob :(int)side1 :(int)side2 :(UIView*)knob
+{
+	if( userNode == side1 || userNode == side2 ){
+		knob.hidden = NO;
+		knob.alpha = 1.0;
+	}
+}
+
 - (void)templateUpdateClock
 {
 	
@@ -888,8 +874,12 @@ CGRect			screenBound;
 - (void)templateUpdateSeal
 {
 	
+	self.action5.hidden = NO;
+	self.action5.alpha = 1.0;
+	
+	
 	userSeal = [self sealCount];
-	[self fadeOut:self.graphic1 t:1];
+	self.graphic1.alpha = 0;
 	
 	if( [userActionStorage[userActionId] intValue] == 1 ){
 		
@@ -915,7 +905,7 @@ CGRect			screenBound;
 - (void)templateUpdateEnergy
 {
 	userEnergy = [self energyCount];
-
+	
 	self.action4.alpha = 1.0;
 	
 	if( [userActionStorage[userActionId] intValue] == 1 ){
@@ -924,25 +914,35 @@ CGRect			screenBound;
 		[self templateUpdateNode:69:@"0518":@"act18"];
 		[self templateUpdateNode:39:@"0519":@"act10"];
 		[self templateUpdateNode:77:@"0520":@"act27"];
-				
 	}
 	else{
-		self.graphic1.alpha = 0;
+		[self templateUpdateNode:12:@"0521":@"act2"];
+		[self templateUpdateNode:13:@"0522":@"act2"];
+		[self templateUpdateNode:69:@"0523":@"act18"];
+		[self templateUpdateNode:39:@"0524":@"act10"];
+		[self templateUpdateNode:77:@"0525":@"act27"];
 	}
 	
 }
 
 - (void)templateUpdateStudioTerminal
 {
-		
+	
+	NSLog(@"Check ");
+	
 	if( [userActionStorage[userActionId] intValue] == 2 ){
 		
-		[self fadeIn:self.graphic1 t:1];
+		self.graphic1.alpha = 1.0;
+		self.graphic1.hidden = NO;
+		[self templateUpdateNode:19:@"0489":@"act5"];
+		
 		
 	}
 	else{
 		
-		[self fadeOut:self.graphic1 t:1];
+		
+		self.graphic1.alpha = 0.0;
+		self.graphic1.hidden = YES;
 		
 	}
 	
@@ -967,15 +967,6 @@ CGRect			screenBound;
 		[self fadeIn:self.graphic2 t:1];
 	}
 		
-}
-
-- (void)templateUpdateState :(int)node :(NSString*)img :(NSString*)act
-{
-	if( userNode == node && [userAction isEqual: act]){
-		[self.action3 setImage:[UIImage imageNamed: [NSString stringWithFormat:@"node.%@.jpg", img] ] forState:UIControlStateNormal];
-	}
-	self.action3.frame = CGRectMake(0, 10, 320, 460);
-	[self fadeIn:self.action3 t:0.0];
 }
 
 - (void)templateUpdateNode :(int)node :(NSString*)img :(NSString*)act
