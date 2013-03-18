@@ -41,8 +41,5 @@
 -(void) ambientMetamondst;
 -(void) ambientRainre;
 
--(void) audioCollectibleInit;
-
-
 
 @end

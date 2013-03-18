@@ -98,15 +98,6 @@ AVAudioPlayer *playerAmbient;
 }
 
 // ====================
-// Collectibles
-// ====================
-
--(void)audioCollectibleInit
-{
-	NSLog(@"[audioCollectibleInit]");
-}
-
-// ====================
 // Clock
 // ====================
 
