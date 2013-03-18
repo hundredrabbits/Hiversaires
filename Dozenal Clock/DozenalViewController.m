@@ -828,7 +828,7 @@ CGRect			screenBound;
 		self.graphic1.alpha = 0.5;
 		self.graphic1.hidden = NO;
 		
-		if( [userActionStorage[22] isEqual: @"1"] ){	[self fadeIn:self.graphic13 t:1]; }
+		//if( [userActionStorage[22] isEqual: @"1"] ){	[self fadeIn:self.graphic13 t:1]; }
 		
 	}
 	
