@@ -33,6 +33,7 @@ int             userNode = 0;
 int             userOrientation;
 NSMutableArray	*userActionStorage;
 int				userActionId;
+int				userProgress = 1;
 
 int				userSeal = 0;
 int				userEnergy = 0;
@@ -413,7 +414,7 @@ CGRect			screenBound;
 		self.action3.hidden = YES;
 		self.graphic1.hidden = YES;
 		
-		if ( ([userActionStorage[4] intValue] == 1 && [userActionStorage[13] intValue] == 1) || ([userActionStorage[21] intValue] == 1 && [userActionStorage[13] intValue] == 1) ) { // Forest + Rainre ( Stones Monolith ) || Antechannel + Rainre ( Metamondst Door )
+		if ( ([userActionStorage[4] intValue] == 1 && [userActionStorage[13] intValue] == 1) ) { // Act 1 : Forest + Rainre in Stones
 			
 			[self templateUpdateDoorknob:46:85:_action2];
 			
@@ -422,9 +423,11 @@ CGRect			screenBound;
 			[self templateAmbientAssoc:46:@"metamondst":@"act15"];
 			[self templateAmbientAssoc:85:@"stones":@"act15"];
 			
+			userProgress = 2;
+			
 		}
 		
-		if ( [userActionStorage[20] intValue] == 1 && [userActionStorage[13] intValue] == 1 ) { // Metamondst + Rainre ( Forest Monolith )
+		if ( [userActionStorage[20] intValue] == 1 && [userActionStorage[13] intValue] == 1 ) { // Act 2 : Metamondst + Rainre in Forest
 			
 			[self templateUpdateDoorknob:48:11:_action2];
 			
@@ -433,15 +436,31 @@ CGRect			screenBound;
 			[self templateAmbientAssoc:11:@"antechannel":@"act25"];
 			[self templateAmbientAssoc:48:@"forest":@"act25"];
 			
+			userProgress = 3;
+			
 		}
 		
+		if ( ([userActionStorage[21] intValue] == 1 && [userActionStorage[13] intValue] == 1) ) { // Act 3 : Forest + Rainre in Metamondst
+			
+			[self templateUpdateDoorknob:46:85:_action2];
+			
+			[self  templateUpdateNode:46:@"0486":@"act15"];
+			[self  templateUpdateNode:85:@"0485":@"act15"];
+			[self templateAmbientAssoc:46:@"metamondst":@"act15"];
+			[self templateAmbientAssoc:85:@"stones":@"act15"];
+			
+			userProgress = 4;
+			
+		}
 		
-		if ( [userActionStorage[21] intValue] == 1 && [userActionStorage[12] intValue] == 1 ) { // Antechannel + Stones ( Terminal Seal )
+		if ( [userActionStorage[21] intValue] == 1 && [userActionStorage[12] intValue] == 1 ) { // Act 4 : Antechannel + Stones in Studio
 			
 			self.action1.alpha = 1.0;
 			self.action1.hidden = NO;
 			
 			[self templateUpdateStudioTerminal];
+			
+			userProgress = 5;
 			
 		}
 		
@@ -745,25 +764,22 @@ CGRect			screenBound;
 		
 		self.graphic1.image = [UIImage imageNamed:@"progress_shadows.png"];
 		
-		self.graphic2.image = [UIImage imageNamed:@"progress_capsule.png"];
-		self.graphic3.image = [UIImage imageNamed:@"progress_metamondst.png"];
-		self.graphic4.image = [UIImage imageNamed:@"progress_bonus1.png"];
-		self.graphic5.image = [UIImage imageNamed:@"progress_bonus2.png"];
+		self.graphic2.image = [UIImage imageNamed:@"progress_act1_seal1.png"];
+		self.graphic3.image = [UIImage imageNamed:@"progress_act1_seal2.png"];
+		self.graphic4.image = [UIImage imageNamed:@"progress_act1_door.png"];
 		
-		self.graphic6.image = [UIImage imageNamed:@"progress_studio.png"];
-		self.graphic7.image = [UIImage imageNamed:@"progress_circle.png"];
-		self.graphic8.image = [UIImage imageNamed:@"progress_antechannel.png"];
-		self.graphic9.image = [UIImage imageNamed:@"progress_bonus3.png"];
+		self.graphic5.image = [UIImage imageNamed:@"progress_act2_seal1.png"];
+		self.graphic6.image = [UIImage imageNamed:@"progress_act2_seal2.png"];
+		self.graphic7.image = [UIImage imageNamed:@"progress_act2_door.png"];
 		
-		self.graphic10.image = [UIImage imageNamed:@"progress_forest.png"];
-		self.graphic11.image = [UIImage imageNamed:@"progress_stones.png"];
-		self.graphic12.image = [UIImage imageNamed:@"progress_rainre.png"];
-		self.graphic13.image = [UIImage imageNamed:@"progress_map.png"];
+		self.graphic8.image = [UIImage imageNamed:@"progress_act3_seal1.png"];
+		self.graphic9.image = [UIImage imageNamed:@"progress_act3_seal2.png"];
+		self.graphic10.image = [UIImage imageNamed:@"progress_act3_door.png"];
 		
-		self.graphic14.image = [UIImage imageNamed:@"progress_entente.png"];
-		self.graphic15.image = [UIImage imageNamed:@"progress_bonus6.png"];
-		self.graphic16.image = [UIImage imageNamed:@"progress_bonus5.png"];
-		self.graphic17.image = [UIImage imageNamed:@"progress_bonus4.png"];
+		self.graphic11.image = [UIImage imageNamed:@"progress_act4_seal1.png"];
+		self.graphic12.image = [UIImage imageNamed:@"progress_act4_seal2.png"];
+		self.graphic13.image = [UIImage imageNamed:@"progress_act5_door.png"];
+		
 		
 		self.graphic1.frame = CGRectMake(0, 0, screenBound.size.width, screenBound.size.height);
 		self.graphic2.frame = CGRectMake(0, 0, screenBound.size.width, screenBound.size.height);
@@ -785,27 +801,31 @@ CGRect			screenBound;
 		
 		[self fadeIn:self.graphic1 t:1];
 		
-		if( [userActionStorage[24] isEqual: @"1"] ){	[self fadeIn:self.graphic2 t:1]; }
-		if( [userActionStorage[20] isEqual: @"1"] ){	[self fadeIn:self.graphic3 t:1]; }
-		// 4
-		// 5
+		if( userProgress == 1 ){
+			if( ![userActionStorage[4] isEqual: @"1"] ){ [self fadeIn:self.graphic2 t:1]; }
+			else if( ![userActionStorage[13] isEqual: @"1"] ){ [self fadeIn:self.graphic3 t:1]; }
+			else if( [userActionStorage[4] isEqual: @"1"] && [userActionStorage[13] isEqual: @"1"] ){ [self fadeIn:self.graphic4 t:1]; }
+		}
+		if( userProgress == 2 ){
+			if( ![userActionStorage[13] isEqual: @"1"] ){ [self fadeIn:self.graphic5 t:1]; }
+			else if( ![userActionStorage[20] isEqual: @"1"] ){ [self fadeIn:self.graphic6 t:1]; }
+			else if( [userActionStorage[13] isEqual: @"1"] && [userActionStorage[20] isEqual: @"1"] ){ [self fadeIn:self.graphic7 t:1]; }
+		}
+		if( userProgress == 3 ){
+			if( ![userActionStorage[21] isEqual: @"1"] ){ [self fadeIn:self.graphic8 t:1]; }
+			else if( ![userActionStorage[13] isEqual: @"1"] ){ [self fadeIn:self.graphic9 t:1]; }
+			else if( [userActionStorage[21] isEqual: @"1"] && [userActionStorage[13] isEqual: @"1"] ){ [self fadeIn:self.graphic10 t:1]; }
+		}
+		if( userProgress == 4 ){
+			if( ![userActionStorage[12] isEqual: @"1"] ){ [self fadeIn:self.graphic11 t:1]; }
+			else if( ![userActionStorage[21] isEqual: @"1"] ){ [self fadeIn:self.graphic12 t:1]; }
+			else if( [userActionStorage[12] isEqual: @"1"] && [userActionStorage[21] isEqual: @"1"] ){ [self fadeIn:self.graphic13 t:1]; }
+		}
 		
-		if( [userActionStorage[14] isEqual: @"1"] ){	[self fadeIn:self.graphic6 t:1]; }
-		// 7
-		if( [userActionStorage[21] isEqual: @"1"] ){	[self fadeIn:self.graphic8 t:1]; }
-		// 9
 		
-		if( [userActionStorage[4] isEqual: @"1"] ) {	[self fadeIn:self.graphic10 t:1]; }
-		if( [userActionStorage[12] isEqual: @"1"] ){	[self fadeIn:self.graphic11 t:1]; }
-		if( [userActionStorage[13] isEqual: @"1"] ){	[self fadeIn:self.graphic12 t:1]; }
-		// Nothing
 		
-		// if( [userActionStorage[22] isEqual: @"1"] ) {	[self fadeIn:self.graphic14 t:1]; }
-		// 15
-		// 16
-		// 17
 		
-		self.graphic1.alpha = 1.0;
+		self.graphic1.alpha = 0.5;
 		self.graphic1.hidden = NO;
 		
 		if( [userActionStorage[22] isEqual: @"1"] ){	[self fadeIn:self.graphic13 t:1]; }
