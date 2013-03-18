@@ -38,13 +38,13 @@
 	
 	node[10]	= [NSArray arrayWithObjects: @"3|3", @"0", @"9|0", @"0", @"studio", nil];	
 	node[11]	= [NSArray arrayWithObjects: @"act25", @"0", @"3", @"0", @"studio", nil];	
-	node[12]	= [NSArray arrayWithObjects: @"act3", @"act2", @"7", @"0", @"studio", nil];
+	node[12]	= [NSArray arrayWithObjects: @"act3", @"0", @"7", @"14|0", @"studio", nil];
 	node[13]	= [NSArray arrayWithObjects: @"17", @"15", @"act3", @"act2", @"studio", nil];
-	node[14]	= [NSArray arrayWithObjects: @"18", @"13", @"0", @"0", @"studio", nil];
+	node[14]	= [NSArray arrayWithObjects: @"18", @"0", @"12|1", @"0", @"studio", nil];
 	node[15]	= [NSArray arrayWithObjects: @"16", @"0", @"act33", @"13", @"studio", nil];
 	node[16]	= [NSArray arrayWithObjects: @"21", @"act7", @"15", @"17", @"studio", nil];
 	node[17]	= [NSArray arrayWithObjects: @"20", @"16", @"13", @"0", @"studio", nil];
-	node[18]	= [NSArray arrayWithObjects: @"19", @"17", @"0", @"act3", @"studio", nil];
+	node[18]	= [NSArray arrayWithObjects: @"act31", @"act2", @"14", @"0", @"studio", nil];
 	node[19]	= [NSArray arrayWithObjects: @"0", @"20", @"act5", @"0", @"studio", nil];
 	
 	node[20]	= [NSArray arrayWithObjects: @"act6", @"21", @"17", @"19", @"silence", nil];
@@ -74,7 +74,7 @@
 	node[42]	= [NSArray arrayWithObjects: @"0", @"41", @"44", @"43", @"silence", nil];
 	node[43]	= [NSArray arrayWithObjects: @"0", @"42", @"0", @"act34", @"silence", nil];
 	node[44]	= [NSArray arrayWithObjects: @"42", @"0", @"46", @"0", @"silence", nil];
-	node[45]	= [NSArray arrayWithObjects: @"act13", @"0", @"0", @"39", @"silence", nil];
+	node[45]	= [NSArray arrayWithObjects: @"act13", @"0", @"act1", @"39", @"silence", nil];
 	node[46]	= [NSArray arrayWithObjects: @"44", @"0", @"act15", @"0", @"silence", nil];
 	node[47]	= [NSArray arrayWithObjects: @"act38", @"48", @"77", @"0", @"silence", nil];
 	node[48]	= [NSArray arrayWithObjects: @"act25", @"0", @"49", @"47", @"silence", nil];
@@ -191,7 +191,7 @@
 	
 	// Collectibles
 	
-	puzzle[31]		= @"collectible";
+	puzzle[31]		= @"energyTerminal";
 	puzzle[32]		= @"collectible";
 	puzzle[33]		= @"collectible";
 	puzzle[34]		= @"collectible";
