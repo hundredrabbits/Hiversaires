@@ -65,10 +65,10 @@ CGRect			screenBound;
 	worldPath = [self worldPath];
 	worldActionType = [self worldActionType];
 	
-	userActionStorage = [NSMutableArray arrayWithObjects:@"",@"0",@"0",@"",@"",@"0",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",nil];
+	userActionStorage = [NSMutableArray arrayWithObjects:@"",@"1",@"0",@"",@"",@"0",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",nil];
 	
 	// Starting fuses
-	userActionStorage[2] = @"1";
+	userActionStorage[31] = @"1";
 	userActionStorage[47] = @"1";
 	
 	[self ambientForest];
@@ -318,6 +318,8 @@ CGRect			screenBound;
 	
 	[self rotate:self.action1 t:1.0 d:0];
 	[self rotate:self.action3 t:1.0 d:0];
+	[self rotate:self.graphic1 t:1.0 d:0];
+	[self rotate:self.graphic2 t:1.0 d:0];
 	[self rotate:self.graphic3 t:1.0 d:0];
 	
 	[self fadeOut:self.graphic1 t:0];
@@ -358,19 +360,6 @@ CGRect			screenBound;
 	if( [worldActionType[userActionId] isEqual: @"clockTerminal"]){
 		
 		[self audioClockInit];
-		
-		self.graphic2.frame = CGRectMake(screenWidthHalf/2, screenHeightHalf-(screenWidthHalf/2), screenWidthHalf, screenWidthHalf); // interface
-		self.graphic2.image = [UIImage imageNamed:@"action0102.png"];
-		
-		self.graphic3.frame = CGRectMake(screenWidthHalf/2, screenHeightHalf-(screenWidthHalf/2), screenWidthHalf, screenWidthHalf); // interface
-		self.graphic3.image = [UIImage imageNamed:@"action0101.png"];
-		
-		self.graphic4.frame = CGRectMake(screenWidthHalf/2, screenHeightHalf-(screenWidthHalf/2), screenWidthHalf, screenWidthHalf); // interface
-		self.graphic4.image = [UIImage imageNamed:@"action0103.png"];
-		
-		[self fadeDelay:self.graphic2 d:0.1 t:0.2];
-		[self fadeDelay:self.graphic3 d:0.2 t:0.2];
-		[self fadeDelay:self.graphic4 d:0.2 t:0.2];
 		
 		self.action1.hidden = NO;
 		self.action1.alpha = 1.0;
@@ -736,7 +725,7 @@ CGRect			screenBound;
 	// Fold Gate
 	// ====================
 	
-	if([userAction isEqual: @"act6"] && [userActionStorage[5] isEqual: @"2"] ){ // Fold Gate
+	if([userAction isEqual: @"act6"] ){ // Fold Gate
 		
 		self.action3.hidden = YES;
 		self.graphic1.hidden = YES;
@@ -841,8 +830,53 @@ CGRect			screenBound;
 
 - (void)templateUpdateClock
 {
+	[self rotate:self.graphic3 t:0 d:0];
+	self.graphic3.alpha = 0.0;
 	
-	[self rotate:self.graphic3 t:0.5 d:( [userActionStorage[userActionId] intValue] *120 )];
+	self.graphic2.frame = CGRectMake(screenWidthHalf/2, screenHeightHalf-(screenWidthHalf/2), screenWidthHalf, screenWidthHalf); // interface
+	self.graphic3.frame = CGRectMake(screenWidthHalf/2, screenHeightHalf-(screenWidthHalf/2), screenWidthHalf, screenWidthHalf); // interface
+	self.graphic4.frame = CGRectMake(screenWidthHalf/2, screenHeightHalf-(screenWidthHalf/2), screenWidthHalf, screenWidthHalf); // interface
+	self.graphic5.frame = CGRectMake(screenWidthHalf/2, screenHeightHalf-(screenWidthHalf/2), screenWidthHalf, screenWidthHalf); // interface
+	self.graphic6.frame = CGRectMake(screenWidthHalf/2, screenHeightHalf-(screenWidthHalf/2), screenWidthHalf, screenWidthHalf); // interface
+	self.graphic7.frame = CGRectMake(screenWidthHalf/2, screenHeightHalf-(screenWidthHalf/2), screenWidthHalf, screenWidthHalf); // interface
+	self.graphic8.frame = CGRectMake(screenWidthHalf/2, screenHeightHalf-(screenWidthHalf/2), screenWidthHalf, screenWidthHalf); // interface
+	self.graphic9.frame = CGRectMake(screenWidthHalf/2, screenHeightHalf-(screenWidthHalf/2), screenWidthHalf, screenWidthHalf); // interface
+	self.graphic10.frame = CGRectMake(screenWidthHalf/2, screenHeightHalf-(screenWidthHalf/2), screenWidthHalf, screenWidthHalf); // interface	
+	
+	// Bridge
+	
+	
+	// Shadows
+	
+	self.graphic2.image = [UIImage imageNamed:@"clock_shadows.png"];
+	
+	// Selector
+	
+	self.graphic3.image = [UIImage imageNamed:@"clock_selector.png"];
+	
+	// Location
+	
+	if( userNode == 7 ){ self.graphic4.image = [UIImage imageNamed:@"clock_loc_forest.png"]; }
+	if( userNode == 86){ self.graphic4.image = [UIImage imageNamed:@"clock_loc_metamondst.png"]; }
+	if( userNode == 45){ self.graphic4.image = [UIImage imageNamed:@"clock_loc_rainre.png"]; }
+	
+	// Seals
+	
+	if( [userActionStorage[4]  isEqual: @"1"] ){ self.graphic5.image = [UIImage imageNamed:@"clock_forest.png"]; [self fadeDelay:self.graphic5 d:0.7 t:0.5]; }
+	if( [userActionStorage[21] isEqual: @"1"] ){ self.graphic6.image = [UIImage imageNamed:@"clock_antechannel.png"]; [self fadeDelay:self.graphic6 d:0.7 t:0.5]; }
+	if( [userActionStorage[20] isEqual: @"1"] ){ self.graphic7.image = [UIImage imageNamed:@"clock_metamondst.png"]; [self fadeDelay:self.graphic7 d:0.7 t:0.5]; }
+	if( [userActionStorage[13] isEqual: @"1"] ){ self.graphic8.image = [UIImage imageNamed:@"clock_rainre.png"]; [self fadeDelay:self.graphic8 d:0.7 t:0.5]; }
+	if( [userActionStorage[12] isEqual: @"1"] ){ self.graphic9.image = [UIImage imageNamed:@"clock_stones.png"]; [self fadeDelay:self.graphic9 d:0.7 t:0.5]; }
+	if( [userActionStorage[20] isEqual: @"1"] ){ self.graphic10.image= [UIImage imageNamed:@"clock_studio.png"]; [self fadeDelay:self.graphic10 d:0.7 t:0.5]; }
+	
+	// Fade in
+	
+	[self fadeDelay:self.graphic2 d:0.1 t:0.5];
+	[self fadeDelay:self.graphic3 d:0.2 t:0.2];
+	[self fadeDelay:self.graphic4 d:0.5 t:0.5];
+	
+	[self rotate:self.graphic3 t:0.2 d:( [userActionStorage[userActionId] intValue] *120 )];
+	
 	
 }
 
@@ -883,7 +917,8 @@ CGRect			screenBound;
 	self.action4.alpha = 1.0;
 	
 	if( [userActionStorage[userActionId] intValue] == 1 ){
-		[self templateUpdateNode:12:@"0516":@"act2"];
+		[self templateUpdateNode:18:@"0516":@"act2"];
+		[self templateUpdateNode:18:@"0529":@"act31"];
 		[self templateUpdateNode:13:@"0517":@"act2"];
 		[self templateUpdateNode:69:@"0518":@"act18"];
 		[self templateUpdateNode:39:@"0519":@"act10"];
@@ -891,7 +926,8 @@ CGRect			screenBound;
 		[self templateUpdateNode:84:@"0527":@"act47"];
 	}
 	else{
-		[self templateUpdateNode:12:@"0521":@"act2"];
+		[self templateUpdateNode:18:@"0521":@"act2"];
+		[self templateUpdateNode:18:@"0530":@"act31"];
 		[self templateUpdateNode:13:@"0522":@"act2"];
 		[self templateUpdateNode:69:@"0523":@"act18"];
 		[self templateUpdateNode:39:@"0524":@"act10"];
