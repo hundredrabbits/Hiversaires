@@ -23,6 +23,8 @@
 	node[0]		= [NSArray arrayWithObjects: @"1", @"0", @"0", @"0", @"forest", nil];
 	node[1]		= [NSArray arrayWithObjects: @"2", @"0", @"act28", @"0", @"forest", nil];
 	
+	node[1]		= [NSArray arrayWithObjects: @"79", @"0", @"0", @"0", @"forest", nil]; //
+	
 	node[2]		= [NSArray arrayWithObjects: @"3", @"0", @"1", @"0", @"forest", nil];
 	node[3]		= [NSArray arrayWithObjects: @"11", @"10|2", @"2", @"4|0", @"forest", nil];
 	node[4]		= [NSArray arrayWithObjects: @"5", @"0", @"3|1", @"0", @"forest", nil];
@@ -103,7 +105,7 @@
 	node[76]	= [NSArray arrayWithObjects: @"0", @"0", @"75", @"act30", @"silence", nil];
 	node[77]	= [NSArray arrayWithObjects: @"47", @"49", @"act26", @"act27", @"silence", nil];
 	node[78]	= [NSArray arrayWithObjects: @"83", @"0", @"0", @"81", @"silence", nil];
-	node[79]	= [NSArray arrayWithObjects: @"0", @"0", @"87", @"0", @"silence", nil];
+	node[79]	= [NSArray arrayWithObjects: @"0", @"act33", @"87", @"0", @"silence", nil];
 	
 	node[80]	= [NSArray arrayWithObjects: @"85", @"0", @"74", @"0", @"silence", nil];
 	node[81]	= [NSArray arrayWithObjects: @"82", @"78", @"73", @"0", @"silence", nil];
@@ -141,6 +143,11 @@
 	node[109]	= [NSArray arrayWithObjects: @"0", @"108", @"0", @"110", @"silence", nil];
 	node[110]	= [NSArray arrayWithObjects: @"0", @"109", @"0", @"111", @"silence", nil];
 	node[111]	= [NSArray arrayWithObjects: @"0", @"110", @"0", @"1|0", @"silence", nil];
+	
+	node[112]	= [NSArray arrayWithObjects: @"115", @"113", @"0", @"act33", @"silence", nil];
+	node[113]	= [NSArray arrayWithObjects: @"114", @"0", @"0", @"112", @"silence", nil];
+	node[114]	= [NSArray arrayWithObjects: @"0", @"0", @"113", @"115", @"silence", nil];
+	node[115]	= [NSArray arrayWithObjects: @"0", @"114", @"112", @"0", @"silence", nil];
 	
 	return node;
 }
@@ -189,7 +196,7 @@
 	
 	puzzle[31]		= @"energyTerminal";
 	puzzle[32]		= @"energyTerminal";
-	puzzle[33]		= @"collectible";
+	puzzle[33]		= @"energyDoor";
 	puzzle[34]		= @"collectible";
 	puzzle[35]		= @"collectible";
 	puzzle[36]		= @"collectible";

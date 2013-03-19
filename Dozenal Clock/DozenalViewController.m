@@ -219,7 +219,7 @@ CGRect			screenBound;
 	
 	[self audioDoorEnter];
 	
-	if	( userNode == 1 ){	userNode = 103; }
+	if		( userNode == 1  ){	userNode = 103; }
 	else if	( userNode == 11 ){ userNode = 48; userOrientation = 2; }
 	else if	( userNode == 13 ){ userNode = 12; }
 	else if	( userNode == 12 ){	userNode = 13; }
@@ -241,8 +241,10 @@ CGRect			screenBound;
 	else if	( userNode == 69 ){	userNode = 72; }
 	else if	( userNode == 76 ){	userNode = 87; }
 	else if	( userNode == 77 ){	userNode = 62; }
+	else if	( userNode == 79 ){	userNode = 112;}
 	else if	( userNode == 85 ){	userNode = 46; userOrientation = 0; }
 	else if	( userNode == 87 ){	userNode = 76; }
+	else if	( userNode == 112){	userNode = 79;}
 	
 	userAction = nil;
 	
@@ -503,8 +505,10 @@ CGRect			screenBound;
 		if([userAction isEqual: @"act28"]){ puzzleTerminal = 5;  }
 		if([userAction isEqual: @"act29"]){ puzzleTerminal = 5;  }
 		if([userAction isEqual: @"act30"]){ puzzleTerminal = 5;  }
+		if([userAction isEqual: @"act33"]){ puzzleTerminal = 5;  }
 		
 		if( [userActionStorage[puzzleTerminal] intValue] > 0 ){
+			
 			
 			self.action2.hidden = NO;
 			self.action2.alpha = 1.0;
@@ -517,6 +521,8 @@ CGRect			screenBound;
 			[self  templateUpdateNode:62:@"0480":@"act26"];
 			[self  templateUpdateNode:77:@"0481":@"act26"];
 			[self  templateUpdateNode:76:@"0482":@"act30"];
+			[self  templateUpdateNode:79:@"0534":@"act33"];
+			[self  templateUpdateNode:112:@"0535":@"act33"];
 			[self  templateUpdateNode:87:@"0483":@"act30"];
 			
 			[self templateAmbientAssoc:12:@"studio":@"act3"];
