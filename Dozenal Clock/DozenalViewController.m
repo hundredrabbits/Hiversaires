@@ -30,7 +30,7 @@ int				puzzleState;
 
 NSString        *userAction;
 NSMutableArray	*userActionStorage;
-NSString		*userAmbience;
+NSString		*userAmbient;
 
 int             userId;
 int             userNode = 1;
@@ -78,11 +78,6 @@ CGRect			screenBound;
 	
 	// Overrides
 	
-	userActionStorage[5] = @"2";
-	userEnergy = 1;
-	
-	[self ambientForest];
-	
 	[self actionCheck];
     [self moveCheck];
 	
@@ -127,6 +122,7 @@ CGRect			screenBound;
 	// Resize
 	
 	[self prefPositioning];
+	[self audioAmbientCheck: worldPath[userNode][4] ];
 	
 }
 
@@ -433,8 +429,6 @@ CGRect			screenBound;
 			
 			[self  templateUpdateNode:46:@"0486":@"act15"];
 			[self  templateUpdateNode:85:@"0485":@"act15"];
-			[self templateAmbientAssoc:46:@"metamondst":@"act15"];
-			[self templateAmbientAssoc:85:@"stones":@"act15"];
 			
 			userProgress = 2;
 			
@@ -446,8 +440,6 @@ CGRect			screenBound;
 			
 			[self  templateUpdateNode:11:@"0487":@"act25"];
 			[self  templateUpdateNode:48:@"0488":@"act25"];
-			[self templateAmbientAssoc:11:@"antechannel":@"act25"];
-			[self templateAmbientAssoc:48:@"forest":@"act25"];
 			
 			userProgress = 3;
 			
@@ -459,8 +451,6 @@ CGRect			screenBound;
 			
 			[self  templateUpdateNode:46:@"0486":@"act15"];
 			[self  templateUpdateNode:85:@"0485":@"act15"];
-			[self templateAmbientAssoc:46:@"metamondst":@"act15"];
-			[self templateAmbientAssoc:85:@"stones":@"act15"];
 			
 			userProgress = 4;
 			
@@ -525,20 +515,13 @@ CGRect			screenBound;
 			[self  templateUpdateNode:112:@"0535":@"act33"];
 			[self  templateUpdateNode:87:@"0483":@"act30"];
 			
-			[self templateAmbientAssoc:12:@"studio":@"act3"];
-			[self templateAmbientAssoc:13:@"forest":@"act3"];
-			[self templateAmbientAssoc:69:@"antechannel":@"act19"];
-			[self templateAmbientAssoc:61:@"metamondst":@"act19"];
-			
 			// Nether Door
 			
 			if( [userActionStorage[5] isEqual: @"2"] && userFold == 1 && userProgress > 10 ){ // Replace 10 by actual act
 				[self  templateUpdateNode:39:@"0491":@"act11"];
-				[self templateAmbientAssoc:39:@"nether":@"act11"];
 			}
 			else{
 				[self  templateUpdateNode:39:@"0490":@"act11"];
-				[self templateAmbientAssoc:39:@"rainre":@"act11"];
 			}
 			
 			self.action3.alpha = 1.0;
@@ -599,13 +582,6 @@ CGRect			screenBound;
 			[self  templateUpdateNode:35:@"0475":@"act8"];
 			[self  templateUpdateNode:27:@"0476":@"act9"];
 			[self  templateUpdateNode:52:@"0477":@"act9"];
-			
-			[self templateAmbientAssoc:16:@"circular":@"act7"];
-			[self templateAmbientAssoc:23:@"studio":@"act7"];
-			[self templateAmbientAssoc:25:@"stones":@"act8"];
-			[self templateAmbientAssoc:35:@"circular":@"act8"];
-			[self templateAmbientAssoc:27:@"antechannel":@"act9"];
-			[self templateAmbientAssoc:52:@"circular":@"act9"];
 			
 		}
 		
@@ -1028,22 +1004,6 @@ CGRect			screenBound;
 
 }
 
-- (void)templateAmbientAssoc :(int)node :(NSString*)track :(NSString*)act
-{
-	if( userNode == node && [userAction isEqual: act]){
-		
-		if( [track isEqual: @"forest"])			{ [self ambientForest]; }
-		if( [track isEqual: @"studio"])			{ [self ambientStudio]; }
-		if( [track isEqual: @"circular"])		{ [self ambientCircular]; }
-		if( [track isEqual: @"antechannel"])	{ [self ambientAntechannel]; }
-		if( [track isEqual: @"metamondst"])		{ [self ambientMetamondst]; }
-		if( [track isEqual: @"stones"])			{ [self ambientStones]; }
-		if( [track isEqual: @"rainre"])			{ [self ambientRainre]; }
-		
-	}
-	
-}
-
 // ====================
 // Counters
 // ====================
@@ -1170,7 +1130,20 @@ CGRect			screenBound;
 	}	
 }
 
+- (void)audioAmbientCheck :(NSString*)nodeAmbient
+{
+	
+	if( userAmbient != nodeAmbient ){
+		userAmbient = nodeAmbient;
+		NSLog(@"[ambient:%@]", nodeAmbient);
+	}
+	
+}
 
+
+// ====================
+// Preferences
+// ====================
 
 -(void) prefPositioning
 {
