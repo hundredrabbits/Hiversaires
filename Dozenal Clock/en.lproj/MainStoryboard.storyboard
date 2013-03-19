@@ -33,57 +33,15 @@
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="fill" lineBreakMode="middleTruncation" id="OaR-be-2E9" userLabel="moveRight">
-                                <rect key="frame" x="245" y="220" width="75" height="240"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="11"/>
-                                <state key="normal">
-                                    <color key="titleColor" red="1" green="0.97045334869341082" blue="0.99905151253527547" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="highlighted">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="moveRight:" destination="2" eventType="touchUpInside" id="u3R-UH-LAS"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="fill" lineBreakMode="middleTruncation" id="HZM-Xl-Bax" userLabel="moveLeft">
-                                <rect key="frame" x="0.0" y="220" width="75" height="240"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="11"/>
-                                <state key="normal">
-                                    <color key="titleColor" red="1" green="0.9704533487" blue="0.99905151250000002" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="highlighted">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="moveLeft:" destination="2" eventType="touchUpInside" id="p3K-8y-Lom"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="fill" lineBreakMode="middleTruncation" id="F1N-h8-Kf8" userLabel="moveForward">
-                                <rect key="frame" x="60" y="70" width="200" height="310"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="11"/>
-                                <state key="normal">
-                                    <color key="titleColor" red="0.84576681385869568" green="0.82815994729507725" blue="0.7226808092076914" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="highlighted">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="moveForward:" destination="2" eventType="touchUpInside" id="acz-2G-B0P"/>
-                                </connections>
-                            </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" id="Fdf-Qf-zRl" userLabel="Graphic1">
                                 <rect key="frame" x="20" y="109" width="55" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="2g5-UF-av4" userLabel="Graphic2">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" id="2g5-UF-av4" userLabel="Graphic2">
                                 <rect key="frame" x="20" y="149" width="55" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="w8y-pV-E3l" userLabel="Graphic3">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" id="w8y-pV-E3l" userLabel="Graphic3">
                                 <rect key="frame" x="20" y="189" width="55" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
@@ -143,6 +101,48 @@
                                 <rect key="frame" x="20" y="348" width="55" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="fill" lineBreakMode="middleTruncation" id="OaR-be-2E9" userLabel="moveRight">
+                                <rect key="frame" x="245" y="220" width="75" height="240"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="11"/>
+                                <state key="normal">
+                                    <color key="titleColor" red="1" green="0.97045334869341082" blue="0.99905151253527547" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="moveRight:" destination="2" eventType="touchUpInside" id="u3R-UH-LAS"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="fill" lineBreakMode="middleTruncation" id="HZM-Xl-Bax" userLabel="moveLeft">
+                                <rect key="frame" x="0.0" y="220" width="75" height="240"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="11"/>
+                                <state key="normal">
+                                    <color key="titleColor" red="1" green="0.9704533487" blue="0.99905151250000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="moveLeft:" destination="2" eventType="touchUpInside" id="p3K-8y-Lom"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="fill" lineBreakMode="middleTruncation" id="F1N-h8-Kf8" userLabel="moveForward">
+                                <rect key="frame" x="60" y="70" width="200" height="310"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="11"/>
+                                <state key="normal">
+                                    <color key="titleColor" red="0.84576681385869568" green="0.82815994729507725" blue="0.7226808092076914" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="moveForward:" destination="2" eventType="touchUpInside" id="acz-2G-B0P"/>
+                                </connections>
+                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Cn8-VS-3Wf" userLabel="Action1">
                                 <rect key="frame" x="172" y="18" width="73" height="23"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="11"/>

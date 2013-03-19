@@ -27,19 +27,21 @@ int				puzzleTerminal;
 int				puzzleState;
 
 // User
-int             userId;
+
 NSString        *userAction;
-int             userNode = 0;
-int             userOrientation;
 NSMutableArray	*userActionStorage;
+NSString		*userAmbience;
+
+int             userId;
+int             userNode = 1;
+int             userOrientation = 0;
 int				userActionId;
 int				userProgress = 1;
-
 int				userSeal = 0;
 int				userEnergy = 0;
 int				userFold = 0;
-
 int				userFootstep = 0;
+
 
 float			screenWidthHalf = 100;
 float			screenHeightHalf = 100;
@@ -66,16 +68,25 @@ CGRect			screenBound;
 	worldPath = [self worldPath];
 	worldActionType = [self worldActionType];
 	
-	userActionStorage = [NSMutableArray arrayWithObjects:@"",@"1",@"0",@"",@"",@"0",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",nil];
+	userActionStorage = [NSMutableArray arrayWithObjects:@"",@"1",@"0",@"",@"",@"0",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"0",@"0",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",nil];
 	
-	// Starting fuses
+	// Starting fuses (do not remove)
+	
 	userActionStorage[31] = @"1";
+	userActionStorage[32] = @"1";
 	userActionStorage[47] = @"1";
+	
+	// Overrides
+	
+	userActionStorage[5] = @"2";
+	userEnergy = 1;
 	
 	[self ambientForest];
 	
 	[self actionCheck];
     [self moveCheck];
+	
+	[self menuHome];
 	
 }
 
@@ -493,11 +504,12 @@ CGRect			screenBound;
 		if([userAction isEqual: @"act29"]){ puzzleTerminal = 5;  }
 		if([userAction isEqual: @"act30"]){ puzzleTerminal = 5;  }
 		
-		if( [userActionStorage[puzzleTerminal] intValue] == 1 ){
+		if( [userActionStorage[puzzleTerminal] intValue] > 0 ){
 			
 			self.action2.hidden = NO;
 			self.action2.alpha = 1.0;
 			
+			[self  templateUpdateNode:1:@"0531":@"act28"];
 			[self  templateUpdateNode:12:@"0470":@"act3"];
 			[self  templateUpdateNode:13:@"0471":@"act3"];
 			[self  templateUpdateNode:69:@"0478":@"act19"];
@@ -514,7 +526,7 @@ CGRect			screenBound;
 			
 			// Nether Door
 			
-			if( [userActionStorage[5] isEqual: @"2"] && userFold == 1 ){
+			if( [userActionStorage[5] isEqual: @"2"] && userFold == 1 && userProgress > 10 ){ // Replace 10 by actual act
 				[self  templateUpdateNode:39:@"0491":@"act11"];
 				[self templateAmbientAssoc:39:@"nether":@"act11"];
 			}
@@ -601,42 +613,33 @@ CGRect			screenBound;
 	}
 	
 	// ====================
-	// Entente
+	// @Entente
 	// ====================
 	
+
 	if( [userAction isEqual: @"act23"] ){ // Display Location Part I
 		
-		if( [ userActionStorage[23] intValue] > 17 ){
-			self.graphic1.image = [UIImage imageNamed:@"ententeHi.png"];
-		}
-		else if( [ userActionStorage[23] intValue] < 17 ){
-			self.graphic1.image = [UIImage imageNamed:@"ententeLo.png"];
-		}
-		else{
-			self.graphic1.image = [UIImage imageNamed:@"ententeOn.png"];
-		}
+		NSString *targetGraphic = @"";
 		
-		self.graphic1.frame = CGRectMake(116, 200, 90, 90);
-		[self fadeHalf:self.graphic1 t:1];
+		if( [ userActionStorage[23] intValue] > 17 )		{ targetGraphic = @"Hi"; }
+		else if( [ userActionStorage[23] intValue] < 17 )	{ targetGraphic = @"Lo"; }
+		else if( [ userActionStorage[23] intValue] == 17 )	{ targetGraphic = @"On"; }
+		
+		self.graphic1.image = [UIImage imageNamed:[NSString stringWithFormat:@"entente%@.png", targetGraphic ] ];
+		[self fadeHalf:self.graphic1 t:0.5];
 		
 	}
 	
 	if( [userAction isEqual: @"act24"] ){ // Display Location Part II
 		
-		if( [ userActionStorage[24] intValue] > 17 ){
-			self.graphic1.image = [UIImage imageNamed:@"ententeHi.png"];
-		}
-		else if( [ userActionStorage[24] intValue] < 17 ){
-			self.graphic1.image = [UIImage imageNamed:@"ententeLo.png"];
-		}
-		else{
-			self.graphic1.image = [UIImage imageNamed:@"ententeOn.png"];
-		}
+		NSString *targetGraphic = @"";
 		
-		NSLog(@"%@",userActionStorage[24]);
+		if( [ userActionStorage[24] intValue] > 17 )		{ targetGraphic = @"Hi"; }
+		else if( [ userActionStorage[24] intValue] < 17 )	{ targetGraphic = @"Lo"; }
+		else if( [ userActionStorage[24] intValue] == 17 )	{ targetGraphic = @"On"; }
 		
-		self.graphic1.frame = CGRectMake(116, 200, 90, 90);
-		[self fadeHalf:self.graphic1 t:1];
+		self.graphic1.image = [UIImage imageNamed:[NSString stringWithFormat:@"entente%@.png", targetGraphic ] ];
+		[self fadeHalf:self.graphic1 t:0.5];
 		
 	}
 	
@@ -653,9 +656,7 @@ CGRect			screenBound;
 			userNode = 89;
 			userAction = nil;
 			
-			if( [ userActionStorage[23] intValue] < 30 ){
-				userActionStorage[23] = [NSString stringWithFormat:@"%d", [ userActionStorage[23] intValue]+3 ];
-			}
+			if( [ userActionStorage[23] intValue] < 30 ){ userActionStorage[23] = [NSString stringWithFormat:@"%d", [ userActionStorage[23] intValue]+3 ];}
 			
 			NSLog(@"%@",userActionStorage[23]);
 			
@@ -671,9 +672,7 @@ CGRect			screenBound;
 		userNode = 103;
 		userAction = nil;
 		
-		if( [ userActionStorage[23] intValue] > 0 ){
-			userActionStorage[23] = [NSString stringWithFormat:@"%d", [ userActionStorage[23] intValue]-1 ];
-		}
+		if( [ userActionStorage[23] intValue] > 0 ){ userActionStorage[23] = [NSString stringWithFormat:@"%d", [ userActionStorage[23] intValue]-1 ]; }
 		
 		NSLog(@"%@",userActionStorage[23]);
 		
@@ -703,7 +702,7 @@ CGRect			screenBound;
 	
 	if([userAction isEqual: @"act45"]){ // Part II - Increment +4
 		
-		userNode = 91;
+		userNode = 94;
 		userOrientation = 2;
 		userAction = nil;
 		
@@ -722,21 +721,27 @@ CGRect			screenBound;
 	if([userAction isEqual: @"act46"]){ // Part II - Exit
 		
 		if( [userActionStorage[23] intValue] == 17 && [userActionStorage[24] intValue] == 17 ){
-			userNode = 104;
+			userNode = 107;
 			userOrientation = 3;
 			NSLog(@"OUT!");
+			userAction = nil;
+			
+			NSLog(@"%@",userActionStorage[24]);
+			
+			[self actionCheck];
+			[self moveCheck];
+			[self actionReset];
 		}
 		else{
-			userNode = 92;
+			userNode = 93;
+			userAction = nil;
+			
+			NSLog(@"%@",userActionStorage[24]);
+			
+			[self actionCheck];
+			[self moveCheck];
+			[self actionReset];
 		}
-		
-		userAction = nil;
-		
-		NSLog(@"%@",userActionStorage[24]);
-		
-		[self actionCheck];
-		[self moveCheck];
-		[self actionReset];
 		
 	}
 	
@@ -744,7 +749,7 @@ CGRect			screenBound;
 	// Fold Gate
 	// ====================
 	
-	if([userAction isEqual: @"act6"] ){ // Fold Gate
+	if([userAction isEqual: @"act6"] && [userActionStorage[6] isEqual: @"2"] ){ // Fold Gate
 		
 		self.action3.hidden = YES;
 		self.graphic1.hidden = YES;
@@ -755,7 +760,7 @@ CGRect			screenBound;
 	}
 	
 	// ====================
-	// Progress Terminal
+	// @Progress Terminal
 	// ====================
 	
 	if([userAction isEqual: @"act16"]){
@@ -778,8 +783,13 @@ CGRect			screenBound;
 		
 		self.graphic11.image = [UIImage imageNamed:@"progress_act4_seal1.png"];
 		self.graphic12.image = [UIImage imageNamed:@"progress_act4_seal2.png"];
-		self.graphic13.image = [UIImage imageNamed:@"progress_act5_door.png"];
+		self.graphic13.image = [UIImage imageNamed:@"progress_act4_door.png"];
 		
+		self.graphic14.image = [UIImage imageNamed:@"progress_act5_seal1.png"];
+		self.graphic15.image = [UIImage imageNamed:@"progress_act5_seal2.png"];
+		self.graphic16.image = [UIImage imageNamed:@"progress_act5_door.png"];
+		
+		self.graphic17.image = [UIImage imageNamed:@"progress_act6_door.png"];
 		
 		self.graphic1.frame = CGRectMake(0, 0, screenBound.size.width, screenBound.size.height);
 		self.graphic2.frame = CGRectMake(0, 0, screenBound.size.width, screenBound.size.height);
@@ -822,8 +832,12 @@ CGRect			screenBound;
 			else if( [userActionStorage[12] isEqual: @"1"] && [userActionStorage[21] isEqual: @"1"] ){ [self fadeIn:self.graphic13 t:1]; }
 		}
 		
-		
-		
+		if( userProgress == 5 ){
+			[self fadeIn:self.graphic14 t:1];
+			[self fadeIn:self.graphic15 t:1];
+			if( [userActionStorage[32] isEqual: @"1"] ){ [self fadeIn:self.graphic16 t:1]; } // If there is still a fuse in entene
+			[self fadeIn:self.graphic17 t:1];
+		}
 		
 		self.graphic1.alpha = 0.5;
 		self.graphic1.hidden = NO;
@@ -944,6 +958,7 @@ CGRect			screenBound;
 		[self templateUpdateNode:39:@"0519":@"act10"];
 		[self templateUpdateNode:77:@"0520":@"act27"];
 		[self templateUpdateNode:84:@"0527":@"act47"];
+		[self templateUpdateNode:101:@"0533":@"act32"];
 	}
 	else{
 		[self templateUpdateNode:18:@"0521":@"act2"];
@@ -953,13 +968,14 @@ CGRect			screenBound;
 		[self templateUpdateNode:39:@"0524":@"act10"];
 		[self templateUpdateNode:77:@"0525":@"act27"];
 		[self templateUpdateNode:84:@"0526":@"act47"];
+		[self templateUpdateNode:101:@"0532":@"act32"];
 	}
 	
 }
 
 - (void)templateUpdateStudioTerminal
 {
-	
+	NSLog(@"!!!");
 	if( [userActionStorage[userActionId] intValue] == 2 ){
 		
 		self.graphic1.alpha = 1.0;
@@ -1192,6 +1208,21 @@ CGRect			screenBound;
 	
 	// Graphics
 	self.graphic1.frame = CGRectMake(0, 0, screenBound.size.width, screenBound.size.height); // full
+	
+}
+
+- (void)menuHome
+{
+	CGRect screenBound = [[UIScreen mainScreen] bounds];
+	
+	self.graphic2.frame = CGRectMake(0, 0, screenBound.size.width, screenBound.size.height);
+	self.graphic2.image = [UIImage imageNamed:@"menu.black.jpg"];
+	self.graphic2.alpha	 = 1.0;
+	self.graphic2.hidden = NO;
+		
+	// [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://www.apple.com"]];
+	
+	[self fadeOut:self.graphic2 t:2.0];
 	
 }
 
