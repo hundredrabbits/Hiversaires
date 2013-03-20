@@ -192,12 +192,19 @@ CGRect			screenBound;
 
 - (IBAction)action1:(id)sender {
 	
+	// Binary button
+	
 	userActionStorage[userActionId] = [NSString stringWithFormat:@"%d", [ userActionStorage[userActionId] intValue]+1 ];	
 	
 	// Exceptions
 	
 	if([userAction isEqual: @"act1"]){	userActionStorage[userActionId] = [userActionStorage[userActionId] intValue] > 2 ? @"0" : userActionStorage[userActionId]; [self audioClockTurn];  [self templateClockUpdate]; }
 	if([userAction isEqual: @"act5"]){	userActionStorage[userActionId] = [userActionStorage[userActionId] intValue] > 1 ? @"0" : @"2"; [self templateUpdateStudioTerminal]; [self audioTerminalActive];}
+	
+	if( [worldActionType[userActionId] isEqual: @"audioTerminal"] ){
+		[self templateAudioUpdate];
+	}
+	
 	
 }
 
@@ -370,7 +377,7 @@ CGRect			screenBound;
 	if( [worldActionType[userActionId] isEqual: @"energyDoor"] )		{ [self templateEnergyDoor]; }
 	if( [worldActionType[userActionId] isEqual: @"clockDoor"] )			{ [self templateClockDoor]; }
 	if( [worldActionType[userActionId] isEqual: @"progressTerminal"] )	{ [self templateProgressTerminal]; }
-	if( [worldActionType[userActionId] isEqual: @"audioMusicPlayer"] )	{ [self templateAudioMusicPlayer]; }
+	if( [worldActionType[userActionId] isEqual: @"audioTerminal"] )		{ [self templateAudioTerminal]; }
 	
 	if( [userAction isEqual: @"act23"] )								{ [self templateEntenteTerminal1]; }
 	if( [userAction isEqual: @"act24"] )								{ [self templateEntenteTerminal2]; }
@@ -775,9 +782,27 @@ CGRect			screenBound;
 	//if( [userActionStorage[22] isEqual: @"1"] ){	[self fadeIn:self.graphic13 t:1]; }
 }
 
-- (void)templateAudioMusicPlayer
+- (void)templateAudioTerminal
 {
-	NSLog(@"!!");
+	
+	[self.action1 setImage:[UIImage imageNamed: [NSString stringWithFormat:@"tempYes.png"] ] forState:UIControlStateNormal];
+	self.action1.alpha = 1.0;
+	self.action1.hidden = NO;
+	
+}
+
+- (void)templateAudioUpdate
+{
+	
+	if( [userActionStorage[userNode] isEqual: @"1"] ){
+		userActionStorage[userNode] = @"0";
+		[self audioVolume:0];
+	}
+	else{
+		userActionStorage[userNode] = @"1";
+		[self audioVolume:1];
+	}
+	
 }
 
 - (void)templateEntenteTerminal1
@@ -792,6 +817,8 @@ CGRect			screenBound;
 	[self fadeHalf:self.graphic1 t:0.5];
 
 }
+
+
 
 - (void)templateEntenteTerminal2
 {
@@ -1111,6 +1138,16 @@ CGRect			screenBound;
 	
 }
 
+- (void)audioVolume :(int)volume
+{
+	if( userNode == 55 ){
+		NSLog(@"[music.volume:%d]", volume);
+	}
+	else if( userNode == 21){
+		NSLog(@"[ambient.volume:%d]", volume);
+	}
+	
+}
 
 // ====================
 // Preferences
@@ -1154,7 +1191,6 @@ CGRect			screenBound;
 	self.action4.frame = CGRectMake( screenWidthThird, screenHeightThird, screenWidthThird, screenHeightThird );
 	// Action Seal Terminal
 	self.action5.frame = CGRectMake( screenWidthThird, screenHeightThird, screenWidthThird, screenHeightThird );
-	
 	
 	// Graphics
 	self.graphic1.frame = CGRectMake(0, 0, screenBound.size.width, screenBound.size.height); // full
