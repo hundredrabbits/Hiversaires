@@ -23,7 +23,7 @@
 	node[0]		= [NSArray arrayWithObjects: @"1", @"0", @"0", @"0", @"forest", nil];
 	node[1]		= [NSArray arrayWithObjects: @"2", @"0", @"act28", @"0", @"forest", nil];
 	
-	// node[1]		= [NSArray arrayWithObjects: @"79", @"0", @"0", @"0", @"forest", nil]; //
+	node[1]		= [NSArray arrayWithObjects: @"55", @"0", @"0", @"0", @"forest", nil]; //
 	
 	node[2]		= [NSArray arrayWithObjects: @"3", @"0", @"1", @"0", @"forest", nil];
 	node[3]		= [NSArray arrayWithObjects: @"11", @"10|2", @"2", @"4|0", @"forest", nil];
@@ -82,7 +82,7 @@
 	node[52]	= [NSArray arrayWithObjects: @"54", @"53", @"0", @"act9", @"silence", nil];
 	node[53]	= [NSArray arrayWithObjects: @"55", @"84", @"0", @"52", @"silence", nil];
 	node[54]	= [NSArray arrayWithObjects: @"57", @"55", @"52", @"0", @"silence", nil];
-	node[55]	= [NSArray arrayWithObjects: @"0", @"56", @"53", @"54", @"silence", nil];
+	node[55]	= [NSArray arrayWithObjects: @"act34", @"56", @"53", @"54", @"silence", nil];
 	node[56]	= [NSArray arrayWithObjects: @"58", @"0", @"84", @"55", @"silence", nil];
 	node[57]	= [NSArray arrayWithObjects: @"59", @"0", @"54", @"0", @"silence", nil];
 	node[58]	= [NSArray arrayWithObjects: @"60", @"0", @"56", @"0", @"silence", nil];
@@ -173,7 +173,7 @@
 	puzzle[13]		= @"sealTerminal";
 	puzzle[14]		= @"sealTerminal";
 	puzzle[15]		= @"sealDoor";
-	puzzle[16]		= @"progressReport";
+	puzzle[16]		= @"progressTerminal";
 	puzzle[17]		= @"audioMusicPlayer";
 	puzzle[18]		= @"energyTerminal";
 	puzzle[19]		= @"energyDoor";
@@ -197,7 +197,7 @@
 	puzzle[31]		= @"energyTerminal";
 	puzzle[32]		= @"energyTerminal";
 	puzzle[33]		= @"energyDoor";
-	puzzle[34]		= @"collectible";
+	puzzle[34]		= @"audioMusicPlayer";
 	puzzle[35]		= @"collectible";
 	puzzle[36]		= @"collectible";
 	puzzle[37]		= @"collectible";

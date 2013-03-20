@@ -196,7 +196,7 @@ CGRect			screenBound;
 	
 	// Exceptions
 	
-	if([userAction isEqual: @"act1"]){	userActionStorage[userActionId] = [userActionStorage[userActionId] intValue] > 2 ? @"0" : userActionStorage[userActionId]; [self audioClockTurn];  [self templateUpdateClock]; }
+	if([userAction isEqual: @"act1"]){	userActionStorage[userActionId] = [userActionStorage[userActionId] intValue] > 2 ? @"0" : userActionStorage[userActionId]; [self audioClockTurn];  [self templateClockUpdate]; }
 	if([userAction isEqual: @"act5"]){	userActionStorage[userActionId] = [userActionStorage[userActionId] intValue] > 1 ? @"0" : @"2"; [self templateUpdateStudioTerminal]; [self audioTerminalActive];}
 	
 }
@@ -207,7 +207,7 @@ CGRect			screenBound;
 	self.action3.hidden = NO;
 	self.action2.hidden = YES;
 	self.action3.alpha = 1.0;
-	[self templateUpdateEnergy];
+	[self templateEnergyUpdate];
 		
 }
 
@@ -262,7 +262,7 @@ CGRect			screenBound;
 	
 	NSLog(@"%d", userEnergy );
 	
-	[self templateUpdateEnergy];
+	[self templateEnergyUpdate];
 	
 }
 
@@ -283,7 +283,7 @@ CGRect			screenBound;
 		NSLog(@"No more seal slots.");
 	}
 	
-	[self templateUpdateSeal];
+	[self templateSealUpdate];
 	
 }
 
@@ -363,488 +363,87 @@ CGRect			screenBound;
 	
 	[self actionReset];
 	
-	// ====================
-	// Clock Terminal
-	// ====================
+	if( [worldActionType[userActionId] isEqual: @"clockTerminal"] )		{ [self templateClockTerminal]; }
+	if( [worldActionType[userActionId] isEqual: @"sealTerminal"] )		{ [self templateSealTerminal];	}
+	if( [worldActionType[userActionId] isEqual: @"energyTerminal"] )	{ [self templateEnergyTerminal]; }
+	if( [worldActionType[userActionId] isEqual: @"sealDoor"] )			{ [self templateSealDoor]; }
+	if( [worldActionType[userActionId] isEqual: @"energyDoor"] )		{ [self templateEnergyDoor]; }
+	if( [worldActionType[userActionId] isEqual: @"clockDoor"] )			{ [self templateClockDoor]; }
+	if( [worldActionType[userActionId] isEqual: @"progressTerminal"] )	{ [self templateProgressTerminal]; }
+	if( [worldActionType[userActionId] isEqual: @"audioMusicPlayer"] )	{ [self templateAudioMusicPlayer]; }
 	
-	if( [worldActionType[userActionId] isEqual: @"clockTerminal"]){
-		
-		[self audioClockInit];
-		
-		self.action1.hidden = NO;
-		self.action1.alpha = 1.0;
-		
-		[self templateUpdateClock];
-		
+	if( [userAction isEqual: @"act23"] )								{ [self templateEntenteTerminal1]; }
+	if( [userAction isEqual: @"act24"] )								{ [self templateEntenteTerminal2]; }
+	if( [userAction isEqual: @"act43"] )								{ [self templateEntentePart1Incr]; }
+	if( [userAction isEqual: @"act42"] )								{ [self templateEntentePart1Decr]; }
+	if([userAction isEqual: @"act45"])									{ [self templateEntentePart2Incr]; }
+	if([userAction isEqual: @"act44"])									{ [self templateEntentePart2Decr]; }
+	if([userAction isEqual: @"act46"])									{ [self templateEntentePart2Exit]; }
+	
+}
+
+- (void)templateClockTerminal{
+	
+	[self audioClockInit];
+	
+	self.action1.hidden = NO;
+	self.action1.alpha = 1.0;
+	
+	[self templateClockUpdate];
+	
+}
+
+- (void) templateClockDoor
+{
+	
+	// Display Interactions
+	
+	self.action3.hidden = YES;
+	self.graphic1.hidden = YES;
+	
+	// Audio
+	
+	[self audioDoorInit];
+	
+	// Templates
+	
+	puzzleState = 0;
+	
+	if([userAction isEqual: @"act7"]){
+		if( [userActionStorage[1] intValue] == 2 || [userActionStorage[1] intValue] == 0 ){
+			puzzleState = 1;
+		}
 	}
 	
-	// ====================
-	// Seal Terminal
-	// ====================
-	
-	if( [worldActionType[userActionId] isEqual: @"sealTerminal"]){
-		
-		self.graphic1.hidden = NO;
-		
-		[self audioSealInit];
-		[self templateUpdateSeal];
-		
+	if([userAction isEqual: @"act8"]){
+		if( [userActionStorage[1] intValue] == 1 || [userActionStorage[1] intValue] == 2 ){
+			puzzleState = 1;
+		}
 	}
 	
-	// ====================
-	// Energy Terminal
-	// ====================
+	if([userAction isEqual: @"act9"]){
+		if( [userActionStorage[1] intValue] == 1 || [userActionStorage[1] intValue] == 0 ){
+			puzzleState = 1;
+		}
+	}
 	
-	if( [worldActionType[userActionId] isEqual: @"energyTerminal"]){
-		
-		self.graphic1.hidden = NO;
-		
-		// Terminal Doorknob
+	if( puzzleState == 1 ){
 		
 		self.action2.hidden = NO;
 		self.action2.alpha = 1.0;
 		
-		self.action4.hidden = NO;
-		
-		// Audio
-		
-		[self audioEnergyInit];
-		
-	}
-	
-	// ====================
-	// Seal Door
-	// ====================
-	
-	if( [worldActionType[userActionId] isEqual: @"sealDoor"] ){
-		
-		[self audioDoorInit];
-		
-		self.action3.hidden = YES;
-		self.graphic1.hidden = YES;
-		
-		if ( ([userActionStorage[4] intValue] == 1 && [userActionStorage[13] intValue] == 1) ) { // Act 1 : Forest + Rainre in Stones
-			
-			[self templateUpdateDoorknob:46:85:_action2];
-			
-			[self  templateUpdateNode:46:@"0486":@"act15"];
-			[self  templateUpdateNode:85:@"0485":@"act15"];
-			
-			userProgress = 2;
-			
-		}
-		
-		if ( [userActionStorage[20] intValue] == 1 && [userActionStorage[13] intValue] == 1 ) { // Act 2 : Metamondst + Rainre in Forest
-			
-			[self templateUpdateDoorknob:48:11:_action2];
-			
-			[self  templateUpdateNode:11:@"0487":@"act25"];
-			[self  templateUpdateNode:48:@"0488":@"act25"];
-			
-			userProgress = 3;
-			
-		}
-		
-		if ( ([userActionStorage[21] intValue] == 1 && [userActionStorage[13] intValue] == 1) ) { // Act 3 : Forest + Rainre in Metamondst
-			
-			[self templateUpdateDoorknob:46:85:_action2];
-			
-			[self  templateUpdateNode:46:@"0486":@"act15"];
-			[self  templateUpdateNode:85:@"0485":@"act15"];
-			
-			userProgress = 4;
-			
-		}
-		
-		if ( [userActionStorage[21] intValue] == 1 && [userActionStorage[12] intValue] == 1 ) { // Act 4 : Antechannel + Stones in Studio
-			
-			self.action1.alpha = 1.0;
-			self.action1.hidden = NO;
-			
-			[self templateUpdateStudioTerminal];
-			
-			userProgress = 5;
-			
-		}
-		
-		
-	}
-	
-	// ====================
-	// Energy Door
-	// ====================
-	
-	if( [worldActionType[userActionId] isEqual: @"energyDoor"]){
-		
-		// Display Interactions
-		
-		self.action3.hidden = YES;
-		self.graphic1.hidden = YES;
-		
-		// Audio
-		
-		[self audioDoorInit];
-		
-		// Templates
-		
-		if([userAction isEqual: @"act3"]) { puzzleTerminal = 2;  }
-		if([userAction isEqual: @"act11"]){ puzzleTerminal = 10; }
-		if([userAction isEqual: @"act19"]){ puzzleTerminal = 18; }
-		if([userAction isEqual: @"act26"]){ puzzleTerminal = 27; }
-		
-		if([userAction isEqual: @"act28"]){ puzzleTerminal = 5;  }
-		if([userAction isEqual: @"act29"]){ puzzleTerminal = 5;  }
-		if([userAction isEqual: @"act30"]){ puzzleTerminal = 5;  }
-		if([userAction isEqual: @"act33"]){ puzzleTerminal = 5;  }
-		
-		if( [userActionStorage[puzzleTerminal] intValue] > 0 ){
-			
-			
-			self.action2.hidden = NO;
-			self.action2.alpha = 1.0;
-			
-			[self  templateUpdateNode:1:@"0531":@"act28"];
-			[self  templateUpdateNode:12:@"0470":@"act3"];
-			[self  templateUpdateNode:13:@"0471":@"act3"];
-			[self  templateUpdateNode:69:@"0478":@"act19"];
-			[self  templateUpdateNode:61:@"0479":@"act19"];
-			[self  templateUpdateNode:62:@"0480":@"act26"];
-			[self  templateUpdateNode:77:@"0481":@"act26"];
-			[self  templateUpdateNode:76:@"0482":@"act30"];
-			[self  templateUpdateNode:79:@"0534":@"act33"];
-			[self  templateUpdateNode:112:@"0535":@"act33"];
-			[self  templateUpdateNode:87:@"0483":@"act30"];
-			
-			// Nether Door
-			
-			if( [userActionStorage[5] isEqual: @"2"] && userFold == 1 && userProgress > 10 ){ // Replace 10 by actual act
-				[self  templateUpdateNode:39:@"0491":@"act11"];
-			}
-			else{
-				[self  templateUpdateNode:39:@"0490":@"act11"];
-			}
-			
-			self.action3.alpha = 1.0;
-			
-		}
-		else{
-			[self audioDoorInactive];
-		}
-		
-	}
-	
-	
-	// ====================
-	// Clock Door
-	// ====================
-	
-	if( [worldActionType[userActionId] isEqual: @"clockDoor"]){
-		
-		// Display Interactions
-		
-		self.action3.hidden = YES;
-		self.graphic1.hidden = YES;
-		
-		// Audio
-		
-		[self audioDoorInit];
-		
-		// Templates
-		
-		puzzleState = 0;
-		
-		if([userAction isEqual: @"act7"]){
-			if( [userActionStorage[1] intValue] == 2 || [userActionStorage[1] intValue] == 0 ){
-				puzzleState = 1;
-			}
-		}
-		
-		if([userAction isEqual: @"act8"]){
-			if( [userActionStorage[1] intValue] == 1 || [userActionStorage[1] intValue] == 2 ){
-				puzzleState = 1;
-			}
-		}
-		
-		if([userAction isEqual: @"act9"]){
-			if( [userActionStorage[1] intValue] == 1 || [userActionStorage[1] intValue] == 0 ){
-				puzzleState = 1;
-			}
-		}
-		
-		if( puzzleState == 1 ){
-			
-			self.action2.hidden = NO;
-			self.action2.alpha = 1.0;
-			
-			[self  templateUpdateNode:16:@"0472":@"act7"];
-			[self  templateUpdateNode:23:@"0473":@"act7"];
-			[self  templateUpdateNode:25:@"0474":@"act8"];
-			[self  templateUpdateNode:35:@"0475":@"act8"];
-			[self  templateUpdateNode:27:@"0476":@"act9"];
-			[self  templateUpdateNode:52:@"0477":@"act9"];
-			
-		}
-		
-	}
-	
-	if( [userAction isEqual: @"act22"] ){ // Unlock Map
-		
-		userActionStorage[22] = @"1";
-		NSLog(@"map unlocked");
-		
-	}
-	
-	// ====================
-	// @Entente
-	// ====================
-	
-
-	if( [userAction isEqual: @"act23"] ){ // Display Location Part I
-		
-		NSString *targetGraphic = @"";
-		
-		if( [ userActionStorage[23] intValue] > 17 )		{ targetGraphic = @"Hi"; }
-		else if( [ userActionStorage[23] intValue] < 17 )	{ targetGraphic = @"Lo"; }
-		else if( [ userActionStorage[23] intValue] == 17 )	{ targetGraphic = @"On"; }
-		
-		self.graphic1.image = [UIImage imageNamed:[NSString stringWithFormat:@"entente%@.png", targetGraphic ] ];
-		[self fadeHalf:self.graphic1 t:0.5];
-		
-	}
-	
-	if( [userAction isEqual: @"act24"] ){ // Display Location Part II
-		
-		NSString *targetGraphic = @"";
-		
-		if( [ userActionStorage[24] intValue] > 17 )		{ targetGraphic = @"Hi"; }
-		else if( [ userActionStorage[24] intValue] < 17 )	{ targetGraphic = @"Lo"; }
-		else if( [ userActionStorage[24] intValue] == 17 )	{ targetGraphic = @"On"; }
-		
-		self.graphic1.image = [UIImage imageNamed:[NSString stringWithFormat:@"entente%@.png", targetGraphic ] ];
-		[self fadeHalf:self.graphic1 t:0.5];
-		
-	}
-	
-	if( [userAction isEqual: @"act43"] ){ // Part I - Increment +3
-		
-		if( [userActionStorage[23] isEqual: @"17"] ){
-			userNode = 93;
-			userAction = nil;
-			[self actionCheck];
-			[self moveCheck];
-			[self actionReset];
-		}
-		else{
-			userNode = 89;
-			userAction = nil;
-			
-			if( [ userActionStorage[23] intValue] < 30 ){ userActionStorage[23] = [NSString stringWithFormat:@"%d", [ userActionStorage[23] intValue]+3 ];}
-			
-			NSLog(@"%@",userActionStorage[23]);
-			
-			[self actionCheck];
-			[self moveCheck];
-			[self actionReset];
-		}
-		
-	}
-	
-	if([userAction isEqual: @"act42"]){ // Part I - Decrement -1
-		
-		userNode = 103;
-		userAction = nil;
-		
-		if( [ userActionStorage[23] intValue] > 0 ){ userActionStorage[23] = [NSString stringWithFormat:@"%d", [ userActionStorage[23] intValue]-1 ]; }
-		
-		NSLog(@"%@",userActionStorage[23]);
-		
-		[self actionCheck];
-		[self moveCheck];
-		[self actionReset];
-		
-	}
-	
-	if([userAction isEqual: @"act44"]){ // Part II - Decrement -1
-		
-		userNode = 91;
-		userOrientation = 2;
-		userAction = nil;
-		
-		if( [ userActionStorage[24] intValue] > 0 ){
-			userActionStorage[24] = [NSString stringWithFormat:@"%d", [ userActionStorage[24] intValue]-1 ];
-		}
-		
-		NSLog(@"%@",userActionStorage[24]);
-		
-		[self actionCheck];
-		[self moveCheck];
-		[self actionReset];
-		
-	}
-	
-	if([userAction isEqual: @"act45"]){ // Part II - Increment +4
-		
-		userNode = 94;
-		userOrientation = 2;
-		userAction = nil;
-		
-		if( [ userActionStorage[24] intValue] < 32 ){
-			userActionStorage[24] = [NSString stringWithFormat:@"%d", [ userActionStorage[24] intValue]+4 ];
-		}
-		
-		NSLog(@"%@",userActionStorage[24]);
-		
-		[self actionCheck];
-		[self moveCheck];
-		[self actionReset];
-		
-	}
-	
-	if([userAction isEqual: @"act46"]){ // Part II - Exit
-		
-		if( [userActionStorage[23] intValue] == 17 && [userActionStorage[24] intValue] == 17 ){
-			userNode = 107;
-			userOrientation = 3;
-			NSLog(@"OUT!");
-			userAction = nil;
-			
-			NSLog(@"%@",userActionStorage[24]);
-			
-			[self actionCheck];
-			[self moveCheck];
-			[self actionReset];
-		}
-		else{
-			userNode = 93;
-			userAction = nil;
-			
-			NSLog(@"%@",userActionStorage[24]);
-			
-			[self actionCheck];
-			[self moveCheck];
-			[self actionReset];
-		}
-		
-	}
-	
-	// ====================
-	// Fold Gate
-	// ====================
-	
-	if([userAction isEqual: @"act6"] && [userActionStorage[6] isEqual: @"2"] ){ // Fold Gate
-		
-		self.action3.hidden = YES;
-		self.graphic1.hidden = YES;
-		[self templateUpdateNode:20:@"0528":@"act6"];
-		
-		[self templateUpdateDoorknob:20:20:_action2];
-		
-	}
-	
-	// ====================
-	// @Progress Terminal
-	// ====================
-	
-	if([userAction isEqual: @"act16"]){
-		
-		CGRect screenBound = [[UIScreen mainScreen] bounds];
-		
-		self.graphic1.image = [UIImage imageNamed:@"progress_shadows.png"];
-		
-		self.graphic2.image = [UIImage imageNamed:@"progress_act1_seal1.png"];
-		self.graphic3.image = [UIImage imageNamed:@"progress_act1_seal2.png"];
-		self.graphic4.image = [UIImage imageNamed:@"progress_act1_door.png"];
-		
-		self.graphic5.image = [UIImage imageNamed:@"progress_act2_seal1.png"];
-		self.graphic6.image = [UIImage imageNamed:@"progress_act2_seal2.png"];
-		self.graphic7.image = [UIImage imageNamed:@"progress_act2_door.png"];
-		
-		self.graphic8.image = [UIImage imageNamed:@"progress_act3_seal1.png"];
-		self.graphic9.image = [UIImage imageNamed:@"progress_act3_seal2.png"];
-		self.graphic10.image = [UIImage imageNamed:@"progress_act3_door.png"];
-		
-		self.graphic11.image = [UIImage imageNamed:@"progress_act4_seal1.png"];
-		self.graphic12.image = [UIImage imageNamed:@"progress_act4_seal2.png"];
-		self.graphic13.image = [UIImage imageNamed:@"progress_act4_door.png"];
-		
-		self.graphic14.image = [UIImage imageNamed:@"progress_act5_seal1.png"];
-		self.graphic15.image = [UIImage imageNamed:@"progress_act5_seal2.png"];
-		self.graphic16.image = [UIImage imageNamed:@"progress_act5_door.png"];
-		
-		self.graphic17.image = [UIImage imageNamed:@"progress_act6_door.png"];
-		
-		self.graphic1.frame = CGRectMake(0, 0, screenBound.size.width, screenBound.size.height);
-		self.graphic2.frame = CGRectMake(0, 0, screenBound.size.width, screenBound.size.height);
-		self.graphic3.frame = CGRectMake(0, 0, screenBound.size.width, screenBound.size.height);
-		self.graphic4.frame = CGRectMake(0, 0, screenBound.size.width, screenBound.size.height);
-		self.graphic5.frame = CGRectMake(0, 0, screenBound.size.width, screenBound.size.height);
-		self.graphic6.frame = CGRectMake(0, 0, screenBound.size.width, screenBound.size.height);
-		self.graphic7.frame = CGRectMake(0, 0, screenBound.size.width, screenBound.size.height);
-		self.graphic8.frame = CGRectMake(0, 0, screenBound.size.width, screenBound.size.height);
-		self.graphic9.frame = CGRectMake(0, 0, screenBound.size.width, screenBound.size.height);
-		self.graphic10.frame = CGRectMake(0, 0, screenBound.size.width, screenBound.size.height);
-		self.graphic11.frame = CGRectMake(0, 0, screenBound.size.width, screenBound.size.height);
-		self.graphic12.frame = CGRectMake(0, 0, screenBound.size.width, screenBound.size.height);
-		self.graphic13.frame = CGRectMake(0, 0, screenBound.size.width, screenBound.size.height);
-		self.graphic14.frame = CGRectMake(0, 0, screenBound.size.width, screenBound.size.height);
-		self.graphic15.frame = CGRectMake(0, 0, screenBound.size.width, screenBound.size.height);
-		self.graphic16.frame = CGRectMake(0, 0, screenBound.size.width, screenBound.size.height);
-		self.graphic17.frame = CGRectMake(0, 0, screenBound.size.width, screenBound.size.height);
-		
-		[self fadeIn:self.graphic1 t:1];
-		
-		if( userProgress == 1 ){
-			if( ![userActionStorage[4] isEqual: @"1"] ){ [self fadeIn:self.graphic2 t:1]; }
-			else if( ![userActionStorage[13] isEqual: @"1"] ){ [self fadeIn:self.graphic3 t:1]; }
-			else if( [userActionStorage[4] isEqual: @"1"] && [userActionStorage[13] isEqual: @"1"] ){ [self fadeIn:self.graphic4 t:1]; }
-		}
-		if( userProgress == 2 ){
-			if( ![userActionStorage[13] isEqual: @"1"] ){ [self fadeIn:self.graphic5 t:1]; }
-			else if( ![userActionStorage[20] isEqual: @"1"] ){ [self fadeIn:self.graphic6 t:1]; }
-			else if( [userActionStorage[13] isEqual: @"1"] && [userActionStorage[20] isEqual: @"1"] ){ [self fadeIn:self.graphic7 t:1]; }
-		}
-		if( userProgress == 3 ){
-			if( ![userActionStorage[21] isEqual: @"1"] ){ [self fadeIn:self.graphic8 t:1]; }
-			else if( ![userActionStorage[13] isEqual: @"1"] ){ [self fadeIn:self.graphic9 t:1]; }
-			else if( [userActionStorage[21] isEqual: @"1"] && [userActionStorage[13] isEqual: @"1"] ){ [self fadeIn:self.graphic10 t:1]; }
-		}
-		if( userProgress == 4 ){
-			if( ![userActionStorage[12] isEqual: @"1"] ){ [self fadeIn:self.graphic11 t:1]; }
-			else if( ![userActionStorage[21] isEqual: @"1"] ){ [self fadeIn:self.graphic12 t:1]; }
-			else if( [userActionStorage[12] isEqual: @"1"] && [userActionStorage[21] isEqual: @"1"] ){ [self fadeIn:self.graphic13 t:1]; }
-		}
-		
-		if( userProgress == 5 ){
-			[self fadeIn:self.graphic14 t:1];
-			[self fadeIn:self.graphic15 t:1];
-			if( [userActionStorage[32] isEqual: @"1"] ){ [self fadeIn:self.graphic16 t:1]; } // If there is still a fuse in entene
-			[self fadeIn:self.graphic17 t:1];
-		}
-		
-		self.graphic1.alpha = 0.5;
-		self.graphic1.hidden = NO;
-		
-		//if( [userActionStorage[22] isEqual: @"1"] ){	[self fadeIn:self.graphic13 t:1]; }
+		[self  templateUpdateNode:16:@"0472":@"act7"];
+		[self  templateUpdateNode:23:@"0473":@"act7"];
+		[self  templateUpdateNode:25:@"0474":@"act8"];
+		[self  templateUpdateNode:35:@"0475":@"act8"];
+		[self  templateUpdateNode:27:@"0476":@"act9"];
+		[self  templateUpdateNode:52:@"0477":@"act9"];
 		
 	}
 	
 }
 
-
-// ====================
-// Actions with interactions
-// ====================
-
-
-- (void)templateUpdateDoorknob :(int)side1 :(int)side2 :(UIView*)knob
-{
-	if( userNode == side1 || userNode == side2 ){
-		knob.hidden = NO;
-		knob.alpha = 1.0;
-	}
-}
-
-- (void)templateUpdateClock
+- (void)templateClockUpdate
 {
 	[self rotate:self.graphic3 t:0 d:0];
 	self.graphic3.alpha = 0.0;
@@ -857,7 +456,7 @@ CGRect			screenBound;
 	self.graphic7.frame = CGRectMake(screenWidthHalf/2, screenHeightHalf-(screenWidthHalf/2), screenWidthHalf, screenWidthHalf); // interface
 	self.graphic8.frame = CGRectMake(screenWidthHalf/2, screenHeightHalf-(screenWidthHalf/2), screenWidthHalf, screenWidthHalf); // interface
 	self.graphic9.frame = CGRectMake(screenWidthHalf/2, screenHeightHalf-(screenWidthHalf/2), screenWidthHalf, screenWidthHalf); // interface
-	self.graphic10.frame = CGRectMake(screenWidthHalf/2, screenHeightHalf-(screenWidthHalf/2), screenWidthHalf, screenWidthHalf); // interface	
+	self.graphic10.frame = CGRectMake(screenWidthHalf/2, screenHeightHalf-(screenWidthHalf/2), screenWidthHalf, screenWidthHalf); // interface
 	
 	// Bridge
 	
@@ -896,7 +495,67 @@ CGRect			screenBound;
 	
 }
 
-- (void)templateUpdateSeal
+- (void)templateSealTerminal
+{
+	self.graphic1.hidden = NO;
+	
+	[self audioSealInit];
+	[self templateSealUpdate];
+}
+
+- (void)templateSealDoor
+{
+	[self audioDoorInit];
+	
+	self.action3.hidden = YES;
+	self.graphic1.hidden = YES;
+	
+	if ( ([userActionStorage[4] intValue] == 1 && [userActionStorage[13] intValue] == 1) ) { // Act 1 : Forest + Rainre in Stones
+		
+		[self templateUpdateDoorknob:46:85:_action2];
+		
+		[self  templateUpdateNode:46:@"0486":@"act15"];
+		[self  templateUpdateNode:85:@"0485":@"act15"];
+		
+		userProgress = 2;
+		
+	}
+	
+	if ( [userActionStorage[20] intValue] == 1 && [userActionStorage[13] intValue] == 1 ) { // Act 2 : Metamondst + Rainre in Forest
+		
+		[self templateUpdateDoorknob:48:11:_action2];
+		
+		[self  templateUpdateNode:11:@"0487":@"act25"];
+		[self  templateUpdateNode:48:@"0488":@"act25"];
+		
+		userProgress = 3;
+		
+	}
+	
+	if ( ([userActionStorage[21] intValue] == 1 && [userActionStorage[13] intValue] == 1) ) { // Act 3 : Forest + Rainre in Metamondst
+		
+		[self templateUpdateDoorknob:46:85:_action2];
+		
+		[self  templateUpdateNode:46:@"0486":@"act15"];
+		[self  templateUpdateNode:85:@"0485":@"act15"];
+		
+		userProgress = 4;
+		
+	}
+	
+	if ( [userActionStorage[21] intValue] == 1 && [userActionStorage[12] intValue] == 1 ) { // Act 4 : Antechannel + Stones in Studio
+		
+		self.action1.alpha = 1.0;
+		self.action1.hidden = NO;
+		
+		[self templateUpdateStudioTerminal];
+		
+		userProgress = 5;
+		
+	}
+}
+
+- (void)templateSealUpdate
 {
 	
 	self.action5.hidden = NO;
@@ -927,7 +586,85 @@ CGRect			screenBound;
 	
 }
 
-- (void)templateUpdateEnergy
+
+- (void)templateEnergyTerminal
+{
+	self.graphic1.hidden = NO;
+	
+	// Terminal Doorknob
+	
+	self.action2.hidden = NO;
+	self.action2.alpha = 1.0;
+	
+	self.action4.hidden = NO;
+	
+	// Audio
+	
+	[self audioEnergyInit];
+}
+
+
+
+- (void)templateEnergyDoor
+{
+
+	// Display Interactions
+	
+	self.action3.hidden = YES;
+	self.graphic1.hidden = YES;
+	
+	// Audio
+	
+	[self audioDoorInit];
+	
+	// Templates
+	
+	if([userAction isEqual: @"act3"]) { puzzleTerminal = 2;  }
+	if([userAction isEqual: @"act11"]){ puzzleTerminal = 10; }
+	if([userAction isEqual: @"act19"]){ puzzleTerminal = 18; }
+	if([userAction isEqual: @"act26"]){ puzzleTerminal = 27; }
+	
+	if([userAction isEqual: @"act28"]){ puzzleTerminal = 5;  }
+	if([userAction isEqual: @"act29"]){ puzzleTerminal = 5;  }
+	if([userAction isEqual: @"act30"]){ puzzleTerminal = 5;  }
+	if([userAction isEqual: @"act33"]){ puzzleTerminal = 47;  } // Antech fuse
+	
+	if( [userActionStorage[puzzleTerminal] intValue] > 0 ){
+		
+		self.action2.hidden = NO;
+		self.action2.alpha = 1.0;
+		
+		[self  templateUpdateNode:1:@"0531":@"act28"];
+		[self  templateUpdateNode:12:@"0470":@"act3"];
+		[self  templateUpdateNode:13:@"0471":@"act3"];
+		[self  templateUpdateNode:69:@"0478":@"act19"];
+		[self  templateUpdateNode:61:@"0479":@"act19"];
+		[self  templateUpdateNode:62:@"0480":@"act26"];
+		[self  templateUpdateNode:77:@"0481":@"act26"];
+		[self  templateUpdateNode:76:@"0482":@"act30"];
+		[self  templateUpdateNode:79:@"0534":@"act33"];
+		[self  templateUpdateNode:112:@"0535":@"act33"];
+		[self  templateUpdateNode:87:@"0483":@"act30"];
+		
+		// Nether Door
+		
+		if( [userActionStorage[5] isEqual: @"2"] && userFold == 1 && userProgress > 10 ){ // Replace 10 by actual act
+			[self  templateUpdateNode:39:@"0491":@"act11"];
+		}
+		else{
+			[self  templateUpdateNode:39:@"0490":@"act11"];
+		}
+		
+		self.action3.alpha = 1.0;
+		
+	}
+	else{
+		[self audioDoorInactive];
+	}
+	
+}
+
+- (void)templateEnergyUpdate
 {
 	
 	self.action4.alpha = 1.0;
@@ -954,6 +691,240 @@ CGRect			screenBound;
 	}
 	
 }
+
+
+- (void)templateProgressTerminal
+{
+	CGRect screenBound = [[UIScreen mainScreen] bounds];
+	
+	self.graphic1.image = [UIImage imageNamed:@"progress_shadows.png"];
+	
+	self.graphic2.image = [UIImage imageNamed:@"progress_act1_seal1.png"];
+	self.graphic3.image = [UIImage imageNamed:@"progress_act1_seal2.png"];
+	self.graphic4.image = [UIImage imageNamed:@"progress_act1_door.png"];
+	
+	self.graphic5.image = [UIImage imageNamed:@"progress_act2_seal1.png"];
+	self.graphic6.image = [UIImage imageNamed:@"progress_act2_seal2.png"];
+	self.graphic7.image = [UIImage imageNamed:@"progress_act2_door.png"];
+	
+	self.graphic8.image = [UIImage imageNamed:@"progress_act3_seal1.png"];
+	self.graphic9.image = [UIImage imageNamed:@"progress_act3_seal2.png"];
+	self.graphic10.image = [UIImage imageNamed:@"progress_act3_door.png"];
+	
+	self.graphic11.image = [UIImage imageNamed:@"progress_act4_seal1.png"];
+	self.graphic12.image = [UIImage imageNamed:@"progress_act4_seal2.png"];
+	self.graphic13.image = [UIImage imageNamed:@"progress_act4_door.png"];
+	
+	self.graphic14.image = [UIImage imageNamed:@"progress_act5_seal1.png"];
+	self.graphic15.image = [UIImage imageNamed:@"progress_act5_seal2.png"];
+	self.graphic16.image = [UIImage imageNamed:@"progress_act5_door.png"];
+	
+	self.graphic17.image = [UIImage imageNamed:@"progress_act6_door.png"];
+	
+	self.graphic1.frame = CGRectMake(0, 0, screenBound.size.width, screenBound.size.height);
+	self.graphic2.frame = CGRectMake(0, 0, screenBound.size.width, screenBound.size.height);
+	self.graphic3.frame = CGRectMake(0, 0, screenBound.size.width, screenBound.size.height);
+	self.graphic4.frame = CGRectMake(0, 0, screenBound.size.width, screenBound.size.height);
+	self.graphic5.frame = CGRectMake(0, 0, screenBound.size.width, screenBound.size.height);
+	self.graphic6.frame = CGRectMake(0, 0, screenBound.size.width, screenBound.size.height);
+	self.graphic7.frame = CGRectMake(0, 0, screenBound.size.width, screenBound.size.height);
+	self.graphic8.frame = CGRectMake(0, 0, screenBound.size.width, screenBound.size.height);
+	self.graphic9.frame = CGRectMake(0, 0, screenBound.size.width, screenBound.size.height);
+	self.graphic10.frame = CGRectMake(0, 0, screenBound.size.width, screenBound.size.height);
+	self.graphic11.frame = CGRectMake(0, 0, screenBound.size.width, screenBound.size.height);
+	self.graphic12.frame = CGRectMake(0, 0, screenBound.size.width, screenBound.size.height);
+	self.graphic13.frame = CGRectMake(0, 0, screenBound.size.width, screenBound.size.height);
+	self.graphic14.frame = CGRectMake(0, 0, screenBound.size.width, screenBound.size.height);
+	self.graphic15.frame = CGRectMake(0, 0, screenBound.size.width, screenBound.size.height);
+	self.graphic16.frame = CGRectMake(0, 0, screenBound.size.width, screenBound.size.height);
+	self.graphic17.frame = CGRectMake(0, 0, screenBound.size.width, screenBound.size.height);
+	
+	[self fadeIn:self.graphic1 t:1];
+	
+	if( userProgress == 1 ){
+		if( ![userActionStorage[4] isEqual: @"1"] ){ [self fadeIn:self.graphic2 t:1]; }
+		else if( ![userActionStorage[13] isEqual: @"1"] ){ [self fadeIn:self.graphic3 t:1]; }
+		else if( [userActionStorage[4] isEqual: @"1"] && [userActionStorage[13] isEqual: @"1"] ){ [self fadeIn:self.graphic4 t:1]; }
+	}
+	if( userProgress == 2 ){
+		if( ![userActionStorage[13] isEqual: @"1"] ){ [self fadeIn:self.graphic5 t:1]; }
+		else if( ![userActionStorage[20] isEqual: @"1"] ){ [self fadeIn:self.graphic6 t:1]; }
+		else if( [userActionStorage[13] isEqual: @"1"] && [userActionStorage[20] isEqual: @"1"] ){ [self fadeIn:self.graphic7 t:1]; }
+	}
+	if( userProgress == 3 ){
+		if( ![userActionStorage[21] isEqual: @"1"] ){ [self fadeIn:self.graphic8 t:1]; }
+		else if( ![userActionStorage[13] isEqual: @"1"] ){ [self fadeIn:self.graphic9 t:1]; }
+		else if( [userActionStorage[21] isEqual: @"1"] && [userActionStorage[13] isEqual: @"1"] ){ [self fadeIn:self.graphic10 t:1]; }
+	}
+	if( userProgress == 4 ){
+		if( ![userActionStorage[12] isEqual: @"1"] ){ [self fadeIn:self.graphic11 t:1]; }
+		else if( ![userActionStorage[21] isEqual: @"1"] ){ [self fadeIn:self.graphic12 t:1]; }
+		else if( [userActionStorage[12] isEqual: @"1"] && [userActionStorage[21] isEqual: @"1"] ){ [self fadeIn:self.graphic13 t:1]; }
+	}
+	
+	if( userProgress == 5 ){
+		[self fadeIn:self.graphic14 t:1];
+		[self fadeIn:self.graphic15 t:1];
+		if( [userActionStorage[32] isEqual: @"1"] ){ [self fadeIn:self.graphic16 t:1]; } // If there is still a fuse in entene
+		[self fadeIn:self.graphic17 t:1];
+	}
+	
+	self.graphic1.alpha = 0.5;
+	self.graphic1.hidden = NO;
+	
+	//if( [userActionStorage[22] isEqual: @"1"] ){	[self fadeIn:self.graphic13 t:1]; }
+}
+
+- (void)templateAudioMusicPlayer
+{
+	NSLog(@"!!");
+}
+
+- (void)templateEntenteTerminal1
+{
+	NSString *targetGraphic = @"";
+	
+	if( [ userActionStorage[23] intValue] > 17 )		{ targetGraphic = @"Hi"; }
+	else if( [ userActionStorage[23] intValue] < 17 )	{ targetGraphic = @"Lo"; }
+	else if( [ userActionStorage[23] intValue] == 17 )	{ targetGraphic = @"On"; }
+	
+	self.graphic1.image = [UIImage imageNamed:[NSString stringWithFormat:@"entente%@.png", targetGraphic ] ];
+	[self fadeHalf:self.graphic1 t:0.5];
+
+}
+
+- (void)templateEntenteTerminal2
+{
+	NSString *targetGraphic = @"";
+	
+	if( [ userActionStorage[24] intValue] > 17 )		{ targetGraphic = @"Hi"; }
+	else if( [ userActionStorage[24] intValue] < 17 )	{ targetGraphic = @"Lo"; }
+	else if( [ userActionStorage[24] intValue] == 17 )	{ targetGraphic = @"On"; }
+	
+	self.graphic1.image = [UIImage imageNamed:[NSString stringWithFormat:@"entente%@.png", targetGraphic ] ];
+	[self fadeHalf:self.graphic1 t:0.5];
+
+}
+
+- (void)templateEntentePart1Incr
+{
+	if( [userActionStorage[23] isEqual: @"17"] ){
+		userNode = 93;
+		userAction = nil;
+		[self actionCheck];
+		[self moveCheck];
+		[self actionReset];
+	}
+	else{
+		userNode = 89;
+		userAction = nil;
+		
+		if( [ userActionStorage[23] intValue] < 30 ){ userActionStorage[23] = [NSString stringWithFormat:@"%d", [ userActionStorage[23] intValue]+3 ];}
+		
+		NSLog(@"%@",userActionStorage[23]);
+		
+		[self actionCheck];
+		[self moveCheck];
+		[self actionReset];
+	}
+}
+
+- (void)templateEntentePart1Decr
+{
+	userNode = 103;
+	userAction = nil;
+	
+	if( [ userActionStorage[23] intValue] > 0 ){ userActionStorage[23] = [NSString stringWithFormat:@"%d", [ userActionStorage[23] intValue]-1 ]; }
+	
+	NSLog(@"%@",userActionStorage[23]);
+	
+	[self actionCheck];
+	[self moveCheck];
+	[self actionReset];
+}
+
+- (void)templateEntentePart2Incr
+{
+	userNode = 94;
+	userOrientation = 2;
+	userAction = nil;
+	
+	if( [ userActionStorage[24] intValue] < 32 ){
+		userActionStorage[24] = [NSString stringWithFormat:@"%d", [ userActionStorage[24] intValue]+4 ];
+	}
+	
+	NSLog(@"%@",userActionStorage[24]);
+	
+	[self actionCheck];
+	[self moveCheck];
+	[self actionReset];
+}
+
+- (void)templateEntentePart2Decr
+{
+	userNode = 91;
+	userOrientation = 2;
+	userAction = nil;
+	
+	if( [ userActionStorage[24] intValue] > 0 ){
+		userActionStorage[24] = [NSString stringWithFormat:@"%d", [ userActionStorage[24] intValue]-1 ];
+	}
+	
+	NSLog(@"%@",userActionStorage[24]);
+	
+	[self actionCheck];
+	[self moveCheck];
+	[self actionReset];
+}
+
+- (void)templateEntentePart2Exit
+{
+	if( [userActionStorage[23] intValue] == 17 && [userActionStorage[24] intValue] == 17 ){
+		userNode = 107;
+		userOrientation = 3;
+		NSLog(@"OUT!");
+		userAction = nil;
+		
+		NSLog(@"%@",userActionStorage[24]);
+		
+		[self actionCheck];
+		[self moveCheck];
+		[self actionReset];
+	}
+	else{
+		userNode = 93;
+		userAction = nil;
+		
+		NSLog(@"%@",userActionStorage[24]);
+		
+		[self actionCheck];
+		[self moveCheck];
+		[self actionReset];
+	}
+}
+
+
+
+
+
+// ====================
+// Actions with interactions
+// ====================
+
+
+- (void)templateUpdateDoorknob :(int)side1 :(int)side2 :(UIView*)knob
+{
+	if( userNode == side1 || userNode == side2 ){
+		knob.hidden = NO;
+		knob.alpha = 1.0;
+	}
+}
+
+
+
+
+
+
 
 - (void)templateUpdateStudioTerminal
 {
