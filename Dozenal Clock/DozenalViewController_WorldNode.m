@@ -23,6 +23,8 @@
 	node[0]		= [NSArray arrayWithObjects: @"1", @"0", @"0", @"0", @"forest", nil];
 	node[1]		= [NSArray arrayWithObjects: @"2", @"0", @"act28", @"0", @"forest", nil];
 	
+	//node[1]		= [NSArray arrayWithObjects: @"39", @"0", @"0", @"0", @"forest", nil];
+	
 	node[2]		= [NSArray arrayWithObjects: @"3", @"0", @"1", @"0", @"forest", nil];
 	node[3]		= [NSArray arrayWithObjects: @"11", @"10|2", @"2", @"4|0", @"forest", nil];
 	node[4]		= [NSArray arrayWithObjects: @"5", @"0", @"3|1", @"0", @"forest", nil];
@@ -58,7 +60,7 @@
 	node[31]	= [NSArray arrayWithObjects: @"25|1", @"0", @"35", @"0", @"silence", nil];
 	node[32]	= [NSArray arrayWithObjects: @"0", @"52", @"35", @"27|1", @"silence", nil];	
 	node[33]	= [NSArray arrayWithObjects: @"0", @"0", @"29|1", @"0", @"silence", nil];	
-	node[34]	= [NSArray arrayWithObjects: @"0", @"0", @"0", @"39", @"silence", nil];		
+	node[34]	= [NSArray arrayWithObjects: @"act37", @"0", @"0", @"39", @"silence", nil];		
 	node[35]	= [NSArray arrayWithObjects: @"act8", @"38", @"36", @"0", @"silence", nil];		
 	node[36]	= [NSArray arrayWithObjects: @"35", @"37", @"0", @"0", @"silence", nil];		
 	node[37]	= [NSArray arrayWithObjects: @"38", @"39", @"0", @"36", @"silence", nil];
@@ -143,9 +145,10 @@
 	node[111]	= [NSArray arrayWithObjects: @"0", @"110", @"0", @"1|0", @"silence", nil];
 	
 	node[112]	= [NSArray arrayWithObjects: @"115", @"113", @"0", @"act33", @"silence", nil];
-	node[113]	= [NSArray arrayWithObjects: @"114", @"0", @"0", @"112", @"silence", nil];
+	node[113]	= [NSArray arrayWithObjects: @"114", @"act36", @"0", @"112", @"silence", nil];
 	node[114]	= [NSArray arrayWithObjects: @"0", @"0", @"113", @"115", @"silence", nil];
 	node[115]	= [NSArray arrayWithObjects: @"0", @"114", @"112", @"0", @"silence", nil];
+	node[116]	= [NSArray arrayWithObjects: @"0", @"0", @"0", @"20|2", @"silence", nil];
 	
 	return node;
 }
@@ -161,7 +164,7 @@
 	puzzle[3]		= @"energyDoor";
 	puzzle[4]		= @"sealTerminal";
 	puzzle[5]		= @"sealDoor";
-	puzzle[6]		= @"foldDoor";
+	puzzle[6]		= @"energyDoor";
 	puzzle[7]		= @"clockDoor";
 	puzzle[8]		= @"clockDoor";
 	puzzle[9]		= @"clockDoor";
@@ -197,8 +200,8 @@
 	puzzle[33]		= @"energyDoor";
 	puzzle[34]		= @"audioTerminal";
 	puzzle[35]		= @"audioTerminal";
-	puzzle[36]		= @"collectible";
-	puzzle[37]		= @"collectible";
+	puzzle[36]		= @"endgameTerminal";
+	puzzle[37]		= @"energyTerminal";
 	puzzle[38]		= @"collectible";
 	puzzle[39]		= @"collectible";
 	puzzle[40]		= @"collectible";

@@ -23,7 +23,7 @@ NSString        *worldNodeImg = @"empty";
 NSString		*worldNodeImgId;
 
 // Puzzle
-int				puzzleTerminal;
+int				puzzleTerminal = 0;
 int				puzzleState;
 
 // User
@@ -105,9 +105,9 @@ CGRect			screenBound;
 	self.debugOrientation.text = [NSString stringWithFormat:@"%d", userOrientation];
 	self.debugAction.text = [NSString stringWithFormat:@"%@", worldPath[userNode][userOrientation]];
 
-	self.debugNode.hidden = YES;
-	self.debugOrientation.hidden = YES;
-	self.debugAction.hidden = YES;
+//	self.debugNode.hidden = YES;
+//	self.debugOrientation.hidden = YES;
+//	self.debugAction.hidden = YES;
 	
     self.moveForward.hidden = worldPath[userNode][userOrientation] ? NO : YES;
 	
@@ -208,6 +208,9 @@ CGRect			screenBound;
 	if( [worldActionType[userActionId] isEqual: @"audioTerminal"] ){
 		[self templateAudioUpdate];
 	}
+	if( [worldActionType[userActionId] isEqual: @"endgameTerminal"] ){
+		[self templateEndgameUpdate];
+	}
 	
 	
 }
@@ -231,12 +234,12 @@ CGRect			screenBound;
 	else if	( userNode == 13 ){ userNode = 12; }
 	else if	( userNode == 12 ){	userNode = 13; }
 	else if ( userNode == 16 ){	userNode = 22; }
-	else if	( userNode == 20 ){	userNode = 20; userOrientation = 2; userFold = ( userFold == 1 ) ? 0 : 1; }
+	else if	( userNode == 20 && [userActionStorage[37] intValue] > 0 ){ userNode = 116; userOrientation = 1;} // Fold Gate
 	else if	( userNode == 23 ){	userNode = 22; }
 	else if	( userNode == 25 ){	userNode = 31; userOrientation = 2;}
 	else if	( userNode == 27 ){	userNode = 32; userOrientation = 1;}
 	else if	( userNode == 35 ){	userNode = 31; userOrientation = 0;}
-	else if	( userNode == 39 && userFold == 1 ) { userNode = 34; }
+	else if	( userNode == 39 && [userActionStorage[5] isEqual: @"2"] && [userActionStorage[31] isEqual: @"1"] ) { userNode = 34; }
 	else if	( userNode == 39 ){	userNode = 45; }
 	else if	( userNode == 45 ){	userNode = 51; }
 	else if	( userNode == 46 ){	userNode = 85; userOrientation = 2; }
@@ -252,6 +255,10 @@ CGRect			screenBound;
 	else if	( userNode == 85 ){	userNode = 46; userOrientation = 0; }
 	else if	( userNode == 87 ){	userNode = 76; }
 	else if	( userNode == 112){	userNode = 79;}
+	
+	// Easter Eggs
+	
+	
 	
 	userAction = nil;
 	
@@ -382,6 +389,7 @@ CGRect			screenBound;
 	if( [worldActionType[userActionId] isEqual: @"clockDoor"] )			{ [self templateClockDoor]; }
 	if( [worldActionType[userActionId] isEqual: @"progressTerminal"] )	{ [self templateProgressTerminal]; }
 	if( [worldActionType[userActionId] isEqual: @"audioTerminal"] )		{ [self templateAudioTerminal]; }
+	if( [worldActionType[userActionId] isEqual: @"endgameTerminal"] )	{ [self templateEndgameTerminal]; }
 	
 	if( [userAction isEqual: @"act23"] )								{ [self templateEntenteTerminal1]; }
 	if( [userAction isEqual: @"act24"] )								{ [self templateEntenteTerminal2]; }
@@ -631,6 +639,8 @@ CGRect			screenBound;
 	// Templates
 	
 	if([userAction isEqual: @"act3"]) { puzzleTerminal = 2;  }
+	if([userAction isEqual: @"act6"]) { puzzleTerminal = 37;  }
+
 	if([userAction isEqual: @"act11"]){ puzzleTerminal = 10; }
 	if([userAction isEqual: @"act19"]){ puzzleTerminal = 18; }
 	if([userAction isEqual: @"act26"]){ puzzleTerminal = 27; }
@@ -648,6 +658,7 @@ CGRect			screenBound;
 		[self  templateUpdateNode:1:@"0531":@"act28"];
 		[self  templateUpdateNode:12:@"0470":@"act3"];
 		[self  templateUpdateNode:13:@"0471":@"act3"];
+		[self  templateUpdateNode:20:@"0080":@"act6"];
 		[self  templateUpdateNode:69:@"0478":@"act19"];
 		[self  templateUpdateNode:61:@"0479":@"act19"];
 		[self  templateUpdateNode:62:@"0480":@"act26"];
@@ -659,12 +670,14 @@ CGRect			screenBound;
 		
 		// Nether Door
 		
-		if( [userActionStorage[5] isEqual: @"2"] && userFold == 1 && userProgress > 10 ){ // Replace 10 by actual act
+		if( [userActionStorage[5] isEqual: @"2"] && [userActionStorage[31] isEqual:@"1"] ){ // Replace 10 by actual act
 			[self  templateUpdateNode:39:@"0491":@"act11"];
 		}
 		else{
 			[self  templateUpdateNode:39:@"0490":@"act11"];
 		}
+		
+		
 		
 		self.action3.alpha = 1.0;
 		
@@ -684,6 +697,7 @@ CGRect			screenBound;
 		[self templateUpdateNode:18:@"0516":@"act2"];
 		[self templateUpdateNode:18:@"0529":@"act31"];
 		[self templateUpdateNode:13:@"0517":@"act2"];
+		[self templateUpdateNode:34:@"0537":@"act37"];
 		[self templateUpdateNode:69:@"0518":@"act18"];
 		[self templateUpdateNode:39:@"0519":@"act10"];
 		[self templateUpdateNode:77:@"0520":@"act27"];
@@ -694,12 +708,20 @@ CGRect			screenBound;
 		[self templateUpdateNode:18:@"0521":@"act2"];
 		[self templateUpdateNode:18:@"0530":@"act31"];
 		[self templateUpdateNode:13:@"0522":@"act2"];
+		[self templateUpdateNode:34:@"0538":@"act37"];
 		[self templateUpdateNode:69:@"0523":@"act18"];
 		[self templateUpdateNode:39:@"0524":@"act10"];
 		[self templateUpdateNode:77:@"0525":@"act27"];
 		[self templateUpdateNode:84:@"0526":@"act47"];
 		[self templateUpdateNode:101:@"0532":@"act32"];
 	}
+	
+	// Extras
+	
+	if( [userAction isEqual: @"act37"] ){
+		NSLog(@"!!");
+		userActionStorage[37] = @"1";
+	}	
 	
 }
 
@@ -933,6 +955,36 @@ CGRect			screenBound;
 		[self actionReset];
 	}
 }
+
+
+
+
+- (void)templateEndgameTerminal
+{
+
+	[self.action1 setImage:[UIImage imageNamed: [NSString stringWithFormat:@"tempYes.png"] ] forState:UIControlStateNormal];
+	self.action1.alpha = 1.0;
+	self.action1.hidden = NO;
+	
+}
+
+
+
+- (void)templateEndgameUpdate
+{
+	NSLog(@"ENDGAME");
+}
+
+
+
+
+
+
+
+
+
+
+
 
 
 
