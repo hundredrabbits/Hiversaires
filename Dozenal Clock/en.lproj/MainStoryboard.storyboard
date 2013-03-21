@@ -12,7 +12,7 @@
                         <rect key="frame" x="0.0" y="20" width="320" height="460"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" id="qDH-p4-ZxP" userLabel="NodeView">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" id="qDH-p4-ZxP" userLabel="NodeView">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="460"/>
                             </imageView>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Orientation" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="8Pn-4H-mjL" userLabel="DebugOrientation">
@@ -33,71 +33,71 @@
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" id="Fdf-Qf-zRl" userLabel="Graphic1">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" id="Fdf-Qf-zRl" userLabel="Graphic1">
                                 <rect key="frame" x="20" y="109" width="55" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" id="2g5-UF-av4" userLabel="Graphic2">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" id="2g5-UF-av4" userLabel="Graphic2">
                                 <rect key="frame" x="20" y="149" width="55" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" id="w8y-pV-E3l" userLabel="Graphic3">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" id="w8y-pV-E3l" userLabel="Graphic3">
                                 <rect key="frame" x="20" y="189" width="55" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" id="V4e-2e-hID" userLabel="Graphic4">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" id="V4e-2e-hID" userLabel="Graphic4">
                                 <rect key="frame" x="20" y="229" width="55" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" id="8uA-Dh-2F0" userLabel="Graphic5">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" id="8uA-Dh-2F0" userLabel="Graphic5">
                                 <rect key="frame" x="20" y="269" width="55" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" id="80J-OR-Wpd" userLabel="Graphic6">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" id="80J-OR-Wpd" userLabel="Graphic6">
                                 <rect key="frame" x="20" y="269" width="55" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" id="clZ-hT-gju" userLabel="Graphic7">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" id="clZ-hT-gju" userLabel="Graphic7">
                                 <rect key="frame" x="20" y="269" width="55" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" id="ae8-Ty-x7X" userLabel="Graphic8">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" id="ae8-Ty-x7X" userLabel="Graphic8">
                                 <rect key="frame" x="20" y="269" width="55" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" id="Ea1-xI-b67" userLabel="Graphic9">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" id="Ea1-xI-b67" userLabel="Graphic9">
                                 <rect key="frame" x="20" y="309" width="55" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" id="KcO-eM-DxU" userLabel="Graphic10">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" id="KcO-eM-DxU" userLabel="Graphic10">
                                 <rect key="frame" x="20" y="309" width="55" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" id="i7h-zs-OeS" userLabel="Graphic11">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" id="i7h-zs-OeS" userLabel="Graphic11">
                                 <rect key="frame" x="20" y="309" width="55" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" id="HC5-ur-WUP" userLabel="Graphic12">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" id="HC5-ur-WUP" userLabel="Graphic12">
                                 <rect key="frame" x="20" y="309" width="55" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" id="lbp-Ek-PBi" userLabel="Graphic13">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" id="lbp-Ek-PBi" userLabel="Graphic13">
                                 <rect key="frame" x="20" y="348" width="55" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" id="PC0-2b-xit" userLabel="Graphic14">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" id="PC0-2b-xit" userLabel="Graphic14">
                                 <rect key="frame" x="20" y="348" width="55" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" id="sbQ-EL-ls8" userLabel="Graphic15">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" id="sbQ-EL-ls8" userLabel="Graphic15">
                                 <rect key="frame" x="20" y="348" width="55" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" id="Ouz-Ue-pLZ" userLabel="Graphic16">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" id="Ouz-Ue-pLZ" userLabel="Graphic16">
                                 <rect key="frame" x="20" y="348" width="55" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" id="L7z-23-yDC" userLabel="Graphic17">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" id="L7z-23-yDC" userLabel="Graphic17">
                                 <rect key="frame" x="20" y="348" width="55" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>

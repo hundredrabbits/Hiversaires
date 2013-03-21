@@ -272,9 +272,11 @@ AVAudioPlayer *playerAmbient;
 	if(err)	{ NSLog(@"%@",err); }
 	else	{
 		playerAmbient.numberOfLoops = -1; //infinite
-		playerAmbient.volume = 0.01;
+		playerAmbient.volume = 1.0;
 		[playerAmbient play];
 	}
+	
+	NSLog(@"Playing");
 }
 
 
