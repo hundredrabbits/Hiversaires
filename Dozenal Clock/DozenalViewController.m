@@ -283,8 +283,9 @@ CGRect			screenBound;
 		userActionStorage[userActionId] = @"1";
 		userEnergy -= 1;
 	}
-	
-	NSLog(@"%d", userEnergy );
+	else{
+		[self templateEnergyWarning];
+	}
 	
 	[self templateEnergyUpdate];
 	
@@ -304,6 +305,7 @@ CGRect			screenBound;
 	}
 	else{
 		[self audioEnergyStack];
+		[self templateSealWarning];
 		NSLog(@"No more seal slots.");
 	}
 	
@@ -562,26 +564,26 @@ CGRect			screenBound;
 		[self  templateUpdateNode:85:@"0485":@"act15"];
 		userProgress = 2;
 	}
-	
-	if ( [userActionStorage[20] intValue] == 1 && [userActionStorage[13] intValue] == 1 ) { // Act 2 : Metamondst + Rainre in Forest
+	else if ( [userActionStorage[20] intValue] == 1 && [userActionStorage[13] intValue] == 1 ) { // Act 2 : Metamondst + Rainre in Forest
 		[self templateUpdateDoorknob:48:11:_action2];
 		[self  templateUpdateNode:11:@"0487":@"act25"];
 		[self  templateUpdateNode:48:@"0488":@"act25"];
 		userProgress = 3;
 	}
-	
-	if ( ([userActionStorage[21] intValue] == 1 && [userActionStorage[13] intValue] == 1) ) { // Act 3 : Forest + Rainre in Metamondst
+	else if ( ([userActionStorage[21] intValue] == 1 && [userActionStorage[13] intValue] == 1) ) { // Act 3 : Forest + Rainre in Metamondst
 		[self templateUpdateDoorknob:46:85:_action2];
 		[self  templateUpdateNode:46:@"0486":@"act15"];
 		[self  templateUpdateNode:85:@"0485":@"act15"];
 		userProgress = 4;
 	}
-	
-	if ( [userActionStorage[21] intValue] == 1 && [userActionStorage[12] intValue] == 1 ) { // Act 4 : Antechannel + Stones in Studio
+	else if ( [userActionStorage[21] intValue] == 1 && [userActionStorage[12] intValue] == 1 ) { // Act 4 : Antechannel + Stones in Studio
 		self.action1.alpha = 1.0;
 		self.action1.hidden = NO;
 		[self templateUpdateStudioTerminal];
 		userProgress = 5;
+	}
+	else{
+		[self templateSealWarning];
 	}
 }
 
@@ -609,12 +611,14 @@ CGRect			screenBound;
 		[self  templateUpdateNode:49:@"0506":@"act21"];
 		[self  templateUpdateNode:82:@"0500":@"act20"];
 	}
-	
-	
-	
-	
-	
-	
+
+}
+
+- (void)templateSealWarning
+{
+	self.interfaceSealBackground.image = [UIImage imageNamed:@"interfaceFuse.warning.png"];
+	self.interfaceSealBackground.alpha = 1.0;
+	[self fadeOut:self.interfaceSealBackground d:0.5 t:0.5];
 }
 
 
@@ -646,8 +650,6 @@ CGRect			screenBound;
 	else if( userEnergy == 0 ){
 		self.interfaceFuse1.image = [UIImage imageNamed:@"fuse.0.png"];
 	}
-	
-	NSLog(@"%d",userEnergy);
 	
 	self.interfaceFuse1.alpha = 1;
 	
@@ -717,6 +719,7 @@ CGRect			screenBound;
 		
 	}
 	else{
+		[self templateEnergyWarning];
 		[self audioDoorInactive];
 	}
 	
@@ -761,6 +764,13 @@ CGRect			screenBound;
 		userActionStorage[37] = @"1";
 	}	
 	
+}
+
+- (void)templateEnergyWarning
+{
+	self.interfaceFuseBackground.image = [UIImage imageNamed:@"interfaceFuse.warning.png"];
+	self.interfaceFuseBackground.alpha = 1.0;
+	[self fadeOut:self.interfaceFuseBackground d:0.5 t:0.5];
 }
 
 
@@ -1205,7 +1215,6 @@ CGRect			screenBound;
 	
 	CGRect screenBound = [[UIScreen mainScreen] bounds];
 	
-	
 	//
 	
 	screenWidth = screenBound.size.width;
@@ -1217,7 +1226,6 @@ CGRect			screenBound;
 	screenHeightThird = screenBound.size.height/3;
 	screenHeightFourth = screenBound.size.height/4;
 	int screenPadding = screenBound.size.width/24;
-	
 	
 	// Core
 	
@@ -1247,13 +1255,17 @@ CGRect			screenBound;
 	
 	// Style - Interface - Fuse
 	
+	self.interfaceFuseBackground.frame = CGRectMake(screenPadding, screenBound.size.height-(screenBound.size.width/12), screenBound.size.width/12, screenBound.size.width/12);
+	
 	self.interfaceFuse1.image = [UIImage imageNamed:@"fuse.0.png"];
 	self.interfaceFuse1.frame = CGRectMake(screenPadding, screenBound.size.height-(screenBound.size.width/12) - screenPadding, screenBound.size.width/12, screenBound.size.width/12);
 	
 	// Style - Interface - Seal
 	
-	self.interfaceSeal1.frame = CGRectMake(screenBound.size.width - (screenBound.size.width/12) - screenPadding, screenBound.size.height-(screenBound.size.width/12), screenBound.size.width/12, screenBound.size.width/12);
-	self.interfaceSeal2.frame = CGRectMake(screenBound.size.width - (screenBound.size.width/12) - screenPadding, screenBound.size.height-(screenBound.size.width/12)*2, screenBound.size.width/12, screenBound.size.width/12);
+	self.interfaceSealBackground.frame = CGRectMake(screenBound.size.width - (screenBound.size.width/12) - screenPadding, screenBound.size.height-(screenBound.size.width/12), screenBound.size.width/12, screenBound.size.width/12);CGRectMake(screenPadding, screenBound.size.height-(screenBound.size.width/12), screenBound.size.width/12, screenBound.size.width/12);
+	
+	self.interfaceSeal1.frame = CGRectMake(screenBound.size.width - (screenBound.size.width/12) - screenPadding, screenBound.size.height-(screenBound.size.width/12) - screenPadding, screenBound.size.width/12, screenBound.size.width/12);
+	self.interfaceSeal2.frame = CGRectMake(screenBound.size.width - (screenBound.size.width/12) - screenPadding, screenBound.size.height-(screenBound.size.width/12)*2 - screenPadding, screenBound.size.width/12, screenBound.size.width/12);
 	
 }
 
