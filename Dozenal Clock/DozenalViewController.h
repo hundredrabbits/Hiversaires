@@ -53,13 +53,20 @@
 @property (weak, nonatomic) IBOutlet UIImageView *graphic8;
 @property (weak, nonatomic) IBOutlet UIImageView *graphic9;
 @property (weak, nonatomic) IBOutlet UIImageView *graphic10;
-@property (weak, nonatomic) IBOutlet UIImageView *graphic11;
-@property (weak, nonatomic) IBOutlet UIImageView *graphic12;
-@property (weak, nonatomic) IBOutlet UIImageView *graphic13;
-@property (weak, nonatomic) IBOutlet UIImageView *graphic14;
-@property (weak, nonatomic) IBOutlet UIImageView *graphic15;
-@property (weak, nonatomic) IBOutlet UIImageView *graphic16;
-@property (weak, nonatomic) IBOutlet UIImageView *graphic17;
+
+// Interface
+
+@property (weak, nonatomic) IBOutlet UIImageView *interfaceFuseBackground;
+
+@property (weak, nonatomic) IBOutlet UIImageView *interfaceFuse1;
+@property (weak, nonatomic) IBOutlet UIImageView *interfaceFuse2;
+@property (weak, nonatomic) IBOutlet UIImageView *interfaceFuse3;
+
+@property (weak, nonatomic) IBOutlet UIImageView *interfaceSeal1;
+@property (weak, nonatomic) IBOutlet UIImageView *interfaceSeal2;
+
+
+
 
 @end
 

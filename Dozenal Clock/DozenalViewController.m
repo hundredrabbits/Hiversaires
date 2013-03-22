@@ -65,10 +65,13 @@ CGRect			screenBound;
     
     [super viewDidLoad];
     
-	worldPath = [self worldPath];
-	worldActionType = [self worldActionType];
+	// ====================
+	// Initial Set
+	// ====================
 	
-	userActionStorage = [NSMutableArray arrayWithObjects:@"",@"1",@"0",@"",@"",@"0",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"0",@"0",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",nil];
+	worldPath			= [self worldPath];
+	worldActionType		= [self worldActionType];
+	userActionStorage	= [NSMutableArray arrayWithObjects:@"",@"1",@"0",@"",@"",@"0",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"0",@"0",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",nil];
 	
 	// Starting fuses (do not remove)
 	
@@ -76,11 +79,17 @@ CGRect			screenBound;
 	userActionStorage[32] = @"1";
 	userActionStorage[47] = @"1";
 	
-	// Overrides
+	// ====================
+	// Begin
+	// ====================
+	
+	[self prefPositioning];
+	
+	[self templateSealInterface];
+	[self templateEnergyInterface];
 	
 	[self actionCheck];
     [self moveCheck];
-	
 	[self menuHome];
 	
 }
@@ -125,7 +134,6 @@ CGRect			screenBound;
 	
 	// Resize
 	
-	[self prefPositioning];
 	[self audioAmbientCheck: worldPath[userNode][4] ];
 	
 }
@@ -258,8 +266,6 @@ CGRect			screenBound;
 	
 	// Easter Eggs
 	
-	
-	
 	userAction = nil;
 	
 	[self actionCheck];
@@ -336,13 +342,6 @@ CGRect			screenBound;
 	self.graphic8.frame = CGRectMake(0, 0, 0, 0);
 	self.graphic9.frame = CGRectMake(0, 0, 0, 0);
 	self.graphic10.frame = CGRectMake(0, 0, 0, 0);
-	self.graphic11.frame = CGRectMake(0, 0, 0, 0);
-	self.graphic12.frame = CGRectMake(0, 0, 0, 0);
-	self.graphic13.frame = CGRectMake(0, 0, 0, 0);
-	self.graphic14.frame = CGRectMake(0, 0, 0, 0);
-	self.graphic15.frame = CGRectMake(0, 0, 0, 0);
-	self.graphic16.frame = CGRectMake(0, 0, 0, 0);
-	self.graphic17.frame = CGRectMake(0, 0, 0, 0);
 	
 	[self rotate:self.action1 t:1.0 d:0];
 	[self rotate:self.action3 t:1.0 d:0];
@@ -350,29 +349,22 @@ CGRect			screenBound;
 	[self rotate:self.graphic2 t:1.0 d:0];
 	[self rotate:self.graphic3 t:1.0 d:0];
 	
-	[self fadeOut:self.graphic1 t:0];
-	[self fadeOut:self.graphic2 t:0];
-	[self fadeOut:self.graphic3 t:0];
-	[self fadeOut:self.graphic4 t:0];
-	[self fadeOut:self.graphic5 t:0];
-	[self fadeOut:self.graphic6 t:0];
-	[self fadeOut:self.graphic7 t:0];
-	[self fadeOut:self.graphic8 t:0];
-	[self fadeOut:self.graphic9 t:0];
-	[self fadeOut:self.graphic10 t:0];
-	[self fadeOut:self.graphic11 t:0];
-	[self fadeOut:self.graphic12 t:0];
-	[self fadeOut:self.graphic13 t:0];
-	[self fadeOut:self.graphic14 t:0];
-	[self fadeOut:self.graphic15 t:0];
-	[self fadeOut:self.graphic16 t:0];
-	[self fadeOut:self.graphic17 t:0];
+	self.graphic1.alpha = 0;
+	self.graphic2.alpha = 0;
+	self.graphic3.alpha = 0;
+	self.graphic4.alpha = 0;
+	self.graphic5.alpha = 0;
+	self.graphic6.alpha = 0;
+	self.graphic7.alpha = 0;
+	self.graphic8.alpha = 0;
+	self.graphic9.alpha = 0;
+	self.graphic10.alpha = 0;
 	
-	[self fadeOut:self.action1 t:0];
-	[self fadeOut:self.action2 t:0];
-	[self fadeOut:self.action3 t:0];
-	[self fadeOut:self.action4 t:0];
-	[self fadeOut:self.action5 t:0];
+	self.action1.alpha = 0;
+	self.action2.alpha = 0;
+	self.action3.alpha = 0;
+	self.action4.alpha = 0;
+	self.action5.alpha = 0;
 	
 }
 
@@ -403,10 +395,12 @@ CGRect			screenBound;
 
 - (void)templateClockTerminal{
 	
-	[self audioClockInit];
+	[self prefPositioning];
 	
 	self.action1.hidden = NO;
 	self.action1.alpha = 1.0;
+	
+	[self audioClockInit];
 	
 	[self templateClockUpdate];
 	
@@ -414,6 +408,7 @@ CGRect			screenBound;
 
 - (void) templateClockDoor
 {
+	[self prefPositioning];
 	
 	// Display Interactions
 	
@@ -516,116 +511,142 @@ CGRect			screenBound;
 
 - (void)templateSealTerminal
 {
+	[self prefPositioning];
+	
 	self.graphic1.hidden = NO;
+	self.graphic1.alpha = 1;
+	self.action5.hidden = NO;
+	self.action5.alpha = 1.0;
 	
 	[self audioSealInit];
+	[self templateSealInterface];
 	[self templateSealUpdate];
+}
+
+- (void)templateSealInterface
+{
+	
+	if( userSeal == 2 ){
+		self.interfaceSeal1.image = [UIImage imageNamed:@"tempNo.png"];
+		self.interfaceSeal2.image = [UIImage imageNamed:@"tempNo.png"];
+	}
+	else if( userSeal == 1 ){
+		self.interfaceSeal1.image = [UIImage imageNamed:@"tempNo.png"];
+		self.interfaceSeal2.image = [UIImage imageNamed:@"tempYes.png"];
+	}
+	else if( userSeal == 0 ){
+		self.interfaceSeal1.image = [UIImage imageNamed:@"tempYes.png"];
+		self.interfaceSeal2.image = [UIImage imageNamed:@"tempYes.png"];
+	}
+	
+	self.interfaceSeal1.alpha = 1;
+	self.interfaceSeal2.alpha = 1;
+	
+	[self fadeOut:self.interfaceSeal1 d:3 t:0.5];
+	[self fadeOut:self.interfaceSeal2 d:3 t:0.5];
 }
 
 - (void)templateSealDoor
 {
-	[self audioDoorInit];
+	[self prefPositioning];
 	
 	self.action3.hidden = YES;
 	self.graphic1.hidden = YES;
 	
+	[self audioDoorInit];
+	[self templateSealInterface];
+	
 	if ( ([userActionStorage[4] intValue] == 1 && [userActionStorage[13] intValue] == 1) ) { // Act 1 : Forest + Rainre in Stones
-		
 		[self templateUpdateDoorknob:46:85:_action2];
-		
 		[self  templateUpdateNode:46:@"0486":@"act15"];
 		[self  templateUpdateNode:85:@"0485":@"act15"];
-		
 		userProgress = 2;
-		
 	}
 	
 	if ( [userActionStorage[20] intValue] == 1 && [userActionStorage[13] intValue] == 1 ) { // Act 2 : Metamondst + Rainre in Forest
-		
 		[self templateUpdateDoorknob:48:11:_action2];
-		
 		[self  templateUpdateNode:11:@"0487":@"act25"];
 		[self  templateUpdateNode:48:@"0488":@"act25"];
-		
 		userProgress = 3;
-		
 	}
 	
 	if ( ([userActionStorage[21] intValue] == 1 && [userActionStorage[13] intValue] == 1) ) { // Act 3 : Forest + Rainre in Metamondst
-		
 		[self templateUpdateDoorknob:46:85:_action2];
-		
 		[self  templateUpdateNode:46:@"0486":@"act15"];
 		[self  templateUpdateNode:85:@"0485":@"act15"];
-		
 		userProgress = 4;
-		
 	}
 	
 	if ( [userActionStorage[21] intValue] == 1 && [userActionStorage[12] intValue] == 1 ) { // Act 4 : Antechannel + Stones in Studio
-		
 		self.action1.alpha = 1.0;
 		self.action1.hidden = NO;
-		
 		[self templateUpdateStudioTerminal];
-		
 		userProgress = 5;
-		
 	}
 }
 
 - (void)templateSealUpdate
 {
 	
-	self.action5.hidden = NO;
-	self.action5.alpha = 1.0;
-	
+	[self templateSealInterface];
 	
 	userSeal = [self sealCount];
 	self.graphic1.alpha = 0;
 	
-	if( [userActionStorage[userActionId] intValue] == 1 ){
+	if( [userActionStorage[userActionId] intValue] != 1 ){ return; }
 		
-		if( userSeal == 1 ){
-			[self  templateUpdateNode:5:@"0493":@"act4"];
-			[self  templateUpdateNode:38:@"0496":@"act12"];
-			[self  templateUpdateNode:45:@"0502":@"act13"];
-			[self  templateUpdateNode:49:@"0505":@"act21"];
-			[self  templateUpdateNode:82:@"0499":@"act20"];
-		}
-		else{
-			[self  templateUpdateNode:5:@"0494":@"act4"];
-			[self  templateUpdateNode:38:@"0497":@"act12"];
-			[self  templateUpdateNode:45:@"0503":@"act13"];
-			[self  templateUpdateNode:49:@"0506":@"act21"];
-			[self  templateUpdateNode:82:@"0500":@"act20"];
-		}
-		
+	if( userSeal == 1 ){
+		[self  templateUpdateNode:5:@"0493":@"act4"];
+		[self  templateUpdateNode:38:@"0496":@"act12"];
+		[self  templateUpdateNode:45:@"0502":@"act13"];
+		[self  templateUpdateNode:49:@"0505":@"act21"];
+		[self  templateUpdateNode:82:@"0499":@"act20"];
 	}
+	else{
+		[self  templateUpdateNode:5:@"0494":@"act4"];
+		[self  templateUpdateNode:38:@"0497":@"act12"];
+		[self  templateUpdateNode:45:@"0503":@"act13"];
+		[self  templateUpdateNode:49:@"0506":@"act21"];
+		[self  templateUpdateNode:82:@"0500":@"act20"];
+	}
+	
+	
+	
+	
+	
 	
 }
 
 
 - (void)templateEnergyTerminal
 {
+	[self prefPositioning];
+	[self templateEnergyInterface];
+	
 	self.graphic1.hidden = NO;
-	
-	// Terminal Doorknob
-	
 	self.action2.hidden = NO;
 	self.action2.alpha = 1.0;
-	
 	self.action4.hidden = NO;
 	
-	// Audio
-	
 	[self audioEnergyInit];
+}
+
+- (void)templateEnergyInterface
+{
+	self.interfaceFuse1.alpha = 1;
+	self.interfaceFuse2.alpha = 1;
+	self.interfaceFuse3.alpha = 1;
+	
+	[self fadeOut:self.interfaceFuse1 d:3 t:0.5];
+	[self fadeOut:self.interfaceFuse2 d:3 t:0.5];
+	[self fadeOut:self.interfaceFuse3 d:3 t:0.5];
 }
 
 
 
 - (void)templateEnergyDoor
 {
+	[self prefPositioning];
 
 	// Display Interactions
 	
@@ -635,6 +656,7 @@ CGRect			screenBound;
 	// Audio
 	
 	[self audioDoorInit];
+	[self templateEnergyInterface];
 	
 	// Templates
 	
@@ -728,88 +750,14 @@ CGRect			screenBound;
 
 - (void)templateProgressTerminal
 {
-	CGRect screenBound = [[UIScreen mainScreen] bounds];
 	
-	self.graphic1.image = [UIImage imageNamed:@"progress_shadows.png"];
+	NSLog(@"NOPE");
 	
-	self.graphic2.image = [UIImage imageNamed:@"progress_act1_seal1.png"];
-	self.graphic3.image = [UIImage imageNamed:@"progress_act1_seal2.png"];
-	self.graphic4.image = [UIImage imageNamed:@"progress_act1_door.png"];
-	
-	self.graphic5.image = [UIImage imageNamed:@"progress_act2_seal1.png"];
-	self.graphic6.image = [UIImage imageNamed:@"progress_act2_seal2.png"];
-	self.graphic7.image = [UIImage imageNamed:@"progress_act2_door.png"];
-	
-	self.graphic8.image = [UIImage imageNamed:@"progress_act3_seal1.png"];
-	self.graphic9.image = [UIImage imageNamed:@"progress_act3_seal2.png"];
-	self.graphic10.image = [UIImage imageNamed:@"progress_act3_door.png"];
-	
-	self.graphic11.image = [UIImage imageNamed:@"progress_act4_seal1.png"];
-	self.graphic12.image = [UIImage imageNamed:@"progress_act4_seal2.png"];
-	self.graphic13.image = [UIImage imageNamed:@"progress_act4_door.png"];
-	
-	self.graphic14.image = [UIImage imageNamed:@"progress_act5_seal1.png"];
-	self.graphic15.image = [UIImage imageNamed:@"progress_act5_seal2.png"];
-	self.graphic16.image = [UIImage imageNamed:@"progress_act5_door.png"];
-	
-	self.graphic17.image = [UIImage imageNamed:@"progress_act6_door.png"];
-	
-	self.graphic1.frame = CGRectMake(0, 0, screenBound.size.width, screenBound.size.height);
-	self.graphic2.frame = CGRectMake(0, 0, screenBound.size.width, screenBound.size.height);
-	self.graphic3.frame = CGRectMake(0, 0, screenBound.size.width, screenBound.size.height);
-	self.graphic4.frame = CGRectMake(0, 0, screenBound.size.width, screenBound.size.height);
-	self.graphic5.frame = CGRectMake(0, 0, screenBound.size.width, screenBound.size.height);
-	self.graphic6.frame = CGRectMake(0, 0, screenBound.size.width, screenBound.size.height);
-	self.graphic7.frame = CGRectMake(0, 0, screenBound.size.width, screenBound.size.height);
-	self.graphic8.frame = CGRectMake(0, 0, screenBound.size.width, screenBound.size.height);
-	self.graphic9.frame = CGRectMake(0, 0, screenBound.size.width, screenBound.size.height);
-	self.graphic10.frame = CGRectMake(0, 0, screenBound.size.width, screenBound.size.height);
-	self.graphic11.frame = CGRectMake(0, 0, screenBound.size.width, screenBound.size.height);
-	self.graphic12.frame = CGRectMake(0, 0, screenBound.size.width, screenBound.size.height);
-	self.graphic13.frame = CGRectMake(0, 0, screenBound.size.width, screenBound.size.height);
-	self.graphic14.frame = CGRectMake(0, 0, screenBound.size.width, screenBound.size.height);
-	self.graphic15.frame = CGRectMake(0, 0, screenBound.size.width, screenBound.size.height);
-	self.graphic16.frame = CGRectMake(0, 0, screenBound.size.width, screenBound.size.height);
-	self.graphic17.frame = CGRectMake(0, 0, screenBound.size.width, screenBound.size.height);
-	
-	[self fadeIn:self.graphic1 t:1];
-	
-	if( userProgress == 1 ){
-		if( ![userActionStorage[4] isEqual: @"1"] ){ [self fadeIn:self.graphic2 t:1]; }
-		else if( ![userActionStorage[13] isEqual: @"1"] ){ [self fadeIn:self.graphic3 t:1]; }
-		else if( [userActionStorage[4] isEqual: @"1"] && [userActionStorage[13] isEqual: @"1"] ){ [self fadeIn:self.graphic4 t:1]; }
-	}
-	if( userProgress == 2 ){
-		if( ![userActionStorage[13] isEqual: @"1"] ){ [self fadeIn:self.graphic5 t:1]; }
-		else if( ![userActionStorage[20] isEqual: @"1"] ){ [self fadeIn:self.graphic6 t:1]; }
-		else if( [userActionStorage[13] isEqual: @"1"] && [userActionStorage[20] isEqual: @"1"] ){ [self fadeIn:self.graphic7 t:1]; }
-	}
-	if( userProgress == 3 ){
-		if( ![userActionStorage[21] isEqual: @"1"] ){ [self fadeIn:self.graphic8 t:1]; }
-		else if( ![userActionStorage[13] isEqual: @"1"] ){ [self fadeIn:self.graphic9 t:1]; }
-		else if( [userActionStorage[21] isEqual: @"1"] && [userActionStorage[13] isEqual: @"1"] ){ [self fadeIn:self.graphic10 t:1]; }
-	}
-	if( userProgress == 4 ){
-		if( ![userActionStorage[12] isEqual: @"1"] ){ [self fadeIn:self.graphic11 t:1]; }
-		else if( ![userActionStorage[21] isEqual: @"1"] ){ [self fadeIn:self.graphic12 t:1]; }
-		else if( [userActionStorage[12] isEqual: @"1"] && [userActionStorage[21] isEqual: @"1"] ){ [self fadeIn:self.graphic13 t:1]; }
-	}
-	
-	if( userProgress == 5 ){
-		[self fadeIn:self.graphic14 t:1];
-		[self fadeIn:self.graphic15 t:1];
-		if( [userActionStorage[32] isEqual: @"1"] ){ [self fadeIn:self.graphic16 t:1]; } // If there is still a fuse in entene
-		[self fadeIn:self.graphic17 t:1];
-	}
-	
-	self.graphic1.alpha = 0.5;
-	self.graphic1.hidden = NO;
-	
-	//if( [userActionStorage[22] isEqual: @"1"] ){	[self fadeIn:self.graphic13 t:1]; }
 }
 
 - (void)templateAudioTerminal
 {
+	[self prefPositioning];
 	
 	[self.action1 setImage:[UIImage imageNamed: [NSString stringWithFormat:@"tempYes.png"] ] forState:UIControlStateNormal];
 	self.action1.alpha = 1.0;
@@ -1040,11 +988,11 @@ CGRect			screenBound;
 	self.graphic2.frame = CGRectMake(115, 260, 90, 90);
 	
 	if ( [userActionStorage[20] intValue] == 1 ) {
-		[self fadeIn:self.graphic1 t:1];
+		[self fadeIn:self.graphic1 d:0 t:1];
 	}
 	
 	if ( [userActionStorage[13] intValue] == 1 ) {
-		[self fadeIn:self.graphic2 t:1];
+		[self fadeIn:self.graphic2 d:0 t:1];
 	}
 		
 }
@@ -1054,7 +1002,7 @@ CGRect			screenBound;
 	if( userNode == node && [userAction isEqual: act]){
 		self.graphic1.image = [UIImage imageNamed: [NSString stringWithFormat:@"node.%@.jpg", img] ];
 	}
-	[self fadeIn:self.graphic1 t:0.0];
+	[self fadeIn:self.graphic1 d:0 t:0.0];
 
 }
 
@@ -1089,18 +1037,20 @@ CGRect			screenBound;
 	[UIView commitAnimations];
 }
 
--(void)fadeIn:(UIView*)viewToFadeIn t:(NSTimeInterval)duration
+-(void)fadeIn:(UIView*)viewToFadeIn d:(NSTimeInterval)delay t:(NSTimeInterval)duration
 {
 	[UIView beginAnimations: @"Fade In" context:nil];
 	[UIView setAnimationDuration:duration];
+	[UIView setAnimationDelay:delay];
 	viewToFadeIn.alpha = 1;
 	[UIView commitAnimations];
 }
 
--(void)fadeOut:(UIView*)viewToFadeOut t:(NSTimeInterval)duration
+-(void)fadeOut:(UIView*)viewToFadeOut d:(NSTimeInterval)delay t:(NSTimeInterval)duration
 {
 	[UIView beginAnimations: @"Fade Out" context:nil];
 	[UIView setAnimationDuration:duration];
+	[UIView setAnimationDelay:delay];
 	viewToFadeOut.alpha = 0;
 	[UIView commitAnimations];
 }
@@ -1235,7 +1185,7 @@ CGRect			screenBound;
 	self.moveRight.frame = CGRectMake( screenWidthThird*2, 0, screenWidthThird, screenHeight );
 	self.moveLeft.frame = CGRectMake(0, 0, screenWidthThird, screenHeight );	
 	
-	//[self.action3 setImage:[UIImage imageNamed: [NSString stringWithFormat:@"tempYes.png"] ] forState:UIControlStateNormal];
+//	[self.action1 setImage:[UIImage imageNamed: [NSString stringWithFormat:@"tempYes.png"] ] forState:UIControlStateNormal];
 	
 	// Action Clock Terminal
 	self.action1.frame = CGRectMake( screenWidthThird, screenHeightThird, screenWidthThird, screenHeightThird );
@@ -1251,6 +1201,20 @@ CGRect			screenBound;
 	// Graphics
 	self.graphic1.frame = CGRectMake(0, 0, screenBound.size.width, screenBound.size.height); // full
 	
+	// Style - Interface - Fuse
+	
+	self.interfaceFuse1.image = [UIImage imageNamed:@"tempYes.png"];
+	self.interfaceFuse1.frame = CGRectMake(0, screenBound.size.height-screenBound.size.width/8, screenBound.size.width/8, screenBound.size.width/8); // full
+	self.interfaceFuse2.image = [UIImage imageNamed:@"tempYes.png"];
+	self.interfaceFuse2.frame = CGRectMake(screenBound.size.width/8, screenBound.size.height-screenBound.size.width/8, screenBound.size.width/8, screenBound.size.width/8); // full
+	self.interfaceFuse3.image = [UIImage imageNamed:@"tempYes.png"];
+	self.interfaceFuse3.frame = CGRectMake(screenBound.size.width/8*2, screenBound.size.height-screenBound.size.width/8, screenBound.size.width/8, screenBound.size.width/8); // full
+	
+	// Style - Interface - Seal
+	
+	self.interfaceSeal1.frame = CGRectMake(screenBound.size.width - (screenBound.size.width/8), screenBound.size.height-screenBound.size.width/8, screenBound.size.width/8, screenBound.size.width/8); // full
+	self.interfaceSeal2.frame = CGRectMake(screenBound.size.width - ((screenBound.size.width/8)*2), screenBound.size.height-screenBound.size.width/8, screenBound.size.width/8, screenBound.size.width/8); // full
+	
 }
 
 - (void)menuHome
@@ -1264,7 +1228,7 @@ CGRect			screenBound;
 		
 	// [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://www.apple.com"]];
 	
-	[self fadeOut:self.graphic2 t:2.0];
+	[self fadeOut:self.graphic2 d:0 t:2.0];
 	
 }
 
