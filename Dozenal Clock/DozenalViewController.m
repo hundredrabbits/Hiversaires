@@ -77,7 +77,7 @@ CGRect			screenBound;
 	
 	userActionStorage[31] = @"1";
 	userActionStorage[32] = @"1";
-	userActionStorage[47] = @"1";
+	userActionStorage[39] = @"1";
 	
 	// ====================
 	// Begin
@@ -734,6 +734,7 @@ CGRect			screenBound;
 		[self templateUpdateNode:18:@"0529":@"act31"];
 		[self templateUpdateNode:13:@"0517":@"act2"];
 		[self templateUpdateNode:34:@"0537":@"act37"];
+		[self templateUpdateNode:55:@"0539":@"act39"];
 		[self templateUpdateNode:69:@"0518":@"act18"];
 		[self templateUpdateNode:39:@"0519":@"act10"];
 		[self templateUpdateNode:77:@"0520":@"act27"];
@@ -745,6 +746,7 @@ CGRect			screenBound;
 		[self templateUpdateNode:18:@"0530":@"act31"];
 		[self templateUpdateNode:13:@"0522":@"act2"];
 		[self templateUpdateNode:34:@"0538":@"act37"];
+		[self templateUpdateNode:55:@"0540":@"act39"];
 		[self templateUpdateNode:69:@"0523":@"act18"];
 		[self templateUpdateNode:39:@"0524":@"act10"];
 		[self templateUpdateNode:77:@"0525":@"act27"];
@@ -1203,6 +1205,7 @@ CGRect			screenBound;
 	
 	CGRect screenBound = [[UIScreen mainScreen] bounds];
 	
+	
 	//
 	
 	screenWidth = screenBound.size.width;
@@ -1213,6 +1216,8 @@ CGRect			screenBound;
 	screenHeightHalf = screenBound.size.height/2;
 	screenHeightThird = screenBound.size.height/3;
 	screenHeightFourth = screenBound.size.height/4;
+	int screenPadding = screenBound.size.width/24;
+	
 	
 	// Core
 	
@@ -1243,12 +1248,12 @@ CGRect			screenBound;
 	// Style - Interface - Fuse
 	
 	self.interfaceFuse1.image = [UIImage imageNamed:@"fuse.0.png"];
-	self.interfaceFuse1.frame = CGRectMake(0, screenBound.size.height-screenBound.size.width/12, screenBound.size.width/12, screenBound.size.width/12);
+	self.interfaceFuse1.frame = CGRectMake(screenPadding, screenBound.size.height-(screenBound.size.width/12) - screenPadding, screenBound.size.width/12, screenBound.size.width/12);
 	
 	// Style - Interface - Seal
 	
-	self.interfaceSeal1.frame = CGRectMake(screenBound.size.width - (screenBound.size.width/12), screenBound.size.height-(screenBound.size.width/12), screenBound.size.width/12, screenBound.size.width/12);
-	self.interfaceSeal2.frame = CGRectMake(screenBound.size.width - (screenBound.size.width/12), screenBound.size.height-(screenBound.size.width/12)*2, screenBound.size.width/12, screenBound.size.width/12);
+	self.interfaceSeal1.frame = CGRectMake(screenBound.size.width - (screenBound.size.width/12) - screenPadding, screenBound.size.height-(screenBound.size.width/12), screenBound.size.width/12, screenBound.size.width/12);
+	self.interfaceSeal2.frame = CGRectMake(screenBound.size.width - (screenBound.size.width/12) - screenPadding, screenBound.size.height-(screenBound.size.width/12)*2, screenBound.size.width/12, screenBound.size.width/12);
 	
 }
 

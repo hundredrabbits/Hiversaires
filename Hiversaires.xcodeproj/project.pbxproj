@@ -422,6 +422,9 @@
 		03764F1016FC0B4B0063DCF3 /* fuse.1.png in Resources */ = {isa = PBXBuildFile; fileRef = 03764F0C16FC0B4B0063DCF3 /* fuse.1.png */; };
 		03764F1116FC0B4B0063DCF3 /* fuse.2.png in Resources */ = {isa = PBXBuildFile; fileRef = 03764F0D16FC0B4B0063DCF3 /* fuse.2.png */; };
 		03764F1216FC0B4B0063DCF3 /* fuse.3.png in Resources */ = {isa = PBXBuildFile; fileRef = 03764F0E16FC0B4B0063DCF3 /* fuse.3.png */; };
+		03764F1616FC38A70063DCF3 /* seal.13.png in Resources */ = {isa = PBXBuildFile; fileRef = 03764F1316FC38A70063DCF3 /* seal.13.png */; };
+		03764F1716FC38A70063DCF3 /* seal.20.png in Resources */ = {isa = PBXBuildFile; fileRef = 03764F1416FC38A70063DCF3 /* seal.20.png */; };
+		03764F1816FC38A70063DCF3 /* seal.21.png in Resources */ = {isa = PBXBuildFile; fileRef = 03764F1516FC38A70063DCF3 /* seal.21.png */; };
 		03777AD116E9DC69006882C6 /* node.0360.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 03777A9616E9DC69006882C6 /* node.0360.jpg */; };
 		03777AD216E9DC69006882C6 /* node.0361.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 03777A9716E9DC69006882C6 /* node.0361.jpg */; };
 		03777AD316E9DC69006882C6 /* node.0362.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 03777A9816E9DC69006882C6 /* node.0362.jpg */; };
@@ -1083,6 +1086,9 @@
 		03764F0C16FC0B4B0063DCF3 /* fuse.1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = fuse.1.png; path = graphics/fuse.1.png; sourceTree = "<group>"; };
 		03764F0D16FC0B4B0063DCF3 /* fuse.2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = fuse.2.png; path = graphics/fuse.2.png; sourceTree = "<group>"; };
 		03764F0E16FC0B4B0063DCF3 /* fuse.3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = fuse.3.png; path = graphics/fuse.3.png; sourceTree = "<group>"; };
+		03764F1316FC38A70063DCF3 /* seal.13.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = seal.13.png; path = graphics/seal.13.png; sourceTree = "<group>"; };
+		03764F1416FC38A70063DCF3 /* seal.20.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = seal.20.png; path = graphics/seal.20.png; sourceTree = "<group>"; };
+		03764F1516FC38A70063DCF3 /* seal.21.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = seal.21.png; path = graphics/seal.21.png; sourceTree = "<group>"; };
 		03777A9616E9DC69006882C6 /* node.0360.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = node.0360.jpg; path = graphics/node.0360.jpg; sourceTree = "<group>"; };
 		03777A9716E9DC69006882C6 /* node.0361.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = node.0361.jpg; path = graphics/node.0361.jpg; sourceTree = "<group>"; };
 		03777A9816E9DC69006882C6 /* node.0362.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = node.0362.jpg; path = graphics/node.0362.jpg; sourceTree = "<group>"; };
@@ -2055,6 +2061,9 @@
 		03D4667616DB2D5900878D17 /* Seals */ = {
 			isa = PBXGroup;
 			children = (
+				03764F1316FC38A70063DCF3 /* seal.13.png */,
+				03764F1416FC38A70063DCF3 /* seal.20.png */,
+				03764F1516FC38A70063DCF3 /* seal.21.png */,
 				03764F0916FC09220063DCF3 /* seal.0.png */,
 				03764F0716FC06EF0063DCF3 /* seal.12.png */,
 				03764F0516FC06150063DCF3 /* seal.4.png */,
@@ -2884,6 +2893,9 @@
 				03764F1016FC0B4B0063DCF3 /* fuse.1.png in Resources */,
 				03764F1116FC0B4B0063DCF3 /* fuse.2.png in Resources */,
 				03764F1216FC0B4B0063DCF3 /* fuse.3.png in Resources */,
+				03764F1616FC38A70063DCF3 /* seal.13.png in Resources */,
+				03764F1716FC38A70063DCF3 /* seal.20.png in Resources */,
+				03764F1816FC38A70063DCF3 /* seal.21.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -82,7 +82,7 @@
 	node[52]	= [NSArray arrayWithObjects: @"54", @"53", @"0", @"act9", @"silence", nil];
 	node[53]	= [NSArray arrayWithObjects: @"55", @"84", @"0", @"52", @"silence", nil];
 	node[54]	= [NSArray arrayWithObjects: @"57", @"55", @"52", @"0", @"silence", nil];
-	node[55]	= [NSArray arrayWithObjects: @"act34", @"56", @"53", @"54", @"silence", nil];
+	node[55]	= [NSArray arrayWithObjects: @"act39", @"56", @"53", @"54", @"silence", nil]; // act34 for audio player
 	node[56]	= [NSArray arrayWithObjects: @"58", @"0", @"84", @"55", @"silence", nil];
 	node[57]	= [NSArray arrayWithObjects: @"59", @"0", @"54", @"0", @"silence", nil];
 	node[58]	= [NSArray arrayWithObjects: @"60", @"0", @"56", @"0", @"silence", nil];
@@ -203,7 +203,7 @@
 	puzzle[36]		= @"endgameTerminal";
 	puzzle[37]		= @"energyTerminal";
 	puzzle[38]		= @"energyTerminal";
-	puzzle[39]		= @"collectible";
+	puzzle[39]		= @"energyTerminal";
 	puzzle[40]		= @"collectible";
 	puzzle[41]		= @"collectible";
 	
