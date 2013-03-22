@@ -79,6 +79,9 @@ CGRect			screenBound;
 	userActionStorage[32] = @"1";
 	userActionStorage[39] = @"1";
 	
+	userActionStorage[23] = @"15";
+	userActionStorage[19] = @"13";
+	
 	// ====================
 	// Begin
 	// ====================
@@ -114,9 +117,9 @@ CGRect			screenBound;
 	self.debugOrientation.text = [NSString stringWithFormat:@"%d", userOrientation];
 	self.debugAction.text = [NSString stringWithFormat:@"%@", worldPath[userNode][userOrientation]];
 
-//	self.debugNode.hidden = YES;
-//	self.debugOrientation.hidden = YES;
-//	self.debugAction.hidden = YES;
+	self.debugNode.hidden = YES;
+	self.debugOrientation.hidden = YES;
+	self.debugAction.hidden = YES;
 	
     self.moveForward.hidden = worldPath[userNode][userOrientation] ? NO : YES;
 	
@@ -846,7 +849,7 @@ CGRect			screenBound;
 		userNode = 89;
 		userAction = nil;
 		
-		if( [ userActionStorage[23] intValue] < 30 ){ userActionStorage[23] = [NSString stringWithFormat:@"%d", [ userActionStorage[23] intValue]+3 ];}
+		if( [ userActionStorage[23] intValue] < 21 ){ userActionStorage[23] = [NSString stringWithFormat:@"%d", [ userActionStorage[23] intValue]+3 ];}
 		
 		NSLog(@"%@",userActionStorage[23]);
 		
@@ -861,7 +864,7 @@ CGRect			screenBound;
 	userNode = 103;
 	userAction = nil;
 	
-	if( [ userActionStorage[23] intValue] > 0 ){ userActionStorage[23] = [NSString stringWithFormat:@"%d", [ userActionStorage[23] intValue]-1 ]; }
+	if( [ userActionStorage[23] intValue] > 14 ){ userActionStorage[23] = [NSString stringWithFormat:@"%d", [ userActionStorage[23] intValue]-1 ]; }
 	
 	NSLog(@"%@",userActionStorage[23]);
 	
@@ -876,7 +879,7 @@ CGRect			screenBound;
 	userOrientation = 2;
 	userAction = nil;
 	
-	if( [ userActionStorage[24] intValue] < 32 ){
+	if( [ userActionStorage[24] intValue] < 23 ){
 		userActionStorage[24] = [NSString stringWithFormat:@"%d", [ userActionStorage[24] intValue]+4 ];
 	}
 	
@@ -893,7 +896,7 @@ CGRect			screenBound;
 	userOrientation = 2;
 	userAction = nil;
 	
-	if( [ userActionStorage[24] intValue] > 0 ){
+	if( [ userActionStorage[24] intValue] > 14 ){
 		userActionStorage[24] = [NSString stringWithFormat:@"%d", [ userActionStorage[24] intValue]-1 ];
 	}
 	
