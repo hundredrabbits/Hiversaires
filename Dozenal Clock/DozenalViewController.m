@@ -492,10 +492,10 @@ CGRect			screenBound;
 	// Seals
 	
 	if( [userActionStorage[4]  isEqual: @"1"] ){ self.graphic5.image = [UIImage imageNamed:@"clock_forest.png"]; [self fadeDelay:self.graphic5 d:0.7 t:0.5]; }
+	if( [userActionStorage[12] isEqual: @"1"] ){ self.graphic9.image = [UIImage imageNamed:@"clock_stones.png"]; [self fadeDelay:self.graphic9 d:0.7 t:0.5]; }
+	if( [userActionStorage[13] isEqual: @"1"] ){ self.graphic8.image = [UIImage imageNamed:@"clock_rainre.png"]; [self fadeDelay:self.graphic8 d:0.7 t:0.5]; }
 	if( [userActionStorage[21] isEqual: @"1"] ){ self.graphic6.image = [UIImage imageNamed:@"clock_antechannel.png"]; [self fadeDelay:self.graphic6 d:0.7 t:0.5]; }
 	if( [userActionStorage[20] isEqual: @"1"] ){ self.graphic7.image = [UIImage imageNamed:@"clock_metamondst.png"]; [self fadeDelay:self.graphic7 d:0.7 t:0.5]; }
-	if( [userActionStorage[13] isEqual: @"1"] ){ self.graphic8.image = [UIImage imageNamed:@"clock_rainre.png"]; [self fadeDelay:self.graphic8 d:0.7 t:0.5]; }
-	if( [userActionStorage[12] isEqual: @"1"] ){ self.graphic9.image = [UIImage imageNamed:@"clock_stones.png"]; [self fadeDelay:self.graphic9 d:0.7 t:0.5]; }
 	if( [userActionStorage[20] isEqual: @"1"] ){ self.graphic10.image= [UIImage imageNamed:@"clock_studio.png"]; [self fadeDelay:self.graphic10 d:0.7 t:0.5]; }
 	
 	// Fade in
