@@ -526,6 +526,8 @@ CGRect			screenBound;
 - (void)templateSealInterface
 {
 	
+	userSeal = [self sealCount];
+	
 	if( userSeal == 2 ){
 		self.interfaceSeal1.image = [UIImage imageNamed:@"tempNo.png"];
 		self.interfaceSeal2.image = [UIImage imageNamed:@"tempNo.png"];
@@ -633,6 +635,29 @@ CGRect			screenBound;
 
 - (void)templateEnergyInterface
 {
+	if( userEnergy == 3 ){
+		self.interfaceFuse1.image = [UIImage imageNamed:@"tempNo.png"];
+		self.interfaceFuse2.image = [UIImage imageNamed:@"tempNo.png"];
+		self.interfaceFuse3.image = [UIImage imageNamed:@"tempNo.png"];
+	}
+	else if( userEnergy == 2 ){
+		self.interfaceFuse1.image = [UIImage imageNamed:@"tempNo.png"];
+		self.interfaceFuse2.image = [UIImage imageNamed:@"tempNo.png"];
+		self.interfaceFuse3.image = [UIImage imageNamed:@"tempYes.png"];
+	}
+	else if( userEnergy == 1 ){
+		self.interfaceFuse1.image = [UIImage imageNamed:@"tempNo.png"];
+		self.interfaceFuse2.image = [UIImage imageNamed:@"tempYes.png"];
+		self.interfaceFuse3.image = [UIImage imageNamed:@"tempYes.png"];
+	}
+	else if( userEnergy == 0 ){
+		self.interfaceFuse1.image = [UIImage imageNamed:@"tempYes.png"];
+		self.interfaceFuse2.image = [UIImage imageNamed:@"tempYes.png"];
+		self.interfaceFuse3.image = [UIImage imageNamed:@"tempYes.png"];
+	}
+	
+	NSLog(@"%d",userEnergy);
+	
 	self.interfaceFuse1.alpha = 1;
 	self.interfaceFuse2.alpha = 1;
 	self.interfaceFuse3.alpha = 1;
@@ -712,6 +737,8 @@ CGRect			screenBound;
 
 - (void)templateEnergyUpdate
 {
+	
+	[self templateEnergyInterface];
 	
 	self.action4.alpha = 1.0;
 	
