@@ -57,11 +57,8 @@
 // Interface
 
 @property (weak, nonatomic) IBOutlet UIImageView *interfaceFuseBackground;
-
 @property (weak, nonatomic) IBOutlet UIImageView *interfaceFuse1;
-@property (weak, nonatomic) IBOutlet UIImageView *interfaceFuse2;
-@property (weak, nonatomic) IBOutlet UIImageView *interfaceFuse3;
-
+@property (weak, nonatomic) IBOutlet UIImageView *interfaceSealBackground;
 @property (weak, nonatomic) IBOutlet UIImageView *interfaceSeal1;
 @property (weak, nonatomic) IBOutlet UIImageView *interfaceSeal2;
 

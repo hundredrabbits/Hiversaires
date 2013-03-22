@@ -528,19 +528,17 @@ CGRect			screenBound;
 	
 	userSeal = [self sealCount];
 	
-	if( userSeal == 2 ){
-		self.interfaceSeal1.image = [UIImage imageNamed:@"tempNo.png"];
-		self.interfaceSeal2.image = [UIImage imageNamed:@"tempNo.png"];
-	}
-	else if( userSeal == 1 ){
-		self.interfaceSeal1.image = [UIImage imageNamed:@"tempNo.png"];
-		self.interfaceSeal2.image = [UIImage imageNamed:@"tempYes.png"];
+	self.interfaceSeal1.image = [UIImage imageNamed:@"seal.0.png"];
+	self.interfaceSeal2.image = [UIImage imageNamed:@"seal.0.png"];
+	
+	if( userSeal == 1 ){
+		self.interfaceSeal1.image = [UIImage imageNamed:[NSString stringWithFormat:@"seal.%d.png",[self sealFind:1]] ];
 	}
 	else if( userSeal == 0 ){
-		self.interfaceSeal1.image = [UIImage imageNamed:@"tempYes.png"];
-		self.interfaceSeal2.image = [UIImage imageNamed:@"tempYes.png"];
+		self.interfaceSeal1.image = [UIImage imageNamed:[NSString stringWithFormat:@"seal.%d.png",[self sealFind:1]] ];
+		self.interfaceSeal2.image = [UIImage imageNamed:[NSString stringWithFormat:@"seal.%d.png",[self sealFind:2]] ];
 	}
-	
+
 	self.interfaceSeal1.alpha = 1;
 	self.interfaceSeal2.alpha = 1;
 	
@@ -635,36 +633,25 @@ CGRect			screenBound;
 
 - (void)templateEnergyInterface
 {
+	
 	if( userEnergy == 3 ){
-		self.interfaceFuse1.image = [UIImage imageNamed:@"tempNo.png"];
-		self.interfaceFuse2.image = [UIImage imageNamed:@"tempNo.png"];
-		self.interfaceFuse3.image = [UIImage imageNamed:@"tempNo.png"];
+		self.interfaceFuse1.image = [UIImage imageNamed:@"fuse.3.png"];
 	}
 	else if( userEnergy == 2 ){
-		self.interfaceFuse1.image = [UIImage imageNamed:@"tempNo.png"];
-		self.interfaceFuse2.image = [UIImage imageNamed:@"tempNo.png"];
-		self.interfaceFuse3.image = [UIImage imageNamed:@"tempYes.png"];
+		self.interfaceFuse1.image = [UIImage imageNamed:@"fuse.2.png"];
 	}
 	else if( userEnergy == 1 ){
-		self.interfaceFuse1.image = [UIImage imageNamed:@"tempNo.png"];
-		self.interfaceFuse2.image = [UIImage imageNamed:@"tempYes.png"];
-		self.interfaceFuse3.image = [UIImage imageNamed:@"tempYes.png"];
+		self.interfaceFuse1.image = [UIImage imageNamed:@"fuse.1.png"];
 	}
 	else if( userEnergy == 0 ){
-		self.interfaceFuse1.image = [UIImage imageNamed:@"tempYes.png"];
-		self.interfaceFuse2.image = [UIImage imageNamed:@"tempYes.png"];
-		self.interfaceFuse3.image = [UIImage imageNamed:@"tempYes.png"];
+		self.interfaceFuse1.image = [UIImage imageNamed:@"fuse.0.png"];
 	}
 	
 	NSLog(@"%d",userEnergy);
 	
 	self.interfaceFuse1.alpha = 1;
-	self.interfaceFuse2.alpha = 1;
-	self.interfaceFuse3.alpha = 1;
 	
 	[self fadeOut:self.interfaceFuse1 d:3 t:0.5];
-	[self fadeOut:self.interfaceFuse2 d:3 t:0.5];
-	[self fadeOut:self.interfaceFuse3 d:3 t:0.5];
 }
 
 
@@ -751,7 +738,7 @@ CGRect			screenBound;
 		[self templateUpdateNode:39:@"0519":@"act10"];
 		[self templateUpdateNode:77:@"0520":@"act27"];
 		[self templateUpdateNode:84:@"0527":@"act47"];
-		[self templateUpdateNode:101:@"0533":@"act32"];
+		[self templateUpdateNode:101:@"0533":@"act38"];
 	}
 	else{
 		[self templateUpdateNode:18:@"0521":@"act2"];
@@ -762,7 +749,7 @@ CGRect			screenBound;
 		[self templateUpdateNode:39:@"0524":@"act10"];
 		[self templateUpdateNode:77:@"0525":@"act27"];
 		[self templateUpdateNode:84:@"0526":@"act47"];
-		[self templateUpdateNode:101:@"0532":@"act32"];
+		[self templateUpdateNode:101:@"0532":@"act38"];
 	}
 	
 	// Extras
@@ -1051,6 +1038,31 @@ CGRect			screenBound;
 	return userSeal;
 }
 
+- (int)sealFind :(int)rank
+{
+	
+	int sealFound = 0;
+	
+	if		( [userActionStorage[4] intValue] > 0 ){ sealFound = 4; }
+	else if	( [userActionStorage[12] intValue] > 0 ){ sealFound = 12; }
+	else if	( [userActionStorage[13] intValue] > 0 ){ sealFound = 13; }
+	else if	( [userActionStorage[14] intValue] > 0 ){ sealFound = 14; }
+	else if	( [userActionStorage[20] intValue] > 0 ){ sealFound = 20; }
+	else if	( [userActionStorage[21] intValue] > 0 ){ sealFound = 21; }
+	
+	if(rank == 2){
+		if		( [userActionStorage[4] intValue] > 0 && sealFound != 4 ){ sealFound = 4; }
+		else if	( [userActionStorage[12] intValue] > 0 && sealFound != 12  ){ sealFound = 12; }
+		else if	( [userActionStorage[13] intValue] > 0 && sealFound != 13  ){ sealFound = 13; }
+		else if	( [userActionStorage[14] intValue] > 0 && sealFound != 14  ){ sealFound = 14; }
+		else if	( [userActionStorage[20] intValue] > 0 && sealFound != 20  ){ sealFound = 20; }
+		else if	( [userActionStorage[21] intValue] > 0 && sealFound != 21  ){ sealFound = 21; }
+	}
+	
+	return sealFound;
+	
+}
+
 // ====================
 // Tools
 // ====================
@@ -1230,17 +1242,13 @@ CGRect			screenBound;
 	
 	// Style - Interface - Fuse
 	
-	self.interfaceFuse1.image = [UIImage imageNamed:@"tempYes.png"];
-	self.interfaceFuse1.frame = CGRectMake(0, screenBound.size.height-screenBound.size.width/8, screenBound.size.width/8, screenBound.size.width/8); // full
-	self.interfaceFuse2.image = [UIImage imageNamed:@"tempYes.png"];
-	self.interfaceFuse2.frame = CGRectMake(screenBound.size.width/8, screenBound.size.height-screenBound.size.width/8, screenBound.size.width/8, screenBound.size.width/8); // full
-	self.interfaceFuse3.image = [UIImage imageNamed:@"tempYes.png"];
-	self.interfaceFuse3.frame = CGRectMake(screenBound.size.width/8*2, screenBound.size.height-screenBound.size.width/8, screenBound.size.width/8, screenBound.size.width/8); // full
+	self.interfaceFuse1.image = [UIImage imageNamed:@"fuse.0.png"];
+	self.interfaceFuse1.frame = CGRectMake(0, screenBound.size.height-screenBound.size.width/12, screenBound.size.width/12, screenBound.size.width/12);
 	
 	// Style - Interface - Seal
 	
-	self.interfaceSeal1.frame = CGRectMake(screenBound.size.width - (screenBound.size.width/8), screenBound.size.height-screenBound.size.width/8, screenBound.size.width/8, screenBound.size.width/8); // full
-	self.interfaceSeal2.frame = CGRectMake(screenBound.size.width - ((screenBound.size.width/8)*2), screenBound.size.height-screenBound.size.width/8, screenBound.size.width/8, screenBound.size.width/8); // full
+	self.interfaceSeal1.frame = CGRectMake(screenBound.size.width - (screenBound.size.width/12), screenBound.size.height-(screenBound.size.width/12), screenBound.size.width/12, screenBound.size.width/12);
+	self.interfaceSeal2.frame = CGRectMake(screenBound.size.width - (screenBound.size.width/12), screenBound.size.height-(screenBound.size.width/12)*2, screenBound.size.width/12, screenBound.size.width/12);
 	
 }
 

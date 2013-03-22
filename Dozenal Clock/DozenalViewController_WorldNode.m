@@ -60,7 +60,7 @@
 	node[31]	= [NSArray arrayWithObjects: @"25|1", @"0", @"35", @"0", @"silence", nil];
 	node[32]	= [NSArray arrayWithObjects: @"0", @"52", @"35", @"27|1", @"silence", nil];	
 	node[33]	= [NSArray arrayWithObjects: @"0", @"0", @"29|1", @"0", @"silence", nil];	
-	node[34]	= [NSArray arrayWithObjects: @"act37", @"0", @"0", @"39", @"silence", nil];		
+	node[34]	= [NSArray arrayWithObjects: @"act37", @"0", @"0", @"39", @"silence", nil];
 	node[35]	= [NSArray arrayWithObjects: @"act8", @"38", @"36", @"0", @"silence", nil];		
 	node[36]	= [NSArray arrayWithObjects: @"35", @"37", @"0", @"0", @"silence", nil];		
 	node[37]	= [NSArray arrayWithObjects: @"38", @"39", @"0", @"36", @"silence", nil];
@@ -110,7 +110,7 @@
 	node[80]	= [NSArray arrayWithObjects: @"85", @"0", @"74", @"0", @"silence", nil];
 	node[81]	= [NSArray arrayWithObjects: @"82", @"78", @"73", @"0", @"silence", nil];
 	node[82]	= [NSArray arrayWithObjects: @"0", @"83", @"81", @"act20", @"silence", nil];
-	node[83]	= [NSArray arrayWithObjects: @"act37", @"0", @"78", @"82", @"silence", nil];
+	node[83]	= [NSArray arrayWithObjects: @"0", @"0", @"78", @"82", @"silence", nil];
 	node[84]	= [NSArray arrayWithObjects: @"56", @"0", @"act47", @"53", @"silence", nil];
 	node[85]	= [NSArray arrayWithObjects: @"act15", @"0", @"80", @"86", @"silence", nil];
 	node[86]	= [NSArray arrayWithObjects: @"0", @"85", @"0", @"act1", @"silence", nil];
@@ -132,7 +132,7 @@
 	node[98]	= [NSArray arrayWithObjects: @"97", @"99", @"65", @"101", @"silence", nil];
 	node[99]	= [NSArray arrayWithObjects: @"0", @"100", @"0", @"98", @"silence", nil];
 	node[100]	= [NSArray arrayWithObjects: @"0", @"act44", @"0", @"99", @"silence", nil];
-	node[101]	= [NSArray arrayWithObjects: @"0", @"98", @"act32", @"102", @"silence", nil];
+	node[101]	= [NSArray arrayWithObjects: @"0", @"98", @"act38", @"102", @"silence", nil];
 	node[102]	= [NSArray arrayWithObjects: @"0", @"101", @"0", @"act45", @"silence", nil];
 	
 	node[104]	= [NSArray arrayWithObjects: @"0", @"100", @"0", @"105", @"silence", nil];
@@ -202,7 +202,7 @@
 	puzzle[35]		= @"audioTerminal";
 	puzzle[36]		= @"endgameTerminal";
 	puzzle[37]		= @"energyTerminal";
-	puzzle[38]		= @"collectible";
+	puzzle[38]		= @"energyTerminal";
 	puzzle[39]		= @"collectible";
 	puzzle[40]		= @"collectible";
 	puzzle[41]		= @"collectible";

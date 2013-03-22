@@ -81,12 +81,8 @@
                                 <rect key="frame" x="20" y="416" width="33" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="zAy-zx-2ze" userLabel="interfaceFuse2">
-                                <rect key="frame" x="60" y="416" width="33" height="32"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="EXd-Za-vm1" userLabel="interfaceFuse3">
-                                <rect key="frame" x="101" y="416" width="33" height="32"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="Fxy-Z9-szO" userLabel="interfaceSealBackground">
+                                <rect key="frame" x="238" y="416" width="33" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="f3h-qG-Td0" userLabel="interfaceSeal1">
@@ -233,11 +229,10 @@
                         <outlet property="graphic8" destination="ae8-Ty-x7X" id="3KA-fV-sZI"/>
                         <outlet property="graphic9" destination="Ea1-xI-b67" id="plQ-bT-reT"/>
                         <outlet property="interfaceFuse1" destination="RHJ-Sb-91T" id="iF3-ru-GGz"/>
-                        <outlet property="interfaceFuse2" destination="zAy-zx-2ze" id="pNk-YC-pD5"/>
-                        <outlet property="interfaceFuse3" destination="EXd-Za-vm1" id="k3i-LN-Vyb"/>
                         <outlet property="interfaceFuseBackground" destination="lC8-u3-xAO" id="3AS-7Y-nD2"/>
                         <outlet property="interfaceSeal1" destination="f3h-qG-Td0" id="XBD-bi-Tt6"/>
                         <outlet property="interfaceSeal2" destination="YUS-l5-xos" id="IMo-J7-lz2"/>
+                        <outlet property="interfaceSealBackground" destination="Fxy-Z9-szO" id="0h3-C9-7KV"/>
                         <outlet property="moveForward" destination="F1N-h8-Kf8" id="bvP-CE-vfF"/>
                         <outlet property="moveLeft" destination="HZM-Xl-Bax" id="6TD-nD-FZH"/>
                         <outlet property="moveRight" destination="OaR-be-2E9" id="Hts-zM-ZXf"/>
@@ -249,6 +244,50 @@
             <point key="canvasLocation" x="281" y="36"/>
         </scene>
     </scenes>
+    <classes>
+        <class className="DozenalViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/DozenalViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="action1:"/>
+                <relationship kind="action" name="action2:"/>
+                <relationship kind="action" name="action3:"/>
+                <relationship kind="action" name="action4:"/>
+                <relationship kind="action" name="action5:"/>
+                <relationship kind="action" name="moveForward:"/>
+                <relationship kind="action" name="moveLeft:"/>
+                <relationship kind="action" name="moveRight:"/>
+                <relationship kind="outlet" name="action1" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="action2" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="action3" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="action4" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="action5" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="debugAction" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="debugNode" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="debugOrientation" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="graphic1" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="graphic10" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="graphic2" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="graphic3" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="graphic4" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="graphic5" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="graphic6" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="graphic7" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="graphic8" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="graphic9" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="interfaceFuse1" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="interfaceFuse2" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="interfaceFuse3" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="interfaceFuseBackground" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="interfaceSeal1" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="interfaceSeal2" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="interfaceSealBackground" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="moveForward" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="moveLeft" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="moveRight" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="viewMain" candidateClass="UIImageView"/>
+            </relationships>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
