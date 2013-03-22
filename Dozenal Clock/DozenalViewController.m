@@ -117,9 +117,9 @@ CGRect			screenBound;
 	self.debugOrientation.text = [NSString stringWithFormat:@"%d", userOrientation];
 	self.debugAction.text = [NSString stringWithFormat:@"%@", worldPath[userNode][userOrientation]];
 
-	self.debugNode.hidden = YES;
-	self.debugOrientation.hidden = YES;
-	self.debugAction.hidden = YES;
+//	self.debugNode.hidden = YES;
+//	self.debugOrientation.hidden = YES;
+//	self.debugAction.hidden = YES;
 	
     self.moveForward.hidden = worldPath[userNode][userOrientation] ? NO : YES;
 	
@@ -1193,7 +1193,13 @@ CGRect			screenBound;
 	
 	if( userAmbient != nodeAmbient ){
 		userAmbient = nodeAmbient;
-		NSLog(@"[ambient:%@]", nodeAmbient);
+		
+		if( [nodeAmbient isEqual: @"forest"] )		{ [self ambientForest]; }
+		if( [nodeAmbient isEqual: @"studio"] )		{ [self ambientStudio]; }
+		if( [nodeAmbient isEqual: @"stones"] )		{ [self ambientStones]; }
+		if( [nodeAmbient isEqual: @"antechannel"] )	{ [self ambientAntechannel]; }
+		if( [nodeAmbient isEqual: @"metamondst"] )	{ [self ambientMetamondst]; }
+		if( [nodeAmbient isEqual: @"circular"] )	{ [self ambientCircular]; }
 	}
 	
 }
