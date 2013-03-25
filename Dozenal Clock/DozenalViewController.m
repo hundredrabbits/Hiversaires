@@ -82,6 +82,10 @@ CGRect			screenBound;
 	userActionStorage[23] = @"15";
 	userActionStorage[19] = @"13";
 	
+	// Overrides
+	
+	userActionStorage[21] = @"1";
+	
 	// ====================
 	// Begin
 	// ====================
@@ -565,25 +569,32 @@ CGRect			screenBound;
 		[self templateUpdateDoorknob:46:85:_action2];
 		[self  templateUpdateNode:46:@"0486":@"act15"];
 		[self  templateUpdateNode:85:@"0485":@"act15"];
+		[self audioMusicCheck:@"act2"];
 		userProgress = 2;
 	}
 	else if ( [userActionStorage[20] intValue] == 1 && [userActionStorage[13] intValue] == 1 ) { // Act 2 : Metamondst + Rainre in Forest
 		[self templateUpdateDoorknob:48:11:_action2];
 		[self  templateUpdateNode:11:@"0487":@"act25"];
 		[self  templateUpdateNode:48:@"0488":@"act25"];
+		[self audioMusicCheck:@"act3"];
 		userProgress = 3;
 	}
 	else if ( ([userActionStorage[21] intValue] == 1 && [userActionStorage[13] intValue] == 1) ) { // Act 3 : Forest + Rainre in Metamondst
 		[self templateUpdateDoorknob:46:85:_action2];
 		[self  templateUpdateNode:46:@"0486":@"act15"];
 		[self  templateUpdateNode:85:@"0485":@"act15"];
+		[self audioMusicCheck:@"act4"];
 		userProgress = 4;
 	}
 	else if ( [userActionStorage[21] intValue] == 1 && [userActionStorage[12] intValue] == 1 ) { // Act 4 : Antechannel + Stones in Studio
 		self.action1.alpha = 1.0;
 		self.action1.hidden = NO;
 		[self templateUpdateStudioTerminal];
+		[self audioMusicCheck:@"act5"];
 		userProgress = 5;
+	}
+	else if ( [userAction isEqual: @"act5"] ){		
+		[self templateUpdateStudioTerminal];
 	}
 	else{
 		[self templateSealWarning];
@@ -988,19 +999,24 @@ CGRect			screenBound;
 
 - (void)templateUpdateStudioTerminal
 {
-	NSLog(@"!!!");
+	
+	self.graphic1.alpha = 0.0;
+	self.graphic1.hidden = YES;
+	
 	if( [userActionStorage[userActionId] intValue] == 2 ){
-		
 		self.graphic1.alpha = 1.0;
 		self.graphic1.hidden = NO;
 		[self templateUpdateNode:19:@"0489":@"act5"];
-		
 	}
-	else{
-		
-		self.graphic1.alpha = 0.0;
-		self.graphic1.hidden = YES;
-		
+	else if( [userActionStorage[12] isEqual: @"1"] ){
+		self.graphic1.alpha = 1.0;
+		self.graphic1.hidden = NO;
+		[self templateUpdateNode:19:@"0542":@"act5"];
+	}
+	else if( [userActionStorage[21] isEqual: @"1"] ){
+		self.graphic1.alpha = 1.0;
+		self.graphic1.hidden = NO;
+		[self templateUpdateNode:19:@"0541":@"act5"];
 	}
 	
 }
@@ -1201,6 +1217,13 @@ CGRect			screenBound;
 		if( [nodeAmbient isEqual: @"metamondst"] )	{ [self ambientMetamondst]; }
 		if( [nodeAmbient isEqual: @"circular"] )	{ [self ambientCircular]; }
 	}
+	
+}
+
+- (void)audioMusicCheck :(NSString*)nodeMusic
+{
+	
+	NSLog(@"[Music:%@]",nodeMusic);
 	
 }
 
