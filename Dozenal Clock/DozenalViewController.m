@@ -605,7 +605,7 @@ CGRect			screenBound;
 		[self audioMusicCheck:@"act5"];
 		userProgress = 5;
 	}
-	else if ( [userAction isEqual: @"act5"] ){		
+	else if ( [userAction isEqual: @"act5"] ){
 		[self templateUpdateStudioTerminal];
 	}
 	else{
@@ -804,9 +804,14 @@ CGRect			screenBound;
 
 - (void)templateProgressTerminal
 {
+	[self prefPositioning];
 	
-	NSLog(@"NOPE");
-	
+	if( userProgress == 1 ){ [self templateUpdateNode:23:@"0546":@"act16"]; }
+	if( userProgress == 2 ){ [self templateUpdateNode:23:@"0546":@"act16"]; }
+	if( userProgress == 3 ){ [self templateUpdateNode:23:@"0547":@"act16"]; }
+	if( userProgress == 4 ){ [self templateUpdateNode:23:@"0548":@"act16"]; }
+	if( userProgress == 5 ){ [self templateUpdateNode:23:@"0549":@"act16"]; }
+
 }
 
 - (void)templateAudioTerminal
@@ -1088,9 +1093,16 @@ CGRect			screenBound;
 		self.graphic1.image = [UIImage imageNamed: [NSString stringWithFormat:@"node.%@.jpg", img] ];
 	}
 	
-	// Fadein Seals
+	// Fadeins
+	
 	if( [worldActionType[userActionId] isEqual: @"sealTerminal"] ){
 		[self fadeIn:self.graphic1 d:0 t:0.5];
+	}
+	else if( [worldActionType[userActionId] isEqual: @"audioTerminal"] ){
+		[self fadeIn:self.graphic1 d:0 t:0.5];
+	}
+	else if( [worldActionType[userActionId] isEqual: @"progressTerminal"] ){
+		[self fadeIn:self.graphic1 d:0.2 t:0.5];
 	}
 	else{
 		[self fadeIn:self.graphic1 d:0 t:0.0];
