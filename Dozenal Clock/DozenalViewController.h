@@ -61,6 +61,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *interfaceSealBackground;
 @property (weak, nonatomic) IBOutlet UIImageView *interfaceSeal1;
 @property (weak, nonatomic) IBOutlet UIImageView *interfaceSeal2;
+@property (weak, nonatomic) IBOutlet UIImageView *interfaceAudio;
 
 
 

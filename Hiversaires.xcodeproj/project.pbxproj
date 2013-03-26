@@ -689,6 +689,10 @@
 		03F223EB17014DBF00A5C610 /* node.0578.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 03F223C917014DBF00A5C610 /* node.0578.jpg */; };
 		03F223EC17014DBF00A5C610 /* node.0579.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 03F223CA17014DBF00A5C610 /* node.0579.jpg */; };
 		03F223ED17014DBF00A5C610 /* node.0580.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 03F223CB17014DBF00A5C610 /* node.0580.jpg */; };
+		03F223F917018D8000A5C610 /* interfaceAudio.sfx0.png in Resources */ = {isa = PBXBuildFile; fileRef = 03F223F717018D8000A5C610 /* interfaceAudio.sfx0.png */; };
+		03F223FA17018D8000A5C610 /* interfaceAudio.sfx1.png in Resources */ = {isa = PBXBuildFile; fileRef = 03F223F817018D8000A5C610 /* interfaceAudio.sfx1.png */; };
+		03F223FD17018E9D00A5C610 /* interfaceAudio.mus0.png in Resources */ = {isa = PBXBuildFile; fileRef = 03F223FB17018E9D00A5C610 /* interfaceAudio.mus0.png */; };
+		03F223FE17018E9D00A5C610 /* interfaceAudio.mus1.png in Resources */ = {isa = PBXBuildFile; fileRef = 03F223FC17018E9D00A5C610 /* interfaceAudio.mus1.png */; };
 		03FF829C16D448D00076A619 /* tempNo.png in Resources */ = {isa = PBXBuildFile; fileRef = 03FF829A16D448D00076A619 /* tempNo.png */; };
 		03FF829D16D448D00076A619 /* tempYes.png in Resources */ = {isa = PBXBuildFile; fileRef = 03FF829B16D448D00076A619 /* tempYes.png */; };
 /* End PBXBuildFile section */
@@ -1396,6 +1400,10 @@
 		03F223C917014DBF00A5C610 /* node.0578.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = node.0578.jpg; path = graphics/node.0578.jpg; sourceTree = "<group>"; };
 		03F223CA17014DBF00A5C610 /* node.0579.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = node.0579.jpg; path = graphics/node.0579.jpg; sourceTree = "<group>"; };
 		03F223CB17014DBF00A5C610 /* node.0580.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = node.0580.jpg; path = graphics/node.0580.jpg; sourceTree = "<group>"; };
+		03F223F717018D8000A5C610 /* interfaceAudio.sfx0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = interfaceAudio.sfx0.png; path = graphics/interfaceAudio.sfx0.png; sourceTree = "<group>"; };
+		03F223F817018D8000A5C610 /* interfaceAudio.sfx1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = interfaceAudio.sfx1.png; path = graphics/interfaceAudio.sfx1.png; sourceTree = "<group>"; };
+		03F223FB17018E9D00A5C610 /* interfaceAudio.mus0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = interfaceAudio.mus0.png; path = graphics/interfaceAudio.mus0.png; sourceTree = "<group>"; };
+		03F223FC17018E9D00A5C610 /* interfaceAudio.mus1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = interfaceAudio.mus1.png; path = graphics/interfaceAudio.mus1.png; sourceTree = "<group>"; };
 		03FF829A16D448D00076A619 /* tempNo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = tempNo.png; path = graphics/tempNo.png; sourceTree = "<group>"; };
 		03FF829B16D448D00076A619 /* tempYes.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = tempYes.png; path = graphics/tempYes.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -2127,6 +2135,7 @@
 		0333141116C214D6009DD80A /* Interface */ = {
 			isa = PBXGroup;
 			children = (
+				03F223F617018A0D00A5C610 /* Audio */,
 				03D4667616DB2D5900878D17 /* Seals */,
 				03D4668316DB62CD00878D17 /* Fuses */,
 				0333141216C214E0009DD80A /* vignette.png */,
@@ -2293,6 +2302,17 @@
 				03E0DAEB16BA86D700D0C40E /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		03F223F617018A0D00A5C610 /* Audio */ = {
+			isa = PBXGroup;
+			children = (
+				03F223FB17018E9D00A5C610 /* interfaceAudio.mus0.png */,
+				03F223FC17018E9D00A5C610 /* interfaceAudio.mus1.png */,
+				03F223F717018D8000A5C610 /* interfaceAudio.sfx0.png */,
+				03F223F817018D8000A5C610 /* interfaceAudio.sfx1.png */,
+			);
+			name = Audio;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -3036,6 +3056,10 @@
 				03F223EB17014DBF00A5C610 /* node.0578.jpg in Resources */,
 				03F223EC17014DBF00A5C610 /* node.0579.jpg in Resources */,
 				03F223ED17014DBF00A5C610 /* node.0580.jpg in Resources */,
+				03F223F917018D8000A5C610 /* interfaceAudio.sfx0.png in Resources */,
+				03F223FA17018D8000A5C610 /* interfaceAudio.sfx1.png in Resources */,
+				03F223FD17018E9D00A5C610 /* interfaceAudio.mus0.png in Resources */,
+				03F223FE17018E9D00A5C610 /* interfaceAudio.mus1.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

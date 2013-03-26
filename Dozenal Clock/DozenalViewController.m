@@ -73,16 +73,24 @@ CGRect			screenBound;
 	worldActionType		= [self worldActionType];
 	userActionStorage	= [NSMutableArray arrayWithObjects:@"",@"1",@"0",@"",@"",@"0",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"0",@"0",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",nil];
 	
-	// Starting fuses (do not remove)
+	// Default: Fuses
 	
 	userActionStorage[31] = @"1";
 	userActionStorage[32] = @"1";
 	userActionStorage[39] = @"1";
 	
+	// Default: Audio Volume
+	
+	userActionStorage[34] = @"1";
+	userActionStorage[35] = @"1";
+	
+	
+	
+	
 	userActionStorage[23] = @"15";
 	userActionStorage[19] = @"13";
 	
-	// Overrides
+	// Overrides (remove at builds)
 	
 	userActionStorage[21] = @"1";
 	
@@ -94,6 +102,7 @@ CGRect			screenBound;
 	
 	[self templateSealInterface];
 	[self templateEnergyInterface];
+	[self templateAudioInterface];
 	
 	[self actionCheck];
     [self moveCheck];
@@ -813,21 +822,48 @@ CGRect			screenBound;
 
 - (void)templateAudioUpdate
 {
-	
+	[self templateAudioInterface];
+
 	if( [userActionStorage[userActionId] isEqual: @"1"] ){
-		self.graphic1.hidden = YES;
-		self.graphic1.alpha = 0;
-		[self audioVolume:1];
-	}
-	else{
-		//self.graphic1.hidden = NO;
+		self.graphic1.hidden = NO;
 		self.graphic1.alpha = 1.0;
 		[self templateUpdateNode:21 :@"0543" :@"act35"];
 		[self templateUpdateNode:43 :@"0544" :@"act34"];
+		[self audioVolume:1];
+	}
+	else{
+		self.graphic1.hidden = YES;
+		self.graphic1.alpha = 0;
 		[self audioVolume:0];
 	}
 	
 }
+
+- (void)templateAudioInterface
+{
+	if( userNode == 21 && [userActionStorage[35] isEqual: @"1"] ){
+		self.interfaceAudio.image = [UIImage imageNamed:@"interfaceAudio.sfx1.png"];
+	}
+	else if( userNode == 21 ){
+		self.interfaceAudio.image = [UIImage imageNamed:@"interfaceAudio.sfx0.png"];
+	}
+	else if( userNode == 43 && [userActionStorage[34] isEqual: @"1"] ){
+		self.interfaceAudio.image = [UIImage imageNamed:@"interfaceAudio.mus1.png"];
+	}
+	else if( userNode == 43 ){
+		self.interfaceAudio.image = [UIImage imageNamed:@"interfaceAudio.mus0.png"];
+	}
+	
+	
+	self.interfaceAudio.hidden = NO;
+	self.interfaceAudio.alpha = 1;
+	
+	[self fadeOut:self.interfaceAudio d:3 t:0.5];
+	
+}
+
+
+
 
 - (void)templateEntenteTerminal1
 {
@@ -1294,21 +1330,21 @@ CGRect			screenBound;
 	self.action5.frame = CGRectMake( screenWidthThird, screenHeightThird, screenWidthThird, screenHeightThird );
 	
 	// Graphics
+	
 	self.graphic1.frame = CGRectMake(0, 0, screenBound.size.width, screenBound.size.height); // full
+	
 	
 	// Style - Interface - Fuse
 	
 	self.interfaceFuseBackground.frame = CGRectMake(screenPadding, screenBound.size.height-(screenBound.size.width/12), screenBound.size.width/12, screenBound.size.width/12);
-	
-	self.interfaceFuse1.image = [UIImage imageNamed:@"fuse.0.png"];
-	self.interfaceFuse1.frame = CGRectMake(screenPadding, screenBound.size.height-(screenBound.size.width/12) - screenPadding, screenBound.size.width/12, screenBound.size.width/12);
-	
-	// Style - Interface - Seal
-	
 	self.interfaceSealBackground.frame = CGRectMake(screenBound.size.width - (screenBound.size.width/12) - screenPadding, screenBound.size.height-(screenBound.size.width/12), screenBound.size.width/12, screenBound.size.width/12);CGRectMake(screenPadding, screenBound.size.height-(screenBound.size.width/12), screenBound.size.width/12, screenBound.size.width/12);
 	
+	self.interfaceFuse1.frame = CGRectMake(screenPadding, screenBound.size.height-(screenBound.size.width/12) - screenPadding, screenBound.size.width/12, screenBound.size.width/12);
 	self.interfaceSeal1.frame = CGRectMake(screenBound.size.width - (screenBound.size.width/12) - screenPadding, screenBound.size.height-(screenBound.size.width/12) - screenPadding, screenBound.size.width/12, screenBound.size.width/12);
 	self.interfaceSeal2.frame = CGRectMake(screenBound.size.width - (screenBound.size.width/12) - screenPadding, screenBound.size.height-(screenBound.size.width/12)*2 - screenPadding, screenBound.size.width/12, screenBound.size.width/12);
+	
+	self.interfaceAudio.frame = CGRectMake(screenPadding + ((screenBound.size.width/12)*2), screenBound.size.height-(screenBound.size.width/12) - screenPadding, screenBound.size.width/12, screenBound.size.width/12);
+	
 	
 }
 
