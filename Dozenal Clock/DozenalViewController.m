@@ -210,7 +210,7 @@ CGRect			screenBound;
 }
 
 - (IBAction)action1:(id)sender {
-	
+		
 	// Binary button
 	
 	userActionStorage[userActionId] = [NSString stringWithFormat:@"%d", [ userActionStorage[userActionId] intValue]+1 ];	
@@ -221,8 +221,10 @@ CGRect			screenBound;
 	if([userAction isEqual: @"act5"]){	userActionStorage[userActionId] = [userActionStorage[userActionId] intValue] > 1 ? @"0" : @"2"; [self templateUpdateStudioTerminal]; [self audioTerminalActive];}
 	
 	if( [worldActionType[userActionId] isEqual: @"audioTerminal"] ){
+		userActionStorage[userActionId] = [userActionStorage[userActionId] intValue] > 1 ? @"0" : @"1";
 		[self templateAudioUpdate];
 	}
+	
 	if( [worldActionType[userActionId] isEqual: @"endgameTerminal"] ){
 		[self templateEndgameUpdate];
 	}
@@ -528,13 +530,11 @@ CGRect			screenBound;
 	self.action5.alpha = 1.0;
 	
 	[self audioSealInit];
-	[self templateSealInterface];
 	[self templateSealUpdate];
 }
 
 - (void)templateSealInterface
 {
-	
 	userSeal = [self sealCount];
 	
 	self.interfaceSeal1.image = [UIImage imageNamed:@"seal.0.png"];
@@ -547,7 +547,10 @@ CGRect			screenBound;
 		self.interfaceSeal1.image = [UIImage imageNamed:[NSString stringWithFormat:@"seal.%d.png",[self sealFind:1]] ];
 		self.interfaceSeal2.image = [UIImage imageNamed:[NSString stringWithFormat:@"seal.%d.png",[self sealFind:2]] ];
 	}
-
+	
+	self.interfaceSeal1.hidden = NO;
+	self.interfaceSeal2.hidden = NO;
+	
 	self.interfaceSeal1.alpha = 1;
 	self.interfaceSeal2.alpha = 1;
 	
@@ -607,7 +610,8 @@ CGRect			screenBound;
 	[self templateSealInterface];
 	
 	userSeal = [self sealCount];
-	self.graphic1.alpha = 0;
+	
+	[self fadeOut:self.graphic1 d:0 t:0.5];
 	
 	if( [userActionStorage[userActionId] intValue] != 1 ){ return; }
 		
@@ -665,6 +669,7 @@ CGRect			screenBound;
 		self.interfaceFuse1.image = [UIImage imageNamed:@"fuse.0.png"];
 	}
 	
+	self.interfaceFuse1.hidden = NO;
 	self.interfaceFuse1.alpha = 1;
 	
 	[self fadeOut:self.interfaceFuse1 d:3 t:0.5];
@@ -799,22 +804,27 @@ CGRect			screenBound;
 {
 	[self prefPositioning];
 	
-	[self.action1 setImage:[UIImage imageNamed: [NSString stringWithFormat:@"tempYes.png"] ] forState:UIControlStateNormal];
 	self.action1.alpha = 1.0;
 	self.action1.hidden = NO;
+	
+	[self templateAudioUpdate];
 	
 }
 
 - (void)templateAudioUpdate
 {
 	
-	if( [userActionStorage[userNode] isEqual: @"1"] ){
-		userActionStorage[userNode] = @"0";
-		[self audioVolume:0];
+	if( [userActionStorage[userActionId] isEqual: @"1"] ){
+		self.graphic1.hidden = YES;
+		self.graphic1.alpha = 0;
+		[self audioVolume:1];
 	}
 	else{
-		userActionStorage[userNode] = @"1";
-		[self audioVolume:1];
+		//self.graphic1.hidden = NO;
+		self.graphic1.alpha = 1.0;
+		[self templateUpdateNode:21 :@"0543" :@"act35"];
+		[self templateUpdateNode:43 :@"0544" :@"act34"];
+		[self audioVolume:0];
 	}
 	
 }
@@ -991,12 +1001,6 @@ CGRect			screenBound;
 	}
 }
 
-
-
-
-
-
-
 - (void)templateUpdateStudioTerminal
 {
 	
@@ -1047,7 +1051,14 @@ CGRect			screenBound;
 	if( userNode == node && [userAction isEqual: act]){
 		self.graphic1.image = [UIImage imageNamed: [NSString stringWithFormat:@"node.%@.jpg", img] ];
 	}
-	[self fadeIn:self.graphic1 d:0 t:0.0];
+	
+	// Fadein Seals
+	if( [worldActionType[userActionId] isEqual: @"sealTerminal"] ){
+		[self fadeIn:self.graphic1 d:0 t:0.5];
+	}
+	else{
+		[self fadeIn:self.graphic1 d:0 t:0.0];
+	}
 
 }
 
@@ -1309,10 +1320,20 @@ CGRect			screenBound;
 	self.graphic2.image = [UIImage imageNamed:@"menu.black.jpg"];
 	self.graphic2.alpha	 = 1.0;
 	self.graphic2.hidden = NO;
-		
-	// [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://www.apple.com"]];
+	
+	self.graphic3.frame = CGRectMake(0, 0, screenBound.size.width, screenBound.size.height);
+	self.graphic3.image = [UIImage imageNamed:@"menu.controls.png"];
+	self.graphic3.alpha	 = 0.2;
+	self.graphic3.hidden = NO;
+
+	self.interfaceSeal1.hidden = YES;
+	self.interfaceSeal2.hidden = YES;
+	self.interfaceFuse1.hidden = YES;
 	
 	[self fadeOut:self.graphic2 d:0 t:2.0];
+	[self fadeOut:self.graphic3 d:5 t:2.0];
+	
+	// [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://www.apple.com"]];
 	
 }
 
