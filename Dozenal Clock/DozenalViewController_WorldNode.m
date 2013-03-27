@@ -58,9 +58,9 @@
 	
 	node[30]	= [NSArray arrayWithObjects: @"29", @"0", @"23", @"0", @"circular", nil];		
 	node[31]	= [NSArray arrayWithObjects: @"25|1", @"0", @"35", @"0", @"circular", nil];
-	node[32]	= [NSArray arrayWithObjects: @"0", @"52", @"35", @"27|1", @"silence", nil];	
-	node[33]	= [NSArray arrayWithObjects: @"0", @"0", @"29|1", @"0", @"silence", nil];	
-	node[34]	= [NSArray arrayWithObjects: @"act37", @"0", @"0", @"39", @"silence", nil];
+	node[32]	= [NSArray arrayWithObjects: @"0", @"52", @"35", @"27|1", @"studio", nil];	
+	node[33]	= [NSArray arrayWithObjects: @"0", @"0", @"29|1", @"0", @"circular", nil];	
+	node[34]	= [NSArray arrayWithObjects: @"act37", @"0", @"0", @"39", @"entente", nil];
 	node[35]	= [NSArray arrayWithObjects: @"act8", @"38", @"36", @"0", @"stones", nil];		
 	node[36]	= [NSArray arrayWithObjects: @"35", @"37", @"0", @"0", @"stones", nil];		
 	node[37]	= [NSArray arrayWithObjects: @"38", @"39", @"0", @"36", @"stones", nil];
@@ -74,11 +74,11 @@
 	node[44]	= [NSArray arrayWithObjects: @"42", @"0", @"46", @"0", @"stones", nil];
 	node[45]	= [NSArray arrayWithObjects: @"act13", @"0", @"act1", @"39", @"rainre", nil];
 	node[46]	= [NSArray arrayWithObjects: @"44", @"0", @"act15", @"0", @"stones", nil];
-	node[47]	= [NSArray arrayWithObjects: @"act38", @"48", @"77", @"0", @"silence", nil];
-	node[48]	= [NSArray arrayWithObjects: @"act25", @"0", @"49", @"47", @"silence", nil];
-	node[49]	= [NSArray arrayWithObjects: @"48", @"act22", @"act21", @"77", @"silence", nil];
+	node[47]	= [NSArray arrayWithObjects: @"act38", @"48", @"77", @"0", @"antechannel", nil];
+	node[48]	= [NSArray arrayWithObjects: @"act25", @"0", @"49", @"47", @"antechannel", nil];
+	node[49]	= [NSArray arrayWithObjects: @"48", @"act22", @"act21", @"77", @"antechannel", nil];
 	node[50]	= [NSArray arrayWithObjects: @"0", @"0", @"act41", @"0", @"nataniev", nil];
-	node[51]	= [NSArray arrayWithObjects: @"0", @"0", @"64", @"0", @"silence", nil];
+	node[51]	= [NSArray arrayWithObjects: @"0", @"0", @"64", @"0", @"nataniev", nil];
 	
 	node[52]	= [NSArray arrayWithObjects: @"54", @"53", @"0", @"act9", @"antechannel", nil];
 	node[53]	= [NSArray arrayWithObjects: @"55", @"84", @"0", @"52", @"antechannel", nil];
@@ -93,8 +93,8 @@
 	node[61]	= [NSArray arrayWithObjects: @"0", @"0", @"59", @"act19", @"antechannel", nil];
 	node[62]	= [NSArray arrayWithObjects: @"act26", @"0", @"60", @"0", @"antechannel", nil];
 	node[63]	= [NSArray arrayWithObjects: @"73", @"69", @"0", @"67", @"metamondst", nil];
-	node[64]	= [NSArray arrayWithObjects: @"63", @"0", @"0", @"0", @"silence", nil];
-	node[65]	= [NSArray arrayWithObjects: @"0", @"0", @"act46", @"0", @"silence", nil];
+	node[64]	= [NSArray arrayWithObjects: @"63", @"0", @"0", @"0", @"nataniev", nil];
+	node[65]	= [NSArray arrayWithObjects: @"0", @"0", @"act46", @"0", @"entente", nil];
 	node[67]	= [NSArray arrayWithObjects: @"74", @"63", @"0", @"70", @"metamondst", nil];
 	node[69]	= [NSArray arrayWithObjects: @"act18", @"act19", @"0", @"63", @"metamondst", nil];
 	
@@ -104,9 +104,9 @@
 	node[74]	= [NSArray arrayWithObjects: @"80", @"0", @"67", @"0", @"metamondst", nil];
 	node[75]	= [NSArray arrayWithObjects: @"76", @"0", @"70", @"0", @"metamondst", nil];
 	node[76]	= [NSArray arrayWithObjects: @"0", @"0", @"75", @"act30", @"metamondst", nil];
-	node[77]	= [NSArray arrayWithObjects: @"47", @"49", @"act26", @"act27", @"silence", nil];
+	node[77]	= [NSArray arrayWithObjects: @"47", @"49", @"act26", @"act27", @"antechannel", nil];
 	node[78]	= [NSArray arrayWithObjects: @"83", @"0", @"0", @"81", @"metamondst", nil];
-	node[79]	= [NSArray arrayWithObjects: @"0", @"act33", @"87", @"0", @"silence", nil];
+	node[79]	= [NSArray arrayWithObjects: @"0", @"act33", @"87", @"0", @"capsule", nil];
 	
 	node[80]	= [NSArray arrayWithObjects: @"85", @"0", @"74", @"0", @"metamondst", nil];
 	node[81]	= [NSArray arrayWithObjects: @"82", @"78", @"73", @"0", @"metamondst", nil];
@@ -114,41 +114,41 @@
 	node[83]	= [NSArray arrayWithObjects: @"0", @"0", @"78", @"82", @"metamondst", nil];
 	node[84]	= [NSArray arrayWithObjects: @"56", @"0", @"act47", @"53", @"antechannel", nil];
 	node[85]	= [NSArray arrayWithObjects: @"act15", @"0", @"80", @"86", @"metamondst", nil];
-	node[86]	= [NSArray arrayWithObjects: @"0", @"85", @"0", @"act1", @"silence", nil];
-	node[87]	= [NSArray arrayWithObjects: @"79", @"act30", @"act39", @"88", @"silence", nil];
-	node[88]	= [NSArray arrayWithObjects: @"0", @"87", @"0", @"0", @"silence", nil];
+	node[86]	= [NSArray arrayWithObjects: @"0", @"85", @"0", @"act1", @"metamondst", nil];
+	node[87]	= [NSArray arrayWithObjects: @"79", @"act30", @"act39", @"88", @"capsule", nil];
+	node[88]	= [NSArray arrayWithObjects: @"0", @"87", @"0", @"0", @"capsule", nil];
 		
-	node[89]	= [NSArray arrayWithObjects: @"act42", @"0", @"90", @"0", @"silence", nil];
-	node[90]	= [NSArray arrayWithObjects: @"89", @"0", @"91", @"0", @"silence", nil];
-	node[91]	= [NSArray arrayWithObjects: @"90", @"act23", @"103", @"0", @"silence", nil];
+	node[89]	= [NSArray arrayWithObjects: @"act42", @"0", @"90", @"0", @"entente", nil];
+	node[90]	= [NSArray arrayWithObjects: @"89", @"0", @"91", @"0", @"entente", nil];
+	node[91]	= [NSArray arrayWithObjects: @"90", @"act23", @"103", @"0", @"entente", nil];
 	
-	node[92]	= [NSArray arrayWithObjects: @"91", @"0", @"93", @"0", @"silence", nil];
-	node[93]	= [NSArray arrayWithObjects: @"92", @"0", @"94", @"0", @"silence", nil];
-	node[94]	= [NSArray arrayWithObjects: @"93", @"0", @"95", @"0", @"silence", nil];
-	node[95]	= [NSArray arrayWithObjects: @"94", @"act24", @"96", @"0", @"silence", nil];
-	node[96]	= [NSArray arrayWithObjects: @"95", @"0", @"97", @"0", @"silence", nil];
-	node[97]	= [NSArray arrayWithObjects: @"96", @"0", @"98", @"0", @"silence", nil];
-	node[98]	= [NSArray arrayWithObjects: @"97", @"99", @"65", @"101", @"silence", nil];
-	node[99]	= [NSArray arrayWithObjects: @"0", @"100", @"0", @"98", @"silence", nil];
-	node[100]	= [NSArray arrayWithObjects: @"0", @"act44", @"0", @"99", @"silence", nil];
-	node[101]	= [NSArray arrayWithObjects: @"0", @"98", @"act38", @"102", @"silence", nil];
-	node[102]	= [NSArray arrayWithObjects: @"0", @"101", @"0", @"act45", @"silence", nil];
-	node[103]	= [NSArray arrayWithObjects: @"91", @"0", @"act43", @"0", @"silence", nil];
+	node[92]	= [NSArray arrayWithObjects: @"91", @"0", @"93", @"0", @"entente", nil];
+	node[93]	= [NSArray arrayWithObjects: @"92", @"0", @"94", @"0", @"entente", nil];
+	node[94]	= [NSArray arrayWithObjects: @"93", @"0", @"95", @"0", @"entente", nil];
+	node[95]	= [NSArray arrayWithObjects: @"94", @"act24", @"96", @"0", @"entente", nil];
+	node[96]	= [NSArray arrayWithObjects: @"95", @"0", @"97", @"0", @"entente", nil];
+	node[97]	= [NSArray arrayWithObjects: @"96", @"0", @"98", @"0", @"entente", nil];
+	node[98]	= [NSArray arrayWithObjects: @"97", @"99", @"65", @"101", @"entente", nil];
+	node[99]	= [NSArray arrayWithObjects: @"0", @"100", @"0", @"98", @"entente", nil];
+	node[100]	= [NSArray arrayWithObjects: @"0", @"act44", @"0", @"99", @"entente", nil];
+	node[101]	= [NSArray arrayWithObjects: @"0", @"98", @"act38", @"102", @"entente", nil];
+	node[102]	= [NSArray arrayWithObjects: @"0", @"101", @"0", @"act45", @"entente", nil];
+	node[103]	= [NSArray arrayWithObjects: @"91", @"0", @"act43", @"0", @"entente", nil];
 	
-	node[104]	= [NSArray arrayWithObjects: @"0", @"100", @"0", @"105", @"silence", nil];
-	node[105]	= [NSArray arrayWithObjects: @"0", @"104", @"act24", @"106", @"silence", nil];
-	node[106]	= [NSArray arrayWithObjects: @"0", @"105", @"0", @"107", @"silence", nil];
-	node[107]	= [NSArray arrayWithObjects: @"0", @"106", @"0", @"108", @"silence", nil];
-	node[108]	= [NSArray arrayWithObjects: @"0", @"107", @"0", @"109", @"silence", nil];
-	node[109]	= [NSArray arrayWithObjects: @"0", @"108", @"0", @"110", @"silence", nil];
-	node[110]	= [NSArray arrayWithObjects: @"0", @"109", @"0", @"111", @"silence", nil];
-	node[111]	= [NSArray arrayWithObjects: @"0", @"110", @"0", @"1|0", @"silence", nil];
+	node[104]	= [NSArray arrayWithObjects: @"0", @"100", @"0", @"105", @"entente", nil];
+	node[105]	= [NSArray arrayWithObjects: @"0", @"104", @"act24", @"106", @"entente", nil];
+	node[106]	= [NSArray arrayWithObjects: @"0", @"105", @"0", @"107", @"entente", nil];
+	node[107]	= [NSArray arrayWithObjects: @"0", @"106", @"0", @"108", @"entente", nil];
+	node[108]	= [NSArray arrayWithObjects: @"0", @"107", @"0", @"109", @"entente", nil];
+	node[109]	= [NSArray arrayWithObjects: @"0", @"108", @"0", @"110", @"entente", nil];
+	node[110]	= [NSArray arrayWithObjects: @"0", @"109", @"0", @"111", @"entente", nil];
+	node[111]	= [NSArray arrayWithObjects: @"0", @"110", @"0", @"1|0", @"entente", nil];
 	
 	node[112]	= [NSArray arrayWithObjects: @"115", @"113", @"0", @"act33", @"nataniev", nil];
 	node[113]	= [NSArray arrayWithObjects: @"114", @"act36", @"act40", @"112", @"nataniev", nil];
 	node[114]	= [NSArray arrayWithObjects: @"0", @"0", @"113", @"115", @"nataniev", nil];
 	node[115]	= [NSArray arrayWithObjects: @"0", @"114", @"112", @"0", @"nataniev", nil];
-	node[116]	= [NSArray arrayWithObjects: @"0", @"0", @"0", @"20|2", @"silence", nil];
+	node[116]	= [NSArray arrayWithObjects: @"0", @"0", @"0", @"20|2", @"entente", nil];
 	
 	return node;
 }

@@ -42,6 +42,9 @@
 -(void) ambientStones;
 -(void) ambientMetamondst;
 -(void) ambientRainre;
+-(void) ambientCapsule;
+-(void) ambientNataniev;
+-(void) ambientEntente;
 
 -(void) musicPlayer:(NSString*)act;
 

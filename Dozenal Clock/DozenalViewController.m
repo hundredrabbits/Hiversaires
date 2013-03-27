@@ -22,6 +22,7 @@ NSArray			*worldActionType;
 NSString        *worldNodeImg = @"empty";
 NSString		*worldNodeImgId;
 
+
 // Puzzle
 int				puzzleTerminal = 0;
 int				puzzleState;
@@ -42,6 +43,7 @@ int				userEnergy = 0;
 int				userFold = 0;
 int				userFootstep = 0;
 
+NSArray			*temp;
 
 float			screenWidthHalf = 100;
 float			screenHeightHalf = 100;
@@ -75,9 +77,9 @@ CGRect			screenBound;
 	
 	// Default: Fuses
 	
-	userActionStorage[31] = @"1";
-	userActionStorage[32] = @"1";
-	userActionStorage[38] = @"1";
+	userActionStorage[31] = @"1"; // Fuse in Forest
+	userActionStorage[38] = @"1"; // Fuse in Entente
+	userActionStorage[39] = @"1"; // Fuse in Antechannel
 	
 	// Default: Audio Volume
 	
@@ -87,9 +89,7 @@ CGRect			screenBound;
 	userActionStorage[23] = @"15";
 	userActionStorage[19] = @"13";
 	
-	// Overrides (remove at builds)
-	
-	
+	// Overrides (remove at builds)	
 	
 	// ====================
 	// Begin
@@ -100,6 +100,8 @@ CGRect			screenBound;
 	[self templateSealInterface];
 	[self templateEnergyInterface];
 	[self templateAudioInterface];
+	
+	[self audioMusicCheck:@"act1"];
 	
 	[self actionCheck];
     [self moveCheck];
@@ -148,7 +150,6 @@ CGRect			screenBound;
 	// Resize
 	
 	[self audioAmbientCheck: worldPath[userNode][4] ];
-	[self audioMusicCheck:@"act1"];
 	[self audioVolume:1:45];
 	[self audioVolume:1:21];
 
@@ -184,7 +185,7 @@ CGRect			screenBound;
 	if ([worldPath[userNode][userOrientation] rangeOfString:@"|"].location == NSNotFound) {
 		userNode = [ worldPath[userNode][userOrientation] intValue] > 0 ? [ worldPath[userNode][userOrientation] intValue] : userNode;
 	} else {
-		NSArray *temp = [worldPath[userNode][userOrientation] componentsSeparatedByString:@"|"];
+		temp = [worldPath[userNode][userOrientation] componentsSeparatedByString:@"|"];
 		userNode = [ worldPath[userNode][userOrientation] intValue] > 0 ? [ temp[0] intValue] : userNode;
 		userOrientation = [ temp[1] intValue ];
 	}
@@ -588,8 +589,8 @@ CGRect			screenBound;
 	}
 	else if ( [userActionStorage[20] intValue] == 1 && [userActionStorage[13] intValue] == 1 ) { // Act 2 : Metamondst + Rainre in Forest
 		[self templateUpdateDoorknob:48:11:_action2];
-		[self  templateUpdateNode:11:@"0487":@"act25"];
-		[self  templateUpdateNode:48:@"0488":@"act25"];
+		[self templateUpdateNode:11:@"0487":@"act25"];
+		[self templateUpdateNode:48:@"0488":@"act25"];
 		if( userProgress < 3){ [self audioMusicCheck:@"act3"];}
 		userProgress = 3;
 	}
@@ -882,7 +883,7 @@ CGRect			screenBound;
 {
 	[self prefPositioning];
 	
-	NSString *targetGraphic = @"";
+	NSString *targetGraphic = [[NSMutableString alloc] init];
 	
 	if( [ userActionStorage[23] intValue] > 17 )		{ targetGraphic = @"Hi"; }
 	else if( [ userActionStorage[23] intValue] < 17 )	{ targetGraphic = @"Lo"; }
@@ -899,7 +900,7 @@ CGRect			screenBound;
 {
 	[self prefPositioning];
 	
-	NSString *targetGraphic = @"";
+	NSString *targetGraphic = [[NSMutableString alloc] init];
 	
 	if( [ userActionStorage[24] intValue] > 17 )		{ targetGraphic = @"Hi"; }
 	else if( [ userActionStorage[24] intValue] < 17 )	{ targetGraphic = @"Lo"; }
@@ -1362,6 +1363,11 @@ CGRect			screenBound;
 		if( [nodeAmbient isEqual: @"antechannel"] )	{ [self ambientAntechannel]; }
 		if( [nodeAmbient isEqual: @"metamondst"] )	{ [self ambientMetamondst]; }
 		if( [nodeAmbient isEqual: @"circular"] )	{ [self ambientCircular]; }
+		if( [nodeAmbient isEqual: @"entente"] )		{ [self ambientEntente]; }
+		if( [nodeAmbient isEqual: @"rainre"] )		{ [self ambientRainre]; }
+		if( [nodeAmbient isEqual: @"capsule"] )		{ [self ambientCapsule]; }
+		if( [nodeAmbient isEqual: @"nataniev"] )	{ [self ambientNataniev]; }
+		
 	}
 	
 }

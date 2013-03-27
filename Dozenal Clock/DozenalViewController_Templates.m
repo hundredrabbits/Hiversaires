@@ -10,6 +10,8 @@ int				userVolumeAmbient = 1;
 int				userVolumeSounds = 1;
 int				userVolumeMusic = 1;
 
+NSString* resourcePath = @"";
+
 @implementation DozenalViewController (Audio)
 
 // ====================
@@ -248,16 +250,19 @@ int				userVolumeMusic = 1;
 -(void)ambientCapsule
 {
 	NSLog(@"[ambientCapsule]");
+	[self ambientPlayer:@"ambient_capsule"];
 }
 
 -(void)ambientNether
 {
 	NSLog(@"[ambientNether]");
+	[self ambientPlayer:@"ambient_capsule"];
 }
 
 -(void)ambientEntente
 {
 	NSLog(@"[ambientEntente]");
+	[self ambientPlayer:@"ambient_circular"];
 }
 
 -(void)ambientRainre
@@ -266,9 +271,15 @@ int				userVolumeMusic = 1;
 	[self ambientPlayer:@"ambient_rainre"];
 }
 
+-(void)ambientNataniev
+{
+	NSLog(@"[ambientRainre]");
+	[self ambientPlayer:@"ambient_nataniev"];
+}
+
 -(void)soundPlayer: (NSString *)filename;
 {
-	NSString* resourcePath = [[NSBundle mainBundle] resourcePath];
+	resourcePath = [[NSBundle mainBundle] resourcePath];
 	resourcePath = [resourcePath stringByAppendingString: [NSString stringWithFormat:@"/%@.aif", filename] ];
 	NSError* err;
 	playerSounds = [[AVAudioPlayer alloc] initWithContentsOfURL: [NSURL fileURLWithPath:resourcePath] error:&err];
@@ -281,7 +292,7 @@ int				userVolumeMusic = 1;
 
 -(void)ambientPlayer: (NSString *)filename;
 {
-	NSString* resourcePath = [[NSBundle mainBundle] resourcePath];
+	resourcePath = [[NSBundle mainBundle] resourcePath];
 	resourcePath = [resourcePath stringByAppendingString: [NSString stringWithFormat:@"/%@.aif", filename] ];
 	NSError* err;
 	playerAmbient = [[AVAudioPlayer alloc] initWithContentsOfURL: [NSURL fileURLWithPath:resourcePath] error:&err];
@@ -297,7 +308,7 @@ int				userVolumeMusic = 1;
 
 -(void)musicPlayer: (NSString *)filename;
 {
-	NSString* resourcePath = [[NSBundle mainBundle] resourcePath];
+	resourcePath = [[NSBundle mainBundle] resourcePath];
 	resourcePath = [resourcePath stringByAppendingString: [NSString stringWithFormat:@"/music_%@.aif", filename] ];
 	NSError* err;
 	playerMusic = [[AVAudioPlayer alloc] initWithContentsOfURL: [NSURL fileURLWithPath:resourcePath] error:&err];
@@ -339,9 +350,6 @@ int				userVolumeMusic = 1;
 		
 		NSLog(@"[ambient.volume:%d]", volume);
 	}
-	
-	NSLog(@"detected");
-	
 }
 
 
