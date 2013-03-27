@@ -127,9 +127,9 @@ CGRect			screenBound;
 	self.debugOrientation.text = [NSString stringWithFormat:@"%d", userOrientation];
 	self.debugAction.text = [NSString stringWithFormat:@"%@", worldPath[userNode][userOrientation]];
 
-//	self.debugNode.hidden = YES;
-//	self.debugOrientation.hidden = YES;
-//	self.debugAction.hidden = YES;
+	self.debugNode.hidden = YES;
+	self.debugOrientation.hidden = YES;
+	self.debugAction.hidden = YES;
 	
     self.moveForward.hidden = worldPath[userNode][userOrientation] ? NO : YES;
 	
@@ -148,6 +148,10 @@ CGRect			screenBound;
 	// Resize
 	
 	[self audioAmbientCheck: worldPath[userNode][4] ];
+	[self audioMusicCheck:@"act1"];
+	[self audioVolume:1:45];
+	[self audioVolume:1:21];
+
 	
 }
 
@@ -579,28 +583,28 @@ CGRect			screenBound;
 		[self templateUpdateDoorknob:46:85:_action2];
 		[self  templateUpdateNode:46:@"0486":@"act15"];
 		[self  templateUpdateNode:85:@"0485":@"act15"];
-		[self audioMusicCheck:@"act2"];
+		if( userProgress < 2){ [self audioMusicCheck:@"act2"];}
 		userProgress = 2;
 	}
 	else if ( [userActionStorage[20] intValue] == 1 && [userActionStorage[13] intValue] == 1 ) { // Act 2 : Metamondst + Rainre in Forest
 		[self templateUpdateDoorknob:48:11:_action2];
 		[self  templateUpdateNode:11:@"0487":@"act25"];
 		[self  templateUpdateNode:48:@"0488":@"act25"];
-		[self audioMusicCheck:@"act3"];
+		if( userProgress < 3){ [self audioMusicCheck:@"act3"];}
 		userProgress = 3;
 	}
 	else if ( ([userActionStorage[21] intValue] == 1 && [userActionStorage[13] intValue] == 1) ) { // Act 3 : Forest + Rainre in Metamondst
 		[self templateUpdateDoorknob:46:85:_action2];
 		[self  templateUpdateNode:46:@"0486":@"act15"];
 		[self  templateUpdateNode:85:@"0485":@"act15"];
-		[self audioMusicCheck:@"act4"];
+		if( userProgress < 4){ [self audioMusicCheck:@"act3"];}
 		userProgress = 4;
 	}
 	else if ( [userActionStorage[21] intValue] == 1 && [userActionStorage[12] intValue] == 1 ) { // Act 4 : Antechannel + Stones in Studio
 		self.action1.alpha = 1.0;
 		self.action1.hidden = NO;
 		[self templateUpdateStudioTerminal];
-		[self audioMusicCheck:@"act5"];
+		if( userProgress < 5){ [self audioMusicCheck:@"act3"];}
 		userProgress = 5;
 	}
 	else if ( [userAction isEqual: @"act5"] ){
@@ -1173,7 +1177,7 @@ CGRect			screenBound;
 	// Fadeins
 	
 	if( [worldActionType[userActionId] isEqual: @"sealTerminal"] ){
-		[self fadeIn:self.graphic1 d:0.3 t:0.5];
+		[self fadeIn:self.graphic1 d:0.2 t:0.3];
 	}
 	else if( [worldActionType[userActionId] isEqual: @"audioTerminal"] ){
 		[self fadeIn:self.graphic1 d:0.3 t:0.5];
@@ -1365,6 +1369,7 @@ CGRect			screenBound;
 - (void)audioMusicCheck :(NSString*)nodeMusic
 {
 	
+	[self musicPlayer:nodeMusic];	
 	NSLog(@"[Music:%@]",nodeMusic);
 	
 }

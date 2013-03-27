@@ -23,7 +23,7 @@
 	node[0]		= [NSArray arrayWithObjects: @"1", @"0", @"0", @"0", @"forest", nil];
 	node[1]		= [NSArray arrayWithObjects: @"2", @"0", @"act28", @"0", @"forest", nil];
 	
-	// node[1]		= [NSArray arrayWithObjects: @"87", @"0", @"0", @"0", @"forest", nil];
+//	node[1]		= [NSArray arrayWithObjects: @"43", @"0", @"0", @"0", @"forest", nil];
 	
 	node[2]		= [NSArray arrayWithObjects: @"3", @"0", @"1", @"0", @"forest", nil];
 	node[3]		= [NSArray arrayWithObjects: @"11", @"10|2", @"2", @"4|0", @"forest", nil];
@@ -121,8 +121,6 @@
 	node[89]	= [NSArray arrayWithObjects: @"act42", @"0", @"90", @"0", @"silence", nil];
 	node[90]	= [NSArray arrayWithObjects: @"89", @"0", @"91", @"0", @"silence", nil];
 	node[91]	= [NSArray arrayWithObjects: @"90", @"act23", @"103", @"0", @"silence", nil];
-	
-	
 	
 	node[92]	= [NSArray arrayWithObjects: @"91", @"0", @"93", @"0", @"silence", nil];
 	node[93]	= [NSArray arrayWithObjects: @"92", @"0", @"94", @"0", @"silence", nil];

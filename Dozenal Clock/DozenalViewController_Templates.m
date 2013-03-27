@@ -8,6 +8,7 @@ AVAudioPlayer *playerAmbient;
 AVAudioPlayer *playerMusic;
 int				userVolumeAmbient = 1;
 int				userVolumeSounds = 1;
+int				userVolumeMusic = 1;
 
 @implementation DozenalViewController (Audio)
 
@@ -196,6 +197,15 @@ int				userVolumeSounds = 1;
 
 
 // ====================
+// Music
+// ====================
+
+-(void)musicAct1
+{
+	[self musicPlayer:@"act1"];
+}
+
+// ====================
 // Ambient
 // ====================
 
@@ -285,19 +295,52 @@ int				userVolumeSounds = 1;
 	NSLog(@"-Ambient");
 }
 
+-(void)musicPlayer: (NSString *)filename;
+{
+	NSString* resourcePath = [[NSBundle mainBundle] resourcePath];
+	resourcePath = [resourcePath stringByAppendingString: [NSString stringWithFormat:@"/music_%@.aif", filename] ];
+	NSError* err;
+	playerMusic = [[AVAudioPlayer alloc] initWithContentsOfURL: [NSURL fileURLWithPath:resourcePath] error:&err];
+	if(err)	{ NSLog(@"%@",err); }
+	else	{
+		playerMusic.numberOfLoops = -1; //infinite
+		[playerMusic play];
+		playerMusic.volume = 0.3;
+	}
+	
+	NSLog(@"-Music");
+}
+
 - (void)audioVolume :(int)volume :(int)userNode
 {
-	if( userNode == 55 ){
-		userVolumeSounds = volume;
-		playerMusic.volume = volume;
+	if( userNode == 43 ){
+		userVolumeMusic = volume;
+		
+		if( volume == 1){
+			playerMusic.volume = 0.3;
+		}
+		else{
+			playerMusic.volume = 0;
+		}
+		
 		NSLog(@"[music.volume:%d]", volume);
 	}
 	else if( userNode == 21){
+		
 		userVolumeAmbient = volume;
-		playerAmbient.volume = volume;
 		playerSounds.volume = volume;
+		
+		if( volume == 1){
+			playerAmbient.volume = 0.3;
+		}
+		else{
+			playerAmbient.volume = 0;
+		}
+		
 		NSLog(@"[ambient.volume:%d]", volume);
 	}
+	
+	NSLog(@"detected");
 	
 }
 

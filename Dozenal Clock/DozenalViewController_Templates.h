@@ -43,5 +43,7 @@
 -(void) ambientMetamondst;
 -(void) ambientRainre;
 
+-(void) musicPlayer:(NSString*)act;
+
 
 @end
