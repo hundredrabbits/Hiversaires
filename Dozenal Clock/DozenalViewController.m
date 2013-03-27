@@ -77,22 +77,19 @@ CGRect			screenBound;
 	
 	userActionStorage[31] = @"1";
 	userActionStorage[32] = @"1";
-	userActionStorage[39] = @"1";
+	userActionStorage[38] = @"1";
 	
 	// Default: Audio Volume
 	
 	userActionStorage[34] = @"1";
 	userActionStorage[35] = @"1";
 	
-	
-	
-	
 	userActionStorage[23] = @"15";
 	userActionStorage[19] = @"13";
 	
 	// Overrides (remove at builds)
 	
-	userActionStorage[21] = @"1";
+	
 	
 	// ====================
 	// Begin
@@ -234,11 +231,6 @@ CGRect			screenBound;
 		[self templateAudioUpdate];
 	}
 	
-	if( [worldActionType[userActionId] isEqual: @"endgameTerminal"] ){
-		[self templateEndgameUpdate];
-	}
-	
-	
 }
 
 - (IBAction)action2:(id)sender { // Door to display action3
@@ -281,6 +273,7 @@ CGRect			screenBound;
 	else if	( userNode == 85 ){	userNode = 46; userOrientation = 0; }
 	else if	( userNode == 87 ){	userNode = 76; }
 	else if	( userNode == 112){	userNode = 79;}
+	else if	( userNode == 113){	userNode = 50;}
 	
 	// Easter Eggs
 	
@@ -401,7 +394,8 @@ CGRect			screenBound;
 	if( [worldActionType[userActionId] isEqual: @"clockDoor"] )			{ [self templateClockDoor]; }
 	if( [worldActionType[userActionId] isEqual: @"progressTerminal"] )	{ [self templateProgressTerminal]; }
 	if( [worldActionType[userActionId] isEqual: @"audioTerminal"] )		{ [self templateAudioTerminal]; }
-	if( [worldActionType[userActionId] isEqual: @"endgameTerminal"] )	{ [self templateEndgameTerminal]; }
+	if( [worldActionType[userActionId] isEqual: @"endgameDoor"] )		{ [self templateEndgameDoor]; }
+	if( [worldActionType[userActionId] isEqual: @"endgameCredit"] )		{ [self templateEndgameCredit]; }
 	
 	if( [userAction isEqual: @"act23"] )								{ [self templateEntenteTerminal1]; }
 	if( [userAction isEqual: @"act24"] )								{ [self templateEntenteTerminal2]; }
@@ -412,6 +406,8 @@ CGRect			screenBound;
 	if([userAction isEqual: @"act46"])									{ [self templateEntentePart2Exit]; }
 	
 }
+
+- (void)clock{}
 
 - (void)templateClockTerminal{
 	
@@ -529,12 +525,14 @@ CGRect			screenBound;
 	
 }
 
+- (void)seal{}
+
 - (void)templateSealTerminal
 {
 	[self prefPositioning];
 	
 	self.graphic1.hidden = NO;
-	self.graphic1.alpha = 1;
+	self.graphic1.alpha = 0;
 	self.action5.hidden = NO;
 	self.action5.alpha = 1.0;
 	
@@ -648,6 +646,7 @@ CGRect			screenBound;
 	[self fadeOut:self.interfaceSealBackground d:0.5 t:0.5];
 }
 
+- (void)energy{}
 
 - (void)templateEnergyTerminal
 {
@@ -703,7 +702,7 @@ CGRect			screenBound;
 	// Templates
 	
 	if([userAction isEqual: @"act3"]) { puzzleTerminal = 2;  }
-	if([userAction isEqual: @"act6"]) { puzzleTerminal = 37;  }
+	if([userAction isEqual: @"act6"]) { puzzleTerminal = 37; }
 
 	if([userAction isEqual: @"act11"]){ puzzleTerminal = 10; }
 	if([userAction isEqual: @"act19"]){ puzzleTerminal = 18; }
@@ -712,7 +711,7 @@ CGRect			screenBound;
 	if([userAction isEqual: @"act28"]){ puzzleTerminal = 5;  }
 	if([userAction isEqual: @"act29"]){ puzzleTerminal = 5;  }
 	if([userAction isEqual: @"act30"]){ puzzleTerminal = 5;  }
-	if([userAction isEqual: @"act33"]){ puzzleTerminal = 47;  } // Antech fuse
+	if([userAction isEqual: @"act33"]){ puzzleTerminal = 47; } // Antech fuse for Capsule door
 	
 	if( [userActionStorage[puzzleTerminal] intValue] > 0 ){
 		
@@ -770,7 +769,8 @@ CGRect			screenBound;
 		[self templateUpdateNode:39:@"0519":@"act10"];
 		[self templateUpdateNode:77:@"0520":@"act27"];
 		[self templateUpdateNode:84:@"0527":@"act47"];
-		[self templateUpdateNode:101:@"0533":@"act38"];
+		[self templateUpdateNode:101:@"0532":@"act38"];
+		[self templateUpdateNode:113:@"0551":@"act36"];
 	}
 	else{
 		[self templateUpdateNode:18:@"0521":@"act2"];
@@ -782,7 +782,8 @@ CGRect			screenBound;
 		[self templateUpdateNode:39:@"0524":@"act10"];
 		[self templateUpdateNode:77:@"0525":@"act27"];
 		[self templateUpdateNode:84:@"0526":@"act47"];
-		[self templateUpdateNode:101:@"0532":@"act38"];
+		[self templateUpdateNode:101:@"0533":@"act38"];
+		[self templateUpdateNode:113:@"0552":@"act36"];
 	}
 	
 	// Extras
@@ -800,6 +801,8 @@ CGRect			screenBound;
 	self.interfaceFuseBackground.alpha = 1.0;
 	[self fadeOut:self.interfaceFuseBackground d:0.5 t:0.5];
 }
+
+- (void)progress{}
 
 
 - (void)templateProgressTerminal
@@ -834,15 +837,16 @@ CGRect			screenBound;
 		self.graphic1.alpha = 1.0;
 		[self templateUpdateNode:21 :@"0543" :@"act35"];
 		[self templateUpdateNode:43 :@"0544" :@"act34"];
-		[self audioVolume:1];
+		[self audioVolume:1:userNode];
 	}
 	else{
 		self.graphic1.hidden = YES;
 		self.graphic1.alpha = 0;
-		[self audioVolume:0];
+		[self audioVolume:0:userNode];
 	}
 	
 }
+
 
 - (void)templateAudioInterface
 {
@@ -868,10 +872,12 @@ CGRect			screenBound;
 }
 
 
-
+- (void)entente{}
 
 - (void)templateEntenteTerminal1
 {
+	[self prefPositioning];
+	
 	NSString *targetGraphic = @"";
 	
 	if( [ userActionStorage[23] intValue] > 17 )		{ targetGraphic = @"Hi"; }
@@ -887,6 +893,8 @@ CGRect			screenBound;
 
 - (void)templateEntenteTerminal2
 {
+	[self prefPositioning];
+	
 	NSString *targetGraphic = @"";
 	
 	if( [ userActionStorage[24] intValue] > 17 )		{ targetGraphic = @"Hi"; }
@@ -954,7 +962,7 @@ CGRect			screenBound;
 
 - (void)templateEntentePart2Decr
 {
-	userNode = 91;
+	userNode = 95;
 	userOrientation = 2;
 	userAction = nil;
 	
@@ -996,22 +1004,85 @@ CGRect			screenBound;
 }
 
 
+- (void)endgame{}
 
-
-- (void)templateEndgameTerminal
+- (void)templateEndgameDoor
 {
-
-	[self.action1 setImage:[UIImage imageNamed: [NSString stringWithFormat:@"tempYes.png"] ] forState:UIControlStateNormal];
-	self.action1.alpha = 1.0;
-	self.action1.hidden = NO;
+	[self prefPositioning];
+	
+	if( [userActionStorage[47] intValue] == 1 && [userActionStorage[36] intValue] == 1 ){
+		[self templateUpdateNode:113:@"0550":@"act40"];
+		self.action3.hidden = NO;
+		self.action3.alpha = 1;
+	}
+	else {
+		[self templateEnergyWarning];
+	}
 	
 }
 
-
-
-- (void)templateEndgameUpdate
+- (void)templateEndgameCredit
 {
-	NSLog(@"ENDGAME");
+	[self prefPositioning];
+	
+	_moveForward.hidden = YES;
+	_moveLeft.hidden = YES;
+	_moveRight.hidden = YES;
+	
+	CGRect screenBound = [[UIScreen mainScreen] bounds];
+	
+	self.graphic1.image = [UIImage imageNamed:@"menu.black.jpg"];
+	self.graphic1.alpha	 = 0.0;
+	self.graphic1.hidden = NO;
+	
+	[self fadeIn:self.graphic1 d:1.0 t:3];
+	
+	self.graphic2.frame = CGRectMake(0, 0, screenBound.size.width, screenBound.size.height);
+	self.graphic2.image = [UIImage imageNamed:@"menu.credit1.png"];
+	self.graphic2.alpha	 = 0.0;
+	self.graphic2.hidden = NO;
+
+	[self fadeIn:self.graphic2 d:6.0 t:1];
+	
+	self.graphic3.frame = CGRectMake(0, 0, screenBound.size.width, screenBound.size.height);
+	self.graphic3.image = [UIImage imageNamed:@"menu.credit2.png"];
+	self.graphic3.alpha	 = 0.0;
+	self.graphic3.hidden = NO;
+	
+	[self fadeIn:self.graphic3 d:10.0 t:1];
+	
+	self.graphic4.frame = CGRectMake(0, 0, screenBound.size.width, screenBound.size.height);
+	self.graphic4.image = [UIImage imageNamed:@"menu.credit3.png"];
+	self.graphic4.alpha	 = 0.0;
+	self.graphic4.hidden = NO;
+	
+	[self fadeIn:self.graphic4 d:16.0 t:1];
+	
+	self.graphic5.frame = CGRectMake(0, 0, screenBound.size.width, screenBound.size.height);
+	self.graphic5.image = [UIImage imageNamed:@"menu.black.jpg"];
+	self.graphic5.alpha	 = 0.0;
+	self.graphic5.hidden = NO;
+	
+	[self fadeIn:self.graphic5 d:20.0 t:1];
+	
+	if( userEnergy == 1){
+		self.graphic6.frame = CGRectMake(0, 0, screenBound.size.width, screenBound.size.height);
+		self.graphic6.image = [UIImage imageNamed:@"menu.credit4.png"];
+		self.graphic6.alpha	 = 0.0;
+		self.graphic6.hidden = NO;
+		
+		[self fadeIn:self.graphic6 d:24.0 t:1];
+	}
+	else{
+		self.graphic6.frame = CGRectMake(0, 0, screenBound.size.width, screenBound.size.height);
+		self.graphic6.image = [UIImage imageNamed:@"menu.credit5.png"];
+		self.graphic6.alpha	 = 0.0;
+		self.graphic6.hidden = NO;
+		
+		[self fadeIn:self.graphic6 d:24.0 t:1];
+	}
+	
+	
 }
 
 
@@ -1033,6 +1104,7 @@ CGRect			screenBound;
 // Actions with interactions
 // ====================
 
+- (void)extra{}
 
 - (void)templateUpdateDoorknob :(int)side1 :(int)side2 :(UIView*)knob
 {
@@ -1053,12 +1125,17 @@ CGRect			screenBound;
 		self.graphic1.hidden = NO;
 		[self templateUpdateNode:19:@"0489":@"act5"];
 	}
-	else if( [userActionStorage[12] isEqual: @"1"] ){
+	else if( [userActionStorage[12] isEqual: @"1"] && [userActionStorage[21] isEqual: @"1"] ){
+		self.graphic1.alpha = 1.0;
+		self.graphic1.hidden = NO;
+		[self templateUpdateNode:19:@"0536":@"act5"];
+	}
+	else if( [userActionStorage[12] isEqual: @"1"] && [userActionStorage[21] isEqual: @"0"] ){
 		self.graphic1.alpha = 1.0;
 		self.graphic1.hidden = NO;
 		[self templateUpdateNode:19:@"0542":@"act5"];
 	}
-	else if( [userActionStorage[21] isEqual: @"1"] ){
+	else if( [userActionStorage[12] isEqual: @"0"] && [userActionStorage[21] isEqual: @"1"] ){
 		self.graphic1.alpha = 1.0;
 		self.graphic1.hidden = NO;
 		[self templateUpdateNode:19:@"0541":@"act5"];
@@ -1096,13 +1173,19 @@ CGRect			screenBound;
 	// Fadeins
 	
 	if( [worldActionType[userActionId] isEqual: @"sealTerminal"] ){
-		[self fadeIn:self.graphic1 d:0 t:0.5];
+		[self fadeIn:self.graphic1 d:0.3 t:0.5];
 	}
 	else if( [worldActionType[userActionId] isEqual: @"audioTerminal"] ){
-		[self fadeIn:self.graphic1 d:0 t:0.5];
+		[self fadeIn:self.graphic1 d:0.3 t:0.5];
+	}
+	else if( [worldActionType[userActionId] isEqual: @"sealDoor"] ){
+		[self fadeIn:self.graphic1 d:0.0 t:1.0];
 	}
 	else if( [worldActionType[userActionId] isEqual: @"progressTerminal"] ){
-		[self fadeIn:self.graphic1 d:0.2 t:0.5];
+		[self fadeIn:self.graphic1 d:0.3 t:0.5];
+	}
+	else if( userActionId == 28){
+		[self fadeIn:self.graphic1 d:0.5 t:1];
 	}
 	else{
 		[self fadeIn:self.graphic1 d:0 t:0.0];
@@ -1283,17 +1366,6 @@ CGRect			screenBound;
 {
 	
 	NSLog(@"[Music:%@]",nodeMusic);
-	
-}
-
-- (void)audioVolume :(int)volume
-{
-	if( userNode == 55 ){
-		NSLog(@"[music.volume:%d]", volume);
-	}
-	else if( userNode == 21){
-		NSLog(@"[ambient.volume:%d]", volume);
-	}
 	
 }
 

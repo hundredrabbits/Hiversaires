@@ -23,7 +23,7 @@
 	node[0]		= [NSArray arrayWithObjects: @"1", @"0", @"0", @"0", @"forest", nil];
 	node[1]		= [NSArray arrayWithObjects: @"2", @"0", @"act28", @"0", @"forest", nil];
 	
-	node[1]		= [NSArray arrayWithObjects: @"23", @"0", @"0", @"0", @"forest", nil];
+	// node[1]		= [NSArray arrayWithObjects: @"87", @"0", @"0", @"0", @"forest", nil];
 	
 	node[2]		= [NSArray arrayWithObjects: @"3", @"0", @"1", @"0", @"forest", nil];
 	node[3]		= [NSArray arrayWithObjects: @"11", @"10|2", @"2", @"4|0", @"forest", nil];
@@ -77,7 +77,8 @@
 	node[47]	= [NSArray arrayWithObjects: @"act38", @"48", @"77", @"0", @"silence", nil];
 	node[48]	= [NSArray arrayWithObjects: @"act25", @"0", @"49", @"47", @"silence", nil];
 	node[49]	= [NSArray arrayWithObjects: @"48", @"act22", @"act21", @"77", @"silence", nil];
-	node[51]	= [NSArray arrayWithObjects: @"0", @"act35", @"0", @"0", @"silence", nil];
+	node[50]	= [NSArray arrayWithObjects: @"0", @"0", @"act41", @"0", @"nataniev", nil];
+	node[51]	= [NSArray arrayWithObjects: @"0", @"0", @"64", @"0", @"silence", nil];
 	
 	node[52]	= [NSArray arrayWithObjects: @"54", @"53", @"0", @"act9", @"antechannel", nil];
 	node[53]	= [NSArray arrayWithObjects: @"55", @"84", @"0", @"52", @"antechannel", nil];
@@ -119,9 +120,9 @@
 		
 	node[89]	= [NSArray arrayWithObjects: @"act42", @"0", @"90", @"0", @"silence", nil];
 	node[90]	= [NSArray arrayWithObjects: @"89", @"0", @"91", @"0", @"silence", nil];
-	node[91]	= [NSArray arrayWithObjects: @"90", @"act23", @"103", @"act31", @"silence", nil];
+	node[91]	= [NSArray arrayWithObjects: @"90", @"act23", @"103", @"0", @"silence", nil];
 	
-	node[103]	= [NSArray arrayWithObjects: @"91", @"0", @"act43", @"0", @"silence", nil];
+	
 	
 	node[92]	= [NSArray arrayWithObjects: @"91", @"0", @"93", @"0", @"silence", nil];
 	node[93]	= [NSArray arrayWithObjects: @"92", @"0", @"94", @"0", @"silence", nil];
@@ -134,6 +135,7 @@
 	node[100]	= [NSArray arrayWithObjects: @"0", @"act44", @"0", @"99", @"silence", nil];
 	node[101]	= [NSArray arrayWithObjects: @"0", @"98", @"act38", @"102", @"silence", nil];
 	node[102]	= [NSArray arrayWithObjects: @"0", @"101", @"0", @"act45", @"silence", nil];
+	node[103]	= [NSArray arrayWithObjects: @"91", @"0", @"act43", @"0", @"silence", nil];
 	
 	node[104]	= [NSArray arrayWithObjects: @"0", @"100", @"0", @"105", @"silence", nil];
 	node[105]	= [NSArray arrayWithObjects: @"0", @"104", @"act24", @"106", @"silence", nil];
@@ -144,10 +146,10 @@
 	node[110]	= [NSArray arrayWithObjects: @"0", @"109", @"0", @"111", @"silence", nil];
 	node[111]	= [NSArray arrayWithObjects: @"0", @"110", @"0", @"1|0", @"silence", nil];
 	
-	node[112]	= [NSArray arrayWithObjects: @"115", @"113", @"0", @"act33", @"silence", nil];
-	node[113]	= [NSArray arrayWithObjects: @"114", @"act36", @"0", @"112", @"silence", nil];
-	node[114]	= [NSArray arrayWithObjects: @"0", @"0", @"113", @"115", @"silence", nil];
-	node[115]	= [NSArray arrayWithObjects: @"0", @"114", @"112", @"0", @"silence", nil];
+	node[112]	= [NSArray arrayWithObjects: @"115", @"113", @"0", @"act33", @"nataniev", nil];
+	node[113]	= [NSArray arrayWithObjects: @"114", @"act36", @"act40", @"112", @"nataniev", nil];
+	node[114]	= [NSArray arrayWithObjects: @"0", @"0", @"113", @"115", @"nataniev", nil];
+	node[115]	= [NSArray arrayWithObjects: @"0", @"114", @"112", @"0", @"nataniev", nil];
 	node[116]	= [NSArray arrayWithObjects: @"0", @"0", @"0", @"20|2", @"silence", nil];
 	
 	return node;
@@ -200,12 +202,12 @@
 	puzzle[33]		= @"energyDoor";
 	puzzle[34]		= @"audioTerminal";
 	puzzle[35]		= @"audioTerminal";
-	puzzle[36]		= @"endgameTerminal";
+	puzzle[36]		= @"energyTerminal";
 	puzzle[37]		= @"energyTerminal";
-	puzzle[38]		= @"energyTerminal";
+	puzzle[38]		= @"energyTerminal";	// Entente Fuse
 	puzzle[39]		= @"energyTerminal";
-	puzzle[40]		= @"collectible";
-	puzzle[41]		= @"collectible";
+	puzzle[40]		= @"endgameDoor";
+	puzzle[41]		= @"endgameCredit";
 	
 	// Entente Puzzle
 	

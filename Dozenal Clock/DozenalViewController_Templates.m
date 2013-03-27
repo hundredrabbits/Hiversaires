@@ -3,8 +3,11 @@
 
 #import "DozenalViewController_templates.h"
 
-AVAudioPlayer *player;
+AVAudioPlayer *playerSounds;
 AVAudioPlayer *playerAmbient;
+AVAudioPlayer *playerMusic;
+int				userVolumeAmbient = 1;
+int				userVolumeSounds = 1;
 
 @implementation DozenalViewController (Audio)
 
@@ -258,9 +261,12 @@ AVAudioPlayer *playerAmbient;
 	NSString* resourcePath = [[NSBundle mainBundle] resourcePath];
 	resourcePath = [resourcePath stringByAppendingString: [NSString stringWithFormat:@"/%@.aif", filename] ];
 	NSError* err;
-	player = [[AVAudioPlayer alloc] initWithContentsOfURL: [NSURL fileURLWithPath:resourcePath] error:&err];
+	playerSounds = [[AVAudioPlayer alloc] initWithContentsOfURL: [NSURL fileURLWithPath:resourcePath] error:&err];
 	if(err)	{ NSLog(@"%@",err); }
-	else	{ [player play]; }
+	else	{
+		[playerSounds play];
+		playerSounds.volume = userVolumeSounds;
+	}
 }
 
 -(void)ambientPlayer: (NSString *)filename;
@@ -272,11 +278,27 @@ AVAudioPlayer *playerAmbient;
 	if(err)	{ NSLog(@"%@",err); }
 	else	{
 		playerAmbient.numberOfLoops = -1; //infinite
-		playerAmbient.volume = 0.0;
 		[playerAmbient play];
+		playerAmbient.volume = userVolumeAmbient;
 	}
 	
-	NSLog(@"Playing");
+	NSLog(@"-Ambient");
+}
+
+- (void)audioVolume :(int)volume :(int)userNode
+{
+	if( userNode == 55 ){
+		userVolumeSounds = volume;
+		playerMusic.volume = volume;
+		NSLog(@"[music.volume:%d]", volume);
+	}
+	else if( userNode == 21){
+		userVolumeAmbient = volume;
+		playerAmbient.volume = volume;
+		playerSounds.volume = volume;
+		NSLog(@"[ambient.volume:%d]", volume);
+	}
+	
 }
 
 
