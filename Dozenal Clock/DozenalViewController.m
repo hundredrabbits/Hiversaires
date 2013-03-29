@@ -129,9 +129,9 @@ CGRect			screenBound;
 	self.debugOrientation.text = [NSString stringWithFormat:@"%d", userOrientation];
 	self.debugAction.text = [NSString stringWithFormat:@"%@", worldPath[userNode][userOrientation]];
 
-	self.debugNode.hidden = YES;
-	self.debugOrientation.hidden = YES;
-	self.debugAction.hidden = YES;
+//	self.debugNode.hidden = YES;
+//	self.debugOrientation.hidden = YES;
+//	self.debugAction.hidden = YES;
 	
     self.moveForward.hidden = worldPath[userNode][userOrientation] ? NO : YES;
 	
@@ -581,34 +581,42 @@ CGRect			screenBound;
 	[self templateSealInterface];
 	
 	if ( ([userActionStorage[4] intValue] == 1 && [userActionStorage[13] intValue] == 1) ) { // Act 1 : Forest + Rainre in Stones
-		[self templateUpdateDoorknob:46:85:_action2];
-		[self  templateUpdateNode:46:@"0486":@"act15"];
-		[self  templateUpdateNode:85:@"0485":@"act15"];
-		if( userProgress < 2){ [self audioMusicCheck:@"act2"];}
-		userProgress = 2;
+		if( userNode == 46 || userNode == 85 ){
+			[self templateUpdateDoorknob:46:85:_action2];
+			[self  templateUpdateNode:46:@"0486":@"act15"];
+			[self  templateUpdateNode:85:@"0485":@"act15"];
+			if( userProgress < 2){ [self audioMusicCheck:@"act2"];}
+			userProgress = 2;
+		}
 	}
 	else if ( [userActionStorage[20] intValue] == 1 && [userActionStorage[13] intValue] == 1 ) { // Act 2 : Metamondst + Rainre in Forest
-		[self templateUpdateDoorknob:48:11:_action2];
-		[self templateUpdateNode:11:@"0487":@"act25"];
-		[self templateUpdateNode:48:@"0488":@"act25"];
-		if( userProgress < 3){ [self audioMusicCheck:@"act3"];}
-		userProgress = 3;
+		if( userNode == 11 || userNode == 48 ){
+			[self templateUpdateDoorknob:48:11:_action2];
+			[self templateUpdateNode:11:@"0487":@"act25"];
+			[self templateUpdateNode:48:@"0488":@"act25"];
+			if( userProgress < 3){ [self audioMusicCheck:@"act3"];}
+			userProgress = 3;
+		}
 	}
 	else if ( ([userActionStorage[21] intValue] == 1 && [userActionStorage[13] intValue] == 1) ) { // Act 3 : Forest + Rainre in Metamondst
-		[self templateUpdateDoorknob:46:85:_action2];
-		[self  templateUpdateNode:46:@"0486":@"act15"];
-		[self  templateUpdateNode:85:@"0485":@"act15"];
-		if( userProgress < 4){ [self audioMusicCheck:@"act3"];}
-		userProgress = 4;
+		if( userNode == 46 || userNode == 85 ){
+			[self templateUpdateDoorknob:46:85:_action2];
+			[self  templateUpdateNode:46:@"0486":@"act15"];
+			[self  templateUpdateNode:85:@"0485":@"act15"];
+			if( userProgress < 4){ [self audioMusicCheck:@"act3"];}
+			userProgress = 4;
+		}
 	}
 	else if ( [userActionStorage[21] intValue] == 1 && [userActionStorage[12] intValue] == 1 ) { // Act 4 : Antechannel + Stones in Studio
-		self.action1.alpha = 1.0;
-		self.action1.hidden = NO;
-		[self templateUpdateStudioTerminal];
-		if( userProgress < 5){ [self audioMusicCheck:@"act3"];}
-		userProgress = 5;
+		if( userNode == 19 ){
+			self.action1.alpha = 1.0;
+			self.action1.hidden = NO;
+			[self templateUpdateStudioTerminal];
+			if( userProgress < 5){ [self audioMusicCheck:@"act3"];}
+			userProgress = 5;
+		}
 	}
-	else if ( [userAction isEqual: @"act5"] ){
+	else if ( [userAction isEqual: @"act5"] && userNode == 19 ){ // Studio Terminal
 		[self templateUpdateStudioTerminal];
 	}
 	else{
@@ -885,12 +893,12 @@ CGRect			screenBound;
 	
 	NSString *targetGraphic = [[NSMutableString alloc] init];
 	
-	if( [ userActionStorage[23] intValue] > 17 )		{ targetGraphic = @"Hi"; }
-	else if( [ userActionStorage[23] intValue] < 17 )	{ targetGraphic = @"Lo"; }
-	else if( [ userActionStorage[23] intValue] == 17 )	{ targetGraphic = @"On"; }
+	if( [ userActionStorage[23] intValue] > 17 )		{ targetGraphic = @"Left"; }
+	else if( [ userActionStorage[23] intValue] < 17 )	{ targetGraphic = @"Right"; }
+	else if( [ userActionStorage[23] intValue] == 17 )	{ targetGraphic = @"Right"; }
 	
 	self.graphic1.image = [UIImage imageNamed:[NSString stringWithFormat:@"entente%@.png", targetGraphic ] ];
-	[self fadeHalf:self.graphic1 t:0.5];
+	[self fadeIn:self.graphic1 d:0 t:1];
 
 }
 
@@ -902,12 +910,12 @@ CGRect			screenBound;
 	
 	NSString *targetGraphic = [[NSMutableString alloc] init];
 	
-	if( [ userActionStorage[24] intValue] > 17 )		{ targetGraphic = @"Hi"; }
-	else if( [ userActionStorage[24] intValue] < 17 )	{ targetGraphic = @"Lo"; }
-	else if( [ userActionStorage[24] intValue] == 17 )	{ targetGraphic = @"On"; }
+	if( [ userActionStorage[24] intValue] > 17 )		{ targetGraphic = @"Left2"; }
+	else if( [ userActionStorage[24] intValue] < 17 )	{ targetGraphic = @"Right2"; }
+	else if( [ userActionStorage[24] intValue] == 17 )	{ targetGraphic = @"Straight"; }
 	
 	self.graphic1.image = [UIImage imageNamed:[NSString stringWithFormat:@"entente%@.png", targetGraphic ] ];
-	[self fadeHalf:self.graphic1 t:0.5];
+	[self fadeIn:self.graphic1 d:0 t:1];
 
 }
 
@@ -1404,12 +1412,15 @@ CGRect			screenBound;
 	// Core
 	
 	self.viewMain.frame = CGRectMake(0, 0, screenBound.size.width, screenBound.size.height);
+	self.viewMain.exclusiveTouch = YES;
+	
 	
 	// Movement
 	
 	self.moveForward.frame = CGRectMake( screenWidthThird, 0, screenWidthThird, screenHeight );
 	self.moveRight.frame = CGRectMake( screenWidthThird*2, 0, screenWidthThird, screenHeight );
 	self.moveLeft.frame = CGRectMake(0, 0, screenWidthThird, screenHeight );	
+	
 	
 //	[self.action1 setImage:[UIImage imageNamed: [NSString stringWithFormat:@"tempYes.png"] ] forState:UIControlStateNormal];
 	

@@ -339,10 +339,9 @@ NSString* resourcePath = @"";
 	else if( userNode == 21){
 		
 		userVolumeAmbient = volume;
-		playerSounds.volume = volume;
 		
 		if( volume == 1){
-			playerAmbient.volume = 0.3;
+			playerAmbient.volume = 0.1;
 		}
 		else{
 			playerAmbient.volume = 0;
