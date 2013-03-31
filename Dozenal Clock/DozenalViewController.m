@@ -56,6 +56,8 @@ float			screenWidth = 0;
 
 CGRect			screenBound;
 
+NSUserDefaults *memory;
+
 @interface DozenalViewController ()
 @end
 
@@ -96,6 +98,8 @@ CGRect			screenBound;
 	// ====================
 	
 	[self prefPositioning];
+	
+	[self prefLoad];
 	
 	[self templateSealInterface];
 	[self templateEnergyInterface];
@@ -587,6 +591,7 @@ CGRect			screenBound;
 			[self  templateUpdateNode:85:@"0485":@"act15"];
 			if( userProgress < 2){ [self audioMusicCheck:@"act2"];}
 			userProgress = 2;
+			[self prefSave];
 		}
 	}
 	else if ( [userActionStorage[20] intValue] == 1 && [userActionStorage[13] intValue] == 1 ) { // Act 2 : Metamondst + Rainre in Forest
@@ -596,6 +601,7 @@ CGRect			screenBound;
 			[self templateUpdateNode:48:@"0488":@"act25"];
 			if( userProgress < 3){ [self audioMusicCheck:@"act3"];}
 			userProgress = 3;
+			[self prefSave];
 		}
 	}
 	else if ( ([userActionStorage[21] intValue] == 1 && [userActionStorage[13] intValue] == 1) ) { // Act 3 : Forest + Rainre in Metamondst
@@ -605,6 +611,7 @@ CGRect			screenBound;
 			[self  templateUpdateNode:85:@"0485":@"act15"];
 			if( userProgress < 4){ [self audioMusicCheck:@"act3"];}
 			userProgress = 4;
+			[self prefSave];
 		}
 	}
 	else if ( [userActionStorage[21] intValue] == 1 && [userActionStorage[12] intValue] == 1 ) { // Act 4 : Antechannel + Stones in Studio
@@ -614,6 +621,7 @@ CGRect			screenBound;
 			[self templateUpdateStudioTerminal];
 			if( userProgress < 5){ [self audioMusicCheck:@"act3"];}
 			userProgress = 5;
+			[self prefSave];
 		}
 	}
 	else if ( [userAction isEqual: @"act5"] && userNode == 19 ){ // Studio Terminal
@@ -1478,5 +1486,22 @@ CGRect			screenBound;
 	// [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://www.apple.com"]];
 	
 }
+
+- (void)prefSave
+{
+	NSLog(@"- [progress:save]");
+	
+	[[NSUserDefaults standardUserDefaults] setObject:userActionStorage forKey:@"slot1"];
+	
+}
+
+- (void)prefLoad
+{
+	NSLog(@"- [progress:load]");
+	
+	NSLog(@"- [progress:%@]", [[NSUserDefaults standardUserDefaults] objectForKey:@"slot1"]  );
+
+}
+
 
 @end
