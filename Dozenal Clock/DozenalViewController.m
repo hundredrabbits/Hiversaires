@@ -1472,36 +1472,50 @@ NSUserDefaults *memory;
 - (void)prefSave
 {
 	NSLog(@"- [progress:saving..]");
-		
+	
+	userSettings	= [NSMutableArray arrayWithObjects:@"0",@"0",@"0",@"0",nil];
+	userSettings[0] = [NSString stringWithFormat:@"%d", userNode];
+	userSettings[1] = [NSString stringWithFormat:@"%d", userOrientation];
+	userSettings[2] = [NSString stringWithFormat:@"%d", userProgress];
+	userSettings[3] = [NSString stringWithFormat:@"%d", userEnergy];
+	
+	[[NSUserDefaults standardUserDefaults] setObject:userSettings forKey:@"slot0"];
 	[[NSUserDefaults standardUserDefaults] setObject:userActionStorage forKey:@"slot1"];
 	
-	if( [[NSUserDefaults standardUserDefaults] objectForKey:@"slot1"] ){
-		NSLog(@"%@",[[NSUserDefaults standardUserDefaults] objectForKey:@"slot1"]);
-		NSLog(@"- [progress:saved.]");
-
-	}
-	else{
-		NSLog(@"- [progress:error.]");
-	}
+	NSLog(@"%@",[[NSUserDefaults standardUserDefaults] objectForKey:@"slot0"]);
+	NSLog(@"%@",[[NSUserDefaults standardUserDefaults] objectForKey:@"slot1"]);
 	
-		
-	
+	NSLog(@"- [progress:saved.]");
 	
 }
 
 - (void)prefLoad
 {
 	
-	if( [[NSUserDefaults standardUserDefaults] objectForKey:@"slot1"] ){
+	// Load Game
+	
+	if( [[NSUserDefaults standardUserDefaults] objectForKey:@"slot1"] && [[NSUserDefaults standardUserDefaults] objectForKey:@"slot0"] ){
 		
 		NSLog(@"- [progress:loading..]");
 		
-		NSLog(@"%@",[[NSUserDefaults standardUserDefaults] objectForKey:@"slot1"]);
+		// Settings
+		userSettings	= [[NSUserDefaults standardUserDefaults] objectForKey:@"slot0"];
+		userNode		= [userSettings[0] intValue];
+		userOrientation = [userSettings[1] intValue];
+		userProgress	= [userSettings[2] intValue];
+		userEnergy		= [userSettings[3] intValue];
+		NSLog(@"%@",[[NSUserDefaults standardUserDefaults] objectForKey:@"slot0"]);
+		
+		// Storage
 		userActionStorage = [[NSUserDefaults standardUserDefaults] objectForKey:@"slot1"];
+		NSLog(@"%@",[[NSUserDefaults standardUserDefaults] objectForKey:@"slot1"]);
 		
 		NSLog(@"- [progress:loaded.]");
 		
 	}
+	
+	// New Game
+	
 	else{
 		
 		NSLog(@"- [progress:creating..]");
