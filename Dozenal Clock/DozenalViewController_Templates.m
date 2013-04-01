@@ -278,7 +278,7 @@ NSString* resourcePath = @"";
 -(void)soundPlayer: (NSString *)filename;
 {
 	resourcePath = [[NSBundle mainBundle] resourcePath];
-	resourcePath = [resourcePath stringByAppendingString: [NSString stringWithFormat:@"/%@.aif", filename] ];
+	resourcePath = [resourcePath stringByAppendingString: [NSString stringWithFormat:@"/%@.mp3", filename] ];
 	NSError* err;
 	playerSounds = [[AVAudioPlayer alloc] initWithContentsOfURL: [NSURL fileURLWithPath:resourcePath] error:&err];
 	if(err)	{ NSLog(@"%@",err); }
@@ -290,7 +290,7 @@ NSString* resourcePath = @"";
 -(void)ambientPlayer: (NSString *)filename;
 {
 	resourcePath = [[NSBundle mainBundle] resourcePath];
-	resourcePath = [resourcePath stringByAppendingString: [NSString stringWithFormat:@"/%@.aif", filename] ];
+	resourcePath = [resourcePath stringByAppendingString: [NSString stringWithFormat:@"/%@.mp3", filename] ];
 	NSError* err;
 	playerAmbient = [[AVAudioPlayer alloc] initWithContentsOfURL: [NSURL fileURLWithPath:resourcePath] error:&err];
 	if(err)	{ NSLog(@"%@",err); }
@@ -305,7 +305,7 @@ NSString* resourcePath = @"";
 -(void)musicPlayer: (NSString *)filename;
 {
 	resourcePath = [[NSBundle mainBundle] resourcePath];
-	resourcePath = [resourcePath stringByAppendingString: [NSString stringWithFormat:@"/music_%@.aif", filename] ];
+	resourcePath = [resourcePath stringByAppendingString: [NSString stringWithFormat:@"/music_%@.mp3", filename] ];
 	NSError* err;
 	playerMusic = [[AVAudioPlayer alloc] initWithContentsOfURL: [NSURL fileURLWithPath:resourcePath] error:&err];
 	if(err)	{ NSLog(@"%@",err); }
