@@ -87,7 +87,7 @@ NSUserDefaults *memory;
 	[self templateEnergyInterface];
 	[self templateAudioInterface];
 	
-	[self audioMusicCheck:@"act1"];
+	[self musicPlayer:@"act1"];
 	
 	[self actionCheck];
     [self moveCheck];
@@ -136,9 +136,6 @@ NSUserDefaults *memory;
 	// Resize
 	
 	[self audioAmbientCheck: worldPath[userNode][4] ];
-	[self audioVolume:1:45];
-	[self audioVolume:1:21];
-
 	
 }
 
@@ -407,6 +404,9 @@ NSUserDefaults *memory;
 	self.action1.hidden = NO;
 	self.action1.alpha = 1.0;
 	
+	self.graphic5.alpha = 0;
+	self.graphic4.alpha = 0;
+	
 	[self audioClockInit];
 	
 	[self templateClockUpdate];
@@ -431,19 +431,19 @@ NSUserDefaults *memory;
 	puzzleState = 0;
 	
 	if([userAction isEqual: @"act7"]){
-		if( [userActionStorage[1] intValue] == 2 || [userActionStorage[1] intValue] == 0 ){
-			puzzleState = 1;
-		}
-	}
-	
-	if([userAction isEqual: @"act8"]){
 		if( [userActionStorage[1] intValue] == 1 || [userActionStorage[1] intValue] == 2 ){
 			puzzleState = 1;
 		}
 	}
 	
-	if([userAction isEqual: @"act9"]){
+	if([userAction isEqual: @"act8"]){
 		if( [userActionStorage[1] intValue] == 1 || [userActionStorage[1] intValue] == 0 ){
+			puzzleState = 1;
+		}
+	}
+	
+	if([userAction isEqual: @"act9"]){
+		if( [userActionStorage[1] intValue] == 2 || [userActionStorage[1] intValue] == 0 ){
 			puzzleState = 1;
 		}
 	}
@@ -466,52 +466,15 @@ NSUserDefaults *memory;
 
 - (void)templateClockUpdate
 {
-	[self rotate:self.graphic3 t:0 d:0];
-	self.graphic3.alpha = 0.0;
+	self.graphic4.frame = CGRectMake(0, 0, screenWidth, screenHeight); // interface
+	self.graphic4.image = [UIImage imageNamed:[NSString stringWithFormat:@"interface.dimclock.shadow.png"] ];
+
+	self.graphic5.frame = CGRectMake(0, 0, screenWidth, screenHeight); // interface
+	self.graphic5.image = [UIImage imageNamed:[NSString stringWithFormat:@"interface.dimclock.state%@.png", userActionStorage[1] ] ];
+	NSLog(@"%@",userActionStorage[1]);
 	
-	self.graphic2.frame = CGRectMake(screenWidthHalf/2, screenHeightHalf-(screenWidthHalf/2), screenWidthHalf, screenWidthHalf); // interface
-	self.graphic3.frame = CGRectMake(screenWidthHalf/2, screenHeightHalf-(screenWidthHalf/2), screenWidthHalf, screenWidthHalf); // interface
-	self.graphic4.frame = CGRectMake(screenWidthHalf/2, screenHeightHalf-(screenWidthHalf/2), screenWidthHalf, screenWidthHalf); // interface
-	self.graphic5.frame = CGRectMake(screenWidthHalf/2, screenHeightHalf-(screenWidthHalf/2), screenWidthHalf, screenWidthHalf); // interface
-	self.graphic6.frame = CGRectMake(screenWidthHalf/2, screenHeightHalf-(screenWidthHalf/2), screenWidthHalf, screenWidthHalf); // interface
-	self.graphic7.frame = CGRectMake(screenWidthHalf/2, screenHeightHalf-(screenWidthHalf/2), screenWidthHalf, screenWidthHalf); // interface
-	self.graphic8.frame = CGRectMake(screenWidthHalf/2, screenHeightHalf-(screenWidthHalf/2), screenWidthHalf, screenWidthHalf); // interface
-	self.graphic9.frame = CGRectMake(screenWidthHalf/2, screenHeightHalf-(screenWidthHalf/2), screenWidthHalf, screenWidthHalf); // interface
-	self.graphic10.frame = CGRectMake(screenWidthHalf/2, screenHeightHalf-(screenWidthHalf/2), screenWidthHalf, screenWidthHalf); // interface
-	
-	// Bridge
-	
-	
-	// Shadows
-	
-	self.graphic2.image = [UIImage imageNamed:@"clock_shadows.png"];
-	
-	// Selector
-	
-	self.graphic3.image = [UIImage imageNamed:@"clock_selector.png"];
-	
-	// Location
-	
-	if( userNode == 7 ){ self.graphic4.image = [UIImage imageNamed:@"clock_loc_forest.png"]; }
-	if( userNode == 86){ self.graphic4.image = [UIImage imageNamed:@"clock_loc_metamondst.png"]; }
-	if( userNode == 45){ self.graphic4.image = [UIImage imageNamed:@"clock_loc_rainre.png"]; }
-	
-	// Seals
-	
-	if( [userActionStorage[4]  isEqual: @"1"] ){ self.graphic5.image = [UIImage imageNamed:@"clock_forest.png"]; [self fadeDelay:self.graphic5 d:0.7 t:0.5]; }
-	if( [userActionStorage[12] isEqual: @"1"] ){ self.graphic9.image = [UIImage imageNamed:@"clock_stones.png"]; [self fadeDelay:self.graphic9 d:0.7 t:0.5]; }
-	if( [userActionStorage[13] isEqual: @"1"] ){ self.graphic8.image = [UIImage imageNamed:@"clock_rainre.png"]; [self fadeDelay:self.graphic8 d:0.7 t:0.5]; }
-	if( [userActionStorage[21] isEqual: @"1"] ){ self.graphic6.image = [UIImage imageNamed:@"clock_antechannel.png"]; [self fadeDelay:self.graphic6 d:0.7 t:0.5]; }
-	if( [userActionStorage[20] isEqual: @"1"] ){ self.graphic7.image = [UIImage imageNamed:@"clock_metamondst.png"]; [self fadeDelay:self.graphic7 d:0.7 t:0.5]; }
-	if( [userActionStorage[20] isEqual: @"1"] ){ self.graphic10.image= [UIImage imageNamed:@"clock_studio.png"]; [self fadeDelay:self.graphic10 d:0.7 t:0.5]; }
-	
-	// Fade in
-	
-	[self fadeDelay:self.graphic2 d:0.1 t:0.5];
-	[self fadeDelay:self.graphic3 d:0.2 t:0.2];
-	[self fadeDelay:self.graphic4 d:0.5 t:0.5];
-	
-	[self rotate:self.graphic3 t:0.2 d:( [userActionStorage[userActionId] intValue] *120 )];
+	[self fadeIn:self.graphic4 d:0.5 t:0.5];
+	[self fadeIn:self.graphic5 d:1.5 t:0.5];
 	
 	
 }
@@ -571,7 +534,7 @@ NSUserDefaults *memory;
 			[self templateUpdateDoorknob:46:85:_action2];
 			[self  templateUpdateNode:46:@"0486":@"act15"];
 			[self  templateUpdateNode:85:@"0485":@"act15"];
-			if( userProgress < 2){ [self audioMusicCheck:@"act2"];}
+			if( userProgress < 2){ [self musicPlayer:@"act2"];}
 			userProgress = 2;
 			[self prefSave];
 		}
@@ -581,7 +544,7 @@ NSUserDefaults *memory;
 			[self templateUpdateDoorknob:48:11:_action2];
 			[self templateUpdateNode:11:@"0487":@"act25"];
 			[self templateUpdateNode:48:@"0488":@"act25"];
-			if( userProgress < 3){ [self audioMusicCheck:@"act3"];}
+			if( userProgress < 3){ [self musicPlayer:@"act3"];}
 			userProgress = 3;
 			[self prefSave];
 		}
@@ -591,7 +554,7 @@ NSUserDefaults *memory;
 			[self templateUpdateDoorknob:46:85:_action2];
 			[self  templateUpdateNode:46:@"0486":@"act15"];
 			[self  templateUpdateNode:85:@"0485":@"act15"];
-			if( userProgress < 4){ [self audioMusicCheck:@"act3"];}
+			if( userProgress < 4){ [self musicPlayer:@"act4"];}
 			userProgress = 4;
 			[self prefSave];
 		}
@@ -601,7 +564,7 @@ NSUserDefaults *memory;
 			self.action1.alpha = 1.0;
 			self.action1.hidden = NO;
 			[self templateUpdateStudioTerminal];
-			if( userProgress < 5){ [self audioMusicCheck:@"act3"];}
+			if( userProgress < 5){ [self musicPlayer:@"act5"];}
 			userProgress = 5;
 			[self prefSave];
 		}
@@ -840,12 +803,12 @@ NSUserDefaults *memory;
 		self.graphic1.alpha = 1.0;
 		[self templateUpdateNode:21 :@"0543" :@"act35"];
 		[self templateUpdateNode:43 :@"0544" :@"act34"];
-		[self audioVolume:1:userNode];
+		[self audioVolume:100];
 	}
 	else{
 		self.graphic1.hidden = YES;
 		self.graphic1.alpha = 0;
-		[self audioVolume:0:userNode];
+		[self audioVolume:0];
 	}
 	
 }
@@ -853,19 +816,12 @@ NSUserDefaults *memory;
 
 - (void)templateAudioInterface
 {
-	if( userNode == 21 && [userActionStorage[35] isEqual: @"1"] ){
+	if( [userActionStorage[35] isEqual: @"1"] ){
 		self.interfaceAudio.image = [UIImage imageNamed:@"interfaceAudio.sfx1.png"];
 	}
-	else if( userNode == 21 ){
+	else{
 		self.interfaceAudio.image = [UIImage imageNamed:@"interfaceAudio.sfx0.png"];
 	}
-	else if( userNode == 43 && [userActionStorage[34] isEqual: @"1"] ){
-		self.interfaceAudio.image = [UIImage imageNamed:@"interfaceAudio.mus1.png"];
-	}
-	else if( userNode == 43 ){
-		self.interfaceAudio.image = [UIImage imageNamed:@"interfaceAudio.mus0.png"];
-	}
-	
 	
 	self.interfaceAudio.hidden = NO;
 	self.interfaceAudio.alpha = 1;
@@ -1028,6 +984,8 @@ NSUserDefaults *memory;
 {
 	[self prefPositioning];
 	
+	[self musicPlayer:@"credit"];
+	
 	_moveForward.hidden = YES;
 	_moveLeft.hidden = YES;
 	_moveRight.hidden = YES;
@@ -1176,7 +1134,7 @@ NSUserDefaults *memory;
 	// Fadeins
 	
 	if( [worldActionType[userActionId] isEqual: @"sealTerminal"] ){
-		[self fadeIn:self.graphic1 d:0.2 t:0.3];
+		[self fadeIn:self.graphic1 d:0.2 t:0.1];
 	}
 	else if( [worldActionType[userActionId] isEqual: @"audioTerminal"] ){
 		[self fadeIn:self.graphic1 d:0.3 t:0.5];
@@ -1242,15 +1200,6 @@ NSUserDefaults *memory;
 // ====================
 // Tools
 // ====================
-
--(void)fadeDelay:(UIView*)viewToFadeIn d:(NSTimeInterval)delay t:(NSTimeInterval)duration
-{
-	[UIView beginAnimations: @"Fade Delay" context:nil];
-	[UIView setAnimationDuration:duration];
-	[UIView setAnimationDelay:delay];
-	viewToFadeIn.alpha = 1;
-	[UIView commitAnimations];
-}
 
 -(void)fadeIn:(UIView*)viewToFadeIn d:(NSTimeInterval)delay t:(NSTimeInterval)duration
 {
@@ -1370,14 +1319,6 @@ NSUserDefaults *memory;
 	
 }
 
-- (void)audioMusicCheck :(NSString*)nodeMusic
-{
-	
-	[self musicPlayer:nodeMusic];	
-	NSLog(@"[Music:%@]",nodeMusic);
-	
-}
-
 // ====================
 // Preferences
 // ====================
@@ -1466,6 +1407,8 @@ NSUserDefaults *memory;
 	[self fadeOut:self.graphic3 d:5 t:2.0];
 	
 	// [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://www.apple.com"]];
+	
+	[self audioVolume:100]; // Music
 	
 }
 

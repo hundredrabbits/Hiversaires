@@ -2,7 +2,7 @@
 
 @interface DozenalViewController (Templates)
 
--(void) audioVolume :(int)volume :(int)userNode;
+-(void) audioVolume :(int)volume;
 
 -(void) audioFootLeft;
 -(void) audioFootRight;

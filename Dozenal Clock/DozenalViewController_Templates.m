@@ -6,9 +6,7 @@
 AVAudioPlayer *playerSounds;
 AVAudioPlayer *playerAmbient;
 AVAudioPlayer *playerMusic;
-int				userVolumeAmbient = 1;
-int				userVolumeSounds = 1;
-int				userVolumeMusic = 1;
+int	userVolumeMusic = 1;
 
 NSString* resourcePath = @"";
 
@@ -286,7 +284,6 @@ NSString* resourcePath = @"";
 	if(err)	{ NSLog(@"%@",err); }
 	else	{
 		[playerSounds play];
-		playerSounds.volume = userVolumeSounds;
 	}
 }
 
@@ -300,10 +297,9 @@ NSString* resourcePath = @"";
 	else	{
 		playerAmbient.numberOfLoops = -1; //infinite
 		[playerAmbient play];
-		playerAmbient.volume = userVolumeAmbient;
+		playerAmbient.volume = 0.05;
 	}
-	
-	NSLog(@"-Ambient");
+	NSLog(@"[ambient.volume: %f]",playerAmbient.volume);
 }
 
 -(void)musicPlayer: (NSString *)filename;
@@ -316,40 +312,24 @@ NSString* resourcePath = @"";
 	else	{
 		playerMusic.numberOfLoops = -1; //infinite
 		[playerMusic play];
-		playerMusic.volume = 0.3;
+		playerMusic.volume = userVolumeMusic;
 	}
-	
-	NSLog(@"-Music");
+	NSLog(@"[music.volume: %f]",playerMusic.volume);
 }
 
-- (void)audioVolume :(int)volume :(int)userNode
+- (void)audioVolume :(int)volume
 {
-	if( userNode == 43 ){
-		userVolumeMusic = volume;
-		
-		if( volume == 1){
-			playerMusic.volume = 0.3;
-		}
-		else{
-			playerMusic.volume = 0;
-		}
-		
-		NSLog(@"[music.volume:%d]", volume);
-	}
-	else if( userNode == 21){
-		
-		userVolumeAmbient = volume;
-		
-		if( volume == 1){
-			playerAmbient.volume = 0.1;
-		}
-		else{
-			playerAmbient.volume = 0;
-		}
-		
-		NSLog(@"[ambient.volume:%d]", volume);
-	}
+	
+	userVolumeMusic = [[NSNumber numberWithInt: volume] floatValue];
+	userVolumeMusic = userVolumeMusic/100;
+	
+	playerMusic.volume = userVolumeMusic;
+	NSLog(@"[music.volume: %f]",playerMusic.volume);
+
 }
+
+
+
 
 
 @end
