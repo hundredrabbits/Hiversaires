@@ -27,21 +27,24 @@ NSString		*worldNodeImgId;
 int				puzzleTerminal = 0;
 int				puzzleState;
 
-// User
+// User Storage
 
-NSString        *userAction;
 NSMutableArray	*userActionStorage;
-NSString		*userAmbient;
-
-int             userId;
+NSMutableArray	*userSettings;
 int             userNode = 1;
 int             userOrientation = 0;
-int				userActionId;
 int				userProgress = 1;
-int				userSeal = 0;
 int				userEnergy = 0;
-int				userFold = 0;
+
+// User Temp
+
+NSString        *userAction;
+NSString		*userAmbient;
+int				userSeal = 0;
+int				userActionId;
 int				userFootstep = 0;
+
+// Misc
 
 NSArray			*temp;
 
@@ -75,28 +78,7 @@ NSUserDefaults *memory;
 	
 	worldPath			= [self worldPath];
 	worldActionType		= [self worldActionType];
-	userActionStorage	= [NSMutableArray arrayWithObjects:@"",@"1",@"0",@"",@"",@"0",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"0",@"0",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",nil];
-	
-	// Default: Fuses
-	
-	userActionStorage[31] = @"1"; // Fuse in Forest
-	userActionStorage[38] = @"1"; // Fuse in Entente
-	userActionStorage[39] = @"1"; // Fuse in Antechannel
-	
-	// Default: Audio Volume
-	
-	userActionStorage[34] = @"1";
-	userActionStorage[35] = @"1";
-	
-	userActionStorage[23] = @"15";
-	userActionStorage[19] = @"13";
-	
-	// Overrides (remove at builds)	
-	
-	// ====================
-	// Begin
-	// ====================
-	
+
 	[self prefPositioning];
 	
 	[self prefLoad];
@@ -1489,17 +1471,55 @@ NSUserDefaults *memory;
 
 - (void)prefSave
 {
-	NSLog(@"- [progress:save]");
-	
+	NSLog(@"- [progress:saving..]");
+		
 	[[NSUserDefaults standardUserDefaults] setObject:userActionStorage forKey:@"slot1"];
+	
+	if( [[NSUserDefaults standardUserDefaults] objectForKey:@"slot1"] ){
+		NSLog(@"%@",[[NSUserDefaults standardUserDefaults] objectForKey:@"slot1"]);
+		NSLog(@"- [progress:saved.]");
+
+	}
+	else{
+		NSLog(@"- [progress:error.]");
+	}
+	
+		
+	
 	
 }
 
 - (void)prefLoad
 {
-	NSLog(@"- [progress:load]");
 	
-	NSLog(@"- [progress:%@]", [[NSUserDefaults standardUserDefaults] objectForKey:@"slot1"]  );
+	if( [[NSUserDefaults standardUserDefaults] objectForKey:@"slot1"] ){
+		
+		NSLog(@"- [progress:loading..]");
+		
+		NSLog(@"%@",[[NSUserDefaults standardUserDefaults] objectForKey:@"slot1"]);
+		userActionStorage = [[NSUserDefaults standardUserDefaults] objectForKey:@"slot1"];
+		
+		NSLog(@"- [progress:loaded.]");
+		
+	}
+	else{
+		
+		NSLog(@"- [progress:creating..]");
+		
+		userActionStorage	= [NSMutableArray arrayWithObjects:@"",@"1",@"0",@"",@"",@"0",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"0",@"0",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",nil];
+		
+		userActionStorage[31] = @"1"; // Fuse in Forest
+		userActionStorage[38] = @"1"; // Fuse in Entente
+		userActionStorage[39] = @"1"; // Fuse in Antechannel
+		
+		userActionStorage[34] = @"1"; // Audio 1
+		userActionStorage[35] = @"1"; // Audio 2
+		
+		userActionStorage[23] = @"15"; // Entente 1
+		userActionStorage[19] = @"13"; // Entente 2
+
+		NSLog(@"- [progress:created.]");
+	}
 
 }
 
