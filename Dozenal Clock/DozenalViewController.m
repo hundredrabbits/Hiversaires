@@ -115,9 +115,9 @@ NSUserDefaults *memory;
 	self.debugOrientation.text = [NSString stringWithFormat:@"%d", userOrientation];
 	self.debugAction.text = [NSString stringWithFormat:@"%@", worldPath[userNode][userOrientation]];
 
-	self.debugNode.hidden = YES;
-	self.debugOrientation.hidden = YES;
-	self.debugAction.hidden = YES;
+//	self.debugNode.hidden = YES;
+//	self.debugOrientation.hidden = YES;
+//	self.debugAction.hidden = YES;
 	
     self.moveForward.hidden = worldPath[userNode][userOrientation] ? NO : YES;
 	
@@ -400,6 +400,7 @@ NSUserDefaults *memory;
 - (void)templateClockTerminal{
 	
 	[self prefPositioning];
+	[self templateVignette];
 	
 	self.action1.hidden = NO;
 	self.action1.alpha = 1.0;
@@ -413,14 +414,31 @@ NSUserDefaults *memory;
 	
 }
 
+
+- (void) templateClockInterface
+{
+	
+	self.interfaceDimclock.image = [UIImage imageNamed: [NSString stringWithFormat:@"clock.%d.png", [userActionStorage[1] intValue]] ];
+	self.interfaceDimclock.hidden = NO;
+	self.interfaceDimclock.alpha = 1;
+	[self fadeOut:self.interfaceDimclock d:3 t:0.5];
+	
+	NSLog(@"!!");
+	
+}
+
+
 - (void) templateClockDoor
 {
 	[self prefPositioning];
+	[self templateVignette];
 	
 	// Display Interactions
 	
 	self.action3.hidden = YES;
 	self.graphic1.hidden = YES;
+	
+	[self templateClockInterface];
 	
 	// Audio
 	
@@ -461,11 +479,17 @@ NSUserDefaults *memory;
 		[self  templateUpdateNode:52:@"0477":@"act9"];
 		
 	}
+	else{
+		[self templateClockWarning];
+	}
 	
 }
 
 - (void)templateClockUpdate
 {
+	
+	[self templateClockInterface];
+	
 	self.graphic4.frame = CGRectMake(0, 0, screenWidth, screenHeight); // interface
 	self.graphic4.image = [UIImage imageNamed:[NSString stringWithFormat:@"interface.dimclock.shadow.png"] ];
 
@@ -473,17 +497,25 @@ NSUserDefaults *memory;
 	self.graphic5.image = [UIImage imageNamed:[NSString stringWithFormat:@"interface.dimclock.state%@.png", userActionStorage[1] ] ];
 	NSLog(@"%@",userActionStorage[1]);
 	
-	[self fadeIn:self.graphic4 d:0.5 t:0.5];
-	[self fadeIn:self.graphic5 d:1.5 t:0.5];
-	
+	[self fadeIn:self.graphic4 d:0.5 t:1.5];
+	[self fadeIn:self.graphic5 d:0.5 t:0.5];
 	
 }
+
+- (void)templateClockWarning
+{
+	self.interfaceDimclockBackground.image = [UIImage imageNamed:@"interfaceFuse.warning.png"];
+	self.interfaceDimclockBackground.alpha = 1.0;
+	[self fadeOut:self.interfaceDimclockBackground d:0.5 t:0.5];
+}
+
 
 - (void)seal{}
 
 - (void)templateSealTerminal
 {
 	[self prefPositioning];
+	[self templateVignette];
 	
 	self.graphic1.hidden = NO;
 	self.graphic1.alpha = 0;
@@ -522,6 +554,7 @@ NSUserDefaults *memory;
 - (void)templateSealDoor
 {
 	[self prefPositioning];
+	[self templateVignette];
 	
 	self.action3.hidden = YES;
 	self.graphic1.hidden = YES;
@@ -617,6 +650,7 @@ NSUserDefaults *memory;
 - (void)templateEnergyTerminal
 {
 	[self prefPositioning];
+	[self templateVignette];
 	[self templateEnergyInterface];
 	
 	self.graphic1.hidden = NO;
@@ -654,6 +688,7 @@ NSUserDefaults *memory;
 - (void)templateEnergyDoor
 {
 	[self prefPositioning];
+	[self templateVignette];
 
 	// Display Interactions
 	
@@ -765,7 +800,7 @@ NSUserDefaults *memory;
 {
 	self.interfaceFuseBackground.image = [UIImage imageNamed:@"interfaceFuse.warning.png"];
 	self.interfaceFuseBackground.alpha = 1.0;
-	[self fadeOut:self.interfaceFuseBackground d:0.5 t:0.5];
+	[self fadeOut:self.interfaceFuseBackground d:0.5 t:1.5];
 }
 
 - (void)progress{}
@@ -774,6 +809,7 @@ NSUserDefaults *memory;
 - (void)templateProgressTerminal
 {
 	[self prefPositioning];
+	[self templateVignette];
 	
 	if( userProgress == 1 ){ [self templateUpdateNode:23:@"0546":@"act16"]; }
 	if( userProgress == 2 ){ [self templateUpdateNode:23:@"0546":@"act16"]; }
@@ -786,6 +822,7 @@ NSUserDefaults *memory;
 - (void)templateAudioTerminal
 {
 	[self prefPositioning];
+	[self templateVignette];
 	
 	self.action1.alpha = 1.0;
 	self.action1.hidden = NO;
@@ -1154,6 +1191,13 @@ NSUserDefaults *memory;
 
 }
 
+- (void)templateVignette
+{
+	self.vignette.image = [UIImage imageNamed:@"vignette.png"];
+	self.vignette.alpha = 1.0;
+	[self fadeOut:self.vignette d:0 t:1.0];
+}
+
 // ====================
 // Counters
 // ====================
@@ -1345,6 +1389,7 @@ NSUserDefaults *memory;
 	self.viewMain.frame = CGRectMake(0, 0, screenBound.size.width, screenBound.size.height);
 	self.viewMain.exclusiveTouch = YES;
 	
+	self.vignette.frame = CGRectMake(0, 0, screenBound.size.width, screenBound.size.height);
 	
 	// Movement
 	
@@ -1374,13 +1419,16 @@ NSUserDefaults *memory;
 	// Style - Interface - Fuse
 	
 	self.interfaceFuseBackground.frame = CGRectMake(screenPadding, screenBound.size.height-(screenBound.size.width/12), screenBound.size.width/12, screenBound.size.width/12);
-	self.interfaceSealBackground.frame = CGRectMake(screenBound.size.width - (screenBound.size.width/12) - screenPadding, screenBound.size.height-(screenBound.size.width/12), screenBound.size.width/12, screenBound.size.width/12);CGRectMake(screenPadding, screenBound.size.height-(screenBound.size.width/12), screenBound.size.width/12, screenBound.size.width/12);
+	self.interfaceSealBackground.frame = CGRectMake(screenBound.size.width - (screenBound.size.width/12) - screenPadding, screenBound.size.height-(screenBound.size.width/12), screenBound.size.width/12, screenBound.size.width/12); //CGRectMake(screenPadding, screenBound.size.height-(screenBound.size.width/12), screenBound.size.width/12, screenBound.size.width/12);
+	self.interfaceDimclockBackground.frame = CGRectMake( ((screenBound.size.width/12)*4) + screenPadding, screenBound.size.height-(screenBound.size.width/12), screenBound.size.width/12, screenBound.size.width/12);
 	
 	self.interfaceFuse1.frame = CGRectMake(screenPadding, screenBound.size.height-(screenBound.size.width/12) - screenPadding, screenBound.size.width/12, screenBound.size.width/12);
 	self.interfaceSeal1.frame = CGRectMake(screenBound.size.width - (screenBound.size.width/12) - screenPadding, screenBound.size.height-(screenBound.size.width/12) - screenPadding, screenBound.size.width/12, screenBound.size.width/12);
 	self.interfaceSeal2.frame = CGRectMake(screenBound.size.width - (screenBound.size.width/12) - screenPadding, screenBound.size.height-(screenBound.size.width/12)*2 - screenPadding, screenBound.size.width/12, screenBound.size.width/12);
 	
 	self.interfaceAudio.frame = CGRectMake(screenPadding + ((screenBound.size.width/12)*2), screenBound.size.height-(screenBound.size.width/12) - screenPadding, screenBound.size.width/12, screenBound.size.width/12);
+	
+	self.interfaceDimclock.frame = CGRectMake(screenPadding + ((screenBound.size.width/12)*4), screenBound.size.height-(screenBound.size.width/12) - screenPadding, screenBound.size.width/12, screenBound.size.width/12);
 	
 	
 }

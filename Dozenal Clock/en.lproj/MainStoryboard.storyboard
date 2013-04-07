@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="12C3012" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="2">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="12D78" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="2">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="2083"/>
     </dependencies>
@@ -13,6 +13,9 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" id="qDH-p4-ZxP" userLabel="NodeView">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="460"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" id="oF8-nR-Xbh" userLabel="NodeVignette">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="460"/>
                             </imageView>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Orientation" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="8Pn-4H-mjL" userLabel="DebugOrientation">
@@ -71,6 +74,14 @@
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" id="KcO-eM-DxU" userLabel="Graphic10">
                                 <rect key="frame" x="20" y="309" width="55" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="xHK-i7-5As" userLabel="interfaceDimclockBackground">
+                                <rect key="frame" x="143" y="214" width="33" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="1JL-a0-7N4" userLabel="interfaceDimclock">
+                                <rect key="frame" x="143" y="214" width="33" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="lC8-u3-xAO" userLabel="interfaceFuseBackground">
@@ -233,6 +244,8 @@
                         <outlet property="graphic8" destination="ae8-Ty-x7X" id="3KA-fV-sZI"/>
                         <outlet property="graphic9" destination="Ea1-xI-b67" id="plQ-bT-reT"/>
                         <outlet property="interfaceAudio" destination="4X9-xj-tM6" id="3QM-gQ-8nr"/>
+                        <outlet property="interfaceDimclock" destination="1JL-a0-7N4" id="Gds-Nu-EOr"/>
+                        <outlet property="interfaceDimclockBackground" destination="xHK-i7-5As" id="yZ0-MB-8x1"/>
                         <outlet property="interfaceFuse1" destination="RHJ-Sb-91T" id="iF3-ru-GGz"/>
                         <outlet property="interfaceFuseBackground" destination="lC8-u3-xAO" id="3AS-7Y-nD2"/>
                         <outlet property="interfaceSeal1" destination="f3h-qG-Td0" id="XBD-bi-Tt6"/>
@@ -242,6 +255,7 @@
                         <outlet property="moveLeft" destination="HZM-Xl-Bax" id="6TD-nD-FZH"/>
                         <outlet property="moveRight" destination="OaR-be-2E9" id="Hts-zM-ZXf"/>
                         <outlet property="viewMain" destination="qDH-p4-ZxP" id="Y81-cI-mlc"/>
+                        <outlet property="vignette" destination="oF8-nR-Xbh" id="776-1G-ptN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4" sceneMemberID="firstResponder"/>
@@ -279,6 +293,9 @@
                 <relationship kind="outlet" name="graphic7" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="graphic8" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="graphic9" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="interfaceAudio" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="interfaceDimclock" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="interfaceDimclockBackground" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="interfaceFuse1" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="interfaceFuseBackground" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="interfaceSeal1" candidateClass="UIImageView"/>

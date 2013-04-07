@@ -583,6 +583,9 @@
 		0380D66616F7EA66005F5036 /* menu.start.png in Resources */ = {isa = PBXBuildFile; fileRef = 0380D66516F7EA66005F5036 /* menu.start.png */; };
 		0380D66816F7EE8D005F5036 /* menu.vignette.png in Resources */ = {isa = PBXBuildFile; fileRef = 0380D66716F7EE8D005F5036 /* menu.vignette.png */; };
 		0388224216C344BF0060C323 /* DozenalViewController_WorldNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 0388224116C344BF0060C323 /* DozenalViewController_WorldNode.m */; };
+		0391307417111D2700FA0A2D /* clock.0.png in Resources */ = {isa = PBXBuildFile; fileRef = 0391307117111D2700FA0A2D /* clock.0.png */; };
+		0391307517111D2700FA0A2D /* clock.1.png in Resources */ = {isa = PBXBuildFile; fileRef = 0391307217111D2700FA0A2D /* clock.1.png */; };
+		0391307617111D2700FA0A2D /* clock.2.png in Resources */ = {isa = PBXBuildFile; fileRef = 0391307317111D2700FA0A2D /* clock.2.png */; };
 		0397356117028DC100D2820D /* menu.credit1.png in Resources */ = {isa = PBXBuildFile; fileRef = 0397355D17028DC100D2820D /* menu.credit1.png */; };
 		0397356217028DC100D2820D /* menu.credit2.png in Resources */ = {isa = PBXBuildFile; fileRef = 0397355E17028DC100D2820D /* menu.credit2.png */; };
 		0397356317028DC100D2820D /* menu.credit3.png in Resources */ = {isa = PBXBuildFile; fileRef = 0397355F17028DC100D2820D /* menu.credit3.png */; };
@@ -1293,6 +1296,9 @@
 		0380D66716F7EE8D005F5036 /* menu.vignette.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = menu.vignette.png; path = graphics/menu.vignette.png; sourceTree = "<group>"; };
 		0388223F16C344840060C323 /* DozenalViewController_WorldNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DozenalViewController_WorldNode.h; sourceTree = "<group>"; };
 		0388224116C344BF0060C323 /* DozenalViewController_WorldNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DozenalViewController_WorldNode.m; sourceTree = "<group>"; };
+		0391307117111D2700FA0A2D /* clock.0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = clock.0.png; path = graphics/clock.0.png; sourceTree = "<group>"; };
+		0391307217111D2700FA0A2D /* clock.1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = clock.1.png; path = graphics/clock.1.png; sourceTree = "<group>"; };
+		0391307317111D2700FA0A2D /* clock.2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = clock.2.png; path = graphics/clock.2.png; sourceTree = "<group>"; };
 		0397355D17028DC100D2820D /* menu.credit1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = menu.credit1.png; path = graphics/menu.credit1.png; sourceTree = "<group>"; };
 		0397355E17028DC100D2820D /* menu.credit2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = menu.credit2.png; path = graphics/menu.credit2.png; sourceTree = "<group>"; };
 		0397355F17028DC100D2820D /* menu.credit3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = menu.credit3.png; path = graphics/menu.credit3.png; sourceTree = "<group>"; };
@@ -2150,6 +2156,7 @@
 		0333141116C214D6009DD80A /* Interface */ = {
 			isa = PBXGroup;
 			children = (
+				0391307717111D2B00FA0A2D /* Clock */,
 				03F223F617018A0D00A5C610 /* Audio */,
 				03D4667616DB2D5900878D17 /* Seals */,
 				03D4668316DB62CD00878D17 /* Fuses */,
@@ -2192,6 +2199,16 @@
 				0320246416F159CD004EA7AA /* Effects */,
 			);
 			name = Sounds;
+			sourceTree = "<group>";
+		};
+		0391307717111D2B00FA0A2D /* Clock */ = {
+			isa = PBXGroup;
+			children = (
+				0391307117111D2700FA0A2D /* clock.0.png */,
+				0391307217111D2700FA0A2D /* clock.1.png */,
+				0391307317111D2700FA0A2D /* clock.2.png */,
+			);
+			name = Clock;
 			sourceTree = "<group>";
 		};
 		03D4667616DB2D5900878D17 /* Seals */ = {
@@ -3088,6 +3105,9 @@
 				0317260E1709BF5F00E99F62 /* music_act4.mp3 in Resources */,
 				0317260F1709BF5F00E99F62 /* music_act5.mp3 in Resources */,
 				031726101709BF5F00E99F62 /* music_credit.mp3 in Resources */,
+				0391307417111D2700FA0A2D /* clock.0.png in Resources */,
+				0391307517111D2700FA0A2D /* clock.1.png in Resources */,
+				0391307617111D2700FA0A2D /* clock.2.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3201,8 +3221,10 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				ONLY_ACTIVE_ARCH = YES;
+				PROVISIONING_PROFILE = "A582F855-EDF2-42D2-B49D-1EFF2B9399C0";
+				"PROVISIONING_PROFILE[sdk=*]" = "A582F855-EDF2-42D2-B49D-1EFF2B9399C0";
 				SDKROOT = iphoneos;
-				VALIDATE_PRODUCT = NO;
+				VALIDATE_PRODUCT = YES;
 			};
 			name = Debug;
 		};
@@ -3215,8 +3237,8 @@
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: David Mondou-Labbe";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: David Mondou-Labbe";
+				CODE_SIGN_IDENTITY = "iPhone Developer: David Mondou-Labbe (V9PZ3GV9WH)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: David Mondou-Labbe (V9PZ3GV9WH)";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
@@ -3225,10 +3247,10 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
-				PROVISIONING_PROFILE = "6ED1CF4A-F940-473C-9DED-A7F01108ED61";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "6ED1CF4A-F940-473C-9DED-A7F01108ED61";
+				PROVISIONING_PROFILE = "D6D61F76-6400-4574-8603-5BF46D5D0EC7";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "A582F855-EDF2-42D2-B49D-1EFF2B9399C0";
 				SDKROOT = iphoneos;
-				VALIDATE_PRODUCT = NO;
+				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
 		};

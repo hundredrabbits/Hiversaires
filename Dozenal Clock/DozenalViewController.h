@@ -62,7 +62,10 @@
 @property (weak, nonatomic) IBOutlet UIImageView *interfaceSeal1;
 @property (weak, nonatomic) IBOutlet UIImageView *interfaceSeal2;
 @property (weak, nonatomic) IBOutlet UIImageView *interfaceAudio;
+@property (weak, nonatomic) IBOutlet UIImageView *interfaceDimclockBackground;
+@property (weak, nonatomic) IBOutlet UIImageView *interfaceDimclock;
 
+@property (weak, nonatomic) IBOutlet UIImageView *vignette;
 
 
 
