@@ -59,7 +59,7 @@
 	node[30]	= [NSArray arrayWithObjects: @"29", @"0", @"23", @"0", @"circular", nil];		
 	node[31]	= [NSArray arrayWithObjects: @"25|1", @"0", @"35", @"0", @"circular", nil];
 	node[32]	= [NSArray arrayWithObjects: @"0", @"52", @"35", @"27|1", @"studio", nil];	
-	node[33]	= [NSArray arrayWithObjects: @"0", @"0", @"29|1", @"0", @"circular", nil];	
+	node[33]	= [NSArray arrayWithObjects: @"act14", @"0", @"29|1", @"0", @"circular", nil];
 	node[34]	= [NSArray arrayWithObjects: @"act37", @"0", @"0", @"39", @"entente", nil];
 	node[35]	= [NSArray arrayWithObjects: @"act8", @"38", @"36", @"0", @"stones", nil];		
 	node[36]	= [NSArray arrayWithObjects: @"35", @"37", @"0", @"0", @"stones", nil];		
@@ -172,7 +172,7 @@
 	puzzle[11]		= @"energyDoor";
 	puzzle[12]		= @"sealTerminal";
 	puzzle[13]		= @"sealTerminal";
-	puzzle[14]		= @"sealTerminal";
+	puzzle[14]		= @"killTerminal";
 	puzzle[15]		= @"sealDoor";
 	puzzle[16]		= @"progressTerminal";
 	puzzle[17]		= @"audioMusicTerminal";

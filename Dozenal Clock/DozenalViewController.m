@@ -71,28 +71,36 @@ NSUserDefaults *memory;
 {
     
     [super viewDidLoad];
-    
-	// ====================
-	// Initial Set
-	// ====================
+	[self newGame];
+	
+}
+
+- (void)newGame
+{
+	[self prefPositioning];
 	
 	worldPath			= [self worldPath];
 	worldActionType		= [self worldActionType];
-
-	[self prefPositioning];
+	
+	// Default Location
+	
+	userNode = 1;
+	userOrientation = 0;
+	userProgress = 1;
+	userEnergy = 0;	
+	
+	[self musicPlayer:@"act1"];
 	
 	[self prefLoad];
 	
 	[self templateSealInterface];
 	[self templateEnergyInterface];
 	[self templateAudioInterface];
-	
-	[self musicPlayer:@"act1"];
+	[self templateClockInterface];
 	
 	[self actionCheck];
     [self moveCheck];
 	[self menuHome];
-	
 }
 
 
@@ -209,6 +217,8 @@ NSUserDefaults *memory;
 	
 	userActionStorage[userActionId] = [NSString stringWithFormat:@"%d", [ userActionStorage[userActionId] intValue]+1 ];	
 	
+	NSLog(@"storage: %@", userActionStorage[14]);
+	
 	// Exceptions
 	
 	if([userAction isEqual: @"act1"]){	userActionStorage[userActionId] = [userActionStorage[userActionId] intValue] > 2 ? @"0" : userActionStorage[userActionId]; [self audioClockTurn];  [self templateClockUpdate]; }
@@ -219,6 +229,10 @@ NSUserDefaults *memory;
 		[self templateAudioUpdate];
 	}
 	
+	if( [worldActionType[userActionId] isEqual: @"killTerminal"] ){
+		[self templateKillUpdate];
+	}
+
 }
 
 - (IBAction)action2:(id)sender { // Door to display action3
@@ -382,6 +396,7 @@ NSUserDefaults *memory;
 	if( [worldActionType[userActionId] isEqual: @"clockDoor"] )			{ [self templateClockDoor]; }
 	if( [worldActionType[userActionId] isEqual: @"progressTerminal"] )	{ [self templateProgressTerminal]; }
 	if( [worldActionType[userActionId] isEqual: @"audioTerminal"] )		{ [self templateAudioTerminal]; }
+	if( [worldActionType[userActionId] isEqual: @"killTerminal"] )		{ [self templateKillTerminal]; }
 	if( [worldActionType[userActionId] isEqual: @"endgameDoor"] )		{ [self templateEndgameDoor]; }
 	if( [worldActionType[userActionId] isEqual: @"endgameCredit"] )		{ [self templateEndgameCredit]; }
 	
@@ -999,6 +1014,34 @@ NSUserDefaults *memory;
 	}
 }
 
+- (void)kill{}
+
+- (void)templateKillTerminal
+{
+	[self prefPositioning];
+	
+	self.action1.hidden = NO;
+	self.action1.alpha = 1.0;
+	
+	[self.action1 setImage:[UIImage imageNamed: [NSString stringWithFormat:@"tempYes.png"] ] forState:UIControlStateNormal];
+	
+	NSLog(@"!!!");
+	
+}
+
+- (void)templateKillUpdate{
+	
+	if( [userActionStorage[14] intValue] > 10 ){
+		
+		NSString *appDomain = [[NSBundle mainBundle] bundleIdentifier];
+		[[NSUserDefaults standardUserDefaults] removePersistentDomainForName:appDomain];
+		
+		[self newGame];
+		
+	}
+	
+	
+}
 
 - (void)endgame{}
 
@@ -1512,6 +1555,8 @@ NSUserDefaults *memory;
 		NSLog(@"- [progress:creating..]");
 		
 		userActionStorage	= [NSMutableArray arrayWithObjects:@"",@"1",@"0",@"",@"",@"0",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"0",@"0",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",nil];
+		
+		userActionStorage[1] = @"0"; // Dimclock Position
 		
 		userActionStorage[31] = @"1"; // Fuse in Forest
 		userActionStorage[38] = @"1"; // Fuse in Entente
