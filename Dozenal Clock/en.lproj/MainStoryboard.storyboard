@@ -112,6 +112,10 @@
                                 <rect key="frame" x="143" y="214" width="33" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="n6c-4X-a1X" userLabel="interfaceIllusion">
+                                <rect key="frame" x="143" y="214" width="33" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="fill" lineBreakMode="middleTruncation" id="OaR-be-2E9" userLabel="moveRight">
                                 <rect key="frame" x="245" y="220" width="75" height="240"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="11"/>
@@ -252,6 +256,7 @@
                         <outlet property="interfaceDimclockBackground" destination="xHK-i7-5As" id="yZ0-MB-8x1"/>
                         <outlet property="interfaceFuse1" destination="RHJ-Sb-91T" id="iF3-ru-GGz"/>
                         <outlet property="interfaceFuseBackground" destination="lC8-u3-xAO" id="3AS-7Y-nD2"/>
+                        <outlet property="interfaceIllusion" destination="n6c-4X-a1X" id="lww-eY-fBp"/>
                         <outlet property="interfaceSave" destination="f84-8u-idl" id="3ax-le-0rc"/>
                         <outlet property="interfaceSeal1" destination="f3h-qG-Td0" id="XBD-bi-Tt6"/>
                         <outlet property="interfaceSeal2" destination="YUS-l5-xos" id="IMo-J7-lz2"/>
@@ -303,6 +308,7 @@
                 <relationship kind="outlet" name="interfaceDimclockBackground" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="interfaceFuse1" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="interfaceFuseBackground" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="interfaceIllusion" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="interfaceSave" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="interfaceSeal1" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="interfaceSeal2" candidateClass="UIImageView"/>

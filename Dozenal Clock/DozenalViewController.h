@@ -65,6 +65,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *interfaceDimclockBackground;
 @property (weak, nonatomic) IBOutlet UIImageView *interfaceDimclock;
 @property (weak, nonatomic) IBOutlet UIImageView *interfaceSave;
+@property (weak, nonatomic) IBOutlet UIImageView *interfaceIllusion;
 
 @property (weak, nonatomic) IBOutlet UIImageView *vignette;
 

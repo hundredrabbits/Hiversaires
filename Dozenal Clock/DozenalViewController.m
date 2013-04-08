@@ -1277,20 +1277,42 @@ NSUserDefaults *memory;
 		
 	}
 	
-	if( nodeIllusion > 0){
+	if( nodeIllusion > 0 && userProgress > 4 ){
 		
-		NSLog(@"illusion* %d", nodeIllusion);
-		self.graphic1.image = [UIImage imageNamed: [NSString stringWithFormat:@"tempYes.png"] ];
-//		self.graphic1.image = [UIImage imageNamed: [NSString stringWithFormat:@"node.0%d.jpg", nodeIllusion] ];
+		self.graphic1.image = [UIImage imageNamed: [NSString stringWithFormat:@"node.0%d.jpg", nodeIllusion] ];
 		self.graphic1.alpha = 1;
 		self.graphic1.hidden = NO;
+
+		[self fadeOut:self.graphic1 d:1 t:0.5];
+		
+		userActionStorage[nodeIllusionAction] = @"1";
+
+		[self illusionInterface];
 		
 	}
 	
+}
+
+- (void)illusionInterface
+{
+	[self prefPositioning];
 	
+	int illusionCount = 0;
 	
+	illusionCount += [userActionStorage[17] intValue];
+	illusionCount += [userActionStorage[22] intValue];
+	illusionCount += [userActionStorage[29] intValue];
+	illusionCount += [userActionStorage[32] intValue];
+	illusionCount += [userActionStorage[48] intValue];
+	illusionCount += [userActionStorage[49] intValue];
+	illusionCount += [userActionStorage[50] intValue];
+	illusionCount += [userActionStorage[51] intValue];
+	illusionCount += [userActionStorage[52] intValue];	
 	
-	
+	self.interfaceIllusion.image = [UIImage imageNamed: [NSString stringWithFormat:@"illusion.%d.png", illusionCount] ];
+	self.interfaceIllusion.hidden = NO;
+	self.interfaceIllusion.alpha = 1;
+	[self fadeOut:self.interfaceIllusion d:3 t:0.5];
 }
 
 // ====================
@@ -1527,6 +1549,8 @@ NSUserDefaults *memory;
 	
 	self.interfaceSave.frame = CGRectMake(screenPadding + ((screenBound.size.width/12)*6), screenBound.size.height-(screenBound.size.width/12) - screenPadding, screenBound.size.width/12, screenBound.size.width/12);
 	
+	self.interfaceIllusion.frame = CGRectMake(screenPadding + ((screenBound.size.width/12)*8), screenBound.size.height-(screenBound.size.width/12) - screenPadding, screenBound.size.width/12, screenBound.size.width/12);
+	
 	
 }
 
@@ -1612,7 +1636,7 @@ NSUserDefaults *memory;
 		
 		NSLog(@"- [progress:creating..]");
 		
-		userActionStorage	= [NSMutableArray arrayWithObjects:@"",@"1",@"0",@"",@"",@"0",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"0",@"0",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",nil];
+		userActionStorage	= [NSMutableArray arrayWithObjects:@"",@"1",@"0",@"",@"",@"0",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"0",@"0",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",nil];
 		
 		userActionStorage[1] = @"0"; // Dimclock Position
 		
