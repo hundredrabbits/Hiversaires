@@ -175,12 +175,12 @@
 	puzzle[14]		= @"killTerminal";
 	puzzle[15]		= @"sealDoor";
 	puzzle[16]		= @"progressTerminal";
-	puzzle[17]		= @"audioMusicTerminal";
+	puzzle[17]		= @"illusion"; // act17 studio Illusion
 	puzzle[18]		= @"energyTerminal";
 	puzzle[19]		= @"energyDoor";
 	puzzle[20]		= @"sealTerminal";
 	puzzle[21]		= @"sealTerminal";
-	puzzle[22]		= @"worldMap";
+	puzzle[22]		= @"illusion"; // act22 stones Illusion
 	puzzle[23]		= @"ententeTerminal";
 	puzzle[24]		= @"ententeTerminal";
 	puzzle[25]		= @"sealDoor";
@@ -190,13 +190,13 @@
 	// Studio Lock
 	
 	puzzle[28]		= @"energyDoor"; 
-	puzzle[29]		= @"energyDoor";
+	puzzle[29]		= @"illusion"; // act29 metamondst Illusion
 	puzzle[30]		= @"energyDoor";
 	
 	// Collectibles
 	
 	puzzle[31]		= @"energyTerminal";
-	puzzle[32]		= @"energyTerminal";
+	puzzle[32]		= @"illusion"; // act32 antech Illusion
 	puzzle[33]		= @"energyDoor";
 	puzzle[34]		= @"audioTerminal";
 	puzzle[35]		= @"audioTerminal";
@@ -218,6 +218,12 @@
 	// Spare Fuse
 	
 	puzzle[47]		= @"energyTerminal";
+	puzzle[48]		= @"illusion"; // act48 nataniev Illusion
+	puzzle[49]		= @"illusion"; // act49 nataniev Illusion
+	puzzle[50]		= @"illusion"; // act50 nataniev Illusion
+	puzzle[51]		= @"illusion"; // act51 nataniev Illusion
+	puzzle[52]		= @"illusion"; // act52 nataniev Illusion
+	puzzle[53]		= @"illusion"; // act53 nataniev Illusion
 	
 	
 	return puzzle;

@@ -120,19 +120,15 @@ NSUserDefaults *memory;
 	
 	userAction = nil;
 	
-	self.debugNode.text = [NSString stringWithFormat:@"%d", userNode];
-	self.debugOrientation.text = [NSString stringWithFormat:@"%d", userOrientation];
-	self.debugAction.text = [NSString stringWithFormat:@"%@", worldPath[userNode][userOrientation]];
-
-	self.debugNode.hidden = YES;
-	self.debugOrientation.hidden = YES;
-	self.debugAction.hidden = YES;
+	[self debugUpdate];
 	
     self.moveForward.hidden = worldPath[userNode][userOrientation] ? NO : YES;
 	
 	worldNodeImgId = [NSString stringWithFormat:@"%04d", (userNode*4)+userOrientation ];
 	worldNodeImg = [NSString stringWithFormat:@"%@%@%@", @"node.", worldNodeImgId, @".jpg"];
 	self.viewMain.image = [UIImage imageNamed:worldNodeImg];
+	
+	[self illusionCheck];
 	
 	// Trigger Action
 	
@@ -141,8 +137,6 @@ NSUserDefaults *memory;
 		userActionId  = [[userAction stringByReplacingOccurrencesOfString:@"act" withString:@""] intValue];
 		[self actionCheck];
 	}
-	
-	// Resize
 	
 	[self audioAmbientCheck: worldPath[userNode][4] ];
 	
@@ -724,7 +718,6 @@ NSUserDefaults *memory;
 	if([userAction isEqual: @"act26"]){ puzzleTerminal = 27; }
 	
 	if([userAction isEqual: @"act28"]){ puzzleTerminal = 5;  }
-	if([userAction isEqual: @"act29"]){ puzzleTerminal = 5;  }
 	if([userAction isEqual: @"act30"]){ puzzleTerminal = 5;  }
 	if([userAction isEqual: @"act33"]){ puzzleTerminal = 47; } // Antech fuse for Capsule door
 	
@@ -1248,7 +1241,57 @@ NSUserDefaults *memory;
 	
 }
 
+- (void)debugUpdate
+{
+	self.debugNode.text = [NSString stringWithFormat:@"%d", userNode];
+	self.debugOrientation.text = [NSString stringWithFormat:@"%d", userOrientation];
+	self.debugAction.text = [NSString stringWithFormat:@"%@", worldPath[userNode][userOrientation]];
+	
+//	self.debugNode.hidden = YES;
+//	self.debugOrientation.hidden = YES;
+//	self.debugAction.hidden = YES;
+}
 
+- (void)illusion {}
+
+- (void)illusionCheck
+{
+	
+	[self prefPositioning];
+	
+	int rand10 = arc4random() % 10;
+	int nodeIllusion = 0;
+	int nodeIllusionAction;
+	
+	if( rand10 > 7 ){
+		
+		if( userNode == 15  && userOrientation == 0 ) { nodeIllusion = 554; nodeIllusionAction = 17;  } // studio
+		if( userNode == 43  && userOrientation == 2 ) { nodeIllusion = 555; nodeIllusionAction = 22;  } // stones
+		if( userNode == 73  && userOrientation == 2 ) { nodeIllusion = 556; nodeIllusionAction = 29;  } // metamo
+		if( userNode == 58  && userOrientation == 1 ) { nodeIllusion = 557; nodeIllusionAction = 32;  } // antech
+		if( userNode == 114 && userOrientation == 2 ) { nodeIllusion = 558; nodeIllusionAction = 48;  } // natani
+		if( userNode == 91  && userOrientation == 0 ) { nodeIllusion = 559; nodeIllusionAction = 49;  } // entent
+		if( userNode == 88  && userOrientation == 3 ) { nodeIllusion = 560; nodeIllusionAction = 50;  } // capsul
+		if( userNode == 33  && userOrientation == 2 ) { nodeIllusion = 561; nodeIllusionAction = 51;  } // circle
+		if( userNode == 9   && userOrientation == 1 ) { nodeIllusion = 562; nodeIllusionAction = 52;  } // forest
+		
+	}
+	
+	if( nodeIllusion > 0){
+		
+		NSLog(@"illusion* %d", nodeIllusion);
+		self.graphic1.image = [UIImage imageNamed: [NSString stringWithFormat:@"tempYes.png"] ];
+//		self.graphic1.image = [UIImage imageNamed: [NSString stringWithFormat:@"node.0%d.jpg", nodeIllusion] ];
+		self.graphic1.alpha = 1;
+		self.graphic1.hidden = NO;
+		
+	}
+	
+	
+	
+	
+	
+}
 
 // ====================
 // Counters
@@ -1516,6 +1559,7 @@ NSUserDefaults *memory;
 
 - (void)prefSave
 {
+	[self prefPositioning];
 	NSLog(@"- [progress:saving..]");
 	
 	userSettings	= [NSMutableArray arrayWithObjects:@"0",@"0",@"0",@"0",nil];
@@ -1527,10 +1571,13 @@ NSUserDefaults *memory;
 	[[NSUserDefaults standardUserDefaults] setObject:userSettings forKey:@"slot0"];
 	[[NSUserDefaults standardUserDefaults] setObject:userActionStorage forKey:@"slot1"];
 	
-	NSLog(@"%@",[[NSUserDefaults standardUserDefaults] objectForKey:@"slot0"]);
-	NSLog(@"%@",[[NSUserDefaults standardUserDefaults] objectForKey:@"slot1"]);
+//	NSLog(@"%@",[[NSUserDefaults standardUserDefaults] objectForKey:@"slot0"]);
+//	NSLog(@"%@",[[NSUserDefaults standardUserDefaults] objectForKey:@"slot1"]);
 	
 	NSLog(@"- [progress:saved.]");
+	
+	[self templateSaveInterface];
+	
 	
 }
 
