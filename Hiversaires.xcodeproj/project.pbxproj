@@ -631,6 +631,7 @@
 		03AFAA771705209E001DE8DE /* ententeRight2.png in Resources */ = {isa = PBXBuildFile; fileRef = 03AFAA741705209E001DE8DE /* ententeRight2.png */; };
 		03AFAA781705209E001DE8DE /* ententeLeft2.png in Resources */ = {isa = PBXBuildFile; fileRef = 03AFAA751705209E001DE8DE /* ententeLeft2.png */; };
 		03AFAA791705209E001DE8DE /* ententeStraight.png in Resources */ = {isa = PBXBuildFile; fileRef = 03AFAA761705209E001DE8DE /* ententeStraight.png */; };
+		03BAE1BC17123AAD00B79EF5 /* save.png in Resources */ = {isa = PBXBuildFile; fileRef = 03BAE1BB17123AAD00B79EF5 /* save.png */; };
 		03BECB5016DC72E80077BE45 /* DozenalViewController_Templates.m in Sources */ = {isa = PBXBuildFile; fileRef = 03BECB4F16DC72E70077BE45 /* DozenalViewController_Templates.m */; };
 		03DC55C216F588180049FB98 /* node.0529.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 03DC55B016F588180049FB98 /* node.0529.jpg */; };
 		03DC55C316F588180049FB98 /* node.0530.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 03DC55B116F588180049FB98 /* node.0530.jpg */; };
@@ -1344,6 +1345,7 @@
 		03AFAA741705209E001DE8DE /* ententeRight2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ententeRight2.png; path = graphics/ententeRight2.png; sourceTree = "<group>"; };
 		03AFAA751705209E001DE8DE /* ententeLeft2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ententeLeft2.png; path = graphics/ententeLeft2.png; sourceTree = "<group>"; };
 		03AFAA761705209E001DE8DE /* ententeStraight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ententeStraight.png; path = graphics/ententeStraight.png; sourceTree = "<group>"; };
+		03BAE1BB17123AAD00B79EF5 /* save.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = save.png; path = graphics/save.png; sourceTree = "<group>"; };
 		03BECB4E16DC72E70077BE45 /* DozenalViewController_Templates.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DozenalViewController_Templates.h; sourceTree = "<group>"; };
 		03BECB4F16DC72E70077BE45 /* DozenalViewController_Templates.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DozenalViewController_Templates.m; sourceTree = "<group>"; };
 		03DC55B016F588180049FB98 /* node.0529.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = node.0529.jpg; path = graphics/node.0529.jpg; sourceTree = "<group>"; };
@@ -2156,6 +2158,7 @@
 		0333141116C214D6009DD80A /* Interface */ = {
 			isa = PBXGroup;
 			children = (
+				03BAE1BD17123AB000B79EF5 /* Save */,
 				0391307717111D2B00FA0A2D /* Clock */,
 				03F223F617018A0D00A5C610 /* Audio */,
 				03D4667616DB2D5900878D17 /* Seals */,
@@ -2209,6 +2212,14 @@
 				0391307317111D2700FA0A2D /* clock.2.png */,
 			);
 			name = Clock;
+			sourceTree = "<group>";
+		};
+		03BAE1BD17123AB000B79EF5 /* Save */ = {
+			isa = PBXGroup;
+			children = (
+				03BAE1BB17123AAD00B79EF5 /* save.png */,
+			);
+			name = Save;
 			sourceTree = "<group>";
 		};
 		03D4667616DB2D5900878D17 /* Seals */ = {
@@ -3108,6 +3119,7 @@
 				0391307417111D2700FA0A2D /* clock.0.png in Resources */,
 				0391307517111D2700FA0A2D /* clock.1.png in Resources */,
 				0391307617111D2700FA0A2D /* clock.2.png in Resources */,
+				03BAE1BC17123AAD00B79EF5 /* save.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

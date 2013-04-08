@@ -97,6 +97,7 @@ NSUserDefaults *memory;
 	[self templateEnergyInterface];
 	[self templateAudioInterface];
 	[self templateClockInterface];
+	[self templateSaveInterface];
 	
 	[self actionCheck];
     [self moveCheck];
@@ -123,9 +124,9 @@ NSUserDefaults *memory;
 	self.debugOrientation.text = [NSString stringWithFormat:@"%d", userOrientation];
 	self.debugAction.text = [NSString stringWithFormat:@"%@", worldPath[userNode][userOrientation]];
 
-//	self.debugNode.hidden = YES;
-//	self.debugOrientation.hidden = YES;
-//	self.debugAction.hidden = YES;
+	self.debugNode.hidden = YES;
+	self.debugOrientation.hidden = YES;
+	self.debugAction.hidden = YES;
 	
     self.moveForward.hidden = worldPath[userNode][userOrientation] ? NO : YES;
 	
@@ -437,8 +438,6 @@ NSUserDefaults *memory;
 	self.interfaceDimclock.hidden = NO;
 	self.interfaceDimclock.alpha = 1;
 	[self fadeOut:self.interfaceDimclock d:3 t:0.5];
-	
-	NSLog(@"!!");
 	
 }
 
@@ -805,7 +804,6 @@ NSUserDefaults *memory;
 	// Extras
 	
 	if( [userAction isEqual: @"act37"] ){
-		NSLog(@"!!");
 		userActionStorage[37] = @"1";
 	}	
 	
@@ -1023,15 +1021,11 @@ NSUserDefaults *memory;
 	self.action1.hidden = NO;
 	self.action1.alpha = 1.0;
 	
-	[self.action1 setImage:[UIImage imageNamed: [NSString stringWithFormat:@"tempYes.png"] ] forState:UIControlStateNormal];
-	
-	NSLog(@"!!!");
-	
 }
 
 - (void)templateKillUpdate{
 	
-	if( [userActionStorage[14] intValue] > 10 ){
+	if( [userActionStorage[14] intValue] > 50 ){
 		
 		NSString *appDomain = [[NSBundle mainBundle] bundleIdentifier];
 		[[NSUserDefaults standardUserDefaults] removePersistentDomainForName:appDomain];
@@ -1236,10 +1230,25 @@ NSUserDefaults *memory;
 
 - (void)templateVignette
 {
+	[self prefPositioning];
+	
 	self.vignette.image = [UIImage imageNamed:@"vignette.png"];
 	self.vignette.alpha = 1.0;
 	[self fadeOut:self.vignette d:0 t:1.0];
 }
+
+- (void) templateSaveInterface
+{
+	[self prefPositioning];
+	
+	self.interfaceSave.image = [UIImage imageNamed: @"save.png"];
+	self.interfaceSave.hidden = NO;
+	self.interfaceSave.alpha = 1;
+	[self fadeOut:self.interfaceSave d:3 t:0.5];
+	
+}
+
+
 
 // ====================
 // Counters
@@ -1472,6 +1481,8 @@ NSUserDefaults *memory;
 	self.interfaceAudio.frame = CGRectMake(screenPadding + ((screenBound.size.width/12)*2), screenBound.size.height-(screenBound.size.width/12) - screenPadding, screenBound.size.width/12, screenBound.size.width/12);
 	
 	self.interfaceDimclock.frame = CGRectMake(screenPadding + ((screenBound.size.width/12)*4), screenBound.size.height-(screenBound.size.width/12) - screenPadding, screenBound.size.width/12, screenBound.size.width/12);
+	
+	self.interfaceSave.frame = CGRectMake(screenPadding + ((screenBound.size.width/12)*6), screenBound.size.height-(screenBound.size.width/12) - screenPadding, screenBound.size.width/12, screenBound.size.width/12);
 	
 	
 }
