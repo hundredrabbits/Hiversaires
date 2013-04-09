@@ -1173,8 +1173,6 @@ NSUserDefaults *memory;
 		
 	}
 	
-	NSLog(@"!!!!!!!!!!!: %d", userProgress);
-	
 }
 
 - (void)templateUpdateForestGate
@@ -1253,9 +1251,9 @@ NSUserDefaults *memory;
 	self.debugOrientation.text = [NSString stringWithFormat:@"%d", userOrientation];
 	self.debugAction.text = [NSString stringWithFormat:@"%@", worldPath[userNode][userOrientation]];
 	
-//	self.debugNode.hidden = YES;
-//	self.debugOrientation.hidden = YES;
-//	self.debugAction.hidden = YES;
+	self.debugNode.hidden = YES;
+	self.debugOrientation.hidden = YES;
+	self.debugAction.hidden = YES;
 }
 
 - (void)illusion {}
