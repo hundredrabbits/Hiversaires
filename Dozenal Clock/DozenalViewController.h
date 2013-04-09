@@ -34,12 +34,14 @@
 @property (weak, nonatomic) IBOutlet UIButton *action3;
 @property (weak, nonatomic) IBOutlet UIButton *action4;
 @property (weak, nonatomic) IBOutlet UIButton *action5;
+@property (weak, nonatomic) IBOutlet UIButton *actionCredit;
 
 - (IBAction)action1:(id)sender;
 - (IBAction)action2:(id)sender;
 - (IBAction)action3:(id)sender;
 - (IBAction)action4:(id)sender;
 - (IBAction)action5:(id)sender;
+- (IBAction)actionCredit:(id)sender;
 
 // Graphics
 

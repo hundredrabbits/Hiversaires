@@ -229,6 +229,21 @@
                                     <action selector="action5:" destination="2" eventType="touchUpInside" id="FaW-rQ-9Gd"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Kj3-qS-9qP" userLabel="ActionCredit">
+                                <rect key="frame" x="123" y="208" width="73" height="44"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="11"/>
+                                <state key="normal">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="actionCredit:" destination="2" eventType="touchUpInside" id="Pbc-1G-8mc"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -238,6 +253,7 @@
                         <outlet property="action3" destination="DVQ-gd-NUz" id="rex-4B-gpo"/>
                         <outlet property="action4" destination="vd3-Z9-bxk" id="Epp-oT-0qT"/>
                         <outlet property="action5" destination="1GV-g6-beK" id="MLz-lW-8z3"/>
+                        <outlet property="actionCredit" destination="Kj3-qS-9qP" id="qiy-Jc-2LE"/>
                         <outlet property="debugAction" destination="gRh-4u-m9X" id="NEV-d4-VSJ"/>
                         <outlet property="debugNode" destination="mj8-4K-569" id="vOM-ju-j9i"/>
                         <outlet property="debugOrientation" destination="8Pn-4H-mjL" id="Rqj-TA-Mdh"/>
@@ -282,6 +298,7 @@
                 <relationship kind="action" name="action3:"/>
                 <relationship kind="action" name="action4:"/>
                 <relationship kind="action" name="action5:"/>
+                <relationship kind="action" name="actionCredit:"/>
                 <relationship kind="action" name="moveForward:"/>
                 <relationship kind="action" name="moveLeft:"/>
                 <relationship kind="action" name="moveRight:"/>
@@ -290,6 +307,7 @@
                 <relationship kind="outlet" name="action3" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="action4" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="action5" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="actionCredit" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="debugAction" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="debugNode" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="debugOrientation" candidateClass="UILabel"/>

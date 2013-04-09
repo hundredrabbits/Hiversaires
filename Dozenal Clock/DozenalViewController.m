@@ -82,26 +82,12 @@ NSUserDefaults *memory;
 	worldPath			= [self worldPath];
 	worldActionType		= [self worldActionType];
 	
-	// Default Location
-	
-	userNode = 1;
-	userOrientation = 0;
-	userProgress = 1;
-	userEnergy = 0;	
-	
-	[self musicPlayer:@"act1"];
-	
 	[self prefLoad];
-	
-	[self templateSealInterface];
-	[self templateEnergyInterface];
-	[self templateAudioInterface];
-	[self templateClockInterface];
-	[self templateSaveInterface];
 	
 	[self actionCheck];
     [self moveCheck];
 	[self menuHome];
+	
 }
 
 
@@ -605,8 +591,7 @@ NSUserDefaults *memory;
 			self.action1.alpha = 1.0;
 			self.action1.hidden = NO;
 			[self templateUpdateStudioTerminal];
-			if( userProgress < 5){ [self musicPlayer:@"act5"];}
-			userProgress = 5;
+			
 			[self prefSave];
 		}
 	}
@@ -817,7 +802,7 @@ NSUserDefaults *memory;
 	[self prefPositioning];
 	[self templateVignette];
 	
-	if( userProgress == 1 ){ [self templateUpdateNode:23:@"0546":@"act16"]; }
+	if( userProgress == 1 ){ [self templateUpdateNode:23:@"0545":@"act16"]; }
 	if( userProgress == 2 ){ [self templateUpdateNode:23:@"0546":@"act16"]; }
 	if( userProgress == 3 ){ [self templateUpdateNode:23:@"0547":@"act16"]; }
 	if( userProgress == 4 ){ [self templateUpdateNode:23:@"0548":@"act16"]; }
@@ -1056,6 +1041,11 @@ NSUserDefaults *memory;
 	_moveForward.hidden = YES;
 	_moveLeft.hidden = YES;
 	_moveRight.hidden = YES;
+	_action1.hidden = YES;
+	_action2.hidden = YES;
+	_action3.hidden = YES;
+	_action4.hidden = YES;
+	_actionCredit.hidden = NO;
 	
 	CGRect screenBound = [[UIScreen mainScreen] bounds];
 	
@@ -1110,6 +1100,8 @@ NSUserDefaults *memory;
 		[self fadeIn:self.graphic6 d:24.0 t:1];
 	}
 	
+	[self fadeIn:self.actionCredit d:24.0 t:1];
+	
 	
 }
 
@@ -1145,29 +1137,43 @@ NSUserDefaults *memory;
 - (void)templateUpdateStudioTerminal
 {
 	
+	
 	self.graphic1.alpha = 0.0;
 	self.graphic1.hidden = YES;
 	
-	if( [userActionStorage[userActionId] intValue] == 2 ){
+	if( [userActionStorage[5] intValue] == 2 ){
 		self.graphic1.alpha = 1.0;
 		self.graphic1.hidden = NO;
 		[self templateUpdateNode:19:@"0489":@"act5"];
+		
+		userProgress = 5;
+		if( userProgress == 5){ [self musicPlayer:@"act5"];}
 	}
-	else if( [userActionStorage[12] isEqual: @"1"] && [userActionStorage[21] isEqual: @"1"] ){
-		self.graphic1.alpha = 1.0;
-		self.graphic1.hidden = NO;
-		[self templateUpdateNode:19:@"0536":@"act5"];
+	else {
+	
+		if( [userActionStorage[12] isEqual: @"1"] && [userActionStorage[21] isEqual: @"1"] ){
+			self.graphic1.alpha = 1.0;
+			self.graphic1.hidden = NO;
+			[self templateUpdateNode:19:@"0536":@"act5"];
+		}
+		else if( [userActionStorage[12] isEqual: @"1"] && [userActionStorage[21] isEqual: @"0"] ){
+			self.graphic1.alpha = 1.0;
+			self.graphic1.hidden = NO;
+			[self templateUpdateNode:19:@"0542":@"act5"];
+		}
+		else if( [userActionStorage[12] isEqual: @"0"] && [userActionStorage[21] isEqual: @"1"] ){
+			self.graphic1.alpha = 1.0;
+			self.graphic1.hidden = NO;
+			[self templateUpdateNode:19:@"0541":@"act5"];
+		}
+		
+		if( userProgress == 5 ){
+			userProgress = 4;
+		}
+		
 	}
-	else if( [userActionStorage[12] isEqual: @"1"] && [userActionStorage[21] isEqual: @"0"] ){
-		self.graphic1.alpha = 1.0;
-		self.graphic1.hidden = NO;
-		[self templateUpdateNode:19:@"0542":@"act5"];
-	}
-	else if( [userActionStorage[12] isEqual: @"0"] && [userActionStorage[21] isEqual: @"1"] ){
-		self.graphic1.alpha = 1.0;
-		self.graphic1.hidden = NO;
-		[self templateUpdateNode:19:@"0541":@"act5"];
-	}
+	
+	NSLog(@"!!!!!!!!!!!: %d", userProgress);
 	
 }
 
@@ -1527,6 +1533,11 @@ NSUserDefaults *memory;
 	self.action4.frame = CGRectMake( screenWidthThird, screenHeightThird, screenWidthThird, screenHeightThird );
 	// Action Seal Terminal
 	self.action5.frame = CGRectMake( screenWidthThird, screenHeightThird, screenWidthThird, screenHeightThird );
+	// Action Credit
+	self.actionCredit.frame = CGRectMake( screenWidthThird, screenHeightThird, screenWidthThird, screenHeightThird );
+	self.actionCredit.alpha = 0;
+	self.actionCredit.hidden = YES;
+	
 	
 	// Graphics
 	
@@ -1574,8 +1585,6 @@ NSUserDefaults *memory;
 	
 	[self fadeOut:self.graphic2 d:0 t:2.0];
 	[self fadeOut:self.graphic3 d:5 t:2.0];
-	
-	// [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://www.apple.com"]];
 	
 	[self audioVolume:100]; // Music
 	
@@ -1649,6 +1658,16 @@ NSUserDefaults *memory;
 		
 		userActionStorage[23] = @"15"; // Entente 1
 		userActionStorage[19] = @"13"; // Entente 2
+		
+		// Default Location
+		
+		userNode = 1;
+		userOrientation = 0;
+		userProgress = 1;
+		userEnergy = 0;
+		
+		[self musicPlayer:@"act1"];
+		
 
 		NSLog(@"- [progress:created.]");
 	}
@@ -1656,4 +1675,9 @@ NSUserDefaults *memory;
 }
 
 
+- (IBAction)actionCredit:(id)sender {
+	
+	[[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://wiki.xxiivv.com/Mileantres"]];
+	
+}
 @end
