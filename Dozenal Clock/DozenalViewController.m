@@ -112,7 +112,13 @@ NSUserDefaults *memory;
 	
 	worldNodeImgId = [NSString stringWithFormat:@"%04d", (userNode*4)+userOrientation ];
 	worldNodeImg = [NSString stringWithFormat:@"%@%@%@", @"node.", worldNodeImgId, @".jpg"];
-	self.viewMain.image = [UIImage imageNamed:worldNodeImg];
+	
+        //fetch the full file name
+    NSString *imgFile = [[NSBundle mainBundle] pathForResource:worldNodeImg ofType:nil];
+        //make sure the old image is "dereferenced"
+    self.viewMain.image = nil;
+        //now assign it
+    self.viewMain.image = [UIImage imageWithContentsOfFile:imgFile];
 	
 	[self illusionCheck];
 	
