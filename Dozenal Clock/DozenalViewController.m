@@ -51,6 +51,7 @@ NSArray			*temp;
 float			screenWidthHalf = 100;
 float			screenHeightHalf = 100;
 float			screenWidthThird = 100;
+float			screenWidthFifth = 100;
 float			screenHeightThird = 100;
 float			screenWidthFourth = 100;
 float			screenHeightFourth = 100;
@@ -1504,6 +1505,7 @@ NSUserDefaults *memory;
 	screenWidth = screenBound.size.width;
 	screenWidthHalf = screenBound.size.width/2;
 	screenWidthThird = screenBound.size.width/3;
+	screenWidthFifth = screenBound.size.width/5;
 	
 	screenHeight = screenBound.size.height;
 	screenHeightHalf = screenBound.size.height/2;
@@ -1520,12 +1522,13 @@ NSUserDefaults *memory;
 	
 	// Movement
 	
-	self.moveForward.frame = CGRectMake( screenWidthThird, 0, screenWidthThird, screenHeight );
-	self.moveRight.frame = CGRectMake( screenWidthThird*2, 0, screenWidthThird, screenHeight );
-	self.moveLeft.frame = CGRectMake(0, 0, screenWidthThird, screenHeight );	
+	self.moveForward.frame = CGRectMake( screenWidthFifth, 0, screenWidthFifth*3, screenHeight );
+	self.moveRight.frame = CGRectMake( screenWidthFifth*4, 0, screenWidthFifth, screenHeight );
+	self.moveLeft.frame = CGRectMake(0, 0, screenWidthFifth, screenHeight );
 	
-	
-//	[self.action1 setImage:[UIImage imageNamed: [NSString stringWithFormat:@"tempYes.png"] ] forState:UIControlStateNormal];
+//	[self.moveRight setImage:[UIImage imageNamed: [NSString stringWithFormat:@"tempYes.png"] ] forState:UIControlStateNormal];
+//	[self.moveLeft setImage:[UIImage imageNamed: [NSString stringWithFormat:@"tempYes.png"] ] forState:UIControlStateNormal];
+//	[self.moveForward setImage:[UIImage imageNamed: [NSString stringWithFormat:@"tempNo.png"] ] forState:UIControlStateNormal];
 	
 	// Action Clock Terminal
 	self.action1.frame = CGRectMake( screenWidthThird, screenHeightThird, screenWidthThird, screenHeightThird );
@@ -1579,16 +1582,22 @@ NSUserDefaults *memory;
 	self.graphic2.hidden = NO;
 	
 	self.graphic3.frame = CGRectMake(0, 0, screenBound.size.width, screenBound.size.height);
-	self.graphic3.image = [UIImage imageNamed:@"menu.controls.png"];
-	self.graphic3.alpha	 = 0.2;
+	self.graphic3.image = [UIImage imageNamed:@"menu.logo.png"];
+	self.graphic3.alpha	 = 1.0;
 	self.graphic3.hidden = NO;
-
+	
+	self.graphic4.frame = CGRectMake(0, 0, screenBound.size.width, screenBound.size.height);
+	self.graphic4.image = [UIImage imageNamed:@"menu.controls.png"];
+	self.graphic4.alpha	 = 1.0;
+	self.graphic4.hidden = NO;
+	
 	self.interfaceSeal1.hidden = YES;
 	self.interfaceSeal2.hidden = YES;
 	self.interfaceFuse1.hidden = YES;
 	
 	[self fadeOut:self.graphic2 d:0 t:2.0];
-	[self fadeOut:self.graphic3 d:5 t:2.0];
+	[self fadeOut:self.graphic3 d:3 t:2.0];
+	[self fadeOut:self.graphic4 d:8 t:1.0];
 	
 	[self audioVolume:100]; // Music
 	

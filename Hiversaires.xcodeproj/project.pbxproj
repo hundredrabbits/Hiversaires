@@ -660,6 +660,7 @@
 		03DC55D116F588180049FB98 /* node.0544.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 03DC55BF16F588180049FB98 /* node.0544.jpg */; };
 		03DC55D216F588180049FB98 /* node.0545.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 03DC55C016F588180049FB98 /* node.0545.jpg */; };
 		03DC55D316F588180049FB98 /* node.0546.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 03DC55C116F588180049FB98 /* node.0546.jpg */; };
+		03DE7CC91723CA700046C90E /* menu.logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 03DE7CC81723CA700046C90E /* menu.logo.png */; };
 		03E0DABF16BA86D700D0C40E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03E0DABE16BA86D700D0C40E /* UIKit.framework */; };
 		03E0DAC116BA86D700D0C40E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03E0DAC016BA86D700D0C40E /* Foundation.framework */; };
 		03E0DAC316BA86D700D0C40E /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03E0DAC216BA86D700D0C40E /* CoreGraphics.framework */; };
@@ -1384,6 +1385,7 @@
 		03DC55BF16F588180049FB98 /* node.0544.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = node.0544.jpg; path = graphics/node.0544.jpg; sourceTree = "<group>"; };
 		03DC55C016F588180049FB98 /* node.0545.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = node.0545.jpg; path = graphics/node.0545.jpg; sourceTree = "<group>"; };
 		03DC55C116F588180049FB98 /* node.0546.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = node.0546.jpg; path = graphics/node.0546.jpg; sourceTree = "<group>"; };
+		03DE7CC81723CA700046C90E /* menu.logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = menu.logo.png; path = graphics/menu.logo.png; sourceTree = "<group>"; };
 		03E0DABA16BA86D700D0C40E /* Hiversaires.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Hiversaires.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		03E0DABE16BA86D700D0C40E /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		03E0DAC016BA86D700D0C40E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -2134,6 +2136,7 @@
 		0328FB0516F7564E00416638 /* Menu */ = {
 			isa = PBXGroup;
 			children = (
+				03DE7CC81723CA700046C90E /* menu.logo.png */,
 				0397356517028FCF00D2820D /* menu.credit5.png */,
 				0397355D17028DC100D2820D /* menu.credit1.png */,
 				0397355E17028DC100D2820D /* menu.credit2.png */,
@@ -3164,6 +3167,7 @@
 				039B029C1712FDBA00F07145 /* illusion.7.png in Resources */,
 				039B029D1712FDBA00F07145 /* illusion.8.png in Resources */,
 				039B029E1712FDBA00F07145 /* illusion.9.png in Resources */,
+				03DE7CC91723CA700046C90E /* menu.logo.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
