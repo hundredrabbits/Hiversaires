@@ -203,9 +203,7 @@ NSUserDefaults *memory;
 		
 	// Binary button
 	
-	userActionStorage[userActionId] = [NSString stringWithFormat:@"%d", [ userActionStorage[userActionId] intValue]+1 ];	
-	
-	NSLog(@"storage: %@", userActionStorage[14]);
+	userActionStorage[userActionId] = [NSString stringWithFormat:@"%d", [ userActionStorage[userActionId] intValue]+1 ];
 	
 	// Exceptions
 	
@@ -1336,7 +1334,6 @@ NSUserDefaults *memory;
 	userSeal += [userActionStorage[4] intValue];
 	userSeal += [userActionStorage[12] intValue];
 	userSeal += [userActionStorage[13] intValue];
-	userSeal += [userActionStorage[14] intValue];
 	userSeal += [userActionStorage[20] intValue];
 	userSeal += [userActionStorage[21] intValue];
 	userSeal = 2-userSeal;
@@ -1352,7 +1349,6 @@ NSUserDefaults *memory;
 	if		( [userActionStorage[4] intValue] > 0 ){ sealFound = 4; }
 	else if	( [userActionStorage[12] intValue] > 0 ){ sealFound = 12; }
 	else if	( [userActionStorage[13] intValue] > 0 ){ sealFound = 13; }
-	else if	( [userActionStorage[14] intValue] > 0 ){ sealFound = 14; }
 	else if	( [userActionStorage[20] intValue] > 0 ){ sealFound = 20; }
 	else if	( [userActionStorage[21] intValue] > 0 ){ sealFound = 21; }
 	
@@ -1360,7 +1356,6 @@ NSUserDefaults *memory;
 		if		( [userActionStorage[4] intValue] > 0 && sealFound != 4 ){ sealFound = 4; }
 		else if	( [userActionStorage[12] intValue] > 0 && sealFound != 12  ){ sealFound = 12; }
 		else if	( [userActionStorage[13] intValue] > 0 && sealFound != 13  ){ sealFound = 13; }
-		else if	( [userActionStorage[14] intValue] > 0 && sealFound != 14  ){ sealFound = 14; }
 		else if	( [userActionStorage[20] intValue] > 0 && sealFound != 20  ){ sealFound = 20; }
 		else if	( [userActionStorage[21] intValue] > 0 && sealFound != 21  ){ sealFound = 21; }
 	}
