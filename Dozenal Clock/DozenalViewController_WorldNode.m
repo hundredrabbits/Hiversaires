@@ -39,7 +39,7 @@
 	node[12]	= [NSArray arrayWithObjects: @"act3", @"0", @"7", @"14|0", @"forest", nil];
 	node[13]	= [NSArray arrayWithObjects: @"17", @"15", @"act3", @"act2", @"studio", nil];
 	node[14]	= [NSArray arrayWithObjects: @"18", @"0", @"12|1", @"0", @"forest", nil];
-	node[15]	= [NSArray arrayWithObjects: @"16", @"0", @"act33", @"13", @"studio", nil];
+	node[15]	= [NSArray arrayWithObjects: @"16", @"0", @"0", @"13", @"studio", nil];
 	node[16]	= [NSArray arrayWithObjects: @"21", @"act7", @"15", @"17", @"studio", nil];
 	node[17]	= [NSArray arrayWithObjects: @"20", @"16", @"13", @"0", @"studio", nil];
 	node[18]	= [NSArray arrayWithObjects: @"act31", @"act2", @"14", @"0", @"forest", nil];

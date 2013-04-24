@@ -133,6 +133,9 @@ NSUserDefaults *memory;
 	
 	[self audioAmbientCheck: worldPath[userNode][4] ];
 	
+	
+	NSLog(@"%d", userNode);
+	
 }
 
 - (IBAction)moveLeft:(id)sender {
