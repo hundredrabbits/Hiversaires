@@ -10,7 +10,7 @@
 	
 	int myCount = 0;
 	
-	while ( myCount < 140 )
+	while ( myCount < 150 )
 	{
 		myCount++;
 		node[myCount] = [NSArray arrayWithObjects: @"0", @"0", @"0", @"0", @"silence", nil];
@@ -116,7 +116,7 @@
 	node[85]	= [NSArray arrayWithObjects: @"act15", @"0", @"80", @"86", @"metamondst", nil];
 	node[86]	= [NSArray arrayWithObjects: @"0", @"85", @"0", @"act1", @"metamondst", nil];
 	node[87]	= [NSArray arrayWithObjects: @"79", @"act30", @"0", @"88", @"capsule", nil];
-	node[88]	= [NSArray arrayWithObjects: @"0", @"87", @"0", @"0", @"capsule", nil];
+	node[88]	= [NSArray arrayWithObjects: @"0", @"87", @"0", @"141", @"capsule", nil];
 		
 	node[89]	= [NSArray arrayWithObjects: @"act42", @"0", @"90", @"0", @"entente", nil];
 	node[90]	= [NSArray arrayWithObjects: @"89", @"0", @"91", @"0", @"entente", nil];
@@ -149,6 +149,11 @@
 	node[114]	= [NSArray arrayWithObjects: @"0", @"0", @"113", @"115", @"nataniev", nil];
 	node[115]	= [NSArray arrayWithObjects: @"0", @"114", @"112", @"0", @"nataniev", nil];
 	node[116]	= [NSArray arrayWithObjects: @"0", @"0", @"0", @"20|2", @"entente", nil];
+	
+	node[141]	= [NSArray arrayWithObjects: @"0", @"88", @"0", @"142", @"entente", nil];
+	node[142]	= [NSArray arrayWithObjects: @"0", @"141", @"0", @"0", @"entente", nil];
+	
+	
 	
 	return node;
 }
