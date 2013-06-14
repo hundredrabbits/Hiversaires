@@ -69,6 +69,13 @@
 @property (weak, nonatomic) IBOutlet UIImageView *interfaceSave;
 @property (weak, nonatomic) IBOutlet UIImageView *interfaceIllusion;
 
+@property (strong, nonatomic) IBOutlet UIImageView *interfaceIndicatorRight;
+@property (strong, nonatomic) IBOutlet UIImageView *interfaceIndicatorForward;
+@property (strong, nonatomic) IBOutlet UIImageView *interfaceIndicatorLeft;
+
+
+
+
 @property (weak, nonatomic) IBOutlet UIImageView *vignette;
 
 

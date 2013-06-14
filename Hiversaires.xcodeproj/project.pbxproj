@@ -21,6 +21,15 @@
 		030306F617095EC200F3A479 /* icon.114.png in Resources */ = {isa = PBXBuildFile; fileRef = 030306F517095EC200F3A479 /* icon.114.png */; };
 		030306F817095EC700F3A479 /* icon.72.png in Resources */ = {isa = PBXBuildFile; fileRef = 030306F717095EC700F3A479 /* icon.72.png */; };
 		030306FA17095ECA00F3A479 /* icon.144.png in Resources */ = {isa = PBXBuildFile; fileRef = 030306F917095ECA00F3A479 /* icon.144.png */; };
+		0314008E176AB35A006820E4 /* splash.m in Sources */ = {isa = PBXBuildFile; fileRef = 0314008D176AB35A006820E4 /* splash.m */; };
+		03140097176AB3C0006820E4 /* splash.load.png in Resources */ = {isa = PBXBuildFile; fileRef = 03140090176AB3C0006820E4 /* splash.load.png */; };
+		03140098176AB3C0006820E4 /* splash.logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 03140091176AB3C0006820E4 /* splash.logo.png */; };
+		03140099176AB3C0006820E4 /* splash.screen.png in Resources */ = {isa = PBXBuildFile; fileRef = 03140092176AB3C0006820E4 /* splash.screen.png */; };
+		0314009A176AB3C0006820E4 /* splash.support.png in Resources */ = {isa = PBXBuildFile; fileRef = 03140093176AB3C0006820E4 /* splash.support.png */; };
+		0314009B176AB3C0006820E4 /* splash.tune.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 03140094176AB3C0006820E4 /* splash.tune.mp3 */; };
+		0314009C176AB3C0006820E4 /* splash.tune.wav in Resources */ = {isa = PBXBuildFile; fileRef = 03140095176AB3C0006820E4 /* splash.tune.wav */; };
+		0314009D176AB3C0006820E4 /* splash.warning.png in Resources */ = {isa = PBXBuildFile; fileRef = 03140096176AB3C0006820E4 /* splash.warning.png */; };
+		0314009F176AC2E4006820E4 /* interfaceMove.indicator.png in Resources */ = {isa = PBXBuildFile; fileRef = 0314009E176AC2E4006820E4 /* interfaceMove.indicator.png */; };
 		031540E816C7643200A1A97B /* node.0000.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 03153F8016C7643100A1A97B /* node.0000.jpg */; };
 		031540E916C7643200A1A97B /* node.0001.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 03153F8116C7643100A1A97B /* node.0001.jpg */; };
 		031540EA16C7643200A1A97B /* node.0002.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 03153F8216C7643100A1A97B /* node.0002.jpg */; };
@@ -744,6 +753,16 @@
 		030306F517095EC200F3A479 /* icon.114.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.114.png; sourceTree = "<group>"; };
 		030306F717095EC700F3A479 /* icon.72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.72.png; sourceTree = "<group>"; };
 		030306F917095ECA00F3A479 /* icon.144.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.144.png; sourceTree = "<group>"; };
+		0314008C176AB35A006820E4 /* splash.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = splash.h; sourceTree = "<group>"; };
+		0314008D176AB35A006820E4 /* splash.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = splash.m; sourceTree = "<group>"; };
+		03140090176AB3C0006820E4 /* splash.load.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = splash.load.png; path = splash/splash.load.png; sourceTree = "<group>"; };
+		03140091176AB3C0006820E4 /* splash.logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = splash.logo.png; path = splash/splash.logo.png; sourceTree = "<group>"; };
+		03140092176AB3C0006820E4 /* splash.screen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = splash.screen.png; path = splash/splash.screen.png; sourceTree = "<group>"; };
+		03140093176AB3C0006820E4 /* splash.support.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = splash.support.png; path = splash/splash.support.png; sourceTree = "<group>"; };
+		03140094176AB3C0006820E4 /* splash.tune.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = splash.tune.mp3; path = splash/splash.tune.mp3; sourceTree = "<group>"; };
+		03140095176AB3C0006820E4 /* splash.tune.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = splash.tune.wav; path = splash/splash.tune.wav; sourceTree = "<group>"; };
+		03140096176AB3C0006820E4 /* splash.warning.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = splash.warning.png; path = splash/splash.warning.png; sourceTree = "<group>"; };
+		0314009E176AC2E4006820E4 /* interfaceMove.indicator.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = interfaceMove.indicator.png; path = graphics/interfaceMove.indicator.png; sourceTree = "<group>"; };
 		03153F8016C7643100A1A97B /* node.0000.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = node.0000.jpg; path = graphics/node.0000.jpg; sourceTree = "<group>"; };
 		03153F8116C7643100A1A97B /* node.0001.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = node.0001.jpg; path = graphics/node.0001.jpg; sourceTree = "<group>"; };
 		03153F8216C7643100A1A97B /* node.0002.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = node.0002.jpg; path = graphics/node.0002.jpg; sourceTree = "<group>"; };
@@ -2096,6 +2115,20 @@
 			name = "Interface DimClock";
 			sourceTree = "<group>";
 		};
+		0314008F176AB378006820E4 /* Splash */ = {
+			isa = PBXGroup;
+			children = (
+				03140090176AB3C0006820E4 /* splash.load.png */,
+				03140091176AB3C0006820E4 /* splash.logo.png */,
+				03140092176AB3C0006820E4 /* splash.screen.png */,
+				03140093176AB3C0006820E4 /* splash.support.png */,
+				03140094176AB3C0006820E4 /* splash.tune.mp3 */,
+				03140095176AB3C0006820E4 /* splash.tune.wav */,
+				03140096176AB3C0006820E4 /* splash.warning.png */,
+			);
+			name = Splash;
+			sourceTree = "<group>";
+		};
 		0320246316F159C2004EA7AA /* Ambient */ = {
 			isa = PBXGroup;
 			children = (
@@ -2179,6 +2212,7 @@
 		0333141116C214D6009DD80A /* Interface */ = {
 			isa = PBXGroup;
 			children = (
+				0314009E176AC2E4006820E4 /* interfaceMove.indicator.png */,
 				039B029F1712FDBF00F07145 /* Illusions */,
 				03BAE1BD17123AB000B79EF5 /* Save */,
 				0391307717111D2B00FA0A2D /* Clock */,
@@ -2308,8 +2342,6 @@
 				030306F717095EC700F3A479 /* icon.72.png */,
 				030306F517095EC200F3A479 /* icon.114.png */,
 				030306F317095EBE00F3A479 /* icon.57.png */,
-				037908ED16E437FE00136A90 /* AVFoundation.framework */,
-				03163B1C16DF2C2A0076BBE5 /* AudioToolbox.framework */,
 				030303E016D5B8E9004F377C /* icon-57.png */,
 				030303DA16D5B8A1004F377C /* icon.png */,
 				03E0DAC416BA86D700D0C40E /* Dozenal Clock */,
@@ -2331,6 +2363,8 @@
 		03E0DABD16BA86D700D0C40E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				037908ED16E437FE00136A90 /* AVFoundation.framework */,
+				03163B1C16DF2C2A0076BBE5 /* AudioToolbox.framework */,
 				03E0DABE16BA86D700D0C40E /* UIKit.framework */,
 				03E0DAC016BA86D700D0C40E /* Foundation.framework */,
 				03E0DAC216BA86D700D0C40E /* CoreGraphics.framework */,
@@ -2342,6 +2376,8 @@
 		03E0DAC416BA86D700D0C40E /* Dozenal Clock */ = {
 			isa = PBXGroup;
 			children = (
+				0314008C176AB35A006820E4 /* splash.h */,
+				0314008D176AB35A006820E4 /* splash.m */,
 				03E0DACD16BA86D700D0C40E /* DozenalAppDelegate.h */,
 				03E0DAD916BA86D700D0C40E /* DozenalViewController.h */,
 				0388223F16C344840060C323 /* DozenalViewController_WorldNode.h */,
@@ -2359,6 +2395,7 @@
 		03E0DAC516BA86D700D0C40E /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				0314008F176AB378006820E4 /* Splash */,
 				037908F116E4391400136A90 /* Sounds */,
 				0333141116C214D6009DD80A /* Interface */,
 				03D6AF7316C08A72000D0750 /* Images */,
@@ -3168,6 +3205,14 @@
 				039B029D1712FDBA00F07145 /* illusion.8.png in Resources */,
 				039B029E1712FDBA00F07145 /* illusion.9.png in Resources */,
 				03DE7CC91723CA700046C90E /* menu.logo.png in Resources */,
+				03140097176AB3C0006820E4 /* splash.load.png in Resources */,
+				03140098176AB3C0006820E4 /* splash.logo.png in Resources */,
+				03140099176AB3C0006820E4 /* splash.screen.png in Resources */,
+				0314009A176AB3C0006820E4 /* splash.support.png in Resources */,
+				0314009B176AB3C0006820E4 /* splash.tune.mp3 in Resources */,
+				0314009C176AB3C0006820E4 /* splash.tune.wav in Resources */,
+				0314009D176AB3C0006820E4 /* splash.warning.png in Resources */,
+				0314009F176AC2E4006820E4 /* interfaceMove.indicator.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3207,6 +3252,7 @@
 				03E0DADB16BA86D700D0C40E /* DozenalViewController.m in Sources */,
 				0388224216C344BF0060C323 /* DozenalViewController_WorldNode.m in Sources */,
 				03BECB5016DC72E80077BE45 /* DozenalViewController_Templates.m in Sources */,
+				0314008E176AB35A006820E4 /* splash.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -54,7 +54,7 @@
 	node[26]	= [NSArray arrayWithObjects: @"25", @"0", @"27", @"0", @"circular", nil];		
 	node[27]	= [NSArray arrayWithObjects: @"26", @"0", @"28", @"act9", @"circular", nil];		
 	node[28]	= [NSArray arrayWithObjects: @"27", @"0", @"29", @"act40", @"circular", nil];		
-	node[29]	= [NSArray arrayWithObjects: @"28", @"0", @"30", @"33|0", @"circular", nil];	// Must add act40 somewhere in circ
+	node[29]	= [NSArray arrayWithObjects: @"28", @"0", @"30", @"33|0", @"circular", nil];
 	
 	node[30]	= [NSArray arrayWithObjects: @"29", @"0", @"23", @"0", @"circular", nil];		
 	node[31]	= [NSArray arrayWithObjects: @"25|1", @"0", @"35", @"0", @"circular", nil];
@@ -83,7 +83,7 @@
 	node[52]	= [NSArray arrayWithObjects: @"54", @"53", @"0", @"act9", @"antechannel", nil];
 	node[53]	= [NSArray arrayWithObjects: @"55", @"84", @"0", @"52", @"antechannel", nil];
 	node[54]	= [NSArray arrayWithObjects: @"57", @"55", @"52", @"0", @"antechannel", nil];
-	node[55]	= [NSArray arrayWithObjects: @"act39", @"56", @"53", @"54", @"antechannel", nil]; // act34 for audio player
+	node[55]	= [NSArray arrayWithObjects: @"act39", @"56", @"53", @"54", @"antechannel", nil];
 	node[56]	= [NSArray arrayWithObjects: @"58", @"0", @"84", @"55", @"antechannel", nil];
 	node[57]	= [NSArray arrayWithObjects: @"59", @"0", @"54", @"0", @"antechannel", nil];
 	node[58]	= [NSArray arrayWithObjects: @"60", @"0", @"56", @"0", @"antechannel", nil];
@@ -151,7 +151,8 @@
 	node[116]	= [NSArray arrayWithObjects: @"0", @"0", @"0", @"20|2", @"entente", nil];
 	
 	node[141]	= [NSArray arrayWithObjects: @"0", @"88", @"0", @"142", @"entente", nil];
-	node[142]	= [NSArray arrayWithObjects: @"0", @"141", @"0", @"0", @"entente", nil];
+	node[142]	= [NSArray arrayWithObjects: @"0", @"141", @"0", @"act54", @"entente", nil];
+	node[143]	= [NSArray arrayWithObjects: @"0", @"act54", @"0", @"0", @"entente", nil];
 	
 	
 	
@@ -223,12 +224,13 @@
 	// Spare Fuse
 	
 	puzzle[47]		= @"energyTerminal";
-	puzzle[48]		= @"illusion"; // act48 nataniev Illusion
-	puzzle[49]		= @"illusion"; // act49 nataniev Illusion
-	puzzle[50]		= @"illusion"; // act50 nataniev Illusion
-	puzzle[51]		= @"illusion"; // act51 nataniev Illusion
-	puzzle[52]		= @"illusion"; // act52 nataniev Illusion
-	puzzle[53]		= @"illusion"; // act53 nataniev Illusion
+	puzzle[48]		= @"illusion";
+	puzzle[49]		= @"illusion"; 
+	puzzle[50]		= @"illusion"; 
+	puzzle[51]		= @"illusion"; 
+	puzzle[52]		= @"illusion";
+	puzzle[53]		= @"illusion";
+	puzzle[54]		= @"timeDoor";
 	
 	
 	return puzzle;

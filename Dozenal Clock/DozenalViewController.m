@@ -78,17 +78,20 @@ NSUserDefaults *memory;
 
 - (void)newGame
 {
+	[self prefStart]; // this resets the game, remove for release
 	[self prefPositioning];
+	[self templateStart];
 	
 	worldPath			= [self worldPath];
 	worldActionType		= [self worldActionType];
 	
 	[self prefLoad];
 	
+	userNode = 88;
+	
 	[self actionCheck];
     [self moveCheck];
 	[self menuHome];
-	
 }
 
 
@@ -263,8 +266,10 @@ NSUserDefaults *memory;
 	else if	( userNode == 79 ){	userNode = 112;}
 	else if	( userNode == 85 ){	userNode = 46; userOrientation = 0; }
 	else if	( userNode == 87 ){	userNode = 76; }
-	else if	( userNode == 112){	userNode = 79;}
-	else if	( userNode == 113){	userNode = 50;}
+	else if	( userNode == 112){	userNode = 79; }
+	else if	( userNode == 113){	userNode = 50; }
+	else if	( userNode == 142){	userNode = 143; userOrientation = 3;}
+	else if	( userNode == 143){	userNode = 142; userOrientation = 1;}
 	
 	// Easter Eggs
 	
@@ -388,6 +393,10 @@ NSUserDefaults *memory;
 	if( [worldActionType[userActionId] isEqual: @"killTerminal"] )		{ [self templateKillTerminal]; }
 	if( [worldActionType[userActionId] isEqual: @"endgameDoor"] )		{ [self templateEndgameDoor]; }
 	if( [worldActionType[userActionId] isEqual: @"endgameCredit"] )		{ [self templateEndgameCredit]; }
+	if( [worldActionType[userActionId] isEqual: @"timeDoor"] )			{ [self templateTimeDoor]; }
+	
+	
+	
 	
 	if( [userAction isEqual: @"act23"] )								{ [self templateEntenteTerminal1]; }
 	if( [userAction isEqual: @"act24"] )								{ [self templateEntenteTerminal2]; }
@@ -398,6 +407,33 @@ NSUserDefaults *memory;
 	if([userAction isEqual: @"act46"])									{ [self templateEntentePart2Exit]; }
 	
 }
+
+
+- (void)templateTimeDoor
+{
+	[self prefPositioning];
+	[self templateVignette];
+	
+	NSDate *currentTime = [NSDate date];
+	NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+	[dateFormatter setDateFormat:@"HH"]; // @"hh-mm"
+	NSString *currentHours = [dateFormatter stringFromDate: currentTime];
+	[dateFormatter setDateFormat:@"mm"]; // @"hh-mm"
+	NSString *currentMinutes = [dateFormatter stringFromDate: currentTime];
+	
+	if( ([currentHours intValue] == 6 && [currentMinutes intValue] == 13) || userNode == 143 ){
+		
+		userActionStorage[54] = @"1";
+		[self templateUpdateDoorknob:142:143:_action2];		
+	}
+	else{
+		NSLog(@"Door locked, wait for time.");
+	}
+	
+	NSLog(@"Current Time: %@ %@", currentHours, currentMinutes);
+	
+}
+
 
 - (void)clock{}
 
@@ -772,6 +808,8 @@ NSUserDefaults *memory;
 		[self templateUpdateNode:84:@"0527":@"act47"];
 		[self templateUpdateNode:101:@"0532":@"act38"];
 		[self templateUpdateNode:113:@"0551":@"act36"];
+		[self templateUpdateNode:142:@"0576":@"act54"];
+		[self templateUpdateNode:143:@"0577":@"act54"];
 	}
 	else{
 		[self templateUpdateNode:18:@"0521":@"act2"];
@@ -785,6 +823,8 @@ NSUserDefaults *memory;
 		[self templateUpdateNode:84:@"0526":@"act47"];
 		[self templateUpdateNode:101:@"0533":@"act38"];
 		[self templateUpdateNode:113:@"0552":@"act36"];
+		[self templateUpdateNode:142:@"0571":@"act54"];
+		[self templateUpdateNode:143:@"0573":@"act54"];
 	}
 	
 	// Extras
@@ -809,6 +849,7 @@ NSUserDefaults *memory;
 {
 	[self prefPositioning];
 	[self templateVignette];
+	[self prefSave];
 	
 	if( userProgress == 1 ){ [self templateUpdateNode:23:@"0545":@"act16"]; }
 	if( userProgress == 2 ){ [self templateUpdateNode:23:@"0546":@"act16"]; }
@@ -1094,14 +1135,6 @@ NSUserDefaults *memory;
 	if( userEnergy == 1){
 		self.graphic6.frame = CGRectMake(0, 0, screenBound.size.width, screenBound.size.height);
 		self.graphic6.image = [UIImage imageNamed:@"menu.credit4.png"];
-		self.graphic6.alpha	 = 0.0;
-		self.graphic6.hidden = NO;
-		
-		[self fadeIn:self.graphic6 d:24.0 t:1];
-	}
-	else{
-		self.graphic6.frame = CGRectMake(0, 0, screenBound.size.width, screenBound.size.height);
-		self.graphic6.image = [UIImage imageNamed:@"menu.credit5.png"];
 		self.graphic6.alpha	 = 0.0;
 		self.graphic6.hidden = NO;
 		
@@ -1412,36 +1445,46 @@ NSUserDefaults *memory;
 {
 	self.viewMain.alpha = 0.5;
 	self.viewMain.transform = CGAffineTransformMakeTranslation(-15, 0);
+	self.interfaceIndicatorLeft.alpha = 1;
 	
 	[UIView beginAnimations: @"Turn Left" context:nil];
 	[UIView setAnimationDuration:0.2];
 	self.viewMain.transform = CGAffineTransformMakeTranslation(0, 0);
 	self.viewMain.alpha = 1;
 	[UIView commitAnimations];
+	
+	[self fadeOut:self.interfaceIndicatorLeft d:0 t:0.5];
+	
 }
 
 -(void)turnRight
 {
 	self.viewMain.alpha = 0.5;
 	self.viewMain.transform = CGAffineTransformMakeTranslation(15, 0);
+	self.interfaceIndicatorRight.alpha = 1;
 	
 	[UIView beginAnimations: @"Turn Right" context:nil];
 	[UIView setAnimationDuration:0.2];
 	self.viewMain.transform = CGAffineTransformMakeTranslation(0, 0);
 	self.viewMain.alpha = 1;
 	[UIView commitAnimations];
+	
+	[self fadeOut:self.interfaceIndicatorRight d:0 t:0.5];
 }
 
 -(void)turnForward
 {
 	self.viewMain.alpha = 0.5;
 	self.viewMain.transform = CGAffineTransformMakeTranslation(0, 2);
+	self.interfaceIndicatorForward.alpha = 1;
 	
 	[UIView beginAnimations: @"Turn Right" context:nil];
 	[UIView setAnimationDuration:0.2];
 	self.viewMain.transform = CGAffineTransformMakeTranslation(0, 0);
 	self.viewMain.alpha = 1;
 	[UIView commitAnimations];
+	
+	[self fadeOut:self.interfaceIndicatorForward d:0 t:0.5];
 }
 
 -(void)vibrate
@@ -1493,6 +1536,14 @@ NSUserDefaults *memory;
 // Preferences
 // ====================
 
+- (void) templateStart
+{
+	self.interfaceIndicatorRight.image = [UIImage imageNamed:@"interfaceMove.indicator.png"];
+	self.interfaceIndicatorForward.image = [UIImage imageNamed:@"interfaceMove.indicator.png"];
+	self.interfaceIndicatorLeft.image = [UIImage imageNamed:@"interfaceMove.indicator.png"];
+}
+
+
 -(void) prefPositioning
 {
 	
@@ -1524,10 +1575,6 @@ NSUserDefaults *memory;
 	self.moveRight.frame = CGRectMake( screenWidthFifth*4, 0, screenWidthFifth, screenHeight );
 	self.moveLeft.frame = CGRectMake(0, 0, screenWidthFifth, screenHeight );
 	
-//	[self.moveRight setImage:[UIImage imageNamed: [NSString stringWithFormat:@"tempYes.png"] ] forState:UIControlStateNormal];
-//	[self.moveLeft setImage:[UIImage imageNamed: [NSString stringWithFormat:@"tempYes.png"] ] forState:UIControlStateNormal];
-//	[self.moveForward setImage:[UIImage imageNamed: [NSString stringWithFormat:@"tempNo.png"] ] forState:UIControlStateNormal];
-	
 	// Action Clock Terminal
 	self.action1.frame = CGRectMake( screenWidthThird, screenHeightThird, screenWidthThird, screenHeightThird );
 	// Action Clock Terminal
@@ -1542,7 +1589,6 @@ NSUserDefaults *memory;
 	self.actionCredit.frame = CGRectMake( screenWidthThird, screenHeightThird, screenWidthThird, screenHeightThird );
 	self.actionCredit.alpha = 0;
 	self.actionCredit.hidden = YES;
-	
 	
 	// Graphics
 	
@@ -1560,12 +1606,17 @@ NSUserDefaults *memory;
 	self.interfaceSeal2.frame = CGRectMake(screenBound.size.width - (screenBound.size.width/12) - screenPadding, screenBound.size.height-(screenBound.size.width/12)*2 - screenPadding, screenBound.size.width/12, screenBound.size.width/12);
 	
 	self.interfaceAudio.frame = CGRectMake(screenPadding + ((screenBound.size.width/12)*2), screenBound.size.height-(screenBound.size.width/12) - screenPadding, screenBound.size.width/12, screenBound.size.width/12);
-	
 	self.interfaceDimclock.frame = CGRectMake(screenPadding + ((screenBound.size.width/12)*4), screenBound.size.height-(screenBound.size.width/12) - screenPadding, screenBound.size.width/12, screenBound.size.width/12);
-	
 	self.interfaceSave.frame = CGRectMake(screenPadding + ((screenBound.size.width/12)*6), screenBound.size.height-(screenBound.size.width/12) - screenPadding, screenBound.size.width/12, screenBound.size.width/12);
-	
 	self.interfaceIllusion.frame = CGRectMake(screenPadding + ((screenBound.size.width/12)*8), screenBound.size.height-(screenBound.size.width/12) - screenPadding, screenBound.size.width/12, screenBound.size.width/12);
+	
+	self.interfaceIndicatorRight.frame = CGRectMake(screenWidthFifth*4, screenHeight-(screenBound.size.width/12), screenWidthFifth, screenBound.size.width/12);
+	self.interfaceIndicatorForward.frame = CGRectMake(screenWidthFifth, screenHeight-(screenBound.size.width/12), screenWidthFifth*3, screenBound.size.width/12);
+	self.interfaceIndicatorLeft.frame = CGRectMake(0, screenHeight-(screenBound.size.width/12), screenWidthFifth, screenBound.size.width/12);
+	
+	self.interfaceIndicatorRight.alpha = 0;
+	self.interfaceIndicatorForward.alpha = 0;
+	self.interfaceIndicatorLeft.alpha = 0;
 	
 	
 }
@@ -1685,10 +1736,16 @@ NSUserDefaults *memory;
 
 }
 
+- (void)prefStart
+{
+	NSString *domainName = [[NSBundle mainBundle] bundleIdentifier];
+	[[NSUserDefaults standardUserDefaults] removePersistentDomainForName:domainName];
+}
+
 
 - (IBAction)actionCredit:(id)sender {
 	
-	[[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://wiki.xxiivv.com/Mileantres"]];
+	[[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://wiki.xxiivv.com/Nataniev"]];
 	
 }
 @end
