@@ -78,7 +78,7 @@ NSUserDefaults *memory;
 
 - (void)newGame
 {
-	[self prefStart]; // this resets the game, remove for release
+	// [self prefStart]; // this resets the game, remove for release
 	[self prefPositioning];
 	[self templateStart];
 	
@@ -87,7 +87,7 @@ NSUserDefaults *memory;
 	
 	[self prefLoad];
 	
-	userNode = 88;
+	// userNode = 88;
 	
 	[self actionCheck];
     [self moveCheck];
@@ -421,7 +421,7 @@ NSUserDefaults *memory;
 	[dateFormatter setDateFormat:@"mm"]; // @"hh-mm"
 	NSString *currentMinutes = [dateFormatter stringFromDate: currentTime];
 	
-	if( ([currentHours intValue] == 6 && [currentMinutes intValue] == 13) || userNode == 143 ){
+	if( ([currentHours intValue] == 15 && [currentMinutes intValue] == 7) || userNode == 143 ){
 		
 		userActionStorage[54] = @"1";
 		[self templateUpdateDoorknob:142:143:_action2];		

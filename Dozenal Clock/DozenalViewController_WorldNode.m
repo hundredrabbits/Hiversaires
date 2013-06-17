@@ -152,7 +152,7 @@
 	
 	node[141]	= [NSArray arrayWithObjects: @"0", @"88", @"0", @"142", @"entente", nil];
 	node[142]	= [NSArray arrayWithObjects: @"0", @"141", @"0", @"act54", @"entente", nil];
-	node[143]	= [NSArray arrayWithObjects: @"0", @"act54", @"0", @"0", @"entente", nil];
+	node[143]	= [NSArray arrayWithObjects: @"0", @"act54", @"0", @"0", @"nataniev", nil];
 	
 	
 	
