@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>3AE45B0A-3C71-4494-AF46-A15892730869</string>
+	<key>IDESourceControlProjectName</key>
+	<string>Hiversaires</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>422F3CE5CA9A4D236A99E36D77FBD0997F195921</key>
+		<string>https://github.com/aliceffekt/hiversaires.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>Hiversaires.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>422F3CE5CA9A4D236A99E36D77FBD0997F195921</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/aliceffekt/hiversaires.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>422F3CE5CA9A4D236A99E36D77FBD0997F195921</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>422F3CE5CA9A4D236A99E36D77FBD0997F195921</string>
+			<key>IDESourceControlWCCName</key>
+			<string>hiversaires</string>
+		</dict>
+	</array>
+</dict>
+</plist>

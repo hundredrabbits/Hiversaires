@@ -9,22 +9,11 @@
 	<key>CFBundleExecutable</key>
 	<string>${EXECUTABLE_NAME}</string>
 	<key>CFBundleIcons</key>
-	<dict>
-		<key>CFBundlePrimaryIcon</key>
-		<dict>
-			<key>CFBundleIconFiles</key>
-			<array>
-				<string>icon.114.png</string>
-				<string>icon.57.png</string>
-				<string>icon.72.png</string>
-				<string>icon.144.png</string>
-			</array>
-			<key>UIPrerenderedIcon</key>
-			<true/>
-		</dict>
-	</dict>
+	<dict/>
+	<key>CFBundleIcons~ipad</key>
+	<dict/>
 	<key>CFBundleIdentifier</key>
-	<string>com.xxiivv.${PRODUCT_NAME:rfc1034identifier}2</string>
+	<string>com.xxiivv.Hiversaires2</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
@@ -32,11 +21,11 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>3.00</string>
+	<string>3.1</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
-	<string>3.000</string>
+	<string>3.1</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>UIMainStoryboardFile</key>

@@ -427,6 +427,7 @@
 		032CCCCB16EDCC4600F7F11E /* node.0490.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 032CCCC816EDCC4600F7F11E /* node.0490.jpg */; };
 		032CCCCC16EDCC4600F7F11E /* node.0491.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 032CCCC916EDCC4600F7F11E /* node.0491.jpg */; };
 		0333141316C214E0009DD80A /* vignette.png in Resources */ = {isa = PBXBuildFile; fileRef = 0333141216C214E0009DD80A /* vignette.png */; };
+		03427E6019CCEAE9008F3ABB /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 03427E5F19CCEAE9008F3ABB /* Images.xcassets */; };
 		036347BB170127CF0099D37E /* menu.controls.png in Resources */ = {isa = PBXBuildFile; fileRef = 036347BA170127CF0099D37E /* menu.controls.png */; };
 		036C481316F7115A0099279F /* progress_act1_door.png in Resources */ = {isa = PBXBuildFile; fileRef = 036C480316F7115A0099279F /* progress_act1_door.png */; };
 		036C481416F7115A0099279F /* progress_act1_seal1.png in Resources */ = {isa = PBXBuildFile; fileRef = 036C480416F7115A0099279F /* progress_act1_seal1.png */; };
@@ -681,11 +682,6 @@
 		03E0DAD516BA86D700D0C40E /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 03E0DAD416BA86D700D0C40E /* Default-568h@2x.png */; };
 		03E0DAD816BA86D700D0C40E /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 03E0DAD616BA86D700D0C40E /* MainStoryboard.storyboard */; };
 		03E0DADB16BA86D700D0C40E /* DozenalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 03E0DADA16BA86D700D0C40E /* DozenalViewController.m */; };
-		03E0DAE316BA86D700D0C40E /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03E0DAE216BA86D700D0C40E /* SenTestingKit.framework */; };
-		03E0DAE416BA86D700D0C40E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03E0DABE16BA86D700D0C40E /* UIKit.framework */; };
-		03E0DAE516BA86D700D0C40E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03E0DAC016BA86D700D0C40E /* Foundation.framework */; };
-		03E0DAED16BA86D700D0C40E /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 03E0DAEB16BA86D700D0C40E /* InfoPlist.strings */; };
-		03E0DAF016BA86D700D0C40E /* Dozenal_ClockTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 03E0DAEF16BA86D700D0C40E /* Dozenal_ClockTests.m */; };
 		03F223CC17014DBF00A5C610 /* node.0547.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 03F223AA17014DBE00A5C610 /* node.0547.jpg */; };
 		03F223CD17014DBF00A5C610 /* node.0548.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 03F223AB17014DBE00A5C610 /* node.0548.jpg */; };
 		03F223CE17014DBF00A5C610 /* node.0549.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 03F223AC17014DBE00A5C610 /* node.0549.jpg */; };
@@ -727,16 +723,6 @@
 		03FF829C16D448D00076A619 /* tempNo.png in Resources */ = {isa = PBXBuildFile; fileRef = 03FF829A16D448D00076A619 /* tempNo.png */; };
 		03FF829D16D448D00076A619 /* tempYes.png in Resources */ = {isa = PBXBuildFile; fileRef = 03FF829B16D448D00076A619 /* tempYes.png */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		03E0DAE616BA86D700D0C40E /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 03E0DAB116BA86D700D0C40E /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 03E0DAB916BA86D700D0C40E;
-			remoteInfo = "Dozenal Clock";
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		030303DA16D5B8A1004F377C /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
@@ -1160,6 +1146,7 @@
 		032CCCC816EDCC4600F7F11E /* node.0490.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = node.0490.jpg; path = graphics/node.0490.jpg; sourceTree = "<group>"; };
 		032CCCC916EDCC4600F7F11E /* node.0491.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = node.0491.jpg; path = graphics/node.0491.jpg; sourceTree = "<group>"; };
 		0333141216C214E0009DD80A /* vignette.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = vignette.png; path = interface/vignette.png; sourceTree = "<group>"; };
+		03427E5F19CCEAE9008F3ABB /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = Hiversaires/Images.xcassets; sourceTree = "<group>"; };
 		036347BA170127CF0099D37E /* menu.controls.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = menu.controls.png; path = graphics/menu.controls.png; sourceTree = "<group>"; };
 		036C480316F7115A0099279F /* progress_act1_door.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = progress_act1_door.png; path = graphics/progress_act1_door.png; sourceTree = "<group>"; };
 		036C480416F7115A0099279F /* progress_act1_seal1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = progress_act1_seal1.png; path = graphics/progress_act1_seal1.png; sourceTree = "<group>"; };
@@ -1421,7 +1408,6 @@
 		03E0DAD716BA86D700D0C40E /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
 		03E0DAD916BA86D700D0C40E /* DozenalViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DozenalViewController.h; sourceTree = "<group>"; };
 		03E0DADA16BA86D700D0C40E /* DozenalViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DozenalViewController.m; sourceTree = "<group>"; };
-		03E0DAE116BA86D700D0C40E /* HiversairesTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HiversairesTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		03E0DAE216BA86D700D0C40E /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		03E0DAEA16BA86D700D0C40E /* HiversairesTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "HiversairesTests-Info.plist"; sourceTree = "<group>"; };
 		03E0DAEC16BA86D700D0C40E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -1479,16 +1465,6 @@
 				03E0DABF16BA86D700D0C40E /* UIKit.framework in Frameworks */,
 				03E0DAC116BA86D700D0C40E /* Foundation.framework in Frameworks */,
 				03E0DAC316BA86D700D0C40E /* CoreGraphics.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		03E0DADD16BA86D700D0C40E /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				03E0DAE316BA86D700D0C40E /* SenTestingKit.framework in Frameworks */,
-				03E0DAE416BA86D700D0C40E /* UIKit.framework in Frameworks */,
-				03E0DAE516BA86D700D0C40E /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2338,6 +2314,7 @@
 		03E0DAAF16BA86D700D0C40E = {
 			isa = PBXGroup;
 			children = (
+				03427E5F19CCEAE9008F3ABB /* Images.xcassets */,
 				030306F917095ECA00F3A479 /* icon.144.png */,
 				030306F717095EC700F3A479 /* icon.72.png */,
 				030306F517095EC200F3A479 /* icon.114.png */,
@@ -2355,7 +2332,6 @@
 			isa = PBXGroup;
 			children = (
 				03E0DABA16BA86D700D0C40E /* Hiversaires.app */,
-				03E0DAE116BA86D700D0C40E /* HiversairesTests.octest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -2458,25 +2434,6 @@
 			productReference = 03E0DABA16BA86D700D0C40E /* Hiversaires.app */;
 			productType = "com.apple.product-type.application";
 		};
-		03E0DAE016BA86D700D0C40E /* HiversairesTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 03E0DAF616BA86D700D0C40E /* Build configuration list for PBXNativeTarget "HiversairesTests" */;
-			buildPhases = (
-				03E0DADC16BA86D700D0C40E /* Sources */,
-				03E0DADD16BA86D700D0C40E /* Frameworks */,
-				03E0DADE16BA86D700D0C40E /* Resources */,
-				03E0DADF16BA86D700D0C40E /* ShellScript */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				03E0DAE716BA86D700D0C40E /* PBXTargetDependency */,
-			);
-			name = HiversairesTests;
-			productName = "Dozenal ClockTests";
-			productReference = 03E0DAE116BA86D700D0C40E /* HiversairesTests.octest */;
-			productType = "com.apple.product-type.bundle";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -2484,8 +2441,14 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = Dozenal;
+				LastTestingUpgradeCheck = 0600;
 				LastUpgradeCheck = 0450;
 				ORGANIZATIONNAME = XXIIVV;
+				TargetAttributes = {
+					03E0DAB916BA86D700D0C40E = {
+						DevelopmentTeam = B948MFAE5C;
+					};
+				};
 			};
 			buildConfigurationList = 03E0DAB416BA86D700D0C40E /* Build configuration list for PBXProject "Hiversaires" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -2500,7 +2463,6 @@
 			projectRoot = "";
 			targets = (
 				03E0DAB916BA86D700D0C40E /* Hiversaires */,
-				03E0DAE016BA86D700D0C40E /* HiversairesTests */,
 			);
 		};
 /* End PBXProject section */
@@ -2767,6 +2729,7 @@
 				031541E016C7643200A1A97B /* node.0248.jpg in Resources */,
 				031541E116C7643200A1A97B /* node.0249.jpg in Resources */,
 				031541E216C7643200A1A97B /* node.0250.jpg in Resources */,
+				03427E6019CCEAE9008F3ABB /* Images.xcassets in Resources */,
 				031541E316C7643200A1A97B /* node.0251.jpg in Resources */,
 				031541E416C7643200A1A97B /* node.0252.jpg in Resources */,
 				031541E516C7643200A1A97B /* node.0253.jpg in Resources */,
@@ -3216,31 +3179,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		03E0DADE16BA86D700D0C40E /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				03E0DAED16BA86D700D0C40E /* InfoPlist.strings in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		03E0DADF16BA86D700D0C40E /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		03E0DAB616BA86D700D0C40E /* Sources */ = {
@@ -3256,23 +3195,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		03E0DADC16BA86D700D0C40E /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				03E0DAF016BA86D700D0C40E /* Dozenal_ClockTests.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		03E0DAE716BA86D700D0C40E /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 03E0DAB916BA86D700D0C40E /* Hiversaires */;
-			targetProxy = 03E0DAE616BA86D700D0C40E /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		03E0DAC716BA86D700D0C40E /* InfoPlist.strings */ = {
@@ -3311,7 +3234,7 @@
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: David Mondou-Labbe (V9PZ3GV9WH)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: David Mondou-Labbe (B948MFAE5C)";
 				"CODE_SIGN_IDENTITY[sdk=*]" = "iPhone Developer: David Mondou-Labbe (V9PZ3GV9WH)";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -3327,8 +3250,8 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "03EFA979-25FC-472C-88BD-BC83368202A2";
-				"PROVISIONING_PROFILE[sdk=*]" = "03EFA979-25FC-472C-88BD-BC83368202A2";
+				PROVISIONING_PROFILE = "fc068a1b-575b-4b69-b9e3-032099373684";
+				"PROVISIONING_PROFILE[sdk=*]" = "fc068a1b-575b-4b69-b9e3-032099373684";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -3343,8 +3266,8 @@
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: David Mondou-Labbe";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: David Mondou-Labbe";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: David Mondou-Labbe (B948MFAE5C)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: David Mondou-Labbe (B948MFAE5C)";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
@@ -3353,8 +3276,8 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
-				PROVISIONING_PROFILE = "445A0618-C48A-407F-AE0E-47D3CD89AF71";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "445A0618-C48A-407F-AE0E-47D3CD89AF71";
+				PROVISIONING_PROFILE = "fc068a1b-575b-4b69-b9e3-032099373684";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "fc068a1b-575b-4b69-b9e3-032099373684";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -3363,11 +3286,16 @@
 		03E0DAF416BA86D700D0C40E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Dozenal Clock/Hiversaires-Prefix.pch";
 				INFOPLIST_FILE = "Dozenal Clock/Hiversaires-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				PRODUCT_NAME = Hiversaires;
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
@@ -3376,47 +3304,18 @@
 		03E0DAF516BA86D700D0C40E /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Dozenal Clock/Hiversaires-Prefix.pch";
 				INFOPLIST_FILE = "Dozenal Clock/Hiversaires-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				PRODUCT_NAME = Hiversaires;
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
-			};
-			name = Release;
-		};
-		03E0DAF716BA86D700D0C40E /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Dozenal Clock.app/Dozenal Clock";
-				FRAMEWORK_SEARCH_PATHS = (
-					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
-					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Dozenal Clock/Dozenal Clock-Prefix.pch";
-				INFOPLIST_FILE = "Dozenal ClockTests/HiversairesTests-Info.plist";
-				PRODUCT_NAME = HiversairesTests;
-				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = octest;
-			};
-			name = Debug;
-		};
-		03E0DAF816BA86D700D0C40E /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Dozenal Clock.app/Dozenal Clock";
-				FRAMEWORK_SEARCH_PATHS = (
-					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
-					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Dozenal Clock/Dozenal Clock-Prefix.pch";
-				INFOPLIST_FILE = "Dozenal ClockTests/HiversairesTests-Info.plist";
-				PRODUCT_NAME = HiversairesTests;
-				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = octest;
 			};
 			name = Release;
 		};
@@ -3437,15 +3336,6 @@
 			buildConfigurations = (
 				03E0DAF416BA86D700D0C40E /* Debug */,
 				03E0DAF516BA86D700D0C40E /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		03E0DAF616BA86D700D0C40E /* Build configuration list for PBXNativeTarget "HiversairesTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				03E0DAF716BA86D700D0C40E /* Debug */,
-				03E0DAF816BA86D700D0C40E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
