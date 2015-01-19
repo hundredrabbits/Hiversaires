@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		030303DB16D5B8A1004F377C /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 030303DA16D5B8A1004F377C /* icon.png */; };
-		030303E116D5B8E9004F377C /* icon-57.png in Resources */ = {isa = PBXBuildFile; fileRef = 030303E016D5B8E9004F377C /* icon-57.png */; };
 		030306E71709477600F3A479 /* interface.dimclock.shadow.png in Resources */ = {isa = PBXBuildFile; fileRef = 030306E31709477600F3A479 /* interface.dimclock.shadow.png */; };
 		030306E81709477600F3A479 /* interface.dimclock.state0.png in Resources */ = {isa = PBXBuildFile; fileRef = 030306E41709477600F3A479 /* interface.dimclock.state0.png */; };
 		030306E91709477600F3A479 /* interface.dimclock.state1.png in Resources */ = {isa = PBXBuildFile; fileRef = 030306E51709477600F3A479 /* interface.dimclock.state1.png */; };
@@ -17,10 +15,6 @@
 		030306F017095EAE00F3A479 /* icon.72.png in Resources */ = {isa = PBXBuildFile; fileRef = 030306EC17095EAE00F3A479 /* icon.72.png */; };
 		030306F117095EAE00F3A479 /* icon.114.png in Resources */ = {isa = PBXBuildFile; fileRef = 030306ED17095EAE00F3A479 /* icon.114.png */; };
 		030306F217095EAE00F3A479 /* icon.144.png in Resources */ = {isa = PBXBuildFile; fileRef = 030306EE17095EAE00F3A479 /* icon.144.png */; };
-		030306F417095EBE00F3A479 /* icon.57.png in Resources */ = {isa = PBXBuildFile; fileRef = 030306F317095EBE00F3A479 /* icon.57.png */; };
-		030306F617095EC200F3A479 /* icon.114.png in Resources */ = {isa = PBXBuildFile; fileRef = 030306F517095EC200F3A479 /* icon.114.png */; };
-		030306F817095EC700F3A479 /* icon.72.png in Resources */ = {isa = PBXBuildFile; fileRef = 030306F717095EC700F3A479 /* icon.72.png */; };
-		030306FA17095ECA00F3A479 /* icon.144.png in Resources */ = {isa = PBXBuildFile; fileRef = 030306F917095ECA00F3A479 /* icon.144.png */; };
 		0314008E176AB35A006820E4 /* splash.m in Sources */ = {isa = PBXBuildFile; fileRef = 0314008D176AB35A006820E4 /* splash.m */; };
 		03140097176AB3C0006820E4 /* splash.load.png in Resources */ = {isa = PBXBuildFile; fileRef = 03140090176AB3C0006820E4 /* splash.load.png */; };
 		03140098176AB3C0006820E4 /* splash.logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 03140091176AB3C0006820E4 /* splash.logo.png */; };
@@ -725,8 +719,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		030303DA16D5B8A1004F377C /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
-		030303E016D5B8E9004F377C /* icon-57.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-57.png"; sourceTree = "<group>"; };
 		030306E31709477600F3A479 /* interface.dimclock.shadow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = interface.dimclock.shadow.png; path = graphics/interface.dimclock.shadow.png; sourceTree = "<group>"; };
 		030306E41709477600F3A479 /* interface.dimclock.state0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = interface.dimclock.state0.png; path = graphics/interface.dimclock.state0.png; sourceTree = "<group>"; };
 		030306E51709477600F3A479 /* interface.dimclock.state1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = interface.dimclock.state1.png; path = graphics/interface.dimclock.state1.png; sourceTree = "<group>"; };
@@ -735,10 +727,6 @@
 		030306EC17095EAE00F3A479 /* icon.72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon.72.png; path = graphics/icon.72.png; sourceTree = "<group>"; };
 		030306ED17095EAE00F3A479 /* icon.114.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon.114.png; path = graphics/icon.114.png; sourceTree = "<group>"; };
 		030306EE17095EAE00F3A479 /* icon.144.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon.144.png; path = graphics/icon.144.png; sourceTree = "<group>"; };
-		030306F317095EBE00F3A479 /* icon.57.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.57.png; sourceTree = "<group>"; };
-		030306F517095EC200F3A479 /* icon.114.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.114.png; sourceTree = "<group>"; };
-		030306F717095EC700F3A479 /* icon.72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.72.png; sourceTree = "<group>"; };
-		030306F917095ECA00F3A479 /* icon.144.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.144.png; sourceTree = "<group>"; };
 		0314008C176AB35A006820E4 /* splash.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = splash.h; sourceTree = "<group>"; };
 		0314008D176AB35A006820E4 /* splash.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = splash.m; sourceTree = "<group>"; };
 		03140090176AB3C0006820E4 /* splash.load.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = splash.load.png; path = splash/splash.load.png; sourceTree = "<group>"; };
@@ -2315,12 +2303,6 @@
 			isa = PBXGroup;
 			children = (
 				03427E5F19CCEAE9008F3ABB /* Images.xcassets */,
-				030306F917095ECA00F3A479 /* icon.144.png */,
-				030306F717095EC700F3A479 /* icon.72.png */,
-				030306F517095EC200F3A479 /* icon.114.png */,
-				030306F317095EBE00F3A479 /* icon.57.png */,
-				030303E016D5B8E9004F377C /* icon-57.png */,
-				030303DA16D5B8A1004F377C /* icon.png */,
 				03E0DAC416BA86D700D0C40E /* Dozenal Clock */,
 				03E0DAE816BA86D700D0C40E /* Dozenal ClockTests */,
 				03E0DABD16BA86D700D0C40E /* Frameworks */,
@@ -2841,8 +2823,6 @@
 				0315424F16C7643200A1A97B /* node.0359.jpg in Resources */,
 				03FF829C16D448D00076A619 /* tempNo.png in Resources */,
 				03FF829D16D448D00076A619 /* tempYes.png in Resources */,
-				030303DB16D5B8A1004F377C /* icon.png in Resources */,
-				030303E116D5B8E9004F377C /* icon-57.png in Resources */,
 				03777AD116E9DC69006882C6 /* node.0360.jpg in Resources */,
 				03777AD216E9DC69006882C6 /* node.0361.jpg in Resources */,
 				03777AD316E9DC69006882C6 /* node.0362.jpg in Resources */,
@@ -3121,10 +3101,6 @@
 				030306F017095EAE00F3A479 /* icon.72.png in Resources */,
 				030306F117095EAE00F3A479 /* icon.114.png in Resources */,
 				030306F217095EAE00F3A479 /* icon.144.png in Resources */,
-				030306F417095EBE00F3A479 /* icon.57.png in Resources */,
-				030306F617095EC200F3A479 /* icon.114.png in Resources */,
-				030306F817095EC700F3A479 /* icon.72.png in Resources */,
-				030306FA17095ECA00F3A479 /* icon.144.png in Resources */,
 				031725F41709BF5F00E99F62 /* action_DoorActive.mp3 in Resources */,
 				031725F51709BF5F00E99F62 /* action_DoorInit.mp3 in Resources */,
 				031725F61709BF5F00E99F62 /* action_EnergyActive.mp3 in Resources */,

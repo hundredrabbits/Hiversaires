@@ -70,7 +70,7 @@
 	node[40]	= [NSArray arrayWithObjects: @"39", @"0", @"41", @"0", @"stones", nil];
 	node[41]	= [NSArray arrayWithObjects: @"40", @"0", @"0", @"42", @"stones", nil];
 	node[42]	= [NSArray arrayWithObjects: @"0", @"41", @"44", @"43", @"stones", nil];
-	node[43]	= [NSArray arrayWithObjects: @"0", @"42", @"0", @"act34", @"stones", nil];
+	node[43]	= [NSArray arrayWithObjects: @"0", @"42", @"0", @"act35", @"stones", nil];
 	node[44]	= [NSArray arrayWithObjects: @"42", @"0", @"46", @"0", @"stones", nil];
 	node[45]	= [NSArray arrayWithObjects: @"act13", @"0", @"act1", @"39", @"rainre", nil];
 	node[46]	= [NSArray arrayWithObjects: @"44", @"0", @"act15", @"0", @"stones", nil];

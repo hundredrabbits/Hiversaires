@@ -70,10 +70,8 @@ NSUserDefaults *memory;
 
 - (void)viewDidLoad
 {
-    
     [super viewDidLoad];
 	[self newGame];
-	
 }
 
 - (void)newGame
@@ -879,17 +877,16 @@ NSUserDefaults *memory;
 		self.graphic1.hidden = NO;
 		self.graphic1.alpha = 1.0;
 		[self templateUpdateNode:21 :@"0543" :@"act35"];
-		[self templateUpdateNode:43 :@"0544" :@"act34"];
+		[self templateUpdateNode:43 :@"0544" :@"act35"];
 		[self audioVolume:100];
 	}
 	else{
 		self.graphic1.hidden = YES;
 		self.graphic1.alpha = 0;
-		[self audioVolume:0];
+        [self audioVolume:0];
 	}
 	
 }
-
 
 - (void)templateAudioInterface
 {
@@ -1748,4 +1745,9 @@ NSUserDefaults *memory;
 	[[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://wiki.xxiivv.com/Nataniev"]];
 	
 }
+
+- (BOOL)prefersStatusBarHidden {
+    return YES;
+}
+
 @end

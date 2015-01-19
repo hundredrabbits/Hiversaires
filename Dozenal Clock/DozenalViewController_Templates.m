@@ -6,7 +6,7 @@
 AVAudioPlayer *playerSounds;
 AVAudioPlayer *playerAmbient;
 AVAudioPlayer *playerMusic;
-int	userVolumeMusic = 1;
+float userVolumeMusic = 1;
 
 NSString* resourcePath = @"";
 
@@ -277,6 +277,7 @@ NSString* resourcePath = @"";
 
 -(void)soundPlayer: (NSString *)filename;
 {
+    if( userVolumeMusic == 0 ){ return; }
 	resourcePath = [[NSBundle mainBundle] resourcePath];
 	resourcePath = [resourcePath stringByAppendingString: [NSString stringWithFormat:@"/%@.mp3", filename] ];
 	NSError* err;
@@ -289,6 +290,7 @@ NSString* resourcePath = @"";
 
 -(void)ambientPlayer: (NSString *)filename;
 {
+    if( userVolumeMusic == 0 ){ return; }
 	resourcePath = [[NSBundle mainBundle] resourcePath];
 	resourcePath = [resourcePath stringByAppendingString: [NSString stringWithFormat:@"/%@.mp3", filename] ];
 	NSError* err;
@@ -297,13 +299,14 @@ NSString* resourcePath = @"";
 	else	{
 		playerAmbient.numberOfLoops = -1; //infinite
 		[playerAmbient play];
-		playerAmbient.volume = 0.05;
+		playerAmbient.volume = userVolumeMusic/5;
 	}
 	NSLog(@"[ambient.volume: %f]",playerAmbient.volume);
 }
 
 -(void)musicPlayer: (NSString *)filename;
 {
+    if( userVolumeMusic == 0 ){ return; }
 	resourcePath = [[NSBundle mainBundle] resourcePath];
 	resourcePath = [resourcePath stringByAppendingString: [NSString stringWithFormat:@"/music_%@.mp3", filename] ];
 	NSError* err;
@@ -319,13 +322,26 @@ NSString* resourcePath = @"";
 
 - (void)audioVolume :(int)volume
 {
-	
 	userVolumeMusic = [[NSNumber numberWithInt: volume] floatValue];
-	userVolumeMusic = userVolumeMusic/100;
+    userVolumeMusic = userVolumeMusic/100;
 	
-	playerMusic.volume = userVolumeMusic;
-	NSLog(@"[music.volume: %f]",playerMusic.volume);
-
+    if( userVolumeMusic == 0 ){
+        [playerAmbient stop];
+        [playerMusic stop];
+        [playerSounds stop];
+    }
+    else{
+        [playerAmbient play];
+        [playerMusic play];
+        [playerSounds play];
+        playerAmbient.volume = userVolumeMusic/5;
+        playerMusic.volume = userVolumeMusic;
+        playerSounds.volume = userVolumeMusic;
+    }
+    
+    playerMusic.volume = userVolumeMusic;
+    NSLog(@"%f",playerMusic.volume);
+	NSLog(@"[audio.volume: %f]",playerMusic.volume);
 }
 
 
