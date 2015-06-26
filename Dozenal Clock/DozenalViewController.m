@@ -133,10 +133,6 @@ NSUserDefaults *memory;
 	}
 	
 	[self audioAmbientCheck: worldPath[userNode][4] ];
-	
-	
-	NSLog(@"%d", userNode);
-	
 }
 
 - (IBAction)moveLeft:(id)sender {
@@ -161,8 +157,8 @@ NSUserDefaults *memory;
     
 }
 
-- (IBAction)moveForward:(id)sender {
-	
+- (IBAction)moveForward:(id)sender
+{
     [self audioRouterMove];
 	
 	if ([worldPath[userNode][userOrientation] rangeOfString:@"|"].location == NSNotFound) {
@@ -523,7 +519,6 @@ NSUserDefaults *memory;
 
 - (void)templateClockUpdate
 {
-	
 	[self templateClockInterface];
 	
 	self.graphic4.frame = CGRectMake(0, 0, screenWidth, screenHeight); // interface
@@ -531,7 +526,6 @@ NSUserDefaults *memory;
 
 	self.graphic5.frame = CGRectMake(0, 0, screenWidth, screenHeight); // interface
 	self.graphic5.image = [UIImage imageNamed:[NSString stringWithFormat:@"interface.dimclock.state%@.png", userActionStorage[1] ] ];
-	NSLog(@"%@",userActionStorage[1]);
 	
 	[self fadeIn:self.graphic4 d:0.5 t:1.5];
 	[self fadeIn:self.graphic5 d:0.5 t:0.5];
@@ -954,8 +948,6 @@ NSUserDefaults *memory;
 		
 		if( [ userActionStorage[23] intValue] < 21 ){ userActionStorage[23] = [NSString stringWithFormat:@"%d", [ userActionStorage[23] intValue]+3 ];}
 		
-		NSLog(@"%@",userActionStorage[23]);
-		
 		[self actionCheck];
 		[self moveCheck];
 		[self actionReset];
@@ -968,8 +960,6 @@ NSUserDefaults *memory;
 	userAction = nil;
 	
 	if( [ userActionStorage[23] intValue] > 14 ){ userActionStorage[23] = [NSString stringWithFormat:@"%d", [ userActionStorage[23] intValue]-1 ]; }
-	
-	NSLog(@"%@",userActionStorage[23]);
 	
 	[self actionCheck];
 	[self moveCheck];
@@ -986,8 +976,6 @@ NSUserDefaults *memory;
 		userActionStorage[24] = [NSString stringWithFormat:@"%d", [ userActionStorage[24] intValue]+4 ];
 	}
 	
-	NSLog(@"%@",userActionStorage[24]);
-	
 	[self actionCheck];
 	[self moveCheck];
 	[self actionReset];
@@ -1003,8 +991,6 @@ NSUserDefaults *memory;
 		userActionStorage[24] = [NSString stringWithFormat:@"%d", [ userActionStorage[24] intValue]-1 ];
 	}
 	
-	NSLog(@"%@",userActionStorage[24]);
-	
 	[self actionCheck];
 	[self moveCheck];
 	[self actionReset];
@@ -1018,8 +1004,6 @@ NSUserDefaults *memory;
 		NSLog(@"OUT!");
 		userAction = nil;
 		
-		NSLog(@"%@",userActionStorage[24]);
-		
 		[self actionCheck];
 		[self moveCheck];
 		[self actionReset];
@@ -1027,8 +1011,6 @@ NSUserDefaults *memory;
 	else{
 		userNode = 93;
 		userAction = nil;
-		
-		NSLog(@"%@",userActionStorage[24]);
 		
 		[self actionCheck];
 		[self moveCheck];
@@ -1663,9 +1645,6 @@ NSUserDefaults *memory;
 	[[NSUserDefaults standardUserDefaults] setObject:userSettings forKey:@"slot0"];
 	[[NSUserDefaults standardUserDefaults] setObject:userActionStorage forKey:@"slot1"];
 	
-//	NSLog(@"%@",[[NSUserDefaults standardUserDefaults] objectForKey:@"slot0"]);
-//	NSLog(@"%@",[[NSUserDefaults standardUserDefaults] objectForKey:@"slot1"]);
-	
 	NSLog(@"- [progress:saved.]");
 	
 	[self templateSaveInterface];
@@ -1688,14 +1667,9 @@ NSUserDefaults *memory;
 		userOrientation = [userSettings[1] intValue];
 		userProgress	= [userSettings[2] intValue];
 		userEnergy		= [userSettings[3] intValue];
-		NSLog(@"%@",[[NSUserDefaults standardUserDefaults] objectForKey:@"slot0"]);
 		
 		// Storage
-		userActionStorage = [[NSUserDefaults standardUserDefaults] objectForKey:@"slot1"];
-		NSLog(@"%@",[[NSUserDefaults standardUserDefaults] objectForKey:@"slot1"]);
-		
-		NSLog(@"- [progress:loaded.]");
-		
+		userActionStorage = [NSMutableArray arrayWithArray:[[NSUserDefaults standardUserDefaults] objectForKey:@"slot1"]];		
 	}
 	
 	// New Game

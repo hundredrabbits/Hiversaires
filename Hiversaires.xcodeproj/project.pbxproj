@@ -15,7 +15,7 @@
 		030306F017095EAE00F3A479 /* icon.72.png in Resources */ = {isa = PBXBuildFile; fileRef = 030306EC17095EAE00F3A479 /* icon.72.png */; };
 		030306F117095EAE00F3A479 /* icon.114.png in Resources */ = {isa = PBXBuildFile; fileRef = 030306ED17095EAE00F3A479 /* icon.114.png */; };
 		030306F217095EAE00F3A479 /* icon.144.png in Resources */ = {isa = PBXBuildFile; fileRef = 030306EE17095EAE00F3A479 /* icon.144.png */; };
-		0314008E176AB35A006820E4 /* splash.m in Sources */ = {isa = PBXBuildFile; fileRef = 0314008D176AB35A006820E4 /* splash.m */; };
+		0314008E176AB35A006820E4 /* xxiivvSplash.m in Sources */ = {isa = PBXBuildFile; fileRef = 0314008D176AB35A006820E4 /* xxiivvSplash.m */; };
 		03140097176AB3C0006820E4 /* splash.load.png in Resources */ = {isa = PBXBuildFile; fileRef = 03140090176AB3C0006820E4 /* splash.load.png */; };
 		03140098176AB3C0006820E4 /* splash.logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 03140091176AB3C0006820E4 /* splash.logo.png */; };
 		03140099176AB3C0006820E4 /* splash.screen.png in Resources */ = {isa = PBXBuildFile; fileRef = 03140092176AB3C0006820E4 /* splash.screen.png */; };
@@ -727,8 +727,8 @@
 		030306EC17095EAE00F3A479 /* icon.72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon.72.png; path = graphics/icon.72.png; sourceTree = "<group>"; };
 		030306ED17095EAE00F3A479 /* icon.114.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon.114.png; path = graphics/icon.114.png; sourceTree = "<group>"; };
 		030306EE17095EAE00F3A479 /* icon.144.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon.144.png; path = graphics/icon.144.png; sourceTree = "<group>"; };
-		0314008C176AB35A006820E4 /* splash.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = splash.h; sourceTree = "<group>"; };
-		0314008D176AB35A006820E4 /* splash.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = splash.m; sourceTree = "<group>"; };
+		0314008C176AB35A006820E4 /* xxiivvSplash.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = xxiivvSplash.h; sourceTree = "<group>"; };
+		0314008D176AB35A006820E4 /* xxiivvSplash.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = xxiivvSplash.m; sourceTree = "<group>"; };
 		03140090176AB3C0006820E4 /* splash.load.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = splash.load.png; path = splash/splash.load.png; sourceTree = "<group>"; };
 		03140091176AB3C0006820E4 /* splash.logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = splash.logo.png; path = splash/splash.logo.png; sourceTree = "<group>"; };
 		03140092176AB3C0006820E4 /* splash.screen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = splash.screen.png; path = splash/splash.screen.png; sourceTree = "<group>"; };
@@ -2334,8 +2334,8 @@
 		03E0DAC416BA86D700D0C40E /* Dozenal Clock */ = {
 			isa = PBXGroup;
 			children = (
-				0314008C176AB35A006820E4 /* splash.h */,
-				0314008D176AB35A006820E4 /* splash.m */,
+				0314008C176AB35A006820E4 /* xxiivvSplash.h */,
+				0314008D176AB35A006820E4 /* xxiivvSplash.m */,
 				03E0DACD16BA86D700D0C40E /* DozenalAppDelegate.h */,
 				03E0DAD916BA86D700D0C40E /* DozenalViewController.h */,
 				0388223F16C344840060C323 /* DozenalViewController_WorldNode.h */,
@@ -3167,7 +3167,7 @@
 				03E0DADB16BA86D700D0C40E /* DozenalViewController.m in Sources */,
 				0388224216C344BF0060C323 /* DozenalViewController_WorldNode.m in Sources */,
 				03BECB5016DC72E80077BE45 /* DozenalViewController_Templates.m in Sources */,
-				0314008E176AB35A006820E4 /* splash.m in Sources */,
+				0314008E176AB35A006820E4 /* xxiivvSplash.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
