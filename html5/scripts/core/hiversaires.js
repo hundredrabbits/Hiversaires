@@ -1,16 +1,21 @@
 class Hiversaires {
-  constructor() {}
-
-  install() {
+  constructor() {
     this.element = document.createElement("hiversaires");
     document.body.appendChild(this.element);
-    this.music = new Music();
+
+    this.artBook = new ArtBook();
     this.game = new Game();
+    this.music = new Music();
+    this.stage = new Stage(this.element);
   }
 
   start() {
-    this.music.setRecord(Records.act1);
-    this.music.setAmbience(Ambience.antechannel);
+    this.stage.start();
+    this.game.start();
+
+    // Temporary
+    // this.music.setRecord(Records.act1);
+    // this.music.setAmbience(Ambience.antechannel);
   }
 }
 

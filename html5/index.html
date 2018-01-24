@@ -8,8 +8,10 @@
     <script type="text/javascript" src="scripts/logo.js"></script>
 
     <script type="text/javascript" src="scripts/core/hiversaires.js"></script>
+    <script type="text/javascript" src="scripts/core/stage.js"></script>
     <script type="text/javascript" src="scripts/core/game.js"></script>
     <script type="text/javascript" src="scripts/core/music.js"></script>
+    <script type="text/javascript" src="scripts/core/artbook.js"></script>
     
     <script type="text/javascript" src="scripts/core/keyboard.js"></script>
     <script type="text/javascript" src="scripts/core/walkthrough.js"></script>
@@ -34,11 +36,8 @@
 
       let hiversaires = new Hiversaires();
       
-      hiversaires.install();
-      
       let keyboard = new Keyboard();
-      document.onkeyup = function(event){ keyboard.listen_onkeyup(event); };
-      document.onkeydown = function(event){ keyboard.listen_onkeydown(event); };
+      document.onkeyup = function(event){ keyboard.onKey(event); };
       // document.addEventListener('mousedown', function(e){ hiversaires.mousedown(e); }, false);
 
       let logo = new Logo(document.getElementById("logo"));

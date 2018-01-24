@@ -4,9 +4,7 @@ class Keyboard {
     this.history = "";
   }
 
-  listen_onkeydown(event) {}
-
-  listen_onkeyup(event) {
+  onKey(event) {
     if (this.locks.length > 0) {
       console.warn("Keyboard has locks: ", this.locks);
       return;
@@ -19,18 +17,18 @@ class Keyboard {
     this.record(event.key);
   }
 
-  lock(lock_name) {
-    console.log("Added lock: ", lock_name);
-    this.locks.push(lock_name);
+  lock(lockName) {
+    console.log("Added lock: ", lockName);
+    this.locks.push(lockName);
   }
 
-  unlock(lock_name) {
-    var target = this.locks.indexOf(lock_name);
+  unlock(lockName) {
+    var target = this.locks.indexOf(lockName);
     if (target > -1) {
       this.locks.splice(target, 1);
-      console.info("Unlocked: ", lock_name);
+      console.info("Unlocked: ", lockName);
     } else {
-      console.warn("No lock named: ", lock_name);
+      console.warn("No lock named: ", lockName);
     }
   }
 

@@ -2,3 +2,26 @@ body {
   background: #black;
   overflow: hidden;
 }
+
+hiversaires {
+  width: 100vw;
+  height: 100vh;
+}
+
+billboard {
+  width: 1in;
+  height: 1in;
+  box-sizing: border-box;
+  border: 0.1em blue solid;
+  display: block;
+  position: absolute;
+}
+
+trigger {
+  width: 1in;
+  height: 1in;
+  box-sizing: border-box;
+  border: 0.1em green solid;
+  display: block;
+  position: absolute;
+}
