@@ -1,0 +1,13 @@
+BARE MINIMUM
+Bring in templates
+Bring in view controller
+
+THEN WHAT?
+    Break the view controller code into sensible chunks
+    Polish the few animations that exist
+    Splash
+    Walkthrough
+    Convert the world to a displayable graph, if you can
+
+LOW PRIORITY
+    Bug someone about using import/export syntax

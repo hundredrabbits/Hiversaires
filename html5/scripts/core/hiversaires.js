@@ -5,13 +5,16 @@ class Hiversaires {
 
     this.artBook = new ArtBook();
     this.game = new Game();
+    this.world = new World();
     this.music = new Music();
     this.stage = new Stage(this.element);
+    this.walkthrough = new Walkthrough();
   }
 
   start() {
     this.stage.start();
     this.game.start();
+    this.walkthrough.start();
 
     // Temporary
     // this.music.setRecord(Records.act1);
