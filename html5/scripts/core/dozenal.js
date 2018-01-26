@@ -56,11 +56,20 @@ class Dozenal {
   }
 
   setBounds(subject, x, y, width, height) {
-    // TODO
+    $(subject).css({
+      "margin-left": x + "px",
+      "margin-top": y + "px",
+      width: width + "px",
+      height: height + "px"
+    });
   }
 
   setImage(subject, url) {
-    // TODO
+    if (url) {
+      hiversaires.artBook.setArt(subject, "media/graphics/" + url);
+    } else {
+      hiversaires.artBook.removeArt(subject);
+    }
   }
 
   // ====================
