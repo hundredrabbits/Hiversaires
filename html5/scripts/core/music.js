@@ -4,23 +4,20 @@ class Music {
     this._trackCatalog = {};
     this.ambience = null;
     this.record = null;
-    this.context = new AudioContext();
-    this.analyser = this.context.createAnalyser();
-    this.analyser.connect(this.context.destination);
-    this.data = new Uint8Array(this.analyser.frequencyBinCount);
-    requestAnimationFrame(this.updateData.bind(this));
+    this._volume = 1;
   }
 
-  updateData() {
-    requestAnimationFrame(this.updateData.bind(this));
-    this.analyser.getByteFrequencyData(this.data);
-    const length = this.data.length;
-    let count = 0;
-    const total = length * 0xff;
-    for (let i = 0; i < length; i++) {
-      count += this.data[i];
+  get volume() {
+    return this._volume;
+  }
+
+  set volume(value) {
+    if (this._volume != value) {
+      this._volume = value;
+      for (let key of this.playingTracksByRole) {
+        this.playingTracksByRole[key].volume = value;
+      }
     }
-    this.magnitude = count / total;
   }
 
   playEffect(name) {
@@ -29,7 +26,6 @@ class Music {
       name,
       "effect",
       "media/audio/effect/" + name + ".mp3",
-      false,
       false
     );
     if (hiversaires.game.time - track.lastTimePlayed > 5) {
@@ -86,7 +82,6 @@ class Music {
         name,
         role,
         "media/audio/" + role + "/" + name + ".mp3",
-        true,
         true
       );
       this.playingTracksByRole[role] = newTrack;
@@ -99,51 +94,28 @@ class Music {
     }
   }
 
-  fetchTrack(name, role, src, loop, analyze) {
+  fetchTrack(name, role, src, loop) {
     let audioId = role + "_" + name;
     if (!(audioId in this._trackCatalog)) {
-      this._trackCatalog[audioId] = new Track(name, role, src, loop, analyze);
+      this._trackCatalog[audioId] = new Track(name, role, src, loop);
     }
     return this._trackCatalog[audioId];
   }
 }
 
-class Track {
-  constructor(name, role, src, loop, analyze) {
-    this.audio = new Audio();
+class Track extends Audio {
+  constructor(name, role, src, loop) {
+    super();
     this.name = name;
     this.role = role;
-    this.audio.src = src;
-    this.audio.loop = loop;
+    this.src = src;
+    this.loop = loop;
     this.lastTimePlayed = 0;
-    if (analyze) {
-      this.node = hiversaires.music.context.createMediaElementSource(
-        this.audio
-      );
-    }
-  }
-
-  get src() {
-    return this.audio.src;
-  }
-
-  get loop() {
-    return this.audio.loop;
   }
 
   play() {
     this.lastTimePlayed = hiversaires.game.time;
-    if (this.node != null) {
-      this.node.connect(hiversaires.music.analyser);
-    }
-    this.audio.currentTime = 0;
-    this.audio.play();
-  }
-
-  pause() {
-    if (this.node != null) {
-      this.node.disconnect();
-    }
-    this.audio.pause();
+    this.currentTime = 0;
+    super.play();
   }
 }

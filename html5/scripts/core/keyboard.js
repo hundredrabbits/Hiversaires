@@ -23,7 +23,7 @@ class Keyboard {
   }
 
   unlock(lockName) {
-    var target = this.locks.indexOf(lockName);
+    let target = this.locks.indexOf(lockName);
     if (target > -1) {
       this.locks.splice(target, 1);
       console.info("Unlocked: ", lockName);

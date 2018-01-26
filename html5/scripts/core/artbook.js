@@ -5,7 +5,7 @@ class ArtBook {
     this.elementRegistryUniqueID = 0;
     this.classUniqueID = 0;
 
-    var stylesheetElement = document.createElement("style");
+    let stylesheetElement = document.createElement("style");
     stylesheetElement.type = "text/css";
     stylesheetElement.title = "artbook";
     stylesheetElement.appendChild(document.createTextNode(""));
