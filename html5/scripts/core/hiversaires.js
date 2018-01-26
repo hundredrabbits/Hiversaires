@@ -19,6 +19,9 @@ class Hiversaires {
     // Temporary
     // this.music.setRecord(Records.act1);
     // this.music.setAmbience(Ambience.antechannel);
+
+    this.dozenal = new Dozenal();
+    this.dozenal.start();
   }
 }
 

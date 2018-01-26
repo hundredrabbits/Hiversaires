@@ -1,13 +1,12 @@
-BARE MINIMUM
-Bring in templates
-Bring in view controller
+Fix each TODO item in dozenal
 
 THEN WHAT?
-    Break the view controller code into sensible chunks
+    Break the dozenal code into sensible chunks
     Polish the few animations that exist
-    Splash
     Walkthrough
     Convert the world to a displayable graph, if you can
+
+Retina Display
 
 LOW PRIORITY
     Bug someone about using import/export syntax
