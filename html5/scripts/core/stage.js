@@ -41,7 +41,6 @@ class Stage {
     }
 
     for (let id of [
-      "interfaceIndicatorLeft",
       "moveRight",
       "moveLeft",
       "moveForward",
