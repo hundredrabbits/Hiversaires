@@ -15,6 +15,8 @@ billboard {
   border: 0.1em blue solid;
   display: block;
   position: absolute;
+
+  pointer-events: none;
 }
 
 trigger {
