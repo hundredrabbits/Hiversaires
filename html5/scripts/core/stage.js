@@ -40,6 +40,10 @@ class Stage {
       this.billboardsByID[id] = billboard;
     }
 
+    function handleClick(event) {
+      hiversaires.dozenal[event.currentTarget.id](); // Ugh. Temporary. It's temporary!
+    }
+
     for (let id of [
       "moveRight",
       "moveLeft",
@@ -53,6 +57,7 @@ class Stage {
     ]) {
       let trigger = this.root.appendChild(document.createElement("trigger"));
       trigger.id = id;
+      trigger.addEventListener("click", handleClick);
       this.triggersByID[id] = trigger;
     }
   }

@@ -1,6 +1,9 @@
-Fix each TODO item in dozenal
+Center interaction problem
+
+Let's see these weirder triggers
 
 THEN WHAT?
+    The layout of the elements could be based on CSS and state
     Break the dozenal code into sensible chunks
     Polish the few animations that exist
     Walkthrough
