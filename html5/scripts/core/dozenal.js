@@ -72,6 +72,14 @@ class Dozenal {
     }
   }
 
+  setAlpha(subject, value) {
+    $(subject).css({ opacity: value });
+  }
+
+  setHidden(subject, value) {
+    $(subject).css({ display: value ? "none" : "block" });
+  }
+
   // ====================
   // Movement
   // ====================
@@ -83,9 +91,10 @@ class Dozenal {
 
     this.debugUpdate();
 
-    hiversaires.stage.triggersByID["moveForward"].hidden = this.forwardSubject
-      ? false
-      : true;
+    this.setHidden(
+      hiversaires.stage.triggersByID["moveForward"],
+      !this.forwardSubject
+    );
 
     this.setImage(
       hiversaires.stage.billboardsByID["viewMain"],
@@ -130,7 +139,7 @@ class Dozenal {
   moveForward() {
     this.playFootStep();
 
-    if (this.forwardSubject.indexOf("|") != -1) {
+    if (this.forwardSubject.indexOf("|") == -1) {
       this.userNode =
         parseInt(this.forwardSubject) > 0
           ? parseInt(this.forwardSubject)
@@ -150,17 +159,18 @@ class Dozenal {
   // ====================
 
   actionCheck() {
-    hiversaires.stage.triggersByID["moveLeft"].hidden = false;
-    hiversaires.stage.triggersByID["moveRight"].hidden = false;
-    hiversaires.stage.triggersByID["moveForward"].hidden = this.userAction
-      ? true
-      : false;
+    this.setHidden(hiversaires.stage.triggersByID["moveLeft"], false);
+    this.setHidden(hiversaires.stage.triggersByID["moveRight"], false);
+    this.setHidden(
+      hiversaires.stage.triggersByID["moveForward"],
+      !this.userAction
+    );
 
-    hiversaires.stage.triggersByID["action1"].hidden = true;
-    hiversaires.stage.triggersByID["action2"].hidden = true;
-    hiversaires.stage.triggersByID["action3"].hidden = true;
-    hiversaires.stage.triggersByID["action4"].hidden = true;
-    hiversaires.stage.triggersByID["action5"].hidden = true;
+    this.setHidden(hiversaires.stage.triggersByID["action1"], true);
+    this.setHidden(hiversaires.stage.triggersByID["action2"], true);
+    this.setHidden(hiversaires.stage.triggersByID["action3"], true);
+    this.setHidden(hiversaires.stage.triggersByID["action4"], true);
+    this.setHidden(hiversaires.stage.triggersByID["action5"], true);
 
     if (this.userAction) {
       this.actionTemplate();
@@ -205,10 +215,10 @@ class Dozenal {
   action2() {
     // Door to display action3
 
-    hiversaires.stage.billboardsByID["graphic1"].hidden = false;
-    hiversaires.stage.triggersByID["action3"].hidden = false;
-    hiversaires.stage.triggersByID["action2"].hidden = true;
-    hiversaires.stage.triggersByID["action3"].alpha = 1.0;
+    this.setHidden(hiversaires.stage.billboardsByID["graphic1"], false);
+    this.setHidden(hiversaires.stage.triggersByID["action3"], false);
+    this.setHidden(hiversaires.stage.triggersByID["action2"], true);
+    this.setAlpha(hiversaires.stage.triggersByID["action3"], 1.0);
     this.templateEnergyUpdate();
   }
 
@@ -367,28 +377,22 @@ class Dozenal {
     this.setBounds(hiversaires.stage.billboardsByID["graphic9"], 0, 0, 0, 0);
     this.setBounds(hiversaires.stage.billboardsByID["graphic10"], 0, 0, 0, 0);
 
-    this.rotate(hiversaires.stage.triggersByID["action1"], 1.0, 0);
-    this.rotate(hiversaires.stage.triggersByID["action3"], 1.0, 0);
-    this.rotate(hiversaires.stage.billboardsByID["graphic1"], 1.0, 0);
-    this.rotate(hiversaires.stage.billboardsByID["graphic2"], 1.0, 0);
-    this.rotate(hiversaires.stage.billboardsByID["graphic3"], 1.0, 0);
+    this.setAlpha(hiversaires.stage.billboardsByID["graphic1"], 0);
+    this.setAlpha(hiversaires.stage.billboardsByID["graphic2"], 0);
+    this.setAlpha(hiversaires.stage.billboardsByID["graphic3"], 0);
+    this.setAlpha(hiversaires.stage.billboardsByID["graphic4"], 0);
+    this.setAlpha(hiversaires.stage.billboardsByID["graphic5"], 0);
+    this.setAlpha(hiversaires.stage.billboardsByID["graphic6"], 0);
+    this.setAlpha(hiversaires.stage.billboardsByID["graphic7"], 0);
+    this.setAlpha(hiversaires.stage.billboardsByID["graphic8"], 0);
+    this.setAlpha(hiversaires.stage.billboardsByID["graphic9"], 0);
+    this.setAlpha(hiversaires.stage.billboardsByID["graphic10"], 0);
 
-    hiversaires.stage.billboardsByID["graphic1"].alpha = 0;
-    hiversaires.stage.billboardsByID["graphic2"].alpha = 0;
-    hiversaires.stage.billboardsByID["graphic3"].alpha = 0;
-    hiversaires.stage.billboardsByID["graphic4"].alpha = 0;
-    hiversaires.stage.billboardsByID["graphic5"].alpha = 0;
-    hiversaires.stage.billboardsByID["graphic6"].alpha = 0;
-    hiversaires.stage.billboardsByID["graphic7"].alpha = 0;
-    hiversaires.stage.billboardsByID["graphic8"].alpha = 0;
-    hiversaires.stage.billboardsByID["graphic9"].alpha = 0;
-    hiversaires.stage.billboardsByID["graphic10"].alpha = 0;
-
-    hiversaires.stage.triggersByID["action1"].alpha = 0;
-    hiversaires.stage.triggersByID["action2"].alpha = 0;
-    hiversaires.stage.triggersByID["action3"].alpha = 0;
-    hiversaires.stage.triggersByID["action4"].alpha = 0;
-    hiversaires.stage.triggersByID["action5"].alpha = 0;
+    this.setAlpha(hiversaires.stage.triggersByID["action1"], 0);
+    this.setAlpha(hiversaires.stage.triggersByID["action2"], 0);
+    this.setAlpha(hiversaires.stage.triggersByID["action3"], 0);
+    this.setAlpha(hiversaires.stage.triggersByID["action4"], 0);
+    this.setAlpha(hiversaires.stage.triggersByID["action5"], 0);
   }
 
   actionTemplate() {
@@ -485,11 +489,11 @@ class Dozenal {
     this.prefPositioning();
     this.templateVignette();
 
-    hiversaires.stage.triggersByID["action1"].hidden = false;
-    hiversaires.stage.triggersByID["action1"].alpha = 1.0;
+    this.setHidden(hiversaires.stage.triggersByID["action1"], false);
+    this.setAlpha(hiversaires.stage.triggersByID["action1"], 1.0);
 
-    hiversaires.stage.billboardsByID["graphic5"].alpha = 0;
-    hiversaires.stage.billboardsByID["graphic4"].alpha = 0;
+    this.setAlpha(hiversaires.stage.billboardsByID["graphic5"], 0);
+    this.setAlpha(hiversaires.stage.billboardsByID["graphic4"], 0);
 
     hiversaires.music.playEffect("action_EnergyInit");
 
@@ -501,8 +505,11 @@ class Dozenal {
       hiversaires.stage.billboardsByID["interfaceDimclock"],
       "clock/clock." + parseInt(this.userActionStorage[1]) + ".png"
     );
-    hiversaires.stage.billboardsByID["interfaceDimclock"].hidden = false;
-    hiversaires.stage.billboardsByID["interfaceDimclock"].alpha = 1;
+    this.setHidden(
+      hiversaires.stage.billboardsByID["interfaceDimclock"],
+      false
+    );
+    this.setAlpha(hiversaires.stage.billboardsByID["interfaceDimclock"], 1);
     this.fadeOut(hiversaires.stage.billboardsByID["interfaceDimclock"], 3, 0.5);
   }
 
@@ -512,8 +519,8 @@ class Dozenal {
 
     // Display Interactions
 
-    hiversaires.stage.triggersByID["action3"].hidden = true;
-    hiversaires.stage.billboardsByID["graphic1"].hidden = true;
+    this.setHidden(hiversaires.stage.triggersByID["action3"], true);
+    this.setHidden(hiversaires.stage.billboardsByID["graphic1"], true);
 
     this.templateClockInterface();
 
@@ -553,8 +560,8 @@ class Dozenal {
     }
 
     if (this.puzzleState == 1) {
-      hiversaires.stage.triggersByID["action2"].hidden = false;
-      hiversaires.stage.triggersByID["action2"].alpha = 1.0;
+      this.setHidden(hiversaires.stage.triggersByID["action2"], false);
+      this.setAlpha(hiversaires.stage.triggersByID["action2"], 1.0);
 
       this.templateUpdateNode(16, "0472", "act7");
       this.templateUpdateNode(23, "0473", "act7");
@@ -603,7 +610,10 @@ class Dozenal {
       hiversaires.stage.billboardsByID["interfaceDimclockBackground"],
       "interface/interfaceFuse.warning.png"
     );
-    hiversaires.stage.billboardsByID["interfaceDimclockBackground"].alpha = 1.0;
+    this.setAlpha(
+      hiversaires.stage.billboardsByID["interfaceDimclockBackground"],
+      1.0
+    );
     this.fadeOut(
       hiversaires.stage.billboardsByID["interfaceDimclockBackground"],
       0.5,
@@ -615,10 +625,10 @@ class Dozenal {
     this.prefPositioning();
     this.templateVignette();
 
-    hiversaires.stage.billboardsByID["graphic1"].hidden = false;
-    hiversaires.stage.billboardsByID["graphic1"].alpha = 0;
-    hiversaires.stage.triggersByID["action5"].hidden = false;
-    hiversaires.stage.triggersByID["action5"].alpha = 1.0;
+    this.setHidden(hiversaires.stage.billboardsByID["graphic1"], false);
+    this.setAlpha(hiversaires.stage.billboardsByID["graphic1"], 0);
+    this.setHidden(hiversaires.stage.triggersByID["action5"], false);
+    this.setAlpha(hiversaires.stage.triggersByID["action5"], 1.0);
 
     hiversaires.music.playEffect("action_SealInit");
     this.templateSealUpdate();
@@ -652,11 +662,11 @@ class Dozenal {
       );
     }
 
-    hiversaires.stage.billboardsByID["interfaceSeal1"].hidden = false;
-    hiversaires.stage.billboardsByID["interfaceSeal2"].hidden = false;
+    this.setHidden(hiversaires.stage.billboardsByID["interfaceSeal1"], false);
+    this.setHidden(hiversaires.stage.billboardsByID["interfaceSeal2"], false);
 
-    hiversaires.stage.billboardsByID["interfaceSeal1"].alpha = 1;
-    hiversaires.stage.billboardsByID["interfaceSeal2"].alpha = 1;
+    this.setAlpha(hiversaires.stage.billboardsByID["interfaceSeal1"], 1);
+    this.setAlpha(hiversaires.stage.billboardsByID["interfaceSeal2"], 1);
 
     this.fadeOut(hiversaires.stage.billboardsByID["interfaceSeal1"], 3, 0.5);
     this.fadeOut(hiversaires.stage.billboardsByID["interfaceSeal2"], 3, 0.5);
@@ -666,8 +676,8 @@ class Dozenal {
     this.prefPositioning();
     this.templateVignette();
 
-    hiversaires.stage.triggersByID["action3"].hidden = true;
-    hiversaires.stage.billboardsByID["graphic1"].hidden = true;
+    this.setHidden(hiversaires.stage.triggersByID["action3"], true);
+    this.setHidden(hiversaires.stage.billboardsByID["graphic1"], true);
 
     hiversaires.music.playEffect("action_DoorInit");
     this.templateSealInterface();
@@ -735,8 +745,8 @@ class Dozenal {
     ) {
       // Act 4 : Antechannel + Stones in Studio
       if (this.userNode == 19) {
-        hiversaires.stage.triggersByID["action1"].alpha = 1.0;
-        hiversaires.stage.triggersByID["action1"].hidden = false;
+        this.setAlpha(hiversaires.stage.triggersByID["action1"], 1.0);
+        this.setHidden(hiversaires.stage.triggersByID["action1"], false);
         this.templateUpdateStudioTerminal();
 
         this.prefSave();
@@ -780,7 +790,10 @@ class Dozenal {
       hiversaires.stage.billboardsByID["interfaceSealBackground"],
       "interface/interfaceFuse.warning.png"
     );
-    hiversaires.stage.billboardsByID["interfaceSealBackground"].alpha = 1.0;
+    this.setAlpha(
+      hiversaires.stage.billboardsByID["interfaceSealBackground"],
+      1.0
+    );
     this.fadeOut(
       hiversaires.stage.billboardsByID["interfaceSealBackground"],
       0.5,
@@ -793,10 +806,10 @@ class Dozenal {
     this.templateVignette();
     this.templateEnergyInterface();
 
-    hiversaires.stage.billboardsByID["graphic1"].hidden = false;
-    hiversaires.stage.triggersByID["action2"].hidden = false;
-    hiversaires.stage.triggersByID["action2"].alpha = 1.0;
-    hiversaires.stage.triggersByID["action4"].hidden = false;
+    this.setHidden(hiversaires.stage.billboardsByID["graphic1"], false);
+    this.setHidden(hiversaires.stage.triggersByID["action2"], false);
+    this.setAlpha(hiversaires.stage.triggersByID["action2"], 1.0);
+    this.setHidden(hiversaires.stage.triggersByID["action4"], false);
 
     hiversaires.music.playEffect("action_EnergyInit");
   }
@@ -824,8 +837,8 @@ class Dozenal {
       );
     }
 
-    hiversaires.stage.billboardsByID["interfaceFuse1"].hidden = false;
-    hiversaires.stage.billboardsByID["interfaceFuse1"].alpha = 1;
+    this.setHidden(hiversaires.stage.billboardsByID["interfaceFuse1"], false);
+    this.setAlpha(hiversaires.stage.billboardsByID["interfaceFuse1"], 1);
 
     this.fadeOut(hiversaires.stage.billboardsByID["interfaceFuse1"], 3, 0.5);
   }
@@ -836,8 +849,8 @@ class Dozenal {
 
     // Display Interactions
 
-    hiversaires.stage.triggersByID["action3"].hidden = true;
-    hiversaires.stage.billboardsByID["graphic1"].hidden = true;
+    this.setHidden(hiversaires.stage.triggersByID["action3"], true);
+    this.setHidden(hiversaires.stage.billboardsByID["graphic1"], true);
 
     // Audio
 
@@ -874,8 +887,8 @@ class Dozenal {
     } // Antech fuse for Capsule door
 
     if (parseInt(this.userActionStorage[this.puzzleTerminal]) > 0) {
-      hiversaires.stage.triggersByID["action2"].hidden = false;
-      hiversaires.stage.triggersByID["action2"].alpha = 1.0;
+      this.setHidden(hiversaires.stage.triggersByID["action2"], false);
+      this.setAlpha(hiversaires.stage.triggersByID["action2"], 1.0);
 
       this.templateUpdateNode(1, "0531", "act28");
       this.templateUpdateNode(12, "0470", "act3");
@@ -902,7 +915,7 @@ class Dozenal {
         this.templateUpdateNode(39, "0490", "act11");
       }
 
-      hiversaires.stage.triggersByID["action3"].alpha = 1.0;
+      this.setAlpha(hiversaires.stage.triggersByID["action3"], 1.0);
     } else {
       this.templateEnergyWarning();
     }
@@ -911,7 +924,7 @@ class Dozenal {
   templateEnergyUpdate() {
     this.templateEnergyInterface();
 
-    hiversaires.stage.triggersByID["action4"].alpha = 1.0;
+    this.setAlpha(hiversaires.stage.triggersByID["action4"], 1.0);
 
     if (parseInt(this.userActionStorage[this.userActionId]) == 1) {
       this.templateUpdateNode(18, "0516", "act2");
@@ -955,7 +968,10 @@ class Dozenal {
       hiversaires.stage.billboardsByID["interfaceFuseBackground"],
       "interface/interfaceFuse.warning.png"
     );
-    hiversaires.stage.billboardsByID["interfaceFuseBackground"].alpha = 1.0;
+    this.setAlpha(
+      hiversaires.stage.billboardsByID["interfaceFuseBackground"],
+      1.0
+    );
     this.fadeOut(
       hiversaires.stage.billboardsByID["interfaceFuseBackground"],
       0.5,
@@ -989,8 +1005,8 @@ class Dozenal {
     this.prefPositioning();
     this.templateVignette();
 
-    hiversaires.stage.triggersByID["action1"].alpha = 1.0;
-    hiversaires.stage.triggersByID["action1"].hidden = false;
+    this.setAlpha(hiversaires.stage.triggersByID["action1"], 1.0);
+    this.setHidden(hiversaires.stage.triggersByID["action1"], false);
 
     this.templateAudioUpdate();
   }
@@ -999,14 +1015,14 @@ class Dozenal {
     this.templateAudioInterface();
 
     if (this.userActionStorage[this.userActionId] == "1") {
-      hiversaires.stage.billboardsByID["graphic1"].hidden = false;
-      hiversaires.stage.billboardsByID["graphic1"].alpha = 1.0;
+      this.setHidden(hiversaires.stage.billboardsByID["graphic1"], false);
+      this.setAlpha(hiversaires.stage.billboardsByID["graphic1"], 1.0);
       this.templateUpdateNode(21, "0543", "act35");
       this.templateUpdateNode(43, "0544", "act35");
       hiversaires.music.volume = 1;
     } else {
-      hiversaires.stage.billboardsByID["graphic1"].hidden = true;
-      hiversaires.stage.billboardsByID["graphic1"].alpha = 0;
+      this.setHidden(hiversaires.stage.billboardsByID["graphic1"], true);
+      this.setAlpha(hiversaires.stage.billboardsByID["graphic1"], 0);
       hiversaires.music.volume = 0;
     }
   }
@@ -1024,8 +1040,8 @@ class Dozenal {
       );
     }
 
-    hiversaires.stage.billboardsByID["interfaceAudio"].hidden = false;
-    hiversaires.stage.billboardsByID["interfaceAudio"].alpha = 1;
+    this.setHidden(hiversaires.stage.billboardsByID["interfaceAudio"], false);
+    this.setAlpha(hiversaires.stage.billboardsByID["interfaceAudio"], 1);
 
     this.fadeOut(hiversaires.stage.billboardsByID["interfaceAudio"], 3, 0.5);
   }
@@ -1147,7 +1163,6 @@ class Dozenal {
     ) {
       this.userNode = 107;
       this.userOrientation = 3;
-      console.log("OUT!");
       this.userAction = null;
 
       this.actionCheck();
@@ -1166,8 +1181,8 @@ class Dozenal {
   templateKillTerminal() {
     this.prefPositioning();
 
-    hiversaires.stage.triggersByID["action1"].hidden = false;
-    hiversaires.stage.triggersByID["action1"].alpha = 1.0;
+    this.setHidden(hiversaires.stage.triggersByID["action1"], false);
+    this.setAlpha(hiversaires.stage.triggersByID["action1"], 1.0);
   }
 
   templateKillUpdate() {
@@ -1185,8 +1200,8 @@ class Dozenal {
       parseInt(this.userActionStorage[36]) == 1
     ) {
       this.templateUpdateNode(113, "0550", "act40");
-      hiversaires.stage.triggersByID["action3"].hidden = false;
-      hiversaires.stage.triggersByID["action3"].alpha = 1;
+      this.setHidden(hiversaires.stage.triggersByID["action3"], false);
+      this.setAlpha(hiversaires.stage.triggersByID["action3"], 1);
     } else {
       this.templateEnergyWarning();
     }
@@ -1197,14 +1212,14 @@ class Dozenal {
 
     hiversaires.music.setRecord(Records.credit);
 
-    hiversaires.stage.triggersByID["moveForward"].hidden = true;
-    hiversaires.stage.triggersByID["moveLeft"].hidden = true;
-    hiversaires.stage.triggersByID["moveRight"].hidden = true;
-    hiversaires.stage.triggersByID["action1"].hidden = true;
-    hiversaires.stage.triggersByID["action2"].hidden = true;
-    hiversaires.stage.triggersByID["action3"].hidden = true;
-    hiversaires.stage.triggersByID["action4"].hidden = true;
-    hiversaires.stage.triggersByID["actionCredit"].hidden = false;
+    this.setHidden(hiversaires.stage.triggersByID["moveForward"], true);
+    this.setHidden(hiversaires.stage.triggersByID["moveLeft"], true);
+    this.setHidden(hiversaires.stage.triggersByID["moveRight"], true);
+    this.setHidden(hiversaires.stage.triggersByID["action1"], true);
+    this.setHidden(hiversaires.stage.triggersByID["action2"], true);
+    this.setHidden(hiversaires.stage.triggersByID["action3"], true);
+    this.setHidden(hiversaires.stage.triggersByID["action4"], true);
+    this.setHidden(hiversaires.stage.triggersByID["actionCredit"], false);
 
     let screenBound = this.getScreenBounds();
 
@@ -1212,8 +1227,8 @@ class Dozenal {
       hiversaires.stage.billboardsByID["graphic1"],
       "menu/menu.black.jpg"
     );
-    hiversaires.stage.billboardsByID["graphic1"].alpha = 0.0;
-    hiversaires.stage.billboardsByID["graphic1"].hidden = false;
+    this.setAlpha(hiversaires.stage.billboardsByID["graphic1"], 0.0);
+    this.setHidden(hiversaires.stage.billboardsByID["graphic1"], false);
 
     this.fadeIn(hiversaires.stage.billboardsByID["graphic1"], 1.0, 3);
 
@@ -1228,8 +1243,8 @@ class Dozenal {
       hiversaires.stage.billboardsByID["graphic2"],
       "menu/menu.credit1.png"
     );
-    hiversaires.stage.billboardsByID["graphic2"].alpha = 0.0;
-    hiversaires.stage.billboardsByID["graphic2"].hidden = false;
+    this.setAlpha(hiversaires.stage.billboardsByID["graphic2"], 0.0);
+    this.setHidden(hiversaires.stage.billboardsByID["graphic2"], false);
 
     this.fadeIn(hiversaires.stage.billboardsByID["graphic2"], 6.0, 1);
 
@@ -1244,8 +1259,8 @@ class Dozenal {
       hiversaires.stage.billboardsByID["graphic3"],
       "menu/menu.credit2.png"
     );
-    hiversaires.stage.billboardsByID["graphic3"].alpha = 0.0;
-    hiversaires.stage.billboardsByID["graphic3"].hidden = false;
+    this.setAlpha(hiversaires.stage.billboardsByID["graphic3"], 0.0);
+    this.setHidden(hiversaires.stage.billboardsByID["graphic3"], false);
 
     this.fadeIn(hiversaires.stage.billboardsByID["graphic3"], 10.0, 1);
 
@@ -1260,8 +1275,8 @@ class Dozenal {
       hiversaires.stage.billboardsByID["graphic4"],
       "menu/menu.credit3.png"
     );
-    hiversaires.stage.billboardsByID["graphic4"].alpha = 0.0;
-    hiversaires.stage.billboardsByID["graphic4"].hidden = false;
+    this.setAlpha(hiversaires.stage.billboardsByID["graphic4"], 0.0);
+    this.setHidden(hiversaires.stage.billboardsByID["graphic4"], false);
 
     this.fadeIn(hiversaires.stage.billboardsByID["graphic4"], 16.0, 1);
 
@@ -1276,8 +1291,8 @@ class Dozenal {
       hiversaires.stage.billboardsByID["graphic5"],
       "menu/menu.black.jpg"
     );
-    hiversaires.stage.billboardsByID["graphic5"].alpha = 0.0;
-    hiversaires.stage.billboardsByID["graphic5"].hidden = false;
+    this.setAlpha(hiversaires.stage.billboardsByID["graphic5"], 0.0);
+    this.setHidden(hiversaires.stage.billboardsByID["graphic5"], false);
 
     this.fadeIn(hiversaires.stage.billboardsByID["graphic5"], 20.0, 1);
 
@@ -1293,8 +1308,8 @@ class Dozenal {
         hiversaires.stage.billboardsByID["graphic6"],
         "menu/menu.credit4.png"
       );
-      hiversaires.stage.billboardsByID["graphic6"].alpha = 0.0;
-      hiversaires.stage.billboardsByID["graphic6"].hidden = false;
+      this.setAlpha(hiversaires.stage.billboardsByID["graphic6"], 0.0);
+      this.setHidden(hiversaires.stage.billboardsByID["graphic6"], false);
 
       this.fadeIn(hiversaires.stage.billboardsByID["graphic6"], 24.0, 1);
     }
@@ -1308,18 +1323,18 @@ class Dozenal {
 
   templateUpdateDoorknob(side1, side2, knob) {
     if (this.userNode == side1 || this.userNode == side2) {
-      knob.hidden = false;
-      knob.alpha = 1.0;
+      this.setHidden(knob, false);
+      this.setAlpha(knob, 1.0);
     }
   }
 
   templateUpdateStudioTerminal() {
-    hiversaires.stage.billboardsByID["graphic1"].alpha = 0.0;
-    hiversaires.stage.billboardsByID["graphic1"].hidden = true;
+    this.setAlpha(hiversaires.stage.billboardsByID["graphic1"], 0.0);
+    this.setHidden(hiversaires.stage.billboardsByID["graphic1"], true);
 
     if (parseInt(this.userActionStorage[5]) == 2) {
-      hiversaires.stage.billboardsByID["graphic1"].alpha = 1.0;
-      hiversaires.stage.billboardsByID["graphic1"].hidden = false;
+      this.setAlpha(hiversaires.stage.billboardsByID["graphic1"], 1.0);
+      this.setHidden(hiversaires.stage.billboardsByID["graphic1"], false);
       this.templateUpdateNode(19, "0489", "act5");
 
       this.userProgress = 5;
@@ -1331,22 +1346,22 @@ class Dozenal {
         this.userActionStorage[12] == "1" &&
         this.userActionStorage[21] == "1"
       ) {
-        hiversaires.stage.billboardsByID["graphic1"].alpha = 1.0;
-        hiversaires.stage.billboardsByID["graphic1"].hidden = false;
+        this.setAlpha(hiversaires.stage.billboardsByID["graphic1"], 1.0);
+        this.setHidden(hiversaires.stage.billboardsByID["graphic1"], false);
         this.templateUpdateNode(19, "0536", "act5");
       } else if (
         this.userActionStorage[12] == "1" &&
         this.userActionStorage[21] == "0"
       ) {
-        hiversaires.stage.billboardsByID["graphic1"].alpha = 1.0;
-        hiversaires.stage.billboardsByID["graphic1"].hidden = false;
+        this.setAlpha(hiversaires.stage.billboardsByID["graphic1"], 1.0);
+        this.setHidden(hiversaires.stage.billboardsByID["graphic1"], false);
         this.templateUpdateNode(19, "0542", "act5");
       } else if (
         this.userActionStorage[12] == "0" &&
         this.userActionStorage[21] == "1"
       ) {
-        hiversaires.stage.billboardsByID["graphic1"].alpha = 1.0;
-        hiversaires.stage.billboardsByID["graphic1"].hidden = false;
+        this.setAlpha(hiversaires.stage.billboardsByID["graphic1"], 1.0);
+        this.setHidden(hiversaires.stage.billboardsByID["graphic1"], false);
         this.templateUpdateNode(19, "0541", "act5");
       }
 
@@ -1355,43 +1370,7 @@ class Dozenal {
       }
     }
   }
-  /*
-  templateUpdateForestGate() {
-    this.fadeHalf(hiversaires.stage.billboardsByID["graphic1"], 1);
-    this.setImage(
-      hiversaires.stage.billboardsByID["graphic1"],
-      "seal32_metamondst.png"
-    );
-    this.setBounds(
-      hiversaires.stage.billboardsByID["graphic1"],
-      115,
-      140,
-      90,
-      90
-    );
 
-    this.fadeHalf(hiversaires.stage.billboardsByID["graphic2"], 1);
-    this.setImage(
-      hiversaires.stage.billboardsByID["graphic2"],
-      "seal32_rainre.png"
-    );
-    this.setBounds(
-      hiversaires.stage.billboardsByID["graphic2"],
-      115,
-      260,
-      90,
-      90
-    );
-
-    if (parseInt(this.userActionStorage[20]) == 1) {
-      this.fadeIn(hiversaires.stage.billboardsByID["graphic1"], 0, 1);
-    }
-
-    if (parseInt(this.userActionStorage[13]) == 1) {
-      this.fadeIn(hiversaires.stage.billboardsByID["graphic2"], 0, 1);
-    }
-  }
-  */
   templateUpdateNode(node, img, act) {
     if (this.userNode == node && this.userAction == act) {
       this.setImage(
@@ -1428,7 +1407,7 @@ class Dozenal {
       hiversaires.stage.billboardsByID["vignette"],
       "interface/vignette.png"
     );
-    hiversaires.stage.billboardsByID["vignette"].alpha = 1.0;
+    this.setAlpha(hiversaires.stage.billboardsByID["vignette"], 1.0);
     this.fadeOut(hiversaires.stage.billboardsByID["vignette"], 0, 1.0);
   }
 
@@ -1439,8 +1418,8 @@ class Dozenal {
       hiversaires.stage.billboardsByID["interfaceSave"],
       "save.png"
     );
-    hiversaires.stage.billboardsByID["interfaceSave"].hidden = false;
-    hiversaires.stage.billboardsByID["interfaceSave"].alpha = 1;
+    this.setHidden(hiversaires.stage.billboardsByID["interfaceSave"], false);
+    this.setAlpha(hiversaires.stage.billboardsByID["interfaceSave"], 1);
     this.fadeOut(hiversaires.stage.billboardsByID["interfaceSave"], 3, 0.5);
   }
 
@@ -1498,8 +1477,8 @@ class Dozenal {
         hiversaires.stage.billboardsByID["graphic1"],
         "node/node.0" + nodeIllusion + ".jpg"
       );
-      hiversaires.stage.billboardsByID["graphic1"].alpha = 1;
-      hiversaires.stage.billboardsByID["graphic1"].hidden = false;
+      this.setAlpha(hiversaires.stage.billboardsByID["graphic1"], 1);
+      this.setHidden(hiversaires.stage.billboardsByID["graphic1"], false);
 
       this.fadeOut(hiversaires.stage.billboardsByID["graphic1"], 1, 0.5);
 
@@ -1528,8 +1507,11 @@ class Dozenal {
       hiversaires.stage.billboardsByID["interfaceIllusion"],
       "illusion/illusion." + illusionCount + ".png"
     );
-    hiversaires.stage.billboardsByID["interfaceIllusion"].hidden = false;
-    hiversaires.stage.billboardsByID["interfaceIllusion"].alpha = 1;
+    this.setHidden(
+      hiversaires.stage.billboardsByID["interfaceIllusion"],
+      false
+    );
+    this.setAlpha(hiversaires.stage.billboardsByID["interfaceIllusion"], 1);
     this.fadeOut(hiversaires.stage.billboardsByID["interfaceIllusion"], 3, 0.5);
   }
 
@@ -1586,47 +1568,34 @@ class Dozenal {
   // ====================
 
   fadeIn(viewToFadeIn, delay, duration) {
-    // TODO viewToFadeIn.alpha = 1;
+    $(viewToFadeIn)
+      .finish()
+      .delay(delay * 1000)
+      .transition({ opacity: 1 }, duration * 1000);
   }
 
   fadeOut(viewToFadeOut, delay, duration) {
-    // TODO viewToFadeOut.alpha = 0;
-  }
-
-  fadeHalf(viewToFadeOut, duration) {
-    // TODO viewToFadeOut.alpha = 0.2;
-  }
-
-  degreesToRadians(angle) {
-    return angle / 180.0 * Math.PI;
-  }
-
-  rotate(viewToRotate, duration, degrees) {
-    // TODO
-    /*
-    UIView.beginAnimations(null);
-    UIView.setAnimationDuration(duration);
-    UIView.setAnimationCurve(UIViewAnimationCurveEaseIn);
-    UIView.setAnimationBeginsFromCurrentState(true);
-    let transform = CGAffineTransformMakeRotation(degreesToRadians(degrees));
-    viewToRotate.transform = transform;
-    UIView.commitAnimations();
-    */
+    $(viewToFadeOut)
+      .finish()
+      .delay(delay * 1000)
+      .transition({ opacity: 0 }, duration * 1000);
   }
 
   turnLeft() {
-    // TODO
-    /*
-    hiversaires.stage.billboardsByID["viewMain"].alpha = 0.5;
-    hiversaires.stage.billboardsByID["viewMain"].transform = CGAffineTransformMakeTranslation(-15, 0);
-    hiversaires.stage.billboardsByID["interfaceIndicatorLeft"].alpha = 1;
+    let viewMain = $(hiversaires.stage.billboardsByID["viewMain"]);
+    viewMain.finish();
+    let viewMainX = viewMain.css("margin-left").split("px")[0];
+    this.setAlpha(viewMain, 0.5);
+    viewMain.css({ "margin-left": (viewMainX - 15).toString() + "px" });
+    this.setAlpha(
+      hiversaires.stage.billboardsByID["interfaceIndicatorLeft"],
+      1
+    );
 
-    UIView.beginAnimations("Turn Left");
-    UIView.setAnimationDuration(0.2);
-    hiversaires.stage.billboardsByID["viewMain"].transform = CGAffineTransformMakeTranslation(0, 0);
-    hiversaires.stage.billboardsByID["viewMain"].alpha = 1;
-    UIView.commitAnimations();
-    */
+    viewMain.transition(
+      { opacity: 1, "margin-left": viewMainX + "px" },
+      0.2 * 1000
+    );
 
     this.fadeOut(
       hiversaires.stage.billboardsByID["interfaceIndicatorLeft"],
@@ -1636,18 +1605,20 @@ class Dozenal {
   }
 
   turnRight() {
-    // TODO
-    /*
-    hiversaires.stage.billboardsByID["viewMain"].alpha = 0.5;
-    hiversaires.stage.billboardsByID["viewMain"].transform = CGAffineTransformMakeTranslation(15, 0);
-    hiversaires.stage.billboardsByID["interfaceIndicatorRight"].alpha = 1;
+    let viewMain = $(hiversaires.stage.billboardsByID["viewMain"]);
+    viewMain.finish();
+    let viewMainX = viewMain.css("margin-left").split("px")[0];
+    this.setAlpha(viewMain, 0.5);
+    viewMain.css({ "margin-left": (viewMainX + 15).toString() + "px" });
+    this.setAlpha(
+      hiversaires.stage.billboardsByID["interfaceIndicatorRight"],
+      1
+    );
 
-    UIView.beginAnimations("Turn Right");
-    UIView.setAnimationDuration(0.2);
-    hiversaires.stage.billboardsByID["viewMain"].transform = CGAffineTransformMakeTranslation(0, 0);
-    hiversaires.stage.billboardsByID["viewMain"].alpha = 1;
-    UIView.commitAnimations();
-    */
+    viewMain.transition(
+      { opacity: 1, "margin-left": viewMainX + "px" },
+      0.2 * 1000
+    );
 
     this.fadeOut(
       hiversaires.stage.billboardsByID["interfaceIndicatorRight"],
@@ -1657,18 +1628,20 @@ class Dozenal {
   }
 
   turnForward() {
-    // TODO
-    /*
-    hiversaires.stage.billboardsByID["viewMain"].alpha = 0.5;
-    hiversaires.stage.billboardsByID["viewMain"].transform = CGAffineTransformMakeTranslation(0, 2);
-    hiversaires.stage.billboardsByID["interfaceIndicatorForward"].alpha = 1;
+    let viewMain = $(hiversaires.stage.billboardsByID["viewMain"]);
+    viewMain.finish();
+    let viewMainY = viewMain.css("margin-top").split("px")[0];
+    this.setAlpha(viewMain, 0.5);
+    viewMain.css({ "margin-top": (viewMainY + 2).toString() + "px" });
+    this.setAlpha(
+      hiversaires.stage.billboardsByID["interfaceIndicatorForward"],
+      1
+    );
 
-    UIView.beginAnimations("Turn Right");
-    UIView.setAnimationDuration(0.2);
-    hiversaires.stage.billboardsByID["viewMain"].transform = CGAffineTransformMakeTranslation(0, 0);
-    hiversaires.stage.billboardsByID["viewMain"].alpha = 1;
-    UIView.commitAnimations();
-    */
+    viewMain.transition(
+      { opacity: 1, "margin-top": viewMainY + "px" },
+      0.2 * 1000
+    );
 
     this.fadeOut(
       hiversaires.stage.billboardsByID["interfaceIndicatorForward"],
@@ -1682,12 +1655,12 @@ class Dozenal {
   // ====================
 
   playFootStep() {
-    userFootstep += 1;
+    this.userFootstep += 1;
     if (
       this.forwardSubject.indexOf("|") != -1 ||
       parseInt(this.forwardSubject) > 0
     ) {
-      if (userFootstep & 1) {
+      if (this.userFootstep & 1) {
         hiversaires.music.playEffect("footstep_left");
       } else {
         hiversaires.music.playEffect("footstep_right");
@@ -1778,7 +1751,6 @@ class Dozenal {
       screenBound.width,
       screenBound.height
     );
-    // hiversaires.stage.billboardsByID["viewMain"].exclusiveTouch = true; // TODO: clicking
 
     this.setBounds(
       hiversaires.stage.billboardsByID["vignette"],
@@ -1860,8 +1832,8 @@ class Dozenal {
       this.screenWidthThird,
       this.screenHeightThird
     );
-    hiversaires.stage.triggersByID["actionCredit"].alpha = 0;
-    hiversaires.stage.triggersByID["actionCredit"].hidden = true;
+    this.setAlpha(hiversaires.stage.triggersByID["actionCredit"], 0);
+    this.setHidden(hiversaires.stage.triggersByID["actionCredit"], true);
 
     // Graphics
 
@@ -1979,9 +1951,18 @@ class Dozenal {
       screenBound.width / 12
     );
 
-    hiversaires.stage.billboardsByID["interfaceIndicatorRight"].alpha = 0;
-    hiversaires.stage.billboardsByID["interfaceIndicatorForward"].alpha = 0;
-    hiversaires.stage.billboardsByID["interfaceIndicatorLeft"].alpha = 0;
+    this.setAlpha(
+      hiversaires.stage.billboardsByID["interfaceIndicatorRight"],
+      0
+    );
+    this.setAlpha(
+      hiversaires.stage.billboardsByID["interfaceIndicatorForward"],
+      0
+    );
+    this.setAlpha(
+      hiversaires.stage.billboardsByID["interfaceIndicatorLeft"],
+      0
+    );
   }
 
   menuHome() {
@@ -1998,8 +1979,8 @@ class Dozenal {
       hiversaires.stage.billboardsByID["graphic2"],
       "menu/menu.black.jpg"
     );
-    hiversaires.stage.billboardsByID["graphic2"].alpha = 1.0;
-    hiversaires.stage.billboardsByID["graphic2"].hidden = false;
+    this.setAlpha(hiversaires.stage.billboardsByID["graphic2"], 1.0);
+    this.setHidden(hiversaires.stage.billboardsByID["graphic2"], false);
 
     this.setBounds(
       hiversaires.stage.billboardsByID["graphic3"],
@@ -2012,8 +1993,8 @@ class Dozenal {
       hiversaires.stage.billboardsByID["graphic3"],
       "menu/menu.logo.png"
     );
-    hiversaires.stage.billboardsByID["graphic3"].alpha = 1.0;
-    hiversaires.stage.billboardsByID["graphic3"].hidden = false;
+    this.setAlpha(hiversaires.stage.billboardsByID["graphic3"], 1.0);
+    this.setHidden(hiversaires.stage.billboardsByID["graphic3"], false);
 
     this.setBounds(
       hiversaires.stage.billboardsByID["graphic4"],
@@ -2026,12 +2007,12 @@ class Dozenal {
       hiversaires.stage.billboardsByID["graphic4"],
       "menu/menu.controls.png"
     );
-    hiversaires.stage.billboardsByID["graphic4"].alpha = 1.0;
-    hiversaires.stage.billboardsByID["graphic4"].hidden = false;
+    this.setAlpha(hiversaires.stage.billboardsByID["graphic4"], 1.0);
+    this.setHidden(hiversaires.stage.billboardsByID["graphic4"], false);
 
-    hiversaires.stage.billboardsByID["interfaceSeal1"].hidden = true;
-    hiversaires.stage.billboardsByID["interfaceSeal2"].hidden = true;
-    hiversaires.stage.billboardsByID["interfaceFuse1"].hidden = true;
+    this.setHidden(hiversaires.stage.billboardsByID["interfaceSeal1"], true);
+    this.setHidden(hiversaires.stage.billboardsByID["interfaceSeal2"], true);
+    this.setHidden(hiversaires.stage.billboardsByID["interfaceFuse1"], true);
 
     this.fadeOut(hiversaires.stage.billboardsByID["graphic2"], 0, 2.0);
     this.fadeOut(hiversaires.stage.billboardsByID["graphic3"], 3, 2.0);
@@ -2212,7 +2193,7 @@ class Dozenal {
   }
 
   wipePlayerProgress() {
-    // TODO: blast local storage
+    localStorage.clear();
   }
 
   actionCredit() {
