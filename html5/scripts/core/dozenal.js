@@ -2062,112 +2062,16 @@ class Dozenal {
 
       console.log("- [progress:creating..]");
 
-      this.userActionStorage = [
-        "",
-        "1",
-        "0",
-        "",
-        "",
-        "0",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "0",
-        "0",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        null
-      ];
+      this.userActionStorage = [];
+      for (let i = 0; i < 102; i++) {
+        this.userActionStorage[i] = "";
+      }
 
       this.userActionStorage[1] = "0"; // Dimclock Position
+      this.userActionStorage[2] = "0";
+      this.userActionStorage[5] = "0";
+      this.userActionStorage[23] = "0";
+      this.userActionStorage[24] = "0";
 
       this.userActionStorage[31] = "1"; // Fuse in Forest
       this.userActionStorage[38] = "1"; // Fuse in Entente
@@ -2178,6 +2082,8 @@ class Dozenal {
 
       this.userActionStorage[23] = "15"; // Entente 1
       this.userActionStorage[19] = "13"; // Entente 2
+
+      this.userActionStorage[101] = null;
 
       // Default Location
 
