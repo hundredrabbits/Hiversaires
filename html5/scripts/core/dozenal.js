@@ -2024,14 +2024,17 @@ class Dozenal {
     this.prefPositioning();
     console.log("- [progress:saving..]");
 
-    this.userSettings = ["0", "0", "0", "0", null];
-    this.userSettings[0] = this.userNode.toString();
-    this.userSettings[1] = this.userOrientation.toString();
-    this.userSettings[2] = this.userProgress.toString();
-    this.userSettings[3] = this.userEnergy.toString();
+    let saveObject = {
+      userSettings: {
+        userNode: this.userNode,
+        userOrientation: this.userOrientation,
+        userProgress: this.userProgress,
+        userEnergy: this.userEnergy
+      },
+      userActionStorage: this.userActionStorage
+    };
 
-    localStorage["slot0"] = this.userSettings;
-    localStorage["slot1"] = this.userActionStorage;
+    localStorage.save = JSON.stringify(saveObject);
 
     console.log("- [progress:saved.]");
 
@@ -2041,21 +2044,23 @@ class Dozenal {
   prefLoad() {
     // Load Game
 
-    if (
-      localStorage.hasOwnProperty("slot1") &&
-      localStorage.hasOwnProperty("slot0")
-    ) {
+    let saveObject = null;
+    try {
+      saveObject = JSON.parse(localStorage.save);
+    } catch (error) {}
+
+    if (saveObject != null) {
       console.log("- [progress:loading..]");
 
       // Settings
-      this.userSettings = localStorage["slot0"];
-      this.userNode = parseInt(this.userSettings[0]);
-      this.userOrientation = parseInt(this.userSettings[1]);
-      this.userProgress = parseInt(this.userSettings[2]);
-      this.userEnergy = parseInt(this.userSettings[3]);
+      let userSettings = saveObject.userSettings;
+      this.userNode = userSettings.userNode;
+      this.userOrientation = userSettings.userOrientation;
+      this.userProgress = userSettings.userProgress;
+      this.userEnergy = userSettings.userEnergy;
 
       // Storage
-      this.userActionStorage = localStorage["slot1"];
+      this.userActionStorage = saveObject.userActionStorage;
     } else {
       // New Game
 
