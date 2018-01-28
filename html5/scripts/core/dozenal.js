@@ -57,8 +57,8 @@ class Dozenal {
 
   setBounds(subject, x, y, width, height) {
     $(subject).css({
-      "margin-left": x + "px",
-      "margin-top": y + "px",
+      left: x + "px",
+      top: y + "px",
       width: width + "px",
       height: height + "px"
     });
@@ -77,7 +77,10 @@ class Dozenal {
   }
 
   setHidden(subject, value) {
-    $(subject).css({ display: value ? "none" : "block" });
+    $(subject).css({
+      display: value ? "none" : "block",
+      "pointer-events": value ? "none" : "inherit"
+    });
   }
 
   // ====================
@@ -1584,18 +1587,15 @@ class Dozenal {
   turnLeft() {
     let viewMain = $(hiversaires.stage.billboardsByID["viewMain"]);
     viewMain.finish();
-    let viewMainX = viewMain.css("margin-left").split("px")[0];
+    let viewMainX = viewMain.css("left").split("px")[0];
     this.setAlpha(viewMain, 0.5);
-    viewMain.css({ "margin-left": (viewMainX - 15).toString() + "px" });
+    viewMain.css({ left: (viewMainX - 15).toString() + "px" });
     this.setAlpha(
       hiversaires.stage.billboardsByID["interfaceIndicatorLeft"],
       1
     );
 
-    viewMain.transition(
-      { opacity: 1, "margin-left": viewMainX + "px" },
-      0.2 * 1000
-    );
+    viewMain.transition({ opacity: 1, left: viewMainX + "px" }, 0.2 * 1000);
 
     this.fadeOut(
       hiversaires.stage.billboardsByID["interfaceIndicatorLeft"],
@@ -1607,18 +1607,15 @@ class Dozenal {
   turnRight() {
     let viewMain = $(hiversaires.stage.billboardsByID["viewMain"]);
     viewMain.finish();
-    let viewMainX = viewMain.css("margin-left").split("px")[0];
+    let viewMainX = viewMain.css("left").split("px")[0];
     this.setAlpha(viewMain, 0.5);
-    viewMain.css({ "margin-left": (viewMainX + 15).toString() + "px" });
+    viewMain.css({ left: (viewMainX + 15).toString() + "px" });
     this.setAlpha(
       hiversaires.stage.billboardsByID["interfaceIndicatorRight"],
       1
     );
 
-    viewMain.transition(
-      { opacity: 1, "margin-left": viewMainX + "px" },
-      0.2 * 1000
-    );
+    viewMain.transition({ opacity: 1, left: viewMainX + "px" }, 0.2 * 1000);
 
     this.fadeOut(
       hiversaires.stage.billboardsByID["interfaceIndicatorRight"],
@@ -1630,18 +1627,15 @@ class Dozenal {
   turnForward() {
     let viewMain = $(hiversaires.stage.billboardsByID["viewMain"]);
     viewMain.finish();
-    let viewMainY = viewMain.css("margin-top").split("px")[0];
+    let viewMainY = viewMain.css("top").split("px")[0];
     this.setAlpha(viewMain, 0.5);
-    viewMain.css({ "margin-top": (viewMainY + 2).toString() + "px" });
+    viewMain.css({ top: (viewMainY + 2).toString() + "px" });
     this.setAlpha(
       hiversaires.stage.billboardsByID["interfaceIndicatorForward"],
       1
     );
 
-    viewMain.transition(
-      { opacity: 1, "margin-top": viewMainY + "px" },
-      0.2 * 1000
-    );
+    viewMain.transition({ opacity: 1, top: viewMainY + "px" }, 0.2 * 1000);
 
     this.fadeOut(
       hiversaires.stage.billboardsByID["interfaceIndicatorForward"],
