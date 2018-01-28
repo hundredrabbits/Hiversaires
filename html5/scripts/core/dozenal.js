@@ -180,6 +180,8 @@ class Dozenal {
     this.setHidden(hiversaires.stage.triggersByID["action4"], true);
     this.setHidden(hiversaires.stage.triggersByID["action5"], true);
 
+    this.isFuseAction = false;
+
     if (this.userAction) {
       this.actionTemplate();
     }
@@ -224,9 +226,8 @@ class Dozenal {
     // Door to display action3
 
     this.setHidden(hiversaires.stage.billboardsByID["graphic1"], false);
-    this.setHidden(hiversaires.stage.triggersByID["action3"], false);
     this.setHidden(hiversaires.stage.triggersByID["action2"], true);
-    this.setAlpha(hiversaires.stage.triggersByID["action3"], 1.0);
+    this.setHidden(hiversaires.stage.triggersByID["action3"], false);
     this.templateEnergyUpdate();
   }
 
@@ -323,6 +324,9 @@ class Dozenal {
   }
 
   action4() {
+
+   
+
     // Fuse(energy) Action
 
     if (this.userActionStorage[this.userActionId] == "1") {
@@ -396,11 +400,11 @@ class Dozenal {
     this.setAlpha(hiversaires.stage.billboardsByID["graphic9"], 0);
     this.setAlpha(hiversaires.stage.billboardsByID["graphic10"], 0);
 
-    this.setAlpha(hiversaires.stage.triggersByID["action1"], 0);
-    this.setAlpha(hiversaires.stage.triggersByID["action2"], 0);
-    this.setAlpha(hiversaires.stage.triggersByID["action3"], 0);
-    this.setAlpha(hiversaires.stage.triggersByID["action4"], 0);
-    this.setAlpha(hiversaires.stage.triggersByID["action5"], 0);
+    this.setHidden(hiversaires.stage.triggersByID["action1"], true);
+    this.setHidden(hiversaires.stage.triggersByID["action2"], true);
+    this.setHidden(hiversaires.stage.triggersByID["action3"], true);
+    this.setHidden(hiversaires.stage.triggersByID["action4"], true);
+    this.setHidden(hiversaires.stage.triggersByID["action5"], true);
   }
 
   actionTemplate() {
@@ -498,7 +502,6 @@ class Dozenal {
     this.templateVignette();
 
     this.setHidden(hiversaires.stage.triggersByID["action1"], false);
-    this.setAlpha(hiversaires.stage.triggersByID["action1"], 1.0);
 
     this.setAlpha(hiversaires.stage.billboardsByID["graphic5"], 0);
     this.setAlpha(hiversaires.stage.billboardsByID["graphic4"], 0);
@@ -569,7 +572,6 @@ class Dozenal {
 
     if (this.puzzleState == 1) {
       this.setHidden(hiversaires.stage.triggersByID["action2"], false);
-      this.setAlpha(hiversaires.stage.triggersByID["action2"], 1.0);
 
       this.templateUpdateNode(16, "0472", "act7");
       this.templateUpdateNode(23, "0473", "act7");
@@ -636,7 +638,6 @@ class Dozenal {
     this.setHidden(hiversaires.stage.billboardsByID["graphic1"], false);
     this.setAlpha(hiversaires.stage.billboardsByID["graphic1"], 0);
     this.setHidden(hiversaires.stage.triggersByID["action5"], false);
-    this.setAlpha(hiversaires.stage.triggersByID["action5"], 1.0);
 
     hiversaires.music.playEffect("action_SealInit");
     this.templateSealUpdate();
@@ -753,7 +754,6 @@ class Dozenal {
     ) {
       // Act 4 : Antechannel + Stones in Studio
       if (this.userNode == 19) {
-        this.setAlpha(hiversaires.stage.triggersByID["action1"], 1.0);
         this.setHidden(hiversaires.stage.triggersByID["action1"], false);
         this.templateUpdateStudioTerminal();
 
@@ -816,8 +816,8 @@ class Dozenal {
 
     this.setHidden(hiversaires.stage.billboardsByID["graphic1"], false);
     this.setHidden(hiversaires.stage.triggersByID["action2"], false);
-    this.setAlpha(hiversaires.stage.triggersByID["action2"], 1.0);
-    this.setHidden(hiversaires.stage.triggersByID["action4"], false);
+    // this.setHidden(hiversaires.stage.triggersByID["action4"], false);
+    this.isFuseAction = true;
 
     hiversaires.music.playEffect("action_EnergyInit");
   }
@@ -896,7 +896,6 @@ class Dozenal {
 
     if (parseInt(this.userActionStorage[this.puzzleTerminal]) > 0) {
       this.setHidden(hiversaires.stage.triggersByID["action2"], false);
-      this.setAlpha(hiversaires.stage.triggersByID["action2"], 1.0);
 
       this.templateUpdateNode(1, "0531", "act28");
       this.templateUpdateNode(12, "0470", "act3");
@@ -922,8 +921,7 @@ class Dozenal {
       } else {
         this.templateUpdateNode(39, "0490", "act11");
       }
-
-      this.setAlpha(hiversaires.stage.triggersByID["action3"], 1.0);
+      // this.setAlpha(hiversaires.stage.triggersByID["action3"], 1.0); // !
     } else {
       this.templateEnergyWarning();
     }
@@ -932,7 +930,10 @@ class Dozenal {
   templateEnergyUpdate() {
     this.templateEnergyInterface();
 
-    this.setAlpha(hiversaires.stage.triggersByID["action4"], 1.0);
+    if (this.isFuseAction) {
+      this.setHidden(hiversaires.stage.triggersByID["action4"], false);
+      this.setHidden(hiversaires.stage.triggersByID["action3"], true);
+    }
 
     if (parseInt(this.userActionStorage[this.userActionId]) == 1) {
       this.templateUpdateNode(18, "0516", "act2");
@@ -1013,7 +1014,6 @@ class Dozenal {
     this.prefPositioning();
     this.templateVignette();
 
-    this.setAlpha(hiversaires.stage.triggersByID["action1"], 1.0);
     this.setHidden(hiversaires.stage.triggersByID["action1"], false);
 
     this.templateAudioUpdate();
@@ -1190,7 +1190,6 @@ class Dozenal {
     this.prefPositioning();
 
     this.setHidden(hiversaires.stage.triggersByID["action1"], false);
-    this.setAlpha(hiversaires.stage.triggersByID["action1"], 1.0);
   }
 
   templateKillUpdate() {
@@ -1209,7 +1208,6 @@ class Dozenal {
     ) {
       this.templateUpdateNode(113, "0550", "act40");
       this.setHidden(hiversaires.stage.triggersByID["action3"], false);
-      this.setAlpha(hiversaires.stage.triggersByID["action3"], 1);
     } else {
       this.templateEnergyWarning();
     }
@@ -1321,8 +1319,6 @@ class Dozenal {
 
       this.fadeIn(hiversaires.stage.billboardsByID["graphic6"], 24.0, 1);
     }
-
-    this.fadeIn(hiversaires.stage.triggersByID["actionCredit"], 24.0, 1);
   }
 
   // ====================
@@ -1831,7 +1827,6 @@ class Dozenal {
       this.screenWidthThird,
       this.screenHeightThird
     );
-    this.setAlpha(hiversaires.stage.triggersByID["actionCredit"], 0);
     this.setHidden(hiversaires.stage.triggersByID["actionCredit"], true);
 
     // Graphics
