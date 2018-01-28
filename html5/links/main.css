@@ -1,9 +1,12 @@
-* {
+hiversaires,
+hiversaires * {
   display: block;
   position: absolute;
 }
 
 body {
+  display: block;
+  position: absolute;
   background: black;
   overflow: hidden;
   user-select: none;

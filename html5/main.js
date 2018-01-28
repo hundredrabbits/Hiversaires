@@ -7,10 +7,36 @@ const url = require("url");
 let win;
 
 function createWindow() {
+  const electron = require("electron");
+
+  let tallestDisplay = null;
+  for (let display of electron.screen.getAllDisplays()) {
+    if (
+      !tallestDisplay ||
+      tallestDisplay.workArea.height < display.workArea.height
+    ) {
+      tallestDisplay = display;
+    }
+  }
+
+  function getGoodWindowBounds(display) {
+    let height = display.workArea.height;
+    let width = Math.ceil(height * 9 / 16);
+    let x =
+      display.workArea.x + Math.round(display.workArea.width / 2 - width / 2);
+    let y = display.workArea.y;
+
+    return { x: x, y: y, width: width, height: height };
+  }
+
+  let initBounds = getGoodWindowBounds(tallestDisplay);
+
   // Create the browser window.
   win = new BrowserWindow({
-    width: 640,
-    height: 1136,
+    x: initBounds.x,
+    y: initBounds.y,
+    width: initBounds.width,
+    height: initBounds.height,
     backgroundColor: "#000000",
     resizable: false,
     autoHideMenuBar: true,
@@ -28,6 +54,13 @@ function createWindow() {
     // in an array if your app supports multi windows, this is the time
     // when you should delete the corresponding element.
     win = null;
+  });
+
+  win.on("move", () => {
+    let bounds = getGoodWindowBounds(
+      electron.screen.getDisplayMatching(win.getBounds())
+    );
+    win.setContentSize(bounds.width, bounds.height);
   });
 }
 

@@ -52,15 +52,15 @@ class Dozenal {
   }
 
   getScreenBounds() {
-    return { x: 0, y: 0, width: window.innerWidth, height: window.innerHeight };
+    return { x: 0, y: 0, width: 9, height: 16 };
   }
 
   setBounds(subject, x, y, width, height) {
     $(subject).css({
-      left: x + "px",
-      top: y + "px",
-      width: width + "px",
-      height: height + "px"
+      left: x * 100 / 9 + "%",
+      top: y * 100 / 16 + "%",
+      width: width * 100 / 9 + "%",
+      height: height * 100 / 16 + "%"
     });
   }
 
