@@ -72,15 +72,20 @@ class Dozenal {
     }
   }
 
+  _updateInteractive(subject) {
+    let value =
+      $(subject).css("opacity") != 0 && $(subject).css("display") != "none";
+    $(subject).css({ "pointer-events": value ? "inherit" : "none" });
+  }
+
   setAlpha(subject, value) {
     $(subject).css({ opacity: value });
+    this._updateInteractive(subject);
   }
 
   setHidden(subject, value) {
-    $(subject).css({
-      display: value ? "none" : "block",
-      "pointer-events": value ? "none" : "inherit"
-    });
+    $(subject).css({ display: value ? "none" : "block" });
+    this._updateInteractive(subject);
   }
 
   // ====================
