@@ -6,6 +6,18 @@ class Stage {
   }
 
   start() {
+    this.billboards = this.root.appendChild(
+      document.createElement("billboards")
+    );
+    if (DEBUG_SHOW_BILLBOARDS) {
+      this.billboards.className = "debug";
+    }
+
+    this.triggers = this.root.appendChild(document.createElement("triggers"));
+    if (DEBUG_SHOW_TRIGGERS) {
+      this.triggers.className = "debug";
+    }
+
     for (let id of [
       "viewMain",
       "vignette",
@@ -33,10 +45,13 @@ class Stage {
       "interfaceIndicatorForward",
       "interfaceIndicatorLeft"
     ]) {
-      let billboard = this.root.appendChild(
+      let billboard = this.billboards.appendChild(
         document.createElement("billboard")
       );
       billboard.id = id;
+      if (DEBUG_SHOW_BILLBOARDS) {
+        billboard.innerText = id;
+      }
       this.billboardsByID[id] = billboard;
     }
 
@@ -55,8 +70,13 @@ class Stage {
       "action5",
       "actionCredit"
     ]) {
-      let trigger = this.root.appendChild(document.createElement("trigger"));
+      let trigger = this.triggers.appendChild(
+        document.createElement("trigger")
+      );
       trigger.id = id;
+      if (DEBUG_SHOW_TRIGGERS) {
+        trigger.innerText = id;
+      }
       trigger.addEventListener("click", handleClick);
       this.triggersByID[id] = trigger;
     }

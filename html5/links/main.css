@@ -1,29 +1,44 @@
-body {
-  background: #black;
-  overflow: hidden;
+* {
+  display: block;
+  position: absolute;
 }
 
-hiversaires {
+body {
+  background: black;
+  overflow: hidden;
+  user-select: none;
   width: 100vw;
   height: 100vh;
+
+  text-align: center;
+  font-family: sans-serif;
+  font-size: 14pt;
+}
+
+hiversaires,
+billboards,
+triggers {
+  width: 100%;
+  height: 100%;
 }
 
 billboard {
-  width: 1in;
-  height: 1in;
-  box-sizing: border-box;
-  border: 0.1em blue solid;
-  display: block;
-  position: absolute;
-
+  background-size: cover;
+  background-repeat: no-repeat;
   pointer-events: none;
+  /*image-rendering: crisp-edges;*/
+  /*-webkit-optimize-contrast: crisp-edges;*/
 }
 
 trigger {
-  width: 1in;
-  height: 1in;
-  box-sizing: border-box;
-  border: 0.1em green solid;
-  display: block;
-  position: absolute;
+}
+
+triggers.debug > trigger {
+  border: 0.1em #0f0 solid;
+  color: #0f0;
+}
+
+billboards.debug > billboard {
+  border: 0.1em #00f solid;
+  color: #00f;
 }
