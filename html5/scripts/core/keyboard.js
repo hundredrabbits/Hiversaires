@@ -11,7 +11,24 @@ class Keyboard {
     }
 
     switch (event.keyCode) {
-    // TODO
+      case 37: // left
+        hiversaires.dozenal.moveLeft();
+        break;
+      case 39: // right
+        hiversaires.dozenal.moveRight();
+        break;
+      case 38: // up
+        if (hiversaires.dozenal.currentAction != null) {
+          hiversaires.dozenal.action();
+        } else {
+          hiversaires.dozenal.moveForward();
+        }
+        break;
+      case 40: // down
+        if (hiversaires.dozenal.currentAction != null) {
+          hiversaires.dozenal.moveForward();
+        }
+        break;
     }
 
     this.record(event.key);

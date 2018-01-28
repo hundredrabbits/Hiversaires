@@ -23,6 +23,7 @@ class Dozenal {
 
     // Misc
 
+    this.currentAction = null;
     this.screenWidth = 0;
     this.screenHeight = 0;
   }
@@ -96,8 +97,6 @@ class Dozenal {
     this.actionReset();
 
     this.userAction = null;
-
-    this.debugUpdate();
 
     this.setHidden(
       hiversaires.stage.triggersByID["moveForward"],
@@ -174,6 +173,7 @@ class Dozenal {
       !this.userAction
     );
 
+    this.currentAction = null;
     this.setHidden(hiversaires.stage.triggersByID["action1"], true);
     this.setHidden(hiversaires.stage.triggersByID["action2"], true);
     this.setHidden(hiversaires.stage.triggersByID["action3"], true);
@@ -184,6 +184,12 @@ class Dozenal {
 
     if (this.userAction) {
       this.actionTemplate();
+    }
+  }
+
+  action() {
+    if (this[this.currentAction] != null) {
+      this[this.currentAction]();
     }
   }
 
@@ -228,6 +234,7 @@ class Dozenal {
     this.setHidden(hiversaires.stage.billboardsByID["graphic1"], false);
     this.setHidden(hiversaires.stage.triggersByID["action2"], true);
     this.setHidden(hiversaires.stage.triggersByID["action3"], false);
+    this.currentAction = "action3";
     this.templateEnergyUpdate();
   }
 
@@ -324,9 +331,6 @@ class Dozenal {
   }
 
   action4() {
-
-   
-
     // Fuse(energy) Action
 
     if (this.userActionStorage[this.userActionId] == "1") {
@@ -400,6 +404,7 @@ class Dozenal {
     this.setAlpha(hiversaires.stage.billboardsByID["graphic9"], 0);
     this.setAlpha(hiversaires.stage.billboardsByID["graphic10"], 0);
 
+    this.currentAction = null;
     this.setHidden(hiversaires.stage.triggersByID["action1"], true);
     this.setHidden(hiversaires.stage.triggersByID["action2"], true);
     this.setHidden(hiversaires.stage.triggersByID["action3"], true);
@@ -502,6 +507,7 @@ class Dozenal {
     this.templateVignette();
 
     this.setHidden(hiversaires.stage.triggersByID["action1"], false);
+    this.currentAction = "action1";
 
     this.setAlpha(hiversaires.stage.billboardsByID["graphic5"], 0);
     this.setAlpha(hiversaires.stage.billboardsByID["graphic4"], 0);
@@ -572,6 +578,7 @@ class Dozenal {
 
     if (this.puzzleState == 1) {
       this.setHidden(hiversaires.stage.triggersByID["action2"], false);
+      this.currentAction = "action2";
 
       this.templateUpdateNode(16, "0472", "act7");
       this.templateUpdateNode(23, "0473", "act7");
@@ -638,6 +645,7 @@ class Dozenal {
     this.setHidden(hiversaires.stage.billboardsByID["graphic1"], false);
     this.setAlpha(hiversaires.stage.billboardsByID["graphic1"], 0);
     this.setHidden(hiversaires.stage.triggersByID["action5"], false);
+    this.currentAction = "action5";
 
     hiversaires.music.playEffect("action_SealInit");
     this.templateSealUpdate();
@@ -755,6 +763,7 @@ class Dozenal {
       // Act 4 : Antechannel + Stones in Studio
       if (this.userNode == 19) {
         this.setHidden(hiversaires.stage.triggersByID["action1"], false);
+        this.currentAction = "action1";
         this.templateUpdateStudioTerminal();
 
         this.prefSave();
@@ -816,6 +825,7 @@ class Dozenal {
 
     this.setHidden(hiversaires.stage.billboardsByID["graphic1"], false);
     this.setHidden(hiversaires.stage.triggersByID["action2"], false);
+    this.currentAction = "action2";
     // this.setHidden(hiversaires.stage.triggersByID["action4"], false);
     this.isFuseAction = true;
 
@@ -896,6 +906,7 @@ class Dozenal {
 
     if (parseInt(this.userActionStorage[this.puzzleTerminal]) > 0) {
       this.setHidden(hiversaires.stage.triggersByID["action2"], false);
+      this.currentAction = "action2";
 
       this.templateUpdateNode(1, "0531", "act28");
       this.templateUpdateNode(12, "0470", "act3");
@@ -932,6 +943,7 @@ class Dozenal {
 
     if (this.isFuseAction) {
       this.setHidden(hiversaires.stage.triggersByID["action4"], false);
+      this.currentAction = "action4";
       this.setHidden(hiversaires.stage.triggersByID["action3"], true);
     }
 
@@ -1015,6 +1027,7 @@ class Dozenal {
     this.templateVignette();
 
     this.setHidden(hiversaires.stage.triggersByID["action1"], false);
+    this.currentAction = "action1";
 
     this.templateAudioUpdate();
   }
@@ -1190,6 +1203,7 @@ class Dozenal {
     this.prefPositioning();
 
     this.setHidden(hiversaires.stage.triggersByID["action1"], false);
+    this.currentAction = "action1";
   }
 
   templateKillUpdate() {
@@ -1208,6 +1222,7 @@ class Dozenal {
     ) {
       this.templateUpdateNode(113, "0550", "act40");
       this.setHidden(hiversaires.stage.triggersByID["action3"], false);
+      this.currentAction = "action3";
     } else {
       this.templateEnergyWarning();
     }
@@ -1425,10 +1440,6 @@ class Dozenal {
     this.setHidden(hiversaires.stage.billboardsByID["interfaceSave"], false);
     this.setAlpha(hiversaires.stage.billboardsByID["interfaceSave"], 1);
     this.fadeOut(hiversaires.stage.billboardsByID["interfaceSave"], 3, 0.5);
-  }
-
-  debugUpdate() {
-    console.log(this.userNode, this.userOrientation, this.forwardSubject);
   }
 
   illusionCheck() {
@@ -1863,7 +1874,7 @@ class Dozenal {
       screenBound.width / 12,
       screenBound.width / 12
     );
-    */
+    /**/
     this.setBounds(
       hiversaires.stage.billboardsByID["interfaceDimclockBackground"],
       screenBound.width / 12 * 4 + screenPadding,

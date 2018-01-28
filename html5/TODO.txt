@@ -1,14 +1,17 @@
-Center interaction problem
-
-Let's see these weirder triggers
+Seal bug?
+    Compare with native
 
 THEN WHAT?
+    Unify center interactions
+    Simplify ambience check method
     Convert interface and menu elements to SVG
-    The layout of the elements could be based on CSS and state
+    The layout of the elements could be based on CSS
+    
+    Isolate puzzle state from nodes
     Break the dozenal code into sensible chunks
-    Polish the few animations that exist
-    Walkthrough
+    
     Convert the world to a displayable graph, if you can
+    Full walkthrough
 
 Retina Display
 
