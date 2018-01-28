@@ -110,7 +110,7 @@ class Dozenal {
 
     // Trigger Action
 
-    if (this.forwardSubject.indexOf("act" != -1)) {
+    if (this.forwardSubject.indexOf("act") != -1) {
       this.userAction = this.forwardSubject;
       this.userActionId = parseInt(this.userAction.replace(/act/g, ""));
       this.actionCheck();
@@ -338,7 +338,7 @@ class Dozenal {
 
     if (
       this.userActionStorage[this.userActionId] == "1" ||
-      this.sealCount > 0
+      this.sealCount() > 0
     ) {
       if (!this.userActionStorage[this.userActionId] == "1") {
         hiversaires.music.playEffect("action_SealActive");

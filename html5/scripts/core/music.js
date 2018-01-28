@@ -14,7 +14,7 @@ class Music {
   set volume(value) {
     if (this._volume != value) {
       this._volume = value;
-      for (let key of this.playingTracksByRole.keys()) {
+      for (let key in this.playingTracksByRole) {
         this.playingTracksByRole[key].volume = value;
       }
     }
