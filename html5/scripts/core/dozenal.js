@@ -1999,7 +1999,7 @@ class Dozenal {
     );
     this.setImage(
       hiversaires.stage.billboardsByID["graphic4"],
-      "menu/menu.controls.png"
+      "menu/menu.controls.svg"
     );
     this.setAlpha(hiversaires.stage.billboardsByID["graphic4"], 1.0);
     this.setHidden(hiversaires.stage.billboardsByID["graphic4"], false);
