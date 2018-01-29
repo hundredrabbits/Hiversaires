@@ -16,7 +16,6 @@ class Dozenal {
     // User Temp
 
     this.userAction;
-    this.userAmbient;
     this.userSeal = 0;
     this.userActionId;
     this.userFootstep = 0;
@@ -120,7 +119,9 @@ class Dozenal {
       this.actionCheck();
     }
 
-    this.audioAmbientCheck(hiversaires.world.nodesByID[this.userNode][4]);
+    hiversaires.music.setAmbience(
+      hiversaires.world.nodesByID[this.userNode][4]
+    );
   }
 
   moveLeft() {
@@ -1667,43 +1668,6 @@ class Dozenal {
       }
     } else {
       hiversaires.music.playEffect("footstep_collide");
-    }
-  }
-
-  audioAmbientCheck(nodeAmbient) {
-    if (this.userAmbient != nodeAmbient) {
-      this.userAmbient = nodeAmbient;
-
-      if (nodeAmbient == "forest") {
-        hiversaires.music.setAmbience(Ambience.forest);
-      }
-      if (nodeAmbient == "studio") {
-        hiversaires.music.setAmbience(Ambience.studio);
-      }
-      if (nodeAmbient == "stones") {
-        hiversaires.music.setAmbience(Ambience.stones);
-      }
-      if (nodeAmbient == "antechannel") {
-        hiversaires.music.setAmbience(Ambience.antechannel);
-      }
-      if (nodeAmbient == "metamondst") {
-        hiversaires.music.setAmbience(Ambience.metamondst);
-      }
-      if (nodeAmbient == "circular") {
-        hiversaires.music.setAmbience(Ambience.circular);
-      }
-      if (nodeAmbient == "entente") {
-        hiversaires.music.setAmbience(Ambience.circular);
-      }
-      if (nodeAmbient == "rainre") {
-        hiversaires.music.setAmbience(Ambience.rainre);
-      }
-      if (nodeAmbient == "capsule") {
-        hiversaires.music.setAmbience(Ambience.capsule);
-      }
-      if (nodeAmbient == "nataniev") {
-        hiversaires.music.setAmbience(Ambience.nataniev);
-      }
     }
   }
 

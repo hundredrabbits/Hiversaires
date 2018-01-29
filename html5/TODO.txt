@@ -1,4 +1,3 @@
-Simplify ambience check method
 Convert interface and menu elements to SVG
 The layout of the elements could be based on CSS
 
