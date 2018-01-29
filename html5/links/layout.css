@@ -101,6 +101,14 @@ billboard#interfaceSealBackground {
   height: calc(100% / 16 * (9 / 12));
 }
 
+billboard#clockFace,
+billboard#clockShadow {
+  left: calc(100% * 170/640);
+  top: calc(100% * 416/1136);
+  width: calc(100% * 300/640);
+  height: calc(100% * 300/1136);
+}
+
 billboard#viewMain {
   left: 0;
   top: 0;

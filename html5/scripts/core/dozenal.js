@@ -374,6 +374,9 @@ class Dozenal {
     this.setAlpha(hiversaires.stage.billboardsByID["graphic5"], 0);
     this.setAlpha(hiversaires.stage.billboardsByID["graphic6"], 0);
 
+    this.setAlpha(hiversaires.stage.billboardsByID["clockFace"], 0);
+    this.setAlpha(hiversaires.stage.billboardsByID["clockShadow"], 0);
+
     this.setCurrentAction(null);
   }
 
@@ -557,17 +560,17 @@ class Dozenal {
     this.templateClockInterface();
 
     this.setImage(
-      hiversaires.stage.billboardsByID["graphic4"],
-      "interface/dimclock.shadow.png"
+      hiversaires.stage.billboardsByID["clockShadow"],
+      "interface/dimclock.shadow.svg"
     );
 
     this.setImage(
-      hiversaires.stage.billboardsByID["graphic5"],
-      "interface/dimclock.state" + this.userActionStorage[1] + ".png"
+      hiversaires.stage.billboardsByID["clockFace"],
+      "interface/dimclock.state" + this.userActionStorage[1] + ".svg"
     );
 
-    this.fadeIn(hiversaires.stage.billboardsByID["graphic4"], 0.5, 1.5);
-    this.fadeIn(hiversaires.stage.billboardsByID["graphic5"], 0.5, 0.5);
+    this.fadeIn(hiversaires.stage.billboardsByID["clockShadow"], 0.5, 1.5);
+    this.fadeIn(hiversaires.stage.billboardsByID["clockFace"], 0.5, 0.5);
   }
 
   templateClockWarning() {

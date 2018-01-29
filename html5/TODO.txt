@@ -1,7 +1,11 @@
+Custom billboard for entente?
+    Maybe decide once you can friggin' find it
+    Implement warp, stupid
+
 Convert interface elements to SVG
-    Extra seals
-    dimclock
-    entente
+    
+
+    "interface/entente" + targetGraphic + ".png"
 
 Isolate puzzle state from nodes
 Break the dozenal code into sensible chunks

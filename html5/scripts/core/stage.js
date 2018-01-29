@@ -27,6 +27,8 @@ class Stage {
       "graphic4",
       "graphic5",
       "graphic6",
+      "clockShadow",
+      "clockFace",
       "interfaceDimclockBackground",
       "interfaceDimclock",
       "interfaceFuseBackground",
