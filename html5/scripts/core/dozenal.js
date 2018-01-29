@@ -612,7 +612,7 @@ class Dozenal {
   templateClockWarning() {
     this.setImage(
       hiversaires.stage.billboardsByID["interfaceDimclockBackground"],
-      "interface/fuse.warning.svg"
+      "interface/alert.svg"
     );
     this.setAlpha(
       hiversaires.stage.billboardsByID["interfaceDimclockBackground"],
@@ -790,7 +790,7 @@ class Dozenal {
   templateSealWarning() {
     this.setImage(
       hiversaires.stage.billboardsByID["interfaceSealBackground"],
-      "interface/fuse.warning.svg"
+      "interface/alert.svg"
     );
     this.setAlpha(
       hiversaires.stage.billboardsByID["interfaceSealBackground"],
@@ -950,7 +950,7 @@ class Dozenal {
   templateEnergyWarning() {
     this.setImage(
       hiversaires.stage.billboardsByID["interfaceFuseBackground"],
-      "interface/fuse.warning.svg"
+      "interface/alert.svg"
     );
     this.setAlpha(
       hiversaires.stage.billboardsByID["interfaceFuseBackground"],
