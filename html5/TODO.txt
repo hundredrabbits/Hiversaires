@@ -1,4 +1,5 @@
-Convert interface and menu elements to SVG
+Convert interface elements to SVG
+    Extra seals
     dimclock
     entente
 

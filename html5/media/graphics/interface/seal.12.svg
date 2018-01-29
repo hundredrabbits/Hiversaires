@@ -8,7 +8,7 @@
                 Z" fill="white" />
         </g>
     </defs>
-
+    <!-- <rect width="1024" height="1024" fill="red"/> -->
     <line x1="174" y1="116" x2="174" y2="752" stroke="white" stroke-width="116"/>
     <line x1="272" y1="850" x2="752" y2="850" stroke="white" stroke-width="116"/>
     <line x1="512" y1="610" x2="512" y2="908" stroke="white" stroke-width="116"/>
