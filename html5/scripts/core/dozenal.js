@@ -1610,6 +1610,7 @@ class Dozenal {
   }
 
   animateStepBackward() {
+    hiversaires.music.playEffect("footstep_turn");
     let viewMain = $(hiversaires.stage.billboardsByID["viewMain"]);
     viewMain.finish();
     let viewMainY = viewMain.css("top").split("px")[0];
