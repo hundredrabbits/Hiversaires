@@ -134,7 +134,7 @@ class Dozenal {
   moveRight() {
     hiversaires.music.playEffect("footstep_turn");
     this.userOrientation = (this.userOrientation + 4 + 1) % 4;
-    this.aniateTurnRight();
+    this.animateTurnRight();
     this.moveCheck();
   }
 
@@ -509,7 +509,7 @@ class Dozenal {
   templateClockInterface() {
     this.setImage(
       hiversaires.stage.billboardsByID["interfaceDimclock"],
-      "clock/clock." + parseInt(this.userActionStorage[1]) + ".png"
+      "interface/clock." + parseInt(this.userActionStorage[1]) + ".png"
     );
     this.setHidden(
       hiversaires.stage.billboardsByID["interfaceDimclock"],
@@ -590,7 +590,7 @@ class Dozenal {
     ); // interface
     this.setImage(
       hiversaires.stage.billboardsByID["graphic4"],
-      "interface/interface.dimclock.shadow.png"
+      "interface/dimclock.shadow.png"
     );
 
     this.setBounds(
@@ -602,7 +602,7 @@ class Dozenal {
     ); // interface
     this.setImage(
       hiversaires.stage.billboardsByID["graphic5"],
-      "interface/interface.dimclock.state" + this.userActionStorage[1] + ".png"
+      "interface/dimclock.state" + this.userActionStorage[1] + ".png"
     );
 
     this.fadeIn(hiversaires.stage.billboardsByID["graphic4"], 0.5, 1.5);
@@ -612,7 +612,7 @@ class Dozenal {
   templateClockWarning() {
     this.setImage(
       hiversaires.stage.billboardsByID["interfaceDimclockBackground"],
-      "interface/interfaceFuse.warning.png"
+      "interface/fuse.warning.png"
     );
     this.setAlpha(
       hiversaires.stage.billboardsByID["interfaceDimclockBackground"],
@@ -643,26 +643,26 @@ class Dozenal {
 
     this.setImage(
       hiversaires.stage.billboardsByID["interfaceSeal1"],
-      "seal/seal.0.png"
+      "interface/seal.0.png"
     );
     this.setImage(
       hiversaires.stage.billboardsByID["interfaceSeal2"],
-      "seal/seal.0.png"
+      "interface/seal.0.png"
     );
 
     if (this.userSeal == 1) {
       this.setImage(
         hiversaires.stage.billboardsByID["interfaceSeal1"],
-        "seal/seal." + this.sealFind(1) + ".png"
+        "interface/seal." + this.sealFind(1) + ".png"
       );
     } else if (this.userSeal == 0) {
       this.setImage(
         hiversaires.stage.billboardsByID["interfaceSeal1"],
-        "seal/seal." + this.sealFind(1) + ".png"
+        "interface/seal." + this.sealFind(1) + ".png"
       );
       this.setImage(
         hiversaires.stage.billboardsByID["interfaceSeal2"],
-        "seal/seal." + this.sealFind(2) + ".png"
+        "interface/seal." + this.sealFind(2) + ".png"
       );
     }
 
@@ -790,7 +790,7 @@ class Dozenal {
   templateSealWarning() {
     this.setImage(
       hiversaires.stage.billboardsByID["interfaceSealBackground"],
-      "interface/interfaceFuse.warning.png"
+      "interface/fuse.warning.png"
     );
     this.setAlpha(
       hiversaires.stage.billboardsByID["interfaceSealBackground"],
@@ -818,27 +818,10 @@ class Dozenal {
   }
 
   templateEnergyInterface() {
-    if (this.userEnergy == 3) {
-      this.setImage(
-        hiversaires.stage.billboardsByID["interfaceFuse1"],
-        "fuse/fuse.3.png"
-      );
-    } else if (this.userEnergy == 2) {
-      this.setImage(
-        hiversaires.stage.billboardsByID["interfaceFuse1"],
-        "fuse/fuse.2.png"
-      );
-    } else if (this.userEnergy == 1) {
-      this.setImage(
-        hiversaires.stage.billboardsByID["interfaceFuse1"],
-        "fuse/fuse.1.png"
-      );
-    } else if (this.userEnergy == 0) {
-      this.setImage(
-        hiversaires.stage.billboardsByID["interfaceFuse1"],
-        "fuse/fuse.0.png"
-      );
-    }
+    this.setImage(
+      hiversaires.stage.billboardsByID["interfaceFuse1"],
+      "interface/fuse." + this.userEnergy + ".png"
+    );
 
     this.setHidden(hiversaires.stage.billboardsByID["interfaceFuse1"], false);
     this.setAlpha(hiversaires.stage.billboardsByID["interfaceFuse1"], 1);
@@ -967,7 +950,7 @@ class Dozenal {
   templateEnergyWarning() {
     this.setImage(
       hiversaires.stage.billboardsByID["interfaceFuseBackground"],
-      "interface/interfaceFuse.warning.png"
+      "interface/fuse.warning.png"
     );
     this.setAlpha(
       hiversaires.stage.billboardsByID["interfaceFuseBackground"],
@@ -1028,17 +1011,12 @@ class Dozenal {
   }
 
   templateAudioInterface() {
-    if (this.userActionStorage[35] == "1") {
-      this.setImage(
-        hiversaires.stage.billboardsByID["interfaceAudio"],
-        "interface/interfaceAudio.sfx1.png"
-      );
-    } else {
-      this.setImage(
-        hiversaires.stage.billboardsByID["interfaceAudio"],
-        "interface/interfaceAudio.sfx0.png"
-      );
-    }
+    this.setImage(
+      hiversaires.stage.billboardsByID["interfaceAudio"],
+      "interface/music" +
+        (this.userActionStorage[35] == "1" ? "On" : "Off") +
+        ".png"
+    );
 
     this.setHidden(hiversaires.stage.billboardsByID["interfaceAudio"], false);
     this.setAlpha(hiversaires.stage.billboardsByID["interfaceAudio"], 1);
@@ -1061,7 +1039,7 @@ class Dozenal {
 
     this.setImage(
       hiversaires.stage.billboardsByID["graphic1"],
-      "entente/entente" + targetGraphic + ".png"
+      "interface/entente" + targetGraphic + ".png"
     );
     this.fadeIn(hiversaires.stage.billboardsByID["graphic1"], 0, 1);
   }
@@ -1081,7 +1059,7 @@ class Dozenal {
 
     this.setImage(
       hiversaires.stage.billboardsByID["graphic1"],
-      "entente/entente" + targetGraphic + ".png"
+      "interface/entente" + targetGraphic + ".png"
     );
     this.fadeIn(hiversaires.stage.billboardsByID["graphic1"], 0, 1);
   }
@@ -1410,7 +1388,7 @@ class Dozenal {
 
     this.setImage(
       hiversaires.stage.billboardsByID["interfaceSave"],
-      "interface/interface.save.png"
+      "interface/save.png"
     );
     this.setHidden(hiversaires.stage.billboardsByID["interfaceSave"], false);
     this.setAlpha(hiversaires.stage.billboardsByID["interfaceSave"], 1);
@@ -1495,7 +1473,7 @@ class Dozenal {
 
     this.setImage(
       hiversaires.stage.billboardsByID["interfaceIllusion"],
-      "illusion/illusion." + illusionCount + ".png"
+      "interface/illusion." + illusionCount + ".png"
     );
     this.setHidden(
       hiversaires.stage.billboardsByID["interfaceIllusion"],
@@ -1591,7 +1569,7 @@ class Dozenal {
     );
   }
 
-  aniateTurnRight() {
+  animateTurnRight() {
     let viewMain = $(hiversaires.stage.billboardsByID["viewMain"]);
     viewMain.finish();
     let viewMainX = viewMain.css("left").split("px")[0];
