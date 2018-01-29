@@ -125,21 +125,15 @@ class Dozenal {
 
   moveLeft() {
     hiversaires.music.playEffect("footstep_turn");
-
-    this.userOrientation =
-      this.userOrientation == 0 ? 3 : this.userOrientation - 1;
-
-    this.turnLeft();
+    this.userOrientation = (this.userOrientation + 4 - 1) % 4;
+    this.animateTurnLeft();
     this.moveCheck();
   }
 
   moveRight() {
     hiversaires.music.playEffect("footstep_turn");
-
-    this.userOrientation =
-      this.userOrientation < 3 ? this.userOrientation + 1 : 0;
-
-    this.turnRight();
+    this.userOrientation = (this.userOrientation + 4 + 1) % 4;
+    this.aniateTurnRight();
     this.moveCheck();
   }
 
@@ -157,7 +151,25 @@ class Dozenal {
       this.userOrientation = parseInt(temp[1]);
     }
 
-    this.turnForward();
+    this.animateStepForward();
+    this.moveCheck();
+  }
+
+  moveBackward() {
+    this.userOrientation = (this.userOrientation + 4 + 2) % 4;
+    if (this.forwardSubject.indexOf("|") == -1) {
+      this.userNode =
+        parseInt(this.forwardSubject) > 0
+          ? parseInt(this.forwardSubject)
+          : this.userNode;
+    } else {
+      let temp = this.forwardSubject.split("|");
+      this.userNode = parseInt(temp[0]) > 0 ? parseInt(temp[0]) : this.userNode;
+      this.userOrientation = parseInt(temp[1]);
+    }
+    this.userOrientation = (this.userOrientation + 4 + 2) % 4;
+
+    this.animateStepBackward();
     this.moveCheck();
   }
 
@@ -353,7 +365,7 @@ class Dozenal {
       this.userActionStorage[this.userActionId] == "1" ||
       this.sealCount() > 0
     ) {
-      if (!this.userActionStorage[this.userActionId] == "1") {
+      if (this.userActionStorage[this.userActionId] != "1") {
         hiversaires.music.playEffect("action_SealActive");
         this.userActionStorage[this.userActionId] = "1";
       } else {
@@ -1535,15 +1547,15 @@ class Dozenal {
   // ====================
 
   sealCount() {
-    this.userSeal = 0;
-    this.userSeal += parseInt(this.userActionStorage[4]);
-    this.userSeal += parseInt(this.userActionStorage[12]);
-    this.userSeal += parseInt(this.userActionStorage[13]);
-    this.userSeal += parseInt(this.userActionStorage[20]);
-    this.userSeal += parseInt(this.userActionStorage[21]);
-    this.userSeal = 2 - this.userSeal;
+    let count = 0;
+    count += parseInt(this.userActionStorage[4]);
+    count += parseInt(this.userActionStorage[12]);
+    count += parseInt(this.userActionStorage[13]);
+    count += parseInt(this.userActionStorage[20]);
+    count += parseInt(this.userActionStorage[21]);
+    count = 2 - count;
 
-    return this.userSeal;
+    return count;
   }
 
   sealFind(rank) {
@@ -1596,7 +1608,7 @@ class Dozenal {
       .transition({ opacity: 0 }, duration * 1000);
   }
 
-  turnLeft() {
+  animateTurnLeft() {
     let viewMain = $(hiversaires.stage.billboardsByID["viewMain"]);
     viewMain.finish();
     let viewMainX = viewMain.css("left").split("px")[0];
@@ -1616,7 +1628,7 @@ class Dozenal {
     );
   }
 
-  turnRight() {
+  aniateTurnRight() {
     let viewMain = $(hiversaires.stage.billboardsByID["viewMain"]);
     viewMain.finish();
     let viewMainX = viewMain.css("left").split("px")[0];
@@ -1636,12 +1648,32 @@ class Dozenal {
     );
   }
 
-  turnForward() {
+  animateStepForward() {
     let viewMain = $(hiversaires.stage.billboardsByID["viewMain"]);
     viewMain.finish();
     let viewMainY = viewMain.css("top").split("px")[0];
     this.setAlpha(viewMain, 0.5);
     viewMain.css({ top: (viewMainY + 2).toString() + "px" });
+    this.setAlpha(
+      hiversaires.stage.billboardsByID["interfaceIndicatorForward"],
+      1
+    );
+
+    viewMain.transition({ opacity: 1, top: viewMainY + "px" }, 0.2 * 1000);
+
+    this.fadeOut(
+      hiversaires.stage.billboardsByID["interfaceIndicatorForward"],
+      0,
+      0.5
+    );
+  }
+
+  animateStepBackward() {
+    let viewMain = $(hiversaires.stage.billboardsByID["viewMain"]);
+    viewMain.finish();
+    let viewMainY = viewMain.css("top").split("px")[0];
+    this.setAlpha(viewMain, 0.5);
+    viewMain.css({ top: (viewMainY - 2).toString() + "px" });
     this.setAlpha(
       hiversaires.stage.billboardsByID["interfaceIndicatorForward"],
       1
@@ -2074,7 +2106,7 @@ class Dozenal {
 
       this.userActionStorage = [];
       for (let i = 0; i < 102; i++) {
-        this.userActionStorage[i] = "";
+        this.userActionStorage[i] = "0";
       }
 
       this.userActionStorage[1] = "0"; // Dimclock Position

@@ -8,6 +8,7 @@ class Game {
     if (DEBUG_LOG_GHOST) {
       this.save(0);
     }
+    this.time = 0;
     this.load(this.state);
   }
 
@@ -28,6 +29,6 @@ class Game {
 
   onTic() {
     setTimeout(this.onTic.bind(this), 50);
-    this.time += this.gameSpeed;
+    this.time += 1;
   }
 }

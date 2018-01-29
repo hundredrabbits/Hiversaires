@@ -1,19 +1,13 @@
-Seal bug?
-    Compare with native
+Where does kill happen?
+Unify center interactions
+Simplify ambience check method
+Convert interface and menu elements to SVG
+The layout of the elements could be based on CSS
 
-THEN WHAT?
-    Unify center interactions
-    Simplify ambience check method
-    Convert interface and menu elements to SVG
-    The layout of the elements could be based on CSS
-    
-    Isolate puzzle state from nodes
-    Break the dozenal code into sensible chunks
-    
-    Convert the world to a displayable graph, if you can
-    Full walkthrough
+Isolate puzzle state from nodes
+Break the dozenal code into sensible chunks
 
-Retina Display
+Convert the world to a displayable graph, if you can
+Full walkthrough
 
-LOW PRIORITY
-    Bug someone about using import/export syntax
+Bug someone about using import/export es6 syntax

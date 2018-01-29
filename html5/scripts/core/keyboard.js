@@ -25,9 +25,7 @@ class Keyboard {
         }
         break;
       case 40: // down
-        if (hiversaires.dozenal.currentAction != null) {
-          hiversaires.dozenal.moveForward();
-        }
+        hiversaires.dozenal.moveBackward();
         break;
     }
 
