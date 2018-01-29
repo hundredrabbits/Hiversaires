@@ -1,0 +1,12 @@
+<svg width="1024" height="1024"  xmlns="http://www.w3.org/2000/svg"  xmlns:xlink="http://www.w3.org/1999/xlink">
+    <circle x="245" y="245" r="130" fill="white" />
+    <circle x="512" y="245" r="130" fill="white" />
+    <circle x="779" y="245" r="130" fill="white" />
+
+    <circle x="245" y="512" r="130" fill="white" />
+    <circle x="512" y="512" r="130" fill="white" />
+    <circle x="779" y="512" r="130" fill="white" />
+
+    <circle x="245" y="779" r="130" fill="white" />
+    <circle x="512" y="779" r="130" fill="white" />
+</svg>

@@ -509,7 +509,7 @@ class Dozenal {
   templateClockInterface() {
     this.setImage(
       hiversaires.stage.billboardsByID["interfaceDimclock"],
-      "interface/clock." + parseInt(this.userActionStorage[1]) + ".png"
+      "interface/clock." + parseInt(this.userActionStorage[1]) + ".svg"
     );
     this.setHidden(
       hiversaires.stage.billboardsByID["interfaceDimclock"],
@@ -612,7 +612,7 @@ class Dozenal {
   templateClockWarning() {
     this.setImage(
       hiversaires.stage.billboardsByID["interfaceDimclockBackground"],
-      "interface/fuse.warning.png"
+      "interface/fuse.warning.svg"
     );
     this.setAlpha(
       hiversaires.stage.billboardsByID["interfaceDimclockBackground"],
@@ -643,26 +643,26 @@ class Dozenal {
 
     this.setImage(
       hiversaires.stage.billboardsByID["interfaceSeal1"],
-      "interface/seal.0.png"
+      "interface/seal.0.svg"
     );
     this.setImage(
       hiversaires.stage.billboardsByID["interfaceSeal2"],
-      "interface/seal.0.png"
+      "interface/seal.0.svg"
     );
 
     if (this.userSeal == 1) {
       this.setImage(
         hiversaires.stage.billboardsByID["interfaceSeal1"],
-        "interface/seal." + this.sealFind(1) + ".png"
+        "interface/seal." + this.sealFind(1) + ".svg"
       );
     } else if (this.userSeal == 0) {
       this.setImage(
         hiversaires.stage.billboardsByID["interfaceSeal1"],
-        "interface/seal." + this.sealFind(1) + ".png"
+        "interface/seal." + this.sealFind(1) + ".svg"
       );
       this.setImage(
         hiversaires.stage.billboardsByID["interfaceSeal2"],
-        "interface/seal." + this.sealFind(2) + ".png"
+        "interface/seal." + this.sealFind(2) + ".svg"
       );
     }
 
@@ -790,7 +790,7 @@ class Dozenal {
   templateSealWarning() {
     this.setImage(
       hiversaires.stage.billboardsByID["interfaceSealBackground"],
-      "interface/fuse.warning.png"
+      "interface/fuse.warning.svg"
     );
     this.setAlpha(
       hiversaires.stage.billboardsByID["interfaceSealBackground"],
@@ -820,7 +820,7 @@ class Dozenal {
   templateEnergyInterface() {
     this.setImage(
       hiversaires.stage.billboardsByID["interfaceFuse1"],
-      "interface/fuse." + this.userEnergy + ".png"
+      "interface/fuse." + this.userEnergy + ".svg"
     );
 
     this.setHidden(hiversaires.stage.billboardsByID["interfaceFuse1"], false);
@@ -950,7 +950,7 @@ class Dozenal {
   templateEnergyWarning() {
     this.setImage(
       hiversaires.stage.billboardsByID["interfaceFuseBackground"],
-      "interface/fuse.warning.png"
+      "interface/fuse.warning.svg"
     );
     this.setAlpha(
       hiversaires.stage.billboardsByID["interfaceFuseBackground"],
@@ -1013,9 +1013,9 @@ class Dozenal {
   templateAudioInterface() {
     this.setImage(
       hiversaires.stage.billboardsByID["interfaceAudio"],
-      "interface/music" +
-        (this.userActionStorage[35] == "1" ? "On" : "Off") +
-        ".png"
+      "interface/music." +
+        (this.userActionStorage[35] == "1" ? "on" : "off") +
+        ".svg"
     );
 
     this.setHidden(hiversaires.stage.billboardsByID["interfaceAudio"], false);
@@ -1388,7 +1388,7 @@ class Dozenal {
 
     this.setImage(
       hiversaires.stage.billboardsByID["interfaceSave"],
-      "interface/save.png"
+      "interface/save.svg"
     );
     this.setHidden(hiversaires.stage.billboardsByID["interfaceSave"], false);
     this.setAlpha(hiversaires.stage.billboardsByID["interfaceSave"], 1);
@@ -1473,7 +1473,7 @@ class Dozenal {
 
     this.setImage(
       hiversaires.stage.billboardsByID["interfaceIllusion"],
-      "interface/illusion." + illusionCount + ".png"
+      "interface/illusion." + illusionCount + ".svg"
     );
     this.setHidden(
       hiversaires.stage.billboardsByID["interfaceIllusion"],
@@ -1657,15 +1657,15 @@ class Dozenal {
   templateStart() {
     this.setImage(
       hiversaires.stage.billboardsByID["interfaceIndicatorRight"],
-      "interface/interfaceMove.indicator.png"
+      "interface/interfaceMove.indicator.svg"
     );
     this.setImage(
       hiversaires.stage.billboardsByID["interfaceIndicatorForward"],
-      "interface/interfaceMove.indicator.png"
+      "interface/interfaceMove.indicator.svg"
     );
     this.setImage(
       hiversaires.stage.billboardsByID["interfaceIndicatorLeft"],
-      "interface/interfaceMove.indicator.png"
+      "interface/interfaceMove.indicator.svg"
     );
   }
 

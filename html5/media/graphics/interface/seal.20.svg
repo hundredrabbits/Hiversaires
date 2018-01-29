@@ -1,0 +1,11 @@
+<svg width="1024" height="1024"  xmlns="http://www.w3.org/2000/svg"  xmlns:xlink="http://www.w3.org/1999/xlink">
+    <line x1="512" y1="116" x2="512" y2="908" stroke="white" stroke-width="116"/>
+    <line x1="496" y1="157" x2="158" y2="495" stroke="white" stroke-width="116"/>
+    <line x1="528" y1="157" x2="866" y2="495" stroke="white" stroke-width="116"/>
+    <line x1="196" y1="512" x2="828" y2="512" stroke="white" stroke-width="116"/>
+    <line x1="174" y1="454" x2="174" y2="490" stroke="white" stroke-width="116"/>
+    <line x1="850" y1="454" x2="850" y2="490" stroke="white" stroke-width="116"/>
+
+    <path d="M116 490 a 80 80, 0, 0, 0, 80 80 l 0 -80 Z" fill="white" />
+    <path d="M908 490 a 80 80, 0, 0, 1, -80 80 l 0 -80 Z" fill="white" />
+</svg>
