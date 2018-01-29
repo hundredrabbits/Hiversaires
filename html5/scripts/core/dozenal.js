@@ -1935,7 +1935,9 @@ class Dozenal {
       userActionStorage: this.userActionStorage
     };
 
-    localStorage.save = JSON.stringify(saveObject);
+    if (!DEBUG_DONT_SAVE) {
+      localStorage.save = JSON.stringify(saveObject);
+    }
 
     console.log("- [progress:saved.]");
 
