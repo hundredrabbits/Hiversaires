@@ -5,7 +5,7 @@
     </g>
     <g id="upbutton" transform="translate(320,880)">
         <circle r="22.5" fill="white"/>
-        <circle r="31.25" stroke="white" stroke-opacity="0.25" fill="none" stroke-width="3.5"/>
+        <circle r="31.25" stroke="white" opacity="0.25" fill="none" stroke-width="3.5"/>
         <polyline points="8,2 0,-6 -8,2" fill="none" stroke="black" stroke-width="3.5" stroke-linecap="square" stroke-linejoin="miter"/>
     </g>
     <g id="rightbutton" transform="translate(580,880)">

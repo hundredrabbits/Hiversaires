@@ -1,9 +1,10 @@
 <svg width="1024" height="1024"  xmlns="http://www.w3.org/2000/svg"  xmlns:xlink="http://www.w3.org/1999/xlink">
-    <circle x="245" y="245" r="130" fill="white" />
-    <circle x="512" y="245" r="130" fill="white" />
-    <circle x="779" y="245" r="130" fill="white" />
+    <!-- <rect width="1024" height="1024" fill="grey"/> -->
+    <circle cx="245" cy="245" r="130" fill="white" />
+    <circle cx="512" cy="245" r="130" fill="white" />
+    <circle cx="779" cy="245" r="130" fill="white" />
 
-    <circle x="245" y="512" r="130" fill="white" />
-    <circle x="512" y="512" r="130" fill="white" />
-    <circle x="779" y="512" r="130" fill="white" />
+    <circle cx="245" cy="512" r="130" fill="white" />
+    <circle cx="512" cy="512" r="130" fill="white" />
+    <circle cx="779" cy="512" r="130" fill="white" />
 </svg>

@@ -1,0 +1,21 @@
+<svg width="1024" height="1024"  xmlns="http://www.w3.org/2000/svg"  xmlns:xlink="http://www.w3.org/1999/xlink">
+    <defs>
+        <g id="elbow">
+            <path d="m 0 -156 l 0 76 
+                a 80 80, 0, 0, 0, 80 80 
+                l 76 0 l 0 -116 
+                a 40 40, 0, 0, 1, -40 -40
+                Z" fill="white" />
+        </g>
+    </defs>
+    <!-- <rect width="1024" height="1024" fill="grey"/> -->
+    <line x1="496" y1="157" x2="158" y2="495" stroke="white" stroke-width="116"/>
+    <line x1="496" y1="867" x2="158" y2="529" stroke="white" stroke-width="116"/>
+    <line x1="528" y1="157" x2="866" y2="495" stroke="white" stroke-width="116"/>
+    <line x1="528" y1="867" x2="866" y2="529" stroke="white" stroke-width="116"/>
+
+    <g transform="translate(512,60)rotate(135)"><use xlink:href="#elbow"/></g>
+    <g transform="translate(512,964)rotate(-45)"><use xlink:href="#elbow"/></g>
+    <g transform="translate(60,512)rotate(45)"><use xlink:href="#elbow"/></g>
+    <g transform="translate(964,512)rotate(-135)"><use xlink:href="#elbow"/></g>
+</svg>

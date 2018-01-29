@@ -1,5 +1,6 @@
 <svg width="1024" height="1024"  xmlns="http://www.w3.org/2000/svg"  xmlns:xlink="http://www.w3.org/1999/xlink">
-    <rect x="115" y="115" width="794" height="190" fill="white" fill-opacity="0.23"/>
-    <rect x="115" y="416" width="794" height="190" fill="white" fill-opacity="0.23"/>
-    <rect x="115" y="718" width="794" height="190" fill="white" fill-opacity="1"/>
+    <!-- <rect width="1024" height="1024" fill="grey"/> -->
+    <rect x="115" y="115" width="794" height="190" fill="white" opacity="0.23"/>
+    <rect x="115" y="416" width="794" height="190" fill="white" opacity="0.23"/>
+    <rect x="115" y="718" width="794" height="190" fill="white" opacity="1"/>
 </svg>
