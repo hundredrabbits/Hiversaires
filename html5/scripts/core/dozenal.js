@@ -73,20 +73,20 @@ class Dozenal {
     }
   }
 
-  _updateInteractive(subject) {
-    let value =
-      $(subject).css("opacity") != 0 && $(subject).css("display") != "none";
-    $(subject).css({ "pointer-events": value ? "inherit" : "none" });
-  }
-
   setAlpha(subject, value) {
     $(subject).css({ opacity: value });
-    this._updateInteractive(subject);
   }
 
   setHidden(subject, value) {
-    $(subject).css({ display: value ? "none" : "block" });
-    this._updateInteractive(subject);
+    $(subject).css({
+      display: value ? "none" : "block",
+      "pointer-events": value ? "none" : "inherit"
+    });
+  }
+
+  setCurrentAction(value) {
+    this.currentAction = value;
+    this.setHidden(hiversaires.stage.triggersByID["action"], value == null);
   }
 
   // ====================
@@ -185,12 +185,7 @@ class Dozenal {
       !this.userAction
     );
 
-    this.currentAction = null;
-    this.setHidden(hiversaires.stage.triggersByID["action1"], true);
-    this.setHidden(hiversaires.stage.triggersByID["action2"], true);
-    this.setHidden(hiversaires.stage.triggersByID["action3"], true);
-    this.setHidden(hiversaires.stage.triggersByID["action4"], true);
-    this.setHidden(hiversaires.stage.triggersByID["action5"], true);
+    this.setCurrentAction(null);
 
     this.isFuseAction = false;
 
@@ -244,9 +239,8 @@ class Dozenal {
     // Door to display action3
 
     this.setHidden(hiversaires.stage.billboardsByID["graphic1"], false);
-    this.setHidden(hiversaires.stage.triggersByID["action2"], true);
-    this.setHidden(hiversaires.stage.triggersByID["action3"], false);
-    this.currentAction = "action3";
+
+    this.setCurrentAction("action3");
     this.templateEnergyUpdate();
   }
 
@@ -382,18 +376,6 @@ class Dozenal {
   }
 
   actionReset() {
-    this.setImage(hiversaires.stage.triggersByID["action1"], null);
-    this.setImage(hiversaires.stage.triggersByID["action2"], null);
-    this.setImage(hiversaires.stage.triggersByID["action3"], null);
-    this.setImage(hiversaires.stage.triggersByID["action4"], null);
-    this.setImage(hiversaires.stage.triggersByID["action5"], null);
-
-    this.setBounds(hiversaires.stage.triggersByID["action1"], 0, 0, 0, 0);
-    this.setBounds(hiversaires.stage.triggersByID["action2"], 0, 0, 0, 0);
-    this.setBounds(hiversaires.stage.triggersByID["action3"], 0, 0, 0, 0);
-    this.setBounds(hiversaires.stage.triggersByID["action4"], 0, 0, 0, 0);
-    this.setBounds(hiversaires.stage.triggersByID["action5"], 0, 0, 0, 0);
-
     this.setBounds(hiversaires.stage.billboardsByID["graphic1"], 0, 0, 0, 0);
     this.setBounds(hiversaires.stage.billboardsByID["graphic2"], 0, 0, 0, 0);
     this.setBounds(hiversaires.stage.billboardsByID["graphic3"], 0, 0, 0, 0);
@@ -416,12 +398,7 @@ class Dozenal {
     this.setAlpha(hiversaires.stage.billboardsByID["graphic9"], 0);
     this.setAlpha(hiversaires.stage.billboardsByID["graphic10"], 0);
 
-    this.currentAction = null;
-    this.setHidden(hiversaires.stage.triggersByID["action1"], true);
-    this.setHidden(hiversaires.stage.triggersByID["action2"], true);
-    this.setHidden(hiversaires.stage.triggersByID["action3"], true);
-    this.setHidden(hiversaires.stage.triggersByID["action4"], true);
-    this.setHidden(hiversaires.stage.triggersByID["action5"], true);
+    this.setCurrentAction(null);
   }
 
   actionTemplate() {
@@ -518,8 +495,7 @@ class Dozenal {
     this.prefPositioning();
     this.templateVignette();
 
-    this.setHidden(hiversaires.stage.triggersByID["action1"], false);
-    this.currentAction = "action1";
+    this.setCurrentAction("action1");
 
     this.setAlpha(hiversaires.stage.billboardsByID["graphic5"], 0);
     this.setAlpha(hiversaires.stage.billboardsByID["graphic4"], 0);
@@ -548,7 +524,6 @@ class Dozenal {
 
     // Display Interactions
 
-    this.setHidden(hiversaires.stage.triggersByID["action3"], true);
     this.setHidden(hiversaires.stage.billboardsByID["graphic1"], true);
 
     this.templateClockInterface();
@@ -589,8 +564,7 @@ class Dozenal {
     }
 
     if (this.puzzleState == 1) {
-      this.setHidden(hiversaires.stage.triggersByID["action2"], false);
-      this.currentAction = "action2";
+      this.setCurrentAction("action2");
 
       this.templateUpdateNode(16, "0472", "act7");
       this.templateUpdateNode(23, "0473", "act7");
@@ -656,8 +630,8 @@ class Dozenal {
 
     this.setHidden(hiversaires.stage.billboardsByID["graphic1"], false);
     this.setAlpha(hiversaires.stage.billboardsByID["graphic1"], 0);
-    this.setHidden(hiversaires.stage.triggersByID["action5"], false);
-    this.currentAction = "action5";
+
+    this.setCurrentAction("action5");
 
     hiversaires.music.playEffect("action_SealInit");
     this.templateSealUpdate();
@@ -705,7 +679,6 @@ class Dozenal {
     this.prefPositioning();
     this.templateVignette();
 
-    this.setHidden(hiversaires.stage.triggersByID["action3"], true);
     this.setHidden(hiversaires.stage.billboardsByID["graphic1"], true);
 
     hiversaires.music.playEffect("action_DoorInit");
@@ -774,8 +747,7 @@ class Dozenal {
     ) {
       // Act 4 : Antechannel + Stones in Studio
       if (this.userNode == 19) {
-        this.setHidden(hiversaires.stage.triggersByID["action1"], false);
-        this.currentAction = "action1";
+        this.setCurrentAction("action1");
         this.templateUpdateStudioTerminal();
 
         this.prefSave();
@@ -836,9 +808,9 @@ class Dozenal {
     this.templateEnergyInterface();
 
     this.setHidden(hiversaires.stage.billboardsByID["graphic1"], false);
-    this.setHidden(hiversaires.stage.triggersByID["action2"], false);
-    this.currentAction = "action2";
-    // this.setHidden(hiversaires.stage.triggersByID["action4"], false);
+
+    this.setCurrentAction("action2");
+
     this.isFuseAction = true;
 
     hiversaires.music.playEffect("action_EnergyInit");
@@ -879,7 +851,6 @@ class Dozenal {
 
     // Display Interactions
 
-    this.setHidden(hiversaires.stage.triggersByID["action3"], true);
     this.setHidden(hiversaires.stage.billboardsByID["graphic1"], true);
 
     // Audio
@@ -917,8 +888,7 @@ class Dozenal {
     } // Antech fuse for Capsule door
 
     if (parseInt(this.userActionStorage[this.puzzleTerminal]) > 0) {
-      this.setHidden(hiversaires.stage.triggersByID["action2"], false);
-      this.currentAction = "action2";
+      this.setCurrentAction("action2");
 
       this.templateUpdateNode(1, "0531", "act28");
       this.templateUpdateNode(12, "0470", "act3");
@@ -944,7 +914,6 @@ class Dozenal {
       } else {
         this.templateUpdateNode(39, "0490", "act11");
       }
-      // this.setAlpha(hiversaires.stage.triggersByID["action3"], 1.0); // !
     } else {
       this.templateEnergyWarning();
     }
@@ -954,9 +923,7 @@ class Dozenal {
     this.templateEnergyInterface();
 
     if (this.isFuseAction) {
-      this.setHidden(hiversaires.stage.triggersByID["action4"], false);
-      this.currentAction = "action4";
-      this.setHidden(hiversaires.stage.triggersByID["action3"], true);
+      this.setCurrentAction("action4");
     }
 
     if (parseInt(this.userActionStorage[this.userActionId]) == 1) {
@@ -1038,8 +1005,7 @@ class Dozenal {
     this.prefPositioning();
     this.templateVignette();
 
-    this.setHidden(hiversaires.stage.triggersByID["action1"], false);
-    this.currentAction = "action1";
+    this.setCurrentAction("action1");
 
     this.templateAudioUpdate();
   }
@@ -1214,8 +1180,7 @@ class Dozenal {
   templateKillTerminal() {
     this.prefPositioning();
 
-    this.setHidden(hiversaires.stage.triggersByID["action1"], false);
-    this.currentAction = "action1";
+    this.setCurrentAction("action1");
   }
 
   templateKillUpdate() {
@@ -1233,8 +1198,8 @@ class Dozenal {
       parseInt(this.userActionStorage[36]) == 1
     ) {
       this.templateUpdateNode(113, "0550", "act40");
-      this.setHidden(hiversaires.stage.triggersByID["action3"], false);
-      this.currentAction = "action3";
+
+      this.setCurrentAction("action3");
     } else {
       this.templateEnergyWarning();
     }
@@ -1248,10 +1213,7 @@ class Dozenal {
     this.setHidden(hiversaires.stage.triggersByID["moveForward"], true);
     this.setHidden(hiversaires.stage.triggersByID["moveLeft"], true);
     this.setHidden(hiversaires.stage.triggersByID["moveRight"], true);
-    this.setHidden(hiversaires.stage.triggersByID["action1"], true);
-    this.setHidden(hiversaires.stage.triggersByID["action2"], true);
-    this.setHidden(hiversaires.stage.triggersByID["action3"], true);
-    this.setHidden(hiversaires.stage.triggersByID["action4"], true);
+
     this.setHidden(hiversaires.stage.triggersByID["actionCredit"], false);
 
     let screenBound = this.getScreenBounds();
@@ -1822,49 +1784,8 @@ class Dozenal {
       this.screenHeight
     );
 
-    // Action Clock Terminal
     this.setBounds(
-      hiversaires.stage.triggersByID["action1"],
-      this.screenWidthThird,
-      this.screenHeightThird,
-      this.screenWidthThird,
-      this.screenHeightThird
-    );
-    // Action Clock Terminal
-    this.setBounds(
-      hiversaires.stage.triggersByID["action2"],
-      this.screenWidthThird,
-      this.screenHeightThird,
-      this.screenWidthThird,
-      this.screenHeightThird
-    );
-    // Action Door
-    this.setBounds(
-      hiversaires.stage.triggersByID["action3"],
-      this.screenWidthThird,
-      this.screenHeightThird,
-      this.screenWidthThird,
-      this.screenHeightThird
-    );
-    // Action Energy Terminal
-    this.setBounds(
-      hiversaires.stage.triggersByID["action4"],
-      this.screenWidthThird,
-      this.screenHeightThird,
-      this.screenWidthThird,
-      this.screenHeightThird
-    );
-    // Action Seal Terminal
-    this.setBounds(
-      hiversaires.stage.triggersByID["action5"],
-      this.screenWidthThird,
-      this.screenHeightThird,
-      this.screenWidthThird,
-      this.screenHeightThird
-    );
-    // Action Credit
-    this.setBounds(
-      hiversaires.stage.triggersByID["actionCredit"],
+      hiversaires.stage.triggersByID["action"],
       this.screenWidthThird,
       this.screenHeightThird,
       this.screenWidthThird,

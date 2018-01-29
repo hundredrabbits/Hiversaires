@@ -85,6 +85,7 @@ class Music {
         true
       );
       this.playingTracksByRole[role] = newTrack;
+      newTrack.volume = this._volume;
       if (DEBUG_NO_MUSIC) {
         console.info(role, ":", name, "(off by debug)");
       } else {

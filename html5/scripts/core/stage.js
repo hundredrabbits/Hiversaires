@@ -63,11 +63,7 @@ class Stage {
       "moveRight",
       "moveLeft",
       "moveForward",
-      "action1",
-      "action2",
-      "action3",
-      "action4",
-      "action5",
+      "action",
       "actionCredit"
     ]) {
       let trigger = this.triggers.appendChild(
