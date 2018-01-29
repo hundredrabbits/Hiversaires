@@ -61,7 +61,9 @@ class Dozenal {
   }
 
   setAlpha(subject, value) {
-    $(subject).css({ opacity: value });
+    $(subject)
+      .finish()
+      .css({ opacity: value });
   }
 
   setHidden(subject, value) {
@@ -1461,14 +1463,14 @@ class Dozenal {
     $(viewToFadeIn)
       .finish()
       .delay(delay * 1000)
-      .transition({ opacity: 1 }, duration * 1000);
+      .animate({ opacity: 1 }, duration * 1000);
   }
 
   fadeOut(viewToFadeOut, delay, duration) {
     $(viewToFadeOut)
       .finish()
       .delay(delay * 1000)
-      .transition({ opacity: 0 }, duration * 1000);
+      .animate({ opacity: 0 }, duration * 1000);
   }
 
   animateTurnLeft() {
@@ -1482,7 +1484,7 @@ class Dozenal {
       1
     );
 
-    viewMain.transition({ opacity: 1, left: viewMainX + "px" }, 0.2 * 1000);
+    viewMain.animate({ opacity: 1, left: viewMainX + "px" }, 0.2 * 1000);
 
     this.fadeOut(
       hiversaires.stage.billboardsByID["interfaceIndicatorLeft"],
@@ -1502,7 +1504,7 @@ class Dozenal {
       1
     );
 
-    viewMain.transition({ opacity: 1, left: viewMainX + "px" }, 0.2 * 1000);
+    viewMain.animate({ opacity: 1, left: viewMainX + "px" }, 0.2 * 1000);
 
     this.fadeOut(
       hiversaires.stage.billboardsByID["interfaceIndicatorRight"],
@@ -1522,7 +1524,7 @@ class Dozenal {
       1
     );
 
-    viewMain.transition({ opacity: 1, top: viewMainY + "px" }, 0.2 * 1000);
+    viewMain.animate({ opacity: 1, top: viewMainY + "px" }, 0.2 * 1000);
 
     this.fadeOut(
       hiversaires.stage.billboardsByID["interfaceIndicatorForward"],
@@ -1543,7 +1545,7 @@ class Dozenal {
       1
     );
 
-    viewMain.transition({ opacity: 1, top: viewMainY + "px" }, 0.2 * 1000);
+    viewMain.animate({ opacity: 1, top: viewMainY + "px" }, 0.2 * 1000);
 
     this.fadeOut(
       hiversaires.stage.billboardsByID["interfaceIndicatorForward"],
