@@ -52,15 +52,6 @@ class Dozenal {
     return hiversaires.world.nodesByID[this.userNode][this.userOrientation];
   }
 
-  setBounds(subject, x, y, width, height) {
-    $(subject).css({
-      left: x * 100 / 9 + "%",
-      top: y * 100 / 16 + "%",
-      width: width * 100 / 9 + "%",
-      height: height * 100 / 16 + "%"
-    });
-  }
-
   setImage(subject, url) {
     if (url) {
       hiversaires.artBook.setArt(subject, "media/graphics/" + url);
@@ -374,27 +365,12 @@ class Dozenal {
   }
 
   actionReset() {
-    this.setBounds(hiversaires.stage.billboardsByID["graphic1"], 0, 0, 0, 0);
-    this.setBounds(hiversaires.stage.billboardsByID["graphic2"], 0, 0, 0, 0);
-    this.setBounds(hiversaires.stage.billboardsByID["graphic3"], 0, 0, 0, 0);
-    this.setBounds(hiversaires.stage.billboardsByID["graphic4"], 0, 0, 0, 0);
-    this.setBounds(hiversaires.stage.billboardsByID["graphic5"], 0, 0, 0, 0);
-    this.setBounds(hiversaires.stage.billboardsByID["graphic6"], 0, 0, 0, 0);
-    this.setBounds(hiversaires.stage.billboardsByID["graphic7"], 0, 0, 0, 0);
-    this.setBounds(hiversaires.stage.billboardsByID["graphic8"], 0, 0, 0, 0);
-    this.setBounds(hiversaires.stage.billboardsByID["graphic9"], 0, 0, 0, 0);
-    this.setBounds(hiversaires.stage.billboardsByID["graphic10"], 0, 0, 0, 0);
-
     this.setAlpha(hiversaires.stage.billboardsByID["graphic1"], 0);
     this.setAlpha(hiversaires.stage.billboardsByID["graphic2"], 0);
     this.setAlpha(hiversaires.stage.billboardsByID["graphic3"], 0);
     this.setAlpha(hiversaires.stage.billboardsByID["graphic4"], 0);
     this.setAlpha(hiversaires.stage.billboardsByID["graphic5"], 0);
     this.setAlpha(hiversaires.stage.billboardsByID["graphic6"], 0);
-    this.setAlpha(hiversaires.stage.billboardsByID["graphic7"], 0);
-    this.setAlpha(hiversaires.stage.billboardsByID["graphic8"], 0);
-    this.setAlpha(hiversaires.stage.billboardsByID["graphic9"], 0);
-    this.setAlpha(hiversaires.stage.billboardsByID["graphic10"], 0);
 
     this.setCurrentAction(null);
   }
@@ -578,25 +554,11 @@ class Dozenal {
   templateClockUpdate() {
     this.templateClockInterface();
 
-    this.setBounds(
-      hiversaires.stage.billboardsByID["graphic4"],
-      0,
-      0,
-      this.screenWidth,
-      this.screenHeight
-    ); // interface
     this.setImage(
       hiversaires.stage.billboardsByID["graphic4"],
       "interface/dimclock.shadow.png"
     );
 
-    this.setBounds(
-      hiversaires.stage.billboardsByID["graphic5"],
-      0,
-      0,
-      this.screenWidth,
-      this.screenHeight
-    ); // interface
     this.setImage(
       hiversaires.stage.billboardsByID["graphic5"],
       "interface/dimclock.state" + this.userActionStorage[1] + ".png"
@@ -1201,13 +1163,6 @@ class Dozenal {
 
     this.fadeIn(hiversaires.stage.billboardsByID["graphic1"], 1.0, 3);
 
-    this.setBounds(
-      hiversaires.stage.billboardsByID["graphic2"],
-      0,
-      0,
-      this.screenWidth,
-      this.screenHeight
-    );
     this.setImage(
       hiversaires.stage.billboardsByID["graphic2"],
       "menu/menu.credit1.png"
@@ -1217,13 +1172,6 @@ class Dozenal {
 
     this.fadeIn(hiversaires.stage.billboardsByID["graphic2"], 6.0, 1);
 
-    this.setBounds(
-      hiversaires.stage.billboardsByID["graphic3"],
-      0,
-      0,
-      this.screenWidth,
-      this.screenHeight
-    );
     this.setImage(
       hiversaires.stage.billboardsByID["graphic3"],
       "menu/menu.credit2.png"
@@ -1233,13 +1181,6 @@ class Dozenal {
 
     this.fadeIn(hiversaires.stage.billboardsByID["graphic3"], 10.0, 1);
 
-    this.setBounds(
-      hiversaires.stage.billboardsByID["graphic4"],
-      0,
-      0,
-      this.screenWidth,
-      this.screenHeight
-    );
     this.setImage(
       hiversaires.stage.billboardsByID["graphic4"],
       "menu/menu.credit3.png"
@@ -1249,13 +1190,6 @@ class Dozenal {
 
     this.fadeIn(hiversaires.stage.billboardsByID["graphic4"], 16.0, 1);
 
-    this.setBounds(
-      hiversaires.stage.billboardsByID["graphic5"],
-      0,
-      0,
-      this.screenWidth,
-      this.screenHeight
-    );
     this.setImage(
       hiversaires.stage.billboardsByID["graphic5"],
       "menu/menu.black.jpg"
@@ -1266,13 +1200,6 @@ class Dozenal {
     this.fadeIn(hiversaires.stage.billboardsByID["graphic5"], 20.0, 1);
 
     if (this.userEnergy == 1) {
-      this.setBounds(
-        hiversaires.stage.billboardsByID["graphic6"],
-        0,
-        0,
-        this.screenWidth,
-        this.screenHeight
-      );
       this.setImage(
         hiversaires.stage.billboardsByID["graphic6"],
         "menu/menu.credit4.png"
@@ -1665,167 +1592,15 @@ class Dozenal {
   }
 
   prefPositioning() {
-    this.screenWidthThird = this.screenWidth / 3;
-    this.screenWidthFifth = this.screenWidth / 5;
-    this.screenHeightThird = this.screenHeight / 3;
-    let screenPadding = this.screenWidth / 24;
-
     // Core
-
-    this.setBounds(
-      hiversaires.stage.billboardsByID["viewMain"],
-      0,
-      0,
-      this.screenWidth,
-      this.screenHeight
-    );
-
-    this.setBounds(
-      hiversaires.stage.billboardsByID["vignette"],
-      0,
-      0,
-      this.screenWidth,
-      this.screenHeight
-    );
 
     // Movement
 
-    this.setBounds(
-      hiversaires.stage.triggersByID["moveForward"],
-      this.screenWidthFifth,
-      0,
-      this.screenWidthFifth * 3,
-      this.screenHeight
-    );
-    this.setBounds(
-      hiversaires.stage.triggersByID["moveRight"],
-      this.screenWidthFifth * 4,
-      0,
-      this.screenWidthFifth,
-      this.screenHeight
-    );
-    this.setBounds(
-      hiversaires.stage.triggersByID["moveLeft"],
-      0,
-      0,
-      this.screenWidthFifth,
-      this.screenHeight
-    );
-
-    this.setBounds(
-      hiversaires.stage.triggersByID["action"],
-      this.screenWidthThird,
-      this.screenHeightThird,
-      this.screenWidthThird,
-      this.screenHeightThird
-    );
     this.setHidden(hiversaires.stage.triggersByID["actionCredit"], true);
 
     // Graphics
 
-    this.setBounds(
-      hiversaires.stage.billboardsByID["graphic1"],
-      0,
-      0,
-      this.screenWidth,
-      this.screenHeight
-    ); // full
-
     // Style - Interface - Fuse
-
-    this.setBounds(
-      hiversaires.stage.billboardsByID["interfaceFuseBackground"],
-      screenPadding,
-      this.screenHeight - this.screenWidth / 12,
-      this.screenWidth / 12,
-      this.screenWidth / 12
-    );
-    this.setBounds(
-      hiversaires.stage.billboardsByID["interfaceSealBackground"],
-      this.screenWidth - this.screenWidth / 12 - screenPadding,
-      this.screenHeight - this.screenWidth / 12,
-      this.screenWidth / 12,
-      this.screenWidth / 12
-    );
-    this.setBounds(
-      hiversaires.stage.billboardsByID["interfaceDimclockBackground"],
-      this.screenWidth / 12 * 4 + screenPadding,
-      this.screenHeight - this.screenWidth / 12,
-      this.screenWidth / 12,
-      this.screenWidth / 12
-    );
-    this.setBounds(
-      hiversaires.stage.billboardsByID["interfaceFuse1"],
-      screenPadding,
-      this.screenHeight - this.screenWidth / 12 - screenPadding,
-      this.screenWidth / 12,
-      this.screenWidth / 12
-    );
-    this.setBounds(
-      hiversaires.stage.billboardsByID["interfaceSeal1"],
-      this.screenWidth - this.screenWidth / 12 - screenPadding,
-      this.screenHeight - this.screenWidth / 12 - screenPadding,
-      this.screenWidth / 12,
-      this.screenWidth / 12
-    );
-    this.setBounds(
-      hiversaires.stage.billboardsByID["interfaceSeal2"],
-      this.screenWidth - this.screenWidth / 12 - screenPadding,
-      this.screenHeight - this.screenWidth / 12 * 2 - screenPadding,
-      this.screenWidth / 12,
-      this.screenWidth / 12
-    );
-
-    this.setBounds(
-      hiversaires.stage.billboardsByID["interfaceAudio"],
-      screenPadding + this.screenWidth / 12 * 2,
-      this.screenHeight - this.screenWidth / 12 - screenPadding,
-      this.screenWidth / 12,
-      this.screenWidth / 12
-    );
-    this.setBounds(
-      hiversaires.stage.billboardsByID["interfaceDimclock"],
-      screenPadding + this.screenWidth / 12 * 4,
-      this.screenHeight - this.screenWidth / 12 - screenPadding,
-      this.screenWidth / 12,
-      this.screenWidth / 12
-    );
-    this.setBounds(
-      hiversaires.stage.billboardsByID["interfaceSave"],
-      screenPadding + this.screenWidth / 12 * 6,
-      this.screenHeight - this.screenWidth / 12 - screenPadding,
-      this.screenWidth / 12,
-      this.screenWidth / 12
-    );
-    this.setBounds(
-      hiversaires.stage.billboardsByID["interfaceIllusion"],
-      screenPadding + this.screenWidth / 12 * 8,
-      this.screenHeight - this.screenWidth / 12 - screenPadding,
-      this.screenWidth / 12,
-      this.screenWidth / 12
-    );
-
-    this.setBounds(
-      hiversaires.stage.billboardsByID["interfaceIndicatorRight"],
-      this.screenWidthFifth * 4,
-      this.screenHeight - this.screenWidth / 12,
-      this.screenWidthFifth,
-      this.screenWidth / 12
-    );
-    this.setBounds(
-      hiversaires.stage.billboardsByID["interfaceIndicatorForward"],
-      this.screenWidthFifth,
-      this.screenHeight - this.screenWidth / 12,
-      this.screenWidthFifth * 3,
-      this.screenWidth / 12
-    );
-    this.setBounds(
-      hiversaires.stage.billboardsByID["interfaceIndicatorLeft"],
-      0,
-      this.screenHeight - this.screenWidth / 12,
-      this.screenWidthFifth,
-      this.screenWidth / 12
-    );
 
     this.setAlpha(
       hiversaires.stage.billboardsByID["interfaceIndicatorRight"],
@@ -1842,13 +1617,6 @@ class Dozenal {
   }
 
   menuHome() {
-    this.setBounds(
-      hiversaires.stage.billboardsByID["graphic2"],
-      0,
-      0,
-      this.screenWidth,
-      this.screenHeight
-    );
     this.setImage(
       hiversaires.stage.billboardsByID["graphic2"],
       "menu/menu.black.jpg"
@@ -1856,13 +1624,6 @@ class Dozenal {
     this.setAlpha(hiversaires.stage.billboardsByID["graphic2"], 1.0);
     this.setHidden(hiversaires.stage.billboardsByID["graphic2"], false);
 
-    this.setBounds(
-      hiversaires.stage.billboardsByID["graphic3"],
-      0,
-      0,
-      this.screenWidth,
-      this.screenHeight
-    );
     this.setImage(
       hiversaires.stage.billboardsByID["graphic3"],
       "menu/menu.logo.png"
@@ -1870,13 +1631,6 @@ class Dozenal {
     this.setAlpha(hiversaires.stage.billboardsByID["graphic3"], 1.0);
     this.setHidden(hiversaires.stage.billboardsByID["graphic3"], false);
 
-    this.setBounds(
-      hiversaires.stage.billboardsByID["graphic4"],
-      0,
-      0,
-      this.screenWidth,
-      this.screenHeight
-    );
     this.setImage(
       hiversaires.stage.billboardsByID["graphic4"],
       "menu/menu.controls.svg"

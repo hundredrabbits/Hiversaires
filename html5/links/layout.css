@@ -1,0 +1,144 @@
+billboard#graphic1,
+billboard#graphic2,
+billboard#graphic3,
+billboard#graphic4,
+billboard#graphic5,
+billboard#graphic6 {
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+}
+
+billboard#interfaceAudio {
+  left: calc(100% / 9 * (9 / 24 + 9 / 12 * 2));
+  top: calc(100% / 16 * (16 - 9 / 12 - 9 / 24));
+  width: calc(100% / 9 * (9 / 12));
+  height: calc(100% / 16 * (9 / 12));
+}
+
+billboard#interfaceDimclock {
+  left: calc(100% / 9 * (9 / 24 + 9 / 12 * 4));
+  top: calc(100% / 16 * (16 - 9 / 12 - 9 / 24));
+  width: calc(100% / 9 * (9 / 12));
+  height: calc(100% / 16 * (9 / 12));
+}
+
+billboard#interfaceDimclockBackground {
+  left: calc(100% / 9 * (9 / 12 * 4 + 9 / 24));
+  top: calc(100% / 16 * (16 - 9 / 12));
+  width: calc(100% / 9 * (9 / 12));
+  height: calc(100% / 16 * (9 / 12));
+}
+
+billboard#interfaceFuse1 {
+  left: calc(100% / 9 * (9 / 24));
+  top: calc(100% / 16 * (16 - 9 / 12 - 9 / 24));
+  width: calc(100% / 9 * (9 / 12));
+  height: calc(100% / 16 * (9 / 12));
+}
+
+billboard#interfaceFuseBackground {
+  left: calc(100% / 9 * (9 / 24));
+  top: calc(100% / 16 * (16 - 9 / 12));
+  width: calc(100% / 9 * (9 / 12));
+  height: calc(100% / 16 * (9 / 12));
+}
+
+billboard#interfaceIllusion {
+  left: calc(100% / 9 * (9 / 24 + 9 / 12 * 8));
+  top: calc(100% / 16 * (16 - 9 / 12 - 9 / 24));
+  width: calc(100% / 9 * (9 / 12));
+  height: calc(100% / 16 * (9 / 12));
+}
+
+billboard#interfaceIndicatorForward {
+  left: calc(100% / 9 * (9 / 5));
+  top: calc(100% / 16 * (16 - 9 / 12));
+  width: calc(100% / 9 * (9 / 5 * 3));
+  height: calc(100% / 16 * (9 / 12));
+}
+
+billboard#interfaceIndicatorLeft {
+  left: 0;
+  top: calc(100% / 16 * (16 - 9 / 12));
+  width: calc(100% / 9 * (9 / 5));
+  height: calc(100% / 16 * (9 / 12));
+}
+
+billboard#interfaceIndicatorRight {
+  left: calc(100% / 9 * (9 / 5 * 4));
+  top: calc(100% / 16 * (16 - 9 / 12));
+  width: calc(100% / 9 * (9 / 5));
+  height: calc(100% / 16 * (9 / 12));
+}
+
+billboard#interfaceSave {
+  left: calc(100% / 9 * (9 / 24 + 9 / 12 * 6));
+  top: calc(100% / 16 * (16 - 9 / 12 - 9 / 24));
+  width: calc(100% / 9 * (9 / 12));
+  height: calc(100% / 16 * (9 / 12));
+}
+
+billboard#interfaceSeal1 {
+  left: calc(100% / 9 * (9 - 9 / 12 - 9 / 24));
+  top: calc(100% / 16 * (16 - 9 / 12 - 9 / 24));
+  width: calc(100% / 9 * (9 / 12));
+  height: calc(100% / 16 * (9 / 12));
+}
+
+billboard#interfaceSeal2 {
+  left: calc(100% / 9 * (9 - 9 / 12 - 9 / 24));
+  top: calc(100% / 16 * (16 - 9 / 12 * 2 - 9 / 24));
+  width: calc(100% / 9 * (9 / 12));
+  height: calc(100% / 16 * (9 / 12));
+}
+
+billboard#interfaceSealBackground {
+  left: calc(100% / 9 * (9 - 9 / 12 - 9 / 24));
+  top: calc(100% / 16 * (16 - 9 / 12));
+  width: calc(100% / 9 * (9 / 12));
+  height: calc(100% / 16 * (9 / 12));
+}
+
+billboard#viewMain {
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+}
+
+billboard#vignette {
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+}
+
+trigger#action {
+  left: calc(100% / 9 * (9 / 3));
+  top: calc(100% / 16 * (16 / 3));
+  width: calc(100% / 9 * (9 / 3));
+  height: calc(100% / 16 * (16 / 3));
+}
+
+trigger#moveForward {
+  left: calc(100% / 9 * (9 / 5));
+  top: 0;
+  width: calc(100% / 9 * (9 / 5 * 3));
+  height: 100%;
+}
+
+trigger#moveLeft {
+  left: 0;
+  top: 0;
+  width: calc(100% / 9 * (9 / 5));
+  height: 100%;
+}
+
+trigger#moveRight {
+  left: calc(100% / 9 * (9 / 5 * 4));
+  top: 0;
+  width: calc(100% / 9 * (9 / 5));
+  height: 100%;
+}
