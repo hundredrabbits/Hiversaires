@@ -1410,7 +1410,7 @@ class Dozenal {
 
     this.setImage(
       hiversaires.stage.billboardsByID["interfaceSave"],
-      "save.png"
+      "interface/interface.save.png"
     );
     this.setHidden(hiversaires.stage.billboardsByID["interfaceSave"], false);
     this.setAlpha(hiversaires.stage.billboardsByID["interfaceSave"], 1);
