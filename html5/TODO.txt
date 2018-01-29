@@ -1,7 +1,6 @@
 Convert interface and menu elements to SVG
     dimclock
     entente
-The layout of the elements could be based on CSS
 
 Isolate puzzle state from nodes
 Break the dozenal code into sensible chunks
