@@ -14,7 +14,7 @@ body {
   height: 100vh;
 
   text-align: center;
-  font-family: sans-serif;
+  font-family: 'Alte-DIN-1451-Mittelschrift';
   font-size: 8pt;
   overflow-wrap: break-word;
 }
@@ -45,4 +45,11 @@ triggers.debug > trigger {
 billboards.debug > billboard {
   border: 1px blue dashed;
   color: blue;
+}
+
+@font-face {
+    font-family: 'Alte-DIN-1451-Mittelschrift';
+    src:url('../media/fonts/Alte-DIN-1451-Mittelschrift.ttf.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
 }
