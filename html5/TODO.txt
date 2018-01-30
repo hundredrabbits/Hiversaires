@@ -1,15 +1,16 @@
-ambient_entente.mp3 is not there
-    There must be a way to make git DUMP EVERY VERSION OF EVERY FILE
-
 Isolate puzzle state from nodes
+    Node constructor
+    Puzzle constructor
+    Node image changes should be renamed to the original node image, plus some modifier
+
 Break the dozenal code into sensible chunks
 
 Convert the world to a displayable graph, if you can
 Full walkthrough
 
+There must be a way to make git DUMP EVERY VERSION OF EVERY FILE
+
 Bug someone about using import/export es6 syntax
-
-
 
 NOTES
     templateKillUpdate works, but nothing causes its condition to be true

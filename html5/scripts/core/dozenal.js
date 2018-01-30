@@ -8,7 +8,7 @@ class Dozenal {
 
     this.userActionStorage;
     this.userSettings;
-    this.userNode = 1;
+    this.userNodeId = 1;
     this.userOrientation = 0;
     this.userProgress = 1;
     this.userEnergy = 0;
@@ -41,7 +41,7 @@ class Dozenal {
 
     this.prefLoad();
 
-    // this.userNode = 88;
+    // this.userNodeId = 88;
 
     this.actionCheck();
     this.moveCheck();
@@ -49,7 +49,7 @@ class Dozenal {
   }
 
   get forwardSubject() {
-    return hiversaires.world.nodesByID[this.userNode][this.userOrientation];
+    return hiversaires.world.nodesByID[this.userNodeId][this.userOrientation];
   }
 
   setImage(subject, url) {
@@ -78,6 +78,29 @@ class Dozenal {
     this.setHidden(hiversaires.stage.triggersByID["action"], value == null);
   }
 
+  updateMusic() {
+    let record;
+    switch (this.userProgress) {
+      case 1:
+        record = Records.act1;
+        break;
+      case 2:
+        record = Records.act2;
+        break;
+      case 3:
+        record = Records.act3;
+        break;
+      case 4:
+        record = Records.act4;
+        break;
+      case 5:
+        record = Records.act5;
+        break;
+    }
+
+    hiversaires.music.setRecord(record);
+  }
+
   // ====================
   // Movement
   // ====================
@@ -95,7 +118,9 @@ class Dozenal {
     this.setImage(
       hiversaires.stage.billboardsByID["viewMain"],
       "node/node." +
-        (this.userNode * 4 + this.userOrientation).toString().padStart(4, "0") +
+        (this.userNodeId * 4 + this.userOrientation)
+          .toString()
+          .padStart(4, "0") +
         ".jpg"
     );
 
@@ -110,7 +135,7 @@ class Dozenal {
     }
 
     hiversaires.music.setAmbience(
-      hiversaires.world.nodesByID[this.userNode][4]
+      ambienceByZone[hiversaires.world.nodesByID[this.userNodeId][4]]
     );
   }
 
@@ -132,13 +157,14 @@ class Dozenal {
     this.playFootStep();
 
     if (this.forwardSubject.indexOf("|") == -1) {
-      this.userNode =
+      this.userNodeId =
         parseInt(this.forwardSubject) > 0
           ? parseInt(this.forwardSubject)
-          : this.userNode;
+          : this.userNodeId;
     } else {
       let temp = this.forwardSubject.split("|");
-      this.userNode = parseInt(temp[0]) > 0 ? parseInt(temp[0]) : this.userNode;
+      this.userNodeId =
+        parseInt(temp[0]) > 0 ? parseInt(temp[0]) : this.userNodeId;
       this.userOrientation = parseInt(temp[1]);
     }
 
@@ -147,7 +173,7 @@ class Dozenal {
   }
 
   warpTo(node, orientation) {
-    this.userNode = node;
+    this.userNodeId = node;
     this.userOrientation = orientation % 4;
     this.moveCheck();
   }
@@ -155,13 +181,14 @@ class Dozenal {
   moveBackward() {
     this.userOrientation = (this.userOrientation + 4 + 2) % 4;
     if (this.forwardSubject.indexOf("|") == -1) {
-      this.userNode =
+      this.userNodeId =
         parseInt(this.forwardSubject) > 0
           ? parseInt(this.forwardSubject)
-          : this.userNode;
+          : this.userNodeId;
     } else {
       let temp = this.forwardSubject.split("|");
-      this.userNode = parseInt(temp[0]) > 0 ? parseInt(temp[0]) : this.userNode;
+      this.userNodeId =
+        parseInt(temp[0]) > 0 ? parseInt(temp[0]) : this.userNodeId;
       this.userOrientation = parseInt(temp[1]);
     }
     this.userOrientation = (this.userOrientation + 4 + 2) % 4;
@@ -246,82 +273,82 @@ class Dozenal {
 
     hiversaires.music.playEffect("action_DoorActive");
 
-    if (this.userNode == 1) {
-      this.userNode = 103;
-    } else if (this.userNode == 11) {
-      this.userNode = 48;
+    if (this.userNodeId == 1) {
+      this.userNodeId = 103;
+    } else if (this.userNodeId == 11) {
+      this.userNodeId = 48;
       this.userOrientation = 2;
-    } else if (this.userNode == 13) {
-      this.userNode = 12;
-    } else if (this.userNode == 12) {
-      this.userNode = 13;
-    } else if (this.userNode == 16) {
-      this.userNode = 22;
+    } else if (this.userNodeId == 13) {
+      this.userNodeId = 12;
+    } else if (this.userNodeId == 12) {
+      this.userNodeId = 13;
+    } else if (this.userNodeId == 16) {
+      this.userNodeId = 22;
     } else if (
-      this.userNode == 20 &&
+      this.userNodeId == 20 &&
       parseInt(this.userActionStorage[37]) > 0
     ) {
-      this.userNode = 116;
+      this.userNodeId = 116;
       this.userOrientation = 1;
-    } else if (this.userNode == 23) {
+    } else if (this.userNodeId == 23) {
       // Fold Gate
-      this.userNode = 22;
-    } else if (this.userNode == 25) {
-      this.userNode = 31;
+      this.userNodeId = 22;
+    } else if (this.userNodeId == 25) {
+      this.userNodeId = 31;
       this.userOrientation = 2;
-    } else if (this.userNode == 27) {
-      this.userNode = 32;
+    } else if (this.userNodeId == 27) {
+      this.userNodeId = 32;
       this.userOrientation = 1;
-    } else if (this.userNode == 35) {
-      this.userNode = 31;
+    } else if (this.userNodeId == 35) {
+      this.userNodeId = 31;
       this.userOrientation = 0;
     } else if (
-      this.userNode == 39 &&
+      this.userNodeId == 39 &&
       this.userActionStorage[5] == "2" &&
       this.userActionStorage[31] == "1"
     ) {
-      this.userNode = 34;
-    } else if (this.userNode == 39) {
-      this.userNode = 45;
-    } else if (this.userNode == 45) {
-      this.userNode = 51;
-    } else if (this.userNode == 46) {
-      this.userNode = 85;
+      this.userNodeId = 34;
+    } else if (this.userNodeId == 39) {
+      this.userNodeId = 45;
+    } else if (this.userNodeId == 45) {
+      this.userNodeId = 51;
+    } else if (this.userNodeId == 46) {
+      this.userNodeId = 85;
       this.userOrientation = 2;
-    } else if (this.userNode == 48) {
-      this.userNode = 11;
+    } else if (this.userNodeId == 48) {
+      this.userNodeId = 11;
       this.userOrientation = 2;
-    } else if (this.userNode == 51) {
-      this.userNode = 45;
-    } else if (this.userNode == 52) {
-      this.userNode = 32;
+    } else if (this.userNodeId == 51) {
+      this.userNodeId = 45;
+    } else if (this.userNodeId == 52) {
+      this.userNodeId = 32;
       this.userOrientation = 3;
-    } else if (this.userNode == 61) {
-      this.userNode = 72;
-    } else if (this.userNode == 62) {
-      this.userNode = 77;
-    } else if (this.userNode == 69) {
-      this.userNode = 72;
-    } else if (this.userNode == 76) {
-      this.userNode = 87;
-    } else if (this.userNode == 77) {
-      this.userNode = 62;
-    } else if (this.userNode == 79) {
-      this.userNode = 112;
-    } else if (this.userNode == 85) {
-      this.userNode = 46;
+    } else if (this.userNodeId == 61) {
+      this.userNodeId = 72;
+    } else if (this.userNodeId == 62) {
+      this.userNodeId = 77;
+    } else if (this.userNodeId == 69) {
+      this.userNodeId = 72;
+    } else if (this.userNodeId == 76) {
+      this.userNodeId = 87;
+    } else if (this.userNodeId == 77) {
+      this.userNodeId = 62;
+    } else if (this.userNodeId == 79) {
+      this.userNodeId = 112;
+    } else if (this.userNodeId == 85) {
+      this.userNodeId = 46;
       this.userOrientation = 0;
-    } else if (this.userNode == 87) {
-      this.userNode = 76;
-    } else if (this.userNode == 112) {
-      this.userNode = 79;
-    } else if (this.userNode == 113) {
-      this.userNode = 50;
-    } else if (this.userNode == 142) {
-      this.userNode = 143;
+    } else if (this.userNodeId == 87) {
+      this.userNodeId = 76;
+    } else if (this.userNodeId == 112) {
+      this.userNodeId = 79;
+    } else if (this.userNodeId == 113) {
+      this.userNodeId = 50;
+    } else if (this.userNodeId == 142) {
+      this.userNodeId = 143;
       this.userOrientation = 3;
-    } else if (this.userNode == 143) {
-      this.userNode = 142;
+    } else if (this.userNodeId == 143) {
+      this.userNodeId = 142;
       this.userOrientation = 1;
     }
 
@@ -463,7 +490,7 @@ class Dozenal {
 
     if (
       (parseInt(currentHours) == 15 && parseInt(currentMinutes) == 7) ||
-      this.userNode == 143
+      this.userNodeId == 143
     ) {
       this.userActionStorage[54] = "1";
       this.templateUpdateDoorknob(
@@ -659,7 +686,7 @@ class Dozenal {
       parseInt(this.userActionStorage[13]) == 1
     ) {
       // Act 1 : Forest + Rainre in Stones
-      if (this.userNode == 46 || this.userNode == 85) {
+      if (this.userNodeId == 46 || this.userNodeId == 85) {
         this.templateUpdateDoorknob(
           46,
           85,
@@ -667,9 +694,6 @@ class Dozenal {
         );
         this.templateUpdateNode(46, "0486", "act15");
         this.templateUpdateNode(85, "0485", "act15");
-        if (this.userProgress < 2) {
-          hiversaires.music.setRecord(Records.act2);
-        }
         this.userProgress = 2;
         this.prefSave();
       }
@@ -678,7 +702,7 @@ class Dozenal {
       parseInt(this.userActionStorage[13]) == 1
     ) {
       // Act 2 : Metamondst + Rainre in Forest
-      if (this.userNode == 11 || this.userNode == 48) {
+      if (this.userNodeId == 11 || this.userNodeId == 48) {
         this.templateUpdateDoorknob(
           48,
           11,
@@ -686,9 +710,6 @@ class Dozenal {
         );
         this.templateUpdateNode(11, "0487", "act25");
         this.templateUpdateNode(48, "0488", "act25");
-        if (this.userProgress < 3) {
-          hiversaires.music.setRecord(Records.act3);
-        }
         this.userProgress = 3;
         this.prefSave();
       }
@@ -697,7 +718,7 @@ class Dozenal {
       parseInt(this.userActionStorage[13]) == 1
     ) {
       // Act 3 : Forest + Rainre in Metamondst
-      if (this.userNode == 46 || this.userNode == 85) {
+      if (this.userNodeId == 46 || this.userNodeId == 85) {
         this.templateUpdateDoorknob(
           46,
           85,
@@ -705,9 +726,6 @@ class Dozenal {
         );
         this.templateUpdateNode(46, "0486", "act15");
         this.templateUpdateNode(85, "0485", "act15");
-        if (this.userProgress < 4) {
-          hiversaires.music.setRecord(Records.act4);
-        }
         this.userProgress = 4;
         this.prefSave();
       }
@@ -716,13 +734,13 @@ class Dozenal {
       parseInt(this.userActionStorage[12]) == 1
     ) {
       // Act 4 : Antechannel + Stones in Studio
-      if (this.userNode == 19) {
+      if (this.userNodeId == 19) {
         this.setCurrentAction("action1");
         this.templateUpdateStudioTerminal();
 
         this.prefSave();
       }
-    } else if (this.userAction == "act5" && this.userNode == 19) {
+    } else if (this.userAction == "act5" && this.userNodeId == 19) {
       // Studio Terminal
       this.templateUpdateStudioTerminal();
     } else {
@@ -1029,13 +1047,13 @@ class Dozenal {
 
   templateEntentePart1Incr() {
     if (this.userActionStorage[23] == "17") {
-      this.userNode = 93;
+      this.userNodeId = 93;
       this.userAction = null;
       this.actionCheck();
       this.moveCheck();
       this.actionReset();
     } else {
-      this.userNode = 89;
+      this.userNodeId = 89;
       this.userAction = null;
 
       if (parseInt(this.userActionStorage[23]) < 21) {
@@ -1051,7 +1069,7 @@ class Dozenal {
   }
 
   templateEntentePart1Decr() {
-    this.userNode = 103;
+    this.userNodeId = 103;
     this.userAction = null;
 
     if (parseInt(this.userActionStorage[23]) > 14) {
@@ -1066,7 +1084,7 @@ class Dozenal {
   }
 
   templateEntentePart2Incr() {
-    this.userNode = 94;
+    this.userNodeId = 94;
     this.userOrientation = 2;
     this.userAction = null;
 
@@ -1082,7 +1100,7 @@ class Dozenal {
   }
 
   templateEntentePart2Decr() {
-    this.userNode = 95;
+    this.userNodeId = 95;
     this.userOrientation = 2;
     this.userAction = null;
 
@@ -1102,7 +1120,7 @@ class Dozenal {
       parseInt(this.userActionStorage[23]) == 17 &&
       parseInt(this.userActionStorage[24]) == 17
     ) {
-      this.userNode = 107;
+      this.userNodeId = 107;
       this.userOrientation = 3;
       this.userAction = null;
 
@@ -1110,7 +1128,7 @@ class Dozenal {
       this.moveCheck();
       this.actionReset();
     } else {
-      this.userNode = 93;
+      this.userNodeId = 93;
       this.userAction = null;
 
       this.actionCheck();
@@ -1220,7 +1238,7 @@ class Dozenal {
   // ====================
 
   templateUpdateDoorknob(side1, side2, knob) {
-    if (this.userNode == side1 || this.userNode == side2) {
+    if (this.userNodeId == side1 || this.userNodeId == side2) {
       this.setHidden(knob, false);
       this.setAlpha(knob, 1.0);
     }
@@ -1236,9 +1254,7 @@ class Dozenal {
       this.templateUpdateNode(19, "0489", "act5");
 
       this.userProgress = 5;
-      if (this.userProgress == 5) {
-        hiversaires.music.setRecord(Records.act5);
-      }
+      this.updateMusic();
     } else {
       if (
         this.userActionStorage[12] == "1" &&
@@ -1265,12 +1281,13 @@ class Dozenal {
 
       if (this.userProgress == 5) {
         this.userProgress = 4;
+        this.updateMusic(); // Right?
       }
     }
   }
 
   templateUpdateNode(node, img, act) {
-    if (this.userNode == node && this.userAction == act) {
+    if (this.userNodeId == node && this.userAction == act) {
       this.setImage(
         hiversaires.stage.billboardsByID["overlay"],
         "node/node." + img + ".jpg"
@@ -1328,39 +1345,39 @@ class Dozenal {
     let nodeIllusionAction;
 
     if (Math.random() * 10 > 7) {
-      if (this.userNode == 15 && this.userOrientation == 0) {
+      if (this.userNodeId == 15 && this.userOrientation == 0) {
         nodeIllusion = 554;
         nodeIllusionAction = 17;
       } // studio
-      if (this.userNode == 43 && this.userOrientation == 2) {
+      if (this.userNodeId == 43 && this.userOrientation == 2) {
         nodeIllusion = 555;
         nodeIllusionAction = 22;
       } // stones
-      if (this.userNode == 73 && this.userOrientation == 2) {
+      if (this.userNodeId == 73 && this.userOrientation == 2) {
         nodeIllusion = 556;
         nodeIllusionAction = 29;
       } // metamo
-      if (this.userNode == 58 && this.userOrientation == 1) {
+      if (this.userNodeId == 58 && this.userOrientation == 1) {
         nodeIllusion = 557;
         nodeIllusionAction = 32;
       } // antech
-      if (this.userNode == 114 && this.userOrientation == 2) {
+      if (this.userNodeId == 114 && this.userOrientation == 2) {
         nodeIllusion = 558;
         nodeIllusionAction = 48;
       } // natani
-      if (this.userNode == 91 && this.userOrientation == 0) {
+      if (this.userNodeId == 91 && this.userOrientation == 0) {
         nodeIllusion = 559;
         nodeIllusionAction = 49;
       } // entent
-      if (this.userNode == 88 && this.userOrientation == 3) {
+      if (this.userNodeId == 88 && this.userOrientation == 3) {
         nodeIllusion = 560;
         nodeIllusionAction = 50;
       } // capsul
-      if (this.userNode == 33 && this.userOrientation == 2) {
+      if (this.userNodeId == 33 && this.userOrientation == 2) {
         nodeIllusion = 561;
         nodeIllusionAction = 51;
       } // circle
-      if (this.userNode == 9 && this.userOrientation == 1) {
+      if (this.userNodeId == 9 && this.userOrientation == 1) {
         nodeIllusion = 562;
         nodeIllusionAction = 52;
       } // forest
@@ -1659,7 +1676,7 @@ class Dozenal {
 
     let saveObject = {
       userSettings: {
-        userNode: this.userNode,
+        userNode: this.userNodeId,
         userOrientation: this.userOrientation,
         userProgress: this.userProgress,
         userEnergy: this.userEnergy
@@ -1689,10 +1706,12 @@ class Dozenal {
 
       // Settings
       let userSettings = saveObject.userSettings;
-      this.userNode = userSettings.userNode;
+      this.userNodeId = userSettings.userNode;
       this.userOrientation = userSettings.userOrientation;
       this.userProgress = userSettings.userProgress;
       this.userEnergy = userSettings.userEnergy;
+
+      this.updateMusic();
 
       // Storage
       this.userActionStorage = saveObject.userActionStorage;
@@ -1726,12 +1745,12 @@ class Dozenal {
 
       // Default Location
 
-      this.userNode = 1;
+      this.userNodeId = 1;
       this.userOrientation = 0;
       this.userProgress = 1;
       this.userEnergy = 0;
 
-      hiversaires.music.setRecord(Records.act1);
+      this.updateMusic();
 
       console.log("- [progress:created.]");
     }

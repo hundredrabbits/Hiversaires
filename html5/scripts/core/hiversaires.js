@@ -34,14 +34,30 @@ const Records = {
   credit: "music_credit"
 };
 
-const Ambience = {
-  antechannel: "ambient_antechannel",
-  capsule: "ambient_capsule",
-  circular: "ambient_circular",
-  forest: "ambient_forest",
-  metamondst: "ambient_metamondst",
-  nataniev: "ambient_nataniev",
-  rainre: "ambient_rainre",
-  stones: "ambient_stones",
-  studio: "ambient_studio"
+const Zone = {
+  antechannel: "antechannel",
+  capsule: "capsule",
+  circular: "circular",
+  entente: "entente",
+  forest: "forest",
+  metamondst: "metamondst",
+  nataniev: "nataniev",
+  rainre: "rainre",
+  stones: "stones",
+  studio: "studio"
 };
+
+const ambienceByZone = function() {
+  let ambienceByZone = {};
+  ambienceByZone[Zone.antechannel] = "ambient_antechannel";
+  ambienceByZone[Zone.capsule] = "ambient_capsule";
+  ambienceByZone[Zone.circular] = "ambient_circular";
+  ambienceByZone[Zone.entente] = null;
+  ambienceByZone[Zone.forest] = "ambient_forest";
+  ambienceByZone[Zone.metamondst] = "ambient_metamondst";
+  ambienceByZone[Zone.nataniev] = "ambient_nataniev";
+  ambienceByZone[Zone.rainre] = "ambient_rainre";
+  ambienceByZone[Zone.stones] = "ambient_stones";
+  ambienceByZone[Zone.studio] = "ambient_studio";
+  return ambienceByZone;
+}();
