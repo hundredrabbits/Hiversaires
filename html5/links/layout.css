@@ -25,7 +25,7 @@ billboard#interfaceDimclock {
   height: calc(100% / 16 * (9 / 12));
 }
 
-billboard#interfaceDimclockBackground {
+billboard#interfaceDimclockAlert {
   left: calc(100% / 9 * (9 / 12 * 4 + 9 / 24));
   top: calc(100% / 16 * (16 - 9 / 12));
   width: calc(100% / 9 * (9 / 12));
@@ -39,7 +39,7 @@ billboard#interfaceFuse1 {
   height: calc(100% / 16 * (9 / 12));
 }
 
-billboard#interfaceFuseBackground {
+billboard#interfaceFuseAlert {
   left: calc(100% / 9 * (9 / 24));
   top: calc(100% / 16 * (16 - 9 / 12));
   width: calc(100% / 9 * (9 / 12));
@@ -95,7 +95,7 @@ billboard#interfaceSeal2 {
   height: calc(100% / 16 * (9 / 12));
 }
 
-billboard#interfaceSealBackground {
+billboard#interfaceSealAlert {
   left: calc(100% / 9 * (9 - 9 / 12 - 9 / 24));
   top: calc(100% / 16 * (16 - 9 / 12));
   width: calc(100% / 9 * (9 / 12));

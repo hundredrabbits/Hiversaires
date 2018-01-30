@@ -343,7 +343,7 @@ class Dozenal {
       this.userActionStorage[this.userActionId] = "1";
       this.userEnergy -= 1;
     } else {
-      this.templateEnergyWarning();
+      this.templateEnergyAlert();
     }
 
     this.templateEnergyUpdate();
@@ -365,7 +365,7 @@ class Dozenal {
       }
     } else {
       hiversaires.music.playEffect("action_EnergyStack");
-      this.templateSealWarning();
+      this.templateSealAlert();
       console.log("No more seal slots.");
     }
 
@@ -557,7 +557,7 @@ class Dozenal {
       this.templateUpdateNode(27, "0476", "act9");
       this.templateUpdateNode(52, "0477", "act9");
     } else {
-      this.templateClockWarning();
+      this.templateClockAlert();
     }
   }
 
@@ -578,17 +578,17 @@ class Dozenal {
     this.fadeIn(hiversaires.stage.billboardsByID["clockFace"], 0.5, 0.5);
   }
 
-  templateClockWarning() {
+  templateClockAlert() {
     this.setImage(
-      hiversaires.stage.billboardsByID["interfaceDimclockBackground"],
+      hiversaires.stage.billboardsByID["interfaceDimclockAlert"],
       "interface/alert.svg"
     );
     this.setAlpha(
-      hiversaires.stage.billboardsByID["interfaceDimclockBackground"],
+      hiversaires.stage.billboardsByID["interfaceDimclockAlert"],
       1.0
     );
     this.fadeOut(
-      hiversaires.stage.billboardsByID["interfaceDimclockBackground"],
+      hiversaires.stage.billboardsByID["interfaceDimclockAlert"],
       0.5,
       0.5
     );
@@ -726,7 +726,7 @@ class Dozenal {
       // Studio Terminal
       this.templateUpdateStudioTerminal();
     } else {
-      this.templateSealWarning();
+      this.templateSealAlert();
     }
   }
 
@@ -756,17 +756,14 @@ class Dozenal {
     }
   }
 
-  templateSealWarning() {
+  templateSealAlert() {
     this.setImage(
-      hiversaires.stage.billboardsByID["interfaceSealBackground"],
+      hiversaires.stage.billboardsByID["interfaceSealAlert"],
       "interface/alert.svg"
     );
-    this.setAlpha(
-      hiversaires.stage.billboardsByID["interfaceSealBackground"],
-      1.0
-    );
+    this.setAlpha(hiversaires.stage.billboardsByID["interfaceSealAlert"], 1.0);
     this.fadeOut(
-      hiversaires.stage.billboardsByID["interfaceSealBackground"],
+      hiversaires.stage.billboardsByID["interfaceSealAlert"],
       0.5,
       0.5
     );
@@ -868,7 +865,7 @@ class Dozenal {
         this.templateUpdateNode(39, "0490", "act11");
       }
     } else {
-      this.templateEnergyWarning();
+      this.templateEnergyAlert();
     }
   }
 
@@ -916,17 +913,14 @@ class Dozenal {
     }
   }
 
-  templateEnergyWarning() {
+  templateEnergyAlert() {
     this.setImage(
-      hiversaires.stage.billboardsByID["interfaceFuseBackground"],
+      hiversaires.stage.billboardsByID["interfaceFuseAlert"],
       "interface/alert.svg"
     );
-    this.setAlpha(
-      hiversaires.stage.billboardsByID["interfaceFuseBackground"],
-      1.0
-    );
+    this.setAlpha(hiversaires.stage.billboardsByID["interfaceFuseAlert"], 1.0);
     this.fadeOut(
-      hiversaires.stage.billboardsByID["interfaceFuseBackground"],
+      hiversaires.stage.billboardsByID["interfaceFuseAlert"],
       0.5,
       1.5
     );
@@ -1149,7 +1143,7 @@ class Dozenal {
 
       this.setCurrentAction("action3");
     } else {
-      this.templateEnergyWarning();
+      this.templateEnergyAlert();
     }
   }
 
