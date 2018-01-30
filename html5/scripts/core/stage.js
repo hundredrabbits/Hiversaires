@@ -31,6 +31,7 @@ class Stage {
       "clockShadow",
       "clockFace",
       "interfaceDimclockBackground",
+      "ententeScreen",
       "interfaceDimclock",
       "interfaceFuseBackground",
       "interfaceFuse1",

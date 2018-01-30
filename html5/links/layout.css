@@ -102,6 +102,13 @@ billboard#interfaceSealBackground {
   height: calc(100% / 16 * (9 / 12));
 }
 
+billboard#ententeScreen {
+  left: calc(100% * (170 + 90)/640);
+  top: calc(100% * (416 + 90)/1136);
+  width: calc(100% * (300 - 2 * 90)/640);
+  height: calc(100% * (300 - 2 * 90)/1136);
+}
+
 billboard#clockFace,
 billboard#clockShadow {
   left: calc(100% * 170/640);

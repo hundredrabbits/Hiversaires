@@ -1,0 +1,8 @@
+<svg width="1024" height="1024"  xmlns="http://www.w3.org/2000/svg"  xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- <rect width="1024" height="1024" fill="grey"/> -->
+    <rect x="115" y="115" width="794" height="190" fill="white" opacity="1"/>
+    <rect x="115" y="416" width="794" height="190" fill="white" opacity="1"/>
+    <rect x="115" y="718" width="794" height="190" fill="white" opacity="1"/>
+    <rect x="115" y="115" width="190" height="491" fill="white" opacity="1"/>
+    <rect x="719" y="115" width="190" height="491" fill="white" opacity="1"/>
+</svg>

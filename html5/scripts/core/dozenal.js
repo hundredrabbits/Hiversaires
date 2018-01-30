@@ -383,6 +383,7 @@ class Dozenal {
     this.setAlpha(hiversaires.stage.billboardsByID["overlay"], 0);
     this.setAlpha(hiversaires.stage.billboardsByID["clockFace"], 0);
     this.setAlpha(hiversaires.stage.billboardsByID["clockShadow"], 0);
+    this.setAlpha(hiversaires.stage.billboardsByID["ententeScreen"], 0);
 
     this.setCurrentAction(null);
   }
@@ -1006,10 +1007,10 @@ class Dozenal {
     }
 
     this.setImage(
-      hiversaires.stage.billboardsByID["overlay"],
-      "interface/entente" + targetGraphic + ".png"
+      hiversaires.stage.billboardsByID["ententeScreen"],
+      "interface/entente" + targetGraphic + ".svg"
     );
-    this.fadeIn(hiversaires.stage.billboardsByID["overlay"], 0, 1);
+    this.fadeIn(hiversaires.stage.billboardsByID["ententeScreen"], 0, 1);
   }
 
   templateEntenteTerminal2() {
@@ -1026,10 +1027,10 @@ class Dozenal {
     }
 
     this.setImage(
-      hiversaires.stage.billboardsByID["overlay"],
-      "interface/entente" + targetGraphic + ".png"
+      hiversaires.stage.billboardsByID["ententeScreen"],
+      "interface/entente" + targetGraphic + ".svg"
     );
-    this.fadeIn(hiversaires.stage.billboardsByID["overlay"], 0, 1);
+    this.fadeIn(hiversaires.stage.billboardsByID["ententeScreen"], 0, 1);
   }
 
   templateEntentePart1Incr() {
