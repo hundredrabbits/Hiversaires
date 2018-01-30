@@ -146,6 +146,12 @@ class Dozenal {
     this.moveCheck();
   }
 
+  warpTo(node, orientation) {
+    this.userNode = node;
+    this.userOrientation = orientation % 4;
+    this.moveCheck();
+  }
+
   moveBackward() {
     this.userOrientation = (this.userOrientation + 4 + 2) % 4;
     if (this.forwardSubject.indexOf("|") == -1) {

@@ -1,6 +1,7 @@
 Custom billboard for entente?
     Maybe decide once you can friggin' find it
-    Implement warp, stupid
+    ambient_entente.mp3 is not there
+        There must be a way to make git DUMP EVERY VERSION OF EVERY FILE
 
 Convert interface elements to SVG
     
