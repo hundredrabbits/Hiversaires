@@ -229,7 +229,7 @@ class Dozenal {
   action2() {
     // Door to display action3
 
-    this.setHidden(hiversaires.stage.billboardsByID["graphic1"], false);
+    this.setHidden(hiversaires.stage.billboardsByID["overlay"], false);
 
     this.setCurrentAction("action3");
     this.templateEnergyUpdate();
@@ -367,13 +367,14 @@ class Dozenal {
   }
 
   actionReset() {
-    this.setAlpha(hiversaires.stage.billboardsByID["graphic1"], 0);
-    this.setAlpha(hiversaires.stage.billboardsByID["graphic2"], 0);
-    this.setAlpha(hiversaires.stage.billboardsByID["graphic3"], 0);
-    this.setAlpha(hiversaires.stage.billboardsByID["graphic4"], 0);
-    this.setAlpha(hiversaires.stage.billboardsByID["graphic5"], 0);
-    this.setAlpha(hiversaires.stage.billboardsByID["graphic6"], 0);
+    this.setAlpha(hiversaires.stage.billboardsByID["menu1"], 0);
+    this.setAlpha(hiversaires.stage.billboardsByID["menu2"], 0);
+    this.setAlpha(hiversaires.stage.billboardsByID["menu3"], 0);
+    this.setAlpha(hiversaires.stage.billboardsByID["menu4"], 0);
+    this.setAlpha(hiversaires.stage.billboardsByID["menu5"], 0);
+    this.setAlpha(hiversaires.stage.billboardsByID["menu6"], 0);
 
+    this.setAlpha(hiversaires.stage.billboardsByID["overlay"], 0);
     this.setAlpha(hiversaires.stage.billboardsByID["clockFace"], 0);
     this.setAlpha(hiversaires.stage.billboardsByID["clockShadow"], 0);
 
@@ -476,9 +477,6 @@ class Dozenal {
 
     this.setCurrentAction("action1");
 
-    this.setAlpha(hiversaires.stage.billboardsByID["graphic5"], 0);
-    this.setAlpha(hiversaires.stage.billboardsByID["graphic4"], 0);
-
     hiversaires.music.playEffect("action_EnergyInit");
 
     this.templateClockUpdate();
@@ -503,7 +501,7 @@ class Dozenal {
 
     // Display Interactions
 
-    this.setHidden(hiversaires.stage.billboardsByID["graphic1"], true);
+    this.setHidden(hiversaires.stage.billboardsByID["overlay"], true);
 
     this.templateClockInterface();
 
@@ -593,8 +591,8 @@ class Dozenal {
     this.prefPositioning();
     this.templateVignette();
 
-    this.setHidden(hiversaires.stage.billboardsByID["graphic1"], false);
-    this.setAlpha(hiversaires.stage.billboardsByID["graphic1"], 0);
+    this.setHidden(hiversaires.stage.billboardsByID["overlay"], false);
+    this.setAlpha(hiversaires.stage.billboardsByID["overlay"], 0);
 
     this.setCurrentAction("action5");
 
@@ -644,7 +642,7 @@ class Dozenal {
     this.prefPositioning();
     this.templateVignette();
 
-    this.setHidden(hiversaires.stage.billboardsByID["graphic1"], true);
+    this.setHidden(hiversaires.stage.billboardsByID["overlay"], true);
 
     hiversaires.music.playEffect("action_DoorInit");
     this.templateSealInterface();
@@ -730,7 +728,7 @@ class Dozenal {
 
     this.userSeal = this.sealCount();
 
-    this.fadeOut(hiversaires.stage.billboardsByID["graphic1"], 0, 0.5);
+    this.fadeOut(hiversaires.stage.billboardsByID["overlay"], 0, 0.5);
 
     if (parseInt(this.userActionStorage[this.userActionId]) != 1) {
       return;
@@ -772,7 +770,7 @@ class Dozenal {
     this.templateVignette();
     this.templateEnergyInterface();
 
-    this.setHidden(hiversaires.stage.billboardsByID["graphic1"], false);
+    this.setHidden(hiversaires.stage.billboardsByID["overlay"], false);
 
     this.setCurrentAction("action2");
 
@@ -799,7 +797,7 @@ class Dozenal {
 
     // Display Interactions
 
-    this.setHidden(hiversaires.stage.billboardsByID["graphic1"], true);
+    this.setHidden(hiversaires.stage.billboardsByID["overlay"], true);
 
     // Audio
 
@@ -962,14 +960,14 @@ class Dozenal {
     this.templateAudioInterface();
 
     if (this.userActionStorage[this.userActionId] == "1") {
-      this.setHidden(hiversaires.stage.billboardsByID["graphic1"], false);
-      this.setAlpha(hiversaires.stage.billboardsByID["graphic1"], 1.0);
+      this.setHidden(hiversaires.stage.billboardsByID["overlay"], false);
+      this.setAlpha(hiversaires.stage.billboardsByID["overlay"], 1.0);
       this.templateUpdateNode(21, "0543", "act35");
       this.templateUpdateNode(43, "0544", "act35");
       hiversaires.music.volume = 1;
     } else {
-      this.setHidden(hiversaires.stage.billboardsByID["graphic1"], true);
-      this.setAlpha(hiversaires.stage.billboardsByID["graphic1"], 0);
+      this.setHidden(hiversaires.stage.billboardsByID["overlay"], true);
+      this.setAlpha(hiversaires.stage.billboardsByID["overlay"], 0);
       hiversaires.music.volume = 0;
     }
   }
@@ -1002,10 +1000,10 @@ class Dozenal {
     }
 
     this.setImage(
-      hiversaires.stage.billboardsByID["graphic1"],
+      hiversaires.stage.billboardsByID["overlay"],
       "interface/entente" + targetGraphic + ".png"
     );
-    this.fadeIn(hiversaires.stage.billboardsByID["graphic1"], 0, 1);
+    this.fadeIn(hiversaires.stage.billboardsByID["overlay"], 0, 1);
   }
 
   templateEntenteTerminal2() {
@@ -1022,10 +1020,10 @@ class Dozenal {
     }
 
     this.setImage(
-      hiversaires.stage.billboardsByID["graphic1"],
+      hiversaires.stage.billboardsByID["overlay"],
       "interface/entente" + targetGraphic + ".png"
     );
-    this.fadeIn(hiversaires.stage.billboardsByID["graphic1"], 0, 1);
+    this.fadeIn(hiversaires.stage.billboardsByID["overlay"], 0, 1);
   }
 
   templateEntentePart1Incr() {
@@ -1160,59 +1158,59 @@ class Dozenal {
     this.setHidden(hiversaires.stage.triggersByID["actionCredit"], false);
 
     this.setImage(
-      hiversaires.stage.billboardsByID["graphic1"],
+      hiversaires.stage.billboardsByID["menu1"],
       "menu/menu.black.jpg"
     );
-    this.setAlpha(hiversaires.stage.billboardsByID["graphic1"], 0.0);
-    this.setHidden(hiversaires.stage.billboardsByID["graphic1"], false);
+    this.setAlpha(hiversaires.stage.billboardsByID["menu1"], 0.0);
+    this.setHidden(hiversaires.stage.billboardsByID["menu1"], false);
 
-    this.fadeIn(hiversaires.stage.billboardsByID["graphic1"], 1.0, 3);
+    this.fadeIn(hiversaires.stage.billboardsByID["menu1"], 1.0, 3);
 
     this.setImage(
-      hiversaires.stage.billboardsByID["graphic2"],
+      hiversaires.stage.billboardsByID["menu2"],
       "menu/menu.credit1.png"
     );
-    this.setAlpha(hiversaires.stage.billboardsByID["graphic2"], 0.0);
-    this.setHidden(hiversaires.stage.billboardsByID["graphic2"], false);
+    this.setAlpha(hiversaires.stage.billboardsByID["menu2"], 0.0);
+    this.setHidden(hiversaires.stage.billboardsByID["menu2"], false);
 
-    this.fadeIn(hiversaires.stage.billboardsByID["graphic2"], 6.0, 1);
+    this.fadeIn(hiversaires.stage.billboardsByID["menu2"], 6.0, 1);
 
     this.setImage(
-      hiversaires.stage.billboardsByID["graphic3"],
+      hiversaires.stage.billboardsByID["menu3"],
       "menu/menu.credit2.png"
     );
-    this.setAlpha(hiversaires.stage.billboardsByID["graphic3"], 0.0);
-    this.setHidden(hiversaires.stage.billboardsByID["graphic3"], false);
+    this.setAlpha(hiversaires.stage.billboardsByID["menu3"], 0.0);
+    this.setHidden(hiversaires.stage.billboardsByID["menu3"], false);
 
-    this.fadeIn(hiversaires.stage.billboardsByID["graphic3"], 10.0, 1);
+    this.fadeIn(hiversaires.stage.billboardsByID["menu3"], 10.0, 1);
 
     this.setImage(
-      hiversaires.stage.billboardsByID["graphic4"],
+      hiversaires.stage.billboardsByID["menu4"],
       "menu/menu.credit3.png"
     );
-    this.setAlpha(hiversaires.stage.billboardsByID["graphic4"], 0.0);
-    this.setHidden(hiversaires.stage.billboardsByID["graphic4"], false);
+    this.setAlpha(hiversaires.stage.billboardsByID["menu4"], 0.0);
+    this.setHidden(hiversaires.stage.billboardsByID["menu4"], false);
 
-    this.fadeIn(hiversaires.stage.billboardsByID["graphic4"], 16.0, 1);
+    this.fadeIn(hiversaires.stage.billboardsByID["menu4"], 16.0, 1);
 
     this.setImage(
-      hiversaires.stage.billboardsByID["graphic5"],
+      hiversaires.stage.billboardsByID["menu5"],
       "menu/menu.black.jpg"
     );
-    this.setAlpha(hiversaires.stage.billboardsByID["graphic5"], 0.0);
-    this.setHidden(hiversaires.stage.billboardsByID["graphic5"], false);
+    this.setAlpha(hiversaires.stage.billboardsByID["menu5"], 0.0);
+    this.setHidden(hiversaires.stage.billboardsByID["menu5"], false);
 
-    this.fadeIn(hiversaires.stage.billboardsByID["graphic5"], 20.0, 1);
+    this.fadeIn(hiversaires.stage.billboardsByID["menu5"], 20.0, 1);
 
     if (this.userEnergy == 1) {
       this.setImage(
-        hiversaires.stage.billboardsByID["graphic6"],
+        hiversaires.stage.billboardsByID["menu6"],
         "menu/menu.credit4.png"
       );
-      this.setAlpha(hiversaires.stage.billboardsByID["graphic6"], 0.0);
-      this.setHidden(hiversaires.stage.billboardsByID["graphic6"], false);
+      this.setAlpha(hiversaires.stage.billboardsByID["menu6"], 0.0);
+      this.setHidden(hiversaires.stage.billboardsByID["menu6"], false);
 
-      this.fadeIn(hiversaires.stage.billboardsByID["graphic6"], 24.0, 1);
+      this.fadeIn(hiversaires.stage.billboardsByID["menu6"], 24.0, 1);
     }
   }
 
@@ -1228,12 +1226,12 @@ class Dozenal {
   }
 
   templateUpdateStudioTerminal() {
-    this.setAlpha(hiversaires.stage.billboardsByID["graphic1"], 0.0);
-    this.setHidden(hiversaires.stage.billboardsByID["graphic1"], true);
+    this.setAlpha(hiversaires.stage.billboardsByID["overlay"], 0.0);
+    this.setHidden(hiversaires.stage.billboardsByID["overlay"], true);
 
     if (parseInt(this.userActionStorage[5]) == 2) {
-      this.setAlpha(hiversaires.stage.billboardsByID["graphic1"], 1.0);
-      this.setHidden(hiversaires.stage.billboardsByID["graphic1"], false);
+      this.setAlpha(hiversaires.stage.billboardsByID["overlay"], 1.0);
+      this.setHidden(hiversaires.stage.billboardsByID["overlay"], false);
       this.templateUpdateNode(19, "0489", "act5");
 
       this.userProgress = 5;
@@ -1245,22 +1243,22 @@ class Dozenal {
         this.userActionStorage[12] == "1" &&
         this.userActionStorage[21] == "1"
       ) {
-        this.setAlpha(hiversaires.stage.billboardsByID["graphic1"], 1.0);
-        this.setHidden(hiversaires.stage.billboardsByID["graphic1"], false);
+        this.setAlpha(hiversaires.stage.billboardsByID["overlay"], 1.0);
+        this.setHidden(hiversaires.stage.billboardsByID["overlay"], false);
         this.templateUpdateNode(19, "0536", "act5");
       } else if (
         this.userActionStorage[12] == "1" &&
         this.userActionStorage[21] == "0"
       ) {
-        this.setAlpha(hiversaires.stage.billboardsByID["graphic1"], 1.0);
-        this.setHidden(hiversaires.stage.billboardsByID["graphic1"], false);
+        this.setAlpha(hiversaires.stage.billboardsByID["overlay"], 1.0);
+        this.setHidden(hiversaires.stage.billboardsByID["overlay"], false);
         this.templateUpdateNode(19, "0542", "act5");
       } else if (
         this.userActionStorage[12] == "0" &&
         this.userActionStorage[21] == "1"
       ) {
-        this.setAlpha(hiversaires.stage.billboardsByID["graphic1"], 1.0);
-        this.setHidden(hiversaires.stage.billboardsByID["graphic1"], false);
+        this.setAlpha(hiversaires.stage.billboardsByID["overlay"], 1.0);
+        this.setHidden(hiversaires.stage.billboardsByID["overlay"], false);
         this.templateUpdateNode(19, "0541", "act5");
       }
 
@@ -1273,7 +1271,7 @@ class Dozenal {
   templateUpdateNode(node, img, act) {
     if (this.userNode == node && this.userAction == act) {
       this.setImage(
-        hiversaires.stage.billboardsByID["graphic1"],
+        hiversaires.stage.billboardsByID["overlay"],
         "node/node." + img + ".jpg"
       );
     }
@@ -1281,21 +1279,21 @@ class Dozenal {
     // Fadeins
 
     if (hiversaires.world.puzzlesByID[this.userActionId] == "sealTerminal") {
-      this.fadeIn(hiversaires.stage.billboardsByID["graphic1"], 0.2, 0.1);
+      this.fadeIn(hiversaires.stage.billboardsByID["overlay"], 0.2, 0.1);
     } else if (
       hiversaires.world.puzzlesByID[this.userActionId] == "audioTerminal"
     ) {
-      this.fadeIn(hiversaires.stage.billboardsByID["graphic1"], 0.3, 0.5);
+      this.fadeIn(hiversaires.stage.billboardsByID["overlay"], 0.3, 0.5);
     } else if (hiversaires.world.puzzlesByID[this.userActionId] == "sealDoor") {
-      this.fadeIn(hiversaires.stage.billboardsByID["graphic1"], 0.0, 1.0);
+      this.fadeIn(hiversaires.stage.billboardsByID["overlay"], 0.0, 1.0);
     } else if (
       hiversaires.world.puzzlesByID[this.userActionId] == "progressTerminal"
     ) {
-      this.fadeIn(hiversaires.stage.billboardsByID["graphic1"], 0.3, 0.5);
+      this.fadeIn(hiversaires.stage.billboardsByID["overlay"], 0.3, 0.5);
     } else if (this.userActionId == 28) {
-      this.fadeIn(hiversaires.stage.billboardsByID["graphic1"], 0.5, 1);
+      this.fadeIn(hiversaires.stage.billboardsByID["overlay"], 0.5, 1);
     } else {
-      this.fadeIn(hiversaires.stage.billboardsByID["graphic1"], 0, 0.0);
+      this.fadeIn(hiversaires.stage.billboardsByID["overlay"], 0, 0.0);
     }
   }
 
@@ -1369,13 +1367,13 @@ class Dozenal {
 
     if (nodeIllusion > 0 && this.userProgress > 4) {
       this.setImage(
-        hiversaires.stage.billboardsByID["graphic1"],
+        hiversaires.stage.billboardsByID["overlay"],
         "node/node.0" + nodeIllusion + ".jpg"
       );
-      this.setAlpha(hiversaires.stage.billboardsByID["graphic1"], 1);
-      this.setHidden(hiversaires.stage.billboardsByID["graphic1"], false);
+      this.setAlpha(hiversaires.stage.billboardsByID["overlay"], 1);
+      this.setHidden(hiversaires.stage.billboardsByID["overlay"], false);
 
-      this.fadeOut(hiversaires.stage.billboardsByID["graphic1"], 1, 0.5);
+      this.fadeOut(hiversaires.stage.billboardsByID["overlay"], 1, 0.5);
 
       this.userActionStorage[nodeIllusionAction] = "1";
 
@@ -1623,33 +1621,33 @@ class Dozenal {
 
   menuHome() {
     this.setImage(
-      hiversaires.stage.billboardsByID["graphic2"],
+      hiversaires.stage.billboardsByID["menu2"],
       "menu/menu.black.jpg"
     );
-    this.setAlpha(hiversaires.stage.billboardsByID["graphic2"], 1.0);
-    this.setHidden(hiversaires.stage.billboardsByID["graphic2"], false);
+    this.setAlpha(hiversaires.stage.billboardsByID["menu2"], 1.0);
+    this.setHidden(hiversaires.stage.billboardsByID["menu2"], false);
 
     this.setImage(
-      hiversaires.stage.billboardsByID["graphic3"],
+      hiversaires.stage.billboardsByID["menu3"],
       "menu/menu.logo.png"
     );
-    this.setAlpha(hiversaires.stage.billboardsByID["graphic3"], 1.0);
-    this.setHidden(hiversaires.stage.billboardsByID["graphic3"], false);
+    this.setAlpha(hiversaires.stage.billboardsByID["menu3"], 1.0);
+    this.setHidden(hiversaires.stage.billboardsByID["menu3"], false);
 
     this.setImage(
-      hiversaires.stage.billboardsByID["graphic4"],
+      hiversaires.stage.billboardsByID["menu4"],
       "menu/menu.controls.svg"
     );
-    this.setAlpha(hiversaires.stage.billboardsByID["graphic4"], 1.0);
-    this.setHidden(hiversaires.stage.billboardsByID["graphic4"], false);
+    this.setAlpha(hiversaires.stage.billboardsByID["menu4"], 1.0);
+    this.setHidden(hiversaires.stage.billboardsByID["menu4"], false);
 
     this.setHidden(hiversaires.stage.billboardsByID["interfaceSeal1"], true);
     this.setHidden(hiversaires.stage.billboardsByID["interfaceSeal2"], true);
     this.setHidden(hiversaires.stage.billboardsByID["interfaceFuse1"], true);
 
-    this.fadeOut(hiversaires.stage.billboardsByID["graphic2"], 0, 2.0);
-    this.fadeOut(hiversaires.stage.billboardsByID["graphic3"], 3, 2.0);
-    this.fadeOut(hiversaires.stage.billboardsByID["graphic4"], 8, 1.0);
+    this.fadeOut(hiversaires.stage.billboardsByID["menu2"], 0, 2.0);
+    this.fadeOut(hiversaires.stage.billboardsByID["menu3"], 3, 2.0);
+    this.fadeOut(hiversaires.stage.billboardsByID["menu4"], 8, 1.0);
 
     hiversaires.music.volume = 1; // Music
   }

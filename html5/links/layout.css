@@ -1,9 +1,10 @@
-billboard#graphic1,
-billboard#graphic2,
-billboard#graphic3,
-billboard#graphic4,
-billboard#graphic5,
-billboard#graphic6 {
+billboard#overlay,
+billboard#menu1,
+billboard#menu2,
+billboard#menu3,
+billboard#menu4,
+billboard#menu5,
+billboard#menu6 {
   left: 0;
   top: 0;
   width: 100%;
