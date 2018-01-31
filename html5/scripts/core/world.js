@@ -222,29 +222,24 @@ class World {
   }
 }
 
-const Chapter = {
-  act1: "act1",
-  act2: "act2",
-  act3: "act3",
-  act4: "act4",
-  act5: "act5",
-  credit: "credit"
-};
+class Chapter {}
+setEnumValues(Chapter, ["act1", "act2", "act3", "act4", "act5", "credit"]);
 
-const Zone = {
-  antechannel: "antechannel",
-  capsule: "capsule",
-  circular: "circular",
-  entente: "entente",
-  forest: "forest",
-  metamondst: "metamondst",
-  nataniev: "nataniev",
-  rainre: "rainre",
-  stones: "stones",
-  studio: "studio"
-};
+class Zone {}
+setEnumValues(Zone, [
+  "antechannel",
+  "capsule",
+  "circular",
+  "entente",
+  "forest",
+  "metamondst",
+  "nataniev",
+  "rainre",
+  "stones",
+  "studio"
+]);
 
-const recordsByChapter = function() {
+const recordsByChapter = (function() {
   let recordsByChapter = {};
   recordsByChapter[Chapter.act1] = "music_act1";
   recordsByChapter[Chapter.act2] = "music_act2";
@@ -253,9 +248,9 @@ const recordsByChapter = function() {
   recordsByChapter[Chapter.act5] = "music_act5";
   recordsByChapter[Chapter.credit] = "music_credit";
   return recordsByChapter;
-}();
+})();
 
-const ambienceByZone = function() {
+const ambienceByZone = (function() {
   let ambienceByZone = {};
   ambienceByZone[Zone.antechannel] = "ambient_antechannel";
   ambienceByZone[Zone.capsule] = "ambient_capsule";
@@ -268,4 +263,4 @@ const ambienceByZone = function() {
   ambienceByZone[Zone.stones] = "ambient_stones";
   ambienceByZone[Zone.studio] = "ambient_studio";
   return ambienceByZone;
-}();
+})();
