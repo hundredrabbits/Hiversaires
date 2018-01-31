@@ -462,14 +462,11 @@ class Dozenal {
     this.prefPositioning();
     this.templateVignette();
 
-    let now = Date.now();
-    let currentHours = now.getHours();
-    let currentMinutes = now.getMinutes();
+    const now = new Date(Date.now());
+    const currentHours = now.getHours();
+    const currentMinutes = now.getMinutes();
 
-    if (
-      (parseInt(currentHours) == 15 && parseInt(currentMinutes) == 7) ||
-      this.userNodeId == 143
-    ) {
+    if ((currentHours == 15 && currentMinutes == 7) || this.userNodeId == 143) {
       this.puzzleState[54] = 1;
       this.templateUpdateDoorknob(142, 143, this.trigger("action2"));
     } else {
