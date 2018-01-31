@@ -5,7 +5,6 @@ class Hiversaires {
 
     this.artBook = new ArtBook();
     this.game = new Game();
-    this.world = new World();
     this.music = new Music();
     this.stage = new Stage(this.element);
     this.walkthrough = new Walkthrough();

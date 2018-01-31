@@ -49,7 +49,7 @@ class Dozenal {
   }
 
   get forwardSubject() {
-    return hiversaires.world.nodesByID[this.userNodeId][this.userOrientation];
+    return nodesByID[this.userNodeId][this.userOrientation];
   }
 
   setImage(subject, url) {
@@ -116,7 +116,7 @@ class Dozenal {
     }
 
     hiversaires.music.setAmbience(
-      ambienceByZone[hiversaires.world.nodesByID[this.userNodeId][4]]
+      ambienceByZone[nodesByID[this.userNodeId][4]]
     );
   }
 
@@ -229,13 +229,13 @@ class Dozenal {
       this.templateUpdateStudioTerminal();
     }
 
-    if (hiversaires.world.puzzlesByID[this.userActionId] == "audioTerminal") {
+    if (puzzlesByID[this.userActionId] == "audioTerminal") {
       this.userActionStorage[this.userActionId] =
         parseInt(this.userActionStorage[this.userActionId]) > 1 ? "0" : "1";
       this.templateAudioUpdate();
     }
 
-    if (hiversaires.world.puzzlesByID[this.userActionId] == "killTerminal") {
+    if (puzzlesByID[this.userActionId] == "killTerminal") {
       this.templateKillUpdate();
     }
   }
@@ -399,42 +399,40 @@ class Dozenal {
   actionTemplate() {
     this.actionReset();
 
-    if (hiversaires.world.puzzlesByID[this.userActionId] == "clockTerminal") {
+    if (puzzlesByID[this.userActionId] == "clockTerminal") {
       this.templateClockTerminal();
     }
-    if (hiversaires.world.puzzlesByID[this.userActionId] == "sealTerminal") {
+    if (puzzlesByID[this.userActionId] == "sealTerminal") {
       this.templateSealTerminal();
     }
-    if (hiversaires.world.puzzlesByID[this.userActionId] == "energyTerminal") {
+    if (puzzlesByID[this.userActionId] == "energyTerminal") {
       this.templateEnergyTerminal();
     }
-    if (hiversaires.world.puzzlesByID[this.userActionId] == "sealDoor") {
+    if (puzzlesByID[this.userActionId] == "sealDoor") {
       this.templateSealDoor();
     }
-    if (hiversaires.world.puzzlesByID[this.userActionId] == "energyDoor") {
+    if (puzzlesByID[this.userActionId] == "energyDoor") {
       this.templateEnergyDoor();
     }
-    if (hiversaires.world.puzzlesByID[this.userActionId] == "clockDoor") {
+    if (puzzlesByID[this.userActionId] == "clockDoor") {
       this.templateClockDoor();
     }
-    if (
-      hiversaires.world.puzzlesByID[this.userActionId] == "progressTerminal"
-    ) {
+    if (puzzlesByID[this.userActionId] == "progressTerminal") {
       this.templateProgressTerminal();
     }
-    if (hiversaires.world.puzzlesByID[this.userActionId] == "audioTerminal") {
+    if (puzzlesByID[this.userActionId] == "audioTerminal") {
       this.templateAudioTerminal();
     }
-    if (hiversaires.world.puzzlesByID[this.userActionId] == "killTerminal") {
+    if (puzzlesByID[this.userActionId] == "killTerminal") {
       this.templateKillTerminal();
     }
-    if (hiversaires.world.puzzlesByID[this.userActionId] == "endgameDoor") {
+    if (puzzlesByID[this.userActionId] == "endgameDoor") {
       this.templateEndgameDoor();
     }
-    if (hiversaires.world.puzzlesByID[this.userActionId] == "endgameCredit") {
+    if (puzzlesByID[this.userActionId] == "endgameCredit") {
       this.templateEndgameCredit();
     }
-    if (hiversaires.world.puzzlesByID[this.userActionId] == "timeDoor") {
+    if (puzzlesByID[this.userActionId] == "timeDoor") {
       this.templateTimeDoor();
     }
 
@@ -1278,17 +1276,13 @@ class Dozenal {
 
     // Fadeins
 
-    if (hiversaires.world.puzzlesByID[this.userActionId] == "sealTerminal") {
+    if (puzzlesByID[this.userActionId] == "sealTerminal") {
       this.fadeIn(hiversaires.stage.billboardsByID["overlay"], 0.2, 0.1);
-    } else if (
-      hiversaires.world.puzzlesByID[this.userActionId] == "audioTerminal"
-    ) {
+    } else if (puzzlesByID[this.userActionId] == "audioTerminal") {
       this.fadeIn(hiversaires.stage.billboardsByID["overlay"], 0.3, 0.5);
-    } else if (hiversaires.world.puzzlesByID[this.userActionId] == "sealDoor") {
+    } else if (puzzlesByID[this.userActionId] == "sealDoor") {
       this.fadeIn(hiversaires.stage.billboardsByID["overlay"], 0.0, 1.0);
-    } else if (
-      hiversaires.world.puzzlesByID[this.userActionId] == "progressTerminal"
-    ) {
+    } else if (puzzlesByID[this.userActionId] == "progressTerminal") {
       this.fadeIn(hiversaires.stage.billboardsByID["overlay"], 0.3, 0.5);
     } else if (this.userActionId == 28) {
       this.fadeIn(hiversaires.stage.billboardsByID["overlay"], 0.5, 1);
