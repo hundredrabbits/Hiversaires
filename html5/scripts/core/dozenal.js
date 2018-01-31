@@ -1195,42 +1195,42 @@ class Dozenal {
     let nodeIllusionAction;
 
     if (Math.random() * 10 > 7) {
-      if (this.userNodeId == 15 && this.userOrientation == 0) {
-        nodeIllusion = 554;
-        nodeIllusionAction = 17;
-      } // studio
-      if (this.userNodeId == 43 && this.userOrientation == 2) {
-        nodeIllusion = 555;
-        nodeIllusionAction = 22;
-      } // stones
-      if (this.userNodeId == 73 && this.userOrientation == 2) {
-        nodeIllusion = 556;
-        nodeIllusionAction = 29;
-      } // metamo
-      if (this.userNodeId == 58 && this.userOrientation == 1) {
-        nodeIllusion = 557;
-        nodeIllusionAction = 32;
-      } // antech
-      if (this.userNodeId == 114 && this.userOrientation == 2) {
-        nodeIllusion = 558;
-        nodeIllusionAction = 48;
-      } // natani
-      if (this.userNodeId == 91 && this.userOrientation == 0) {
-        nodeIllusion = 559;
-        nodeIllusionAction = 49;
-      } // entent
-      if (this.userNodeId == 88 && this.userOrientation == 3) {
-        nodeIllusion = 560;
-        nodeIllusionAction = 50;
-      } // capsul
-      if (this.userNodeId == 33 && this.userOrientation == 2) {
-        nodeIllusion = 561;
-        nodeIllusionAction = 51;
-      } // circle
       if (this.userNodeId == 9 && this.userOrientation == 1) {
         nodeIllusion = 562;
         nodeIllusionAction = 52;
       } // forest
+      if (this.userNodeId == 15 && this.userOrientation == 0) {
+        nodeIllusion = 554;
+        nodeIllusionAction = 17;
+      } // studio
+      if (this.userNodeId == 33 && this.userOrientation == 2) {
+        nodeIllusion = 561;
+        nodeIllusionAction = 51;
+      } // circle
+      if (this.userNodeId == 43 && this.userOrientation == 2) {
+        nodeIllusion = 555;
+        nodeIllusionAction = 22;
+      } // stones
+      if (this.userNodeId == 58 && this.userOrientation == 1) {
+        nodeIllusion = 557;
+        nodeIllusionAction = 32;
+      } // antech
+      if (this.userNodeId == 73 && this.userOrientation == 2) {
+        nodeIllusion = 556;
+        nodeIllusionAction = 29;
+      } // metamo
+      if (this.userNodeId == 88 && this.userOrientation == 3) {
+        nodeIllusion = 560;
+        nodeIllusionAction = 50;
+      } // capsul
+      if (this.userNodeId == 91 && this.userOrientation == 0) {
+        nodeIllusion = 559;
+        nodeIllusionAction = 49;
+      } // entent
+      if (this.userNodeId == 114 && this.userOrientation == 2) {
+        nodeIllusion = 558;
+        nodeIllusionAction = 48;
+      } // natani
     }
 
     if (nodeIllusion > 0 && this.userChapter == Chapter.act5) {
