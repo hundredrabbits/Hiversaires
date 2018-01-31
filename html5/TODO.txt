@@ -1,9 +1,10 @@
+Unravel actions
+Carefully migrate node_old references
+
 Derive symbol names from comments in seal door code and git log
     Then use them to give more context to other data and code
 
-Isolate puzzle state from nodes
-    Node image changes should be renamed to the original node image, plus some modifier
-    Templates should go somewhere else
+Templates should go somewhere else
 
 Break the dozenal code into sensible chunks
 

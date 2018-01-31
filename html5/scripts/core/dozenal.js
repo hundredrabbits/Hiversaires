@@ -1,6 +1,5 @@
 class Dozenal {
   constructor() {
-    
     // User Storage
 
     this.puzzleState;
@@ -107,11 +106,7 @@ class Dozenal {
 
     this.setImage(
       this.billboard("viewMain"),
-      "node/node." +
-        (this.userNodeId * 4 + this.userOrientation)
-          .toString()
-          .padStart(4, "0") +
-        ".jpg"
+      "node/" + this.userNodeId + "." + this.userOrientation + ".jpg"
     );
 
     this.illusionCheck();
@@ -1150,7 +1145,7 @@ class Dozenal {
 
   templateUpdateNode(node, img, act) {
     if (this.userNodeId == node && this.userAction == act) {
-      this.setImage(this.billboard("overlay"), "node/node." + img + ".jpg");
+      this.setImage(this.billboard("overlay"), "node_old/node." + img + ".jpg");
     }
 
     // Fadeins
@@ -1190,78 +1185,66 @@ class Dozenal {
   illusionCheck() {
     this.prefPositioning();
 
-    let nodeIllusion = 0;
     let nodeIllusionAction;
 
     if (Math.random() * 10 > 7) {
-
       // forest
       if (this.userNodeId == 9 && this.userOrientation == 1) {
-        nodeIllusion = 562;
         nodeIllusionAction = 52;
       }
 
       // studio
       if (this.userNodeId == 15 && this.userOrientation == 0) {
-        nodeIllusion = 554;
         nodeIllusionAction = 17;
       }
 
       // circle
       if (this.userNodeId == 33 && this.userOrientation == 2) {
-        nodeIllusion = 561;
         nodeIllusionAction = 51;
       }
 
       // stones
       if (this.userNodeId == 43 && this.userOrientation == 2) {
-        nodeIllusion = 555;
         nodeIllusionAction = 22;
       }
 
       // antechannel
       if (this.userNodeId == 58 && this.userOrientation == 1) {
-        nodeIllusion = 557;
         nodeIllusionAction = 32;
       }
 
       // metamondst
       if (this.userNodeId == 73 && this.userOrientation == 2) {
-        nodeIllusion = 556;
         nodeIllusionAction = 29;
       }
 
       // capsule
       if (this.userNodeId == 88 && this.userOrientation == 3) {
-        nodeIllusion = 560;
         nodeIllusionAction = 50;
       }
 
       // entente
       if (this.userNodeId == 91 && this.userOrientation == 0) {
-        nodeIllusion = 559;
         nodeIllusionAction = 49;
       }
 
       // nataniev
       if (this.userNodeId == 114 && this.userOrientation == 2) {
-        nodeIllusion = 558;
         nodeIllusionAction = 48;
       }
     }
 
-    if (nodeIllusion > 0 && this.userChapter == Chapter.act5) {
-      this.setImage(
-        this.billboard("overlay"),
-        "node/node.0" + nodeIllusion + ".jpg"
-      );
-      this.setAlpha(this.billboard("overlay"), 1);
-      this.setHidden(this.billboard("overlay"), false);
+    this.setImage(
+      this.billboard("overlay"),
+      "node/" + this.userNodeId + "." + this.userOrientation + ".illusion.jpg"
+    );
+    this.setAlpha(this.billboard("overlay"), 1);
+    this.setHidden(this.billboard("overlay"), false);
 
-      this.fadeOut(this.billboard("overlay"), 1, 0.5);
+    this.fadeOut(this.billboard("overlay"), 1, 0.5);
 
+    if (this.userChapter == Chapter.act5) {
       this.puzzleState[nodeIllusionAction] = 1;
-
       this.illusionInterface();
     }
   }
