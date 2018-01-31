@@ -10,7 +10,7 @@ class Dozenal {
     this.userSettings;
     this.userNodeId = 1;
     this.userOrientation = 0;
-    this.userProgress = 1;
+    this.userChapter = Chapter.act1;
     this.userEnergy = 0;
 
     // User Temp
@@ -79,26 +79,7 @@ class Dozenal {
   }
 
   updateMusic() {
-    let record;
-    switch (this.userProgress) {
-      case 1:
-        record = Records.act1;
-        break;
-      case 2:
-        record = Records.act2;
-        break;
-      case 3:
-        record = Records.act3;
-        break;
-      case 4:
-        record = Records.act4;
-        break;
-      case 5:
-        record = Records.act5;
-        break;
-    }
-
-    hiversaires.music.setRecord(record);
+    hiversaires.music.setRecord(recordsByChapter[this.userChapter]);
   }
 
   // ====================
@@ -694,7 +675,7 @@ class Dozenal {
         );
         this.templateUpdateNode(46, "0486", "act15");
         this.templateUpdateNode(85, "0485", "act15");
-        this.userProgress = 2;
+        this.userChapter = Chapter.act2;
         this.prefSave();
       }
     } else if (
@@ -710,7 +691,7 @@ class Dozenal {
         );
         this.templateUpdateNode(11, "0487", "act25");
         this.templateUpdateNode(48, "0488", "act25");
-        this.userProgress = 3;
+        this.userChapter = Chapter.act3;
         this.prefSave();
       }
     } else if (
@@ -726,7 +707,7 @@ class Dozenal {
         );
         this.templateUpdateNode(46, "0486", "act15");
         this.templateUpdateNode(85, "0485", "act15");
-        this.userProgress = 4;
+        this.userChapter = Chapter.act4;
         this.prefSave();
       }
     } else if (
@@ -949,19 +930,19 @@ class Dozenal {
     this.templateVignette();
     this.prefSave();
 
-    if (this.userProgress == 1) {
+    if (this.userChapter == Chapter.act1) {
       this.templateUpdateNode(23, "0545", "act16");
     }
-    if (this.userProgress == 2) {
+    if (this.userChapter == Chapter.act2) {
       this.templateUpdateNode(23, "0546", "act16");
     }
-    if (this.userProgress == 3) {
+    if (this.userChapter == Chapter.act3) {
       this.templateUpdateNode(23, "0547", "act16");
     }
-    if (this.userProgress == 4) {
+    if (this.userChapter == Chapter.act4) {
       this.templateUpdateNode(23, "0548", "act16");
     }
-    if (this.userProgress == 5) {
+    if (this.userChapter == Chapter.act5) {
       this.templateUpdateNode(23, "0549", "act16");
     }
   }
@@ -1168,7 +1149,8 @@ class Dozenal {
   templateEndgameCredit() {
     this.prefPositioning();
 
-    hiversaires.music.setRecord(Records.credit);
+    this.userChapter = Chapter.credit;
+    this.updateMusic();
 
     this.setHidden(hiversaires.stage.triggersByID["moveForward"], true);
     this.setHidden(hiversaires.stage.triggersByID["moveLeft"], true);
@@ -1253,7 +1235,7 @@ class Dozenal {
       this.setHidden(hiversaires.stage.billboardsByID["overlay"], false);
       this.templateUpdateNode(19, "0489", "act5");
 
-      this.userProgress = 5;
+      this.userChapter = Chapter.act5;
       this.updateMusic();
     } else {
       if (
@@ -1279,9 +1261,9 @@ class Dozenal {
         this.templateUpdateNode(19, "0541", "act5");
       }
 
-      if (this.userProgress == 5) {
-        this.userProgress = 4;
-        this.updateMusic(); // Right?
+      if (this.userChapter == Chapter.act5) {
+        this.userChapter = Chapter.act4;
+        this.updateMusic();
       }
     }
   }
@@ -1383,7 +1365,7 @@ class Dozenal {
       } // forest
     }
 
-    if (nodeIllusion > 0 && this.userProgress > 4) {
+    if (nodeIllusion > 0 && this.userChapter == Chapter.act5) {
       this.setImage(
         hiversaires.stage.billboardsByID["overlay"],
         "node/node.0" + nodeIllusion + ".jpg"
@@ -1678,7 +1660,7 @@ class Dozenal {
       userSettings: {
         userNode: this.userNodeId,
         userOrientation: this.userOrientation,
-        userProgress: this.userProgress,
+        userChapter: this.userChapter,
         userEnergy: this.userEnergy
       },
       userActionStorage: this.userActionStorage
@@ -1708,7 +1690,7 @@ class Dozenal {
       let userSettings = saveObject.userSettings;
       this.userNodeId = userSettings.userNode;
       this.userOrientation = userSettings.userOrientation;
-      this.userProgress = userSettings.userProgress;
+      this.userChapter = userSettings.userChapter;
       this.userEnergy = userSettings.userEnergy;
 
       this.updateMusic();
@@ -1747,7 +1729,7 @@ class Dozenal {
 
       this.userNodeId = 1;
       this.userOrientation = 0;
-      this.userProgress = 1;
+      this.userChapter = Chapter.act1;
       this.userEnergy = 0;
 
       this.updateMusic();

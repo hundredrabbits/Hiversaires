@@ -221,3 +221,51 @@ class World {
     }
   }
 }
+
+const Chapter = {
+  act1: "act1",
+  act2: "act2",
+  act3: "act3",
+  act4: "act4",
+  act5: "act5",
+  credit: "credit"
+};
+
+const Zone = {
+  antechannel: "antechannel",
+  capsule: "capsule",
+  circular: "circular",
+  entente: "entente",
+  forest: "forest",
+  metamondst: "metamondst",
+  nataniev: "nataniev",
+  rainre: "rainre",
+  stones: "stones",
+  studio: "studio"
+};
+
+const recordsByChapter = function() {
+  let recordsByChapter = {};
+  recordsByChapter[Chapter.act1] = "music_act1";
+  recordsByChapter[Chapter.act2] = "music_act2";
+  recordsByChapter[Chapter.act3] = "music_act3";
+  recordsByChapter[Chapter.act4] = "music_act4";
+  recordsByChapter[Chapter.act5] = "music_act5";
+  recordsByChapter[Chapter.credit] = "music_credit";
+  return recordsByChapter;
+}();
+
+const ambienceByZone = function() {
+  let ambienceByZone = {};
+  ambienceByZone[Zone.antechannel] = "ambient_antechannel";
+  ambienceByZone[Zone.capsule] = "ambient_capsule";
+  ambienceByZone[Zone.circular] = "ambient_circular";
+  ambienceByZone[Zone.entente] = null;
+  ambienceByZone[Zone.forest] = "ambient_forest";
+  ambienceByZone[Zone.metamondst] = "ambient_metamondst";
+  ambienceByZone[Zone.nataniev] = "ambient_nataniev";
+  ambienceByZone[Zone.rainre] = "ambient_rainre";
+  ambienceByZone[Zone.stones] = "ambient_stones";
+  ambienceByZone[Zone.studio] = "ambient_studio";
+  return ambienceByZone;
+}();
