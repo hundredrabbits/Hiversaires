@@ -1,12 +1,9 @@
 class Dozenal {
   constructor() {
-    // Puzzle
-    this.puzzleTerminal = 0;
-
+    
     // User Storage
 
     this.puzzleState;
-    this.userSettings;
     this.userNodeId = 1;
     this.userOrientation = 0;
     this.userChapter = Chapter.act1;
@@ -743,34 +740,36 @@ class Dozenal {
 
     // Templates
 
+    let puzzleTerminal = null;
+
     if (this.userAction == "act3") {
-      this.puzzleTerminal = 2;
+      puzzleTerminal = 2;
     }
     if (this.userAction == "act6") {
-      this.puzzleTerminal = 37;
+      puzzleTerminal = 37;
     }
 
     if (this.userAction == "act11") {
-      this.puzzleTerminal = 10;
+      puzzleTerminal = 10;
     }
     if (this.userAction == "act19") {
-      this.puzzleTerminal = 18;
+      puzzleTerminal = 18;
     }
     if (this.userAction == "act26") {
-      this.puzzleTerminal = 27;
+      puzzleTerminal = 27;
     }
 
     if (this.userAction == "act28") {
-      this.puzzleTerminal = 5;
+      puzzleTerminal = 5;
     }
     if (this.userAction == "act30") {
-      this.puzzleTerminal = 5;
+      puzzleTerminal = 5;
     }
     if (this.userAction == "act33") {
-      this.puzzleTerminal = 47;
-    } // Antech fuse for Capsule door
+      puzzleTerminal = 47;
+    } // Antechannel fuse for Capsule door
 
-    if (this.puzzleState[this.puzzleTerminal] > 0) {
+    if (puzzleTerminal != null && this.puzzleState[puzzleTerminal] > 0) {
       this.setCurrentAction("action2");
 
       this.templateUpdateNode(1, "0531", "act28");
@@ -1195,42 +1194,60 @@ class Dozenal {
     let nodeIllusionAction;
 
     if (Math.random() * 10 > 7) {
+
+      // forest
       if (this.userNodeId == 9 && this.userOrientation == 1) {
         nodeIllusion = 562;
         nodeIllusionAction = 52;
-      } // forest
+      }
+
+      // studio
       if (this.userNodeId == 15 && this.userOrientation == 0) {
         nodeIllusion = 554;
         nodeIllusionAction = 17;
-      } // studio
+      }
+
+      // circle
       if (this.userNodeId == 33 && this.userOrientation == 2) {
         nodeIllusion = 561;
         nodeIllusionAction = 51;
-      } // circle
+      }
+
+      // stones
       if (this.userNodeId == 43 && this.userOrientation == 2) {
         nodeIllusion = 555;
         nodeIllusionAction = 22;
-      } // stones
+      }
+
+      // antechannel
       if (this.userNodeId == 58 && this.userOrientation == 1) {
         nodeIllusion = 557;
         nodeIllusionAction = 32;
-      } // antech
+      }
+
+      // metamondst
       if (this.userNodeId == 73 && this.userOrientation == 2) {
         nodeIllusion = 556;
         nodeIllusionAction = 29;
-      } // metamo
+      }
+
+      // capsule
       if (this.userNodeId == 88 && this.userOrientation == 3) {
         nodeIllusion = 560;
         nodeIllusionAction = 50;
-      } // capsul
+      }
+
+      // entente
       if (this.userNodeId == 91 && this.userOrientation == 0) {
         nodeIllusion = 559;
         nodeIllusionAction = 49;
-      } // entent
+      }
+
+      // nataniev
       if (this.userNodeId == 114 && this.userOrientation == 2) {
         nodeIllusion = 558;
         nodeIllusionAction = 48;
-      } // natani
+      }
     }
 
     if (nodeIllusion > 0 && this.userChapter == Chapter.act5) {

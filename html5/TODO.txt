@@ -1,4 +1,4 @@
-Derive symbol names from comments in seal door code
+Derive symbol names from comments in seal door code and git log
     Then use them to give more context to other data and code
 
 Isolate puzzle state from nodes
@@ -16,3 +16,6 @@ Bug someone about using import/export es6 syntax
 
 NOTES
     templateKillUpdate works, but nothing causes its condition to be true
+
+The illusion image swap only applies to one location
+    Ask Devine about it
