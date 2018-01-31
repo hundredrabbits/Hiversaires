@@ -232,17 +232,18 @@ setEnumValues(PuzzleType, [
 ]);
 
 class Puzzle {
-  constructor(id, type) {
+  constructor(id, type, defaultState) {
     this.id = id;
     this.type = type;
+    this.defaultState = defaultState != null ? defaultState : 0;
   }
 }
 
 const puzzlesByID = (function() {
   let puzzlesByID = {};
 
-  function addPuzzle(id, type) {
-    puzzlesByID[id] = new Puzzle(id, type);
+  function addPuzzle(id, type, defaultState) {
+    puzzlesByID[id] = new Puzzle(id, type, defaultState);
   }
 
   addPuzzle(1, PuzzleType.clockTerminal);
@@ -263,11 +264,11 @@ const puzzlesByID = (function() {
   addPuzzle(16, PuzzleType.progressTerminal);
   addPuzzle(17, PuzzleType.illusion); // act17 studio Illusion
   addPuzzle(18, PuzzleType.energyTerminal);
-  addPuzzle(19, PuzzleType.energyDoor);
+  addPuzzle(19, PuzzleType.energyDoor, 13);
   addPuzzle(20, PuzzleType.sealTerminal);
   addPuzzle(21, PuzzleType.sealTerminal);
   addPuzzle(22, PuzzleType.illusion); // act22 stones Illusion
-  addPuzzle(23, PuzzleType.ententeTerminal);
+  addPuzzle(23, PuzzleType.ententeTerminal, 15);
   addPuzzle(24, PuzzleType.ententeTerminal);
   addPuzzle(25, PuzzleType.sealDoor);
   addPuzzle(26, PuzzleType.energyDoor);
@@ -281,15 +282,15 @@ const puzzlesByID = (function() {
 
   // Collectibles
 
-  addPuzzle(31, PuzzleType.energyTerminal);
+  addPuzzle(31, PuzzleType.energyTerminal, 1);
   addPuzzle(32, PuzzleType.illusion); // act32 antech Illusion
   addPuzzle(33, PuzzleType.energyDoor);
-  addPuzzle(34, PuzzleType.audioTerminal);
-  addPuzzle(35, PuzzleType.audioTerminal);
+  addPuzzle(34, PuzzleType.audioTerminal, 1);
+  addPuzzle(35, PuzzleType.audioTerminal, 1);
   addPuzzle(36, PuzzleType.energyTerminal);
   addPuzzle(37, PuzzleType.energyTerminal);
-  addPuzzle(38, PuzzleType.energyTerminal); // Entente Fuse
-  addPuzzle(39, PuzzleType.energyTerminal);
+  addPuzzle(38, PuzzleType.energyTerminal, 1); // Entente Fuse
+  addPuzzle(39, PuzzleType.energyTerminal, 1);
   addPuzzle(40, PuzzleType.endgameDoor);
   addPuzzle(41, PuzzleType.endgameCredit);
 

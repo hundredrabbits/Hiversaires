@@ -2,7 +2,7 @@ class Dozenal {
   constructor() {
     // Puzzle
     this.puzzleTerminal = 0;
-    
+
     // User Storage
 
     this.puzzleState;
@@ -215,30 +215,28 @@ class Dozenal {
   action1() {
     // Binary button
 
-    this.puzzleState[this.userActionId] = (
-      parseInt(this.puzzleState[this.userActionId]) + 1
-    ).toString();
+    this.puzzleState[this.userActionId]++;
 
     // Exceptions
 
     if (this.userAction == "act1") {
       this.puzzleState[this.userActionId] =
-        parseInt(this.puzzleState[this.userActionId]) > 2
-          ? "0"
+        this.puzzleState[this.userActionId] > 2
+          ? 0
           : this.puzzleState[this.userActionId];
       hiversaires.music.playEffect("action_EnergyActive");
       this.templateClockUpdate();
     }
     if (this.userAction == "act5") {
       this.puzzleState[this.userActionId] =
-        parseInt(this.puzzleState[this.userActionId]) > 1 ? "0" : "2";
+        this.puzzleState[this.userActionId] > 1 ? 0 : 2;
       hiversaires.music.playEffect("action_EnergyActive");
       this.templateUpdateStudioTerminal();
     }
 
     if (this.currentPuzzle.type == PuzzleType.audioTerminal) {
       this.puzzleState[this.userActionId] =
-        parseInt(this.puzzleState[this.userActionId]) > 1 ? "0" : "1";
+        this.puzzleState[this.userActionId] > 1 ? 0 : 1;
       this.templateAudioUpdate();
     }
 
@@ -272,7 +270,7 @@ class Dozenal {
       this.userNodeId = 13;
     } else if (this.userNodeId == 16) {
       this.userNodeId = 22;
-    } else if (this.userNodeId == 20 && parseInt(this.puzzleState[37]) > 0) {
+    } else if (this.userNodeId == 20 && this.puzzleState[37] > 0) {
       this.userNodeId = 116;
       this.userOrientation = 1;
     } else if (this.userNodeId == 23) {
@@ -289,8 +287,8 @@ class Dozenal {
       this.userOrientation = 0;
     } else if (
       this.userNodeId == 39 &&
-      this.puzzleState[5] == "2" &&
-      this.puzzleState[31] == "1"
+      this.puzzleState[5] == 2 &&
+      this.puzzleState[31] == 1
     ) {
       this.userNodeId = 34;
     } else if (this.userNodeId == 39) {
@@ -348,11 +346,11 @@ class Dozenal {
   action4() {
     // Fuse(energy) Action
 
-    if (this.puzzleState[this.userActionId] == "1") {
-      this.puzzleState[this.userActionId] = "0";
+    if (this.puzzleState[this.userActionId] == 1) {
+      this.puzzleState[this.userActionId] = 0;
       this.userEnergy += 1;
     } else if (this.userEnergy > 0) {
-      this.puzzleState[this.userActionId] = "1";
+      this.puzzleState[this.userActionId] = 1;
       this.userEnergy -= 1;
     } else {
       this.templateEnergyAlert();
@@ -364,13 +362,13 @@ class Dozenal {
   action5() {
     // Seal Action
 
-    if (this.puzzleState[this.userActionId] == "1" || this.sealCount() > 0) {
-      if (this.puzzleState[this.userActionId] != "1") {
+    if (this.puzzleState[this.userActionId] == 1 || this.sealCount() > 0) {
+      if (this.puzzleState[this.userActionId] != 1) {
         hiversaires.music.playEffect("action_SealActive");
-        this.puzzleState[this.userActionId] = "1";
+        this.puzzleState[this.userActionId] = 1;
       } else {
         hiversaires.music.playEffect("action_SealInactive");
-        this.puzzleState[this.userActionId] = "0";
+        this.puzzleState[this.userActionId] = 0;
       }
     } else {
       hiversaires.music.playEffect("action_EnergyStack");
@@ -472,7 +470,7 @@ class Dozenal {
       (parseInt(currentHours) == 15 && parseInt(currentMinutes) == 7) ||
       this.userNodeId == 143
     ) {
-      this.puzzleState[54] = "1";
+      this.puzzleState[54] = 1;
       this.templateUpdateDoorknob(142, 143, this.trigger("action2"));
     } else {
       console.log("Door locked, wait for time.");
@@ -495,7 +493,7 @@ class Dozenal {
   templateClockInterface() {
     this.setImage(
       this.billboard("interfaceDimclock"),
-      "interface/clock." + parseInt(this.puzzleState[1]) + ".svg"
+      "interface/clock." + this.puzzleState[1] + ".svg"
     );
     this.setHidden(this.billboard("interfaceDimclock"), false);
     this.setAlpha(this.billboard("interfaceDimclock"), 1);
@@ -521,28 +519,19 @@ class Dozenal {
     let doorUnlocked = false;
 
     if (this.userAction == "act7") {
-      if (
-        parseInt(this.puzzleState[1]) == 1 ||
-        parseInt(this.puzzleState[1]) == 2
-      ) {
+      if (this.puzzleState[1] == 1 || this.puzzleState[1] == 2) {
         doorUnlocked = true;
       }
     }
 
     if (this.userAction == "act8") {
-      if (
-        parseInt(this.puzzleState[1]) == 1 ||
-        parseInt(this.puzzleState[1]) == 0
-      ) {
+      if (this.puzzleState[1] == 1 || this.puzzleState[1] == 0) {
         doorUnlocked = true;
       }
     }
 
     if (doorUnlocked.userAction == "act9") {
-      if (
-        parseInt(this.puzzleState[1]) == 2 ||
-        parseInt(this.puzzleState[1]) == 0
-      ) {
+      if (this.puzzleState[1] == 2 || this.puzzleState[1] == 0) {
         doorUnlocked = true;
       }
     }
@@ -641,10 +630,7 @@ class Dozenal {
     hiversaires.music.playEffect("action_DoorInit");
     this.templateSealInterface();
 
-    if (
-      parseInt(this.puzzleState[4]) == 1 &&
-      parseInt(this.puzzleState[13]) == 1
-    ) {
+    if (this.puzzleState[4] == 1 && this.puzzleState[13] == 1) {
       // Act 1 : Forest + Rainre in Stones
       if (this.userNodeId == 46 || this.userNodeId == 85) {
         this.templateUpdateDoorknob(46, 85, this.trigger("action2"));
@@ -653,10 +639,7 @@ class Dozenal {
         this.userChapter = Chapter.act2;
         this.prefSave();
       }
-    } else if (
-      parseInt(this.puzzleState[20]) == 1 &&
-      parseInt(this.puzzleState[13]) == 1
-    ) {
+    } else if (this.puzzleState[20] == 1 && this.puzzleState[13] == 1) {
       // Act 2 : Metamondst + Rainre in Forest
       if (this.userNodeId == 11 || this.userNodeId == 48) {
         this.templateUpdateDoorknob(48, 11, this.trigger("action2"));
@@ -665,10 +648,7 @@ class Dozenal {
         this.userChapter = Chapter.act3;
         this.prefSave();
       }
-    } else if (
-      parseInt(this.puzzleState[21]) == 1 &&
-      parseInt(this.puzzleState[13]) == 1
-    ) {
+    } else if (this.puzzleState[21] == 1 && this.puzzleState[13] == 1) {
       // Act 3 : Forest + Rainre in Metamondst
       if (this.userNodeId == 46 || this.userNodeId == 85) {
         this.templateUpdateDoorknob(46, 85, this.trigger("action2"));
@@ -677,10 +657,7 @@ class Dozenal {
         this.userChapter = Chapter.act4;
         this.prefSave();
       }
-    } else if (
-      parseInt(this.puzzleState[21]) == 1 &&
-      parseInt(this.puzzleState[12]) == 1
-    ) {
+    } else if (this.puzzleState[21] == 1 && this.puzzleState[12] == 1) {
       // Act 4 : Antechannel + Stones in Studio
       if (this.userNodeId == 19) {
         this.setCurrentAction("action1");
@@ -703,7 +680,7 @@ class Dozenal {
 
     this.fadeOut(this.billboard("overlay"), 0, 0.5);
 
-    if (parseInt(this.puzzleState[this.userActionId]) != 1) {
+    if (this.puzzleState[this.userActionId] != 1) {
       return;
     }
 
@@ -796,7 +773,7 @@ class Dozenal {
       this.puzzleTerminal = 47;
     } // Antech fuse for Capsule door
 
-    if (parseInt(this.puzzleState[this.puzzleTerminal]) > 0) {
+    if (this.puzzleState[this.puzzleTerminal] > 0) {
       this.setCurrentAction("action2");
 
       this.templateUpdateNode(1, "0531", "act28");
@@ -814,7 +791,7 @@ class Dozenal {
 
       // Nether Door
 
-      if (this.puzzleState[5] == "2" && this.puzzleState[31] == "1") {
+      if (this.puzzleState[5] == 2 && this.puzzleState[31] == 1) {
         // Replace 10 by actual act
         this.templateUpdateNode(39, "0491", "act11");
       } else {
@@ -832,7 +809,7 @@ class Dozenal {
       this.setCurrentAction("action4");
     }
 
-    if (parseInt(this.puzzleState[this.userActionId]) == 1) {
+    if (this.puzzleState[this.userActionId] == 1) {
       this.templateUpdateNode(18, "0516", "act2");
       this.templateUpdateNode(18, "0529", "act31");
       this.templateUpdateNode(13, "0517", "act2");
@@ -865,7 +842,7 @@ class Dozenal {
     // Extras
 
     if (this.userAction == "act37") {
-      this.puzzleState[37] = "1";
+      this.puzzleState[37] = 1;
     }
   }
 
@@ -909,7 +886,7 @@ class Dozenal {
   templateAudioUpdate() {
     this.templateAudioInterface();
 
-    if (this.puzzleState[this.userActionId] == "1") {
+    if (this.puzzleState[this.userActionId] == 1) {
       this.setHidden(this.billboard("overlay"), false);
       this.setAlpha(this.billboard("overlay"), 1.0);
       this.templateUpdateNode(21, "0543", "act35");
@@ -925,7 +902,7 @@ class Dozenal {
   templateAudioInterface() {
     this.setImage(
       this.billboard("interfaceAudio"),
-      "interface/music." + (this.puzzleState[35] == "1" ? "on" : "off") + ".svg"
+      "interface/music." + (this.puzzleState[35] == 1 ? "on" : "off") + ".svg"
     );
 
     this.setHidden(this.billboard("interfaceAudio"), false);
@@ -939,11 +916,11 @@ class Dozenal {
 
     let targetGraphic = "";
 
-    if (parseInt(this.puzzleState[23]) > 17) {
+    if (this.puzzleState[23] > 17) {
       targetGraphic = "Left";
-    } else if (parseInt(this.puzzleState[23]) < 17) {
+    } else if (this.puzzleState[23] < 17) {
       targetGraphic = "Right";
-    } else if (parseInt(this.puzzleState[23]) == 17) {
+    } else if (this.puzzleState[23] == 17) {
       targetGraphic = "Right";
     }
 
@@ -959,11 +936,11 @@ class Dozenal {
 
     let targetGraphic = "";
 
-    if (parseInt(this.puzzleState[24]) > 17) {
+    if (this.puzzleState[24] > 17) {
       targetGraphic = "Left2";
-    } else if (parseInt(this.puzzleState[24]) < 17) {
+    } else if (this.puzzleState[24] < 17) {
       targetGraphic = "Right2";
-    } else if (parseInt(this.puzzleState[24]) == 17) {
+    } else if (this.puzzleState[24] == 17) {
       targetGraphic = "Straight";
     }
 
@@ -975,7 +952,7 @@ class Dozenal {
   }
 
   templateEntentePart1Incr() {
-    if (this.puzzleState[23] == "17") {
+    if (this.puzzleState[23] == 17) {
       this.userNodeId = 93;
       this.userAction = null;
       this.actionCheck();
@@ -985,8 +962,8 @@ class Dozenal {
       this.userNodeId = 89;
       this.userAction = null;
 
-      if (parseInt(this.puzzleState[23]) < 21) {
-        this.puzzleState[23] = parseInt(this.puzzleState[23] + 3).toString();
+      if (this.puzzleState[23] < 21) {
+        this.puzzleState[23] = this.puzzleState[23] + 3;
       }
 
       this.actionCheck();
@@ -999,8 +976,8 @@ class Dozenal {
     this.userNodeId = 103;
     this.userAction = null;
 
-    if (parseInt(this.puzzleState[23]) > 14) {
-      this.puzzleState[23] = parseInt(this.puzzleState[23] - 1).toString();
+    if (this.puzzleState[23] > 14) {
+      this.puzzleState[23] = this.puzzleState[23] - 1;
     }
 
     this.actionCheck();
@@ -1013,8 +990,8 @@ class Dozenal {
     this.userOrientation = 2;
     this.userAction = null;
 
-    if (parseInt(this.puzzleState[24]) < 23) {
-      this.puzzleState[24] = parseInt(this.puzzleState[24] + 4).toString();
+    if (this.puzzleState[24] < 23) {
+      this.puzzleState[24] = this.puzzleState[24] + 4;
     }
 
     this.actionCheck();
@@ -1027,8 +1004,8 @@ class Dozenal {
     this.userOrientation = 2;
     this.userAction = null;
 
-    if (parseInt(this.puzzleState[24]) > 14) {
-      this.puzzleState[24] = parseInt(this.puzzleState[24] - 1).toString();
+    if (this.puzzleState[24] > 14) {
+      this.puzzleState[24] = this.puzzleState[24] - 1;
     }
 
     this.actionCheck();
@@ -1037,10 +1014,7 @@ class Dozenal {
   }
 
   templateEntentePart2Exit() {
-    if (
-      parseInt(this.puzzleState[23]) == 17 &&
-      parseInt(this.puzzleState[24]) == 17
-    ) {
+    if (this.puzzleState[23] == 17 && this.puzzleState[24] == 17) {
       this.userNodeId = 107;
       this.userOrientation = 3;
       this.userAction = null;
@@ -1065,7 +1039,7 @@ class Dozenal {
   }
 
   templateKillUpdate() {
-    if (parseInt(this.puzzleState[14]) > 50) {
+    if (this.puzzleState[14] > 50) {
       this.wipePlayerProgress();
       this.newGame();
     }
@@ -1074,10 +1048,7 @@ class Dozenal {
   templateEndgameDoor() {
     this.prefPositioning();
 
-    if (
-      parseInt(this.puzzleState[47]) == 1 &&
-      parseInt(this.puzzleState[36]) == 1
-    ) {
+    if (this.puzzleState[47] == 1 && this.puzzleState[36] == 1) {
       this.templateUpdateNode(113, "0550", "act40");
 
       this.setCurrentAction("action3");
@@ -1152,7 +1123,7 @@ class Dozenal {
     this.setAlpha(this.billboard("overlay"), 0.0);
     this.setHidden(this.billboard("overlay"), true);
 
-    if (parseInt(this.puzzleState[5]) == 2) {
+    if (this.puzzleState[5] == 2) {
       this.setAlpha(this.billboard("overlay"), 1.0);
       this.setHidden(this.billboard("overlay"), false);
       this.templateUpdateNode(19, "0489", "act5");
@@ -1160,15 +1131,15 @@ class Dozenal {
       this.userChapter = Chapter.act5;
       this.updateMusic();
     } else {
-      if (this.puzzleState[12] == "1" && this.puzzleState[21] == "1") {
+      if (this.puzzleState[12] == 1 && this.puzzleState[21] == 1) {
         this.setAlpha(this.billboard("overlay"), 1.0);
         this.setHidden(this.billboard("overlay"), false);
         this.templateUpdateNode(19, "0536", "act5");
-      } else if (this.puzzleState[12] == "1" && this.puzzleState[21] == "0") {
+      } else if (this.puzzleState[12] == 1 && this.puzzleState[21] == 0) {
         this.setAlpha(this.billboard("overlay"), 1.0);
         this.setHidden(this.billboard("overlay"), false);
         this.templateUpdateNode(19, "0542", "act5");
-      } else if (this.puzzleState[12] == "0" && this.puzzleState[21] == "1") {
+      } else if (this.puzzleState[12] == 0 && this.puzzleState[21] == 1) {
         this.setAlpha(this.billboard("overlay"), 1.0);
         this.setHidden(this.billboard("overlay"), false);
         this.templateUpdateNode(19, "0541", "act5");
@@ -1275,7 +1246,7 @@ class Dozenal {
 
       this.fadeOut(this.billboard("overlay"), 1, 0.5);
 
-      this.puzzleState[nodeIllusionAction] = "1";
+      this.puzzleState[nodeIllusionAction] = 1;
 
       this.illusionInterface();
     }
@@ -1286,15 +1257,15 @@ class Dozenal {
 
     let illusionCount = 0;
 
-    illusionCount += parseInt(this.puzzleState[17]);
-    illusionCount += parseInt(this.puzzleState[22]);
-    illusionCount += parseInt(this.puzzleState[29]);
-    illusionCount += parseInt(this.puzzleState[32]);
-    illusionCount += parseInt(this.puzzleState[48]);
-    illusionCount += parseInt(this.puzzleState[49]);
-    illusionCount += parseInt(this.puzzleState[50]);
-    illusionCount += parseInt(this.puzzleState[51]);
-    illusionCount += parseInt(this.puzzleState[52]);
+    illusionCount += this.puzzleState[17];
+    illusionCount += this.puzzleState[22];
+    illusionCount += this.puzzleState[29];
+    illusionCount += this.puzzleState[32];
+    illusionCount += this.puzzleState[48];
+    illusionCount += this.puzzleState[49];
+    illusionCount += this.puzzleState[50];
+    illusionCount += this.puzzleState[51];
+    illusionCount += this.puzzleState[52];
 
     this.setImage(
       this.billboard("interfaceIllusion"),
@@ -1311,11 +1282,11 @@ class Dozenal {
 
   sealCount() {
     let count = 0;
-    count += parseInt(this.puzzleState[4]);
-    count += parseInt(this.puzzleState[12]);
-    count += parseInt(this.puzzleState[13]);
-    count += parseInt(this.puzzleState[20]);
-    count += parseInt(this.puzzleState[21]);
+    count += this.puzzleState[4];
+    count += this.puzzleState[12];
+    count += this.puzzleState[13];
+    count += this.puzzleState[20];
+    count += this.puzzleState[21];
     count = 2 - count;
 
     return count;
@@ -1324,28 +1295,28 @@ class Dozenal {
   sealFind(rank) {
     let sealFound = 0;
 
-    if (parseInt(this.puzzleState[4]) > 0) {
+    if (this.puzzleState[4] > 0) {
       sealFound = 4;
-    } else if (parseInt(this.puzzleState[12]) > 0) {
+    } else if (this.puzzleState[12] > 0) {
       sealFound = 12;
-    } else if (parseInt(this.puzzleState[13]) > 0) {
+    } else if (this.puzzleState[13] > 0) {
       sealFound = 13;
-    } else if (parseInt(this.puzzleState[20]) > 0) {
+    } else if (this.puzzleState[20] > 0) {
       sealFound = 20;
-    } else if (parseInt(this.puzzleState[21]) > 0) {
+    } else if (this.puzzleState[21] > 0) {
       sealFound = 21;
     }
 
     if (rank == 2) {
-      if (parseInt(this.puzzleState[4]) > 0 && sealFound != 4) {
+      if (this.puzzleState[4] > 0 && sealFound != 4) {
         sealFound = 4;
-      } else if (parseInt(this.puzzleState[12]) > 0 && sealFound != 12) {
+      } else if (this.puzzleState[12] > 0 && sealFound != 12) {
         sealFound = 12;
-      } else if (parseInt(this.puzzleState[13]) > 0 && sealFound != 13) {
+      } else if (this.puzzleState[13] > 0 && sealFound != 13) {
         sealFound = 13;
-      } else if (parseInt(this.puzzleState[20]) > 0 && sealFound != 20) {
+      } else if (this.puzzleState[20] > 0 && sealFound != 20) {
         sealFound = 20;
-      } else if (parseInt(this.puzzleState[21]) > 0 && sealFound != 21) {
+      } else if (this.puzzleState[21] > 0 && sealFound != 21) {
         sealFound = 21;
       }
     }
@@ -1550,27 +1521,11 @@ class Dozenal {
       // New Game
 
       this.puzzleState = [];
-      for (let i = 0; i < 102; i++) {
-        this.puzzleState[i] = "0";
+      for (let id in puzzlesByID) {
+        this.puzzleState[id] = puzzlesByID[id].defaultState;
       }
 
-      this.puzzleState[1] = "0"; // Dimclock Position
-      this.puzzleState[2] = "0";
-      this.puzzleState[5] = "0";
-      this.puzzleState[23] = "0";
-      this.puzzleState[24] = "0";
-
-      this.puzzleState[31] = "1"; // Fuse in Forest
-      this.puzzleState[38] = "1"; // Fuse in Entente
-      this.puzzleState[39] = "1"; // Fuse in Antechannel
-
-      this.puzzleState[34] = "1"; // Audio 1
-      this.puzzleState[35] = "1"; // Audio 2
-
-      this.puzzleState[23] = "15"; // Entente 1
-      this.puzzleState[19] = "13"; // Entente 2
-
-      this.puzzleState[101] = null;
+      console.log(this.puzzleState);
 
       // Default Location
 
