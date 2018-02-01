@@ -1,8 +1,10 @@
+Bring illusions back
+    Something's messing with overlay visibility/opacity
+
 Unravel actions
 Carefully migrate node_old references
 
-Derive symbol names from comments in seal door code and git log
-    Then use them to give more context to other data and code
+Now that you know all the symbol names, maybe use them to organize the project some more
 
 Templates should go somewhere else
 
@@ -15,8 +17,11 @@ There must be a way to make git DUMP EVERY VERSION OF EVERY FILE
 
 Bug someone about using import/export es6 syntax
 
+Allow limited resizing
+    iPads cropped the background and scaled the layout
+
+
+
+
 NOTES
     templateKillUpdate works, but nothing causes its condition to be true
-
-The illusion image swap only applies to one location
-    Ask Devine about it

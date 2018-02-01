@@ -1199,7 +1199,7 @@ class Dozenal {
       }
 
       // circle
-      if (this.userNodeId == 33 && this.userOrientation == 2) {
+      if (this.userNodeId == 33 && this.userOrientation == 0) {
         nodeIllusionAction = 51;
       }
 
