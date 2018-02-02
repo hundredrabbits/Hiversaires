@@ -1,7 +1,7 @@
 class ArtBook {
   constructor() {
-    this.assetCatalog = {};
-    this.elementRegistry = {};
+    this.assetCatalog = new Map();
+    this.elementRegistry = new Map();
     this.elementRegistryUniqueID = 0;
     this.classUniqueID = 0;
 

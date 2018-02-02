@@ -1,8 +1,8 @@
 class Stage {
   constructor(root) {
     this.root = root;
-    this.billboardsByID = {};
-    this.triggersByID = {};
+    this.billboardsByID = new Map();
+    this.triggersByID = new Map();
   }
 
   start() {

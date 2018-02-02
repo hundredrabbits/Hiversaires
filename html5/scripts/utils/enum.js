@@ -1,6 +1,6 @@
 function setEnumValues(enumType, values) {
   for (value of values) {
-    enumType[value] = Symbol(value);
+    enumType[value] = value;
   }
   Object.freeze(enumType);
 }

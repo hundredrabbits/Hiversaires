@@ -1,7 +1,7 @@
 class Music {
   constructor() {
-    this.playingTracksByRole = {};
-    this._trackCatalog = {};
+    this.playingTracksByRole = new Map();
+    this._trackCatalog = new Map();
     this.ambience = null;
     this.record = null;
     this._volume = 1;

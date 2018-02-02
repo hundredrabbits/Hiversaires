@@ -1,5 +1,4 @@
 Unravel actions
-Use Maps and Sets instead of Objects where appropriate
 
 Organize puzzles by type and nodes by zone
     There's no reason their IDs are integers
