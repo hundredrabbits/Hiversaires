@@ -16,18 +16,19 @@ setEnumValues(Zone, [
 ]);
 
 const recordsByChapter = (function() {
-  let recordsByChapter = {};
+  let recordsByChapter = new Map();
   recordsByChapter[Chapter.act1] = "music_act1";
   recordsByChapter[Chapter.act2] = "music_act2";
   recordsByChapter[Chapter.act3] = "music_act3";
   recordsByChapter[Chapter.act4] = "music_act4";
   recordsByChapter[Chapter.act5] = "music_act5";
   recordsByChapter[Chapter.credit] = "music_credit";
+  Object.freeze(recordsByChapter);
   return recordsByChapter;
 })();
 
 const ambienceByZone = (function() {
-  let ambienceByZone = {};
+  let ambienceByZone = new Map();
   ambienceByZone[Zone.antechannel] = "ambient_antechannel";
   ambienceByZone[Zone.capsule] = "ambient_capsule";
   ambienceByZone[Zone.circular] = "ambient_circular";
@@ -38,11 +39,12 @@ const ambienceByZone = (function() {
   ambienceByZone[Zone.rainre] = "ambient_rainre";
   ambienceByZone[Zone.stones] = "ambient_stones";
   ambienceByZone[Zone.studio] = "ambient_studio";
+  Object.freeze(ambienceByZone);
   return ambienceByZone;
 })();
 
 class SubjectType {}
-setEnumValues(SubjectType, ["walk", "puzzle", "noOp"]);
+setEnumValues(SubjectType, ["node", "puzzle", "none"]);
 
 class Node {
   constructor(id, zone, subjects) {
@@ -53,7 +55,7 @@ class Node {
 }
 
 const nodesByID = (function() {
-  let nodesByID = {};
+  let nodesByID = new Map();
 
   function addNode(id, zone, subject0, subject1, subject2, subject3) {
     nodesByID[id] = new Node(id, zone, [
@@ -64,157 +66,158 @@ const nodesByID = (function() {
     ]);
   }
 
-  function to(node, orientation) {
+  function node(node, orientation) {
     return orientation != null ? node + "|" + orientation : node.toString();
   }
 
-  function pz(puzzleID) {
+  function puzzle(puzzleID) {
     return "act" + puzzleID;
   }
 
-  const noOp = "0";
+  const none = "0";
 
   // ====================
   // Forest ( 0 - 11 )
   // ====================
 
-  addNode(0, Zone.forest, to(1), noOp, noOp, noOp);
-  addNode(1, Zone.forest, to(2), noOp, pz(28), noOp);
+  addNode(0, Zone.forest, node(1), none, none, none);
+  addNode(1, Zone.forest, node(2), none, puzzle(28), none);
 
-  // addNode(1, Zone.forest, to(46), noOp, noOp, noOp);
+  // addNode(1, Zone.forest, node(46), none, none, none);
 
-  addNode(2, Zone.forest, to(3), noOp, to(1), noOp);
-  addNode(3, Zone.forest, to(11), to(10, 2), to(2), to(4, 0));
-  addNode(4, Zone.forest, to(5), noOp, to(3, 1), noOp);
-  addNode(5, Zone.forest, to(6), noOp, to(4), pz(4));
-  addNode(6, Zone.forest, to(7, 1), noOp, to(5), noOp);
-  addNode(7, Zone.forest, to(12), to(8, 0), pz(1), to(6, 2));
-  addNode(8, Zone.forest, to(9, 2), noOp, to(7, 3), noOp);
-  addNode(9, Zone.forest, to(8, 2), noOp, to(10, 0), noOp);
+  addNode(2, Zone.forest, node(3), none, node(1), none);
+  addNode(3, Zone.forest, node(11), node(10, 2), node(2), node(4, 0));
+  addNode(4, Zone.forest, node(5), none, node(3, 1), none);
+  addNode(5, Zone.forest, node(6), none, node(4), puzzle(4));
+  addNode(6, Zone.forest, node(7, 1), none, node(5), none);
+  addNode(7, Zone.forest, node(12), node(8, 0), puzzle(1), node(6, 2));
+  addNode(8, Zone.forest, node(9, 2), none, node(7, 3), none);
+  addNode(9, Zone.forest, node(8, 2), none, node(10, 0), none);
 
-  addNode(10, Zone.forest, to(3, 3), noOp, to(9, 0), noOp);
-  addNode(11, Zone.forest, pz(25), noOp, to(3), noOp);
-  addNode(12, Zone.forest, pz(3), noOp, to(7), to(14, 0));
-  addNode(13, Zone.studio, to(17), to(15), pz(3), pz(2));
-  addNode(14, Zone.forest, to(18), noOp, to(12, 1), noOp);
-  addNode(15, Zone.studio, to(16), noOp, noOp, to(13));
-  addNode(16, Zone.studio, to(21), pz(7), to(15), to(17));
-  addNode(17, Zone.studio, to(20), to(16), to(13), noOp);
-  addNode(18, Zone.forest, pz(31), pz(2), to(14), noOp);
-  addNode(19, Zone.studio, noOp, to(20), pz(5), noOp);
+  addNode(10, Zone.forest, node(3, 3), none, node(9, 0), none);
+  addNode(11, Zone.forest, puzzle(25), none, node(3), none);
+  addNode(12, Zone.forest, puzzle(3), none, node(7), node(14, 0));
+  addNode(13, Zone.studio, node(17), node(15), puzzle(3), puzzle(2));
+  addNode(14, Zone.forest, node(18), none, node(12, 1), none);
+  addNode(15, Zone.studio, node(16), none, none, node(13));
+  addNode(16, Zone.studio, node(21), puzzle(7), node(15), node(17));
+  addNode(17, Zone.studio, node(20), node(16), node(13), none);
+  addNode(18, Zone.forest, puzzle(31), puzzle(2), node(14), none);
+  addNode(19, Zone.studio, none, node(20), puzzle(5), none);
 
-  addNode(20, Zone.studio, pz(6), to(21), to(17), to(19));
-  addNode(21, Zone.studio, pz(35), noOp, to(16), to(20));
-  addNode(22, Zone.circular, noOp, to(23), noOp, to(16));
-  addNode(23, Zone.circular, to(30), pz(16), to(24), pz(7));
-  addNode(24, Zone.circular, to(23), noOp, to(25), noOp);
-  addNode(25, Zone.circular, to(24), noOp, to(26), pz(8));
-  addNode(26, Zone.circular, to(25), noOp, to(27), noOp);
-  addNode(27, Zone.circular, to(26), noOp, to(28), pz(9));
-  addNode(28, Zone.circular, to(27), noOp, to(29), pz(40));
-  addNode(29, Zone.circular, to(28), noOp, to(30), to(33, 0));
+  addNode(20, Zone.studio, puzzle(6), node(21), node(17), node(19));
+  addNode(21, Zone.studio, puzzle(35), none, node(16), node(20));
+  addNode(22, Zone.circular, none, node(23), none, node(16));
+  addNode(23, Zone.circular, node(30), puzzle(16), node(24), puzzle(7));
+  addNode(24, Zone.circular, node(23), none, node(25), none);
+  addNode(25, Zone.circular, node(24), none, node(26), puzzle(8));
+  addNode(26, Zone.circular, node(25), none, node(27), none);
+  addNode(27, Zone.circular, node(26), none, node(28), puzzle(9));
+  addNode(28, Zone.circular, node(27), none, node(29), puzzle(40));
+  addNode(29, Zone.circular, node(28), none, node(30), node(33, 0));
 
-  addNode(30, Zone.circular, to(29), noOp, to(23), noOp);
-  addNode(31, Zone.circular, to(25, 1), noOp, to(35), noOp);
-  addNode(32, Zone.studio, noOp, to(52), noOp, to(27, 1));
-  addNode(33, Zone.circular, pz(14), noOp, to(29, 1), noOp);
-  addNode(34, Zone.entente, pz(37), noOp, noOp, to(39));
-  addNode(35, Zone.stones, pz(8), to(38), to(36), noOp);
-  addNode(36, Zone.stones, to(35), to(37), noOp, noOp);
-  addNode(37, Zone.stones, to(38), to(39), noOp, to(36));
-  addNode(38, Zone.stones, pz(12), noOp, to(37), to(35));
-  addNode(39, Zone.stones, pz(10), pz(11), to(40), to(37));
+  addNode(30, Zone.circular, node(29), none, node(23), none);
+  addNode(31, Zone.circular, node(25, 1), none, node(35), none);
+  addNode(32, Zone.studio, none, node(52), none, node(27, 1));
+  addNode(33, Zone.circular, puzzle(14), none, node(29, 1), none);
+  addNode(34, Zone.entente, puzzle(37), none, none, node(39));
+  addNode(35, Zone.stones, puzzle(8), node(38), node(36), none);
+  addNode(36, Zone.stones, node(35), node(37), none, none);
+  addNode(37, Zone.stones, node(38), node(39), none, node(36));
+  addNode(38, Zone.stones, puzzle(12), none, node(37), node(35));
+  addNode(39, Zone.stones, puzzle(10), puzzle(11), node(40), node(37));
 
-  addNode(40, Zone.stones, to(39), noOp, to(41), noOp);
-  addNode(41, Zone.stones, to(40), noOp, noOp, to(42));
-  addNode(42, Zone.stones, noOp, to(41), to(44), to(43));
-  addNode(43, Zone.stones, noOp, to(42), noOp, pz(35));
-  addNode(44, Zone.stones, to(42), noOp, to(46), noOp);
-  addNode(45, Zone.rainre, pz(13), noOp, pz(1), to(39));
-  addNode(46, Zone.stones, to(44), noOp, pz(15), noOp);
-  addNode(47, Zone.antechannel, noOp, to(48), to(77), noOp);
-  addNode(48, Zone.antechannel, pz(25), noOp, to(49), to(47));
-  addNode(49, Zone.antechannel, to(48), noOp, pz(21), to(77));
-  addNode(50, Zone.nataniev, noOp, noOp, pz(41), noOp);
-  addNode(51, Zone.nataniev, noOp, noOp, to(64), noOp);
+  addNode(40, Zone.stones, node(39), none, node(41), none);
+  addNode(41, Zone.stones, node(40), none, none, node(42));
+  addNode(42, Zone.stones, none, node(41), node(44), node(43));
+  addNode(43, Zone.stones, none, node(42), none, puzzle(35));
+  addNode(44, Zone.stones, node(42), none, node(46), none);
+  addNode(45, Zone.rainre, puzzle(13), none, puzzle(1), node(39));
+  addNode(46, Zone.stones, node(44), none, puzzle(15), none);
+  addNode(47, Zone.antechannel, none, node(48), node(77), none);
+  addNode(48, Zone.antechannel, puzzle(25), none, node(49), node(47));
+  addNode(49, Zone.antechannel, node(48), none, puzzle(21), node(77));
+  addNode(50, Zone.nataniev, none, none, puzzle(41), none);
+  addNode(51, Zone.nataniev, none, none, node(64), none);
 
-  addNode(52, Zone.antechannel, to(54), to(53), noOp, pz(9));
-  addNode(53, Zone.antechannel, to(55), to(84), noOp, to(52));
-  addNode(54, Zone.antechannel, to(57), to(55), to(52), noOp);
-  addNode(55, Zone.antechannel, pz(39), to(56), to(53), to(54));
-  addNode(56, Zone.antechannel, to(58), noOp, to(84), to(55));
-  addNode(57, Zone.antechannel, to(59), noOp, to(54), noOp);
-  addNode(58, Zone.antechannel, to(60), noOp, to(56), noOp);
-  addNode(59, Zone.antechannel, to(61), noOp, to(57), noOp);
+  addNode(52, Zone.antechannel, node(54), node(53), none, puzzle(9));
+  addNode(53, Zone.antechannel, node(55), node(84), none, node(52));
+  addNode(54, Zone.antechannel, node(57), node(55), node(52), none);
+  addNode(55, Zone.antechannel, puzzle(39), node(56), node(53), node(54));
+  addNode(56, Zone.antechannel, node(58), none, node(84), node(55));
+  addNode(57, Zone.antechannel, node(59), none, node(54), none);
+  addNode(58, Zone.antechannel, node(60), none, node(56), none);
+  addNode(59, Zone.antechannel, node(61), none, node(57), none);
 
-  addNode(60, Zone.antechannel, to(62), noOp, to(56), noOp);
-  addNode(61, Zone.antechannel, noOp, noOp, to(59), pz(19));
-  addNode(62, Zone.antechannel, pz(26), noOp, to(60), noOp);
-  addNode(63, Zone.metamondst, to(73), to(69), noOp, to(67));
-  addNode(64, Zone.nataniev, to(63), noOp, noOp, noOp);
-  addNode(65, Zone.entente, noOp, noOp, pz(46), noOp);
-  addNode(67, Zone.metamondst, to(74), to(63), noOp, to(70));
-  addNode(69, Zone.metamondst, pz(18), pz(19), noOp, to(63));
+  addNode(60, Zone.antechannel, node(62), none, node(56), none);
+  addNode(61, Zone.antechannel, none, none, node(59), puzzle(19));
+  addNode(62, Zone.antechannel, puzzle(26), none, node(60), none);
+  addNode(63, Zone.metamondst, node(73), node(69), none, node(67));
+  addNode(64, Zone.nataniev, node(63), none, none, none);
+  addNode(65, Zone.entente, none, none, puzzle(46), none);
+  addNode(67, Zone.metamondst, node(74), node(63), none, node(70));
+  addNode(69, Zone.metamondst, puzzle(18), puzzle(19), none, node(63));
 
-  addNode(70, Zone.metamondst, to(75), to(67), noOp, noOp);
-  addNode(72, Zone.metamondst, noOp, to(61), noOp, to(69));
-  addNode(73, Zone.metamondst, to(81), noOp, to(63), noOp);
-  addNode(74, Zone.metamondst, to(80), noOp, to(67), noOp);
-  addNode(75, Zone.metamondst, to(76), noOp, to(70), noOp);
-  addNode(76, Zone.metamondst, noOp, noOp, to(75), pz(30));
-  addNode(77, Zone.antechannel, to(47), to(49), pz(26), pz(27));
-  addNode(78, Zone.metamondst, to(83), noOp, noOp, to(81));
-  addNode(79, Zone.capsule, noOp, pz(33), to(87), noOp);
+  addNode(70, Zone.metamondst, node(75), node(67), none, none);
+  addNode(72, Zone.metamondst, none, node(61), none, node(69));
+  addNode(73, Zone.metamondst, node(81), none, node(63), none);
+  addNode(74, Zone.metamondst, node(80), none, node(67), none);
+  addNode(75, Zone.metamondst, node(76), none, node(70), none);
+  addNode(76, Zone.metamondst, none, none, node(75), puzzle(30));
+  addNode(77, Zone.antechannel, node(47), node(49), puzzle(26), puzzle(27));
+  addNode(78, Zone.metamondst, node(83), none, none, node(81));
+  addNode(79, Zone.capsule, none, puzzle(33), node(87), none);
 
-  addNode(80, Zone.metamondst, to(85), noOp, to(74), noOp);
-  addNode(81, Zone.metamondst, to(82), to(78), to(73), noOp);
-  addNode(82, Zone.metamondst, noOp, to(83), to(81), pz(20));
-  addNode(83, Zone.metamondst, noOp, noOp, to(78), to(82));
-  addNode(84, Zone.antechannel, to(56), noOp, pz(47), to(53));
-  addNode(85, Zone.metamondst, pz(15), noOp, to(80), to(86));
-  addNode(86, Zone.metamondst, noOp, to(85), noOp, pz(1));
-  addNode(87, Zone.capsule, to(79), pz(30), noOp, to(88));
-  addNode(88, Zone.capsule, noOp, to(87), noOp, to(141));
+  addNode(80, Zone.metamondst, node(85), none, node(74), none);
+  addNode(81, Zone.metamondst, node(82), node(78), node(73), none);
+  addNode(82, Zone.metamondst, none, node(83), node(81), puzzle(20));
+  addNode(83, Zone.metamondst, none, none, node(78), node(82));
+  addNode(84, Zone.antechannel, node(56), none, puzzle(47), node(53));
+  addNode(85, Zone.metamondst, puzzle(15), none, node(80), node(86));
+  addNode(86, Zone.metamondst, none, node(85), none, puzzle(1));
+  addNode(87, Zone.capsule, node(79), puzzle(30), none, node(88));
+  addNode(88, Zone.capsule, none, node(87), none, node(141));
 
-  addNode(89, Zone.entente, pz(42), noOp, to(90), noOp);
-  addNode(90, Zone.entente, to(89), noOp, to(91), noOp);
-  addNode(91, Zone.entente, to(90), pz(23), to(103), noOp);
+  addNode(89, Zone.entente, puzzle(42), none, node(90), none);
+  addNode(90, Zone.entente, node(89), none, node(91), none);
+  addNode(91, Zone.entente, node(90), puzzle(23), node(103), none);
 
-  addNode(92, Zone.entente, to(91), noOp, to(93), noOp);
-  addNode(93, Zone.entente, to(92), noOp, to(94), noOp);
-  addNode(94, Zone.entente, to(93), noOp, to(95), noOp);
-  addNode(95, Zone.entente, to(94), pz(24), to(96), noOp);
-  addNode(96, Zone.entente, to(95), noOp, to(97), noOp);
-  addNode(97, Zone.entente, to(96), noOp, to(98), noOp);
-  addNode(98, Zone.entente, to(97), to(99), to(65), to(101));
-  addNode(99, Zone.entente, noOp, to(100), noOp, to(98));
-  addNode(100, Zone.entente, noOp, pz(44), noOp, to(99));
-  addNode(101, Zone.entente, noOp, to(98), pz(38), to(102));
-  addNode(102, Zone.entente, noOp, to(101), noOp, pz(45));
-  addNode(103, Zone.entente, to(91), noOp, pz(43), noOp);
+  addNode(92, Zone.entente, node(91), none, node(93), none);
+  addNode(93, Zone.entente, node(92), none, node(94), none);
+  addNode(94, Zone.entente, node(93), none, node(95), none);
+  addNode(95, Zone.entente, node(94), puzzle(24), node(96), none);
+  addNode(96, Zone.entente, node(95), none, node(97), none);
+  addNode(97, Zone.entente, node(96), none, node(98), none);
+  addNode(98, Zone.entente, node(97), node(99), node(65), node(101));
+  addNode(99, Zone.entente, none, node(100), none, node(98));
+  addNode(100, Zone.entente, none, puzzle(44), none, node(99));
+  addNode(101, Zone.entente, none, node(98), puzzle(38), node(102));
+  addNode(102, Zone.entente, none, node(101), none, puzzle(45));
+  addNode(103, Zone.entente, node(91), none, puzzle(43), none);
 
-  addNode(104, Zone.entente, noOp, to(100), noOp, to(105));
-  addNode(105, Zone.entente, noOp, to(104), pz(24), to(106));
-  addNode(106, Zone.entente, noOp, to(105), noOp, to(107));
-  addNode(107, Zone.entente, noOp, to(106), noOp, to(108));
-  addNode(108, Zone.entente, noOp, to(107), noOp, to(109));
-  addNode(109, Zone.entente, noOp, to(108), noOp, to(110));
-  addNode(110, Zone.entente, noOp, to(109), noOp, to(111));
-  addNode(111, Zone.entente, noOp, to(110), noOp, to(1, 0));
+  addNode(104, Zone.entente, none, node(100), none, node(105));
+  addNode(105, Zone.entente, none, node(104), puzzle(24), node(106));
+  addNode(106, Zone.entente, none, node(105), none, node(107));
+  addNode(107, Zone.entente, none, node(106), none, node(108));
+  addNode(108, Zone.entente, none, node(107), none, node(109));
+  addNode(109, Zone.entente, none, node(108), none, node(110));
+  addNode(110, Zone.entente, none, node(109), none, node(111));
+  addNode(111, Zone.entente, none, node(110), none, node(1, 0));
 
-  addNode(112, Zone.nataniev, to(115), to(113), noOp, pz(33));
-  addNode(113, Zone.nataniev, to(114), pz(36), pz(40), to(112));
-  addNode(114, Zone.nataniev, noOp, noOp, to(113), to(115));
-  addNode(115, Zone.nataniev, noOp, to(114), to(112), noOp);
-  addNode(116, Zone.entente, noOp, noOp, noOp, to(20, 2));
+  addNode(112, Zone.nataniev, node(115), node(113), none, puzzle(33));
+  addNode(113, Zone.nataniev, node(114), puzzle(36), puzzle(40), node(112));
+  addNode(114, Zone.nataniev, none, none, node(113), node(115));
+  addNode(115, Zone.nataniev, none, node(114), node(112), none);
+  addNode(116, Zone.entente, none, none, none, node(20, 2));
 
-  addNode(141, Zone.entente, noOp, to(88), noOp, to(142));
-  addNode(142, Zone.entente, noOp, to(141), noOp, pz(54));
-  addNode(143, Zone.nataniev, noOp, pz(54), noOp, noOp);
+  addNode(141, Zone.entente, none, node(88), none, node(142));
+  addNode(142, Zone.entente, none, node(141), none, puzzle(54));
+  addNode(143, Zone.nataniev, none, puzzle(54), none, none);
+  Object.freeze(nodesByID);
   return nodesByID;
 })();
 
-const PuzzleType = {};
+const PuzzleType = new Map();
 setEnumValues(PuzzleType, [
   "clockTerminal",
   "energyTerminal",
@@ -242,7 +245,7 @@ class Puzzle {
 }
 
 const puzzlesByID = (function() {
-  let puzzlesByID = {};
+  let puzzlesByID = new Map();
 
   function addPuzzle(id, type, defaultState) {
     puzzlesByID[id] = new Puzzle(id, type, defaultState);
@@ -264,12 +267,12 @@ const puzzlesByID = (function() {
   addPuzzle(14, PuzzleType.killTerminal);
   addPuzzle(15, PuzzleType.sealDoor);
   addPuzzle(16, PuzzleType.progressTerminal);
-  addPuzzle(17, PuzzleType.illusion); // act17 studio Illusion
+  addPuzzle(17, PuzzleType.illusion); // studio
   addPuzzle(18, PuzzleType.energyTerminal);
   addPuzzle(19, PuzzleType.energyDoor, 13);
   addPuzzle(20, PuzzleType.sealTerminal);
   addPuzzle(21, PuzzleType.sealTerminal);
-  addPuzzle(22, PuzzleType.illusion); // act22 stones Illusion
+  addPuzzle(22, PuzzleType.illusion); // stones
   addPuzzle(23, PuzzleType.ententeTerminal, 15);
   addPuzzle(24, PuzzleType.ententeTerminal);
   addPuzzle(25, PuzzleType.sealDoor);
@@ -279,13 +282,13 @@ const puzzlesByID = (function() {
   // Studio Lock
 
   addPuzzle(28, PuzzleType.energyDoor);
-  addPuzzle(29, PuzzleType.illusion); // act29 metamondst Illusion
+  addPuzzle(29, PuzzleType.illusion); // metamondst
   addPuzzle(30, PuzzleType.energyDoor);
 
   // Collectibles
 
   addPuzzle(31, PuzzleType.energyTerminal, 1);
-  addPuzzle(32, PuzzleType.illusion); // act32 antech Illusion
+  addPuzzle(32, PuzzleType.illusion); // antechannel
   addPuzzle(33, PuzzleType.energyDoor);
   addPuzzle(34, PuzzleType.audioTerminal, 1);
   addPuzzle(35, PuzzleType.audioTerminal, 1);
@@ -314,5 +317,6 @@ const puzzlesByID = (function() {
   addPuzzle(52, PuzzleType.illusion);
   addPuzzle(53, PuzzleType.illusion);
   addPuzzle(54, PuzzleType.timeDoor);
+  Object.freeze(puzzlesByID);
   return puzzlesByID;
 })();
