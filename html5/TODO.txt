@@ -1,7 +1,8 @@
-Bring illusions back
-    Something's messing with overlay visibility/opacity
-
 Unravel actions
+Use Maps and Sets instead of Objects where appropriate
+
+Organize puzzles by type and nodes by zone
+    There's no reason their IDs are integers
 Carefully migrate node_old references
 
 Now that you know all the symbol names, maybe use them to organize the project some more
@@ -13,15 +14,12 @@ Break the dozenal code into sensible chunks
 Convert the world to a displayable graph, if you can
 Full walkthrough
 
-There must be a way to make git DUMP EVERY VERSION OF EVERY FILE
-
-Bug someone about using import/export es6 syntax
-
 Allow limited resizing
     iPads cropped the background and scaled the layout
 
+Bug someone about using import/export es6 syntax
 
-
+Once you show IOO⠛, fold their new stuff into the build
 
 NOTES
     templateKillUpdate works, but nothing causes its condition to be true

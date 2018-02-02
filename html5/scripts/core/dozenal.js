@@ -1185,7 +1185,7 @@ class Dozenal {
   illusionCheck() {
     this.prefPositioning();
 
-    let nodeIllusionAction;
+    let nodeIllusionAction = null;
 
     if (Math.random() * 10 > 7) {
       // forest
@@ -1199,7 +1199,7 @@ class Dozenal {
       }
 
       // circle
-      if (this.userNodeId == 33 && this.userOrientation == 0) {
+      if (this.userNodeId == 33 && this.userOrientation == 2) {
         nodeIllusionAction = 51;
       }
 
@@ -1234,18 +1234,24 @@ class Dozenal {
       }
     }
 
-    this.setImage(
-      this.billboard("overlay"),
-      "node/" + this.userNodeId + "." + this.userOrientation + ".illusion.jpg"
-    );
-    this.setAlpha(this.billboard("overlay"), 1);
-    this.setHidden(this.billboard("overlay"), false);
+    if (nodeIllusionAction != null) {
+      this.setImage(
+        this.billboard("overlay"),
+        "ghost/" +
+          this.userNodeId +
+          "." +
+          this.userOrientation +
+          ".illusion.png"
+      );
+      this.setAlpha(this.billboard("overlay"), 1);
+      this.setHidden(this.billboard("overlay"), false);
 
-    this.fadeOut(this.billboard("overlay"), 1, 0.5);
+      this.fadeOut(this.billboard("overlay"), 1, 0.5);
 
-    if (this.userChapter == Chapter.act5) {
-      this.puzzleState[nodeIllusionAction] = 1;
-      this.illusionInterface();
+      if (this.userChapter == Chapter.act5) {
+        this.puzzleState[nodeIllusionAction] = 1;
+        this.illusionInterface();
+      }
     }
   }
 
