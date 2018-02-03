@@ -1,3 +1,5 @@
+Terminal is acting weird
+
 Play the game through to the end
     You're almost there
 Create puzzle object

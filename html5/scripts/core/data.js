@@ -277,12 +277,12 @@ const puzzlesByID = (function() {
   addPuzzle(14, PuzzleType.killTerminal, {});
   addPuzzle(15, PuzzleType.sealDoor, {});
   addPuzzle(16, PuzzleType.progressTerminal, {});
-  addPuzzle(17, PuzzleType.illusion, {}); // studio
+  addPuzzle(17, PuzzleType.illusion, { nodeID: 15, orientation: 0 }); // studio
   addPuzzle(18, PuzzleType.energyTerminal, {});
   addPuzzle(19, PuzzleType.energyDoor, {}, 13);
   addPuzzle(20, PuzzleType.sealTerminal, {});
   addPuzzle(21, PuzzleType.sealTerminal, {});
-  addPuzzle(22, PuzzleType.illusion, {}); // stones
+  addPuzzle(22, PuzzleType.illusion, { nodeID: 43, orientation: 2 }); // stones
   addPuzzle(23, PuzzleType.ententeTerminal, {}, 15);
   addPuzzle(24, PuzzleType.ententeTerminal, {});
   addPuzzle(25, PuzzleType.sealDoor, {});
@@ -292,13 +292,13 @@ const puzzlesByID = (function() {
   // Studio Lock
 
   addPuzzle(28, PuzzleType.energyDoor, {});
-  addPuzzle(29, PuzzleType.illusion, {}); // metamondst
+  addPuzzle(29, PuzzleType.illusion, { nodeID: 73, orientation: 2 }); // metamondst
   addPuzzle(30, PuzzleType.energyDoor, {});
 
   // Collectibles
 
   addPuzzle(31, PuzzleType.energyTerminal, {}, 1);
-  addPuzzle(32, PuzzleType.illusion, {}); // antechannel
+  addPuzzle(32, PuzzleType.illusion, { nodeID: 58, orientation: 1 }); // antechannel
   addPuzzle(33, PuzzleType.energyDoor, {});
   addPuzzle(34, PuzzleType.audioTerminal, {}, 1);
   addPuzzle(35, PuzzleType.audioTerminal, {}, 1);
@@ -320,12 +320,32 @@ const puzzlesByID = (function() {
   // Spare Fuse
 
   addPuzzle(47, PuzzleType.energyTerminal, {});
-  addPuzzle(48, PuzzleType.illusion, {});
-  addPuzzle(49, PuzzleType.illusion, {});
-  addPuzzle(50, PuzzleType.illusion, {});
-  addPuzzle(51, PuzzleType.illusion, {});
-  addPuzzle(52, PuzzleType.illusion, {});
-  addPuzzle(53, PuzzleType.illusion, {});
+  addPuzzle(48, PuzzleType.illusion, { nodeID: 114, orientation: 2 });
+  addPuzzle(49, PuzzleType.illusion, { nodeID: 91, orientation: 0 });
+  addPuzzle(50, PuzzleType.illusion, { nodeID: 88, orientation: 3 });
+  addPuzzle(51, PuzzleType.illusion, { nodeID: 33, orientation: 2 });
+  addPuzzle(52, PuzzleType.illusion, { nodeID: 9, orientation: 1 });
+
   addPuzzle(54, PuzzleType.timeDoor, {});
   return Object.freeze(puzzlesByID);
+})();
+
+// Technically we could key illusions by zone, but that's not guaranteed forever
+const illusionPuzzles = (function() {
+  let illusionPuzzles = new Map();
+  console.log(puzzlesByID.values(), puzzlesByID.size);
+  for (let puzzle of puzzlesByID.values()) {
+    if (puzzle.type == PuzzleType.illusion) {
+      if (!illusionPuzzles.has(puzzle.info.nodeID)) {
+        illusionPuzzles.set(puzzle.info.nodeID, new Map());
+      }
+      illusionPuzzles
+        .get(puzzle.info.nodeID)
+        .set(puzzle.info.orientation, puzzle);
+    }
+  }
+  for (let sub of illusionPuzzles.values()) {
+    Object.freeze(sub);
+  }
+  return Object.freeze(illusionPuzzles);
 })();

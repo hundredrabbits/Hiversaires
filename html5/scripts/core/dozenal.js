@@ -1111,67 +1111,29 @@ class Dozenal {
   }
 
   illusionCheck() {
-    let nodeIllusionAction = null;
-
-    if (Math.random() * 10 > 7) {
-      // forest
-      if (this.userNodeID == 9 && this.userOrientation == 1) {
-        nodeIllusionAction = 52;
-      }
-
-      // studio
-      if (this.userNodeID == 15 && this.userOrientation == 0) {
-        nodeIllusionAction = 17;
-      }
-
-      // circle
-      if (this.userNodeID == 33 && this.userOrientation == 2) {
-        nodeIllusionAction = 51;
-      }
-
-      // stones
-      if (this.userNodeID == 43 && this.userOrientation == 2) {
-        nodeIllusionAction = 22;
-      }
-
-      // antechannel
-      if (this.userNodeID == 58 && this.userOrientation == 1) {
-        nodeIllusionAction = 32;
-      }
-
-      // metamondst
-      if (this.userNodeID == 73 && this.userOrientation == 2) {
-        nodeIllusionAction = 29;
-      }
-
-      // capsule
-      if (this.userNodeID == 88 && this.userOrientation == 3) {
-        nodeIllusionAction = 50;
-      }
-
-      // entente
-      if (this.userNodeID == 91 && this.userOrientation == 0) {
-        nodeIllusionAction = 49;
-      }
-
-      // nataniev
-      if (this.userNodeID == 114 && this.userOrientation == 2) {
-        nodeIllusionAction = 48;
-      }
+    if (Math.random() < 0.3) {
+      return;
     }
 
-    if (nodeIllusionAction != null) {
+    let illusionPuzzle = null;
+    if (illusionPuzzles.has(this.userNodeID)) {
+      illusionPuzzle = illusionPuzzles
+        .get(this.userNodeID)
+        .get(this.userOrientation);
+    }
+
+    if (illusionPuzzle != null) {
       // TODO: By solving the jQuery add/remove CSS class problem, we could support multiple illusions
 
       this.billboard("illusion").className =
         "node_" + this.userNodeID + "_" + this.userOrientation;
+
       this.setAlpha("illusion", 1);
       this.setHidden(this.billboard("illusion"), false);
-
       this.fadeOut(this.billboard("illusion"), 1, 0.5);
 
       if (this.userChapter == Chapter.act5) {
-        this.puzzleState[nodeIllusionAction] = 1;
+        this.puzzleState[illusionPuzzle.id] = 1;
         this.illusionInterface();
       }
     }
@@ -1180,15 +1142,11 @@ class Dozenal {
   illusionInterface() {
     let illusionCount = 0;
 
-    illusionCount += this.puzzleState[17];
-    illusionCount += this.puzzleState[22];
-    illusionCount += this.puzzleState[29];
-    illusionCount += this.puzzleState[32];
-    illusionCount += this.puzzleState[48];
-    illusionCount += this.puzzleState[49];
-    illusionCount += this.puzzleState[50];
-    illusionCount += this.puzzleState[51];
-    illusionCount += this.puzzleState[52];
+    for (let puzzle of puzzlesByID.values()) {
+      if (puzzle.type == PuzzleType.illusion) {
+        illusionCount += this.puzzleState[puzzle.id];
+      }
+    }
 
     this.setImage(
       "interfaceIllusion",
