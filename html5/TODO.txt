@@ -1,5 +1,12 @@
+Indicators aren't working
+    They should appear on the left, middle, and right of the bottom
+
+Antechannel won't open
+
 Unravel actions
 Replace node and puzzle data types
+Create billboard object
+Create trigger object
 
 Organize puzzles by type and nodes by zone
     There's no reason their IDs are integers

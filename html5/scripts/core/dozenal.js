@@ -42,6 +42,14 @@ class Dozenal {
     this.actionCheck();
     this.moveCheck();
     this.menuHome();
+
+    this.setImage(this.billboard("interfaceDimclockAlert"), "interface/alert.svg");
+    this.setImage(this.billboard("interfaceSealAlert"), "interface/alert.svg");
+    this.setImage(this.billboard("interfaceFuseAlert"), "interface/alert.svg");
+
+    this.setAlpha(this.billboard("interfaceDimclockAlert"), 0);
+    this.setAlpha(this.billboard("interfaceSealAlert"), 0);
+    this.setAlpha(this.billboard("interfaceFuseAlert"), 0);
   }
 
   get currentNode() {
@@ -485,7 +493,7 @@ class Dozenal {
 
     if ((currentHours == 15 && currentMinutes == 7) || this.userNodeId == 143) {
       this.puzzleState[54] = 1;
-      this.templateUpdateDoorknob(142, 143, this.trigger("action2"));
+      this.templateUpdateDoorknob(142, 143);
     } else {
       console.log("Door locked, wait for time.");
     }
@@ -582,10 +590,6 @@ class Dozenal {
   }
 
   templateClockAlert() {
-    this.setImage(
-      this.billboard("interfaceDimclockAlert"),
-      "interface/alert.svg"
-    );
     this.setAlpha(this.billboard("interfaceDimclockAlert"), 1.0);
     this.fadeOut(this.billboard("interfaceDimclockAlert"), 0.5, 0.5);
   }
@@ -639,7 +643,7 @@ class Dozenal {
     if (this.puzzleState[4] == 1 && this.puzzleState[13] == 1) {
       // Act 1 : Forest + Rainre in Stones
       if (this.userNodeId == 46 || this.userNodeId == 85) {
-        this.templateUpdateDoorknob(46, 85, this.trigger("action2"));
+        this.templateUpdateDoorknob(46, 85);
         this.templateUpdateNode(46, "0486", "act15");
         this.templateUpdateNode(85, "0485", "act15");
         this.userChapter = Chapter.act2;
@@ -648,7 +652,7 @@ class Dozenal {
     } else if (this.puzzleState[20] == 1 && this.puzzleState[13] == 1) {
       // Act 2 : Metamondst + Rainre in Forest
       if (this.userNodeId == 11 || this.userNodeId == 48) {
-        this.templateUpdateDoorknob(48, 11, this.trigger("action2"));
+        this.templateUpdateDoorknob(48, 11);
         this.templateUpdateNode(11, "0487", "act25");
         this.templateUpdateNode(48, "0488", "act25");
         this.userChapter = Chapter.act3;
@@ -657,7 +661,7 @@ class Dozenal {
     } else if (this.puzzleState[21] == 1 && this.puzzleState[13] == 1) {
       // Act 3 : Forest + Rainre in Metamondst
       if (this.userNodeId == 46 || this.userNodeId == 85) {
-        this.templateUpdateDoorknob(46, 85, this.trigger("action2"));
+        this.templateUpdateDoorknob(46, 85);
         this.templateUpdateNode(46, "0486", "act15");
         this.templateUpdateNode(85, "0485", "act15");
         this.userChapter = Chapter.act4;
@@ -704,7 +708,6 @@ class Dozenal {
   }
 
   templateSealAlert() {
-    this.setImage(this.billboard("interfaceSealAlert"), "interface/alert.svg");
     this.setAlpha(this.billboard("interfaceSealAlert"), 1.0);
     this.fadeOut(this.billboard("interfaceSealAlert"), 0.5, 0.5);
   }
@@ -853,7 +856,6 @@ class Dozenal {
   }
 
   templateEnergyAlert() {
-    this.setImage(this.billboard("interfaceFuseAlert"), "interface/alert.svg");
     this.setAlpha(this.billboard("interfaceFuseAlert"), 1.0);
     this.fadeOut(this.billboard("interfaceFuseAlert"), 0.5, 1.5);
   }
@@ -1116,10 +1118,9 @@ class Dozenal {
   // Actions with interactions
   // ====================
 
-  templateUpdateDoorknob(side1, side2, knob) {
+  templateUpdateDoorknob(side1, side2) {
     if (this.userNodeId == side1 || this.userNodeId == side2) {
-      this.setHidden(knob, false);
-      this.setAlpha(knob, 1.0);
+      this.setCurrentAction("action2");
     }
   }
 

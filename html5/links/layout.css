@@ -28,7 +28,7 @@ billboard#interfaceDimclock {
 }
 
 billboard#interfaceDimclockAlert {
-  left: calc(100% / 9 * (9 / 12 * 4 + 9 / 24));
+  left: calc(100% / 9 * (9 / 24 + 9 / 12 * 4));
   top: calc(100% / 16 * (16 - 9 / 12));
   width: calc(100% / 9 * (9 / 12));
   height: calc(100% / 16 * (9 / 12));
