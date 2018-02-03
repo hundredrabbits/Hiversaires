@@ -1071,40 +1071,38 @@ class Dozenal {
     this.setHidden(this.trigger("moveLeft"), true);
     this.setHidden(this.trigger("moveRight"), true);
 
-    this.setHidden(this.trigger("actionCredit"), false);
-
-    this.setImage(this.billboard("menu1"), "menu/menu.black.jpg");
+    this.setImage(this.billboard("menu1"), "menu/menu.black.svg");
     this.setAlpha(this.billboard("menu1"), 0.0);
     this.setHidden(this.billboard("menu1"), false);
 
     this.fadeIn(this.billboard("menu1"), 1.0, 3);
 
-    this.setImage(this.billboard("menu2"), "menu/menu.credit1.png");
+    this.setImage(this.billboard("menu2"), "menu/menu.credit1.svg");
     this.setAlpha(this.billboard("menu2"), 0.0);
     this.setHidden(this.billboard("menu2"), false);
 
     this.fadeIn(this.billboard("menu2"), 6.0, 1);
 
-    this.setImage(this.billboard("menu3"), "menu/menu.credit2.png");
+    this.setImage(this.billboard("menu3"), "menu/menu.credit2.svg");
     this.setAlpha(this.billboard("menu3"), 0.0);
     this.setHidden(this.billboard("menu3"), false);
 
     this.fadeIn(this.billboard("menu3"), 10.0, 1);
 
-    this.setImage(this.billboard("menu4"), "menu/menu.credit3.png");
+    this.setImage(this.billboard("menu4"), "menu/menu.credit3.svg");
     this.setAlpha(this.billboard("menu4"), 0.0);
     this.setHidden(this.billboard("menu4"), false);
 
     this.fadeIn(this.billboard("menu4"), 16.0, 1);
 
-    this.setImage(this.billboard("menu5"), "menu/menu.black.jpg");
+    this.setImage(this.billboard("menu5"), "menu/menu.black.svg");
     this.setAlpha(this.billboard("menu5"), 0.0);
     this.setHidden(this.billboard("menu5"), false);
 
     this.fadeIn(this.billboard("menu5"), 20.0, 1);
 
     if (this.userEnergy == 1) {
-      this.setImage(this.billboard("menu6"), "menu/menu.credit4.png");
+      this.setImage(this.billboard("menu6"), "menu/menu.credit4.svg");
       this.setAlpha(this.billboard("menu6"), 0.0);
       this.setHidden(this.billboard("menu6"), false);
 
@@ -1399,27 +1397,17 @@ class Dozenal {
   }
 
   prefPositioning() {
-    // Core
-
-    // Movement
-
-    this.setHidden(this.trigger("actionCredit"), true);
-
-    // Graphics
-
-    // Style - Interface - Fuse
-
     this.setAlpha(this.billboard("interfaceIndicatorRight"), 0);
     this.setAlpha(this.billboard("interfaceIndicatorForward"), 0);
     this.setAlpha(this.billboard("interfaceIndicatorLeft"), 0);
   }
 
   menuHome() {
-    this.setImage(this.billboard("menu2"), "menu/menu.black.jpg");
+    this.setImage(this.billboard("menu2"), "menu/menu.black.svg");
     this.setAlpha(this.billboard("menu2"), 1.0);
     this.setHidden(this.billboard("menu2"), false);
 
-    this.setImage(this.billboard("menu3"), "menu/menu.logo.png");
+    this.setImage(this.billboard("menu3"), "menu/menu.logo.svg");
     this.setAlpha(this.billboard("menu3"), 1.0);
     this.setHidden(this.billboard("menu3"), false);
 
@@ -1507,9 +1495,5 @@ class Dozenal {
   wipePlayerProgress() {
     localStorage.clear();
     console.log("wiped state.");
-  }
-
-  actionCredit() {
-    // TODO: link to 100r.co
   }
 }

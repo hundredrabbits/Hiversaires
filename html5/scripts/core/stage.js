@@ -60,13 +60,7 @@ class Stage {
       hiversaires.dozenal[event.currentTarget.id](); // Ugh. Temporary. It's temporary!
     }
 
-    for (let id of [
-      "moveRight",
-      "moveLeft",
-      "moveForward",
-      "action",
-      "actionCredit"
-    ]) {
+    for (let id of ["moveRight", "moveLeft", "moveForward", "action"]) {
       let trigger = this.triggers.appendChild(
         document.createElement("trigger")
       );
