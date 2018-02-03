@@ -555,22 +555,16 @@ class Dozenal {
 
     let doorUnlocked = false;
 
-    if (this.userAction == "act7") {
-      if (this.puzzleState[1] == 1 || this.puzzleState[1] == 2) {
-        doorUnlocked = true;
-      }
-    }
-
-    if (this.userAction == "act8") {
-      if (this.puzzleState[1] == 1 || this.puzzleState[1] == 0) {
-        doorUnlocked = true;
-      }
-    }
-
-    if (doorUnlocked.userAction == "act9") {
-      if (this.puzzleState[1] == 2 || this.puzzleState[1] == 0) {
-        doorUnlocked = true;
-      }
+    switch (this.userAction) {
+      case "act7":
+        doorUnlocked = this.puzzleState[1] == 1 || this.puzzleState[1] == 2;
+        break;
+      case "act8":
+        doorUnlocked = this.puzzleState[1] == 1 || this.puzzleState[1] == 0;
+        break;
+      case "act9":
+        doorUnlocked = this.puzzleState[1] == 2 || this.puzzleState[1] == 0;
+        break;
     }
 
     if (doorUnlocked) {

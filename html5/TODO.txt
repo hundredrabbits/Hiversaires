@@ -1,5 +1,3 @@
-Antechannel won't open
-
 Unravel actions
 Replace node and puzzle data types
 Create billboard object
