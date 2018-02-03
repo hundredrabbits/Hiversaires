@@ -1,3 +1,5 @@
+billboard#viewMain,
+billboard#vignette,
 billboard#overlay,
 billboard#menu1,
 billboard#menu2,
@@ -5,10 +7,10 @@ billboard#menu3,
 billboard#menu4,
 billboard#menu5,
 billboard#menu6 {
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
+  left: calc(100% / 9 * (0));
+  top: calc(100% / 16 * (0));
+  width: calc(100% / 9 * (9 / 1));
+  height: calc(100% / 16 * (16 / 1));
 }
 
 billboard#interfaceAudio {
@@ -61,7 +63,7 @@ billboard#interfaceIndicatorForward {
 }
 
 billboard#interfaceIndicatorLeft {
-  left: 0;
+  left: calc(100% / 9 * (0));
   top: calc(100% / 16 * (16 - 9 / 12));
   width: calc(100% / 9 * (9 / 5));
   height: calc(100% / 16 * (9 / 12));
@@ -103,32 +105,18 @@ billboard#interfaceSealAlert {
 }
 
 billboard#ententeScreen {
-  left: calc(100% * (170 + 90)/640);
-  top: calc(100% * (416 + 90)/1136);
-  width: calc(100% * (300 - 2 * 90)/640);
-  height: calc(100% * (300 - 2 * 90)/1136);
+  left: calc(100% / 9 * (9 * 260/640));
+  top: calc(100% / 16 * (16 * 506/1136));
+  width: calc(100% / 9 * (9 * 120/640));
+  height: calc(100% / 16 * (16 * 120/1136));
 }
 
 billboard#clockFace,
 billboard#clockShadow {
-  left: calc(100% * 170/640);
-  top: calc(100% * 416/1136);
-  width: calc(100% * 300/640);
-  height: calc(100% * 300/1136);
-}
-
-billboard#viewMain {
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-}
-
-billboard#vignette {
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
+  left: calc(100% / 9 * (9 * 170/640));
+  top: calc(100% / 16 * (16 * 416/1136));
+  width: calc(100% / 9 * (9 * 300/640));
+  height: calc(100% / 16 * (16 * 300/1136));
 }
 
 trigger#action {
@@ -140,21 +128,21 @@ trigger#action {
 
 trigger#moveForward {
   left: calc(100% / 9 * (9 / 5));
-  top: 0;
+  top: calc(100% / 16 * (0));
   width: calc(100% / 9 * (9 / 5 * 3));
-  height: 100%;
+  height: calc(100% / 16 * (16 / 1));
 }
 
 trigger#moveLeft {
-  left: 0;
-  top: 0;
+  left: calc(100% / 9 * (0));
+  top: calc(100% / 16 * (0));
   width: calc(100% / 9 * (9 / 5));
-  height: 100%;
+  height: calc(100% / 16 * (16 / 1));
 }
 
 trigger#moveRight {
   left: calc(100% / 9 * (9 / 5 * 4));
-  top: 0;
+  top: calc(100% / 16 * (0));
   width: calc(100% / 9 * (9 / 5));
-  height: 100%;
+  height: calc(100% / 16 * (16 / 1));
 }

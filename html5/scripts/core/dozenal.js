@@ -383,6 +383,7 @@ class Dozenal {
     this.setAlpha(this.billboard("clockFace"), 0);
     this.setAlpha(this.billboard("clockShadow"), 0);
     this.setAlpha(this.billboard("ententeScreen"), 0);
+    this.setAlpha(this.billboard("illusion"), 0);
 
     this.setCurrentAction(null);
   }
@@ -1235,18 +1236,14 @@ class Dozenal {
     }
 
     if (nodeIllusionAction != null) {
-      this.setImage(
-        this.billboard("overlay"),
-        "ghost/" +
-          this.userNodeId +
-          "." +
-          this.userOrientation +
-          ".illusion.png"
-      );
-      this.setAlpha(this.billboard("overlay"), 1);
-      this.setHidden(this.billboard("overlay"), false);
+      this.setImage(this.billboard("illusion"), "illusion/little_ghost.png"); // We could support multiple images
 
-      this.fadeOut(this.billboard("overlay"), 1, 0.5);
+      this.billboard("illusion").className =
+        "node_" + this.userNodeId + "_" + this.userOrientation;
+      this.setAlpha(this.billboard("illusion"), 1);
+      this.setHidden(this.billboard("illusion"), false);
+
+      this.fadeOut(this.billboard("illusion"), 1, 0.5);
 
       if (this.userChapter == Chapter.act5) {
         this.puzzleState[nodeIllusionAction] = 1;

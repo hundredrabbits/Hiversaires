@@ -10,18 +10,19 @@ class Stage {
       document.createElement("billboards")
     );
     if (DEBUG_SHOW_BILLBOARDS) {
-      this.billboards.className = "debug";
+      $(this.billboards).addClass("debug");
     }
 
     this.triggers = this.root.appendChild(document.createElement("triggers"));
     if (DEBUG_SHOW_TRIGGERS) {
-      this.triggers.className = "debug";
+      $(this.triggers).addClass("debug");
     }
 
     for (let id of [
       "viewMain",
       "vignette",
       "overlay",
+      "illusion",
       "menu1",
       "menu2",
       "menu3",
