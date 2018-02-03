@@ -1,6 +1,3 @@
-Indicators aren't working
-    They should appear on the left, middle, and right of the bottom
-
 Antechannel won't open
 
 Unravel actions

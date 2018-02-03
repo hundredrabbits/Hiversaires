@@ -32,8 +32,23 @@ class Dozenal {
 
   newGame() {
     // this.wipePlayerProgress(); // remove for release
-    this.prefPositioning();
-    this.templateStart();
+
+    this.setAlpha(this.billboard("interfaceIndicatorRight"), 0);
+    this.setAlpha(this.billboard("interfaceIndicatorForward"), 0);
+    this.setAlpha(this.billboard("interfaceIndicatorLeft"), 0);
+
+    this.setImage(
+      this.billboard("interfaceIndicatorRight"),
+      "interface/interfaceMove.indicator.svg"
+    );
+    this.setImage(
+      this.billboard("interfaceIndicatorForward"),
+      "interface/interfaceMove.indicator.svg"
+    );
+    this.setImage(
+      this.billboard("interfaceIndicatorLeft"),
+      "interface/interfaceMove.indicator.svg"
+    );
 
     this.prefLoad();
 
@@ -43,7 +58,10 @@ class Dozenal {
     this.moveCheck();
     this.menuHome();
 
-    this.setImage(this.billboard("interfaceDimclockAlert"), "interface/alert.svg");
+    this.setImage(
+      this.billboard("interfaceDimclockAlert"),
+      "interface/alert.svg"
+    );
     this.setImage(this.billboard("interfaceSealAlert"), "interface/alert.svg");
     this.setImage(this.billboard("interfaceFuseAlert"), "interface/alert.svg");
 
@@ -484,7 +502,6 @@ class Dozenal {
   }
 
   templateTimeDoor() {
-    this.prefPositioning();
     this.templateVignette();
 
     const now = new Date(Date.now());
@@ -502,7 +519,6 @@ class Dozenal {
   }
 
   templateClockTerminal() {
-    this.prefPositioning();
     this.templateVignette();
 
     this.setCurrentAction("action1");
@@ -523,7 +539,6 @@ class Dozenal {
   }
 
   templateClockDoor() {
-    this.prefPositioning();
     this.templateVignette();
 
     // Display Interactions
@@ -595,7 +610,6 @@ class Dozenal {
   }
 
   templateSealTerminal() {
-    this.prefPositioning();
     this.templateVignette();
 
     this.setHidden(this.billboard("overlay"), false);
@@ -632,7 +646,6 @@ class Dozenal {
   }
 
   templateSealDoor() {
-    this.prefPositioning();
     this.templateVignette();
 
     this.setHidden(this.billboard("overlay"), true);
@@ -713,7 +726,6 @@ class Dozenal {
   }
 
   templateEnergyTerminal() {
-    this.prefPositioning();
     this.templateVignette();
     this.templateEnergyInterface();
 
@@ -739,7 +751,6 @@ class Dozenal {
   }
 
   templateEnergyDoor() {
-    this.prefPositioning();
     this.templateVignette();
 
     // Display Interactions
@@ -861,7 +872,6 @@ class Dozenal {
   }
 
   templateProgressTerminal() {
-    this.prefPositioning();
     this.templateVignette();
     this.prefSave();
 
@@ -883,7 +893,6 @@ class Dozenal {
   }
 
   templateAudioTerminal() {
-    this.prefPositioning();
     this.templateVignette();
 
     this.setCurrentAction("action1");
@@ -920,8 +929,6 @@ class Dozenal {
   }
 
   templateEntenteTerminal1() {
-    this.prefPositioning();
-
     let targetGraphic = "";
 
     if (this.puzzleState[23] > 17) {
@@ -940,8 +947,6 @@ class Dozenal {
   }
 
   templateEntenteTerminal2() {
-    this.prefPositioning();
-
     let targetGraphic = "";
 
     if (this.puzzleState[24] > 17) {
@@ -1041,8 +1046,6 @@ class Dozenal {
   }
 
   templateKillTerminal() {
-    this.prefPositioning();
-
     this.setCurrentAction("action1");
   }
 
@@ -1054,8 +1057,6 @@ class Dozenal {
   }
 
   templateEndgameDoor() {
-    this.prefPositioning();
-
     if (this.puzzleState[47] == 1 && this.puzzleState[36] == 1) {
       this.templateUpdateNode(113, "0550", "act40");
 
@@ -1066,8 +1067,6 @@ class Dozenal {
   }
 
   templateEndgameCredit() {
-    this.prefPositioning();
-
     this.userChapter = Chapter.credit;
     this.updateMusic();
 
@@ -1180,16 +1179,12 @@ class Dozenal {
   }
 
   templateVignette() {
-    this.prefPositioning();
-
     this.setImage(this.billboard("vignette"), "interface/vignette.svg");
     this.setAlpha(this.billboard("vignette"), 1.0);
     this.fadeOut(this.billboard("vignette"), 0, 1.0);
   }
 
   templateSaveInterface() {
-    this.prefPositioning();
-
     this.setImage(this.billboard("interfaceSave"), "interface/save.svg");
     this.setHidden(this.billboard("interfaceSave"), false);
     this.setAlpha(this.billboard("interfaceSave"), 1);
@@ -1197,8 +1192,6 @@ class Dozenal {
   }
 
   illusionCheck() {
-    this.prefPositioning();
-
     let nodeIllusionAction = null;
 
     if (Math.random() * 10 > 7) {
@@ -1266,8 +1259,6 @@ class Dozenal {
   }
 
   illusionInterface() {
-    this.prefPositioning();
-
     let illusionCount = 0;
 
     illusionCount += this.puzzleState[17];
@@ -1384,27 +1375,6 @@ class Dozenal {
   // Preferences
   // ====================
 
-  templateStart() {
-    this.setImage(
-      this.billboard("interfaceIndicatorRight"),
-      "interface/interfaceMove.indicator.svg"
-    );
-    this.setImage(
-      this.billboard("interfaceIndicatorForward"),
-      "interface/interfaceMove.indicator.svg"
-    );
-    this.setImage(
-      this.billboard("interfaceIndicatorLeft"),
-      "interface/interfaceMove.indicator.svg"
-    );
-  }
-
-  prefPositioning() {
-    this.setAlpha(this.billboard("interfaceIndicatorRight"), 0);
-    this.setAlpha(this.billboard("interfaceIndicatorForward"), 0);
-    this.setAlpha(this.billboard("interfaceIndicatorLeft"), 0);
-  }
-
   menuHome() {
     this.setImage(this.billboard("menu2"), "menu/menu.black.svg");
     this.setAlpha(this.billboard("menu2"), 1.0);
@@ -1430,7 +1400,6 @@ class Dozenal {
   }
 
   prefSave() {
-    this.prefPositioning();
     let saveObject = {
       userSettings: {
         userNode: this.userNodeId,

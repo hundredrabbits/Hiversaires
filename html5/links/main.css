@@ -27,7 +27,7 @@ triggers {
 }
 
 billboard {
-  background-size: cover;
+  background-size: 100% 100%;
   background-repeat: no-repeat;
   pointer-events: none;
   /*image-rendering: crisp-edges;*/
