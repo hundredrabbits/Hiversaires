@@ -25,8 +25,7 @@ const recordsByChapter = (function() {
   recordsByChapter[Chapter.act4] = "music_act4";
   recordsByChapter[Chapter.act5] = "music_act5";
   recordsByChapter[Chapter.credit] = "music_credit";
-  Object.freeze(recordsByChapter);
-  return recordsByChapter;
+  return Object.freeze(recordsByChapter);
 })();
 
 const ambienceByZone = (function() {
@@ -41,8 +40,7 @@ const ambienceByZone = (function() {
   ambienceByZone[Zone.rainre] = "ambient_rainre";
   ambienceByZone[Zone.stones] = "ambient_stones";
   ambienceByZone[Zone.studio] = "ambient_studio";
-  Object.freeze(ambienceByZone);
-  return ambienceByZone;
+  return Object.freeze(ambienceByZone);
 })();
 
 class SubjectType {}
@@ -60,23 +58,22 @@ const nodesByID = (function() {
   let nodesByID = new Map();
 
   function addNode(id, zone, subject0, subject1, subject2, subject3) {
-    nodesByID[id] = new Node(id, zone, [
-      subject0,
-      subject1,
-      subject2,
-      subject3
-    ]);
+    nodesByID[id] = Object.freeze(
+      new Node(id, zone, [subject0, subject1, subject2, subject3])
+    );
   }
 
   function node(node, orientation) {
-    return orientation != null ? node + "|" + orientation : node.toString();
+    return Object.freeze(
+      orientation != null ? node + "|" + orientation : node.toString()
+    );
   }
 
   function puzzle(puzzleID) {
-    return "act" + puzzleID;
+    return Object.freeze("act" + puzzleID);
   }
 
-  const none = "0";
+  const none = Object.freeze("0");
 
   // ====================
   // Forest ( 0 - 11 )
@@ -215,8 +212,7 @@ const nodesByID = (function() {
   addNode(141, Zone.entente, none, node(88), none, node(142));
   addNode(142, Zone.entente, none, node(141), none, puzzle(54));
   addNode(143, Zone.nataniev, none, puzzle(54), none, none);
-  Object.freeze(nodesByID);
-  return nodesByID;
+  return Object.freeze(nodesByID);
 })();
 
 const PuzzleType = new Map();
@@ -250,7 +246,7 @@ const puzzlesByID = (function() {
   let puzzlesByID = new Map();
 
   function addPuzzle(id, type, defaultState) {
-    puzzlesByID[id] = new Puzzle(id, type, defaultState);
+    puzzlesByID[id] = Object.freeze(new Puzzle(id, type, defaultState));
   }
 
   addPuzzle(1, PuzzleType.clockTerminal);
@@ -319,6 +315,5 @@ const puzzlesByID = (function() {
   addPuzzle(52, PuzzleType.illusion);
   addPuzzle(53, PuzzleType.illusion);
   addPuzzle(54, PuzzleType.timeDoor);
-  Object.freeze(puzzlesByID);
-  return puzzlesByID;
+  return Object.freeze(puzzlesByID);
 })();
