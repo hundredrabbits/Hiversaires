@@ -246,54 +246,18 @@ class Dozenal {
   }
 
   action() {
-    if (this[this.currentAction] != null) {
-      this[this.currentAction]();
+    if (this.currentAction != null) {
+      this.currentAction();
     }
   }
 
-  action1() {
-    // Binary button
-
-    this.puzzleState[this.userActionId]++;
-
-    // Exceptions
-
-    if (this.userAction == "act1") {
-      this.puzzleState[this.userActionId] =
-        this.puzzleState[this.userActionId] > 2
-          ? 0
-          : this.puzzleState[this.userActionId];
-      hiversaires.music.playEffect("action_EnergyActive");
-      this.templateClockUpdate();
-    }
-    if (this.userAction == "act5") {
-      this.puzzleState[this.userActionId] =
-        this.puzzleState[this.userActionId] > 1 ? 0 : 2;
-      hiversaires.music.playEffect("action_EnergyActive");
-      this.templateUpdateStudioTerminal();
-    }
-
-    if (this.currentPuzzle.type == PuzzleType.audioTerminal) {
-      this.puzzleState[this.userActionId] =
-        this.puzzleState[this.userActionId] > 1 ? 0 : 1;
-      this.templateAudioUpdate();
-    }
-
-    if (this.currentPuzzle.type == PuzzleType.killTerminal) {
-      this.templateKillUpdate();
-    }
-  }
-
-  action2() {
-    // Door to display action3
-
+  openDoor() {
     this.setHidden(this.billboard("overlay"), false);
-
-    this.setCurrentAction("action3");
+    this.setCurrentAction(this.walkThroughDoor);
     this.templateEnergyUpdate();
   }
 
-  action3() {
+  walkThroughDoor() {
     // Warp Action
 
     hiversaires.music.playEffect("action_DoorActive");
@@ -382,9 +346,7 @@ class Dozenal {
     this.moveCheck();
   }
 
-  action4() {
-    // Fuse(energy) Action
-
+  toggleFuse() {
     if (this.puzzleState[this.userActionId] == 1) {
       this.puzzleState[this.userActionId] = 0;
       this.userEnergy += 1;
@@ -398,9 +360,7 @@ class Dozenal {
     this.templateEnergyUpdate();
   }
 
-  action5() {
-    // Seal Action
-
+  toggleSeal() {
     if (
       this.puzzleState[this.userActionId] == 1 ||
       this.currentSeals.length < 2
@@ -521,7 +481,12 @@ class Dozenal {
   templateClockTerminal() {
     this.templateVignette();
 
-    this.setCurrentAction("action1");
+    this.setCurrentAction(function() {
+      this.puzzleState[this.userActionId] =
+        (this.puzzleState[this.userActionId] + 1) % 3;
+      hiversaires.music.playEffect("action_EnergyActive");
+      this.templateClockUpdate();
+    });
 
     hiversaires.music.playEffect("action_EnergyInit");
 
@@ -568,7 +533,7 @@ class Dozenal {
     }
 
     if (doorUnlocked) {
-      this.setCurrentAction("action2");
+      this.setCurrentAction(this.openDoor);
 
       this.templateUpdateNode(16, "0472", "act7");
       this.templateUpdateNode(23, "0473", "act7");
@@ -609,7 +574,7 @@ class Dozenal {
     this.setHidden(this.billboard("overlay"), false);
     this.setAlpha(this.billboard("overlay"), 0);
 
-    this.setCurrentAction("action5");
+    this.setCurrentAction(this.toggleSeal);
 
     hiversaires.music.playEffect("action_SealInit");
     this.templateSealUpdate();
@@ -677,9 +642,14 @@ class Dozenal {
     } else if (this.puzzleState[21] == 1 && this.puzzleState[12] == 1) {
       // Act 4 : Antechannel + Stones in Studio
       if (this.userNodeId == 19) {
-        this.setCurrentAction("action1");
+        this.setCurrentAction(function() {
+          this.puzzleState[this.userActionId]++;
+          this.puzzleState[this.userActionId] =
+            this.puzzleState[this.userActionId] > 1 ? 0 : 2;
+          hiversaires.music.playEffect("action_EnergyActive");
+          this.templateUpdateStudioTerminal();
+        });
         this.templateUpdateStudioTerminal();
-
         this.prefSave();
       }
     } else if (this.userAction == "act5" && this.userNodeId == 19) {
@@ -725,7 +695,7 @@ class Dozenal {
 
     this.setHidden(this.billboard("overlay"), false);
 
-    this.setCurrentAction("action2");
+    this.setCurrentAction(this.openDoor);
 
     this.isFuseAction = true;
 
@@ -788,7 +758,7 @@ class Dozenal {
     } // Antechannel fuse for Capsule door
 
     if (puzzleTerminal != null && this.puzzleState[puzzleTerminal] > 0) {
-      this.setCurrentAction("action2");
+      this.setCurrentAction(this.openDoor);
 
       this.templateUpdateNode(1, "0531", "act28");
       this.templateUpdateNode(12, "0470", "act3");
@@ -820,7 +790,7 @@ class Dozenal {
     this.templateEnergyInterface();
 
     if (this.isFuseAction) {
-      this.setCurrentAction("action4");
+      this.setCurrentAction(this.toggleFuse);
     }
 
     if (this.puzzleState[this.userActionId] == 1) {
@@ -888,8 +858,11 @@ class Dozenal {
 
   templateAudioTerminal() {
     this.templateVignette();
-
-    this.setCurrentAction("action1");
+    this.setCurrentAction(function() {
+      this.puzzleState[this.userActionId] =
+        (this.puzzleState[this.userActionId] + 1) % 2;
+      this.templateAudioUpdate();
+    });
 
     this.templateAudioUpdate();
   }
@@ -1040,21 +1013,19 @@ class Dozenal {
   }
 
   templateKillTerminal() {
-    this.setCurrentAction("action1");
-  }
-
-  templateKillUpdate() {
-    if (this.puzzleState[14] > 50) {
-      this.wipePlayerProgress();
-      this.newGame();
-    }
+    this.setCurrentAction(function() {
+      this.puzzleState[this.userActionId]++;
+      if (this.puzzleState[this.userActionId] > 50) {
+        this.wipePlayerProgress();
+        this.newGame();
+      }
+    });
   }
 
   templateEndgameDoor() {
     if (this.puzzleState[47] == 1 && this.puzzleState[36] == 1) {
       this.templateUpdateNode(113, "0550", "act40");
-
-      this.setCurrentAction("action3");
+      this.setCurrentAction(this.walkThroughDoor);
     } else {
       this.templateEnergyAlert();
     }
@@ -1113,7 +1084,7 @@ class Dozenal {
 
   templateUpdateDoorknob(side1, side2) {
     if (this.userNodeId == side1 || this.userNodeId == side2) {
-      this.setCurrentAction("action2");
+      this.setCurrentAction(this.openDoor);
     }
   }
 
@@ -1236,7 +1207,7 @@ class Dozenal {
     }
 
     if (nodeIllusionAction != null) {
-      this.setImage(this.billboard("illusion"), "illusion/little_ghost.png"); // We could support multiple images
+      // TODO: By solving the jQuery add/remove CSS class problem, we could support multiple illusions
 
       this.billboard("illusion").className =
         "node_" + this.userNodeId + "_" + this.userOrientation;

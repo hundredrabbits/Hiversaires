@@ -1,5 +1,7 @@
-Unravel actions
 Replace node and puzzle data types
+Create puzzle object
+    A puzzle has a state (loaded/saved) and a performAction() method
+    Actions are dictated by puzzles. setCurrentAction should be made into a getter that discovers the action of a puzzle subject
 Create billboard object
 Create trigger object
 
@@ -20,23 +22,16 @@ Convert layout and ghost CSS to data-driven styles
     Bring back setBounds
     Store illusion bounds in data.js
 
+Once you show IOO⠛, fold their new stuff into the build
+    https://www.youtube.com/watch?v=j9KDQoznJwE
+
+    Thoughts on the interview
+
+        Chill driving after a long day
+            Drivey
+                What not to do, if you want a project to last
+
 Allow limited resizing
     iPads cropped the background and scaled the layout
 
 Bug someone about using import/export es6 syntax
-
-Once you show IOO⠛, fold their new stuff into the build
-
-NOTES
-    templateKillUpdate works, but nothing causes its condition to be true
-
-
-100 rabbits
-
-https://www.youtube.com/watch?v=j9KDQoznJwE
-
-Thoughts on the interview
-
-    Chill driving after a long day
-        Drivey
-            What not to do, if you want a project to last
