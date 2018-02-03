@@ -1,3 +1,7 @@
+billboard#illusion {
+  background-image: url("../media/graphics/illusion/little_ghost.png");
+}
+
 billboard#illusion.node_9_1 {
   left: calc(100% / 9 * (9*308/640));
   top: calc(100% / 16 * (16*465/1136));
