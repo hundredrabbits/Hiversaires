@@ -21,7 +21,7 @@ class ArtBook {
   }
 
   setArt(selector, assetURL) {
-    if (!(assetURL in this.assetCatalog)) {
+    if (!this.assetCatalog.has(assetURL)) {
       let className = "artbook_" + this.classUniqueID;
       this.classUniqueID++;
 
@@ -29,7 +29,7 @@ class ArtBook {
         "." + className + "{background-image:url(" + assetURL + ")}",
         0
       );
-      this.assetCatalog[assetURL] = className;
+      this.assetCatalog.set(assetURL, className);
     }
 
     let id = this.getElementID(selector);
@@ -38,24 +38,24 @@ class ArtBook {
       console.warn("no element for selector " + selector);
     }
 
-    if (id in this.elementRegistry) {
-      if (this.elementRegistry[id] == assetURL) {
+    if (this.elementRegistry.has(id)) {
+      if (this.elementRegistry.get(id) == assetURL) {
         return;
       }
       this.removeArt(selector);
     }
-    this.elementRegistry[id] = assetURL;
-    $(selector).addClass(this.assetCatalog[assetURL]);
+    this.elementRegistry.set(id, assetURL);
+    $(selector).addClass(this.assetCatalog.get(assetURL));
   }
 
   removeArt(selector) {
     let id = this.getElementID(selector);
-    if (id in this.elementRegistry) {
-      let assetURL = this.elementRegistry[id];
-      if (assetURL in this.assetCatalog) {
-        $(selector).removeClass(this.assetCatalog[assetURL]);
+    if (this.elementRegistry.has(id)) {
+      let assetURL = this.elementRegistry.get(id);
+      if (this.assetCatalog.has(assetURL)) {
+        $(selector).removeClass(this.assetCatalog.get(assetURL));
       }
-      delete this.elementRegistry[id];
+      this.elementRegistry.delete(id);
     }
   }
 

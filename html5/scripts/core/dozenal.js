@@ -63,7 +63,7 @@ class Dozenal {
   }
 
   get currentNode() {
-    return nodesByID[this.userNodeID];
+    return nodesByID.get(this.userNodeID);
   }
 
   get currentSubject() {
@@ -73,7 +73,7 @@ class Dozenal {
   get currentPuzzle() {
     let subject = this.currentSubject;
     if (subject != null && subject.type == SubjectType.puzzle) {
-      return puzzlesByID[subject.puzzleID];
+      return puzzlesByID.get(subject.puzzleID);
     }
     return null;
   }
@@ -99,11 +99,11 @@ class Dozenal {
   }
 
   billboard(id) {
-    return hiversaires.stage.billboardsByID[id];
+    return hiversaires.stage.billboardsByID.get(id);
   }
 
   trigger(id) {
-    return hiversaires.stage.triggersByID[id];
+    return hiversaires.stage.triggersByID.get(id);
   }
 
   setImage(billboardID, url) {
@@ -135,7 +135,7 @@ class Dozenal {
   }
 
   updateMusic() {
-    hiversaires.music.setRecord(recordsByChapter[this.userChapter]);
+    hiversaires.music.setRecord(recordsByChapter.get(this.userChapter));
   }
 
   // ====================
@@ -161,7 +161,7 @@ class Dozenal {
       this.actionCheck();
     }
 
-    hiversaires.music.setAmbience(ambienceByZone[this.currentNode.zone]);
+    hiversaires.music.setAmbience(ambienceByZone.get(this.currentNode.zone));
   }
 
   moveLeft() {
@@ -1329,7 +1329,7 @@ class Dozenal {
   prefSave() {
     let saveObject = {
       userSettings: {
-        userNode: this.userNodeID,
+        userNodeID: this.userNodeID,
         userOrientation: this.userOrientation,
         userChapter: this.userChapter,
         userEnergy: this.userEnergy
@@ -1357,7 +1357,7 @@ class Dozenal {
     if (saveObject != null) {
       // Settings
       let userSettings = saveObject.userSettings;
-      this.userNodeID = userSettings.userNode;
+      this.userNodeID = userSettings.userNodeID;
       this.userOrientation = userSettings.userOrientation;
       this.userChapter = userSettings.userChapter;
       this.userEnergy = userSettings.userEnergy;
@@ -1372,8 +1372,8 @@ class Dozenal {
       // New Game
 
       this.puzzleState = [];
-      for (let id in puzzlesByID) {
-        this.puzzleState[id] = puzzlesByID[id].defaultState;
+      for (let puzzle of puzzlesByID.values()) {
+        this.puzzleState[puzzle.id] = puzzle.defaultState;
       }
 
       console.log(this.puzzleState);

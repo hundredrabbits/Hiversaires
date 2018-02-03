@@ -56,7 +56,7 @@ class Stage {
       if (DEBUG_SHOW_BILLBOARDS) {
         billboard.innerText = id;
       }
-      this.billboardsByID[id] = billboard;
+      this.billboardsByID.set(id, billboard);
     }
 
     function handleClick(event) {
@@ -72,7 +72,7 @@ class Stage {
         trigger.innerText = id;
       }
       trigger.addEventListener("click", handleClick);
-      this.triggersByID[id] = trigger;
+      this.triggersByID.set(id, trigger);
     }
   }
 }

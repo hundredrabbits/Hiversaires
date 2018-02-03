@@ -19,27 +19,27 @@ setEnumValues(Zone, [
 
 const recordsByChapter = (function() {
   let recordsByChapter = new Map();
-  recordsByChapter[Chapter.act1] = "music_act1";
-  recordsByChapter[Chapter.act2] = "music_act2";
-  recordsByChapter[Chapter.act3] = "music_act3";
-  recordsByChapter[Chapter.act4] = "music_act4";
-  recordsByChapter[Chapter.act5] = "music_act5";
-  recordsByChapter[Chapter.credit] = "music_credit";
+  recordsByChapter.set(Chapter.act1, "music_act1");
+  recordsByChapter.set(Chapter.act2, "music_act2");
+  recordsByChapter.set(Chapter.act3, "music_act3");
+  recordsByChapter.set(Chapter.act4, "music_act4");
+  recordsByChapter.set(Chapter.act5, "music_act5");
+  recordsByChapter.set(Chapter.credit, "music_credit");
   return Object.freeze(recordsByChapter);
 })();
 
 const ambienceByZone = (function() {
   let ambienceByZone = new Map();
-  ambienceByZone[Zone.antechannel] = "ambient_antechannel";
-  ambienceByZone[Zone.capsule] = "ambient_capsule";
-  ambienceByZone[Zone.circular] = "ambient_circular";
-  ambienceByZone[Zone.entente] = null;
-  ambienceByZone[Zone.forest] = "ambient_forest";
-  ambienceByZone[Zone.metamondst] = "ambient_metamondst";
-  ambienceByZone[Zone.nataniev] = "ambient_nataniev";
-  ambienceByZone[Zone.rainre] = "ambient_rainre";
-  ambienceByZone[Zone.stones] = "ambient_stones";
-  ambienceByZone[Zone.studio] = "ambient_studio";
+  ambienceByZone.set(Zone.antechannel, "ambient_antechannel");
+  ambienceByZone.set(Zone.capsule, "ambient_capsule");
+  ambienceByZone.set(Zone.circular, "ambient_circular");
+  ambienceByZone.set(Zone.entente, null); // Weird omission, eh?
+  ambienceByZone.set(Zone.forest, "ambient_forest");
+  ambienceByZone.set(Zone.metamondst, "ambient_metamondst");
+  ambienceByZone.set(Zone.nataniev, "ambient_nataniev");
+  ambienceByZone.set(Zone.rainre, "ambient_rainre");
+  ambienceByZone.set(Zone.stones, "ambient_stones");
+  ambienceByZone.set(Zone.studio, "ambient_studio");
   return Object.freeze(ambienceByZone);
 })();
 
@@ -59,8 +59,11 @@ const nodesByID = (function() {
   let nodesByID = new Map();
 
   function addNode(id, zone, subject0, subject1, subject2, subject3) {
-    nodesByID[id] = Object.freeze(
-      new Node(id, zone, [subject0, subject1, subject2, subject3])
+    nodesByID.set(
+      id,
+      Object.freeze(
+        new Node(id, zone, [subject0, subject1, subject2, subject3])
+      )
     );
   }
 
@@ -252,7 +255,10 @@ const puzzlesByID = (function() {
   let puzzlesByID = new Map();
 
   function addPuzzle(id, type, info, defaultState) {
-    puzzlesByID[id] = Object.freeze(new Puzzle(id, type, info, defaultState));
+    puzzlesByID.set(
+      id,
+      Object.freeze(new Puzzle(id, type, info, defaultState))
+    );
   }
 
   addPuzzle(1, PuzzleType.clockTerminal, {});

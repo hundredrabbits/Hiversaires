@@ -16,8 +16,8 @@ class Music {
   set volume(value) {
     if (this._volume != value) {
       this._volume = value;
-      for (let key in this.playingTracksByRole) {
-        this.playingTracksByRole[key].volume = value;
+      for (let track of this.playingTracksByRole.values()) {
+        track.volume = value;
       }
     }
   }
@@ -41,8 +41,8 @@ class Music {
     }
     this.ambience = name;
     if (
-      this.playingTracksByRole["ambience"] == null ||
-      this.playingTracksByRole["ambience"].name != name
+      this.playingTracksByRole.get("ambience") == null ||
+      this.playingTracksByRole.get("ambience").name != name
     ) {
       this.playAmbience();
     }
@@ -54,8 +54,8 @@ class Music {
     }
     this.record = name;
     if (
-      this.playingTracksByRole["record"] == null ||
-      this.playingTracksByRole["record"].name != name
+      this.playingTracksByRole.get("record") == null ||
+      this.playingTracksByRole.get("record").name != name
     ) {
       this.playRecord();
     }
@@ -70,7 +70,7 @@ class Music {
   }
 
   switchAudio(role, name) {
-    let oldTrack = this.playingTracksByRole[role];
+    let oldTrack = this.playingTracksByRole.get(role);
 
     if (oldTrack != null) {
       if (oldTrack.name == name) {
@@ -86,7 +86,7 @@ class Music {
         "media/audio/" + role + "/" + name + ".mp3",
         true
       );
-      this.playingTracksByRole[role] = newTrack;
+      this.playingTracksByRole.set(role, newTrack);
       newTrack.volume = this._volume;
       if (DEBUG_NO_MUSIC) {
         console.info(role, ":", name, "(off by debug)");
@@ -98,11 +98,11 @@ class Music {
   }
 
   fetchTrack(name, role, src, loop) {
-    let audioId = role + "_" + name;
-    if (!(audioId in this._trackCatalog)) {
-      this._trackCatalog[audioId] = new Track(name, role, src, loop);
+    let audioID = role + "_" + name;
+    if (!this._trackCatalog.has(audioID)) {
+      this._trackCatalog.set(audioID, new Track(name, role, src, loop));
     }
-    return this._trackCatalog[audioId];
+    return this._trackCatalog.get(audioID);
   }
 }
 
