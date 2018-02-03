@@ -1181,7 +1181,7 @@ class Dozenal {
   templateVignette() {
     this.prefPositioning();
 
-    this.setImage(this.billboard("vignette"), "interface/vignette.png");
+    this.setImage(this.billboard("vignette"), "interface/vignette.svg");
     this.setAlpha(this.billboard("vignette"), 1.0);
     this.fadeOut(this.billboard("vignette"), 0, 1.0);
   }
