@@ -63,17 +63,19 @@ const nodesByID = (function() {
     );
   }
 
-  function node(node, orientation) {
-    return Object.freeze(
-      orientation != null ? node + "|" + orientation : node.toString()
-    );
+  function node(nodeID, orientation) {
+    return Object.freeze({
+      type: SubjectType.node,
+      nodeID: nodeID,
+      orientation: orientation
+    });
   }
 
   function puzzle(puzzleID) {
-    return Object.freeze("act" + puzzleID);
+    return Object.freeze({ type: SubjectType.puzzle, puzzleID: puzzleID });
   }
 
-  const none = Object.freeze("0");
+  const none = Object.freeze({ type: SubjectType.none });
 
   // ====================
   // Forest ( 0 - 11 )

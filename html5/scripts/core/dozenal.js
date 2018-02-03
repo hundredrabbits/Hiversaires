@@ -12,8 +12,6 @@ class Dozenal {
 
     // User Temp
 
-    this.userAction;
-    this.userActionId;
     this.userFootstep = 0;
 
     // Misc
@@ -79,7 +77,11 @@ class Dozenal {
   }
 
   get currentPuzzle() {
-    return puzzlesByID[this.userActionId];
+    let subject = this.currentSubject;
+    if (subject != null && subject.type == SubjectType.puzzle) {
+      return puzzlesByID[subject.puzzleID];
+    }
+    return null;
   }
 
   get currentSeals() {
@@ -147,9 +149,10 @@ class Dozenal {
   moveCheck() {
     this.actionReset();
 
-    this.userAction = null;
-
-    this.setHidden(this.trigger("moveForward"), !this.currentSubject);
+    this.setHidden(
+      this.trigger("moveForward"),
+      this.currentSubject.type == SubjectType.none
+    );
 
     this.setImage(
       this.billboard("viewMain"),
@@ -158,11 +161,7 @@ class Dozenal {
 
     this.illusionCheck();
 
-    // Trigger Action
-
-    if (this.currentSubject.indexOf("act") != -1) {
-      this.userAction = this.currentSubject;
-      this.userActionId = parseInt(this.userAction.replace(/act/g, ""));
+    if (this.currentSubject.type == SubjectType.puzzle) {
       this.actionCheck();
     }
 
@@ -186,16 +185,12 @@ class Dozenal {
   moveForward() {
     this.playFootStep();
 
-    if (this.currentSubject.indexOf("|") == -1) {
-      this.userNodeId =
-        parseInt(this.currentSubject) > 0
-          ? parseInt(this.currentSubject)
-          : this.userNodeId;
-    } else {
-      let temp = this.currentSubject.split("|");
-      this.userNodeId =
-        parseInt(temp[0]) > 0 ? parseInt(temp[0]) : this.userNodeId;
-      this.userOrientation = parseInt(temp[1]);
+    if (this.currentSubject.type == SubjectType.node) {
+      let { nodeID, orientation } = this.currentSubject;
+      this.userNodeId = nodeID;
+      if (orientation != null) {
+        this.userOrientation = orientation;
+      }
     }
 
     this.animateStepForward();
@@ -209,18 +204,18 @@ class Dozenal {
   }
 
   moveBackward() {
+    hiversaires.music.playEffect("footstep_turn");
+
     this.userOrientation = (this.userOrientation + 4 + 2) % 4;
-    if (this.currentSubject.indexOf("|") == -1) {
-      this.userNodeId =
-        parseInt(this.currentSubject) > 0
-          ? parseInt(this.currentSubject)
-          : this.userNodeId;
-    } else {
-      let temp = this.currentSubject.split("|");
-      this.userNodeId =
-        parseInt(temp[0]) > 0 ? parseInt(temp[0]) : this.userNodeId;
-      this.userOrientation = parseInt(temp[1]);
+
+    if (this.currentSubject.type == SubjectType.node) {
+      let { nodeID, orientation } = this.currentSubject;
+      this.userNodeId = nodeID;
+      if (orientation != null) {
+        this.userOrientation = orientation;
+      }
     }
+
     this.userOrientation = (this.userOrientation + 4 + 2) % 4;
 
     this.animateStepBackward();
@@ -234,13 +229,13 @@ class Dozenal {
   actionCheck() {
     this.setHidden(this.trigger("moveLeft"), false);
     this.setHidden(this.trigger("moveRight"), false);
-    this.setHidden(this.trigger("moveForward"), !this.userAction);
+    this.setHidden(this.trigger("moveForward"), this.currentPuzzle == null);
 
     this.setCurrentAction(null);
 
     this.isFuseAction = false;
 
-    if (this.userAction) {
+    if (this.currentPuzzle) {
       this.actionTemplate();
     }
   }
@@ -340,18 +335,16 @@ class Dozenal {
 
     // Easter Eggs
 
-    this.userAction = null;
-
     this.actionCheck();
     this.moveCheck();
   }
 
   toggleFuse() {
-    if (this.puzzleState[this.userActionId] == 1) {
-      this.puzzleState[this.userActionId] = 0;
+    if (this.puzzleState[this.currentPuzzle.id] == 1) {
+      this.puzzleState[this.currentPuzzle.id] = 0;
       this.userEnergy += 1;
     } else if (this.userEnergy > 0) {
-      this.puzzleState[this.userActionId] = 1;
+      this.puzzleState[this.currentPuzzle.id] = 1;
       this.userEnergy -= 1;
     } else {
       this.templateEnergyAlert();
@@ -362,15 +355,15 @@ class Dozenal {
 
   toggleSeal() {
     if (
-      this.puzzleState[this.userActionId] == 1 ||
+      this.puzzleState[this.currentPuzzle.id] == 1 ||
       this.currentSeals.length < 2
     ) {
-      if (this.puzzleState[this.userActionId] != 1) {
+      if (this.puzzleState[this.currentPuzzle.id] != 1) {
         hiversaires.music.playEffect("action_SealActive");
-        this.puzzleState[this.userActionId] = 1;
+        this.puzzleState[this.currentPuzzle.id] = 1;
       } else {
         hiversaires.music.playEffect("action_SealInactive");
-        this.puzzleState[this.userActionId] = 0;
+        this.puzzleState[this.currentPuzzle.id] = 0;
       }
     } else {
       hiversaires.music.playEffect("action_EnergyStack");
@@ -438,25 +431,25 @@ class Dozenal {
       this.templateTimeDoor();
     }
 
-    if (this.userAction == "act23") {
+    if (this.currentPuzzle.id == 23) {
       this.templateEntenteTerminal1();
     }
-    if (this.userAction == "act24") {
+    if (this.currentPuzzle.id == 24) {
       this.templateEntenteTerminal2();
     }
-    if (this.userAction == "act43") {
+    if (this.currentPuzzle.id == 43) {
       this.templateEntentePart1Incr();
     }
-    if (this.userAction == "act42") {
+    if (this.currentPuzzle.id == 42) {
       this.templateEntentePart1Decr();
     }
-    if (this.userAction == "act45") {
+    if (this.currentPuzzle.id == 45) {
       this.templateEntentePart2Incr();
     }
-    if (this.userAction == "act44") {
+    if (this.currentPuzzle.id == 44) {
       this.templateEntentePart2Decr();
     }
-    if (this.userAction == "act46") {
+    if (this.currentPuzzle.id == 46) {
       this.templateEntentePart2Exit();
     }
   }
@@ -482,8 +475,8 @@ class Dozenal {
     this.templateVignette();
 
     this.setCurrentAction(function() {
-      this.puzzleState[this.userActionId] =
-        (this.puzzleState[this.userActionId] + 1) % 3;
+      this.puzzleState[this.currentPuzzle.id] =
+        (this.puzzleState[this.currentPuzzle.id] + 1) % 3;
       hiversaires.music.playEffect("action_EnergyActive");
       this.templateClockUpdate();
     });
@@ -520,14 +513,14 @@ class Dozenal {
 
     let doorUnlocked = false;
 
-    switch (this.userAction) {
-      case "act7":
+    switch (this.currentPuzzle.id) {
+      case 7:
         doorUnlocked = this.puzzleState[1] == 1 || this.puzzleState[1] == 2;
         break;
-      case "act8":
+      case 8:
         doorUnlocked = this.puzzleState[1] == 1 || this.puzzleState[1] == 0;
         break;
-      case "act9":
+      case 9:
         doorUnlocked = this.puzzleState[1] == 2 || this.puzzleState[1] == 0;
         break;
     }
@@ -535,12 +528,12 @@ class Dozenal {
     if (doorUnlocked) {
       this.setCurrentAction(this.openDoor);
 
-      this.templateUpdateNode(16, "0472", "act7");
-      this.templateUpdateNode(23, "0473", "act7");
-      this.templateUpdateNode(25, "0474", "act8");
-      this.templateUpdateNode(35, "0475", "act8");
-      this.templateUpdateNode(27, "0476", "act9");
-      this.templateUpdateNode(52, "0477", "act9");
+      this.templateUpdateNode(16, "0472", 7);
+      this.templateUpdateNode(23, "0473", 7);
+      this.templateUpdateNode(25, "0474", 8);
+      this.templateUpdateNode(35, "0475", 8);
+      this.templateUpdateNode(27, "0476", 9);
+      this.templateUpdateNode(52, "0477", 9);
     } else {
       this.templateClockAlert();
     }
@@ -616,8 +609,8 @@ class Dozenal {
       // Act 1 : Forest + Rainre in Stones
       if (this.userNodeId == 46 || this.userNodeId == 85) {
         this.templateUpdateDoorknob(46, 85);
-        this.templateUpdateNode(46, "0486", "act15");
-        this.templateUpdateNode(85, "0485", "act15");
+        this.templateUpdateNode(46, "0486", 15);
+        this.templateUpdateNode(85, "0485", 15);
         this.userChapter = Chapter.act2;
         this.prefSave();
       }
@@ -625,8 +618,8 @@ class Dozenal {
       // Act 2 : Metamondst + Rainre in Forest
       if (this.userNodeId == 11 || this.userNodeId == 48) {
         this.templateUpdateDoorknob(48, 11);
-        this.templateUpdateNode(11, "0487", "act25");
-        this.templateUpdateNode(48, "0488", "act25");
+        this.templateUpdateNode(11, "0487", 25);
+        this.templateUpdateNode(48, "0488", 25);
         this.userChapter = Chapter.act3;
         this.prefSave();
       }
@@ -634,8 +627,8 @@ class Dozenal {
       // Act 3 : Forest + Rainre in Metamondst
       if (this.userNodeId == 46 || this.userNodeId == 85) {
         this.templateUpdateDoorknob(46, 85);
-        this.templateUpdateNode(46, "0486", "act15");
-        this.templateUpdateNode(85, "0485", "act15");
+        this.templateUpdateNode(46, "0486", 15);
+        this.templateUpdateNode(85, "0485", 15);
         this.userChapter = Chapter.act4;
         this.prefSave();
       }
@@ -643,16 +636,16 @@ class Dozenal {
       // Act 4 : Antechannel + Stones in Studio
       if (this.userNodeId == 19) {
         this.setCurrentAction(function() {
-          this.puzzleState[this.userActionId]++;
-          this.puzzleState[this.userActionId] =
-            this.puzzleState[this.userActionId] > 1 ? 0 : 2;
+          this.puzzleState[this.currentPuzzle.id]++;
+          this.puzzleState[this.currentPuzzle.id] =
+            this.puzzleState[this.currentPuzzle.id] > 1 ? 0 : 2;
           hiversaires.music.playEffect("action_EnergyActive");
           this.templateUpdateStudioTerminal();
         });
         this.templateUpdateStudioTerminal();
         this.prefSave();
       }
-    } else if (this.userAction == "act5" && this.userNodeId == 19) {
+    } else if (this.currentPuzzle.id == 5 && this.userNodeId == 19) {
       // Studio Terminal
       this.templateUpdateStudioTerminal();
     } else {
@@ -665,22 +658,22 @@ class Dozenal {
 
     this.fadeOut(this.billboard("overlay"), 0, 0.5);
 
-    if (this.puzzleState[this.userActionId] != 1) {
+    if (this.puzzleState[this.currentPuzzle.id] != 1) {
       return;
     }
 
     if (this.currentSeals.length == 1) {
-      this.templateUpdateNode(5, "0493", "act4");
-      this.templateUpdateNode(38, "0496", "act12");
-      this.templateUpdateNode(45, "0502", "act13");
-      this.templateUpdateNode(49, "0505", "act21");
-      this.templateUpdateNode(82, "0499", "act20");
+      this.templateUpdateNode(5, "0493", 4);
+      this.templateUpdateNode(38, "0496", 12);
+      this.templateUpdateNode(45, "0502", 13);
+      this.templateUpdateNode(49, "0505", 21);
+      this.templateUpdateNode(82, "0499", 20);
     } else {
-      this.templateUpdateNode(5, "0494", "act4");
-      this.templateUpdateNode(38, "0497", "act12");
-      this.templateUpdateNode(45, "0503", "act13");
-      this.templateUpdateNode(49, "0506", "act21");
-      this.templateUpdateNode(82, "0500", "act20");
+      this.templateUpdateNode(5, "0494", 4);
+      this.templateUpdateNode(38, "0497", 12);
+      this.templateUpdateNode(45, "0503", 13);
+      this.templateUpdateNode(49, "0506", 21);
+      this.templateUpdateNode(82, "0500", 20);
     }
   }
 
@@ -730,56 +723,56 @@ class Dozenal {
 
     let puzzleTerminal = null;
 
-    if (this.userAction == "act3") {
+    if (this.currentPuzzle.id == 3) {
       puzzleTerminal = 2;
     }
-    if (this.userAction == "act6") {
+    if (this.currentPuzzle.id == 6) {
       puzzleTerminal = 37;
     }
 
-    if (this.userAction == "act11") {
+    if (this.currentPuzzle.id == 11) {
       puzzleTerminal = 10;
     }
-    if (this.userAction == "act19") {
+    if (this.currentPuzzle.id == 19) {
       puzzleTerminal = 18;
     }
-    if (this.userAction == "act26") {
+    if (this.currentPuzzle.id == 26) {
       puzzleTerminal = 27;
     }
 
-    if (this.userAction == "act28") {
+    if (this.currentPuzzle.id == 28) {
       puzzleTerminal = 5;
     }
-    if (this.userAction == "act30") {
+    if (this.currentPuzzle.id == 30) {
       puzzleTerminal = 5;
     }
-    if (this.userAction == "act33") {
+    if (this.currentPuzzle.id == 33) {
       puzzleTerminal = 47;
     } // Antechannel fuse for Capsule door
 
     if (puzzleTerminal != null && this.puzzleState[puzzleTerminal] > 0) {
       this.setCurrentAction(this.openDoor);
 
-      this.templateUpdateNode(1, "0531", "act28");
-      this.templateUpdateNode(12, "0470", "act3");
-      this.templateUpdateNode(13, "0471", "act3");
-      this.templateUpdateNode(20, "0080", "act6");
-      this.templateUpdateNode(69, "0478", "act19");
-      this.templateUpdateNode(61, "0479", "act19");
-      this.templateUpdateNode(62, "0480", "act26");
-      this.templateUpdateNode(77, "0481", "act26");
-      this.templateUpdateNode(76, "0482", "act30");
-      this.templateUpdateNode(79, "0534", "act33");
-      this.templateUpdateNode(112, "0535", "act33");
-      this.templateUpdateNode(87, "0483", "act30");
+      this.templateUpdateNode(1, "0531", 28);
+      this.templateUpdateNode(12, "0470", 3);
+      this.templateUpdateNode(13, "0471", 3);
+      this.templateUpdateNode(20, "0080", 6);
+      this.templateUpdateNode(69, "0478", 19);
+      this.templateUpdateNode(61, "0479", 19);
+      this.templateUpdateNode(62, "0480", 26);
+      this.templateUpdateNode(77, "0481", 26);
+      this.templateUpdateNode(76, "0482", 30);
+      this.templateUpdateNode(79, "0534", 33);
+      this.templateUpdateNode(112, "0535", 33);
+      this.templateUpdateNode(87, "0483", 30);
 
       // Nether Door
 
       if (this.puzzleState[5] == 2 && this.puzzleState[31] == 1) {
         // Replace 10 by actual act
-        this.templateUpdateNode(39, "0491", "act11");
+        this.templateUpdateNode(39, "0491", 11);
       } else {
-        this.templateUpdateNode(39, "0490", "act11");
+        this.templateUpdateNode(39, "0490", 11);
       }
     } else {
       this.templateEnergyAlert();
@@ -793,39 +786,39 @@ class Dozenal {
       this.setCurrentAction(this.toggleFuse);
     }
 
-    if (this.puzzleState[this.userActionId] == 1) {
-      this.templateUpdateNode(18, "0516", "act2");
-      this.templateUpdateNode(18, "0529", "act31");
-      this.templateUpdateNode(13, "0517", "act2");
-      this.templateUpdateNode(34, "0537", "act37");
-      this.templateUpdateNode(55, "0539", "act39");
-      this.templateUpdateNode(69, "0518", "act18");
-      this.templateUpdateNode(39, "0519", "act10");
-      this.templateUpdateNode(77, "0520", "act27");
-      this.templateUpdateNode(84, "0527", "act47");
-      this.templateUpdateNode(101, "0532", "act38");
-      this.templateUpdateNode(113, "0551", "act36");
-      this.templateUpdateNode(142, "0576", "act54");
-      this.templateUpdateNode(143, "0577", "act54");
+    if (this.puzzleState[this.currentPuzzle.id] == 1) {
+      this.templateUpdateNode(18, "0516", 2);
+      this.templateUpdateNode(18, "0529", 31);
+      this.templateUpdateNode(13, "0517", 2);
+      this.templateUpdateNode(34, "0537", 37);
+      this.templateUpdateNode(55, "0539", 39);
+      this.templateUpdateNode(69, "0518", 18);
+      this.templateUpdateNode(39, "0519", 10);
+      this.templateUpdateNode(77, "0520", 27);
+      this.templateUpdateNode(84, "0527", 47);
+      this.templateUpdateNode(101, "0532", 38);
+      this.templateUpdateNode(113, "0551", 36);
+      this.templateUpdateNode(142, "0576", 54);
+      this.templateUpdateNode(143, "0577", 54);
     } else {
-      this.templateUpdateNode(18, "0521", "act2");
-      this.templateUpdateNode(18, "0530", "act31");
-      this.templateUpdateNode(13, "0522", "act2");
-      this.templateUpdateNode(34, "0538", "act37");
-      this.templateUpdateNode(55, "0540", "act39");
-      this.templateUpdateNode(69, "0523", "act18");
-      this.templateUpdateNode(39, "0524", "act10");
-      this.templateUpdateNode(77, "0525", "act27");
-      this.templateUpdateNode(84, "0526", "act47");
-      this.templateUpdateNode(101, "0533", "act38");
-      this.templateUpdateNode(113, "0552", "act36");
-      this.templateUpdateNode(142, "0571", "act54");
-      this.templateUpdateNode(143, "0573", "act54");
+      this.templateUpdateNode(18, "0521", 2);
+      this.templateUpdateNode(18, "0530", 31);
+      this.templateUpdateNode(13, "0522", 2);
+      this.templateUpdateNode(34, "0538", 37);
+      this.templateUpdateNode(55, "0540", 39);
+      this.templateUpdateNode(69, "0523", 18);
+      this.templateUpdateNode(39, "0524", 10);
+      this.templateUpdateNode(77, "0525", 27);
+      this.templateUpdateNode(84, "0526", 47);
+      this.templateUpdateNode(101, "0533", 38);
+      this.templateUpdateNode(113, "0552", 36);
+      this.templateUpdateNode(142, "0571", 54);
+      this.templateUpdateNode(143, "0573", 54);
     }
 
     // Extras
 
-    if (this.userAction == "act37") {
+    if (this.currentPuzzle.id == 37) {
       this.puzzleState[37] = 1;
     }
   }
@@ -840,27 +833,27 @@ class Dozenal {
     this.prefSave();
 
     if (this.userChapter == Chapter.act1) {
-      this.templateUpdateNode(23, "0545", "act16");
+      this.templateUpdateNode(23, "0545", 16);
     }
     if (this.userChapter == Chapter.act2) {
-      this.templateUpdateNode(23, "0546", "act16");
+      this.templateUpdateNode(23, "0546", 16);
     }
     if (this.userChapter == Chapter.act3) {
-      this.templateUpdateNode(23, "0547", "act16");
+      this.templateUpdateNode(23, "0547", 16);
     }
     if (this.userChapter == Chapter.act4) {
-      this.templateUpdateNode(23, "0548", "act16");
+      this.templateUpdateNode(23, "0548", 16);
     }
     if (this.userChapter == Chapter.act5) {
-      this.templateUpdateNode(23, "0549", "act16");
+      this.templateUpdateNode(23, "0549", 16);
     }
   }
 
   templateAudioTerminal() {
     this.templateVignette();
     this.setCurrentAction(function() {
-      this.puzzleState[this.userActionId] =
-        (this.puzzleState[this.userActionId] + 1) % 2;
+      this.puzzleState[this.currentPuzzle.id] =
+        (this.puzzleState[this.currentPuzzle.id] + 1) % 2;
       this.templateAudioUpdate();
     });
 
@@ -870,11 +863,11 @@ class Dozenal {
   templateAudioUpdate() {
     this.templateAudioInterface();
 
-    if (this.puzzleState[this.userActionId] == 1) {
+    if (this.puzzleState[this.currentPuzzle.id] == 1) {
       this.setHidden(this.billboard("overlay"), false);
       this.setAlpha(this.billboard("overlay"), 1.0);
-      this.templateUpdateNode(21, "0543", "act35");
-      this.templateUpdateNode(43, "0544", "act35");
+      this.templateUpdateNode(21, "0543", 35);
+      this.templateUpdateNode(43, "0544", 35);
       hiversaires.music.volume = 1;
     } else {
       this.setHidden(this.billboard("overlay"), true);
@@ -934,13 +927,11 @@ class Dozenal {
   templateEntentePart1Incr() {
     if (this.puzzleState[23] == 17) {
       this.userNodeId = 93;
-      this.userAction = null;
       this.actionCheck();
       this.moveCheck();
       this.actionReset();
     } else {
       this.userNodeId = 89;
-      this.userAction = null;
 
       if (this.puzzleState[23] < 21) {
         this.puzzleState[23] = this.puzzleState[23] + 3;
@@ -954,7 +945,6 @@ class Dozenal {
 
   templateEntentePart1Decr() {
     this.userNodeId = 103;
-    this.userAction = null;
 
     if (this.puzzleState[23] > 14) {
       this.puzzleState[23] = this.puzzleState[23] - 1;
@@ -968,7 +958,6 @@ class Dozenal {
   templateEntentePart2Incr() {
     this.userNodeId = 94;
     this.userOrientation = 2;
-    this.userAction = null;
 
     if (this.puzzleState[24] < 23) {
       this.puzzleState[24] = this.puzzleState[24] + 4;
@@ -982,7 +971,6 @@ class Dozenal {
   templateEntentePart2Decr() {
     this.userNodeId = 95;
     this.userOrientation = 2;
-    this.userAction = null;
 
     if (this.puzzleState[24] > 14) {
       this.puzzleState[24] = this.puzzleState[24] - 1;
@@ -997,14 +985,12 @@ class Dozenal {
     if (this.puzzleState[23] == 17 && this.puzzleState[24] == 17) {
       this.userNodeId = 107;
       this.userOrientation = 3;
-      this.userAction = null;
 
       this.actionCheck();
       this.moveCheck();
       this.actionReset();
     } else {
       this.userNodeId = 93;
-      this.userAction = null;
 
       this.actionCheck();
       this.moveCheck();
@@ -1014,8 +1000,8 @@ class Dozenal {
 
   templateKillTerminal() {
     this.setCurrentAction(function() {
-      this.puzzleState[this.userActionId]++;
-      if (this.puzzleState[this.userActionId] > 50) {
+      this.puzzleState[this.currentPuzzle.id]++;
+      if (this.puzzleState[this.currentPuzzle.id] > 50) {
         this.wipePlayerProgress();
         this.newGame();
       }
@@ -1024,7 +1010,7 @@ class Dozenal {
 
   templateEndgameDoor() {
     if (this.puzzleState[47] == 1 && this.puzzleState[36] == 1) {
-      this.templateUpdateNode(113, "0550", "act40");
+      this.templateUpdateNode(113, "0550", 40);
       this.setCurrentAction(this.walkThroughDoor);
     } else {
       this.templateEnergyAlert();
@@ -1095,7 +1081,7 @@ class Dozenal {
     if (this.puzzleState[5] == 2) {
       this.setAlpha(this.billboard("overlay"), 1.0);
       this.setHidden(this.billboard("overlay"), false);
-      this.templateUpdateNode(19, "0489", "act5");
+      this.templateUpdateNode(19, "0489", 5);
 
       this.userChapter = Chapter.act5;
       this.updateMusic();
@@ -1103,15 +1089,15 @@ class Dozenal {
       if (this.puzzleState[12] == 1 && this.puzzleState[21] == 1) {
         this.setAlpha(this.billboard("overlay"), 1.0);
         this.setHidden(this.billboard("overlay"), false);
-        this.templateUpdateNode(19, "0536", "act5");
+        this.templateUpdateNode(19, "0536", 5);
       } else if (this.puzzleState[12] == 1 && this.puzzleState[21] == 0) {
         this.setAlpha(this.billboard("overlay"), 1.0);
         this.setHidden(this.billboard("overlay"), false);
-        this.templateUpdateNode(19, "0542", "act5");
+        this.templateUpdateNode(19, "0542", 5);
       } else if (this.puzzleState[12] == 0 && this.puzzleState[21] == 1) {
         this.setAlpha(this.billboard("overlay"), 1.0);
         this.setHidden(this.billboard("overlay"), false);
-        this.templateUpdateNode(19, "0541", "act5");
+        this.templateUpdateNode(19, "0541", 5);
       }
 
       if (this.userChapter == Chapter.act5) {
@@ -1121,8 +1107,8 @@ class Dozenal {
     }
   }
 
-  templateUpdateNode(node, img, act) {
-    if (this.userNodeId == node && this.userAction == act) {
+  templateUpdateNode(node, img, puzzleID) {
+    if (this.userNodeId == node && this.currentPuzzle.id == puzzleID) {
       this.setImage(this.billboard("overlay"), "node_old/node." + img + ".jpg");
     }
 
@@ -1136,7 +1122,7 @@ class Dozenal {
       this.fadeIn(this.billboard("overlay"), 0.0, 1.0);
     } else if (this.currentPuzzle.type == PuzzleType.progressTerminal) {
       this.fadeIn(this.billboard("overlay"), 0.3, 0.5);
-    } else if (this.userActionId == 28) {
+    } else if (this.currentPuzzle.id == 28) {
       this.fadeIn(this.billboard("overlay"), 0.5, 1);
     } else {
       this.fadeIn(this.billboard("overlay"), 0, 0.0);
@@ -1303,7 +1289,6 @@ class Dozenal {
   }
 
   animateStepBackward() {
-    hiversaires.music.playEffect("footstep_turn");
     let viewMain = $(this.billboard("viewMain"));
     viewMain.finish();
     let viewMainY = viewMain.css("top").split("px")[0];
@@ -1322,15 +1307,10 @@ class Dozenal {
 
   playFootStep() {
     this.userFootstep += 1;
-    if (
-      this.currentSubject.indexOf("|") != -1 ||
-      parseInt(this.currentSubject) > 0
-    ) {
-      if (this.userFootstep & 1) {
-        hiversaires.music.playEffect("footstep_left");
-      } else {
-        hiversaires.music.playEffect("footstep_right");
-      }
+    if (this.currentSubject.type == SubjectType.node) {
+      hiversaires.music.playEffect(
+        this.userFootstep % 2 == 1 ? "footstep_left" : "footstep_right"
+      );
     } else {
       hiversaires.music.playEffect("footstep_collide");
     }

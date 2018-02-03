@@ -1,4 +1,5 @@
-Replace node and puzzle data types
+Play the game through to the end
+    You're almost there
 Create puzzle object
     A puzzle has a state (loaded/saved) and a performAction() method
     Actions are dictated by puzzles. setCurrentAction should be made into a getter that discovers the action of a puzzle subject
