@@ -2,23 +2,12 @@
 
 class Dozenal {
   constructor() {
-    // User Storage
-
     this.puzzleState;
     this.userNodeID = 1;
     this.userOrientation = 0;
     this.userChapter = Chapter.act1;
     this.userEnergy = 0;
-
-    // User Temp
-
     this.userFootstep = 0;
-
-    // Misc
-
-    this.screenWidth = 9;
-    this.screenHeight = 16;
-
     this.currentAction = null;
   }
 
@@ -29,43 +18,48 @@ class Dozenal {
   }
 
   newGame() {
-    // this.wipePlayerProgress(); // remove for release
-
-    this.setAlpha(this.billboard("interfaceIndicatorRight"), 0);
-    this.setAlpha(this.billboard("interfaceIndicatorForward"), 0);
-    this.setAlpha(this.billboard("interfaceIndicatorLeft"), 0);
+    this.setAlpha("interfaceIndicatorRight", 0);
+    this.setAlpha("interfaceIndicatorForward", 0);
+    this.setAlpha("interfaceIndicatorLeft", 0);
+    this.setAlpha("interfaceDimclockAlert", 0);
+    this.setAlpha("interfaceSealAlert", 0);
+    this.setAlpha("interfaceFuseAlert", 0);
 
     this.setImage(
-      this.billboard("interfaceIndicatorRight"),
+      "interfaceIndicatorRight",
       "interface/interfaceMove.indicator.svg"
     );
     this.setImage(
-      this.billboard("interfaceIndicatorForward"),
+      "interfaceIndicatorForward",
       "interface/interfaceMove.indicator.svg"
     );
     this.setImage(
-      this.billboard("interfaceIndicatorLeft"),
+      "interfaceIndicatorLeft",
       "interface/interfaceMove.indicator.svg"
     );
+    this.setImage("interfaceDimclockAlert", "interface/alert.svg");
+    this.setImage("clockShadow", "interface/dimclock.shadow.svg");
+    this.setImage("interfaceSealAlert", "interface/alert.svg");
+    this.setImage("interfaceFuseAlert", "interface/alert.svg");
+    this.setImage("menuBlack", "menu/menu.black.svg");
+    this.setImage("menuCredit1", "menu/menu.credit1.svg");
+    this.setImage("menuCredit2", "menu/menu.credit2.svg");
+    this.setImage("menuCredit3", "menu/menu.credit3.svg");
+    this.setImage("menuCredit4", "menu/menu.credit4.svg");
+    this.setImage("vignette", "interface/vignette.svg");
+    this.setImage("interfaceSave", "interface/save.svg");
+    this.setImage("menuBlack", "menu/menu.black.svg");
+    this.setImage("menuLogo", "menu/menu.logo.svg");
+    this.setImage("menuControls", "menu/menu.controls.svg");
 
+    if (DEBUG_START_FRESH) {
+      this.wipePlayerProgress();
+    }
     this.prefLoad();
-
-    // this.userNodeID = 88;
 
     this.actionCheck();
     this.moveCheck();
     this.menuHome();
-
-    this.setImage(
-      this.billboard("interfaceDimclockAlert"),
-      "interface/alert.svg"
-    );
-    this.setImage(this.billboard("interfaceSealAlert"), "interface/alert.svg");
-    this.setImage(this.billboard("interfaceFuseAlert"), "interface/alert.svg");
-
-    this.setAlpha(this.billboard("interfaceDimclockAlert"), 0);
-    this.setAlpha(this.billboard("interfaceSealAlert"), 0);
-    this.setAlpha(this.billboard("interfaceFuseAlert"), 0);
   }
 
   get currentNode() {
@@ -112,7 +106,8 @@ class Dozenal {
     return hiversaires.stage.triggersByID[id];
   }
 
-  setImage(subject, url) {
+  setImage(billboardID, url) {
+    let subject = this.billboard(billboardID);
     if (url) {
       hiversaires.artBook.setArt(subject, "media/graphics/" + url);
     } else {
@@ -120,7 +115,8 @@ class Dozenal {
     }
   }
 
-  setAlpha(subject, value) {
+  setAlpha(billboardID, value) {
+    let subject = this.billboard(billboardID);
     $(subject)
       .finish()
       .css({ opacity: value });
@@ -155,7 +151,7 @@ class Dozenal {
     );
 
     this.setImage(
-      this.billboard("viewMain"),
+      "viewMain",
       "node/" + this.userNodeID + "." + this.userOrientation + ".jpg"
     );
 
@@ -375,18 +371,19 @@ class Dozenal {
   }
 
   actionReset() {
-    this.setAlpha(this.billboard("menu1"), 0);
-    this.setAlpha(this.billboard("menu2"), 0);
-    this.setAlpha(this.billboard("menu3"), 0);
-    this.setAlpha(this.billboard("menu4"), 0);
-    this.setAlpha(this.billboard("menu5"), 0);
-    this.setAlpha(this.billboard("menu6"), 0);
+    this.setHidden(this.billboard("menuBlack"), true);
+    this.setHidden(this.billboard("menuCredit1"), true);
+    this.setHidden(this.billboard("menuCredit2"), true);
+    this.setHidden(this.billboard("menuCredit3"), true);
+    this.setHidden(this.billboard("menuCredit4"), true);
+    this.setHidden(this.billboard("menuLogo"), true);
+    this.setHidden(this.billboard("menuControls"), true);
 
-    this.setAlpha(this.billboard("overlay"), 0);
-    this.setAlpha(this.billboard("clockFace"), 0);
-    this.setAlpha(this.billboard("clockShadow"), 0);
-    this.setAlpha(this.billboard("ententeScreen"), 0);
-    this.setAlpha(this.billboard("illusion"), 0);
+    this.setAlpha("overlay", 0);
+    this.setAlpha("clockFace", 0);
+    this.setAlpha("clockShadow", 0);
+    this.setAlpha("ententeScreen", 0);
+    this.setAlpha("illusion", 0);
 
     this.setCurrentAction(null);
   }
@@ -488,11 +485,11 @@ class Dozenal {
 
   templateClockInterface() {
     this.setImage(
-      this.billboard("interfaceDimclock"),
+      "interfaceDimclock",
       "interface/clock." + this.puzzleState[1] + ".svg"
     );
     this.setHidden(this.billboard("interfaceDimclock"), false);
-    this.setAlpha(this.billboard("interfaceDimclock"), 1);
+    this.setAlpha("interfaceDimclock", 1);
     this.fadeOut(this.billboard("interfaceDimclock"), 3, 0.5);
   }
 
@@ -543,12 +540,7 @@ class Dozenal {
     this.templateClockInterface();
 
     this.setImage(
-      this.billboard("clockShadow"),
-      "interface/dimclock.shadow.svg"
-    );
-
-    this.setImage(
-      this.billboard("clockFace"),
+      "clockFace",
       "interface/dimclock.state" + this.puzzleState[1] + ".svg"
     );
 
@@ -557,7 +549,7 @@ class Dozenal {
   }
 
   templateClockAlert() {
-    this.setAlpha(this.billboard("interfaceDimclockAlert"), 1.0);
+    this.setAlpha("interfaceDimclockAlert", 1.0);
     this.fadeOut(this.billboard("interfaceDimclockAlert"), 0.5, 0.5);
   }
 
@@ -565,7 +557,7 @@ class Dozenal {
     this.templateVignette();
 
     this.setHidden(this.billboard("overlay"), false);
-    this.setAlpha(this.billboard("overlay"), 0);
+    this.setAlpha("overlay", 0);
 
     this.setCurrentAction(this.toggleSeal);
 
@@ -579,19 +571,19 @@ class Dozenal {
     console.log(seals);
 
     this.setImage(
-      this.billboard("interfaceSeal1"),
+      "interfaceSeal1",
       "interface/seal." + (seals[0] == null ? "none" : seals[0]) + ".svg"
     );
     this.setImage(
-      this.billboard("interfaceSeal2"),
+      "interfaceSeal2",
       "interface/seal." + (seals[1] == null ? "none" : seals[1]) + ".svg"
     );
 
     this.setHidden(this.billboard("interfaceSeal1"), false);
     this.setHidden(this.billboard("interfaceSeal2"), false);
 
-    this.setAlpha(this.billboard("interfaceSeal1"), 1);
-    this.setAlpha(this.billboard("interfaceSeal2"), 1);
+    this.setAlpha("interfaceSeal1", 1);
+    this.setAlpha("interfaceSeal2", 1);
 
     this.fadeOut(this.billboard("interfaceSeal1"), 3, 0.5);
     this.fadeOut(this.billboard("interfaceSeal2"), 3, 0.5);
@@ -678,7 +670,7 @@ class Dozenal {
   }
 
   templateSealAlert() {
-    this.setAlpha(this.billboard("interfaceSealAlert"), 1.0);
+    this.setAlpha("interfaceSealAlert", 1.0);
     this.fadeOut(this.billboard("interfaceSealAlert"), 0.5, 0.5);
   }
 
@@ -697,12 +689,12 @@ class Dozenal {
 
   templateEnergyInterface() {
     this.setImage(
-      this.billboard("interfaceFuse1"),
+      "interfaceFuse1",
       "interface/fuse." + this.userEnergy + ".svg"
     );
 
     this.setHidden(this.billboard("interfaceFuse1"), false);
-    this.setAlpha(this.billboard("interfaceFuse1"), 1);
+    this.setAlpha("interfaceFuse1", 1);
 
     this.fadeOut(this.billboard("interfaceFuse1"), 3, 0.5);
   }
@@ -824,7 +816,7 @@ class Dozenal {
   }
 
   templateEnergyAlert() {
-    this.setAlpha(this.billboard("interfaceFuseAlert"), 1.0);
+    this.setAlpha("interfaceFuseAlert", 1.0);
     this.fadeOut(this.billboard("interfaceFuseAlert"), 0.5, 1.5);
   }
 
@@ -865,25 +857,25 @@ class Dozenal {
 
     if (this.puzzleState[this.currentPuzzle.id] == 1) {
       this.setHidden(this.billboard("overlay"), false);
-      this.setAlpha(this.billboard("overlay"), 1.0);
+      this.setAlpha("overlay", 1.0);
       this.templateUpdateNode(21, "0543", 35);
       this.templateUpdateNode(43, "0544", 35);
       hiversaires.music.volume = 1;
     } else {
       this.setHidden(this.billboard("overlay"), true);
-      this.setAlpha(this.billboard("overlay"), 0);
+      this.setAlpha("overlay", 0);
       hiversaires.music.volume = 0;
     }
   }
 
   templateAudioInterface() {
     this.setImage(
-      this.billboard("interfaceAudio"),
+      "interfaceAudio",
       "interface/music." + (this.puzzleState[35] == 1 ? "on" : "off") + ".svg"
     );
 
     this.setHidden(this.billboard("interfaceAudio"), false);
-    this.setAlpha(this.billboard("interfaceAudio"), 1);
+    this.setAlpha("interfaceAudio", 1);
 
     this.fadeOut(this.billboard("interfaceAudio"), 3, 0.5);
   }
@@ -900,7 +892,7 @@ class Dozenal {
     }
 
     this.setImage(
-      this.billboard("ententeScreen"),
+      "ententeScreen",
       "interface/entente" + targetGraphic + ".svg"
     );
     this.fadeIn(this.billboard("ententeScreen"), 0, 1);
@@ -918,7 +910,7 @@ class Dozenal {
     }
 
     this.setImage(
-      this.billboard("ententeScreen"),
+      "ententeScreen",
       "interface/entente" + targetGraphic + ".svg"
     );
     this.fadeIn(this.billboard("ententeScreen"), 0, 1);
@@ -1025,42 +1017,33 @@ class Dozenal {
     this.setHidden(this.trigger("moveLeft"), true);
     this.setHidden(this.trigger("moveRight"), true);
 
-    this.setImage(this.billboard("menu1"), "menu/menu.black.svg");
-    this.setAlpha(this.billboard("menu1"), 0.0);
-    this.setHidden(this.billboard("menu1"), false);
+    this.setAlpha("menuBlack", 0.0);
+    this.setHidden(this.billboard("menuBlack"), false);
 
-    this.fadeIn(this.billboard("menu1"), 1.0, 3);
+    this.fadeIn(this.billboard("menuBlack"), 1.0, 3);
 
-    this.setImage(this.billboard("menu2"), "menu/menu.credit1.svg");
-    this.setAlpha(this.billboard("menu2"), 0.0);
-    this.setHidden(this.billboard("menu2"), false);
+    this.setAlpha("menuCredit1", 0.0);
+    this.setHidden(this.billboard("menuCredit1"), false);
 
-    this.fadeIn(this.billboard("menu2"), 6.0, 1);
+    this.fadeIn(this.billboard("menuCredit1"), 6.0, 1);
 
-    this.setImage(this.billboard("menu3"), "menu/menu.credit2.svg");
-    this.setAlpha(this.billboard("menu3"), 0.0);
-    this.setHidden(this.billboard("menu3"), false);
+    this.setAlpha("menuCredit2", 0.0);
+    this.setHidden(this.billboard("menuCredit2"), false);
 
-    this.fadeIn(this.billboard("menu3"), 10.0, 1);
+    this.fadeIn(this.billboard("menuCredit2"), 10.0, 1);
 
-    this.setImage(this.billboard("menu4"), "menu/menu.credit3.svg");
-    this.setAlpha(this.billboard("menu4"), 0.0);
-    this.setHidden(this.billboard("menu4"), false);
+    this.setAlpha("menuCredit3", 0.0);
+    this.setHidden(this.billboard("menuCredit3"), false);
 
-    this.fadeIn(this.billboard("menu4"), 16.0, 1);
+    this.fadeIn(this.billboard("menuCredit3"), 16.0, 1);
 
-    this.setImage(this.billboard("menu5"), "menu/menu.black.svg");
-    this.setAlpha(this.billboard("menu5"), 0.0);
-    this.setHidden(this.billboard("menu5"), false);
-
-    this.fadeIn(this.billboard("menu5"), 20.0, 1);
+    this.fadeIn(this.billboard("menuBlack"), 20.0, 1, false);
 
     if (this.userEnergy == 1) {
-      this.setImage(this.billboard("menu6"), "menu/menu.credit4.svg");
-      this.setAlpha(this.billboard("menu6"), 0.0);
-      this.setHidden(this.billboard("menu6"), false);
+      this.setAlpha("menuCredit4", 0.0);
+      this.setHidden(this.billboard("menuCredit4"), false);
 
-      this.fadeIn(this.billboard("menu6"), 24.0, 1);
+      this.fadeIn(this.billboard("menuCredit4"), 24.0, 1);
     }
   }
 
@@ -1075,11 +1058,11 @@ class Dozenal {
   }
 
   templateUpdateStudioTerminal() {
-    this.setAlpha(this.billboard("overlay"), 0.0);
+    this.setAlpha("overlay", 0.0);
     this.setHidden(this.billboard("overlay"), true);
 
     if (this.puzzleState[5] == 2) {
-      this.setAlpha(this.billboard("overlay"), 1.0);
+      this.setAlpha("overlay", 1.0);
       this.setHidden(this.billboard("overlay"), false);
       this.templateUpdateNode(19, "0489", 5);
 
@@ -1087,15 +1070,15 @@ class Dozenal {
       this.updateMusic();
     } else {
       if (this.puzzleState[12] == 1 && this.puzzleState[21] == 1) {
-        this.setAlpha(this.billboard("overlay"), 1.0);
+        this.setAlpha("overlay", 1.0);
         this.setHidden(this.billboard("overlay"), false);
         this.templateUpdateNode(19, "0536", 5);
       } else if (this.puzzleState[12] == 1 && this.puzzleState[21] == 0) {
-        this.setAlpha(this.billboard("overlay"), 1.0);
+        this.setAlpha("overlay", 1.0);
         this.setHidden(this.billboard("overlay"), false);
         this.templateUpdateNode(19, "0542", 5);
       } else if (this.puzzleState[12] == 0 && this.puzzleState[21] == 1) {
-        this.setAlpha(this.billboard("overlay"), 1.0);
+        this.setAlpha("overlay", 1.0);
         this.setHidden(this.billboard("overlay"), false);
         this.templateUpdateNode(19, "0541", 5);
       }
@@ -1109,7 +1092,7 @@ class Dozenal {
 
   templateUpdateNode(node, img, puzzleID) {
     if (this.userNodeID == node && this.currentPuzzle.id == puzzleID) {
-      this.setImage(this.billboard("overlay"), "node_old/node." + img + ".jpg");
+      this.setImage("overlay", "node_old/node." + img + ".jpg");
     }
 
     // Fadeins
@@ -1130,15 +1113,13 @@ class Dozenal {
   }
 
   templateVignette() {
-    this.setImage(this.billboard("vignette"), "interface/vignette.svg");
-    this.setAlpha(this.billboard("vignette"), 1.0);
+    this.setAlpha("vignette", 1.0);
     this.fadeOut(this.billboard("vignette"), 0, 1.0);
   }
 
   templateSaveInterface() {
-    this.setImage(this.billboard("interfaceSave"), "interface/save.svg");
     this.setHidden(this.billboard("interfaceSave"), false);
-    this.setAlpha(this.billboard("interfaceSave"), 1);
+    this.setAlpha("interfaceSave", 1);
     this.fadeOut(this.billboard("interfaceSave"), 3, 0.5);
   }
 
@@ -1197,7 +1178,7 @@ class Dozenal {
 
       this.billboard("illusion").className =
         "node_" + this.userNodeID + "_" + this.userOrientation;
-      this.setAlpha(this.billboard("illusion"), 1);
+      this.setAlpha("illusion", 1);
       this.setHidden(this.billboard("illusion"), false);
 
       this.fadeOut(this.billboard("illusion"), 1, 0.5);
@@ -1223,11 +1204,11 @@ class Dozenal {
     illusionCount += this.puzzleState[52];
 
     this.setImage(
-      this.billboard("interfaceIllusion"),
+      "interfaceIllusion",
       "interface/illusion." + illusionCount + ".svg"
     );
     this.setHidden(this.billboard("interfaceIllusion"), false);
-    this.setAlpha(this.billboard("interfaceIllusion"), 1);
+    this.setAlpha("interfaceIllusion", 1);
     this.fadeOut(this.billboard("interfaceIllusion"), 3, 0.5);
   }
 
@@ -1235,16 +1216,20 @@ class Dozenal {
   // Tools
   // ====================
 
-  fadeIn(viewToFadeIn, delay, duration) {
+  fadeIn(viewToFadeIn, delay, duration, skipLast = true) {
+    if (skipLast) {
+      $(viewToFadeIn).finish();
+    }
     $(viewToFadeIn)
-      .finish()
       .delay(delay * 1000)
       .animate({ opacity: 1 }, duration * 1000);
   }
 
-  fadeOut(viewToFadeOut, delay, duration) {
+  fadeOut(viewToFadeOut, delay, duration, skipLast = true) {
+    if (skipLast) {
+      $(viewToFadeOut).finish();
+    }
     $(viewToFadeOut)
-      .finish()
       .delay(delay * 1000)
       .animate({ opacity: 0 }, duration * 1000);
   }
@@ -1253,9 +1238,9 @@ class Dozenal {
     let viewMain = $(this.billboard("viewMain"));
     viewMain.finish();
     let viewMainX = viewMain.css("left").split("px")[0];
-    this.setAlpha(viewMain, 0.5);
+    this.setAlpha("viewMain", 0.5);
     viewMain.css({ left: (viewMainX - 15).toString() + "px" });
-    this.setAlpha(this.billboard("interfaceIndicatorLeft"), 1);
+    this.setAlpha("interfaceIndicatorLeft", 1);
 
     viewMain.animate({ opacity: 1, left: viewMainX + "px" }, 0.2 * 1000);
 
@@ -1266,9 +1251,9 @@ class Dozenal {
     let viewMain = $(this.billboard("viewMain"));
     viewMain.finish();
     let viewMainX = viewMain.css("left").split("px")[0];
-    this.setAlpha(viewMain, 0.5);
+    this.setAlpha("viewMain", 0.5);
     viewMain.css({ left: (viewMainX + 15).toString() + "px" });
-    this.setAlpha(this.billboard("interfaceIndicatorRight"), 1);
+    this.setAlpha("interfaceIndicatorRight", 1);
 
     viewMain.animate({ opacity: 1, left: viewMainX + "px" }, 0.2 * 1000);
 
@@ -1279,9 +1264,9 @@ class Dozenal {
     let viewMain = $(this.billboard("viewMain"));
     viewMain.finish();
     let viewMainY = viewMain.css("top").split("px")[0];
-    this.setAlpha(viewMain, 0.5);
+    this.setAlpha("viewMain", 0.5);
     viewMain.css({ top: (viewMainY + 2).toString() + "px" });
-    this.setAlpha(this.billboard("interfaceIndicatorForward"), 1);
+    this.setAlpha("interfaceIndicatorForward", 1);
 
     viewMain.animate({ opacity: 1, top: viewMainY + "px" }, 0.2 * 1000);
 
@@ -1292,9 +1277,9 @@ class Dozenal {
     let viewMain = $(this.billboard("viewMain"));
     viewMain.finish();
     let viewMainY = viewMain.css("top").split("px")[0];
-    this.setAlpha(viewMain, 0.5);
+    this.setAlpha("viewMain", 0.5);
     viewMain.css({ top: (viewMainY - 2).toString() + "px" });
-    this.setAlpha(this.billboard("interfaceIndicatorForward"), 1);
+    this.setAlpha("interfaceIndicatorForward", 1);
 
     viewMain.animate({ opacity: 1, top: viewMainY + "px" }, 0.2 * 1000);
 
@@ -1321,25 +1306,22 @@ class Dozenal {
   // ====================
 
   menuHome() {
-    this.setImage(this.billboard("menu2"), "menu/menu.black.svg");
-    this.setAlpha(this.billboard("menu2"), 1.0);
-    this.setHidden(this.billboard("menu2"), false);
+    this.setAlpha("menuBlack", 1.0);
+    this.setHidden(this.billboard("menuBlack"), false);
 
-    this.setImage(this.billboard("menu3"), "menu/menu.logo.svg");
-    this.setAlpha(this.billboard("menu3"), 1.0);
-    this.setHidden(this.billboard("menu3"), false);
+    this.setAlpha("menuLogo", 1.0);
+    this.setHidden(this.billboard("menuLogo"), false);
 
-    this.setImage(this.billboard("menu4"), "menu/menu.controls.svg");
-    this.setAlpha(this.billboard("menu4"), 1.0);
-    this.setHidden(this.billboard("menu4"), false);
+    this.setAlpha("menuControls", 1.0);
+    this.setHidden(this.billboard("menuControls"), false);
 
     this.setHidden(this.billboard("interfaceSeal1"), true);
     this.setHidden(this.billboard("interfaceSeal2"), true);
     this.setHidden(this.billboard("interfaceFuse1"), true);
 
-    this.fadeOut(this.billboard("menu2"), 0, 2.0);
-    this.fadeOut(this.billboard("menu3"), 3, 2.0);
-    this.fadeOut(this.billboard("menu4"), 8, 1.0);
+    this.fadeOut(this.billboard("menuBlack"), 0, 2.0);
+    this.fadeOut(this.billboard("menuLogo"), 3, 2.0);
+    this.fadeOut(this.billboard("menuControls"), 8, 1.0);
 
     hiversaires.music.volume = 1; // Music
   }

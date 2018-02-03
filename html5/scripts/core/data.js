@@ -114,7 +114,7 @@ const nodesByID = (function() {
   addNode(25, Zone.circular, node(24), none, node(26), puzzle(8));
   addNode(26, Zone.circular, node(25), none, node(27), none);
   addNode(27, Zone.circular, node(26), none, node(28), puzzle(9));
-  addNode(28, Zone.circular, node(27), none, node(29), puzzle(40));
+  addNode(28, Zone.circular, node(27), none, node(29), none /*puzzle(40)*/);
   addNode(29, Zone.circular, node(28), none, node(30), node(33, 0));
 
   addNode(30, Zone.circular, node(29), none, node(23), none);

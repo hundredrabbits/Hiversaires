@@ -1,12 +1,13 @@
 billboard#viewMain,
 billboard#vignette,
 billboard#overlay,
-billboard#menu1,
-billboard#menu2,
-billboard#menu3,
-billboard#menu4,
-billboard#menu5,
-billboard#menu6 {
+billboard#menuBlack,
+billboard#menuCredit1,
+billboard#menuCredit2,
+billboard#menuCredit3,
+billboard#menuCredit4,
+billboard#menuLogo,
+billboard#menuControls {
   left: calc(100% / 9 * (0));
   top: calc(100% / 16 * (0));
   width: calc(100% / 9 * (9 / 1));
