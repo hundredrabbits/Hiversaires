@@ -1,3 +1,5 @@
+"use strict";
+
 class Dozenal {
   constructor() {
     // User Storage

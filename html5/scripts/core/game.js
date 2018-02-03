@@ -1,3 +1,5 @@
+"use strict";
+
 class Game {
   constructor() {
     this.time = 0;

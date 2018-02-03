@@ -1,3 +1,5 @@
+"use strict";
+
 class Music {
   constructor() {
     this.playingTracksByRole = new Map();

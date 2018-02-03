@@ -1,3 +1,5 @@
+"use strict";
+
 class ArtBook {
   constructor() {
     this.assetCatalog = new Map();

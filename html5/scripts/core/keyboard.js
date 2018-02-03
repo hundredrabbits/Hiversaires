@@ -1,3 +1,5 @@
+"use strict";
+
 class Keyboard {
   constructor() {
     this.locks = [];

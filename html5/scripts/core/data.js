@@ -1,3 +1,5 @@
+"use strict";
+
 class Chapter {}
 setEnumValues(Chapter, ["act1", "act2", "act3", "act4", "act5", "credit"]);
 

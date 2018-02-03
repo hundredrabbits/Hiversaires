@@ -1,3 +1,5 @@
+"use strict";
+
 class Stage {
   constructor(root) {
     this.root = root;

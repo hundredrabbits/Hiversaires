@@ -1,3 +1,5 @@
+"use strict";
+
 class Hiversaires {
   constructor() {
     this.element = document.createElement("hiversaires");
