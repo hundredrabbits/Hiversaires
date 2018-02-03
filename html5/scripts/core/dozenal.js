@@ -11,7 +11,6 @@ class Dozenal {
     // User Temp
 
     this.userAction;
-    this.userSeal = 0;
     this.userActionId;
     this.userFootstep = 0;
 
@@ -53,6 +52,26 @@ class Dozenal {
 
   get currentPuzzle() {
     return puzzlesByID[this.userActionId];
+  }
+
+  get currentSeals() {
+    let sealsFound = [];
+    if (this.puzzleState[4] > 0) {
+      sealsFound.push(Zone.forest);
+    }
+    if (this.puzzleState[12] > 0) {
+      sealsFound.push(Zone.stones);
+    }
+    if (this.puzzleState[13] > 0) {
+      sealsFound.push(Zone.rainre);
+    }
+    if (this.puzzleState[20] > 0) {
+      sealsFound.push(Zone.metamondst);
+    }
+    if (this.puzzleState[21] > 0) {
+      sealsFound.push(Zone.antechannel);
+    }
+    return sealsFound;
   }
 
   billboard(id) {
@@ -354,7 +373,10 @@ class Dozenal {
   action5() {
     // Seal Action
 
-    if (this.puzzleState[this.userActionId] == 1 || this.sealCount() > 0) {
+    if (
+      this.puzzleState[this.userActionId] == 1 ||
+      this.currentSeals.length < 2
+    ) {
       if (this.puzzleState[this.userActionId] != 1) {
         hiversaires.music.playEffect("action_SealActive");
         this.puzzleState[this.userActionId] = 1;
@@ -580,26 +602,18 @@ class Dozenal {
   }
 
   templateSealInterface() {
-    this.userSeal = this.sealCount();
+    let seals = this.currentSeals;
 
-    this.setImage(this.billboard("interfaceSeal1"), "interface/seal.0.svg");
-    this.setImage(this.billboard("interfaceSeal2"), "interface/seal.0.svg");
+    console.log(seals);
 
-    if (this.userSeal == 1) {
-      this.setImage(
-        this.billboard("interfaceSeal1"),
-        "interface/seal." + this.sealFind(1) + ".svg"
-      );
-    } else if (this.userSeal == 0) {
-      this.setImage(
-        this.billboard("interfaceSeal1"),
-        "interface/seal." + this.sealFind(1) + ".svg"
-      );
-      this.setImage(
-        this.billboard("interfaceSeal2"),
-        "interface/seal." + this.sealFind(2) + ".svg"
-      );
-    }
+    this.setImage(
+      this.billboard("interfaceSeal1"),
+      "interface/seal." + (seals[0] == null ? "none" : seals[0]) + ".svg"
+    );
+    this.setImage(
+      this.billboard("interfaceSeal2"),
+      "interface/seal." + (seals[1] == null ? "none" : seals[1]) + ".svg"
+    );
 
     this.setHidden(this.billboard("interfaceSeal1"), false);
     this.setHidden(this.billboard("interfaceSeal2"), false);
@@ -666,15 +680,13 @@ class Dozenal {
   templateSealUpdate() {
     this.templateSealInterface();
 
-    this.userSeal = this.sealCount();
-
     this.fadeOut(this.billboard("overlay"), 0, 0.5);
 
     if (this.puzzleState[this.userActionId] != 1) {
       return;
     }
 
-    if (this.userSeal == 1) {
+    if (this.currentSeals.length == 1) {
       this.templateUpdateNode(5, "0493", "act4");
       this.templateUpdateNode(38, "0496", "act12");
       this.templateUpdateNode(45, "0502", "act13");
@@ -1274,54 +1286,6 @@ class Dozenal {
     this.setHidden(this.billboard("interfaceIllusion"), false);
     this.setAlpha(this.billboard("interfaceIllusion"), 1);
     this.fadeOut(this.billboard("interfaceIllusion"), 3, 0.5);
-  }
-
-  // ====================
-  // Counters
-  // ====================
-
-  sealCount() {
-    let count = 0;
-    count += this.puzzleState[4];
-    count += this.puzzleState[12];
-    count += this.puzzleState[13];
-    count += this.puzzleState[20];
-    count += this.puzzleState[21];
-    count = 2 - count;
-
-    return count;
-  }
-
-  sealFind(rank) {
-    let sealFound = 0;
-
-    if (this.puzzleState[4] > 0) {
-      sealFound = 4;
-    } else if (this.puzzleState[12] > 0) {
-      sealFound = 12;
-    } else if (this.puzzleState[13] > 0) {
-      sealFound = 13;
-    } else if (this.puzzleState[20] > 0) {
-      sealFound = 20;
-    } else if (this.puzzleState[21] > 0) {
-      sealFound = 21;
-    }
-
-    if (rank == 2) {
-      if (this.puzzleState[4] > 0 && sealFound != 4) {
-        sealFound = 4;
-      } else if (this.puzzleState[12] > 0 && sealFound != 12) {
-        sealFound = 12;
-      } else if (this.puzzleState[13] > 0 && sealFound != 13) {
-        sealFound = 13;
-      } else if (this.puzzleState[20] > 0 && sealFound != 20) {
-        sealFound = 20;
-      } else if (this.puzzleState[21] > 0 && sealFound != 21) {
-        sealFound = 21;
-      }
-    }
-
-    return sealFound;
   }
 
   // ====================

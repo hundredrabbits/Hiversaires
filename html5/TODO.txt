@@ -5,14 +5,18 @@ Organize puzzles by type and nodes by zone
     There's no reason their IDs are integers
 Carefully migrate node_old references
 
-Now that you know all the symbol names, maybe use them to organize the project some more
-
 Templates should go somewhere else
 
 Break the dozenal code into sensible chunks
 
 Convert the world to a displayable graph, if you can
 Full walkthrough
+
+Convert layout and ghost CSS to use vw and vh in calc
+
+Convert layout and ghost CSS to data-driven styles
+    Bring back setBounds
+    Store illusion bounds in data.js
 
 Allow limited resizing
     iPads cropped the background and scaled the layout
@@ -23,3 +27,14 @@ Once you show IOO⠛, fold their new stuff into the build
 
 NOTES
     templateKillUpdate works, but nothing causes its condition to be true
+
+
+100 rabbits
+
+https://www.youtube.com/watch?v=j9KDQoznJwE
+
+Thoughts on the interview
+
+    Chill driving after a long day
+        Drivey
+            What not to do, if you want a project to last
