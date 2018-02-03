@@ -17,7 +17,7 @@ class Music {
     if (this._volume != value) {
       this._volume = value;
       for (let track of this.playingTracksByRole.values()) {
-        track.volume = value;
+        track.volume = value * track.volumeMult;
       }
     }
   }
@@ -87,7 +87,7 @@ class Music {
         true
       );
       this.playingTracksByRole.set(role, newTrack);
-      newTrack.volume = this._volume;
+      newTrack.volume = this._volume * newTrack.volumeMult;
       if (DEBUG_NO_MUSIC) {
         console.info(role, ":", name, "(off by debug)");
       } else {
@@ -114,6 +114,7 @@ class Track extends Audio {
     this.src = src;
     this.loop = loop;
     this.lastTimePlayed = 0;
+    this.volumeMult = role == "ambience" ? 0.2 : 1;
   }
 
   play() {
