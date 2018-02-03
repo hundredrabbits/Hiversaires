@@ -5,7 +5,7 @@ class Dozenal {
     // User Storage
 
     this.puzzleState;
-    this.userNodeId = 1;
+    this.userNodeID = 1;
     this.userOrientation = 0;
     this.userChapter = Chapter.act1;
     this.userEnergy = 0;
@@ -50,7 +50,7 @@ class Dozenal {
 
     this.prefLoad();
 
-    // this.userNodeId = 88;
+    // this.userNodeID = 88;
 
     this.actionCheck();
     this.moveCheck();
@@ -69,7 +69,7 @@ class Dozenal {
   }
 
   get currentNode() {
-    return nodesByID[this.userNodeId];
+    return nodesByID[this.userNodeID];
   }
 
   get currentSubject() {
@@ -156,7 +156,7 @@ class Dozenal {
 
     this.setImage(
       this.billboard("viewMain"),
-      "node/" + this.userNodeId + "." + this.userOrientation + ".jpg"
+      "node/" + this.userNodeID + "." + this.userOrientation + ".jpg"
     );
 
     this.illusionCheck();
@@ -187,7 +187,7 @@ class Dozenal {
 
     if (this.currentSubject.type == SubjectType.node) {
       let { nodeID, orientation } = this.currentSubject;
-      this.userNodeId = nodeID;
+      this.userNodeID = nodeID;
       if (orientation != null) {
         this.userOrientation = orientation;
       }
@@ -198,7 +198,7 @@ class Dozenal {
   }
 
   warpTo(node, orientation) {
-    this.userNodeId = node;
+    this.userNodeID = node;
     this.userOrientation = orientation % 4;
     this.moveCheck();
   }
@@ -210,7 +210,7 @@ class Dozenal {
 
     if (this.currentSubject.type == SubjectType.node) {
       let { nodeID, orientation } = this.currentSubject;
-      this.userNodeId = nodeID;
+      this.userNodeID = nodeID;
       if (orientation != null) {
         this.userOrientation = orientation;
       }
@@ -257,79 +257,79 @@ class Dozenal {
 
     hiversaires.music.playEffect("action_DoorActive");
 
-    if (this.userNodeId == 1) {
-      this.userNodeId = 103;
-    } else if (this.userNodeId == 11) {
-      this.userNodeId = 48;
+    if (this.userNodeID == 1) {
+      this.userNodeID = 103;
+    } else if (this.userNodeID == 11) {
+      this.userNodeID = 48;
       this.userOrientation = 2;
-    } else if (this.userNodeId == 13) {
-      this.userNodeId = 12;
-    } else if (this.userNodeId == 12) {
-      this.userNodeId = 13;
-    } else if (this.userNodeId == 16) {
-      this.userNodeId = 22;
-    } else if (this.userNodeId == 20 && this.puzzleState[37] > 0) {
-      this.userNodeId = 116;
+    } else if (this.userNodeID == 13) {
+      this.userNodeID = 12;
+    } else if (this.userNodeID == 12) {
+      this.userNodeID = 13;
+    } else if (this.userNodeID == 16) {
+      this.userNodeID = 22;
+    } else if (this.userNodeID == 20 && this.puzzleState[37] > 0) {
+      this.userNodeID = 116;
       this.userOrientation = 1;
-    } else if (this.userNodeId == 23) {
+    } else if (this.userNodeID == 23) {
       // Fold Gate
-      this.userNodeId = 22;
-    } else if (this.userNodeId == 25) {
-      this.userNodeId = 31;
+      this.userNodeID = 22;
+    } else if (this.userNodeID == 25) {
+      this.userNodeID = 31;
       this.userOrientation = 2;
-    } else if (this.userNodeId == 27) {
-      this.userNodeId = 32;
+    } else if (this.userNodeID == 27) {
+      this.userNodeID = 32;
       this.userOrientation = 1;
-    } else if (this.userNodeId == 35) {
-      this.userNodeId = 31;
+    } else if (this.userNodeID == 35) {
+      this.userNodeID = 31;
       this.userOrientation = 0;
     } else if (
-      this.userNodeId == 39 &&
+      this.userNodeID == 39 &&
       this.puzzleState[5] == 2 &&
       this.puzzleState[31] == 1
     ) {
-      this.userNodeId = 34;
-    } else if (this.userNodeId == 39) {
-      this.userNodeId = 45;
-    } else if (this.userNodeId == 45) {
-      this.userNodeId = 51;
-    } else if (this.userNodeId == 46) {
-      this.userNodeId = 85;
+      this.userNodeID = 34;
+    } else if (this.userNodeID == 39) {
+      this.userNodeID = 45;
+    } else if (this.userNodeID == 45) {
+      this.userNodeID = 51;
+    } else if (this.userNodeID == 46) {
+      this.userNodeID = 85;
       this.userOrientation = 2;
-    } else if (this.userNodeId == 48) {
-      this.userNodeId = 11;
+    } else if (this.userNodeID == 48) {
+      this.userNodeID = 11;
       this.userOrientation = 2;
-    } else if (this.userNodeId == 51) {
-      this.userNodeId = 45;
-    } else if (this.userNodeId == 52) {
-      this.userNodeId = 32;
+    } else if (this.userNodeID == 51) {
+      this.userNodeID = 45;
+    } else if (this.userNodeID == 52) {
+      this.userNodeID = 32;
       this.userOrientation = 3;
-    } else if (this.userNodeId == 61) {
-      this.userNodeId = 72;
-    } else if (this.userNodeId == 62) {
-      this.userNodeId = 77;
-    } else if (this.userNodeId == 69) {
-      this.userNodeId = 72;
-    } else if (this.userNodeId == 76) {
-      this.userNodeId = 87;
-    } else if (this.userNodeId == 77) {
-      this.userNodeId = 62;
-    } else if (this.userNodeId == 79) {
-      this.userNodeId = 112;
-    } else if (this.userNodeId == 85) {
-      this.userNodeId = 46;
+    } else if (this.userNodeID == 61) {
+      this.userNodeID = 72;
+    } else if (this.userNodeID == 62) {
+      this.userNodeID = 77;
+    } else if (this.userNodeID == 69) {
+      this.userNodeID = 72;
+    } else if (this.userNodeID == 76) {
+      this.userNodeID = 87;
+    } else if (this.userNodeID == 77) {
+      this.userNodeID = 62;
+    } else if (this.userNodeID == 79) {
+      this.userNodeID = 112;
+    } else if (this.userNodeID == 85) {
+      this.userNodeID = 46;
       this.userOrientation = 0;
-    } else if (this.userNodeId == 87) {
-      this.userNodeId = 76;
-    } else if (this.userNodeId == 112) {
-      this.userNodeId = 79;
-    } else if (this.userNodeId == 113) {
-      this.userNodeId = 50;
-    } else if (this.userNodeId == 142) {
-      this.userNodeId = 143;
+    } else if (this.userNodeID == 87) {
+      this.userNodeID = 76;
+    } else if (this.userNodeID == 112) {
+      this.userNodeID = 79;
+    } else if (this.userNodeID == 113) {
+      this.userNodeID = 50;
+    } else if (this.userNodeID == 142) {
+      this.userNodeID = 143;
       this.userOrientation = 3;
-    } else if (this.userNodeId == 143) {
-      this.userNodeId = 142;
+    } else if (this.userNodeID == 143) {
+      this.userNodeID = 142;
       this.userOrientation = 1;
     }
 
@@ -461,7 +461,7 @@ class Dozenal {
     const currentHours = now.getHours();
     const currentMinutes = now.getMinutes();
 
-    if ((currentHours == 15 && currentMinutes == 7) || this.userNodeId == 143) {
+    if ((currentHours == 15 && currentMinutes == 7) || this.userNodeID == 143) {
       this.puzzleState[54] = 1;
       this.templateUpdateDoorknob(142, 143);
     } else {
@@ -607,7 +607,7 @@ class Dozenal {
 
     if (this.puzzleState[4] == 1 && this.puzzleState[13] == 1) {
       // Act 1 : Forest + Rainre in Stones
-      if (this.userNodeId == 46 || this.userNodeId == 85) {
+      if (this.userNodeID == 46 || this.userNodeID == 85) {
         this.templateUpdateDoorknob(46, 85);
         this.templateUpdateNode(46, "0486", 15);
         this.templateUpdateNode(85, "0485", 15);
@@ -616,7 +616,7 @@ class Dozenal {
       }
     } else if (this.puzzleState[20] == 1 && this.puzzleState[13] == 1) {
       // Act 2 : Metamondst + Rainre in Forest
-      if (this.userNodeId == 11 || this.userNodeId == 48) {
+      if (this.userNodeID == 11 || this.userNodeID == 48) {
         this.templateUpdateDoorknob(48, 11);
         this.templateUpdateNode(11, "0487", 25);
         this.templateUpdateNode(48, "0488", 25);
@@ -625,7 +625,7 @@ class Dozenal {
       }
     } else if (this.puzzleState[21] == 1 && this.puzzleState[13] == 1) {
       // Act 3 : Forest + Rainre in Metamondst
-      if (this.userNodeId == 46 || this.userNodeId == 85) {
+      if (this.userNodeID == 46 || this.userNodeID == 85) {
         this.templateUpdateDoorknob(46, 85);
         this.templateUpdateNode(46, "0486", 15);
         this.templateUpdateNode(85, "0485", 15);
@@ -634,7 +634,7 @@ class Dozenal {
       }
     } else if (this.puzzleState[21] == 1 && this.puzzleState[12] == 1) {
       // Act 4 : Antechannel + Stones in Studio
-      if (this.userNodeId == 19) {
+      if (this.userNodeID == 19) {
         this.setCurrentAction(function() {
           this.puzzleState[this.currentPuzzle.id]++;
           this.puzzleState[this.currentPuzzle.id] =
@@ -645,7 +645,7 @@ class Dozenal {
         this.templateUpdateStudioTerminal();
         this.prefSave();
       }
-    } else if (this.currentPuzzle.id == 5 && this.userNodeId == 19) {
+    } else if (this.currentPuzzle.id == 5 && this.userNodeID == 19) {
       // Studio Terminal
       this.templateUpdateStudioTerminal();
     } else {
@@ -926,12 +926,12 @@ class Dozenal {
 
   templateEntentePart1Incr() {
     if (this.puzzleState[23] == 17) {
-      this.userNodeId = 93;
+      this.userNodeID = 93;
       this.actionCheck();
       this.moveCheck();
       this.actionReset();
     } else {
-      this.userNodeId = 89;
+      this.userNodeID = 89;
 
       if (this.puzzleState[23] < 21) {
         this.puzzleState[23] = this.puzzleState[23] + 3;
@@ -944,7 +944,7 @@ class Dozenal {
   }
 
   templateEntentePart1Decr() {
-    this.userNodeId = 103;
+    this.userNodeID = 103;
 
     if (this.puzzleState[23] > 14) {
       this.puzzleState[23] = this.puzzleState[23] - 1;
@@ -956,7 +956,7 @@ class Dozenal {
   }
 
   templateEntentePart2Incr() {
-    this.userNodeId = 94;
+    this.userNodeID = 94;
     this.userOrientation = 2;
 
     if (this.puzzleState[24] < 23) {
@@ -969,7 +969,7 @@ class Dozenal {
   }
 
   templateEntentePart2Decr() {
-    this.userNodeId = 95;
+    this.userNodeID = 95;
     this.userOrientation = 2;
 
     if (this.puzzleState[24] > 14) {
@@ -983,14 +983,14 @@ class Dozenal {
 
   templateEntentePart2Exit() {
     if (this.puzzleState[23] == 17 && this.puzzleState[24] == 17) {
-      this.userNodeId = 107;
+      this.userNodeID = 107;
       this.userOrientation = 3;
 
       this.actionCheck();
       this.moveCheck();
       this.actionReset();
     } else {
-      this.userNodeId = 93;
+      this.userNodeID = 93;
 
       this.actionCheck();
       this.moveCheck();
@@ -1069,7 +1069,7 @@ class Dozenal {
   // ====================
 
   templateUpdateDoorknob(side1, side2) {
-    if (this.userNodeId == side1 || this.userNodeId == side2) {
+    if (this.userNodeID == side1 || this.userNodeID == side2) {
       this.setCurrentAction(this.openDoor);
     }
   }
@@ -1108,7 +1108,7 @@ class Dozenal {
   }
 
   templateUpdateNode(node, img, puzzleID) {
-    if (this.userNodeId == node && this.currentPuzzle.id == puzzleID) {
+    if (this.userNodeID == node && this.currentPuzzle.id == puzzleID) {
       this.setImage(this.billboard("overlay"), "node_old/node." + img + ".jpg");
     }
 
@@ -1147,47 +1147,47 @@ class Dozenal {
 
     if (Math.random() * 10 > 7) {
       // forest
-      if (this.userNodeId == 9 && this.userOrientation == 1) {
+      if (this.userNodeID == 9 && this.userOrientation == 1) {
         nodeIllusionAction = 52;
       }
 
       // studio
-      if (this.userNodeId == 15 && this.userOrientation == 0) {
+      if (this.userNodeID == 15 && this.userOrientation == 0) {
         nodeIllusionAction = 17;
       }
 
       // circle
-      if (this.userNodeId == 33 && this.userOrientation == 2) {
+      if (this.userNodeID == 33 && this.userOrientation == 2) {
         nodeIllusionAction = 51;
       }
 
       // stones
-      if (this.userNodeId == 43 && this.userOrientation == 2) {
+      if (this.userNodeID == 43 && this.userOrientation == 2) {
         nodeIllusionAction = 22;
       }
 
       // antechannel
-      if (this.userNodeId == 58 && this.userOrientation == 1) {
+      if (this.userNodeID == 58 && this.userOrientation == 1) {
         nodeIllusionAction = 32;
       }
 
       // metamondst
-      if (this.userNodeId == 73 && this.userOrientation == 2) {
+      if (this.userNodeID == 73 && this.userOrientation == 2) {
         nodeIllusionAction = 29;
       }
 
       // capsule
-      if (this.userNodeId == 88 && this.userOrientation == 3) {
+      if (this.userNodeID == 88 && this.userOrientation == 3) {
         nodeIllusionAction = 50;
       }
 
       // entente
-      if (this.userNodeId == 91 && this.userOrientation == 0) {
+      if (this.userNodeID == 91 && this.userOrientation == 0) {
         nodeIllusionAction = 49;
       }
 
       // nataniev
-      if (this.userNodeId == 114 && this.userOrientation == 2) {
+      if (this.userNodeID == 114 && this.userOrientation == 2) {
         nodeIllusionAction = 48;
       }
     }
@@ -1196,7 +1196,7 @@ class Dozenal {
       // TODO: By solving the jQuery add/remove CSS class problem, we could support multiple illusions
 
       this.billboard("illusion").className =
-        "node_" + this.userNodeId + "_" + this.userOrientation;
+        "node_" + this.userNodeID + "_" + this.userOrientation;
       this.setAlpha(this.billboard("illusion"), 1);
       this.setHidden(this.billboard("illusion"), false);
 
@@ -1347,7 +1347,7 @@ class Dozenal {
   prefSave() {
     let saveObject = {
       userSettings: {
-        userNode: this.userNodeId,
+        userNode: this.userNodeID,
         userOrientation: this.userOrientation,
         userChapter: this.userChapter,
         userEnergy: this.userEnergy
@@ -1375,7 +1375,7 @@ class Dozenal {
     if (saveObject != null) {
       // Settings
       let userSettings = saveObject.userSettings;
-      this.userNodeId = userSettings.userNode;
+      this.userNodeID = userSettings.userNode;
       this.userOrientation = userSettings.userOrientation;
       this.userChapter = userSettings.userChapter;
       this.userEnergy = userSettings.userEnergy;
@@ -1398,7 +1398,7 @@ class Dozenal {
 
       // Default Location
 
-      this.userNodeId = 1;
+      this.userNodeID = 1;
       this.userOrientation = 0;
       this.userChapter = Chapter.act1;
       this.userEnergy = 0;
