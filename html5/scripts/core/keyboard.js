@@ -4,6 +4,7 @@ class Keyboard {
   constructor() {
     this.locks = [];
     this.history = "";
+    document.onkeyup = this.onKey.bind(this);
   }
 
   onKey(event) {

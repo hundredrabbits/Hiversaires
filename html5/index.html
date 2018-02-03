@@ -31,30 +31,19 @@
       <div id='logo' style='width:120px;height:120px; margin:25vh auto'></div>
     </div>
     <script>
-
       let DEBUG_SKIP_LOGO = false;
       let DEBUG_SHOW_TRIGGERS = false;
       let DEBUG_SHOW_BILLBOARDS = false;
       let DEBUG_LOG_GHOST = false;
       let DEBUG_DONT_SAVE = false;
+      let DEBUG_START_FRESH = false;
       let DEBUG_NO_MUSIC = false;
       let DEBUG_REPORT_NODE_USE = false;
-
-      let hiversaires = new Hiversaires();
-      
-      let keyboard = new Keyboard();
-      document.onkeyup = function(event){ keyboard.onKey(event); };
-      // document.addEventListener('mousedown', function(e){ hiversaires.mousedown(e); }, false);
-
+      let hh = new Hiversaires();
+      setTimeout(hh.start.bind(hh), DEBUG_SKIP_LOGO ? 100 : 7000);
       let logo = new Logo(document.getElementById("logo"));
-
       setTimeout(function(){ logo.install(); }, 1500);
-      setTimeout(function(){ hiversaires.start(); }, DEBUG_SKIP_LOGO ? 100 : 7000);
-
-      $("#splash").delay(DEBUG_SKIP_LOGO ? 100 : 7500).animate({ opacity: 0 }, 1000,function(){
-        $("#splash").remove();
-      }); 
-
+      $("#splash").delay(DEBUG_SKIP_LOGO ? 100 : 7500).animate({ opacity: 0 }, 1000, $("#splash").remove); 
     </script>
   </body>
 </html>

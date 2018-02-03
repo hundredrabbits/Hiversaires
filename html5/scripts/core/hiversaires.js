@@ -4,7 +4,8 @@ class Hiversaires {
   constructor() {
     this.element = document.createElement("hiversaires");
     document.body.appendChild(this.element);
-
+    window.hiversaires = this;
+    this.keyboard = new Keyboard();
     this.artBook = new ArtBook();
     this.game = new Game();
     this.music = new Music();
