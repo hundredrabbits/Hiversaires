@@ -25,18 +25,9 @@ class Dozenal {
     this.setAlpha("interfaceSealAlert", 0);
     this.setAlpha("interfaceFuseAlert", 0);
 
-    this.setImage(
-      "interfaceIndicatorRight",
-      "interface/interfaceMove.indicator.svg"
-    );
-    this.setImage(
-      "interfaceIndicatorForward",
-      "interface/interfaceMove.indicator.svg"
-    );
-    this.setImage(
-      "interfaceIndicatorLeft",
-      "interface/interfaceMove.indicator.svg"
-    );
+    this.setImage("interfaceIndicatorRight", "interface/footstep.svg");
+    this.setImage("interfaceIndicatorForward", "interface/footstep.svg");
+    this.setImage("interfaceIndicatorLeft", "interface/footstep.svg");
     this.setImage("interfaceDimclockAlert", "interface/alert.svg");
     this.setImage("clockShadow", "interface/dimclock.shadow.svg");
     this.setImage("interfaceSealAlert", "interface/alert.svg");
@@ -335,41 +326,6 @@ class Dozenal {
     this.moveCheck();
   }
 
-  toggleFuse() {
-    if (this.puzzleState[this.currentPuzzle.id] == 1) {
-      this.puzzleState[this.currentPuzzle.id] = 0;
-      this.userEnergy += 1;
-    } else if (this.userEnergy > 0) {
-      this.puzzleState[this.currentPuzzle.id] = 1;
-      this.userEnergy -= 1;
-    } else {
-      this.templateEnergyAlert();
-    }
-
-    this.templateEnergyUpdate();
-  }
-
-  toggleSeal() {
-    if (
-      this.puzzleState[this.currentPuzzle.id] == 1 ||
-      this.currentSeals.length < 2
-    ) {
-      if (this.puzzleState[this.currentPuzzle.id] != 1) {
-        hiversaires.music.playEffect("action_SealActive");
-        this.puzzleState[this.currentPuzzle.id] = 1;
-      } else {
-        hiversaires.music.playEffect("action_SealInactive");
-        this.puzzleState[this.currentPuzzle.id] = 0;
-      }
-    } else {
-      hiversaires.music.playEffect("action_EnergyStack");
-      this.templateSealAlert();
-      console.log("No more seal slots.");
-    }
-
-    this.templateSealUpdate();
-  }
-
   actionReset() {
     this.setHidden(this.billboard("menuBlack"), true);
     this.setHidden(this.billboard("menuCredit1"), true);
@@ -559,7 +515,26 @@ class Dozenal {
     this.setHidden(this.billboard("overlay"), false);
     this.setAlpha("overlay", 0);
 
-    this.setCurrentAction(this.toggleSeal);
+    this.setCurrentAction(function() {
+      if (
+        this.puzzleState[this.currentPuzzle.id] == 1 ||
+        this.currentSeals.length < 2
+      ) {
+        if (this.puzzleState[this.currentPuzzle.id] != 1) {
+          hiversaires.music.playEffect("action_SealActive");
+          this.puzzleState[this.currentPuzzle.id] = 1;
+        } else {
+          hiversaires.music.playEffect("action_SealInactive");
+          this.puzzleState[this.currentPuzzle.id] = 0;
+        }
+      } else {
+        hiversaires.music.playEffect("action_EnergyStack");
+        this.templateSealAlert();
+        console.log("No more seal slots.");
+      }
+
+      this.templateSealUpdate();
+    });
 
     hiversaires.music.playEffect("action_SealInit");
     this.templateSealUpdate();
@@ -775,7 +750,19 @@ class Dozenal {
     this.templateEnergyInterface();
 
     if (this.isFuseAction) {
-      this.setCurrentAction(this.toggleFuse);
+      this.setCurrentAction(function() {
+        if (this.puzzleState[this.currentPuzzle.id] == 1) {
+          this.puzzleState[this.currentPuzzle.id] = 0;
+          this.userEnergy += 1;
+        } else if (this.userEnergy > 0) {
+          this.puzzleState[this.currentPuzzle.id] = 1;
+          this.userEnergy -= 1;
+        } else {
+          this.templateEnergyAlert();
+        }
+
+        this.templateEnergyUpdate();
+      });
     }
 
     if (this.puzzleState[this.currentPuzzle.id] == 1) {
@@ -1292,13 +1279,11 @@ class Dozenal {
 
   playFootStep() {
     this.userFootstep += 1;
+    let effect = "footstep_collide";
     if (this.currentSubject.type == SubjectType.node) {
-      hiversaires.music.playEffect(
-        this.userFootstep % 2 == 1 ? "footstep_left" : "footstep_right"
-      );
-    } else {
-      hiversaires.music.playEffect("footstep_collide");
+      effect = this.userFootstep % 2 == 1 ? "footstep_left" : "footstep_right";
     }
+    hiversaires.music.playEffect(effect);
   }
 
   // ====================
