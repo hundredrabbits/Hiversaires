@@ -40,8 +40,9 @@ billboard#illusion.node_58_1 {
 billboard#illusion.node_73_2 {
   left: calc(100% / 9 * (9*362/640));
   top: calc(100% / 16 * (16*459/1136));
-  width: calc(100% / 9 * -9*88/640);
+  width: calc(100% / 9 * 9*88/640);
   height: calc(100% / 16 * (16*171/1136));
+  transform: scaleX(-1);
 }
 
 billboard#illusion.node_88_3 {
