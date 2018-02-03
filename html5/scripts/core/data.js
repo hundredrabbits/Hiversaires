@@ -51,6 +51,7 @@ class Node {
     this.id = id;
     this.zone = zone;
     this.subjects = subjects;
+    Object.freeze(this);
   }
 }
 
@@ -237,85 +238,88 @@ setEnumValues(PuzzleType, [
 ]);
 
 class Puzzle {
-  constructor(id, type, defaultState) {
+  constructor(id, type, info, defaultState) {
     this.id = id;
     this.type = type;
+    this.info = Object.freeze(info);
     this.defaultState = defaultState != null ? defaultState : 0;
+    this.state = { value: this.defaultState }; // boxed, so it can be mutated
+    Object.freeze(this);
   }
 }
 
 const puzzlesByID = (function() {
   let puzzlesByID = new Map();
 
-  function addPuzzle(id, type, defaultState) {
-    puzzlesByID[id] = Object.freeze(new Puzzle(id, type, defaultState));
+  function addPuzzle(id, type, info, defaultState) {
+    puzzlesByID[id] = Object.freeze(new Puzzle(id, type, info, defaultState));
   }
 
-  addPuzzle(1, PuzzleType.clockTerminal);
-  addPuzzle(2, PuzzleType.energyTerminal);
-  addPuzzle(3, PuzzleType.energyDoor);
-  addPuzzle(4, PuzzleType.sealTerminal);
-  addPuzzle(5, PuzzleType.sealDoor);
-  addPuzzle(6, PuzzleType.energyDoor);
-  addPuzzle(7, PuzzleType.clockDoor);
-  addPuzzle(8, PuzzleType.clockDoor);
-  addPuzzle(9, PuzzleType.clockDoor);
-  addPuzzle(10, PuzzleType.energyTerminal);
-  addPuzzle(11, PuzzleType.energyDoor);
-  addPuzzle(12, PuzzleType.sealTerminal);
-  addPuzzle(13, PuzzleType.sealTerminal);
-  addPuzzle(14, PuzzleType.killTerminal);
-  addPuzzle(15, PuzzleType.sealDoor);
-  addPuzzle(16, PuzzleType.progressTerminal);
-  addPuzzle(17, PuzzleType.illusion); // studio
-  addPuzzle(18, PuzzleType.energyTerminal);
-  addPuzzle(19, PuzzleType.energyDoor, 13);
-  addPuzzle(20, PuzzleType.sealTerminal);
-  addPuzzle(21, PuzzleType.sealTerminal);
-  addPuzzle(22, PuzzleType.illusion); // stones
-  addPuzzle(23, PuzzleType.ententeTerminal, 15);
-  addPuzzle(24, PuzzleType.ententeTerminal);
-  addPuzzle(25, PuzzleType.sealDoor);
-  addPuzzle(26, PuzzleType.energyDoor);
-  addPuzzle(27, PuzzleType.energyTerminal);
+  addPuzzle(1, PuzzleType.clockTerminal, {});
+  addPuzzle(2, PuzzleType.energyTerminal, {});
+  addPuzzle(3, PuzzleType.energyDoor, {});
+  addPuzzle(4, PuzzleType.sealTerminal, {});
+  addPuzzle(5, PuzzleType.sealDoor, {});
+  addPuzzle(6, PuzzleType.energyDoor, {});
+  addPuzzle(7, PuzzleType.clockDoor, {});
+  addPuzzle(8, PuzzleType.clockDoor, {});
+  addPuzzle(9, PuzzleType.clockDoor, {});
+  addPuzzle(10, PuzzleType.energyTerminal, {});
+  addPuzzle(11, PuzzleType.energyDoor, {});
+  addPuzzle(12, PuzzleType.sealTerminal, {});
+  addPuzzle(13, PuzzleType.sealTerminal, {});
+  addPuzzle(14, PuzzleType.killTerminal, {});
+  addPuzzle(15, PuzzleType.sealDoor, {});
+  addPuzzle(16, PuzzleType.progressTerminal, {});
+  addPuzzle(17, PuzzleType.illusion, {}); // studio
+  addPuzzle(18, PuzzleType.energyTerminal, {});
+  addPuzzle(19, PuzzleType.energyDoor, {}, 13);
+  addPuzzle(20, PuzzleType.sealTerminal, {});
+  addPuzzle(21, PuzzleType.sealTerminal, {});
+  addPuzzle(22, PuzzleType.illusion, {}); // stones
+  addPuzzle(23, PuzzleType.ententeTerminal, {}, 15);
+  addPuzzle(24, PuzzleType.ententeTerminal, {});
+  addPuzzle(25, PuzzleType.sealDoor, {});
+  addPuzzle(26, PuzzleType.energyDoor, {});
+  addPuzzle(27, PuzzleType.energyTerminal, {});
 
   // Studio Lock
 
-  addPuzzle(28, PuzzleType.energyDoor);
-  addPuzzle(29, PuzzleType.illusion); // metamondst
-  addPuzzle(30, PuzzleType.energyDoor);
+  addPuzzle(28, PuzzleType.energyDoor, {});
+  addPuzzle(29, PuzzleType.illusion, {}); // metamondst
+  addPuzzle(30, PuzzleType.energyDoor, {});
 
   // Collectibles
 
-  addPuzzle(31, PuzzleType.energyTerminal, 1);
-  addPuzzle(32, PuzzleType.illusion); // antechannel
-  addPuzzle(33, PuzzleType.energyDoor);
-  addPuzzle(34, PuzzleType.audioTerminal, 1);
-  addPuzzle(35, PuzzleType.audioTerminal, 1);
-  addPuzzle(36, PuzzleType.energyTerminal);
-  addPuzzle(37, PuzzleType.energyTerminal);
-  addPuzzle(38, PuzzleType.energyTerminal, 1); // Entente Fuse
-  addPuzzle(39, PuzzleType.energyTerminal, 1);
-  addPuzzle(40, PuzzleType.endgameDoor);
-  addPuzzle(41, PuzzleType.endgameCredit);
+  addPuzzle(31, PuzzleType.energyTerminal, {}, 1);
+  addPuzzle(32, PuzzleType.illusion, {}); // antechannel
+  addPuzzle(33, PuzzleType.energyDoor, {});
+  addPuzzle(34, PuzzleType.audioTerminal, {}, 1);
+  addPuzzle(35, PuzzleType.audioTerminal, {}, 1);
+  addPuzzle(36, PuzzleType.energyTerminal, {});
+  addPuzzle(37, PuzzleType.energyTerminal, {});
+  addPuzzle(38, PuzzleType.energyTerminal, {}, 1); // Entente Fuse
+  addPuzzle(39, PuzzleType.energyTerminal, {}, 1);
+  addPuzzle(40, PuzzleType.endgameDoor, {});
+  addPuzzle(41, PuzzleType.endgameCredit, {});
 
   // Entente Puzzle
 
-  addPuzzle(42, PuzzleType.entente);
-  addPuzzle(43, PuzzleType.entente);
-  addPuzzle(44, PuzzleType.entente);
-  addPuzzle(45, PuzzleType.entente);
-  addPuzzle(46, PuzzleType.entente);
+  addPuzzle(42, PuzzleType.entente, {});
+  addPuzzle(43, PuzzleType.entente, {});
+  addPuzzle(44, PuzzleType.entente, {});
+  addPuzzle(45, PuzzleType.entente, {});
+  addPuzzle(46, PuzzleType.entente, {});
 
   // Spare Fuse
 
-  addPuzzle(47, PuzzleType.energyTerminal);
-  addPuzzle(48, PuzzleType.illusion);
-  addPuzzle(49, PuzzleType.illusion);
-  addPuzzle(50, PuzzleType.illusion);
-  addPuzzle(51, PuzzleType.illusion);
-  addPuzzle(52, PuzzleType.illusion);
-  addPuzzle(53, PuzzleType.illusion);
-  addPuzzle(54, PuzzleType.timeDoor);
+  addPuzzle(47, PuzzleType.energyTerminal, {});
+  addPuzzle(48, PuzzleType.illusion, {});
+  addPuzzle(49, PuzzleType.illusion, {});
+  addPuzzle(50, PuzzleType.illusion, {});
+  addPuzzle(51, PuzzleType.illusion, {});
+  addPuzzle(52, PuzzleType.illusion, {});
+  addPuzzle(53, PuzzleType.illusion, {});
+  addPuzzle(54, PuzzleType.timeDoor, {});
   return Object.freeze(puzzlesByID);
 })();
