@@ -1,0 +1,41 @@
+<svg width="1024" height="1024"  xmlns="http://www.w3.org/2000/svg"  xmlns:xlink="http://www.w3.org/1999/xlink">
+    <defs>
+        <g id="elbow">
+            <path d="m 0 -156 l 0 76 
+                a 80 80, 0, 0, 0, 80 80 
+                l 76 0 l 0 -116 
+                a 40 40, 0, 0, 1, -40 -40
+                Z" fill="white" />
+        </g>
+
+        <g id="heel">
+            <path d="m 0 0 l 0 36 
+                a 80 80, 0, 0, 0, 80 80 
+                l 76 0 l 0 -116 
+                Z" fill="white" />
+        </g>
+
+        <g id="top">
+            <!-- <rect width="1024" height="1024" fill="blue"/> -->
+            
+            <!-- nataniev -->
+            <line x1="116" y1="174" x2="908" y2="174" stroke="white" stroke-width="116"/>
+            <line x1="116" y1="512" x2="908" y2="512" stroke="white" stroke-width="116"/>
+            <line x1="512" y1="116" x2="512" y2="908" stroke="white" stroke-width="116"/>
+        </g>
+        <g id="left">
+            <!-- <rect width="1024" height="1024" fill="red"/> -->
+            
+            <!-- empty -->
+        </g>
+        <g id="right">
+            <!-- <rect width="1024" height="1024" fill="green"/> -->
+            
+            <!-- empty -->
+        </g>
+    </defs>
+    <!-- <rect width="1024" height="1024" fill="grey"/> -->
+    <g transform="translate(229,118)scale(0.55,0.55)"><use xlink:href="#top"/></g>
+    <g transform="translate(256,620)scale(0.25,0.25)"><use xlink:href="#left"/></g>
+    <g transform="translate(512,620)scale(0.25,0.25)"><use xlink:href="#right"/></g>
+</svg>

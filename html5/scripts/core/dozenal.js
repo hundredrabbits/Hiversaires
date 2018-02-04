@@ -338,6 +338,7 @@ class Dozenal {
     this.setAlpha("overlay", 0);
     this.setAlpha("clockFace", 0);
     this.setAlpha("clockShadow", 0);
+    this.setAlpha("progressPane", 0);
     this.setAlpha("ententeScreen", 0);
     this.setAlpha("illusion", 0);
 
@@ -811,21 +812,12 @@ class Dozenal {
     this.templateVignette();
     this.prefSave();
 
-    if (this.userChapter == Chapter.act1) {
-      this.templateUpdateNode(23, "0545", 16);
-    }
-    if (this.userChapter == Chapter.act2) {
-      this.templateUpdateNode(23, "0546", 16);
-    }
-    if (this.userChapter == Chapter.act3) {
-      this.templateUpdateNode(23, "0547", 16);
-    }
-    if (this.userChapter == Chapter.act4) {
-      this.templateUpdateNode(23, "0548", 16);
-    }
-    if (this.userChapter == Chapter.act5) {
-      this.templateUpdateNode(23, "0549", 16);
-    }
+    this.setImage(
+      "progressPane",
+      "interface/progress." + this.userChapter + ".svg"
+    );
+
+    this.fadeIn(this.billboard("progressPane"), 0.5, 0.5);
   }
 
   templateAudioTerminal() {

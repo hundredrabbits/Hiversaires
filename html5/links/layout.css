@@ -120,6 +120,15 @@ billboard#clockShadow {
   height: calc(100% / 16 * (16 * 300/1136));
 }
 
+billboard#progressPane {
+  left: calc(100% / 9 * (9 * 170/640));
+  top: calc(100% / 16 * (16 * 385/1136));
+  width: calc(100% / 9 * (9 * 300/640));
+  height: calc(100% / 16 * (16 * 300/1136));
+  transform-origin: center;
+  transform: perspective(500px) rotateX(-4deg);
+}
+
 trigger#action {
   left: calc(100% / 9 * (9 / 3));
   top: calc(100% / 16 * (16 / 3));

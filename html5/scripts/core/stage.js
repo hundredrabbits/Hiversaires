@@ -34,6 +34,7 @@ class Stage {
       "menuControls",
       "clockShadow",
       "clockFace",
+      "progressPane",
       "ententeScreen",
       "interfaceDimclockAlert",
       "interfaceDimclock",
