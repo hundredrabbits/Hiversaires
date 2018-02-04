@@ -1,5 +1,15 @@
 "use strict";
 
+class ConditionType {}
+setEnumValues(ConditionType, [
+  "equals",
+  "doesNotEqual",
+  "isLessThan",
+  "isLessThanOrEqualTo",
+  "isGreaterThan",
+  "isGreaterThanOrEqualTo"
+]);
+
 class Chapter {}
 setEnumValues(Chapter, ["act1", "act2", "act3", "act4", "act5", "credit"]);
 
@@ -237,7 +247,8 @@ setEnumValues(PuzzleType, [
   "endgameDoor",
   "endgameCredit",
   "entente",
-  "timeDoor"
+  "timeDoor",
+  "netherDoor"
 ]);
 
 class Puzzle {
@@ -263,15 +274,34 @@ const puzzlesByID = (function() {
 
   addPuzzle(1, PuzzleType.clockTerminal, {});
   addPuzzle(2, PuzzleType.energyTerminal, {});
-  addPuzzle(3, PuzzleType.energyDoor, {});
+  addPuzzle(3, PuzzleType.energyDoor, {
+    conditions: [{ puzzleID: 2, type: ConditionType.isGreaterThan, value: 0 }]
+  });
   addPuzzle(4, PuzzleType.sealTerminal, { seal: Zone.forest });
   addPuzzle(5, PuzzleType.sealDoor, {});
-  addPuzzle(6, PuzzleType.energyDoor, {});
-  addPuzzle(7, PuzzleType.clockDoor, {});
-  addPuzzle(8, PuzzleType.clockDoor, {});
-  addPuzzle(9, PuzzleType.clockDoor, {});
+  addPuzzle(6, PuzzleType.energyDoor, {
+    conditions: [{ puzzleID: 37, type: ConditionType.isGreaterThan, value: 0 }]
+  });
+  addPuzzle(7, PuzzleType.clockDoor, {
+    conditions: [{ puzzleID: 1, type: ConditionType.doesNotEqual, value: 0 }]
+  });
+  addPuzzle(8, PuzzleType.clockDoor, {
+    conditions: [{ puzzleID: 1, type: ConditionType.doesNotEqual, value: 2 }]
+  });
+  addPuzzle(9, PuzzleType.clockDoor, {
+    conditions: [{ puzzleID: 1, type: ConditionType.doesNotEqual, value: 1 }]
+  });
   addPuzzle(10, PuzzleType.energyTerminal, {});
-  addPuzzle(11, PuzzleType.energyDoor, {});
+  addPuzzle(11, PuzzleType.energyDoor, {
+    conditions: [{ puzzleID: 10, type: ConditionType.isGreaterThan, value: 0 }],
+    secret: {
+      conditions: [
+        { puzzleID: 5, type: ConditionType.equals, value: 2 },
+        { puzzleID: 31, type: ConditionType.equals, value: 1 }
+      ],
+      nodeID: 34
+    }
+  });
   addPuzzle(12, PuzzleType.sealTerminal, { seal: Zone.stones });
   addPuzzle(13, PuzzleType.sealTerminal, { seal: Zone.rainre });
   addPuzzle(14, PuzzleType.killTerminal, {});
@@ -279,27 +309,44 @@ const puzzlesByID = (function() {
   addPuzzle(16, PuzzleType.progressTerminal, {});
   addPuzzle(17, PuzzleType.illusion, { nodeID: 15, orientation: 0 }); // studio
   addPuzzle(18, PuzzleType.energyTerminal, {});
-  addPuzzle(19, PuzzleType.energyDoor, {}, 13);
+  addPuzzle(
+    19,
+    PuzzleType.energyDoor,
+    {
+      conditions: [
+        { puzzleID: 18, type: ConditionType.isGreaterThan, value: 1 }
+      ]
+    },
+    13
+  );
   addPuzzle(20, PuzzleType.sealTerminal, { seal: Zone.metamondst });
   addPuzzle(21, PuzzleType.sealTerminal, { seal: Zone.antechannel });
   addPuzzle(22, PuzzleType.illusion, { nodeID: 43, orientation: 2 }); // stones
   addPuzzle(23, PuzzleType.ententeTerminal, {}, 15);
   addPuzzle(24, PuzzleType.ententeTerminal, {});
   addPuzzle(25, PuzzleType.sealDoor, {});
-  addPuzzle(26, PuzzleType.energyDoor, {});
+  addPuzzle(26, PuzzleType.energyDoor, {
+    conditions: [{ puzzleID: 27, type: ConditionType.isGreaterThan, value: 0 }]
+  });
   addPuzzle(27, PuzzleType.energyTerminal, {});
 
   // Studio Lock
 
-  addPuzzle(28, PuzzleType.energyDoor, {});
+  addPuzzle(28, PuzzleType.energyDoor, {
+    conditions: [{ puzzleID: 5, type: ConditionType.isGreaterThan, value: 0 }]
+  });
   addPuzzle(29, PuzzleType.illusion, { nodeID: 73, orientation: 2 }); // metamondst
-  addPuzzle(30, PuzzleType.energyDoor, {});
+  addPuzzle(30, PuzzleType.energyDoor, {
+    conditions: [{ puzzleID: 5, type: ConditionType.isGreaterThan, value: 0 }]
+  });
 
   // Collectibles
 
   addPuzzle(31, PuzzleType.energyTerminal, {}, 1);
   addPuzzle(32, PuzzleType.illusion, { nodeID: 58, orientation: 1 }); // antechannel
-  addPuzzle(33, PuzzleType.energyDoor, {});
+  addPuzzle(33, PuzzleType.energyDoor, {
+    conditions: [{ puzzleID: 47, type: ConditionType.isGreaterThan, value: 0 }]
+  });
   addPuzzle(34, PuzzleType.audioTerminal, {}, 1);
   addPuzzle(35, PuzzleType.audioTerminal, {}, 1);
   addPuzzle(36, PuzzleType.energyTerminal, {});

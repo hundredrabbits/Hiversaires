@@ -215,7 +215,7 @@ class Dozenal {
 
     this.isFuseAction = false;
 
-    if (this.currentPuzzle) {
+    if (this.currentPuzzle != null) {
       this.actionTemplate();
     }
   }
@@ -445,42 +445,12 @@ class Dozenal {
 
   templateClockDoor() {
     this.templateVignette();
-
-    // Display Interactions
-
     this.setHidden(this.billboard("overlay"), true);
-
     this.templateClockInterface();
-
-    // Audio
-
     hiversaires.music.playEffect("action_DoorInit");
-
-    // Templates
-
-    let doorUnlocked = false;
-
-    switch (this.currentPuzzle.id) {
-      case 7:
-        doorUnlocked = this.puzzleState[1] == 1 || this.puzzleState[1] == 2;
-        break;
-      case 8:
-        doorUnlocked = this.puzzleState[1] == 1 || this.puzzleState[1] == 0;
-        break;
-      case 9:
-        doorUnlocked = this.puzzleState[1] == 2 || this.puzzleState[1] == 0;
-        break;
-    }
-
-    if (doorUnlocked) {
+    if (this.checkConditions(this.currentPuzzle.info.conditions)) {
       this.setCurrentAction(this.openDoor);
-
-      this.templateUpdateNode(16, "0472", 7);
-      this.templateUpdateNode(23, "0473", 7);
-      this.templateUpdateNode(25, "0474", 8);
-      this.templateUpdateNode(35, "0475", 8);
-      this.templateUpdateNode(27, "0476", 9);
-      this.templateUpdateNode(52, "0477", 9);
+      this.setModifier("open");
     } else {
       this.templateClockAlert();
     }
@@ -620,7 +590,8 @@ class Dozenal {
     this.fadeOut(this.billboard("overlay"), 0, 0.5);
 
     if (this.puzzleState[this.currentPuzzle.id] == 1) {
-      this.showModifier("seal." + this.currentSeals.length, 0.1, 0.2);
+      this.setModifier("seal." + this.currentSeals.length);
+      this.showModifier(0.1, 0.2);
     } else {
       this.hideModifier(0.1, 0.2);
     }
@@ -658,74 +629,52 @@ class Dozenal {
 
   templateEnergyDoor() {
     this.templateVignette();
-
-    // Display Interactions
-
     this.setHidden(this.billboard("overlay"), true);
-
-    // Audio
-
     hiversaires.music.playEffect("action_DoorInit");
     this.templateEnergyInterface();
 
-    // Templates
-
-    let puzzleTerminal = null;
-
-    if (this.currentPuzzle.id == 3) {
-      puzzleTerminal = 2;
-    }
-    if (this.currentPuzzle.id == 6) {
-      puzzleTerminal = 37;
-    }
-
-    if (this.currentPuzzle.id == 11) {
-      puzzleTerminal = 10;
-    }
-    if (this.currentPuzzle.id == 19) {
-      puzzleTerminal = 18;
-    }
-    if (this.currentPuzzle.id == 26) {
-      puzzleTerminal = 27;
-    }
-
-    if (this.currentPuzzle.id == 28) {
-      puzzleTerminal = 5;
-    }
-    if (this.currentPuzzle.id == 30) {
-      puzzleTerminal = 5;
-    }
-    if (this.currentPuzzle.id == 33) {
-      puzzleTerminal = 47;
-    } // Antechannel fuse for Capsule door
-
-    if (puzzleTerminal != null && this.puzzleState[puzzleTerminal] > 0) {
+    if (this.checkConditions(this.currentPuzzle.info.conditions)) {
       this.setCurrentAction(this.openDoor);
-
-      this.templateUpdateNode(1, "0531", 28);
-      this.templateUpdateNode(12, "0470", 3);
-      this.templateUpdateNode(13, "0471", 3);
-      this.templateUpdateNode(20, "0080", 6);
-      this.templateUpdateNode(69, "0478", 19);
-      this.templateUpdateNode(61, "0479", 19);
-      this.templateUpdateNode(62, "0480", 26);
-      this.templateUpdateNode(77, "0481", 26);
-      this.templateUpdateNode(76, "0482", 30);
-      this.templateUpdateNode(79, "0534", 33);
-      this.templateUpdateNode(112, "0535", 33);
-      this.templateUpdateNode(87, "0483", 30);
-
-      // Nether Door
-
-      if (this.puzzleState[5] == 2 && this.puzzleState[31] == 1) {
-        // Replace 10 by actual act
-        this.templateUpdateNode(39, "0491", 11);
-      } else {
-        this.templateUpdateNode(39, "0490", 11);
+      let modifier = "open";
+      let secret = this.currentPuzzle.info.secret;
+      if (secret != null && this.checkConditions(secret.conditions)) {
+        modifier = "secret";
       }
+      this.setModifier(modifier);
     } else {
       this.templateEnergyAlert();
     }
+  }
+
+  checkConditions(conditions) {
+    for (let condition of conditions) {
+      let state = this.puzzleState[condition.puzzleID];
+      let passes = true;
+      switch (condition.type) {
+        case ConditionType.equals:
+          passes = state == condition.value;
+          break;
+        case ConditionType.doesNotEqual:
+          passes = state != condition.value;
+          break;
+        case ConditionType.isLessThan:
+          passes = state < condition.value;
+          break;
+        case ConditionType.isLessThanOrEqualTo:
+          passes = state <= condition.value;
+          break;
+        case ConditionType.isGreaterThan:
+          passes = state > condition.value;
+          break;
+        case ConditionType.isGreaterThanOrEqualTo:
+          passes = state >= condition.value;
+          break;
+      }
+      if (!passes) {
+        return false;
+      }
+    }
+    return true;
   }
 
   templateEnergyUpdate() {
@@ -815,7 +764,8 @@ class Dozenal {
   templateAudioUpdate() {
     this.templateAudioInterface();
     if (this.puzzleState[this.currentPuzzle.id] == 1) {
-      this.showModifier(null, 0.3, 0.1);
+      this.setModifier("on");
+      this.showModifier(0.3, 0.1);
       hiversaires.music.volume = 1;
     } else {
       this.hideModifier(0.3, 0);
@@ -1045,10 +995,7 @@ class Dozenal {
     }
   }
 
-  showModifier(modifier = null, fadeDuration = 0, fadeDelay = 0) {
-    if (modifier == null) {
-      modifier = "puzzle." + this.currentPuzzle.id;
-    }
+  setModifier(modifier) {
     this.setImage(
       "overlay",
       "node/" +
@@ -1059,6 +1006,9 @@ class Dozenal {
         modifier +
         ".jpg"
     );
+  }
+
+  showModifier(fadeDuration = 0, fadeDelay = 0) {
     this.setHidden(this.billboard("overlay"), false);
     this.fadeIn(this.billboard("overlay"), fadeDelay, fadeDuration);
   }
