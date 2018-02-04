@@ -619,22 +619,10 @@ class Dozenal {
 
     this.fadeOut(this.billboard("overlay"), 0, 0.5);
 
-    if (this.puzzleState[this.currentPuzzle.id] != 1) {
-      return;
-    }
-
-    if (this.currentSeals.length == 1) {
-      this.templateUpdateNode(5, "0493", 4);
-      this.templateUpdateNode(38, "0496", 12);
-      this.templateUpdateNode(45, "0502", 13);
-      this.templateUpdateNode(49, "0505", 21);
-      this.templateUpdateNode(82, "0499", 20);
+    if (this.puzzleState[this.currentPuzzle.id] == 1) {
+      this.showModifier("seal." + this.currentSeals.length, 0.1, 0.2);
     } else {
-      this.templateUpdateNode(5, "0494", 4);
-      this.templateUpdateNode(38, "0497", 12);
-      this.templateUpdateNode(45, "0503", 13);
-      this.templateUpdateNode(49, "0506", 21);
-      this.templateUpdateNode(82, "0500", 20);
+      this.hideModifier(0.1, 0.2);
     }
   }
 
@@ -810,7 +798,7 @@ class Dozenal {
       "interface/progress." + this.userChapter + ".svg"
     );
 
-    this.fadeIn(this.billboard("progressPane"), 0.5, 0.5);
+    this.fadeIn(this.billboard("progressPane"), 0.3, 0.5);
   }
 
   templateAudioTerminal() {
@@ -1087,12 +1075,8 @@ class Dozenal {
 
     // Fadeins
 
-    if (this.currentPuzzle.type == PuzzleType.sealTerminal) {
-      this.fadeIn(this.billboard("overlay"), 0.2, 0.1);
-    } else if (this.currentPuzzle.type == PuzzleType.sealDoor) {
+    if (this.currentPuzzle.type == PuzzleType.sealDoor) {
       this.fadeIn(this.billboard("overlay"), 0.0, 1.0);
-    } else if (this.currentPuzzle.type == PuzzleType.progressTerminal) {
-      this.fadeIn(this.billboard("overlay"), 0.3, 0.5);
     } else if (this.currentPuzzle.id == 28) {
       this.fadeIn(this.billboard("overlay"), 0.5, 1);
     } else {
