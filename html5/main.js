@@ -21,12 +21,20 @@ function createWindow() {
 
   function getGoodWindowBounds(display) {
     let height = display.workArea.height;
+    if (electron.screen.getMenuBarHeight != null) {
+      height -= electron.screen.getMenuBarHeight();
+    }
+
+    // Many macOS apps seem to leave a couple pixels
+    // below a full-screen window, to convince the user the window terminates.
+    height -= 2;
+
     let width = Math.ceil(height * 9 / 16);
     let x =
       display.workArea.x + Math.round(display.workArea.width / 2 - width / 2);
     let y = display.workArea.y;
 
-    return { x: x, y: y, width: width, height: height };
+    return { x, y, width, height };
   }
 
   let initBounds = getGoodWindowBounds(tallestDisplay);
@@ -39,9 +47,13 @@ function createWindow() {
     height: initBounds.height,
     backgroundColor: "#000000",
     resizable: false,
+    fullscreenable: false,
+    maximizable: false,
     autoHideMenuBar: true,
     icon: __dirname + "/icon.ico"
   });
+
+  win.setContentSize(initBounds.width, initBounds.height);
 
   win.loadURL(`file://${__dirname}/index.html`);
 

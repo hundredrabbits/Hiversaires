@@ -1,4 +1,3 @@
-App window height includes the god damn chrome
 
 Play the game through to the end
     You're almost there
