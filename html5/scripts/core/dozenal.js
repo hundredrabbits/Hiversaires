@@ -71,20 +71,13 @@ class Dozenal {
 
   get currentSeals() {
     let sealsFound = [];
-    if (this.puzzleState[4] > 0) {
-      sealsFound.push(Zone.forest);
-    }
-    if (this.puzzleState[12] > 0) {
-      sealsFound.push(Zone.stones);
-    }
-    if (this.puzzleState[13] > 0) {
-      sealsFound.push(Zone.rainre);
-    }
-    if (this.puzzleState[20] > 0) {
-      sealsFound.push(Zone.metamondst);
-    }
-    if (this.puzzleState[21] > 0) {
-      sealsFound.push(Zone.antechannel);
+    for (let puzzle of puzzlesByID.values()) {
+      if (
+        puzzle.type == PuzzleType.sealTerminal &&
+        this.puzzleState[puzzle.id] > 0
+      ) {
+        sealsFound.push(puzzle.info.seal);
+      }
     }
     return sealsFound;
   }
@@ -833,16 +826,11 @@ class Dozenal {
 
   templateAudioUpdate() {
     this.templateAudioInterface();
-
     if (this.puzzleState[this.currentPuzzle.id] == 1) {
-      this.setHidden(this.billboard("overlay"), false);
-      this.setAlpha("overlay", 1.0);
-      this.templateUpdateNode(21, "0543", 35);
-      this.templateUpdateNode(43, "0544", 35);
+      this.showModifier(null, 0.3, 0.1);
       hiversaires.music.volume = 1;
     } else {
-      this.setHidden(this.billboard("overlay"), true);
-      this.setAlpha("overlay", 0);
+      this.hideModifier(0.3, 0);
       hiversaires.music.volume = 0;
     }
   }
@@ -1069,6 +1057,29 @@ class Dozenal {
     }
   }
 
+  showModifier(modifier = null, fadeDuration = 0, fadeDelay = 0) {
+    if (modifier == null) {
+      modifier = "puzzle." + this.currentPuzzle.id;
+    }
+    this.setImage(
+      "overlay",
+      "node/" +
+        this.userNodeID +
+        "." +
+        this.userOrientation +
+        "." +
+        modifier +
+        ".jpg"
+    );
+    this.setHidden(this.billboard("overlay"), false);
+    this.fadeIn(this.billboard("overlay"), fadeDelay, fadeDuration);
+  }
+
+  hideModifier(fadeDuration = 0, fadeDelay = 0) {
+    this.setHidden(this.billboard("overlay"), false);
+    this.fadeOut(this.billboard("overlay"), fadeDelay, fadeDuration);
+  }
+
   templateUpdateNode(node, img, puzzleID) {
     if (this.userNodeID == node && this.currentPuzzle.id == puzzleID) {
       this.setImage("overlay", "node_old/node." + img + ".jpg");
@@ -1078,8 +1089,6 @@ class Dozenal {
 
     if (this.currentPuzzle.type == PuzzleType.sealTerminal) {
       this.fadeIn(this.billboard("overlay"), 0.2, 0.1);
-    } else if (this.currentPuzzle.type == PuzzleType.audioTerminal) {
-      this.fadeIn(this.billboard("overlay"), 0.3, 0.5);
     } else if (this.currentPuzzle.type == PuzzleType.sealDoor) {
       this.fadeIn(this.billboard("overlay"), 0.0, 1.0);
     } else if (this.currentPuzzle.type == PuzzleType.progressTerminal) {
@@ -1108,10 +1117,15 @@ class Dozenal {
     }
 
     let illusionPuzzle = null;
-    if (illusionPuzzles.has(this.userNodeID)) {
-      illusionPuzzle = illusionPuzzles
-        .get(this.userNodeID)
-        .get(this.userOrientation);
+    for (let puzzle of puzzlesByID.values()) {
+      if (
+        puzzle.type == PuzzleType.illusion &&
+        puzzle.info.nodeID == this.userNodeID &&
+        puzzle.info.orientation == this.userOrientation
+      ) {
+        illusionPuzzle = puzzle;
+        break;
+      }
     }
 
     if (illusionPuzzle != null) {

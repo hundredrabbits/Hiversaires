@@ -70,13 +70,13 @@ const nodesByID = (function() {
   function node(nodeID, orientation) {
     return Object.freeze({
       type: SubjectType.node,
-      nodeID: nodeID,
-      orientation: orientation
+      nodeID,
+      orientation
     });
   }
 
   function puzzle(puzzleID) {
-    return Object.freeze({ type: SubjectType.puzzle, puzzleID: puzzleID });
+    return Object.freeze({ type: SubjectType.puzzle, puzzleID });
   }
 
   const none = Object.freeze({ type: SubjectType.none });
@@ -264,7 +264,7 @@ const puzzlesByID = (function() {
   addPuzzle(1, PuzzleType.clockTerminal, {});
   addPuzzle(2, PuzzleType.energyTerminal, {});
   addPuzzle(3, PuzzleType.energyDoor, {});
-  addPuzzle(4, PuzzleType.sealTerminal, {});
+  addPuzzle(4, PuzzleType.sealTerminal, { seal: Zone.forest });
   addPuzzle(5, PuzzleType.sealDoor, {});
   addPuzzle(6, PuzzleType.energyDoor, {});
   addPuzzle(7, PuzzleType.clockDoor, {});
@@ -272,16 +272,16 @@ const puzzlesByID = (function() {
   addPuzzle(9, PuzzleType.clockDoor, {});
   addPuzzle(10, PuzzleType.energyTerminal, {});
   addPuzzle(11, PuzzleType.energyDoor, {});
-  addPuzzle(12, PuzzleType.sealTerminal, {});
-  addPuzzle(13, PuzzleType.sealTerminal, {});
+  addPuzzle(12, PuzzleType.sealTerminal, { seal: Zone.stones });
+  addPuzzle(13, PuzzleType.sealTerminal, { seal: Zone.rainre });
   addPuzzle(14, PuzzleType.killTerminal, {});
   addPuzzle(15, PuzzleType.sealDoor, {});
   addPuzzle(16, PuzzleType.progressTerminal, {});
   addPuzzle(17, PuzzleType.illusion, { nodeID: 15, orientation: 0 }); // studio
   addPuzzle(18, PuzzleType.energyTerminal, {});
   addPuzzle(19, PuzzleType.energyDoor, {}, 13);
-  addPuzzle(20, PuzzleType.sealTerminal, {});
-  addPuzzle(21, PuzzleType.sealTerminal, {});
+  addPuzzle(20, PuzzleType.sealTerminal, { seal: Zone.metamondst });
+  addPuzzle(21, PuzzleType.sealTerminal, { seal: Zone.antechannel });
   addPuzzle(22, PuzzleType.illusion, { nodeID: 43, orientation: 2 }); // stones
   addPuzzle(23, PuzzleType.ententeTerminal, {}, 15);
   addPuzzle(24, PuzzleType.ententeTerminal, {});
@@ -328,24 +328,4 @@ const puzzlesByID = (function() {
 
   addPuzzle(54, PuzzleType.timeDoor, {});
   return Object.freeze(puzzlesByID);
-})();
-
-// Technically we could key illusions by zone, but that's not guaranteed forever
-const illusionPuzzles = (function() {
-  let illusionPuzzles = new Map();
-  console.log(puzzlesByID.values(), puzzlesByID.size);
-  for (let puzzle of puzzlesByID.values()) {
-    if (puzzle.type == PuzzleType.illusion) {
-      if (!illusionPuzzles.has(puzzle.info.nodeID)) {
-        illusionPuzzles.set(puzzle.info.nodeID, new Map());
-      }
-      illusionPuzzles
-        .get(puzzle.info.nodeID)
-        .set(puzzle.info.orientation, puzzle);
-    }
-  }
-  for (let sub of illusionPuzzles.values()) {
-    Object.freeze(sub);
-  }
-  return Object.freeze(illusionPuzzles);
 })();
