@@ -1,6 +1,10 @@
+When did mouse clicks stop working??
 
-Play the game through to the end
-    You're almost there
+
+Swap duration and delay params of fade methods, you're getting confused
+
+Fill in the weird SVG gaps
+
 Create puzzle object
     A puzzle has a state (loaded/saved) and a performAction() method
     Actions are dictated by puzzles. setCurrentAction should be made into a getter that discovers the action of a puzzle subject
@@ -12,6 +16,8 @@ Organize puzzles by type and nodes by zone
 Carefully migrate node_old references
 
 Templates should go somewhere else
+
+Don't allow interaction during credits
 
 Break the dozenal code into sensible chunks
 

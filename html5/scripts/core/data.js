@@ -91,14 +91,8 @@ const nodesByID = (function() {
 
   const none = Object.freeze({ type: SubjectType.none });
 
-  // ====================
-  // Forest ( 0 - 11 )
-  // ====================
-
   addNode(0, Zone.forest, node(1), none, none, none);
   addNode(1, Zone.forest, node(2), none, puzzle(28), none);
-
-  // addNode(1, Zone.forest, node(46), none, none, none);
 
   addNode(2, Zone.forest, node(3), none, node(1), none);
   addNode(3, Zone.forest, node(11), node(10, 2), node(2), node(4, 0));
@@ -153,7 +147,6 @@ const nodesByID = (function() {
   addNode(48, Zone.antechannel, puzzle(25), none, node(49), node(47));
   addNode(49, Zone.antechannel, node(48), none, puzzle(21), node(77));
   addNode(50, Zone.nataniev, none, none, puzzle(41), none);
-  addNode(51, Zone.nataniev, none, none, node(64), none);
 
   addNode(52, Zone.antechannel, node(54), node(53), none, puzzle(9));
   addNode(53, Zone.antechannel, node(55), node(84), none, node(52));
@@ -168,7 +161,7 @@ const nodesByID = (function() {
   addNode(61, Zone.antechannel, none, none, node(59), puzzle(19));
   addNode(62, Zone.antechannel, puzzle(26), none, node(60), none);
   addNode(63, Zone.metamondst, node(73), node(69), none, node(67));
-  addNode(64, Zone.nataniev, node(63), none, none, none);
+  addNode(64, Zone.nataniev, node(63), none, none, none); // TODO: something interesting
   addNode(65, Zone.entente, none, none, puzzle(46), none);
   addNode(67, Zone.metamondst, node(74), node(63), none, node(70));
   addNode(69, Zone.metamondst, puzzle(18), puzzle(19), none, node(63));
@@ -314,7 +307,7 @@ const puzzlesByID = (function() {
     PuzzleType.energyDoor,
     {
       conditions: [
-        { puzzleID: 18, type: ConditionType.isGreaterThan, value: 1 }
+        { puzzleID: 18, type: ConditionType.isGreaterThan, value: 0 }
       ]
     },
     13
@@ -330,8 +323,6 @@ const puzzlesByID = (function() {
   });
   addPuzzle(27, PuzzleType.energyTerminal, {});
 
-  // Studio Lock
-
   addPuzzle(28, PuzzleType.energyDoor, {
     conditions: [{ puzzleID: 5, type: ConditionType.isGreaterThan, value: 0 }]
   });
@@ -339,8 +330,6 @@ const puzzlesByID = (function() {
   addPuzzle(30, PuzzleType.energyDoor, {
     conditions: [{ puzzleID: 5, type: ConditionType.isGreaterThan, value: 0 }]
   });
-
-  // Collectibles
 
   addPuzzle(31, PuzzleType.energyTerminal, {}, 1);
   addPuzzle(32, PuzzleType.illusion, { nodeID: 58, orientation: 1 }); // antechannel
@@ -353,7 +342,12 @@ const puzzlesByID = (function() {
   addPuzzle(37, PuzzleType.energyTerminal, {});
   addPuzzle(38, PuzzleType.energyTerminal, {}, 1); // Entente Fuse
   addPuzzle(39, PuzzleType.energyTerminal, {}, 1);
-  addPuzzle(40, PuzzleType.endgameDoor, {});
+  addPuzzle(40, PuzzleType.endgameDoor, {
+    conditions: [
+      { puzzleID: 47, type: ConditionType.equals, value: 1 },
+      { puzzleID: 36, type: ConditionType.equals, value: 1 }
+    ]
+  });
   addPuzzle(41, PuzzleType.endgameCredit, {});
 
   // Entente Puzzle

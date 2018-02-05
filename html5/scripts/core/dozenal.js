@@ -271,16 +271,12 @@ class Dozenal {
       this.userNodeID = 34;
     } else if (this.userNodeID == 39) {
       this.userNodeID = 45;
-    } else if (this.userNodeID == 45) {
-      this.userNodeID = 51;
     } else if (this.userNodeID == 46) {
       this.userNodeID = 85;
       this.userOrientation = 2;
     } else if (this.userNodeID == 48) {
       this.userNodeID = 11;
       this.userOrientation = 2;
-    } else if (this.userNodeID == 51) {
-      this.userNodeID = 45;
     } else if (this.userNodeID == 52) {
       this.userNodeID = 32;
       this.userOrientation = 3;
@@ -586,9 +582,7 @@ class Dozenal {
 
   templateSealUpdate() {
     this.templateSealInterface();
-
     this.fadeOut(this.billboard("overlay"), 0, 0.5);
-
     if (this.puzzleState[this.currentPuzzle.id] == 1) {
       this.setModifier("seal." + this.currentSeals.length);
       this.showModifier(0.1, 0.2);
@@ -906,8 +900,10 @@ class Dozenal {
   }
 
   templateEndgameDoor() {
-    if (this.puzzleState[47] == 1 && this.puzzleState[36] == 1) {
+    if (this.checkConditions(this.currentPuzzle.info.conditions)) {
       this.templateUpdateNode(113, "0550", 40);
+      this.setModifier("open");
+      this.showModifier();
       this.setCurrentAction(this.walkThroughDoor);
     } else {
       this.templateEnergyAlert();
