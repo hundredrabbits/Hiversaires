@@ -1,5 +1,3 @@
-Swap duration and delay params of fade methods, you're getting confused
-
 How are easter eggs actually triggered?
     Apartment
     Green eye
@@ -36,6 +34,9 @@ Create trigger object
 
 Organize puzzles by type and nodes by zone
     There's no reason their IDs are integers
+
+A puzzle should be able to report all the different assets that might be needed for it
+    Then we can load it preemptively
 
 Convert the world to a displayable graph, if you can
 Full walkthrough
