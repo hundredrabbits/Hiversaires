@@ -43,7 +43,7 @@
       setTimeout(hh.start.bind(hh), DEBUG_SKIP_LOGO ? 100 : 7000);
       let logo = new Logo(document.getElementById("logo"));
       setTimeout(function(){ logo.install(); }, 1500);
-      $("#splash").delay(DEBUG_SKIP_LOGO ? 100 : 7500).animate({ opacity: 0 }, 1000, $("#splash").remove); 
+      $("#splash").delay(DEBUG_SKIP_LOGO ? 100 : 7500).animate({ opacity: 0 }, 1000, function() { $("#splash").remove(); }); 
     </script>
   </body>
 </html>

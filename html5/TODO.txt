@@ -1,5 +1,3 @@
-When did mouse clicks stop working??
-
 
 Swap duration and delay params of fade methods, you're getting confused
 
