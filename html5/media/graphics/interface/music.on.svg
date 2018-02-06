@@ -1,5 +1,5 @@
 <svg width="1024" height="1024"  xmlns="http://www.w3.org/2000/svg"  xmlns:xlink="http://www.w3.org/1999/xlink">
-    <!-- <rect width="1024" height="1024" fill="grey"/> -->
+    <!-- <rect id="background" width="1024" height="1024" fill="grey"/> -->
     <polyline points="115,385 310,385 570,120 570,904 310,639 115,639" fill="white"/>
 
     <path d="M680 360 A 210 210, 0, 0, 1, 680 664" stroke="white" fill="none" stroke-width="70"/>

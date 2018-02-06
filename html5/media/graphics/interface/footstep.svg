@@ -1,4 +1,4 @@
 <svg width="1024" height="1024"  xmlns="http://www.w3.org/2000/svg"  xmlns:xlink="http://www.w3.org/1999/xlink">
-    <!-- <rect width="1024" height="1024" fill="grey"/> -->
+    <!-- <rect id="background" width="1024" height="1024" fill="grey"/> -->
     <rect x="115" y="908" width="794" height="116" fill="white" opacity="0.23"/>
 </svg>

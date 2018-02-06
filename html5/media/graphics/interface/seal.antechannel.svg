@@ -1,5 +1,5 @@
 <svg width="1024" height="1024"  xmlns="http://www.w3.org/2000/svg"  xmlns:xlink="http://www.w3.org/1999/xlink">
-    <!-- <rect width="1024" height="1024" fill="grey"/> -->
+    <!-- <rect id="background" width="1024" height="1024" fill="grey"/> -->
     <line x1="116" y1="512" x2="908" y2="512" stroke="white" stroke-width="116"/>
     <line x1="174" y1="116" x2="174" y2="908" stroke="white" stroke-width="116"/>
     <line x1="512" y1="116" x2="512" y2="908" stroke="white" stroke-width="116"/>

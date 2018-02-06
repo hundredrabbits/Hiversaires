@@ -7,7 +7,7 @@
                 Z" fill="white" />
         </g>
     </defs>
-    <!-- <rect width="1024" height="1024" fill="grey"/> -->
+    <!-- <rect id="background" width="1024" height="1024" fill="grey"/> -->
     <line x1="174" y1="454" x2="174" y2="490" stroke="white" stroke-width="116"/>
     <line x1="196" y1="512" x2="828" y2="512" stroke="white" stroke-width="116"/>
     <line x1="496" y1="157" x2="158" y2="495" stroke="white" stroke-width="116"/>

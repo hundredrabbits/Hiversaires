@@ -22,7 +22,7 @@
             <line x1="850" y1="116" x2="850" y2="908" stroke="white" stroke-width="116"/>
         </g>
     </defs>
-    <!-- <rect width="300" height="300" fill="grey"/> -->
+    <!-- <rect id="background" width="300" height="300" fill="grey"/> -->
     <g transform="translate(0,124.4)scale(0.05,0.05)"><use xlink:href="#west"/></g>
     <g transform="translate(248.8,124.4)scale(0.05,0.05)"><use xlink:href="#east"/></g>
     <line x1="75" y1="150" x2="150" y2="150" stroke="white" stroke-width="5" stroke-linecap="square"/>

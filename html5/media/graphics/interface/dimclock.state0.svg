@@ -27,7 +27,7 @@
         </g>
 
     </defs>
-    <!-- <rect width="300" height="300" fill="grey"/> -->
+    <!-- <rect id="background" width="300" height="300" fill="grey"/> -->
     <g transform="translate(248.8,124.4)scale(0.05,0.05)"><use xlink:href="#east"/></g>
     <g transform="translate(124.4,248.8)scale(0.05,0.05)"><use xlink:href="#south"/></g>
     <line x1="225" y1="150" x2="150" y2="150" stroke="white" stroke-width="5" stroke-linecap="square"/>
