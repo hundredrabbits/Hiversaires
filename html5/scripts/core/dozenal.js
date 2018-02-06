@@ -146,6 +146,8 @@ class Dozenal {
     }
 
     hiversaires.music.setAmbience(ambienceByZone.get(this.currentNode.zone));
+
+    console.log(this.userNodeID, this.userOrientation, this.currentSubject);
   }
 
   moveLeft() {
@@ -229,6 +231,38 @@ class Dozenal {
   openDoor() {
     this.setHidden(this.billboard("overlay"), false);
     this.setCurrentAction(this.walkThroughDoor);
+
+    if (this.puzzleState[this.currentPuzzle.id] == 1) {
+      this.templateUpdateNode(18, "0516", 2);
+      this.templateUpdateNode(18, "0529", 31);
+      this.templateUpdateNode(13, "0517", 2);
+      this.templateUpdateNode(55, "0539", 39);
+      this.templateUpdateNode(69, "0518", 18);
+      this.templateUpdateNode(39, "0519", 10);
+      this.templateUpdateNode(77, "0520", 27);
+      this.templateUpdateNode(84, "0527", 47);
+      this.templateUpdateNode(101, "0532", 38);
+      this.templateUpdateNode(113, "0551", 36);
+      this.templateUpdateNode(142, "0576", 54);
+      this.templateUpdateNode(143, "0577", 54);
+    } else {
+      this.templateUpdateNode(18, "0521", 2);
+      this.templateUpdateNode(18, "0530", 31);
+      this.templateUpdateNode(13, "0522", 2);
+      this.templateUpdateNode(55, "0540", 39);
+      this.templateUpdateNode(69, "0523", 18);
+      this.templateUpdateNode(39, "0524", 10);
+      this.templateUpdateNode(77, "0525", 27);
+      this.templateUpdateNode(84, "0526", 47);
+      this.templateUpdateNode(101, "0533", 38);
+      this.templateUpdateNode(113, "0552", 36);
+      this.templateUpdateNode(142, "0571", 54);
+      this.templateUpdateNode(143, "0573", 54);
+    }
+  }
+
+  openEnergyDoor() {
+    this.openDoor();
     this.templateEnergyUpdate();
   }
 
@@ -337,62 +371,88 @@ class Dozenal {
   actionTemplate() {
     this.actionReset();
 
-    if (this.currentPuzzle.type == PuzzleType.clockTerminal) {
-      this.templateClockTerminal();
+    switch (this.currentPuzzle.type) {
+      case PuzzleType.clockTerminal:
+        this.templateClockTerminal();
+        break;
+      case PuzzleType.sealTerminal:
+        this.templateSealTerminal();
+        break;
+      case PuzzleType.secretTerminal:
+        this.templateSecretTerminal();
+        break;
+      case PuzzleType.energyTerminal:
+        this.templateEnergyTerminal();
+        break;
+      case PuzzleType.sealDoor:
+        this.templateSealDoor();
+        break;
+      case PuzzleType.secretDoor:
+        this.templateSecretDoor();
+        break;
+      case PuzzleType.energyDoor:
+        this.templateEnergyDoor();
+        break;
+      case PuzzleType.clockDoor:
+        this.templateClockDoor();
+        break;
+      case PuzzleType.progressTerminal:
+        this.templateProgressTerminal();
+        break;
+      case PuzzleType.audioTerminal:
+        this.templateAudioTerminal();
+        break;
+      case PuzzleType.killTerminal:
+        this.templateKillTerminal();
+        break;
+      case PuzzleType.endgameDoor:
+        this.templateEndgameDoor();
+        break;
+      case PuzzleType.endgameCredit:
+        this.templateEndgameCredit();
+        break;
+      case PuzzleType.timeDoor:
+        this.templateTimeDoor();
+        break;
+      case PuzzleType.ententeTerminal:
+        this.templateEntenteTerminal();
+        break;
+      case PuzzleType.entente:
+        this.templateEntente();
+        break;
     }
-    if (this.currentPuzzle.type == PuzzleType.sealTerminal) {
-      this.templateSealTerminal();
-    }
-    if (this.currentPuzzle.type == PuzzleType.energyTerminal) {
-      this.templateEnergyTerminal();
-    }
-    if (this.currentPuzzle.type == PuzzleType.sealDoor) {
-      this.templateSealDoor();
-    }
-    if (this.currentPuzzle.type == PuzzleType.energyDoor) {
-      this.templateEnergyDoor();
-    }
-    if (this.currentPuzzle.type == PuzzleType.clockDoor) {
-      this.templateClockDoor();
-    }
-    if (this.currentPuzzle.type == PuzzleType.progressTerminal) {
-      this.templateProgressTerminal();
-    }
-    if (this.currentPuzzle.type == PuzzleType.audioTerminal) {
-      this.templateAudioTerminal();
-    }
-    if (this.currentPuzzle.type == PuzzleType.killTerminal) {
-      this.templateKillTerminal();
-    }
-    if (this.currentPuzzle.type == PuzzleType.endgameDoor) {
-      this.templateEndgameDoor();
-    }
-    if (this.currentPuzzle.type == PuzzleType.endgameCredit) {
-      this.templateEndgameCredit();
-    }
-    if (this.currentPuzzle.type == PuzzleType.timeDoor) {
-      this.templateTimeDoor();
-    }
+  }
 
-    if (this.currentPuzzle.id == 23) {
+  templateEntenteTerminal() {
+    if (this.currentPuzzle != null && this.currentPuzzle.id == 23) {
+      console.log("templateEntenteTerminal1");
       this.templateEntenteTerminal1();
     }
-    if (this.currentPuzzle.id == 24) {
+    if (this.currentPuzzle != null && this.currentPuzzle.id == 24) {
+      console.log("templateEntenteTerminal2");
       this.templateEntenteTerminal2();
     }
-    if (this.currentPuzzle.id == 43) {
+  }
+
+  templateEntente() {
+    if (this.currentPuzzle != null && this.currentPuzzle.id == 43) {
+      console.log("templateEntentePart1Incr");
       this.templateEntentePart1Incr();
     }
-    if (this.currentPuzzle.id == 42) {
+    if (this.currentPuzzle != null && this.currentPuzzle.id == 42) {
+      console.log("templateEntentePart1Decr");
       this.templateEntentePart1Decr();
     }
-    if (this.currentPuzzle.id == 45) {
+    if (this.currentPuzzle != null && this.currentPuzzle.id == 45) {
+      console.log("templateEntentePart2Incr");
       this.templateEntentePart2Incr();
     }
-    if (this.currentPuzzle.id == 44) {
+    if (this.currentPuzzle != null && this.currentPuzzle.id == 44) {
+      console.log("templateEntentePart2Decr");
       this.templateEntentePart2Decr();
     }
-    if (this.currentPuzzle.id == 46) {
+    if (this.currentPuzzle != null && this.currentPuzzle.id == 46) {
+      console.log("templateEntentePart2Exit");
       this.templateEntentePart2Exit();
     }
   }
@@ -602,7 +662,7 @@ class Dozenal {
 
     this.setHidden(this.billboard("overlay"), false);
 
-    this.setCurrentAction(this.openDoor);
+    this.setCurrentAction(this.openEnergyDoor);
 
     this.isFuseAction = true;
 
@@ -628,7 +688,7 @@ class Dozenal {
     this.templateEnergyInterface();
 
     if (this.checkConditions(this.currentPuzzle.info.conditions)) {
-      this.setCurrentAction(this.openDoor);
+      this.setCurrentAction(this.openEnergyDoor);
       let modifier = "open";
       let secret = this.currentPuzzle.info.secret;
       if (secret != null && this.checkConditions(secret.conditions)) {
@@ -637,6 +697,19 @@ class Dozenal {
       this.setModifier(modifier);
     } else {
       this.templateEnergyAlert();
+    }
+  }
+
+  templateSecretDoor() {
+    this.templateVignette();
+    this.setHidden(this.billboard("overlay"), true);
+    hiversaires.music.playEffect("action_DoorInit");
+
+    if (this.checkConditions(this.currentPuzzle.info.conditions)) {
+      this.setCurrentAction(this.walkThroughDoor);
+      // let modifier = "open";
+      // this.setModifier(modifier);
+      // TODO: open state for secret door
     }
   }
 
@@ -686,44 +759,8 @@ class Dozenal {
           this.templateEnergyAlert();
         }
 
-        this.templateEnergyUpdate();
+        this.openEnergyDoor();
       });
-    }
-
-    if (this.puzzleState[this.currentPuzzle.id] == 1) {
-      this.templateUpdateNode(18, "0516", 2);
-      this.templateUpdateNode(18, "0529", 31);
-      this.templateUpdateNode(13, "0517", 2);
-      this.templateUpdateNode(34, "0537", 37);
-      this.templateUpdateNode(55, "0539", 39);
-      this.templateUpdateNode(69, "0518", 18);
-      this.templateUpdateNode(39, "0519", 10);
-      this.templateUpdateNode(77, "0520", 27);
-      this.templateUpdateNode(84, "0527", 47);
-      this.templateUpdateNode(101, "0532", 38);
-      this.templateUpdateNode(113, "0551", 36);
-      this.templateUpdateNode(142, "0576", 54);
-      this.templateUpdateNode(143, "0577", 54);
-    } else {
-      this.templateUpdateNode(18, "0521", 2);
-      this.templateUpdateNode(18, "0530", 31);
-      this.templateUpdateNode(13, "0522", 2);
-      this.templateUpdateNode(34, "0538", 37);
-      this.templateUpdateNode(55, "0540", 39);
-      this.templateUpdateNode(69, "0523", 18);
-      this.templateUpdateNode(39, "0524", 10);
-      this.templateUpdateNode(77, "0525", 27);
-      this.templateUpdateNode(84, "0526", 47);
-      this.templateUpdateNode(101, "0533", 38);
-      this.templateUpdateNode(113, "0552", 36);
-      this.templateUpdateNode(142, "0571", 54);
-      this.templateUpdateNode(143, "0573", 54);
-    }
-
-    // Extras
-
-    if (this.currentPuzzle.id == 37) {
-      this.puzzleState[37] = 1;
     }
   }
 
@@ -764,6 +801,26 @@ class Dozenal {
     } else {
       this.hideModifier(0.3, 0);
       hiversaires.music.volume = 0;
+    }
+  }
+
+  templateSecretTerminal() {
+    this.templateVignette();
+    this.setCurrentAction(function() {
+      this.puzzleState[this.currentPuzzle.id] =
+        (this.puzzleState[this.currentPuzzle.id] + 1) % 2;
+      this.templateSecretUpdate();
+    });
+
+    this.templateSecretUpdate();
+  }
+
+  templateSecretUpdate() {
+    if (this.puzzleState[this.currentPuzzle.id] == 1) {
+      this.setModifier("on");
+      this.showModifier(0.3, 0.1);
+    } else {
+      this.hideModifier(0.3, 0);
     }
   }
 
@@ -1197,6 +1254,7 @@ class Dozenal {
     this.setHidden(this.billboard("interfaceSeal1"), true);
     this.setHidden(this.billboard("interfaceSeal2"), true);
     this.setHidden(this.billboard("interfaceFuse1"), true);
+    this.setHidden(this.billboard("interfaceSave"), true);
 
     this.fadeOut(this.billboard("menuBlack"), 2.0, 0);
     this.fadeOut(this.billboard("menuLogo"), 2.0, 3);

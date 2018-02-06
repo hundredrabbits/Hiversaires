@@ -226,22 +226,24 @@ const nodesByID = (function() {
 
 const PuzzleType = new Map();
 setEnumValues(PuzzleType, [
-  "clockTerminal",
-  "energyTerminal",
-  "energyDoor",
-  "sealTerminal",
-  "sealDoor",
-  "clockDoor",
-  "killTerminal",
-  "progressTerminal",
-  "illusion",
-  "ententeTerminal",
   "audioTerminal",
-  "endgameDoor",
+  "clockDoor",
+  "clockTerminal",
   "endgameCredit",
+  "endgameDoor",
+  "energyDoor",
+  "energyTerminal",
   "entente",
-  "timeDoor",
-  "netherDoor"
+  "ententeTerminal",
+  "illusion",
+  "killTerminal",
+  "netherDoor",
+  "progressTerminal",
+  "sealDoor",
+  "sealTerminal",
+  "secretDoor",
+  "secretTerminal",
+  "timeDoor"
 ]);
 
 class Puzzle {
@@ -272,7 +274,7 @@ const puzzlesByID = (function() {
   });
   addPuzzle(4, PuzzleType.sealTerminal, { seal: Zone.forest });
   addPuzzle(5, PuzzleType.sealDoor, {});
-  addPuzzle(6, PuzzleType.energyDoor, {
+  addPuzzle(6, PuzzleType.secretDoor, {
     conditions: [{ puzzleID: 37, type: ConditionType.isGreaterThan, value: 0 }]
   });
   addPuzzle(7, PuzzleType.clockDoor, {
@@ -339,7 +341,7 @@ const puzzlesByID = (function() {
   addPuzzle(34, PuzzleType.audioTerminal, {}, 1);
   addPuzzle(35, PuzzleType.audioTerminal, {}, 1);
   addPuzzle(36, PuzzleType.energyTerminal, {});
-  addPuzzle(37, PuzzleType.energyTerminal, {});
+  addPuzzle(37, PuzzleType.secretTerminal, {});
   addPuzzle(38, PuzzleType.energyTerminal, {}, 1); // Entente Fuse
   addPuzzle(39, PuzzleType.energyTerminal, {}, 1);
   addPuzzle(40, PuzzleType.endgameDoor, {
