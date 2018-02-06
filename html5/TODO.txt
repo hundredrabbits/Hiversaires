@@ -17,8 +17,6 @@ Carefully migrate node_old references
 Make walkThroughDoor data-driven
     A door is a puzzle with a condition, a secret and one or two nodeIDs
 
-Fill in the weird SVG gaps
-
 Create puzzle object
     A puzzle has a state (loaded/saved) and a performAction() method
     Actions are dictated by puzzles. setCurrentAction should be made into a getter that discovers the action of a puzzle subject

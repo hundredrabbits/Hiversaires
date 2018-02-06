@@ -3,6 +3,7 @@
         <g id="heel">
             <path d="m 0 0 l 0 36 
                 a 80 80, 0, 0, 0, 80 80 
+                l 10 0
                 l 76 0 l 0 -116 
                 Z" fill="white" />
         </g>
