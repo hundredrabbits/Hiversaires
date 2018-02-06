@@ -17,7 +17,6 @@ Carefully migrate node_old references
 Make walkThroughDoor data-driven
     A door is a puzzle with a condition, a secret and one or two nodeIDs
 
-Don't allow interaction during credits
 Fill in the weird SVG gaps
 
 Create puzzle object

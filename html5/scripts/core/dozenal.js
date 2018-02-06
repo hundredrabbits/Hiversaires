@@ -151,6 +151,9 @@ class Dozenal {
   }
 
   moveLeft() {
+    if (this.userChapter == Chapter.credit) {
+      return;
+    }
     hiversaires.music.playEffect("footstep_turn");
     this.userOrientation = (this.userOrientation + 4 - 1) % 4;
     this.animateTurnLeft();
@@ -158,6 +161,9 @@ class Dozenal {
   }
 
   moveRight() {
+    if (this.userChapter == Chapter.credit) {
+      return;
+    }
     hiversaires.music.playEffect("footstep_turn");
     this.userOrientation = (this.userOrientation + 4 + 1) % 4;
     this.animateTurnRight();
@@ -165,6 +171,9 @@ class Dozenal {
   }
 
   moveForward() {
+    if (this.userChapter == Chapter.credit) {
+      return;
+    }
     this.playFootStep();
 
     if (this.currentSubject.type == SubjectType.node) {
@@ -186,6 +195,9 @@ class Dozenal {
   }
 
   moveBackward() {
+    if (this.userChapter == Chapter.credit) {
+      return;
+    }
     hiversaires.music.playEffect("footstep_turn");
 
     this.userOrientation = (this.userOrientation + 4 + 2) % 4;
@@ -223,6 +235,9 @@ class Dozenal {
   }
 
   action() {
+    if (this.userChapter == Chapter.credit) {
+      return;
+    }
     if (this.currentAction != null) {
       this.currentAction();
     }
@@ -951,10 +966,6 @@ class Dozenal {
     this.userChapter = Chapter.credit;
     this.updateMusic();
 
-    this.setHidden(this.trigger("moveForward"), true);
-    this.setHidden(this.trigger("moveLeft"), true);
-    this.setHidden(this.trigger("moveRight"), true);
-
     this.setAlpha("menuBlack", 0.0);
     this.setHidden(this.billboard("menuBlack"), false);
 
@@ -975,7 +986,7 @@ class Dozenal {
 
     this.fadeIn(this.billboard("menuCredit3"), 1, 16.0);
 
-    this.fadeIn(this.billboard("menuBlack"), 1, false, 20.0);
+    this.fadeIn(this.billboard("menuBlack"), 1, 20.0, false);
 
     if (this.userEnergy == 1) {
       this.setAlpha("menuCredit4", 0.0);
