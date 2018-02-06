@@ -424,14 +424,33 @@ class Dozenal {
   }
 
   templateEntenteTerminal() {
+    let targetGraphic = "";
+
     if (this.currentPuzzle != null && this.currentPuzzle.id == 23) {
-      console.log("templateEntenteTerminal1");
-      this.templateEntenteTerminal1();
+      if (this.puzzleState[23] > 17) {
+        targetGraphic = "Left";
+      } else if (this.puzzleState[23] < 17) {
+        targetGraphic = "Right";
+      } else if (this.puzzleState[23] == 17) {
+        targetGraphic = "Right";
+      }
     }
+
     if (this.currentPuzzle != null && this.currentPuzzle.id == 24) {
-      console.log("templateEntenteTerminal2");
-      this.templateEntenteTerminal2();
+      if (this.puzzleState[24] > 17) {
+        targetGraphic = "Left2";
+      } else if (this.puzzleState[24] < 17) {
+        targetGraphic = "Right2";
+      } else if (this.puzzleState[24] == 17) {
+        targetGraphic = "Straight";
+      }
     }
+
+    this.setImage(
+      "ententeScreen",
+      "interface/entente" + targetGraphic + ".svg"
+    );
+    this.fadeIn(this.billboard("ententeScreen"), 1, 0);
   }
 
   templateEntente() {
@@ -707,9 +726,6 @@ class Dozenal {
 
     if (this.checkConditions(this.currentPuzzle.info.conditions)) {
       this.setCurrentAction(this.walkThroughDoor);
-      // let modifier = "open";
-      // this.setModifier(modifier);
-      // TODO: open state for secret door
     }
   }
 
@@ -834,42 +850,6 @@ class Dozenal {
     this.setAlpha("interfaceAudio", 1);
 
     this.fadeOut(this.billboard("interfaceAudio"), 0.5, 3);
-  }
-
-  templateEntenteTerminal1() {
-    let targetGraphic = "";
-
-    if (this.puzzleState[23] > 17) {
-      targetGraphic = "Left";
-    } else if (this.puzzleState[23] < 17) {
-      targetGraphic = "Right";
-    } else if (this.puzzleState[23] == 17) {
-      targetGraphic = "Right";
-    }
-
-    this.setImage(
-      "ententeScreen",
-      "interface/entente" + targetGraphic + ".svg"
-    );
-    this.fadeIn(this.billboard("ententeScreen"), 1, 0);
-  }
-
-  templateEntenteTerminal2() {
-    let targetGraphic = "";
-
-    if (this.puzzleState[24] > 17) {
-      targetGraphic = "Left2";
-    } else if (this.puzzleState[24] < 17) {
-      targetGraphic = "Right2";
-    } else if (this.puzzleState[24] == 17) {
-      targetGraphic = "Straight";
-    }
-
-    this.setImage(
-      "ententeScreen",
-      "interface/entente" + targetGraphic + ".svg"
-    );
-    this.fadeIn(this.billboard("ententeScreen"), 1, 0);
   }
 
   templateEntentePart1Incr() {

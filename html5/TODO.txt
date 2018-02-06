@@ -2,22 +2,20 @@ Carefully migrate node_old references
     Clean up these methods, in perhaps this order
     Check templateUpdateNode for relevant fade-ins
     
-    templateSealDoor
-    templateEnergyUpdate
-    templateSealUpdate
-    templateClockUpdate
-    templateUpdateStudioTerminal
-    walkThroughDoor
     templateEntenteTerminal
-    templateEntenteTerminal1
-    templateEntenteTerminal2
     templateEntente
     templateEntentePart1Incr
     templateEntentePart1Decr
     templateEntentePart2Incr
     templateEntentePart2Decr
     templateEntentePart2Exit
+    templateSealDoor
+    templateSealUpdate
+    templateUpdateStudioTerminal
     actionTemplate
+
+Make walkThroughDoor data-driven
+    A door is a puzzle with a condition, a secret and one or two nodeIDs
 
 Don't allow interaction during credits
 Fill in the weird SVG gaps
