@@ -129,10 +129,7 @@ class Dozenal {
   moveCheck() {
     this.actionReset();
 
-    this.setHidden(
-      this.trigger("moveForward"),
-      this.currentSubject.type == SubjectType.none
-    );
+    this.setHidden(this.trigger("moveForward"), this.currentSubject.type == SubjectType.none);
 
     this.setImage(
       "viewMain",
@@ -221,8 +218,6 @@ class Dozenal {
   // ====================
 
   actionCheck() {
-    this.setHidden(this.trigger("moveLeft"), false);
-    this.setHidden(this.trigger("moveRight"), false);
     this.setHidden(this.trigger("moveForward"), this.currentPuzzle == null);
 
     this.setCurrentAction(null);
@@ -528,7 +523,6 @@ class Dozenal {
       "interfaceDimclock",
       "interface/clock." + this.puzzleState[1] + ".svg"
     );
-    this.setHidden(this.billboard("interfaceDimclock"), false);
     this.setAlpha("interfaceDimclock", 1);
     this.fadeOut(this.billboard("interfaceDimclock"), 0.5, 3);
   }
@@ -861,7 +855,6 @@ class Dozenal {
       "interface/music." + (this.puzzleState[35] == 1 ? "on" : "off") + ".svg"
     );
 
-    this.setHidden(this.billboard("interfaceAudio"), false);
     this.setAlpha("interfaceAudio", 1);
 
     this.fadeOut(this.billboard("interfaceAudio"), 0.5, 3);
@@ -1113,7 +1106,6 @@ class Dozenal {
         "node_" + this.userNodeID + "_" + this.userOrientation;
 
       this.setAlpha("illusion", 1);
-      this.setHidden(this.billboard("illusion"), false);
       this.fadeOut(this.billboard("illusion"), 0.5, 1);
 
       if (this.userChapter == Chapter.act5) {
@@ -1136,7 +1128,6 @@ class Dozenal {
       "interfaceIllusion",
       "interface/illusion." + illusionCount + ".svg"
     );
-    this.setHidden(this.billboard("interfaceIllusion"), false);
     this.setAlpha("interfaceIllusion", 1);
     this.fadeOut(this.billboard("interfaceIllusion"), 0.5, 3);
   }
