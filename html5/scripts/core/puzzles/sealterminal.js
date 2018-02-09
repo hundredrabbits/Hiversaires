@@ -6,21 +6,21 @@ class SealTerminal extends Puzzle {
   setup(hh) {
     hh.templateVignette();
 
-    hh.setHidden(hh.billboard("overlay"), false);
-    hh.setAlpha("overlay", 0);
+    hh.stage.setHidden(hh.stage.billboard("overlay"), false);
+    hh.stage.setAlpha("overlay", 0);
 
     hh.setCurrentAction(
       function() {
         if (
-          hh.puzzleState[hh.currentPuzzle.id] == 1 ||
+          hh.game.puzzleState[hh.currentPuzzle.id] == 1 ||
           hh.currentSeals.length < 2
         ) {
-          if (hh.puzzleState[hh.currentPuzzle.id] != 1) {
+          if (hh.game.puzzleState[hh.currentPuzzle.id] != 1) {
             hiversaires.music.playEffect("action_SealActive");
-            hh.puzzleState[hh.currentPuzzle.id] = 1;
+            hh.game.puzzleState[hh.currentPuzzle.id] = 1;
           } else {
             hiversaires.music.playEffect("action_SealInactive");
-            hh.puzzleState[hh.currentPuzzle.id] = 0;
+            hh.game.puzzleState[hh.currentPuzzle.id] = 0;
           }
         } else {
           hiversaires.music.playEffect("action_EnergyStack");
@@ -38,8 +38,8 @@ class SealTerminal extends Puzzle {
 
   templateSealUpdate(hh) {
     hh.templateSealInterface();
-    hh.fadeOut(hh.billboard("overlay"), 0.5, 0);
-    if (hh.puzzleState[hh.currentPuzzle.id] == 1) {
+    hh.stage.fadeOut(hh.stage.billboard("overlay"), 0.5, 0);
+    if (hh.game.puzzleState[hh.currentPuzzle.id] == 1) {
       hh.setModifier("seal." + hh.currentSeals.length);
       hh.showModifier(0.1, 0.2);
     } else {

@@ -10,8 +10,11 @@ class TimeDoor extends Door {
     const currentHours = now.getHours();
     const currentMinutes = now.getMinutes();
 
-    if ((currentHours == 15 && currentMinutes == 7) || hh.userNodeID == 143) {
-      hh.puzzleState[54] = 1;
+    if (
+      (currentHours == 15 && currentMinutes == 7) ||
+      hh.game.userNodeID == 143
+    ) {
+      hh.game.puzzleState[54] = 1;
       hh.setCurrentAction(this.openDoor.bind(this));
       hh.setModifier("open");
     } else {

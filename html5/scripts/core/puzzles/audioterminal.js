@@ -7,8 +7,8 @@ class AudioTerminal extends Puzzle {
     hh.templateVignette();
     hh.setCurrentAction(
       function() {
-        hh.puzzleState[hh.currentPuzzle.id] =
-          (hh.puzzleState[hh.currentPuzzle.id] + 1) % 2;
+        hh.game.puzzleState[hh.currentPuzzle.id] =
+          (hh.game.puzzleState[hh.currentPuzzle.id] + 1) % 2;
         this.templateAudioUpdate(hh);
       }.bind(this)
     );
@@ -18,7 +18,7 @@ class AudioTerminal extends Puzzle {
 
   templateAudioUpdate(hh) {
     hh.templateAudioInterface();
-    if (hh.puzzleState[hh.currentPuzzle.id] == 1) {
+    if (hh.game.puzzleState[hh.currentPuzzle.id] == 1) {
       hh.setModifier("on");
       hh.showModifier(0.3, 0.1);
       hiversaires.music.volume = 1;

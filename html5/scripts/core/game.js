@@ -3,6 +3,14 @@
 class Game {
   constructor() {
     this.time = 0;
+
+    this.puzzleState;
+    this.userNodeID = 1;
+    this.userOrientation = 0;
+    this.userChapter = Chapter.act1;
+    this.userEnergy = 0;
+    this.userFootstep = 0;
+    this.currentAction = null;
   }
 
   start() {
@@ -14,19 +22,73 @@ class Game {
     this.load(this.state);
   }
 
-  save(id) {
+  save() {
     if (DEBUG_DONT_SAVE) {
+      console.log("DEBUG_DONT_SAVE : did not save state.");
       return;
     }
-    localStorage;
+
+    let saveObject = {
+      userSettings: {
+        userNodeID: this.userNodeID,
+        userOrientation: this.userOrientation,
+        userChapter: this.userChapter,
+        userEnergy: this.userEnergy
+      },
+      puzzleState: this.puzzleState
+    };
+
+    if (!DEBUG_DONT_SAVE) {
+      localStorage.save = JSON.stringify(saveObject);
+    }
+
+    console.log("saved state.");
+
+    hiversaires.templateSaveInterface();
   }
 
-  load(id) {
-    localStorage;
+  load() {
+    let saveObject = null;
+    try {
+      saveObject = JSON.parse(localStorage.save);
+    } catch (error) {}
+
+    if (saveObject != null) {
+      // Settings
+      let userSettings = saveObject.userSettings;
+      this.userNodeID = userSettings.userNodeID;
+      this.userOrientation = userSettings.userOrientation;
+      this.userChapter = userSettings.userChapter;
+      this.userEnergy = userSettings.userEnergy;
+
+      // Storage
+      this.puzzleState = saveObject.puzzleState;
+
+      console.log("loaded state.");
+    } else {
+      // New Game
+
+      this.puzzleState = [];
+      for (let puzzle of puzzlesByID.values()) {
+        this.puzzleState[puzzle.id] = puzzle.defaultState;
+      }
+
+      console.log(this.puzzleState);
+
+      // Default Location
+
+      this.userNodeID = 1;
+      this.userOrientation = 0;
+      this.userChapter = Chapter.act1;
+      this.userEnergy = 0;
+
+      console.log("created state.");
+    }
   }
 
-  erase() {
+  wipePlayerProgress() {
     localStorage.clear();
+    console.log("wiped state.");
   }
 
   onTic() {

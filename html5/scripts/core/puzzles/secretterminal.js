@@ -7,8 +7,8 @@ class SecretTerminal extends Puzzle {
     hh.templateVignette();
     hh.setCurrentAction(
       function() {
-        hh.puzzleState[hh.currentPuzzle.id] =
-          (hh.puzzleState[hh.currentPuzzle.id] + 1) % 2;
+        hh.game.puzzleState[hh.currentPuzzle.id] =
+          (hh.game.puzzleState[hh.currentPuzzle.id] + 1) % 2;
         this.templateSecretUpdate(hh);
       }.bind(this)
     );
@@ -17,7 +17,7 @@ class SecretTerminal extends Puzzle {
   }
 
   templateSecretUpdate(hh) {
-    if (hh.puzzleState[hh.currentPuzzle.id] == 1) {
+    if (hh.game.puzzleState[hh.currentPuzzle.id] == 1) {
       hh.setModifier("on");
       hh.showModifier(0.3, 0.1);
     } else {

@@ -7,7 +7,7 @@ class EnergyTerminal extends Puzzle {
     hh.templateVignette();
     hh.templateEnergyInterface();
 
-    hh.setHidden(hh.billboard("overlay"), false);
+    hh.stage.setHidden(hh.stage.billboard("overlay"), false);
 
     hh.setCurrentAction(
       function() {
@@ -23,12 +23,12 @@ class EnergyTerminal extends Puzzle {
   templateEnergyUpdate(hh) {
     hh.setCurrentAction(
       function() {
-        if (hh.puzzleState[hh.currentPuzzle.id] == 1) {
-          hh.puzzleState[hh.currentPuzzle.id] = 0;
-          hh.userEnergy += 1;
-        } else if (hh.userEnergy > 0) {
-          hh.puzzleState[hh.currentPuzzle.id] = 1;
-          hh.userEnergy -= 1;
+        if (hh.game.puzzleState[hh.currentPuzzle.id] == 1) {
+          hh.game.puzzleState[hh.currentPuzzle.id] = 0;
+          hh.game.userEnergy += 1;
+        } else if (hh.game.userEnergy > 0) {
+          hh.game.puzzleState[hh.currentPuzzle.id] = 1;
+          hh.game.userEnergy -= 1;
         } else {
           hh.templateEnergyAlert();
         }
@@ -41,7 +41,7 @@ class EnergyTerminal extends Puzzle {
 
   templateUpdateFuse(hh) {
     hh.setModifier(
-      hh.puzzleState[hh.currentPuzzle.id] == 1 ? "filled" : "empty"
+      hh.game.puzzleState[hh.currentPuzzle.id] == 1 ? "filled" : "empty"
     );
     hh.showModifier();
   }

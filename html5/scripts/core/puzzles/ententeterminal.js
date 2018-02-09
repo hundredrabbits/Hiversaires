@@ -7,26 +7,29 @@ class EntenteTerminal extends Puzzle {
     let targetGraphic = "";
 
     if (hh.currentPuzzle != null && hh.currentPuzzle.id == 23) {
-      if (hh.puzzleState[23] > 17) {
+      if (hh.game.puzzleState[23] > 17) {
         targetGraphic = "Left";
-      } else if (hh.puzzleState[23] < 17) {
+      } else if (hh.game.puzzleState[23] < 17) {
         targetGraphic = "Right";
-      } else if (hh.puzzleState[23] == 17) {
+      } else if (hh.game.puzzleState[23] == 17) {
         targetGraphic = "Right";
       }
     }
 
     if (hh.currentPuzzle != null && hh.currentPuzzle.id == 24) {
-      if (hh.puzzleState[24] > 17) {
+      if (hh.game.puzzleState[24] > 17) {
         targetGraphic = "Left2";
-      } else if (hh.puzzleState[24] < 17) {
+      } else if (hh.game.puzzleState[24] < 17) {
         targetGraphic = "Right2";
-      } else if (hh.puzzleState[24] == 17) {
+      } else if (hh.game.puzzleState[24] == 17) {
         targetGraphic = "Straight";
       }
     }
 
-    hh.setImage("ententeScreen", "interface/entente" + targetGraphic + ".svg");
-    hh.fadeIn(hh.billboard("ententeScreen"), 1, 0);
+    hh.stage.setImage(
+      "ententeScreen",
+      "interface/entente" + targetGraphic + ".svg"
+    );
+    hh.stage.fadeIn(hh.stage.billboard("ententeScreen"), 1, 0);
   }
 }

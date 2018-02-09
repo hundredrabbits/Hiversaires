@@ -5,7 +5,7 @@ class SecretDoor extends Door {
 
   setup(hh) {
     hh.templateVignette();
-    hh.setHidden(hh.billboard("overlay"), true);
+    hh.stage.setHidden(hh.stage.billboard("overlay"), true);
     hiversaires.music.playEffect("action_DoorInit");
 
     if (hh.checkConditions(hh.currentPuzzle.info.conditions)) {

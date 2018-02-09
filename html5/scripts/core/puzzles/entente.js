@@ -27,16 +27,16 @@ class Entente extends Puzzle {
   }
 
   templateEntentePart1Incr(hh) {
-    if (hh.puzzleState[23] == 17) {
-      hh.userNodeID = 93;
+    if (hh.game.puzzleState[23] == 17) {
+      hh.game.userNodeID = 93;
       hh.actionCheck();
       hh.moveCheck();
       hh.actionReset();
     } else {
-      hh.userNodeID = 89;
+      hh.game.userNodeID = 89;
 
-      if (hh.puzzleState[23] < 21) {
-        hh.puzzleState[23] = hh.puzzleState[23] + 3;
+      if (hh.game.puzzleState[23] < 21) {
+        hh.game.puzzleState[23] = hh.game.puzzleState[23] + 3;
       }
 
       hh.actionCheck();
@@ -46,10 +46,10 @@ class Entente extends Puzzle {
   }
 
   templateEntentePart1Decr(hh) {
-    hh.userNodeID = 103;
+    hh.game.userNodeID = 103;
 
-    if (hh.puzzleState[23] > 14) {
-      hh.puzzleState[23] = hh.puzzleState[23] - 1;
+    if (hh.game.puzzleState[23] > 14) {
+      hh.game.puzzleState[23] = hh.game.puzzleState[23] - 1;
     }
 
     hh.actionCheck();
@@ -58,11 +58,11 @@ class Entente extends Puzzle {
   }
 
   templateEntentePart2Incr(hh) {
-    hh.userNodeID = 94;
-    hh.userOrientation = 2;
+    hh.game.userNodeID = 94;
+    hh.game.userOrientation = 2;
 
-    if (hh.puzzleState[24] < 23) {
-      hh.puzzleState[24] = hh.puzzleState[24] + 4;
+    if (hh.game.puzzleState[24] < 23) {
+      hh.game.puzzleState[24] = hh.game.puzzleState[24] + 4;
     }
 
     hh.actionCheck();
@@ -71,11 +71,11 @@ class Entente extends Puzzle {
   }
 
   templateEntentePart2Decr(hh) {
-    hh.userNodeID = 95;
-    hh.userOrientation = 2;
+    hh.game.userNodeID = 95;
+    hh.game.userOrientation = 2;
 
-    if (hh.puzzleState[24] > 14) {
-      hh.puzzleState[24] = hh.puzzleState[24] - 1;
+    if (hh.game.puzzleState[24] > 14) {
+      hh.game.puzzleState[24] = hh.game.puzzleState[24] - 1;
     }
 
     hh.actionCheck();
@@ -84,15 +84,15 @@ class Entente extends Puzzle {
   }
 
   templateEntentePart2Exit(hh) {
-    if (hh.puzzleState[23] == 17 && hh.puzzleState[24] == 17) {
-      hh.userNodeID = 107;
-      hh.userOrientation = 3;
+    if (hh.game.puzzleState[23] == 17 && hh.game.puzzleState[24] == 17) {
+      hh.game.userNodeID = 107;
+      hh.game.userOrientation = 3;
 
       hh.actionCheck();
       hh.moveCheck();
       hh.actionReset();
     } else {
-      hh.userNodeID = 93;
+      hh.game.userNodeID = 93;
 
       hh.actionCheck();
       hh.moveCheck();

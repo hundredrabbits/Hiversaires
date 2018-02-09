@@ -279,7 +279,7 @@ const puzzlesByID = (function() {
   addPuzzle(new SealTerminal(12, { seal: Zone.stones }));
   addPuzzle(new SealTerminal(13, { seal: Zone.rainre }));
   addPuzzle(new KillTerminal(14, {}));
-  addPuzzle(new SealDoor(15, {}));
+  addPuzzle(new SealDoor(15, {}, 0, 1));
   addPuzzle(new ProgressTerminal(16, {}));
   addPuzzle(new Illusion(17, { nodeID: 15, orientation: 0 })); // studio
   addPuzzle(new EnergyTerminal(18, {}));
@@ -299,7 +299,7 @@ const puzzlesByID = (function() {
   addPuzzle(new Illusion(22, { nodeID: 43, orientation: 2 })); // stones
   addPuzzle(new EntenteTerminal(23, {}, 15));
   addPuzzle(new EntenteTerminal(24, {}));
-  addPuzzle(new SealDoor(25, {}));
+  addPuzzle(new SealDoor(25, {}, 0, 1));
   addPuzzle(
     new EnergyDoor(26, {
       conditions: [
@@ -310,16 +310,19 @@ const puzzlesByID = (function() {
   addPuzzle(new EnergyTerminal(27, {}));
 
   addPuzzle(
-    new SealDoor(28, {
-      conditions: [{ puzzleID: 5, type: ConditionType.isGreaterThan, value: 0 }]
-    })
+    new SealDoor(
+      28,
+      {
+        conditions: [
+          { puzzleID: 5, type: ConditionType.isGreaterThan, value: 0 }
+        ]
+      },
+      0,
+      1
+    )
   );
   addPuzzle(new Illusion(29, { nodeID: 73, orientation: 2 })); // metamondst
-  addPuzzle(
-    new EnergyDoor(30, {
-      conditions: [{ puzzleID: 5, type: ConditionType.isGreaterThan, value: 0 }]
-    })
-  );
+  addPuzzle(new SealDoor(30, {}));
 
   addPuzzle(new EnergyTerminal(31, {}, 1));
   addPuzzle(new Illusion(32, { nodeID: 58, orientation: 1 })); // antechannel

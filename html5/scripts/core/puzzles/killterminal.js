@@ -6,9 +6,9 @@ class KillTerminal extends Puzzle {
   setup(hh) {
     hh.setCurrentAction(
       function() {
-        hh.puzzleState[hh.currentPuzzle.id]++;
-        if (hh.puzzleState[hh.currentPuzzle.id] > 50) {
-          hh.wipePlayerProgress();
+        hh.game.puzzleState[hh.currentPuzzle.id]++;
+        if (hh.game.puzzleState[hh.currentPuzzle.id] > 50) {
+          hh.game.wipePlayerProgress();
           hh.newGame();
         }
       }.bind(this)

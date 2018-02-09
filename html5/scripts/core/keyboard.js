@@ -15,20 +15,20 @@ class Keyboard {
 
     switch (event.keyCode) {
       case 37: // left
-        hiversaires.dozenal.moveLeft();
+        hiversaires.moveLeft();
         break;
       case 39: // right
-        hiversaires.dozenal.moveRight();
+        hiversaires.moveRight();
         break;
       case 38: // up
-        if (hiversaires.dozenal.currentAction != null) {
-          hiversaires.dozenal.action();
+        if (hiversaires.currentAction != null) {
+          hiversaires.action();
         } else {
-          hiversaires.dozenal.moveForward();
+          hiversaires.moveForward();
         }
         break;
       case 40: // down
-        hiversaires.dozenal.moveBackward();
+        hiversaires.moveBackward();
         break;
     }
 
