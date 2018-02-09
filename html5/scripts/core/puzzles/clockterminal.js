@@ -4,24 +4,24 @@ class ClockTerminal extends Puzzle {
   }
 
   setup() {
-    hiversaires.templateVignette();
+    hiversaires.flashVignette();
 
     hiversaires.setCurrentAction(
       function() {
         hiversaires.game.puzzleState.clock =
           (hiversaires.game.puzzleState.clock + 1) % 3;
         hiversaires.music.playEffect("action_EnergyActive");
-        this.templateClockUpdate();
+        this.update();
       }.bind(this)
     );
 
     hiversaires.music.playEffect("action_EnergyInit");
 
-    this.templateClockUpdate();
+    this.update();
   }
 
-  templateClockUpdate() {
-    hiversaires.templateClockInterface();
+  update() {
+    hiversaires.showClockInterface();
 
     hiversaires.stage.setImage(
       "clockFace",

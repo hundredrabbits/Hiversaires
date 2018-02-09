@@ -4,7 +4,7 @@ class ProgressTerminal extends Puzzle {
   }
 
   setup() {
-    hiversaires.templateVignette();
+    hiversaires.flashVignette();
     hiversaires.game.save();
 
     hiversaires.stage.setImage(

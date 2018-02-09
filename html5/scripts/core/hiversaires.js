@@ -194,7 +194,7 @@ class Hiversaires {
     this.setCurrentAction(null);
   }
 
-  templateClockInterface() {
+  showClockInterface() {
     this.stage.setImage(
       "interfaceDimclock",
       "interface/clock." + this.game.puzzleState.clock + ".svg"
@@ -203,7 +203,7 @@ class Hiversaires {
     this.stage.fadeOut(this.stage.billboard("interfaceDimclock"), 0.5, 3);
   }
 
-  templateClockAlert() {
+  showClockAlert() {
     this.stage.setAlpha("interfaceDimclockAlert", 1.0);
     this.stage.fadeOut(
       this.stage.billboard("interfaceDimclockAlert"),
@@ -212,7 +212,7 @@ class Hiversaires {
     );
   }
 
-  templateSealInterface() {
+  showSealInterface() {
     let seals = this.currentSeals;
 
     console.log(seals);
@@ -236,12 +236,12 @@ class Hiversaires {
     this.stage.fadeOut(this.stage.billboard("interfaceSeal2"), 0.5, 3);
   }
 
-  templateSealAlert() {
+  showSealAlert() {
     this.stage.setAlpha("interfaceSealAlert", 1.0);
     this.stage.fadeOut(this.stage.billboard("interfaceSealAlert"), 0.5, 0.5);
   }
 
-  templateEnergyInterface() {
+  showEnergyInterface() {
     this.stage.setImage(
       "interfaceFuse1",
       "interface/fuse." + this.game.userEnergy + ".svg"
@@ -253,12 +253,12 @@ class Hiversaires {
     this.stage.fadeOut(this.stage.billboard("interfaceFuse1"), 0.5, 3);
   }
 
-  templateEnergyAlert() {
+  showEnergyAlert() {
     this.stage.setAlpha("interfaceFuseAlert", 1.0);
     this.stage.fadeOut(this.stage.billboard("interfaceFuseAlert"), 1.5, 0.5);
   }
 
-  templateAudioInterface() {
+  showAudioInterface() {
     this.stage.setImage(
       "interfaceAudio",
       "interface/music." + (this.game.puzzleState.audio ? "on" : "off") + ".svg"
@@ -301,12 +301,12 @@ class Hiversaires {
     }
   }
 
-  templateVignette() {
+  flashVignette() {
     this.stage.setAlpha("vignette", 1.0);
     this.stage.fadeOut(this.stage.billboard("vignette"), 1.0, 0);
   }
 
-  templateSaveInterface() {
+  showSaveInterface() {
     this.stage.setHidden(this.stage.billboard("interfaceSave"), false);
     this.stage.setAlpha("interfaceSave", 1);
     this.stage.fadeOut(this.stage.billboard("interfaceSave"), 0.5, 3);

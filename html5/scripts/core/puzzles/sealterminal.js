@@ -5,7 +5,7 @@ class SealTerminal extends Puzzle {
   }
 
   setup() {
-    hiversaires.templateVignette();
+    hiversaires.flashVignette();
 
     hiversaires.stage.setHidden(hiversaires.stage.billboard("overlay"), false);
     hiversaires.stage.setAlpha("overlay", 0);
@@ -25,20 +25,20 @@ class SealTerminal extends Puzzle {
           }
         } else {
           hiversaires.music.playEffect("action_EnergyStack");
-          hiversaires.templateSealAlert();
+          hiversaires.showSealAlert();
           console.log("No more seal slots.");
         }
 
-        this.templateSealUpdate();
+        this.update();
       }.bind(this)
     );
 
     hiversaires.music.playEffect("action_SealInit");
-    this.templateSealUpdate();
+    this.update();
   }
 
-  templateSealUpdate() {
-    hiversaires.templateSealInterface();
+  update() {
+    hiversaires.showSealInterface();
     if (hiversaires.game.puzzleState.seals.includes(this.seal)) {
       hiversaires.setModifier("seal." + hiversaires.currentSeals.length);
       hiversaires.showModifier(0.1, 0.1);

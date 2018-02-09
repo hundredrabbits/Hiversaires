@@ -5,15 +5,15 @@ class SecretEnergyDoor extends EnergyDoor {
 
   setup() {
     if (this.isSecretUnlocked() && this.isUnlocked()) {
-      hiversaires.templateVignette();
+      hiversaires.flashVignette();
       hiversaires.stage.setHidden(hiversaires.stage.billboard("overlay"), true);
       hiversaires.music.playEffect("action_DoorInit");
-      hiversaires.templateEnergyInterface();
+      hiversaires.showEnergyInterface();
 
       hiversaires.setCurrentAction(
         function() {
           this.openDoor();
-          hiversaires.templateEnergyInterface();
+          hiversaires.showEnergyInterface();
         }.bind(this)
       );
 

@@ -4,7 +4,7 @@ class TimeDoor extends Door {
   }
 
   setup() {
-    hiversaires.templateVignette();
+    hiversaires.flashVignette();
 
     const now = new Date(Date.now());
     const currentHours = now.getHours();

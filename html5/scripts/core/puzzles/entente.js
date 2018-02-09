@@ -6,24 +6,24 @@ class Entente extends Puzzle {
   setup() {
     switch (this.id) {
       case 43:
-        this.templateEntenteXIncr();
+        this.incrX();
         break;
       case 42:
-        this.templateEntenteXDecr();
+        this.decrX();
         break;
       case 45:
-        this.templateEntenteYIncr();
+        this.incrY();
         break;
       case 44:
-        this.templateEntenteYDecr();
+        this.decrY();
         break;
       case 46:
-        this.templateEntenteYExit();
+        this.exitY();
         break;
     }
   }
 
-  templateEntenteXIncr() {
+  incrX() {
     if (this.mazeX == 17) {
       hiversaires.game.userNodeID = 93;
       hiversaires.actionCheck();
@@ -42,7 +42,7 @@ class Entente extends Puzzle {
     }
   }
 
-  templateEntenteXDecr() {
+  decrX() {
     hiversaires.game.userNodeID = 103;
 
     if (this.mazeX > 14) {
@@ -54,7 +54,7 @@ class Entente extends Puzzle {
     hiversaires.actionReset();
   }
 
-  templateEntenteYIncr() {
+  incrY() {
     hiversaires.game.userNodeID = 94;
     hiversaires.game.userOrientation = 2;
 
@@ -67,7 +67,7 @@ class Entente extends Puzzle {
     hiversaires.actionReset();
   }
 
-  templateEntenteYDecr() {
+  decrY() {
     hiversaires.game.userNodeID = 95;
     hiversaires.game.userOrientation = 2;
 
@@ -80,7 +80,7 @@ class Entente extends Puzzle {
     hiversaires.actionReset();
   }
 
-  templateEntenteYExit() {
+  exitY() {
     if (this.mazeX == 17 && this.mazeY == 17) {
       hiversaires.game.userNodeID = 107;
       hiversaires.game.userOrientation = 3;

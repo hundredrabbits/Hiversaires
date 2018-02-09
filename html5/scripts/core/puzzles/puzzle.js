@@ -4,4 +4,5 @@ class Puzzle {
   }
 
   setup() {}
+  update() {}
 }

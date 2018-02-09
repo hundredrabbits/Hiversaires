@@ -4,19 +4,19 @@ class SecretTerminal extends Puzzle {
   }
 
   setup() {
-    hiversaires.templateVignette();
+    hiversaires.flashVignette();
     hiversaires.setCurrentAction(
       function() {
         hiversaires.game.puzzleState.secret = !hiversaires.game.puzzleState
           .secret;
-        this.templateSecretUpdate();
+        this.update();
       }.bind(this)
     );
 
-    this.templateSecretUpdate();
+    this.update();
   }
 
-  templateSecretUpdate() {
+  update() {
     if (hiversaires.game.puzzleState.secret) {
       hiversaires.setModifier("on");
       hiversaires.showModifier(0.3, 0.1);

@@ -5,15 +5,15 @@ class ClockDoor extends Door {
   }
 
   setup() {
-    hiversaires.templateVignette();
+    hiversaires.flashVignette();
     hiversaires.stage.setHidden(hiversaires.stage.billboard("overlay"), true);
-    hiversaires.templateClockInterface();
+    hiversaires.showClockInterface();
     hiversaires.music.playEffect("action_DoorInit");
     if (hiversaires.game.puzzleState.clock != this.lockValue) {
       hiversaires.setCurrentAction(this.openDoor.bind(this));
       hiversaires.setModifier("open");
     } else {
-      hiversaires.templateClockAlert();
+      hiversaires.showClockAlert();
     }
   }
 }

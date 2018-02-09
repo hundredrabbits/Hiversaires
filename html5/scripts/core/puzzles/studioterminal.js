@@ -4,10 +4,9 @@ class StudioTerminal extends Puzzle {
   }
 
   setup() {
-    hiversaires.templateVignette();
+    hiversaires.flashVignette();
     hiversaires.stage.setHidden(hiversaires.stage.billboard("overlay"), true);
     hiversaires.music.playEffect("action_DoorInit");
-    hiversaires.templateSealInterface();
 
     const seals = hiversaires.currentSeals;
     const containsAntechannel = seals.includes(Zone.antechannel);
@@ -20,16 +19,16 @@ class StudioTerminal extends Puzzle {
           hiversaires.game.puzzleState.studio = !hiversaires.game.puzzleState
             .studio;
           hiversaires.music.playEffect("action_EnergyActive");
-          this.templateUpdateStudioTerminal();
+          this.update();
         }.bind(this)
       );
       hiversaires.game.save();
     }
 
-    this.templateUpdateStudioTerminal();
+    this.update();
   }
 
-  templateUpdateStudioTerminal() {
+  update() {
     const seals = hiversaires.currentSeals;
     const containsAntechannel = seals.includes(Zone.antechannel);
     const containsStones = seals.includes(Zone.stones);

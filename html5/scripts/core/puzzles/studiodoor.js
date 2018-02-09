@@ -4,7 +4,7 @@ class StudioDoor extends Door {
   }
 
   setup() {
-    hiversaires.templateVignette();
+    hiversaires.flashVignette();
     hiversaires.stage.setHidden(hiversaires.stage.billboard("overlay"), true);
     hiversaires.music.playEffect("action_DoorInit");
 

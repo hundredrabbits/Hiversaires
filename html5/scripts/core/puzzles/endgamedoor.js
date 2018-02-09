@@ -10,7 +10,7 @@ class EndgameDoor extends Door {
       hiversaires.showModifier();
       hiversaires.setCurrentAction(this.walkThroughDoor.bind(this));
     } else {
-      hiversaires.templateEnergyAlert();
+      hiversaires.showEnergyAlert();
     }
   }
 

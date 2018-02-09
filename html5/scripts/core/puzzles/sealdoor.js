@@ -5,12 +5,12 @@ class SealDoor extends Door {
   }
 
   setup() {
-    hiversaires.templateVignette();
+    hiversaires.flashVignette();
 
     hiversaires.stage.setHidden(hiversaires.stage.billboard("overlay"), true);
 
     hiversaires.music.playEffect("action_DoorInit");
-    hiversaires.templateSealInterface();
+    hiversaires.showSealInterface();
 
     const seals = hiversaires.currentSeals;
     const containsForest = seals.includes(Zone.forest);
@@ -69,7 +69,7 @@ class SealDoor extends Door {
       hiversaires.setCurrentAction(this.openDoor.bind(this));
       hiversaires.setModifier("open");
     } else {
-      hiversaires.templateSealAlert();
+      hiversaires.showSealAlert();
     }
   }
 }

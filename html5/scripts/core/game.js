@@ -44,7 +44,7 @@ class Game {
 
     console.log("saved state.");
 
-    hiversaires.templateSaveInterface();
+    hiversaires.showSaveInterface();
   }
 
   load() {

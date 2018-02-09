@@ -4,23 +4,23 @@ class EnergyTerminal extends Puzzle {
   }
 
   setup() {
-    hiversaires.templateVignette();
-    hiversaires.templateEnergyInterface();
+    hiversaires.flashVignette();
+    hiversaires.showEnergyInterface();
 
     hiversaires.stage.setHidden(hiversaires.stage.billboard("overlay"), false);
 
     hiversaires.setCurrentAction(
       function() {
-        this.templateUpdateFuse();
-        hiversaires.templateEnergyInterface();
-        this.templateEnergyUpdate();
+        this.updateFuse();
+        hiversaires.showEnergyInterface();
+        this.update();
       }.bind(this)
     );
 
     hiversaires.music.playEffect("action_EnergyInit");
   }
 
-  templateEnergyUpdate() {
+  update() {
     hiversaires.setCurrentAction(
       function() {
         let index = hiversaires.game.puzzleState.fuses.indexOf(this.id);
@@ -32,16 +32,16 @@ class EnergyTerminal extends Puzzle {
           hiversaires.game.puzzleState.fuses.push(this.id);
           hiversaires.game.userEnergy -= 1;
         } else {
-          hiversaires.templateEnergyAlert();
+          hiversaires.showEnergyAlert();
         }
 
-        this.templateUpdateFuse();
-        hiversaires.templateEnergyInterface();
+        this.updateFuse();
+        hiversaires.showEnergyInterface();
       }.bind(this)
     );
   }
 
-  templateUpdateFuse() {
+  updateFuse() {
     hiversaires.setModifier(
       hiversaires.game.puzzleState.fuses.indexOf(this.id) != -1
         ? "filled"
