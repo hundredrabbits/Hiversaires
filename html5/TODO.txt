@@ -1,5 +1,4 @@
-Disperse puzzle classes into individual files
-Relegate hh calls in puzzle
+Relegate hh calls in puzzles
 Revise game state
     Seals
     Fuses
