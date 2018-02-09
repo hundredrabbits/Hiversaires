@@ -3,100 +3,118 @@ class Entente extends Puzzle {
     super(id, info, defaultState);
   }
 
-  setup(hh) {
-    if (hh.currentPuzzle != null && hh.currentPuzzle.id == 43) {
+  setup() {
+    if (
+      hiversaires.currentPuzzle != null &&
+      hiversaires.currentPuzzle.id == 43
+    ) {
       console.log("templateEntentePart1Incr");
-      this.templateEntentePart1Incr(hh);
+      this.templateEntentePart1Incr();
     }
-    if (hh.currentPuzzle != null && hh.currentPuzzle.id == 42) {
+    if (
+      hiversaires.currentPuzzle != null &&
+      hiversaires.currentPuzzle.id == 42
+    ) {
       console.log("templateEntentePart1Decr");
-      this.templateEntentePart1Decr(hh);
+      this.templateEntentePart1Decr();
     }
-    if (hh.currentPuzzle != null && hh.currentPuzzle.id == 45) {
+    if (
+      hiversaires.currentPuzzle != null &&
+      hiversaires.currentPuzzle.id == 45
+    ) {
       console.log("templateEntentePart2Incr");
-      this.templateEntentePart2Incr(hh);
+      this.templateEntentePart2Incr();
     }
-    if (hh.currentPuzzle != null && hh.currentPuzzle.id == 44) {
+    if (
+      hiversaires.currentPuzzle != null &&
+      hiversaires.currentPuzzle.id == 44
+    ) {
       console.log("templateEntentePart2Decr");
-      this.templateEntentePart2Decr(hh);
+      this.templateEntentePart2Decr();
     }
-    if (hh.currentPuzzle != null && hh.currentPuzzle.id == 46) {
+    if (
+      hiversaires.currentPuzzle != null &&
+      hiversaires.currentPuzzle.id == 46
+    ) {
       console.log("templateEntentePart2Exit");
-      this.templateEntentePart2Exit(hh);
+      this.templateEntentePart2Exit();
     }
   }
 
-  templateEntentePart1Incr(hh) {
-    if (hh.game.puzzleState[23] == 17) {
-      hh.game.userNodeID = 93;
-      hh.actionCheck();
-      hh.moveCheck();
-      hh.actionReset();
+  templateEntentePart1Incr() {
+    if (hiversaires.game.puzzleState[23] == 17) {
+      hiversaires.game.userNodeID = 93;
+      hiversaires.actionCheck();
+      hiversaires.moveCheck();
+      hiversaires.actionReset();
     } else {
-      hh.game.userNodeID = 89;
+      hiversaires.game.userNodeID = 89;
 
-      if (hh.game.puzzleState[23] < 21) {
-        hh.game.puzzleState[23] = hh.game.puzzleState[23] + 3;
+      if (hiversaires.game.puzzleState[23] < 21) {
+        hiversaires.game.puzzleState[23] = hiversaires.game.puzzleState[23] + 3;
       }
 
-      hh.actionCheck();
-      hh.moveCheck();
-      hh.actionReset();
+      hiversaires.actionCheck();
+      hiversaires.moveCheck();
+      hiversaires.actionReset();
     }
   }
 
-  templateEntentePart1Decr(hh) {
-    hh.game.userNodeID = 103;
+  templateEntentePart1Decr() {
+    hiversaires.game.userNodeID = 103;
 
-    if (hh.game.puzzleState[23] > 14) {
-      hh.game.puzzleState[23] = hh.game.puzzleState[23] - 1;
+    if (hiversaires.game.puzzleState[23] > 14) {
+      hiversaires.game.puzzleState[23] = hiversaires.game.puzzleState[23] - 1;
     }
 
-    hh.actionCheck();
-    hh.moveCheck();
-    hh.actionReset();
+    hiversaires.actionCheck();
+    hiversaires.moveCheck();
+    hiversaires.actionReset();
   }
 
-  templateEntentePart2Incr(hh) {
-    hh.game.userNodeID = 94;
-    hh.game.userOrientation = 2;
+  templateEntentePart2Incr() {
+    hiversaires.game.userNodeID = 94;
+    hiversaires.game.userOrientation = 2;
 
-    if (hh.game.puzzleState[24] < 23) {
-      hh.game.puzzleState[24] = hh.game.puzzleState[24] + 4;
+    if (hiversaires.game.puzzleState[24] < 23) {
+      hiversaires.game.puzzleState[24] = hiversaires.game.puzzleState[24] + 4;
     }
 
-    hh.actionCheck();
-    hh.moveCheck();
-    hh.actionReset();
+    hiversaires.actionCheck();
+    hiversaires.moveCheck();
+    hiversaires.actionReset();
   }
 
-  templateEntentePart2Decr(hh) {
-    hh.game.userNodeID = 95;
-    hh.game.userOrientation = 2;
+  templateEntentePart2Decr() {
+    hiversaires.game.userNodeID = 95;
+    hiversaires.game.userOrientation = 2;
 
-    if (hh.game.puzzleState[24] > 14) {
-      hh.game.puzzleState[24] = hh.game.puzzleState[24] - 1;
+    if (hiversaires.game.puzzleState[24] > 14) {
+      hiversaires.game.puzzleState[24] = hiversaires.game.puzzleState[24] - 1;
     }
 
-    hh.actionCheck();
-    hh.moveCheck();
-    hh.actionReset();
+    hiversaires.actionCheck();
+    hiversaires.moveCheck();
+    hiversaires.actionReset();
   }
 
-  templateEntentePart2Exit(hh) {
-    if (hh.game.puzzleState[23] == 17 && hh.game.puzzleState[24] == 17) {
-      hh.game.userNodeID = 107;
-      hh.game.userOrientation = 3;
+  templateEntentePart2Exit() {
+    if (
+      hiversaires.game.puzzleState[23] == 17 &&
+      hiversaires.game.puzzleState[24] == 17
+    ) {
+      hiversaires.game.userNodeID = 107;
+      hiversaires.game.userOrientation = 3;
 
-      hh.actionCheck();
-      hh.moveCheck();
-      hh.actionReset();
+      hiversaires.actionCheck();
+      hiversaires.moveCheck();
+      hiversaires.actionReset();
     } else {
-      hh.game.userNodeID = 93;
+      hiversaires.game.userNodeID = 93;
 
-      hh.actionCheck();
-      hh.moveCheck();
-      hh.actionReset();
+      hiversaires.actionCheck();
+      hiversaires.moveCheck();
+      hiversaires.actionReset();
     }
   }
 }

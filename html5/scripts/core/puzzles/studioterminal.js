@@ -3,43 +3,44 @@ class StudioTerminal extends Puzzle {
     super(id, info, defaultState);
   }
 
-  setup(hh) {
-    hh.templateVignette();
-    hh.stage.setHidden(hh.stage.billboard("overlay"), true);
+  setup() {
+    hiversaires.templateVignette();
+    hiversaires.stage.setHidden(hiversaires.stage.billboard("overlay"), true);
     hiversaires.music.playEffect("action_DoorInit");
-    hh.templateSealInterface();
+    hiversaires.templateSealInterface();
 
-    const seals = hh.currentSeals;
+    const seals = hiversaires.currentSeals;
     const containsAntechannel = seals.indexOf(Zone.antechannel) != -1;
     const containsStones = seals.indexOf(Zone.stones) != -1;
 
     if (containsStones && containsAntechannel) {
       // Act 4 : Antechannel + Stones in Studio
-      hh.setCurrentAction(
+      hiversaires.setCurrentAction(
         function() {
-          hh.game.puzzleState[hh.currentPuzzle.id] =
-            (hh.game.puzzleState[hh.currentPuzzle.id] + 1) % 2;
+          hiversaires.game.puzzleState[hiversaires.currentPuzzle.id] =
+            (hiversaires.game.puzzleState[hiversaires.currentPuzzle.id] + 1) %
+            2;
           hiversaires.music.playEffect("action_EnergyActive");
-          this.templateUpdateStudioTerminal(hh);
+          this.templateUpdateStudioTerminal();
         }.bind(this)
       );
-      hh.game.save();
+      hiversaires.game.save();
     }
 
-    this.templateUpdateStudioTerminal(hh);
+    this.templateUpdateStudioTerminal();
   }
 
-  templateUpdateStudioTerminal(hh) {
-    const seals = hh.currentSeals;
+  templateUpdateStudioTerminal() {
+    const seals = hiversaires.currentSeals;
     const containsAntechannel = seals.indexOf(Zone.antechannel) != -1;
     const containsStones = seals.indexOf(Zone.stones) != -1;
 
     let modifier = null;
 
-    if (hh.game.puzzleState[this.id] == 1) {
+    if (hiversaires.game.puzzleState[this.id] == 1) {
       modifier = "unlocked";
-      hh.game.userChapter = Chapter.act5;
-      hh.updateMusic();
+      hiversaires.game.userChapter = Chapter.act5;
+      hiversaires.updateMusic();
     } else {
       if (containsStones && containsAntechannel) {
         modifier = "both";
@@ -49,17 +50,17 @@ class StudioTerminal extends Puzzle {
         modifier = "antechannel";
       }
 
-      if (hh.game.userChapter == Chapter.act5) {
-        hh.game.userChapter = Chapter.act4;
-        hh.updateMusic();
+      if (hiversaires.game.userChapter == Chapter.act5) {
+        hiversaires.game.userChapter = Chapter.act4;
+        hiversaires.updateMusic();
       }
     }
 
     if (modifier != null) {
-      hh.setModifier(modifier);
-      hh.showModifier();
+      hiversaires.setModifier(modifier);
+      hiversaires.showModifier();
     } else {
-      hh.hideModifier();
+      hiversaires.hideModifier();
     }
   }
 }

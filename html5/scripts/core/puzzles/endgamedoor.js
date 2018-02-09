@@ -3,13 +3,15 @@ class EndgameDoor extends Door {
     super(id, info, defaultState);
   }
 
-  setup(hh) {
-    if (hh.checkConditions(hh.currentPuzzle.info.conditions)) {
-      hh.setModifier("open");
-      hh.showModifier();
-      hh.setCurrentAction(this.walkThroughDoor.bind(this));
+  setup() {
+    if (
+      hiversaires.checkConditions(hiversaires.currentPuzzle.info.conditions)
+    ) {
+      hiversaires.setModifier("open");
+      hiversaires.showModifier();
+      hiversaires.setCurrentAction(this.walkThroughDoor.bind(this));
     } else {
-      hh.templateEnergyAlert();
+      hiversaires.templateEnergyAlert();
     }
   }
 }

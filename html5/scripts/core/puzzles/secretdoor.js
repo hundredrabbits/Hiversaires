@@ -3,13 +3,15 @@ class SecretDoor extends Door {
     super(id, info, defaultState);
   }
 
-  setup(hh) {
-    hh.templateVignette();
-    hh.stage.setHidden(hh.stage.billboard("overlay"), true);
+  setup() {
+    hiversaires.templateVignette();
+    hiversaires.stage.setHidden(hiversaires.stage.billboard("overlay"), true);
     hiversaires.music.playEffect("action_DoorInit");
 
-    if (hh.checkConditions(hh.currentPuzzle.info.conditions)) {
-      hh.setCurrentAction(this.walkThroughDoor.bind(this));
+    if (
+      hiversaires.checkConditions(hiversaires.currentPuzzle.info.conditions)
+    ) {
+      hiversaires.setCurrentAction(this.walkThroughDoor.bind(this));
     }
   }
 }

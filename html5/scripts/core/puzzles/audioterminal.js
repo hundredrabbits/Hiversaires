@@ -3,27 +3,27 @@ class AudioTerminal extends Puzzle {
     super(id, info, defaultState);
   }
 
-  setup(hh) {
-    hh.templateVignette();
-    hh.setCurrentAction(
+  setup() {
+    hiversaires.templateVignette();
+    hiversaires.setCurrentAction(
       function() {
-        hh.game.puzzleState[hh.currentPuzzle.id] =
-          (hh.game.puzzleState[hh.currentPuzzle.id] + 1) % 2;
-        this.templateAudioUpdate(hh);
+        hiversaires.game.puzzleState[hiversaires.currentPuzzle.id] =
+          (hiversaires.game.puzzleState[hiversaires.currentPuzzle.id] + 1) % 2;
+        this.templateAudioUpdate();
       }.bind(this)
     );
 
-    this.templateAudioUpdate(hh);
+    this.templateAudioUpdate();
   }
 
-  templateAudioUpdate(hh) {
-    hh.templateAudioInterface();
-    if (hh.game.puzzleState[hh.currentPuzzle.id] == 1) {
-      hh.setModifier("on");
-      hh.showModifier(0.3, 0.1);
+  templateAudioUpdate() {
+    hiversaires.templateAudioInterface();
+    if (hiversaires.game.puzzleState[hiversaires.currentPuzzle.id] == 1) {
+      hiversaires.setModifier("on");
+      hiversaires.showModifier(0.3, 0.1);
       hiversaires.music.volume = 1;
     } else {
-      hh.hideModifier(0.3, 0);
+      hiversaires.hideModifier(0.3, 0);
       hiversaires.music.volume = 0;
     }
   }

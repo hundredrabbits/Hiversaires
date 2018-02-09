@@ -3,47 +3,47 @@ class SealTerminal extends Puzzle {
     super(id, info, defaultState);
   }
 
-  setup(hh) {
-    hh.templateVignette();
+  setup() {
+    hiversaires.templateVignette();
 
-    hh.stage.setHidden(hh.stage.billboard("overlay"), false);
-    hh.stage.setAlpha("overlay", 0);
+    hiversaires.stage.setHidden(hiversaires.stage.billboard("overlay"), false);
+    hiversaires.stage.setAlpha("overlay", 0);
 
-    hh.setCurrentAction(
+    hiversaires.setCurrentAction(
       function() {
         if (
-          hh.game.puzzleState[hh.currentPuzzle.id] == 1 ||
-          hh.currentSeals.length < 2
+          hiversaires.game.puzzleState[hiversaires.currentPuzzle.id] == 1 ||
+          hiversaires.currentSeals.length < 2
         ) {
-          if (hh.game.puzzleState[hh.currentPuzzle.id] != 1) {
+          if (hiversaires.game.puzzleState[hiversaires.currentPuzzle.id] != 1) {
             hiversaires.music.playEffect("action_SealActive");
-            hh.game.puzzleState[hh.currentPuzzle.id] = 1;
+            hiversaires.game.puzzleState[hiversaires.currentPuzzle.id] = 1;
           } else {
             hiversaires.music.playEffect("action_SealInactive");
-            hh.game.puzzleState[hh.currentPuzzle.id] = 0;
+            hiversaires.game.puzzleState[hiversaires.currentPuzzle.id] = 0;
           }
         } else {
           hiversaires.music.playEffect("action_EnergyStack");
-          hh.templateSealAlert();
+          hiversaires.templateSealAlert();
           console.log("No more seal slots.");
         }
 
-        this.templateSealUpdate(hh);
+        this.templateSealUpdate();
       }.bind(this)
     );
 
     hiversaires.music.playEffect("action_SealInit");
-    this.templateSealUpdate(hh);
+    this.templateSealUpdate();
   }
 
-  templateSealUpdate(hh) {
-    hh.templateSealInterface();
-    hh.stage.fadeOut(hh.stage.billboard("overlay"), 0.5, 0);
-    if (hh.game.puzzleState[hh.currentPuzzle.id] == 1) {
-      hh.setModifier("seal." + hh.currentSeals.length);
-      hh.showModifier(0.1, 0.2);
+  templateSealUpdate() {
+    hiversaires.templateSealInterface();
+    hiversaires.stage.fadeOut(hiversaires.stage.billboard("overlay"), 0.5, 0);
+    if (hiversaires.game.puzzleState[hiversaires.currentPuzzle.id] == 1) {
+      hiversaires.setModifier("seal." + hiversaires.currentSeals.length);
+      hiversaires.showModifier(0.1, 0.2);
     } else {
-      hh.hideModifier(0.1, 0.2);
+      hiversaires.hideModifier(0.1, 0.2);
     }
   }
 }

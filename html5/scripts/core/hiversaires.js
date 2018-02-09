@@ -171,7 +171,7 @@ class Hiversaires {
 
     if (this.currentPuzzle != null) {
       this.actionReset();
-      this.currentPuzzle.setup(this);
+      this.currentPuzzle.setup();
     }
   }
 
@@ -180,7 +180,7 @@ class Hiversaires {
       return;
     }
     if (this.currentAction != null) {
-      this.currentAction(this);
+      this.currentAction();
     }
   }
 
@@ -365,7 +365,7 @@ class Hiversaires {
         puzzle.info.nodeID == this.game.userNodeID &&
         puzzle.info.orientation == this.game.userOrientation
       ) {
-        puzzle.appear(this);
+        puzzle.appear();
         break;
       }
     }

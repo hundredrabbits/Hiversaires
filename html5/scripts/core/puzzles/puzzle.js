@@ -14,5 +14,5 @@ class Puzzle {
     this._state.value = value;
   }
 
-  setup(hh) {}
+  setup() {}
 }

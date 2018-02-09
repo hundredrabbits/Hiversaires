@@ -1,4 +1,3 @@
-Relegate hh calls in puzzles
 Revise game state
     Seals
     Fuses

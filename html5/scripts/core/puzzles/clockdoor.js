@@ -3,16 +3,18 @@ class ClockDoor extends Door {
     super(id, info, defaultState);
   }
 
-  setup(hh) {
-    hh.templateVignette();
-    hh.stage.setHidden(hh.stage.billboard("overlay"), true);
-    hh.templateClockInterface();
+  setup() {
+    hiversaires.templateVignette();
+    hiversaires.stage.setHidden(hiversaires.stage.billboard("overlay"), true);
+    hiversaires.templateClockInterface();
     hiversaires.music.playEffect("action_DoorInit");
-    if (hh.checkConditions(hh.currentPuzzle.info.conditions)) {
-      hh.setCurrentAction(this.openDoor.bind(this));
-      hh.setModifier("open");
+    if (
+      hiversaires.checkConditions(hiversaires.currentPuzzle.info.conditions)
+    ) {
+      hiversaires.setCurrentAction(this.openDoor.bind(this));
+      hiversaires.setModifier("open");
     } else {
-      hh.templateClockAlert();
+      hiversaires.templateClockAlert();
     }
   }
 }

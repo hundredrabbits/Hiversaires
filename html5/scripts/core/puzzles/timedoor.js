@@ -3,8 +3,8 @@ class TimeDoor extends Door {
     super(id, info, defaultState);
   }
 
-  setup(hh) {
-    hh.templateVignette();
+  setup() {
+    hiversaires.templateVignette();
 
     const now = new Date(Date.now());
     const currentHours = now.getHours();
@@ -12,11 +12,11 @@ class TimeDoor extends Door {
 
     if (
       (currentHours == 15 && currentMinutes == 7) ||
-      hh.game.userNodeID == 143
+      hiversaires.game.userNodeID == 143
     ) {
-      hh.game.puzzleState[54] = 1;
-      hh.setCurrentAction(this.openDoor.bind(this));
-      hh.setModifier("open");
+      hiversaires.game.puzzleState[54] = 1;
+      hiversaires.setCurrentAction(this.openDoor.bind(this));
+      hiversaires.setModifier("open");
     } else {
       console.log("Door locked, wait for time.");
     }

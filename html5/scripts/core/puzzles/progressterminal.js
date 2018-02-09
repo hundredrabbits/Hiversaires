@@ -3,15 +3,19 @@ class ProgressTerminal extends Puzzle {
     super(id, info, defaultState);
   }
 
-  setup(hh) {
-    hh.templateVignette();
-    hh.game.save();
+  setup() {
+    hiversaires.templateVignette();
+    hiversaires.game.save();
 
-    hh.stage.setImage(
+    hiversaires.stage.setImage(
       "progressPane",
-      "interface/progress." + hh.game.userChapter + ".svg"
+      "interface/progress." + hiversaires.game.userChapter + ".svg"
     );
 
-    hh.stage.fadeIn(hh.stage.billboard("progressPane"), 0.5, 0.3);
+    hiversaires.stage.fadeIn(
+      hiversaires.stage.billboard("progressPane"),
+      0.5,
+      0.3
+    );
   }
 }

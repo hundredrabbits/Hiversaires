@@ -3,15 +3,15 @@ class SealDoor extends Door {
     super(id, info, defaultState, fadeDuration);
   }
 
-  setup(hh) {
-    hh.templateVignette();
+  setup() {
+    hiversaires.templateVignette();
 
-    hh.stage.setHidden(hh.stage.billboard("overlay"), true);
+    hiversaires.stage.setHidden(hiversaires.stage.billboard("overlay"), true);
 
     hiversaires.music.playEffect("action_DoorInit");
-    hh.templateSealInterface();
+    hiversaires.templateSealInterface();
 
-    const seals = hh.currentSeals;
+    const seals = hiversaires.currentSeals;
     const containsForest = seals.indexOf(Zone.forest) != -1;
     const containsAntechannel = seals.indexOf(Zone.antechannel) != -1;
     const containsStones = seals.indexOf(Zone.stones) != -1;
@@ -23,52 +23,52 @@ class SealDoor extends Door {
     if (
       containsForest &&
       containsRainre &&
-      (hh.game.userNodeID == 46 || hh.game.userNodeID == 85)
+      (hiversaires.game.userNodeID == 46 || hiversaires.game.userNodeID == 85)
     ) {
       // Act 1 : Forest + Rainre in Stones
-      hh.setCurrentAction(this.openDoor.bind(this));
-      hh.game.userChapter = Chapter.act2;
-      hh.setModifier("open");
-      hh.game.save();
+      hiversaires.setCurrentAction(this.openDoor.bind(this));
+      hiversaires.game.userChapter = Chapter.act2;
+      hiversaires.setModifier("open");
+      hiversaires.game.save();
     } else if (
       containsMetamondst &&
       containsRainre &&
-      (hh.game.userNodeID == 11 || hh.game.userNodeID == 48)
+      (hiversaires.game.userNodeID == 11 || hiversaires.game.userNodeID == 48)
     ) {
       // Act 2 : Metamondst + Rainre in Forest
-      hh.setCurrentAction(this.openDoor.bind(this));
-      hh.game.userChapter = Chapter.act3;
-      hh.setModifier("open");
-      hh.game.save();
+      hiversaires.setCurrentAction(this.openDoor.bind(this));
+      hiversaires.game.userChapter = Chapter.act3;
+      hiversaires.setModifier("open");
+      hiversaires.game.save();
     } else if (
       containsAntechannel &&
       containsRainre &&
-      (hh.game.userNodeID == 46 || hh.game.userNodeID == 85)
+      (hiversaires.game.userNodeID == 46 || hiversaires.game.userNodeID == 85)
     ) {
       // Act 3 : Forest + Rainre in Metamondst
-      hh.setCurrentAction(this.openDoor.bind(this));
-      hh.game.userChapter = Chapter.act4;
-      hh.setModifier("open");
-      hh.game.save();
+      hiversaires.setCurrentAction(this.openDoor.bind(this));
+      hiversaires.game.userChapter = Chapter.act4;
+      hiversaires.setModifier("open");
+      hiversaires.game.save();
     } else if (
       containsAntechannel &&
       containsStones &&
-      hh.game.userNodeID == 1
+      hiversaires.game.userNodeID == 1
     ) {
       // Act 4 : Antechannel + Stones in Forest
-      hh.setCurrentAction(this.openDoor.bind(this));
-      hh.setModifier("open");
-      hh.game.save();
+      hiversaires.setCurrentAction(this.openDoor.bind(this));
+      hiversaires.setModifier("open");
+      hiversaires.game.save();
     } else if (
       containsAntechannel &&
       containsStones &&
-      (hh.game.userNodeID == 76 || hh.game.userNodeID == 87)
+      (hiversaires.game.userNodeID == 76 || hiversaires.game.userNodeID == 87)
     ) {
       // Act 4 : Antechannel + Stones in Metamondst
-      hh.setCurrentAction(this.openDoor.bind(this));
-      hh.setModifier("open");
+      hiversaires.setCurrentAction(this.openDoor.bind(this));
+      hiversaires.setModifier("open");
     } else {
-      hh.templateSealAlert();
+      hiversaires.templateSealAlert();
     }
   }
 }

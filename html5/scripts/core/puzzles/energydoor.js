@@ -3,27 +3,29 @@ class EnergyDoor extends Door {
     super(id, info, defaultState);
   }
 
-  setup(hh) {
-    hh.templateVignette();
-    hh.stage.setHidden(hh.stage.billboard("overlay"), true);
+  setup() {
+    hiversaires.templateVignette();
+    hiversaires.stage.setHidden(hiversaires.stage.billboard("overlay"), true);
     hiversaires.music.playEffect("action_DoorInit");
-    hh.templateEnergyInterface();
+    hiversaires.templateEnergyInterface();
 
-    if (hh.checkConditions(hh.currentPuzzle.info.conditions)) {
-      hh.setCurrentAction(
+    if (
+      hiversaires.checkConditions(hiversaires.currentPuzzle.info.conditions)
+    ) {
+      hiversaires.setCurrentAction(
         function() {
-          this.openDoor(hh);
-          hh.templateEnergyInterface();
+          this.openDoor();
+          hiversaires.templateEnergyInterface();
         }.bind(this)
       );
       let modifier = "open";
-      let secret = hh.currentPuzzle.info.secret;
-      if (secret != null && hh.checkConditions(secret.conditions)) {
+      let secret = hiversaires.currentPuzzle.info.secret;
+      if (secret != null && hiversaires.checkConditions(secret.conditions)) {
         modifier = "secret";
       }
-      hh.setModifier(modifier);
+      hiversaires.setModifier(modifier);
     } else {
-      hh.templateEnergyAlert();
+      hiversaires.templateEnergyAlert();
     }
   }
 }

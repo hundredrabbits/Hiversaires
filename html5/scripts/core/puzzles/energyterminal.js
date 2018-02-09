@@ -3,46 +3,48 @@ class EnergyTerminal extends Puzzle {
     super(id, info, defaultState);
   }
 
-  setup(hh) {
-    hh.templateVignette();
-    hh.templateEnergyInterface();
+  setup() {
+    hiversaires.templateVignette();
+    hiversaires.templateEnergyInterface();
 
-    hh.stage.setHidden(hh.stage.billboard("overlay"), false);
+    hiversaires.stage.setHidden(hiversaires.stage.billboard("overlay"), false);
 
-    hh.setCurrentAction(
+    hiversaires.setCurrentAction(
       function() {
-        this.templateUpdateFuse(hh);
-        hh.templateEnergyInterface();
-        this.templateEnergyUpdate(hh);
+        this.templateUpdateFuse();
+        hiversaires.templateEnergyInterface();
+        this.templateEnergyUpdate();
       }.bind(this)
     );
 
     hiversaires.music.playEffect("action_EnergyInit");
   }
 
-  templateEnergyUpdate(hh) {
-    hh.setCurrentAction(
+  templateEnergyUpdate() {
+    hiversaires.setCurrentAction(
       function() {
-        if (hh.game.puzzleState[hh.currentPuzzle.id] == 1) {
-          hh.game.puzzleState[hh.currentPuzzle.id] = 0;
-          hh.game.userEnergy += 1;
-        } else if (hh.game.userEnergy > 0) {
-          hh.game.puzzleState[hh.currentPuzzle.id] = 1;
-          hh.game.userEnergy -= 1;
+        if (hiversaires.game.puzzleState[hiversaires.currentPuzzle.id] == 1) {
+          hiversaires.game.puzzleState[hiversaires.currentPuzzle.id] = 0;
+          hiversaires.game.userEnergy += 1;
+        } else if (hiversaires.game.userEnergy > 0) {
+          hiversaires.game.puzzleState[hiversaires.currentPuzzle.id] = 1;
+          hiversaires.game.userEnergy -= 1;
         } else {
-          hh.templateEnergyAlert();
+          hiversaires.templateEnergyAlert();
         }
 
-        this.templateUpdateFuse(hh);
-        hh.templateEnergyInterface();
+        this.templateUpdateFuse();
+        hiversaires.templateEnergyInterface();
       }.bind(this)
     );
   }
 
-  templateUpdateFuse(hh) {
-    hh.setModifier(
-      hh.game.puzzleState[hh.currentPuzzle.id] == 1 ? "filled" : "empty"
+  templateUpdateFuse() {
+    hiversaires.setModifier(
+      hiversaires.game.puzzleState[hiversaires.currentPuzzle.id] == 1
+        ? "filled"
+        : "empty"
     );
-    hh.showModifier();
+    hiversaires.showModifier();
   }
 }

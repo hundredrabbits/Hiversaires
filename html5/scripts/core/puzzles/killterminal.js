@@ -3,13 +3,13 @@ class KillTerminal extends Puzzle {
     super(id, info, defaultState);
   }
 
-  setup(hh) {
-    hh.setCurrentAction(
+  setup() {
+    hiversaires.setCurrentAction(
       function() {
-        hh.game.puzzleState[hh.currentPuzzle.id]++;
-        if (hh.game.puzzleState[hh.currentPuzzle.id] > 50) {
-          hh.game.wipePlayerProgress();
-          hh.newGame();
+        hiversaires.game.puzzleState[hiversaires.currentPuzzle.id]++;
+        if (hiversaires.game.puzzleState[hiversaires.currentPuzzle.id] > 50) {
+          hiversaires.game.wipePlayerProgress();
+          hiversaires.newGame();
         }
       }.bind(this)
     );
