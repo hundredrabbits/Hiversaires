@@ -38,8 +38,21 @@ class Game {
       puzzleState: this.puzzleState
     };
 
+    this.derivePuzzleState2();
+
+    let saveObject2 = {
+      userState: {
+        userNodeID: this.userNodeID,
+        userOrientation: this.userOrientation,
+        userChapter: this.userChapter,
+        userEnergy: this.userEnergy
+      },
+      puzzleState: this.newState
+    };
+
     if (!DEBUG_DONT_SAVE) {
       localStorage.save = JSON.stringify(saveObject);
+      localStorage.save2 = JSON.stringify(saveObject2);
     }
 
     console.log("saved state.");
@@ -64,7 +77,11 @@ class Game {
       // Storage
       this.puzzleState = saveObject.puzzleState;
 
+      this.derivePuzzleState2();
+
       console.log("loaded state.");
+
+      console.log(this.newState);
     } else {
       // New Game
 
@@ -73,9 +90,15 @@ class Game {
         this.puzzleState[puzzle.id] = puzzle.defaultState;
       }
 
-      console.log(this.puzzleState);
-
-      // Default Location
+      this.newState = {
+        seals: [],
+        fuses: [31, 38, 39],
+        illusions: [],
+        clock: 0,
+        audio: true,
+        studio: false,
+        maze: { x: 15, y: 0 }
+      };
 
       this.userNodeID = 1;
       this.userOrientation = 0;
@@ -83,6 +106,40 @@ class Game {
       this.userEnergy = 0;
 
       console.log("created state.");
+    }
+  }
+
+  derivePuzzleState2() {
+    this.newState = {
+      seals: [],
+      fuses: [],
+      illusions: [],
+      clock: null,
+      audio: null,
+      studio: null,
+      maze: {}
+    };
+
+    for (let puzzle of puzzlesByID.values()) {
+      let state = this.puzzleState[puzzle.id];
+
+      if (puzzle instanceof SealTerminal) {
+        if (state == 1) {
+          this.newState.seals.push(puzzle.seal); // seal
+        }
+      } else if (puzzle instanceof ClockTerminal) {
+        this.newState.clock = state;
+      } else if (puzzle instanceof EnergyTerminal) {
+        if (state == 1) {
+          this.newState.fuses.push(puzzle.id);
+        }
+      } else if (puzzle instanceof StudioTerminal) {
+        this.newState.studio = state == 1;
+      } else if (puzzle instanceof AudioTerminal) {
+        this.newState.audio = state == 1;
+      } else if (puzzle instanceof EntenteTerminal) {
+        this.newState.maze[puzzle.axis] = state; // axis
+      }
     }
   }
 

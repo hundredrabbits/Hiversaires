@@ -1,6 +1,7 @@
 class EntenteTerminal extends Puzzle {
-  constructor(id, info, defaultState) {
-    super(id, info, defaultState);
+  constructor(id, axis, defaultState) {
+    super(id, {}, defaultState);
+    this.axis = axis;
   }
 
   setup() {

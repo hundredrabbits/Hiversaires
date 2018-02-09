@@ -145,7 +145,7 @@ const nodesByID = (function() {
   addNode(47, Zone.antechannel, none, node(48), node(77), none);
   addNode(48, Zone.antechannel, puzzle(25), none, node(49), node(47));
   addNode(49, Zone.antechannel, node(48), none, puzzle(21), node(77));
-
+  
   addNode(50, Zone.nataniev, puzzle(40), none, puzzle(41), none);
   addNode(52, Zone.antechannel, node(54), node(53), none, puzzle(9));
   addNode(53, Zone.antechannel, node(55), node(84), none, node(52));
@@ -232,121 +232,46 @@ const puzzlesByID = (function() {
 
   addPuzzle(new ClockTerminal(1, {}));
   addPuzzle(new EnergyTerminal(2, {}));
-  addPuzzle(
-    new EnergyDoor(3, {
-      conditions: [{ puzzleID: 2, type: ConditionType.isGreaterThan, value: 0 }]
-    })
-  );
-  addPuzzle(new SealTerminal(4, { seal: Zone.forest }));
+  addPuzzle(new EnergyDoor(3, { conditions: [{ puzzleID: 2, type: ConditionType.isGreaterThan, value: 0 }] }) );
+  addPuzzle(new SealTerminal(4, Zone.forest));
   addPuzzle(new StudioTerminal(5, {}));
-  addPuzzle(
-    new SecretDoor(6, {
-      conditions: [
-        { puzzleID: 37, type: ConditionType.isGreaterThan, value: 0 }
-      ]
-    })
-  );
-  addPuzzle(
-    new ClockDoor(7, {
-      conditions: [{ puzzleID: 1, type: ConditionType.doesNotEqual, value: 0 }]
-    })
-  );
-  addPuzzle(
-    new ClockDoor(8, {
-      conditions: [{ puzzleID: 1, type: ConditionType.doesNotEqual, value: 2 }]
-    })
-  );
-  addPuzzle(
-    new ClockDoor(9, {
-      conditions: [{ puzzleID: 1, type: ConditionType.doesNotEqual, value: 1 }]
-    })
-  );
+  addPuzzle(new SecretDoor(6, { conditions: [ { puzzleID: 37, type: ConditionType.isGreaterThan, value: 0 } ] }) );
+  addPuzzle(new ClockDoor(7, { conditions: [{ puzzleID: 1, type: ConditionType.doesNotEqual, value: 0 }] }) );
+  addPuzzle(new ClockDoor(8, { conditions: [{ puzzleID: 1, type: ConditionType.doesNotEqual, value: 2 }] }) );
+  addPuzzle(new ClockDoor(9, { conditions: [{ puzzleID: 1, type: ConditionType.doesNotEqual, value: 1 }] }) );
   addPuzzle(new EnergyTerminal(10, {}));
-  addPuzzle(
-    new EnergyDoor(11, {
-      conditions: [
-        { puzzleID: 10, type: ConditionType.isGreaterThan, value: 0 }
-      ],
-      secret: {
-        conditions: [
-          { puzzleID: 5, type: ConditionType.equals, value: 2 },
-          { puzzleID: 31, type: ConditionType.equals, value: 1 }
-        ],
-        nodeID: 34
-      }
-    })
-  );
-  addPuzzle(new SealTerminal(12, { seal: Zone.stones }));
-  addPuzzle(new SealTerminal(13, { seal: Zone.rainre }));
+  addPuzzle(new EnergyDoor(11, { conditions: [ { puzzleID: 10, type: ConditionType.isGreaterThan, value: 0 } ], secret: { conditions: [ { puzzleID: 5, type: ConditionType.equals, value: 2 },  { puzzleID: 31, type: ConditionType.equals, value: 1 }   ], nodeID: 34 } }) );
+  addPuzzle(new SealTerminal(12, Zone.stones));
+  addPuzzle(new SealTerminal(13, Zone.rainre));
   addPuzzle(new KillTerminal(14, {}));
   addPuzzle(new SealDoor(15, {}, 0, 1));
   addPuzzle(new ProgressTerminal(16, {}));
-  addPuzzle(new Illusion(17, { nodeID: 15, orientation: 0 })); // studio
+  addPuzzle(new Illusion(17, { nodeID: 15, orientation: 0 }) ); // studio
   addPuzzle(new EnergyTerminal(18, {}));
-  addPuzzle(
-    new EnergyDoor(
-      19,
-      {
-        conditions: [
-          { puzzleID: 18, type: ConditionType.isGreaterThan, value: 0 }
-        ]
-      },
-      13
-    )
-  );
-  addPuzzle(new SealTerminal(20, { seal: Zone.metamondst }));
-  addPuzzle(new SealTerminal(21, { seal: Zone.antechannel }));
-  addPuzzle(new Illusion(22, { nodeID: 43, orientation: 2 })); // stones
-  addPuzzle(new EntenteTerminal(23, {}, 15));
-  addPuzzle(new EntenteTerminal(24, {}));
+  addPuzzle(new EnergyDoor(19, { conditions: [{ puzzleID: 18, type: ConditionType.isGreaterThan, value: 0 }   ] }, 13 ) );
+  addPuzzle(new SealTerminal(20, Zone.metamondst));
+  addPuzzle(new SealTerminal(21, Zone.antechannel) );
+  addPuzzle(new Illusion(22, { nodeID: 43, orientation: 2 }) ); // stones
+  addPuzzle(new EntenteTerminal(23, "x", 15));
+  addPuzzle(new EntenteTerminal(24, "y", 0));
   addPuzzle(new SealDoor(25, {}, 0, 1));
-  addPuzzle(
-    new EnergyDoor(26, {
-      conditions: [
-        { puzzleID: 27, type: ConditionType.isGreaterThan, value: 0 }
-      ]
-    })
-  );
+  addPuzzle(new EnergyDoor(26, { conditions: [ { puzzleID: 27, type: ConditionType.isGreaterThan, value: 0 } ] }) );
   addPuzzle(new EnergyTerminal(27, {}));
 
-  addPuzzle(
-    new SealDoor(
-      28,
-      {
-        conditions: [
-          { puzzleID: 5, type: ConditionType.isGreaterThan, value: 0 }
-        ]
-      },
-      0,
-      1
-    )
-  );
-  addPuzzle(new Illusion(29, { nodeID: 73, orientation: 2 })); // metamondst
+  addPuzzle(new SealDoor(28, { conditions: [{ puzzleID: 5, type: ConditionType.isGreaterThan, value: 0 }] }, 0, 1 ));
+  addPuzzle(new Illusion(29, { nodeID: 73, orientation: 2 }) ); // metamondst
   addPuzzle(new SealDoor(30, {}));
 
   addPuzzle(new EnergyTerminal(31, {}, 1));
-  addPuzzle(new Illusion(32, { nodeID: 58, orientation: 1 })); // antechannel
-  addPuzzle(
-    new EnergyDoor(33, {
-      conditions: [
-        { puzzleID: 47, type: ConditionType.isGreaterThan, value: 0 }
-      ]
-    })
-  );
+  addPuzzle(new Illusion(32, { nodeID: 58, orientation: 1 }) ); // antechannel
+  addPuzzle(new EnergyDoor(33, { conditions: [ { puzzleID: 47, type: ConditionType.isGreaterThan, value: 0 } ] }) );
   addPuzzle(new AudioTerminal(34, {}, 1));
   addPuzzle(new AudioTerminal(35, {}, 1));
   addPuzzle(new EnergyTerminal(36, {}));
   addPuzzle(new SecretTerminal(37, {}));
   addPuzzle(new EnergyTerminal(38, {}, 1)); // Entente Fuse
   addPuzzle(new EnergyTerminal(39, {}, 1));
-  addPuzzle(
-    new EndgameDoor(40, {
-      conditions: [
-        { puzzleID: 47, type: ConditionType.equals, value: 1 },
-        { puzzleID: 36, type: ConditionType.equals, value: 1 }
-      ]
-    })
-  );
+  addPuzzle(new EndgameDoor(40, { conditions: [ { puzzleID: 47, type: ConditionType.equals, value: 1 }, { puzzleID: 36, type: ConditionType.equals, value: 1 } ] }) );
   addPuzzle(new EndgameCredit(41, {}));
 
   // Entente Puzzle
@@ -360,13 +285,13 @@ const puzzlesByID = (function() {
   // Spare Fuse
 
   addPuzzle(new EnergyTerminal(47, {}));
-  addPuzzle(new Illusion(48, { nodeID: 114, orientation: 2 }));
-  addPuzzle(new Illusion(49, { nodeID: 91, orientation: 0 }));
-  addPuzzle(new Illusion(50, { nodeID: 88, orientation: 3 }));
-  addPuzzle(new Illusion(51, { nodeID: 33, orientation: 2 }));
+  addPuzzle(new Illusion(48, { nodeID: 114, orientation: 2 }) );
+  addPuzzle(new Illusion(49, { nodeID: 91, orientation: 0 }) );
+  addPuzzle(new Illusion(50, { nodeID: 88, orientation: 3 }) );
+  addPuzzle(new Illusion(51, { nodeID: 33, orientation: 2 }) );
   addPuzzle(new Illusion(52, { nodeID: 9, orientation: 1 }));
 
   addPuzzle(new TimeDoor(54, {}));
-
+  
   return Object.freeze(puzzlesByID);
 })();

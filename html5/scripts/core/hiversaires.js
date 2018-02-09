@@ -52,7 +52,7 @@ class Hiversaires {
         puzzle instanceof SealTerminal &&
         this.game.puzzleState[puzzle.id] > 0
       ) {
-        sealsFound.push(puzzle.info.seal);
+        sealsFound.push(puzzle.seal);
       }
     }
     return sealsFound;

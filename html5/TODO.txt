@@ -5,6 +5,8 @@ Revise game state
     Clock
     Audio
     Studio
+Rename everything "template"-y
+Move interface stuff into one class
 Move more conditions and puzzle ID references into data
 Create billboard object
 Create trigger object

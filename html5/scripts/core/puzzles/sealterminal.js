@@ -1,6 +1,7 @@
 class SealTerminal extends Puzzle {
-  constructor(id, info, defaultState) {
-    super(id, info, defaultState);
+  constructor(id, seal, defaultState) {
+    super(id, {}, defaultState);
+    this.seal = seal;
   }
 
   setup() {
