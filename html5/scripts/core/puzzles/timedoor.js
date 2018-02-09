@@ -1,6 +1,6 @@
 class TimeDoor extends Door {
-  constructor(id, info, defaultState) {
-    super(id, info, defaultState);
+  constructor(id) {
+    super(id);
   }
 
   setup() {
@@ -14,7 +14,10 @@ class TimeDoor extends Door {
       (currentHours == 15 && currentMinutes == 7) ||
       hiversaires.game.userNodeID == 143
     ) {
-      hiversaires.game.puzzleState[54] = 1;
+      hiversaires.game.puzzleState.timeDoor = true;
+    }
+
+    if (hiversaires.game.puzzleState.timeDoor) {
       hiversaires.setCurrentAction(this.openDoor.bind(this));
       hiversaires.setModifier("open");
     } else {

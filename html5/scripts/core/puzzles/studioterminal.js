@@ -1,6 +1,6 @@
 class StudioTerminal extends Puzzle {
-  constructor(id, info, defaultState) {
-    super(id, info, defaultState);
+  constructor(id) {
+    super(id);
   }
 
   setup() {
@@ -10,16 +10,15 @@ class StudioTerminal extends Puzzle {
     hiversaires.templateSealInterface();
 
     const seals = hiversaires.currentSeals;
-    const containsAntechannel = seals.indexOf(Zone.antechannel) != -1;
-    const containsStones = seals.indexOf(Zone.stones) != -1;
+    const containsAntechannel = seals.includes(Zone.antechannel);
+    const containsStones = seals.includes(Zone.stones);
 
     if (containsStones && containsAntechannel) {
       // Act 4 : Antechannel + Stones in Studio
       hiversaires.setCurrentAction(
         function() {
-          hiversaires.game.puzzleState[hiversaires.currentPuzzle.id] =
-            (hiversaires.game.puzzleState[hiversaires.currentPuzzle.id] + 1) %
-            2;
+          hiversaires.game.puzzleState.studio = !hiversaires.game.puzzleState
+            .studio;
           hiversaires.music.playEffect("action_EnergyActive");
           this.templateUpdateStudioTerminal();
         }.bind(this)
@@ -32,12 +31,12 @@ class StudioTerminal extends Puzzle {
 
   templateUpdateStudioTerminal() {
     const seals = hiversaires.currentSeals;
-    const containsAntechannel = seals.indexOf(Zone.antechannel) != -1;
-    const containsStones = seals.indexOf(Zone.stones) != -1;
+    const containsAntechannel = seals.includes(Zone.antechannel);
+    const containsStones = seals.includes(Zone.stones);
 
     let modifier = null;
 
-    if (hiversaires.game.puzzleState[this.id] == 1) {
+    if (hiversaires.game.puzzleState.studio) {
       modifier = "unlocked";
       hiversaires.game.userChapter = Chapter.act5;
       hiversaires.updateMusic();

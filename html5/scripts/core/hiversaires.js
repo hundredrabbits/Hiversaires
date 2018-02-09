@@ -46,16 +46,7 @@ class Hiversaires {
   }
 
   get currentSeals() {
-    let sealsFound = [];
-    for (let puzzle of puzzlesByID.values()) {
-      if (
-        puzzle instanceof SealTerminal &&
-        this.game.puzzleState[puzzle.id] > 0
-      ) {
-        sealsFound.push(puzzle.seal);
-      }
-    }
-    return sealsFound;
+    return this.game.puzzleState.seals;
   }
 
   setCurrentAction(value) {
@@ -206,7 +197,7 @@ class Hiversaires {
   templateClockInterface() {
     this.stage.setImage(
       "interfaceDimclock",
-      "interface/clock." + this.game.puzzleState[1] + ".svg"
+      "interface/clock." + this.game.puzzleState.clock + ".svg"
     );
     this.stage.setAlpha("interfaceDimclock", 1);
     this.stage.fadeOut(this.stage.billboard("interfaceDimclock"), 0.5, 3);
@@ -262,37 +253,6 @@ class Hiversaires {
     this.stage.fadeOut(this.stage.billboard("interfaceFuse1"), 0.5, 3);
   }
 
-  checkConditions(conditions) {
-    for (let condition of conditions) {
-      let state = this.game.puzzleState[condition.puzzleID];
-      let passes = true;
-      switch (condition.type) {
-        case ConditionType.equals:
-          passes = state == condition.value;
-          break;
-        case ConditionType.doesNotEqual:
-          passes = state != condition.value;
-          break;
-        case ConditionType.isLessThan:
-          passes = state < condition.value;
-          break;
-        case ConditionType.isLessThanOrEqualTo:
-          passes = state <= condition.value;
-          break;
-        case ConditionType.isGreaterThan:
-          passes = state > condition.value;
-          break;
-        case ConditionType.isGreaterThanOrEqualTo:
-          passes = state >= condition.value;
-          break;
-      }
-      if (!passes) {
-        return false;
-      }
-    }
-    return true;
-  }
-
   templateEnergyAlert() {
     this.stage.setAlpha("interfaceFuseAlert", 1.0);
     this.stage.fadeOut(this.stage.billboard("interfaceFuseAlert"), 1.5, 0.5);
@@ -301,9 +261,7 @@ class Hiversaires {
   templateAudioInterface() {
     this.stage.setImage(
       "interfaceAudio",
-      "interface/music." +
-        (this.game.puzzleState[35] == 1 ? "on" : "off") +
-        ".svg"
+      "interface/music." + (this.game.puzzleState.audio ? "on" : "off") + ".svg"
     );
 
     this.stage.setAlpha("interfaceAudio", 1);
@@ -362,8 +320,8 @@ class Hiversaires {
     for (let puzzle of puzzlesByID.values()) {
       if (
         puzzle instanceof Illusion &&
-        puzzle.info.nodeID == this.game.userNodeID &&
-        puzzle.info.orientation == this.game.userOrientation
+        puzzle.nodeID == this.game.userNodeID &&
+        puzzle.orientation == this.game.userOrientation
       ) {
         puzzle.appear();
         break;
@@ -372,17 +330,9 @@ class Hiversaires {
   }
 
   illusionInterface() {
-    let illusionCount = 0;
-
-    for (let puzzle of puzzlesByID.values()) {
-      if (puzzle instanceof Illusion) {
-        illusionCount += this.game.puzzleState[puzzle.id];
-      }
-    }
-
     this.stage.setImage(
       "interfaceIllusion",
-      "interface/illusion." + illusionCount + ".svg"
+      "interface/illusion." + this.game.puzzleState.illusions.length + ".svg"
     );
     this.stage.setAlpha("interfaceIllusion", 1);
     this.stage.fadeOut(this.stage.billboard("interfaceIllusion"), 0.5, 3);

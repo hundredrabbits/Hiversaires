@@ -1,14 +1,14 @@
 class SecretTerminal extends Puzzle {
-  constructor(id, info, defaultState) {
-    super(id, info, defaultState);
+  constructor(id) {
+    super(id);
   }
 
   setup() {
     hiversaires.templateVignette();
     hiversaires.setCurrentAction(
       function() {
-        hiversaires.game.puzzleState[hiversaires.currentPuzzle.id] =
-          (hiversaires.game.puzzleState[hiversaires.currentPuzzle.id] + 1) % 2;
+        hiversaires.game.puzzleState.secret = !hiversaires.game.puzzleState
+          .secret;
         this.templateSecretUpdate();
       }.bind(this)
     );
@@ -17,7 +17,7 @@ class SecretTerminal extends Puzzle {
   }
 
   templateSecretUpdate() {
-    if (hiversaires.game.puzzleState[hiversaires.currentPuzzle.id] == 1) {
+    if (hiversaires.game.puzzleState.secret) {
       hiversaires.setModifier("on");
       hiversaires.showModifier(0.3, 0.1);
     } else {

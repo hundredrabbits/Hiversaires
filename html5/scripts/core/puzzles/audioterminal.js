@@ -1,14 +1,14 @@
 class AudioTerminal extends Puzzle {
-  constructor(id, info, defaultState) {
-    super(id, info, defaultState);
+  constructor(id) {
+    super(id);
   }
 
   setup() {
     hiversaires.templateVignette();
     hiversaires.setCurrentAction(
       function() {
-        hiversaires.game.puzzleState[hiversaires.currentPuzzle.id] =
-          (hiversaires.game.puzzleState[hiversaires.currentPuzzle.id] + 1) % 2;
+        hiversaires.game.puzzleState.audio = !hiversaires.game.puzzleState
+          .audio;
         this.templateAudioUpdate();
       }.bind(this)
     );
@@ -18,7 +18,7 @@ class AudioTerminal extends Puzzle {
 
   templateAudioUpdate() {
     hiversaires.templateAudioInterface();
-    if (hiversaires.game.puzzleState[hiversaires.currentPuzzle.id] == 1) {
+    if (hiversaires.game.puzzleState.audio) {
       hiversaires.setModifier("on");
       hiversaires.showModifier(0.3, 0.1);
       hiversaires.music.volume = 1;

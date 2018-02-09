@@ -1,6 +1,6 @@
 class EnergyTerminal extends Puzzle {
-  constructor(id, info, defaultState) {
-    super(id, info, defaultState);
+  constructor(id) {
+    super(id);
   }
 
   setup() {
@@ -23,11 +23,13 @@ class EnergyTerminal extends Puzzle {
   templateEnergyUpdate() {
     hiversaires.setCurrentAction(
       function() {
-        if (hiversaires.game.puzzleState[hiversaires.currentPuzzle.id] == 1) {
-          hiversaires.game.puzzleState[hiversaires.currentPuzzle.id] = 0;
+        let index = hiversaires.game.puzzleState.fuses.indexOf(this.id);
+
+        if (index != -1) {
+          hiversaires.game.puzzleState.fuses.splice(index, 1);
           hiversaires.game.userEnergy += 1;
         } else if (hiversaires.game.userEnergy > 0) {
-          hiversaires.game.puzzleState[hiversaires.currentPuzzle.id] = 1;
+          hiversaires.game.puzzleState.fuses.push(this.id);
           hiversaires.game.userEnergy -= 1;
         } else {
           hiversaires.templateEnergyAlert();
@@ -41,7 +43,7 @@ class EnergyTerminal extends Puzzle {
 
   templateUpdateFuse() {
     hiversaires.setModifier(
-      hiversaires.game.puzzleState[hiversaires.currentPuzzle.id] == 1
+      hiversaires.game.puzzleState.fuses.indexOf(this.id) != -1
         ? "filled"
         : "empty"
     );

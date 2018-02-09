@@ -1,6 +1,6 @@
 class SealTerminal extends Puzzle {
-  constructor(id, seal, defaultState) {
-    super(id, {}, defaultState);
+  constructor(id, seal) {
+    super(id, {});
     this.seal = seal;
   }
 
@@ -12,16 +12,16 @@ class SealTerminal extends Puzzle {
 
     hiversaires.setCurrentAction(
       function() {
-        if (
-          hiversaires.game.puzzleState[hiversaires.currentPuzzle.id] == 1 ||
-          hiversaires.currentSeals.length < 2
-        ) {
-          if (hiversaires.game.puzzleState[hiversaires.currentPuzzle.id] != 1) {
+        let seals = hiversaires.game.puzzleState.seals;
+        let index = seals.indexOf(this.seal);
+
+        if (index != -1 || seals.length < 2) {
+          if (index == -1) {
             hiversaires.music.playEffect("action_SealActive");
-            hiversaires.game.puzzleState[hiversaires.currentPuzzle.id] = 1;
+            seals.push(this.seal);
           } else {
             hiversaires.music.playEffect("action_SealInactive");
-            hiversaires.game.puzzleState[hiversaires.currentPuzzle.id] = 0;
+            seals.splice(index, 1);
           }
         } else {
           hiversaires.music.playEffect("action_EnergyStack");
@@ -39,12 +39,11 @@ class SealTerminal extends Puzzle {
 
   templateSealUpdate() {
     hiversaires.templateSealInterface();
-    hiversaires.stage.fadeOut(hiversaires.stage.billboard("overlay"), 0.5, 0);
-    if (hiversaires.game.puzzleState[hiversaires.currentPuzzle.id] == 1) {
+    if (hiversaires.game.puzzleState.seals.includes(this.seal)) {
       hiversaires.setModifier("seal." + hiversaires.currentSeals.length);
-      hiversaires.showModifier(0.1, 0.2);
+      hiversaires.showModifier(0.1, 0.1);
     } else {
-      hiversaires.hideModifier(0.1, 0.2);
+      hiversaires.hideModifier(0.2, 0.2);
     }
   }
 }

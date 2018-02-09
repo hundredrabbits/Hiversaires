@@ -29,7 +29,7 @@ class Game {
     }
 
     let saveObject = {
-      userSettings: {
+      userState: {
         userNodeID: this.userNodeID,
         userOrientation: this.userOrientation,
         userChapter: this.userChapter,
@@ -38,21 +38,8 @@ class Game {
       puzzleState: this.puzzleState
     };
 
-    this.derivePuzzleState2();
-
-    let saveObject2 = {
-      userState: {
-        userNodeID: this.userNodeID,
-        userOrientation: this.userOrientation,
-        userChapter: this.userChapter,
-        userEnergy: this.userEnergy
-      },
-      puzzleState: this.newState
-    };
-
     if (!DEBUG_DONT_SAVE) {
       localStorage.save = JSON.stringify(saveObject);
-      localStorage.save2 = JSON.stringify(saveObject2);
     }
 
     console.log("saved state.");
@@ -68,35 +55,31 @@ class Game {
 
     if (saveObject != null) {
       // Settings
-      let userSettings = saveObject.userSettings;
-      this.userNodeID = userSettings.userNodeID;
-      this.userOrientation = userSettings.userOrientation;
-      this.userChapter = userSettings.userChapter;
-      this.userEnergy = userSettings.userEnergy;
+      let userState = saveObject.userState;
+      this.userNodeID = userState.userNodeID;
+      this.userOrientation = userState.userOrientation;
+      this.userChapter = userState.userChapter;
+      this.userEnergy = userState.userEnergy;
+      this.sessionKillCount = 0;
 
       // Storage
       this.puzzleState = saveObject.puzzleState;
 
-      this.derivePuzzleState2();
-
       console.log("loaded state.");
 
-      console.log(this.newState);
+      console.log(this.puzzleState);
     } else {
       // New Game
 
-      this.puzzleState = [];
-      for (let puzzle of puzzlesByID.values()) {
-        this.puzzleState[puzzle.id] = puzzle.defaultState;
-      }
-
-      this.newState = {
+      this.puzzleState = {
         seals: [],
         fuses: [31, 38, 39],
         illusions: [],
         clock: 0,
         audio: true,
         studio: false,
+        secret: false,
+        timeDoor: false,
         maze: { x: 15, y: 0 }
       };
 
@@ -106,40 +89,6 @@ class Game {
       this.userEnergy = 0;
 
       console.log("created state.");
-    }
-  }
-
-  derivePuzzleState2() {
-    this.newState = {
-      seals: [],
-      fuses: [],
-      illusions: [],
-      clock: null,
-      audio: null,
-      studio: null,
-      maze: {}
-    };
-
-    for (let puzzle of puzzlesByID.values()) {
-      let state = this.puzzleState[puzzle.id];
-
-      if (puzzle instanceof SealTerminal) {
-        if (state == 1) {
-          this.newState.seals.push(puzzle.seal); // seal
-        }
-      } else if (puzzle instanceof ClockTerminal) {
-        this.newState.clock = state;
-      } else if (puzzle instanceof EnergyTerminal) {
-        if (state == 1) {
-          this.newState.fuses.push(puzzle.id);
-        }
-      } else if (puzzle instanceof StudioTerminal) {
-        this.newState.studio = state == 1;
-      } else if (puzzle instanceof AudioTerminal) {
-        this.newState.audio = state == 1;
-      } else if (puzzle instanceof EntenteTerminal) {
-        this.newState.maze[puzzle.axis] = state; // axis
-      }
     }
   }
 

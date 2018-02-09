@@ -1,7 +1,11 @@
 class Door extends Puzzle {
-  constructor(id, info, defaultState, fadeDuration = 0) {
-    super(id, info, defaultState);
+  constructor(id, fadeDuration = 0) {
+    super(id);
     this.fadeDuration = fadeDuration;
+  }
+
+  isUnlocked() {
+    return false;
   }
 
   openDoor() {
@@ -32,7 +36,7 @@ class Door extends Puzzle {
       hiversaires.game.userNodeID = 22;
     } else if (
       hiversaires.game.userNodeID == 20 &&
-      hiversaires.game.puzzleState[37] > 0
+      hiversaires.game.puzzleState.secret
     ) {
       hiversaires.game.userNodeID = 116;
       hiversaires.game.userOrientation = 1;
@@ -50,8 +54,8 @@ class Door extends Puzzle {
       hiversaires.game.userOrientation = 0;
     } else if (
       hiversaires.game.userNodeID == 39 &&
-      hiversaires.game.puzzleState[5] == 1 &&
-      hiversaires.game.puzzleState[31] == 1
+      hiversaires.game.puzzleState.studio &&
+      hiversaires.game.puzzleState.fuses.includes(31)
     ) {
       hiversaires.game.userNodeID = 34;
     } else if (hiversaires.game.userNodeID == 39) {

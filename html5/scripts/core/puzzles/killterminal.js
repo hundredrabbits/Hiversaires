@@ -1,13 +1,13 @@
 class KillTerminal extends Puzzle {
-  constructor(id, info, defaultState) {
-    super(id, info, defaultState);
+  constructor(id) {
+    super(id);
   }
 
   setup() {
     hiversaires.setCurrentAction(
       function() {
-        hiversaires.game.puzzleState[hiversaires.currentPuzzle.id]++;
-        if (hiversaires.game.puzzleState[hiversaires.currentPuzzle.id] > 50) {
+        hiversaires.game.sessionKillCount++;
+        if (hiversaires.game.sessionKillCount > 50) {
           hiversaires.game.wipePlayerProgress();
           hiversaires.newGame();
         }

@@ -1,6 +1,6 @@
 class SecretDoor extends Door {
-  constructor(id, info, defaultState) {
-    super(id, info, defaultState);
+  constructor(id) {
+    super(id);
   }
 
   setup() {
@@ -8,9 +8,7 @@ class SecretDoor extends Door {
     hiversaires.stage.setHidden(hiversaires.stage.billboard("overlay"), true);
     hiversaires.music.playEffect("action_DoorInit");
 
-    if (
-      hiversaires.checkConditions(hiversaires.currentPuzzle.info.conditions)
-    ) {
+    if (hiversaires.game.puzzleState.secret) {
       hiversaires.setCurrentAction(this.walkThroughDoor.bind(this));
     }
   }

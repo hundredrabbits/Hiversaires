@@ -1,48 +1,30 @@
 class Entente extends Puzzle {
-  constructor(id, info, defaultState) {
-    super(id, info, defaultState);
+  constructor(id) {
+    super(id);
   }
 
   setup() {
-    if (
-      hiversaires.currentPuzzle != null &&
-      hiversaires.currentPuzzle.id == 43
-    ) {
-      console.log("templateEntentePart1Incr");
-      this.templateEntentePart1Incr();
-    }
-    if (
-      hiversaires.currentPuzzle != null &&
-      hiversaires.currentPuzzle.id == 42
-    ) {
-      console.log("templateEntentePart1Decr");
-      this.templateEntentePart1Decr();
-    }
-    if (
-      hiversaires.currentPuzzle != null &&
-      hiversaires.currentPuzzle.id == 45
-    ) {
-      console.log("templateEntentePart2Incr");
-      this.templateEntentePart2Incr();
-    }
-    if (
-      hiversaires.currentPuzzle != null &&
-      hiversaires.currentPuzzle.id == 44
-    ) {
-      console.log("templateEntentePart2Decr");
-      this.templateEntentePart2Decr();
-    }
-    if (
-      hiversaires.currentPuzzle != null &&
-      hiversaires.currentPuzzle.id == 46
-    ) {
-      console.log("templateEntentePart2Exit");
-      this.templateEntentePart2Exit();
+    switch (this.id) {
+      case 43:
+        this.templateEntenteXIncr();
+        break;
+      case 42:
+        this.templateEntenteXDecr();
+        break;
+      case 45:
+        this.templateEntenteYIncr();
+        break;
+      case 44:
+        this.templateEntenteYDecr();
+        break;
+      case 46:
+        this.templateEntenteYExit();
+        break;
     }
   }
 
-  templateEntentePart1Incr() {
-    if (hiversaires.game.puzzleState[23] == 17) {
+  templateEntenteXIncr() {
+    if (this.mazeX == 17) {
       hiversaires.game.userNodeID = 93;
       hiversaires.actionCheck();
       hiversaires.moveCheck();
@@ -50,8 +32,8 @@ class Entente extends Puzzle {
     } else {
       hiversaires.game.userNodeID = 89;
 
-      if (hiversaires.game.puzzleState[23] < 21) {
-        hiversaires.game.puzzleState[23] = hiversaires.game.puzzleState[23] + 3;
+      if (this.mazeX < 21) {
+        this.mazeX = this.mazeX + 3;
       }
 
       hiversaires.actionCheck();
@@ -60,11 +42,11 @@ class Entente extends Puzzle {
     }
   }
 
-  templateEntentePart1Decr() {
+  templateEntenteXDecr() {
     hiversaires.game.userNodeID = 103;
 
-    if (hiversaires.game.puzzleState[23] > 14) {
-      hiversaires.game.puzzleState[23] = hiversaires.game.puzzleState[23] - 1;
+    if (this.mazeX > 14) {
+      this.mazeX = this.mazeX - 1;
     }
 
     hiversaires.actionCheck();
@@ -72,12 +54,12 @@ class Entente extends Puzzle {
     hiversaires.actionReset();
   }
 
-  templateEntentePart2Incr() {
+  templateEntenteYIncr() {
     hiversaires.game.userNodeID = 94;
     hiversaires.game.userOrientation = 2;
 
-    if (hiversaires.game.puzzleState[24] < 23) {
-      hiversaires.game.puzzleState[24] = hiversaires.game.puzzleState[24] + 4;
+    if (this.mazeY < 23) {
+      this.mazeY = this.mazeY + 4;
     }
 
     hiversaires.actionCheck();
@@ -85,12 +67,12 @@ class Entente extends Puzzle {
     hiversaires.actionReset();
   }
 
-  templateEntentePart2Decr() {
+  templateEntenteYDecr() {
     hiversaires.game.userNodeID = 95;
     hiversaires.game.userOrientation = 2;
 
-    if (hiversaires.game.puzzleState[24] > 14) {
-      hiversaires.game.puzzleState[24] = hiversaires.game.puzzleState[24] - 1;
+    if (this.mazeY > 14) {
+      this.mazeY = this.mazeY - 1;
     }
 
     hiversaires.actionCheck();
@@ -98,11 +80,8 @@ class Entente extends Puzzle {
     hiversaires.actionReset();
   }
 
-  templateEntentePart2Exit() {
-    if (
-      hiversaires.game.puzzleState[23] == 17 &&
-      hiversaires.game.puzzleState[24] == 17
-    ) {
+  templateEntenteYExit() {
+    if (this.mazeX == 17 && this.mazeY == 17) {
       hiversaires.game.userNodeID = 107;
       hiversaires.game.userOrientation = 3;
 
@@ -116,5 +95,21 @@ class Entente extends Puzzle {
       hiversaires.moveCheck();
       hiversaires.actionReset();
     }
+  }
+
+  get mazeX() {
+    return hiversaires.game.puzzleState.maze.x;
+  }
+
+  set mazeX(value) {
+    hiversaires.game.puzzleState.maze.x = value;
+  }
+
+  get mazeY() {
+    return hiversaires.game.puzzleState.maze.y;
+  }
+
+  set mazeY(value) {
+    hiversaires.game.puzzleState.maze.y = value;
   }
 }

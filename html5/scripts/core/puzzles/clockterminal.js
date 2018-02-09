@@ -1,6 +1,6 @@
 class ClockTerminal extends Puzzle {
-  constructor(id, info, defaultState) {
-    super(id, info, defaultState);
+  constructor(id) {
+    super(id);
   }
 
   setup() {
@@ -8,8 +8,8 @@ class ClockTerminal extends Puzzle {
 
     hiversaires.setCurrentAction(
       function() {
-        hiversaires.game.puzzleState[hiversaires.currentPuzzle.id] =
-          (hiversaires.game.puzzleState[hiversaires.currentPuzzle.id] + 1) % 3;
+        hiversaires.game.puzzleState.clock =
+          (hiversaires.game.puzzleState.clock + 1) % 3;
         hiversaires.music.playEffect("action_EnergyActive");
         this.templateClockUpdate();
       }.bind(this)
@@ -25,7 +25,7 @@ class ClockTerminal extends Puzzle {
 
     hiversaires.stage.setImage(
       "clockFace",
-      "interface/dimclock.state" + hiversaires.game.puzzleState[1] + ".svg"
+      "interface/dimclock.state" + hiversaires.game.puzzleState.clock + ".svg"
     );
 
     hiversaires.stage.fadeIn(

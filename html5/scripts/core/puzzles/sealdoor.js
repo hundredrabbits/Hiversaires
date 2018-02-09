@@ -1,6 +1,7 @@
 class SealDoor extends Door {
-  constructor(id, info, defaultState, fadeDuration) {
-    super(id, info, defaultState, fadeDuration);
+  constructor(id, seals, fadeDuration) {
+    super(id, fadeDuration);
+    this.seals = seals;
   }
 
   setup() {
@@ -12,11 +13,11 @@ class SealDoor extends Door {
     hiversaires.templateSealInterface();
 
     const seals = hiversaires.currentSeals;
-    const containsForest = seals.indexOf(Zone.forest) != -1;
-    const containsAntechannel = seals.indexOf(Zone.antechannel) != -1;
-    const containsStones = seals.indexOf(Zone.stones) != -1;
-    const containsRainre = seals.indexOf(Zone.rainre) != -1;
-    const containsMetamondst = seals.indexOf(Zone.metamondst) != -1;
+    const containsForest = seals.includes(Zone.forest);
+    const containsAntechannel = seals.includes(Zone.antechannel);
+    const containsStones = seals.includes(Zone.stones);
+    const containsRainre = seals.includes(Zone.rainre);
+    const containsMetamondst = seals.includes(Zone.metamondst);
 
     let modifier = null;
 

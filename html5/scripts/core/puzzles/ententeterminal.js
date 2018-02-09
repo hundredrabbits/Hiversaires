@@ -1,34 +1,28 @@
 class EntenteTerminal extends Puzzle {
-  constructor(id, axis, defaultState) {
-    super(id, {}, defaultState);
+  constructor(id, axis) {
+    super(id, {});
     this.axis = axis;
   }
 
   setup() {
     let targetGraphic = "";
 
-    if (
-      hiversaires.currentPuzzle != null &&
-      hiversaires.currentPuzzle.id == 23
-    ) {
-      if (hiversaires.game.puzzleState[23] > 17) {
+    let axisValue = hiversaires.game.puzzleState.maze[this.axis];
+
+    if (this.axis == "x") {
+      if (axisValue > 17) {
         targetGraphic = "Left";
-      } else if (hiversaires.game.puzzleState[23] < 17) {
+      } else if (axisValue < 17) {
         targetGraphic = "Right";
-      } else if (hiversaires.game.puzzleState[23] == 17) {
+      } else if (axisValue == 17) {
         targetGraphic = "Right";
       }
-    }
-
-    if (
-      hiversaires.currentPuzzle != null &&
-      hiversaires.currentPuzzle.id == 24
-    ) {
-      if (hiversaires.game.puzzleState[24] > 17) {
+    } else if (this.axis == "y") {
+      if (axisValue > 17) {
         targetGraphic = "Left2";
-      } else if (hiversaires.game.puzzleState[24] < 17) {
+      } else if (axisValue < 17) {
         targetGraphic = "Right2";
-      } else if (hiversaires.game.puzzleState[24] == 17) {
+      } else if (axisValue == 17) {
         targetGraphic = "Straight";
       }
     }
