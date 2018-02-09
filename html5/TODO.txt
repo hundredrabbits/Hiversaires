@@ -1,32 +1,16 @@
-Carefully migrate node_old references
-    Clean up these methods, in perhaps this order
-    Check templateUpdateNode for relevant fade-ins
-    
-    templateEntenteTerminal
-    templateEntente
-    templateEntentePart1Incr
-    templateEntentePart1Decr
-    templateEntentePart2Incr
-    templateEntentePart2Decr
-    templateEntentePart2Exit
-    templateSealDoor
-    templateSealUpdate
-    templateUpdateStudioTerminal
-    actionTemplate
-
-Make walkThroughDoor data-driven
-    A door is a puzzle with a condition, a secret and one or two nodeIDs
-
-Create puzzle object
-    A puzzle has a state (loaded/saved) and a performAction() method
-    Actions are dictated by puzzles. setCurrentAction should be made into a getter that discovers the action of a puzzle subject
-    There should be a puzzle subclass for every puzzle type
-    Templates should go into their corresponding puzzles
+Disperse puzzle classes into individual files
+Relegate hh calls in puzzle
+Revise game state
+    Seals
+    Fuses
+    Illusions
+    Clock
+    Audio
+    Studio
+Move more conditions and puzzle ID references into data
 Create billboard object
 Create trigger object
-
-Organize puzzles by type and nodes by zone
-    There's no reason their IDs are integers
+Give puzzles and zones better IDs
 
 A puzzle should be able to report all the different assets that might be needed for it
     Then we can load it preemptively

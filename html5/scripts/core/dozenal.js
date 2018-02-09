@@ -72,10 +72,7 @@ class Dozenal {
   get currentSeals() {
     let sealsFound = [];
     for (let puzzle of puzzlesByID.values()) {
-      if (
-        puzzle.type == PuzzleType.sealTerminal &&
-        this.puzzleState[puzzle.id] > 0
-      ) {
+      if (puzzle instanceof SealTerminal && this.puzzleState[puzzle.id] > 0) {
         sealsFound.push(puzzle.info.seal);
       }
     }
@@ -129,7 +126,10 @@ class Dozenal {
   moveCheck() {
     this.actionReset();
 
-    this.setHidden(this.trigger("moveForward"), this.currentSubject.type == SubjectType.none);
+    this.setHidden(
+      this.trigger("moveForward"),
+      this.currentSubject.type == SubjectType.none
+    );
 
     this.setImage(
       "viewMain",
@@ -222,10 +222,9 @@ class Dozenal {
 
     this.setCurrentAction(null);
 
-    this.isFuseAction = false;
-
     if (this.currentPuzzle != null) {
-      this.actionTemplate();
+      this.actionReset();
+      this.currentPuzzle.setup(this);
     }
   }
 
@@ -234,129 +233,8 @@ class Dozenal {
       return;
     }
     if (this.currentAction != null) {
-      this.currentAction();
+      this.currentAction(this);
     }
-  }
-
-  openDoor() {
-    this.setHidden(this.billboard("overlay"), false);
-    this.setCurrentAction(this.walkThroughDoor);
-
-    if (this.puzzleState[this.currentPuzzle.id] == 1) {
-      this.templateUpdateNode(18, "0516", 2);
-      this.templateUpdateNode(18, "0529", 31);
-      this.templateUpdateNode(13, "0517", 2);
-      this.templateUpdateNode(55, "0539", 39);
-      this.templateUpdateNode(69, "0518", 18);
-      this.templateUpdateNode(39, "0519", 10);
-      this.templateUpdateNode(77, "0520", 27);
-      this.templateUpdateNode(84, "0527", 47);
-      this.templateUpdateNode(101, "0532", 38);
-      this.templateUpdateNode(113, "0551", 36);
-      this.templateUpdateNode(142, "0576", 54);
-      this.templateUpdateNode(143, "0577", 54);
-    } else {
-      this.templateUpdateNode(18, "0521", 2);
-      this.templateUpdateNode(18, "0530", 31);
-      this.templateUpdateNode(13, "0522", 2);
-      this.templateUpdateNode(55, "0540", 39);
-      this.templateUpdateNode(69, "0523", 18);
-      this.templateUpdateNode(39, "0524", 10);
-      this.templateUpdateNode(77, "0525", 27);
-      this.templateUpdateNode(84, "0526", 47);
-      this.templateUpdateNode(101, "0533", 38);
-      this.templateUpdateNode(113, "0552", 36);
-      this.templateUpdateNode(142, "0571", 54);
-      this.templateUpdateNode(143, "0573", 54);
-    }
-  }
-
-  openEnergyDoor() {
-    this.openDoor();
-    this.templateEnergyUpdate();
-  }
-
-  walkThroughDoor() {
-    // Warp Action
-
-    hiversaires.music.playEffect("action_DoorActive");
-
-    if (this.userNodeID == 1) {
-      this.userNodeID = 103;
-    } else if (this.userNodeID == 11) {
-      this.userNodeID = 48;
-      this.userOrientation = 2;
-    } else if (this.userNodeID == 13) {
-      this.userNodeID = 12;
-    } else if (this.userNodeID == 12) {
-      this.userNodeID = 13;
-    } else if (this.userNodeID == 16) {
-      this.userNodeID = 22;
-    } else if (this.userNodeID == 20 && this.puzzleState[37] > 0) {
-      this.userNodeID = 116;
-      this.userOrientation = 1;
-    } else if (this.userNodeID == 23) {
-      // Fold Gate
-      this.userNodeID = 22;
-    } else if (this.userNodeID == 25) {
-      this.userNodeID = 31;
-      this.userOrientation = 2;
-    } else if (this.userNodeID == 27) {
-      this.userNodeID = 32;
-      this.userOrientation = 1;
-    } else if (this.userNodeID == 35) {
-      this.userNodeID = 31;
-      this.userOrientation = 0;
-    } else if (
-      this.userNodeID == 39 &&
-      this.puzzleState[5] == 2 &&
-      this.puzzleState[31] == 1
-    ) {
-      this.userNodeID = 34;
-    } else if (this.userNodeID == 39) {
-      this.userNodeID = 45;
-    } else if (this.userNodeID == 46) {
-      this.userNodeID = 85;
-      this.userOrientation = 2;
-    } else if (this.userNodeID == 48) {
-      this.userNodeID = 11;
-      this.userOrientation = 2;
-    } else if (this.userNodeID == 52) {
-      this.userNodeID = 32;
-      this.userOrientation = 3;
-    } else if (this.userNodeID == 61) {
-      this.userNodeID = 72;
-    } else if (this.userNodeID == 62) {
-      this.userNodeID = 77;
-    } else if (this.userNodeID == 69) {
-      this.userNodeID = 72;
-    } else if (this.userNodeID == 76) {
-      this.userNodeID = 87;
-    } else if (this.userNodeID == 77) {
-      this.userNodeID = 62;
-    } else if (this.userNodeID == 79) {
-      this.userNodeID = 112;
-    } else if (this.userNodeID == 85) {
-      this.userNodeID = 46;
-      this.userOrientation = 0;
-    } else if (this.userNodeID == 87) {
-      this.userNodeID = 76;
-    } else if (this.userNodeID == 112) {
-      this.userNodeID = 79;
-    } else if (this.userNodeID == 113) {
-      this.userNodeID = 50;
-    } else if (this.userNodeID == 142) {
-      this.userNodeID = 143;
-      this.userOrientation = 3;
-    } else if (this.userNodeID == 143) {
-      this.userNodeID = 142;
-      this.userOrientation = 1;
-    }
-
-    // Easter Eggs
-
-    this.actionCheck();
-    this.moveCheck();
   }
 
   actionReset() {
@@ -378,146 +256,6 @@ class Dozenal {
     this.setCurrentAction(null);
   }
 
-  actionTemplate() {
-    this.actionReset();
-
-    switch (this.currentPuzzle.type) {
-      case PuzzleType.clockTerminal:
-        this.templateClockTerminal();
-        break;
-      case PuzzleType.sealTerminal:
-        this.templateSealTerminal();
-        break;
-      case PuzzleType.secretTerminal:
-        this.templateSecretTerminal();
-        break;
-      case PuzzleType.energyTerminal:
-        this.templateEnergyTerminal();
-        break;
-      case PuzzleType.sealDoor:
-        this.templateSealDoor();
-        break;
-      case PuzzleType.secretDoor:
-        this.templateSecretDoor();
-        break;
-      case PuzzleType.energyDoor:
-        this.templateEnergyDoor();
-        break;
-      case PuzzleType.clockDoor:
-        this.templateClockDoor();
-        break;
-      case PuzzleType.progressTerminal:
-        this.templateProgressTerminal();
-        break;
-      case PuzzleType.audioTerminal:
-        this.templateAudioTerminal();
-        break;
-      case PuzzleType.killTerminal:
-        this.templateKillTerminal();
-        break;
-      case PuzzleType.endgameDoor:
-        this.templateEndgameDoor();
-        break;
-      case PuzzleType.endgameCredit:
-        this.templateEndgameCredit();
-        break;
-      case PuzzleType.timeDoor:
-        this.templateTimeDoor();
-        break;
-      case PuzzleType.ententeTerminal:
-        this.templateEntenteTerminal();
-        break;
-      case PuzzleType.entente:
-        this.templateEntente();
-        break;
-    }
-  }
-
-  templateEntenteTerminal() {
-    let targetGraphic = "";
-
-    if (this.currentPuzzle != null && this.currentPuzzle.id == 23) {
-      if (this.puzzleState[23] > 17) {
-        targetGraphic = "Left";
-      } else if (this.puzzleState[23] < 17) {
-        targetGraphic = "Right";
-      } else if (this.puzzleState[23] == 17) {
-        targetGraphic = "Right";
-      }
-    }
-
-    if (this.currentPuzzle != null && this.currentPuzzle.id == 24) {
-      if (this.puzzleState[24] > 17) {
-        targetGraphic = "Left2";
-      } else if (this.puzzleState[24] < 17) {
-        targetGraphic = "Right2";
-      } else if (this.puzzleState[24] == 17) {
-        targetGraphic = "Straight";
-      }
-    }
-
-    this.setImage(
-      "ententeScreen",
-      "interface/entente" + targetGraphic + ".svg"
-    );
-    this.fadeIn(this.billboard("ententeScreen"), 1, 0);
-  }
-
-  templateEntente() {
-    if (this.currentPuzzle != null && this.currentPuzzle.id == 43) {
-      console.log("templateEntentePart1Incr");
-      this.templateEntentePart1Incr();
-    }
-    if (this.currentPuzzle != null && this.currentPuzzle.id == 42) {
-      console.log("templateEntentePart1Decr");
-      this.templateEntentePart1Decr();
-    }
-    if (this.currentPuzzle != null && this.currentPuzzle.id == 45) {
-      console.log("templateEntentePart2Incr");
-      this.templateEntentePart2Incr();
-    }
-    if (this.currentPuzzle != null && this.currentPuzzle.id == 44) {
-      console.log("templateEntentePart2Decr");
-      this.templateEntentePart2Decr();
-    }
-    if (this.currentPuzzle != null && this.currentPuzzle.id == 46) {
-      console.log("templateEntentePart2Exit");
-      this.templateEntentePart2Exit();
-    }
-  }
-
-  templateTimeDoor() {
-    this.templateVignette();
-
-    const now = new Date(Date.now());
-    const currentHours = now.getHours();
-    const currentMinutes = now.getMinutes();
-
-    if ((currentHours == 15 && currentMinutes == 7) || this.userNodeID == 143) {
-      this.puzzleState[54] = 1;
-      this.templateUpdateDoorknob(142, 143);
-    } else {
-      console.log("Door locked, wait for time.");
-    }
-
-    console.log("Current Time:", currentHours, currentMinutes);
-  }
-
-  templateClockTerminal() {
-    this.templateVignette();
-
-    this.setCurrentAction(function() {
-      this.puzzleState[this.currentPuzzle.id] =
-        (this.puzzleState[this.currentPuzzle.id] + 1) % 3;
-      hiversaires.music.playEffect("action_EnergyActive");
-      this.templateClockUpdate();
-    });
-
-    hiversaires.music.playEffect("action_EnergyInit");
-
-    this.templateClockUpdate();
-  }
-
   templateClockInterface() {
     this.setImage(
       "interfaceDimclock",
@@ -527,65 +265,9 @@ class Dozenal {
     this.fadeOut(this.billboard("interfaceDimclock"), 0.5, 3);
   }
 
-  templateClockDoor() {
-    this.templateVignette();
-    this.setHidden(this.billboard("overlay"), true);
-    this.templateClockInterface();
-    hiversaires.music.playEffect("action_DoorInit");
-    if (this.checkConditions(this.currentPuzzle.info.conditions)) {
-      this.setCurrentAction(this.openDoor);
-      this.setModifier("open");
-    } else {
-      this.templateClockAlert();
-    }
-  }
-
-  templateClockUpdate() {
-    this.templateClockInterface();
-
-    this.setImage(
-      "clockFace",
-      "interface/dimclock.state" + this.puzzleState[1] + ".svg"
-    );
-
-    this.fadeIn(this.billboard("clockShadow"), 1.5, 0.5);
-    this.fadeIn(this.billboard("clockFace"), 0.5, 0.5);
-  }
-
   templateClockAlert() {
     this.setAlpha("interfaceDimclockAlert", 1.0);
     this.fadeOut(this.billboard("interfaceDimclockAlert"), 0.5, 0.5);
-  }
-
-  templateSealTerminal() {
-    this.templateVignette();
-
-    this.setHidden(this.billboard("overlay"), false);
-    this.setAlpha("overlay", 0);
-
-    this.setCurrentAction(function() {
-      if (
-        this.puzzleState[this.currentPuzzle.id] == 1 ||
-        this.currentSeals.length < 2
-      ) {
-        if (this.puzzleState[this.currentPuzzle.id] != 1) {
-          hiversaires.music.playEffect("action_SealActive");
-          this.puzzleState[this.currentPuzzle.id] = 1;
-        } else {
-          hiversaires.music.playEffect("action_SealInactive");
-          this.puzzleState[this.currentPuzzle.id] = 0;
-        }
-      } else {
-        hiversaires.music.playEffect("action_EnergyStack");
-        this.templateSealAlert();
-        console.log("No more seal slots.");
-      }
-
-      this.templateSealUpdate();
-    });
-
-    hiversaires.music.playEffect("action_SealInit");
-    this.templateSealUpdate();
   }
 
   templateSealInterface() {
@@ -612,89 +294,9 @@ class Dozenal {
     this.fadeOut(this.billboard("interfaceSeal2"), 0.5, 3);
   }
 
-  templateSealDoor() {
-    this.templateVignette();
-
-    this.setHidden(this.billboard("overlay"), true);
-
-    hiversaires.music.playEffect("action_DoorInit");
-    this.templateSealInterface();
-
-    if (this.puzzleState[4] == 1 && this.puzzleState[13] == 1) {
-      // Act 1 : Forest + Rainre in Stones
-      if (this.userNodeID == 46 || this.userNodeID == 85) {
-        this.templateUpdateDoorknob(46, 85);
-        this.templateUpdateNode(46, "0486", 15);
-        this.templateUpdateNode(85, "0485", 15);
-        this.userChapter = Chapter.act2;
-        this.prefSave();
-      }
-    } else if (this.puzzleState[20] == 1 && this.puzzleState[13] == 1) {
-      // Act 2 : Metamondst + Rainre in Forest
-      if (this.userNodeID == 11 || this.userNodeID == 48) {
-        this.templateUpdateDoorknob(48, 11);
-        this.templateUpdateNode(11, "0487", 25);
-        this.templateUpdateNode(48, "0488", 25);
-        this.userChapter = Chapter.act3;
-        this.prefSave();
-      }
-    } else if (this.puzzleState[21] == 1 && this.puzzleState[13] == 1) {
-      // Act 3 : Forest + Rainre in Metamondst
-      if (this.userNodeID == 46 || this.userNodeID == 85) {
-        this.templateUpdateDoorknob(46, 85);
-        this.templateUpdateNode(46, "0486", 15);
-        this.templateUpdateNode(85, "0485", 15);
-        this.userChapter = Chapter.act4;
-        this.prefSave();
-      }
-    } else if (this.puzzleState[21] == 1 && this.puzzleState[12] == 1) {
-      // Act 4 : Antechannel + Stones in Studio
-      if (this.userNodeID == 19) {
-        this.setCurrentAction(function() {
-          this.puzzleState[this.currentPuzzle.id]++;
-          this.puzzleState[this.currentPuzzle.id] =
-            this.puzzleState[this.currentPuzzle.id] > 1 ? 0 : 2;
-          hiversaires.music.playEffect("action_EnergyActive");
-          this.templateUpdateStudioTerminal();
-        });
-        this.templateUpdateStudioTerminal();
-        this.prefSave();
-      }
-    } else if (this.currentPuzzle.id == 5 && this.userNodeID == 19) {
-      // Studio Terminal
-      this.templateUpdateStudioTerminal();
-    } else {
-      this.templateSealAlert();
-    }
-  }
-
-  templateSealUpdate() {
-    this.templateSealInterface();
-    this.fadeOut(this.billboard("overlay"), 0.5, 0);
-    if (this.puzzleState[this.currentPuzzle.id] == 1) {
-      this.setModifier("seal." + this.currentSeals.length);
-      this.showModifier(0.1, 0.2);
-    } else {
-      this.hideModifier(0.1, 0.2);
-    }
-  }
-
   templateSealAlert() {
     this.setAlpha("interfaceSealAlert", 1.0);
     this.fadeOut(this.billboard("interfaceSealAlert"), 0.5, 0.5);
-  }
-
-  templateEnergyTerminal() {
-    this.templateVignette();
-    this.templateEnergyInterface();
-
-    this.setHidden(this.billboard("overlay"), false);
-
-    this.setCurrentAction(this.openEnergyDoor);
-
-    this.isFuseAction = true;
-
-    hiversaires.music.playEffect("action_EnergyInit");
   }
 
   templateEnergyInterface() {
@@ -707,35 +309,6 @@ class Dozenal {
     this.setAlpha("interfaceFuse1", 1);
 
     this.fadeOut(this.billboard("interfaceFuse1"), 0.5, 3);
-  }
-
-  templateEnergyDoor() {
-    this.templateVignette();
-    this.setHidden(this.billboard("overlay"), true);
-    hiversaires.music.playEffect("action_DoorInit");
-    this.templateEnergyInterface();
-
-    if (this.checkConditions(this.currentPuzzle.info.conditions)) {
-      this.setCurrentAction(this.openEnergyDoor);
-      let modifier = "open";
-      let secret = this.currentPuzzle.info.secret;
-      if (secret != null && this.checkConditions(secret.conditions)) {
-        modifier = "secret";
-      }
-      this.setModifier(modifier);
-    } else {
-      this.templateEnergyAlert();
-    }
-  }
-
-  templateSecretDoor() {
-    this.templateVignette();
-    this.setHidden(this.billboard("overlay"), true);
-    hiversaires.music.playEffect("action_DoorInit");
-
-    if (this.checkConditions(this.currentPuzzle.info.conditions)) {
-      this.setCurrentAction(this.walkThroughDoor);
-    }
   }
 
   checkConditions(conditions) {
@@ -769,84 +342,9 @@ class Dozenal {
     return true;
   }
 
-  templateEnergyUpdate() {
-    this.templateEnergyInterface();
-
-    if (this.isFuseAction) {
-      this.setCurrentAction(function() {
-        if (this.puzzleState[this.currentPuzzle.id] == 1) {
-          this.puzzleState[this.currentPuzzle.id] = 0;
-          this.userEnergy += 1;
-        } else if (this.userEnergy > 0) {
-          this.puzzleState[this.currentPuzzle.id] = 1;
-          this.userEnergy -= 1;
-        } else {
-          this.templateEnergyAlert();
-        }
-
-        this.openEnergyDoor();
-      });
-    }
-  }
-
   templateEnergyAlert() {
     this.setAlpha("interfaceFuseAlert", 1.0);
     this.fadeOut(this.billboard("interfaceFuseAlert"), 1.5, 0.5);
-  }
-
-  templateProgressTerminal() {
-    this.templateVignette();
-    this.prefSave();
-
-    this.setImage(
-      "progressPane",
-      "interface/progress." + this.userChapter + ".svg"
-    );
-
-    this.fadeIn(this.billboard("progressPane"), 0.5, 0.3);
-  }
-
-  templateAudioTerminal() {
-    this.templateVignette();
-    this.setCurrentAction(function() {
-      this.puzzleState[this.currentPuzzle.id] =
-        (this.puzzleState[this.currentPuzzle.id] + 1) % 2;
-      this.templateAudioUpdate();
-    });
-
-    this.templateAudioUpdate();
-  }
-
-  templateAudioUpdate() {
-    this.templateAudioInterface();
-    if (this.puzzleState[this.currentPuzzle.id] == 1) {
-      this.setModifier("on");
-      this.showModifier(0.3, 0.1);
-      hiversaires.music.volume = 1;
-    } else {
-      this.hideModifier(0.3, 0);
-      hiversaires.music.volume = 0;
-    }
-  }
-
-  templateSecretTerminal() {
-    this.templateVignette();
-    this.setCurrentAction(function() {
-      this.puzzleState[this.currentPuzzle.id] =
-        (this.puzzleState[this.currentPuzzle.id] + 1) % 2;
-      this.templateSecretUpdate();
-    });
-
-    this.templateSecretUpdate();
-  }
-
-  templateSecretUpdate() {
-    if (this.puzzleState[this.currentPuzzle.id] == 1) {
-      this.setModifier("on");
-      this.showModifier(0.3, 0.1);
-    } else {
-      this.hideModifier(0.3, 0);
-    }
   }
 
   templateAudioInterface() {
@@ -856,181 +354,12 @@ class Dozenal {
     );
 
     this.setAlpha("interfaceAudio", 1);
-
     this.fadeOut(this.billboard("interfaceAudio"), 0.5, 3);
-  }
-
-  templateEntentePart1Incr() {
-    if (this.puzzleState[23] == 17) {
-      this.userNodeID = 93;
-      this.actionCheck();
-      this.moveCheck();
-      this.actionReset();
-    } else {
-      this.userNodeID = 89;
-
-      if (this.puzzleState[23] < 21) {
-        this.puzzleState[23] = this.puzzleState[23] + 3;
-      }
-
-      this.actionCheck();
-      this.moveCheck();
-      this.actionReset();
-    }
-  }
-
-  templateEntentePart1Decr() {
-    this.userNodeID = 103;
-
-    if (this.puzzleState[23] > 14) {
-      this.puzzleState[23] = this.puzzleState[23] - 1;
-    }
-
-    this.actionCheck();
-    this.moveCheck();
-    this.actionReset();
-  }
-
-  templateEntentePart2Incr() {
-    this.userNodeID = 94;
-    this.userOrientation = 2;
-
-    if (this.puzzleState[24] < 23) {
-      this.puzzleState[24] = this.puzzleState[24] + 4;
-    }
-
-    this.actionCheck();
-    this.moveCheck();
-    this.actionReset();
-  }
-
-  templateEntentePart2Decr() {
-    this.userNodeID = 95;
-    this.userOrientation = 2;
-
-    if (this.puzzleState[24] > 14) {
-      this.puzzleState[24] = this.puzzleState[24] - 1;
-    }
-
-    this.actionCheck();
-    this.moveCheck();
-    this.actionReset();
-  }
-
-  templateEntentePart2Exit() {
-    if (this.puzzleState[23] == 17 && this.puzzleState[24] == 17) {
-      this.userNodeID = 107;
-      this.userOrientation = 3;
-
-      this.actionCheck();
-      this.moveCheck();
-      this.actionReset();
-    } else {
-      this.userNodeID = 93;
-
-      this.actionCheck();
-      this.moveCheck();
-      this.actionReset();
-    }
-  }
-
-  templateKillTerminal() {
-    this.setCurrentAction(function() {
-      this.puzzleState[this.currentPuzzle.id]++;
-      if (this.puzzleState[this.currentPuzzle.id] > 50) {
-        this.wipePlayerProgress();
-        this.newGame();
-      }
-    });
-  }
-
-  templateEndgameDoor() {
-    if (this.checkConditions(this.currentPuzzle.info.conditions)) {
-      this.templateUpdateNode(113, "0550", 40);
-      this.setModifier("open");
-      this.showModifier();
-      this.setCurrentAction(this.walkThroughDoor);
-    } else {
-      this.templateEnergyAlert();
-    }
-  }
-
-  templateEndgameCredit() {
-    this.userChapter = Chapter.credit;
-    this.updateMusic();
-
-    this.setAlpha("menuBlack", 0.0);
-    this.setHidden(this.billboard("menuBlack"), false);
-
-    this.fadeIn(this.billboard("menuBlack"), 3, 1.0);
-
-    this.setAlpha("menuCredit1", 0.0);
-    this.setHidden(this.billboard("menuCredit1"), false);
-
-    this.fadeIn(this.billboard("menuCredit1"), 1, 6.0);
-
-    this.setAlpha("menuCredit2", 0.0);
-    this.setHidden(this.billboard("menuCredit2"), false);
-
-    this.fadeIn(this.billboard("menuCredit2"), 1, 10.0);
-
-    this.setAlpha("menuCredit3", 0.0);
-    this.setHidden(this.billboard("menuCredit3"), false);
-
-    this.fadeIn(this.billboard("menuCredit3"), 1, 16.0);
-
-    this.fadeIn(this.billboard("menuBlack"), 1, 20.0, false);
-
-    if (this.userEnergy == 1) {
-      this.setAlpha("menuCredit4", 0.0);
-      this.setHidden(this.billboard("menuCredit4"), false);
-
-      this.fadeIn(this.billboard("menuCredit4"), 1, 24.0);
-    }
   }
 
   // ====================
   // Actions with interactions
   // ====================
-
-  templateUpdateDoorknob(side1, side2) {
-    if (this.userNodeID == side1 || this.userNodeID == side2) {
-      this.setCurrentAction(this.openDoor);
-    }
-  }
-
-  templateUpdateStudioTerminal() {
-    this.setAlpha("overlay", 0.0);
-    this.setHidden(this.billboard("overlay"), true);
-
-    if (this.puzzleState[5] == 2) {
-      this.setAlpha("overlay", 1.0);
-      this.setHidden(this.billboard("overlay"), false);
-      this.templateUpdateNode(19, "0489", 5);
-
-      this.userChapter = Chapter.act5;
-      this.updateMusic();
-    } else {
-      if (this.puzzleState[12] == 1 && this.puzzleState[21] == 1) {
-        this.setAlpha("overlay", 1.0);
-        this.setHidden(this.billboard("overlay"), false);
-        this.templateUpdateNode(19, "0536", 5);
-      } else if (this.puzzleState[12] == 1 && this.puzzleState[21] == 0) {
-        this.setAlpha("overlay", 1.0);
-        this.setHidden(this.billboard("overlay"), false);
-        this.templateUpdateNode(19, "0542", 5);
-      } else if (this.puzzleState[12] == 0 && this.puzzleState[21] == 1) {
-        this.setAlpha("overlay", 1.0);
-        this.setHidden(this.billboard("overlay"), false);
-        this.templateUpdateNode(19, "0541", 5);
-      }
-
-      if (this.userChapter == Chapter.act5) {
-        this.userChapter = Chapter.act4;
-        this.updateMusic();
-      }
-    }
-  }
 
   setModifier(modifier) {
     this.setImage(
@@ -1055,19 +384,9 @@ class Dozenal {
     this.fadeOut(this.billboard("overlay"), fadeDuration, fadeDelay);
   }
 
-  templateUpdateNode(node, img, puzzleID) {
+  updateNode(node, img, puzzleID) {
     if (this.userNodeID == node && this.currentPuzzle.id == puzzleID) {
       this.setImage("overlay", "node_old/node." + img + ".jpg");
-    }
-
-    // Fadeins
-
-    if (this.currentPuzzle.type == PuzzleType.sealDoor) {
-      this.fadeIn(this.billboard("overlay"), 1.0, 0.0);
-    } else if (this.currentPuzzle.id == 28) {
-      this.fadeIn(this.billboard("overlay"), 1, 0.5);
-    } else {
-      this.fadeIn(this.billboard("overlay"), 0.0, 0);
     }
   }
 
@@ -1087,30 +406,14 @@ class Dozenal {
       return;
     }
 
-    let illusionPuzzle = null;
     for (let puzzle of puzzlesByID.values()) {
       if (
-        puzzle.type == PuzzleType.illusion &&
+        puzzle instanceof Illusion &&
         puzzle.info.nodeID == this.userNodeID &&
         puzzle.info.orientation == this.userOrientation
       ) {
-        illusionPuzzle = puzzle;
+        puzzle.appear(this);
         break;
-      }
-    }
-
-    if (illusionPuzzle != null) {
-      // TODO: By solving the jQuery add/remove CSS class problem, we could support multiple illusions
-
-      this.billboard("illusion").className =
-        "node_" + this.userNodeID + "_" + this.userOrientation;
-
-      this.setAlpha("illusion", 1);
-      this.fadeOut(this.billboard("illusion"), 0.5, 1);
-
-      if (this.userChapter == Chapter.act5) {
-        this.puzzleState[illusionPuzzle.id] = 1;
-        this.illusionInterface();
       }
     }
   }
@@ -1119,7 +422,7 @@ class Dozenal {
     let illusionCount = 0;
 
     for (let puzzle of puzzlesByID.values()) {
-      if (puzzle.type == PuzzleType.illusion) {
+      if (puzzle instanceof Illusion) {
         illusionCount += this.puzzleState[puzzle.id];
       }
     }
