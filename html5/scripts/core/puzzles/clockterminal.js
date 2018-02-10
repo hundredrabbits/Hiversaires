@@ -1,10 +1,12 @@
+"use strict";
+
 class ClockTerminal extends Puzzle {
   constructor(id) {
     super(id);
   }
 
   setup() {
-    hiversaires.flashVignette();
+    hiversaires.interface.flashVignette();
 
     hiversaires.setCurrentAction(
       function() {
@@ -21,12 +23,10 @@ class ClockTerminal extends Puzzle {
   }
 
   update() {
-    hiversaires.showClockInterface();
+    hiversaires.interface.showClock();
 
-    hiversaires.stage.setImage(
-      "clockFace",
-      "interface/dimclock.state" + hiversaires.game.puzzleState.clock + ".svg"
-    );
+    hiversaires.stage.billboard("clockFace").image =
+      "interface/dimclock.state" + hiversaires.game.puzzleState.clock + ".svg";
 
     hiversaires.stage.fadeIn(
       hiversaires.stage.billboard("clockShadow"),

@@ -1,3 +1,5 @@
+"use strict";
+
 class EndgameCredit extends Puzzle {
   constructor(id) {
     super(id);
@@ -11,19 +13,13 @@ class EndgameCredit extends Puzzle {
     hiversaires.game.userChapter = Chapter.credit;
     hiversaires.updateMusic();
 
-    hiversaires.stage.setAlpha("menuBlack", 0.0);
-    hiversaires.stage.setHidden(
-      hiversaires.stage.billboard("menuBlack"),
-      false
-    );
+    hiversaires.stage.billboard("menuBlack").alpha = 0.0;
+    hiversaires.stage.billboard("menuBlack").hidden = false;
 
     hiversaires.stage.fadeIn(hiversaires.stage.billboard("menuBlack"), 3, 1.0);
 
-    hiversaires.stage.setAlpha("menuCredit1", 0.0);
-    hiversaires.stage.setHidden(
-      hiversaires.stage.billboard("menuCredit1"),
-      false
-    );
+    hiversaires.stage.billboard("menuCredit1").alpha = 0.0;
+    hiversaires.stage.billboard("menuCredit1").hidden = false;
 
     hiversaires.stage.fadeIn(
       hiversaires.stage.billboard("menuCredit1"),
@@ -31,11 +27,8 @@ class EndgameCredit extends Puzzle {
       6.0
     );
 
-    hiversaires.stage.setAlpha("menuCredit2", 0.0);
-    hiversaires.stage.setHidden(
-      hiversaires.stage.billboard("menuCredit2"),
-      false
-    );
+    hiversaires.stage.billboard("menuCredit2").alpha = 0.0;
+    hiversaires.stage.billboard("menuCredit2").hidden = false;
 
     hiversaires.stage.fadeIn(
       hiversaires.stage.billboard("menuCredit2"),
@@ -43,11 +36,8 @@ class EndgameCredit extends Puzzle {
       10.0
     );
 
-    hiversaires.stage.setAlpha("menuCredit3", 0.0);
-    hiversaires.stage.setHidden(
-      hiversaires.stage.billboard("menuCredit3"),
-      false
-    );
+    hiversaires.stage.billboard("menuCredit3").alpha = 0.0;
+    hiversaires.stage.billboard("menuCredit3").hidden = false;
 
     hiversaires.stage.fadeIn(
       hiversaires.stage.billboard("menuCredit3"),
@@ -63,11 +53,8 @@ class EndgameCredit extends Puzzle {
     );
 
     if (hiversaires.game.userEnergy == 1) {
-      hiversaires.stage.setAlpha("menuCredit4", 0.0);
-      hiversaires.stage.setHidden(
-        hiversaires.stage.billboard("menuCredit4"),
-        false
-      );
+      hiversaires.stage.billboard("menuCredit4").alpha = 0.0;
+      hiversaires.stage.billboard("menuCredit4").hidden = false;
 
       hiversaires.stage.fadeIn(
         hiversaires.stage.billboard("menuCredit4"),

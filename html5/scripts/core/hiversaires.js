@@ -6,12 +6,44 @@ class Hiversaires {
     document.body.appendChild(this.element);
     window.hiversaires = this;
     window.hh = this;
-    this.keyboard = new Keyboard();
+    this.keyboard = new Keyboard(this.responder.bind(this));
     this.artBook = new ArtBook();
     this.game = new Game();
     this.music = new Music();
-    this.stage = new Stage(this.element);
+    this.stage = new Stage(this.element, this.responder.bind(this));
+    this.interface = new Interface();
     this.walkthrough = new Walkthrough();
+  }
+
+  responder(input) {
+    if (this.game.userChapter == Chapter.credit) {
+      return;
+    }
+
+    switch (input) {
+      case Input.left:
+        this.moveLeft();
+        break;
+      case Input.right:
+        this.moveRight();
+        break;
+      case Input.forward:
+        this.moveForward();
+        break;
+      case Input.back:
+        this.moveBackward();
+        break;
+      case Input.action:
+        this.action();
+        break;
+      case Input.center:
+        if (this.currentAction != null) {
+          this.action();
+        } else {
+          this.moveForward();
+        }
+        break;
+    }
   }
 
   start() {
@@ -26,7 +58,7 @@ class Hiversaires {
     this.updateMusic();
     this.actionCheck();
     this.moveCheck();
-    this.menuHome();
+    this.interface.menuHome();
   }
 
   get currentNode() {
@@ -49,9 +81,13 @@ class Hiversaires {
     return this.game.puzzleState.seals;
   }
 
+  get currentFuses() {
+    return this.game.puzzleState.fuses;
+  }
+
   setCurrentAction(value) {
     this.currentAction = value;
-    this.stage.setHidden(this.stage.trigger("action"), value == null);
+    this.stage.trigger("action").hidden = value == null;
   }
 
   updateMusic() {
@@ -61,15 +97,11 @@ class Hiversaires {
   moveCheck() {
     this.actionReset();
 
-    this.stage.setHidden(
-      this.stage.trigger("moveForward"),
-      this.currentSubject.type == SubjectType.none
-    );
+    this.stage.trigger("moveForward").hidden =
+      this.currentSubject.type == SubjectType.none;
 
-    this.stage.setImage(
-      "viewMain",
-      "node/" + this.game.userNodeID + "." + this.game.userOrientation + ".jpg"
-    );
+    this.stage.billboard("viewMain").image =
+      "node/" + this.game.userNodeID + "." + this.game.userOrientation + ".jpg";
 
     this.illusionCheck();
 
@@ -87,9 +119,6 @@ class Hiversaires {
   }
 
   moveLeft() {
-    if (this.game.userChapter == Chapter.credit) {
-      return;
-    }
     this.music.playEffect("footstep_turn");
     this.game.userOrientation = (this.game.userOrientation + 4 - 1) % 4;
     this.stage.animateTurnLeft();
@@ -97,9 +126,6 @@ class Hiversaires {
   }
 
   moveRight() {
-    if (this.game.userChapter == Chapter.credit) {
-      return;
-    }
     this.music.playEffect("footstep_turn");
     this.game.userOrientation = (this.game.userOrientation + 4 + 1) % 4;
     this.stage.animateTurnRight();
@@ -107,9 +133,6 @@ class Hiversaires {
   }
 
   moveForward() {
-    if (this.game.userChapter == Chapter.credit) {
-      return;
-    }
     this.playFootStep();
 
     if (this.currentSubject.type == SubjectType.node) {
@@ -131,9 +154,6 @@ class Hiversaires {
   }
 
   moveBackward() {
-    if (this.game.userChapter == Chapter.credit) {
-      return;
-    }
     this.music.playEffect("footstep_turn");
 
     this.game.userOrientation = (this.game.userOrientation + 4 + 2) % 4;
@@ -153,10 +173,7 @@ class Hiversaires {
   }
 
   actionCheck() {
-    this.stage.setHidden(
-      this.stage.trigger("moveForward"),
-      this.currentPuzzle == null
-    );
+    this.stage.trigger("moveForward").hidden = this.currentPuzzle == null;
 
     this.setCurrentAction(null);
 
@@ -167,149 +184,53 @@ class Hiversaires {
   }
 
   action() {
-    if (this.game.userChapter == Chapter.credit) {
-      return;
-    }
     if (this.currentAction != null) {
       this.currentAction();
     }
   }
 
   actionReset() {
-    this.stage.setHidden(this.stage.billboard("menuBlack"), true);
-    this.stage.setHidden(this.stage.billboard("menuCredit1"), true);
-    this.stage.setHidden(this.stage.billboard("menuCredit2"), true);
-    this.stage.setHidden(this.stage.billboard("menuCredit3"), true);
-    this.stage.setHidden(this.stage.billboard("menuCredit4"), true);
-    this.stage.setHidden(this.stage.billboard("menuLogo"), true);
-    this.stage.setHidden(this.stage.billboard("menuControls"), true);
+    this.stage.billboard("menuBlack").hidden = true;
+    this.stage.billboard("menuCredit1").hidden = true;
+    this.stage.billboard("menuCredit2").hidden = true;
+    this.stage.billboard("menuCredit3").hidden = true;
+    this.stage.billboard("menuCredit4").hidden = true;
+    this.stage.billboard("menuLogo").hidden = true;
+    this.stage.billboard("menuControls").hidden = true;
 
-    this.stage.setAlpha("overlay", 0);
-    this.stage.setAlpha("clockFace", 0);
-    this.stage.setAlpha("clockShadow", 0);
-    this.stage.setAlpha("progressPane", 0);
-    this.stage.setAlpha("ententeScreen", 0);
-    this.stage.setAlpha("illusion", 0);
+    this.stage.billboard("overlay").alpha = 0;
+    this.stage.billboard("clockFace").alpha = 0;
+    this.stage.billboard("clockShadow").alpha = 0;
+    this.stage.billboard("progressPane").alpha = 0;
+    this.stage.billboard("ententeScreen").alpha = 0;
+    this.stage.billboard("illusion").alpha = 0;
 
     this.setCurrentAction(null);
   }
 
-  showClockInterface() {
-    this.stage.setImage(
-      "interfaceDimclock",
-      "interface/clock." + this.game.puzzleState.clock + ".svg"
-    );
-    this.stage.setAlpha("interfaceDimclock", 1);
-    this.stage.fadeOut(this.stage.billboard("interfaceDimclock"), 0.5, 3);
-  }
-
-  showClockAlert() {
-    this.stage.setAlpha("interfaceDimclockAlert", 1.0);
-    this.stage.fadeOut(
-      this.stage.billboard("interfaceDimclockAlert"),
-      0.5,
-      0.5
-    );
-  }
-
-  showSealInterface() {
-    let seals = this.currentSeals;
-
-    console.log(seals);
-
-    this.stage.setImage(
-      "interfaceSeal1",
-      "interface/seal." + (seals[0] == null ? "none" : seals[0]) + ".svg"
-    );
-    this.stage.setImage(
-      "interfaceSeal2",
-      "interface/seal." + (seals[1] == null ? "none" : seals[1]) + ".svg"
-    );
-
-    this.stage.setHidden(this.stage.billboard("interfaceSeal1"), false);
-    this.stage.setHidden(this.stage.billboard("interfaceSeal2"), false);
-
-    this.stage.setAlpha("interfaceSeal1", 1);
-    this.stage.setAlpha("interfaceSeal2", 1);
-
-    this.stage.fadeOut(this.stage.billboard("interfaceSeal1"), 0.5, 3);
-    this.stage.fadeOut(this.stage.billboard("interfaceSeal2"), 0.5, 3);
-  }
-
-  showSealAlert() {
-    this.stage.setAlpha("interfaceSealAlert", 1.0);
-    this.stage.fadeOut(this.stage.billboard("interfaceSealAlert"), 0.5, 0.5);
-  }
-
-  showEnergyInterface() {
-    this.stage.setImage(
-      "interfaceFuse1",
-      "interface/fuse." + this.game.userEnergy + ".svg"
-    );
-
-    this.stage.setHidden(this.stage.billboard("interfaceFuse1"), false);
-    this.stage.setAlpha("interfaceFuse1", 1);
-
-    this.stage.fadeOut(this.stage.billboard("interfaceFuse1"), 0.5, 3);
-  }
-
-  showEnergyAlert() {
-    this.stage.setAlpha("interfaceFuseAlert", 1.0);
-    this.stage.fadeOut(this.stage.billboard("interfaceFuseAlert"), 1.5, 0.5);
-  }
-
-  showAudioInterface() {
-    this.stage.setImage(
-      "interfaceAudio",
-      "interface/music." + (this.game.puzzleState.audio ? "on" : "off") + ".svg"
-    );
-
-    this.stage.setAlpha("interfaceAudio", 1);
-    this.stage.fadeOut(this.stage.billboard("interfaceAudio"), 0.5, 3);
-  }
-
   setModifier(modifier) {
-    this.stage.setImage(
-      "overlay",
+    this.stage.billboard("overlay").image =
       "node/" +
-        this.game.userNodeID +
-        "." +
-        this.game.userOrientation +
-        "." +
-        modifier +
-        ".jpg"
-    );
+      this.game.userNodeID +
+      "." +
+      this.game.userOrientation +
+      "." +
+      modifier +
+      ".jpg";
   }
 
   showModifier(fadeDuration = 0, fadeDelay = 0) {
-    this.stage.setHidden(this.stage.billboard("overlay"), false);
+    this.stage.billboard("overlay").hidden = false;
     this.stage.fadeIn(this.stage.billboard("overlay"), fadeDuration, fadeDelay);
   }
 
   hideModifier(fadeDuration = 0, fadeDelay = 0) {
-    this.stage.setHidden(this.stage.billboard("overlay"), false);
+    this.stage.billboard("overlay").hidden = false;
     this.stage.fadeOut(
       this.stage.billboard("overlay"),
       fadeDuration,
       fadeDelay
     );
-  }
-
-  updateNode(node, img, puzzleID) {
-    if (this.game.userNodeID == node && this.currentPuzzle.id == puzzleID) {
-      this.stage.setImage("overlay", "node_old/node." + img + ".jpg");
-    }
-  }
-
-  flashVignette() {
-    this.stage.setAlpha("vignette", 1.0);
-    this.stage.fadeOut(this.stage.billboard("vignette"), 1.0, 0);
-  }
-
-  showSaveInterface() {
-    this.stage.setHidden(this.stage.billboard("interfaceSave"), false);
-    this.stage.setAlpha("interfaceSave", 1);
-    this.stage.fadeOut(this.stage.billboard("interfaceSave"), 0.5, 3);
   }
 
   illusionCheck() {
@@ -329,15 +250,6 @@ class Hiversaires {
     }
   }
 
-  illusionInterface() {
-    this.stage.setImage(
-      "interfaceIllusion",
-      "interface/illusion." + this.game.puzzleState.illusions.length + ".svg"
-    );
-    this.stage.setAlpha("interfaceIllusion", 1);
-    this.stage.fadeOut(this.stage.billboard("interfaceIllusion"), 0.5, 3);
-  }
-
   playFootStep() {
     this.game.userFootstep += 1;
     let effect = "footstep_collide";
@@ -346,27 +258,5 @@ class Hiversaires {
         this.game.userFootstep % 2 == 1 ? "footstep_left" : "footstep_right";
     }
     this.music.playEffect(effect);
-  }
-
-  menuHome() {
-    this.stage.setAlpha("menuBlack", 1.0);
-    this.stage.setHidden(this.stage.billboard("menuBlack"), false);
-
-    this.stage.setAlpha("menuLogo", 1.0);
-    this.stage.setHidden(this.stage.billboard("menuLogo"), false);
-
-    this.stage.setAlpha("menuControls", 1.0);
-    this.stage.setHidden(this.stage.billboard("menuControls"), false);
-
-    this.stage.setHidden(this.stage.billboard("interfaceSeal1"), true);
-    this.stage.setHidden(this.stage.billboard("interfaceSeal2"), true);
-    this.stage.setHidden(this.stage.billboard("interfaceFuse1"), true);
-    this.stage.setHidden(this.stage.billboard("interfaceSave"), true);
-
-    this.stage.fadeOut(this.stage.billboard("menuBlack"), 2.0, 0);
-    this.stage.fadeOut(this.stage.billboard("menuLogo"), 2.0, 3);
-    this.stage.fadeOut(this.stage.billboard("menuControls"), 1.0, 8);
-
-    this.music.volume = 1; // Music
   }
 }

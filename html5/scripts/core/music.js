@@ -23,7 +23,6 @@ class Music {
   }
 
   playEffect(name) {
-    // console.info("Effect: ",name);
     let track = this.fetchTrack(
       name,
       "effect",

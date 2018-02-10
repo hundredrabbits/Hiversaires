@@ -1,18 +1,21 @@
+"use strict";
+
 class EnergyTerminal extends Puzzle {
-  constructor(id) {
+  constructor(id, filledOnNewGame) {
     super(id);
+    this.filledOnNewGame = filledOnNewGame;
   }
 
   setup() {
-    hiversaires.flashVignette();
-    hiversaires.showEnergyInterface();
+    hiversaires.interface.flashVignette();
+    hiversaires.interface.showEnergy();
 
-    hiversaires.stage.setHidden(hiversaires.stage.billboard("overlay"), false);
+    hiversaires.stage.billboard("overlay").hidden = false;
 
     hiversaires.setCurrentAction(
       function() {
         this.updateFuse();
-        hiversaires.showEnergyInterface();
+        hiversaires.interface.showEnergy();
         this.update();
       }.bind(this)
     );
@@ -23,29 +26,24 @@ class EnergyTerminal extends Puzzle {
   update() {
     hiversaires.setCurrentAction(
       function() {
-        let index = hiversaires.game.puzzleState.fuses.indexOf(this.id);
-
-        if (index != -1) {
-          hiversaires.game.puzzleState.fuses.splice(index, 1);
+        if (hiversaires.currentFuses.has(this.id)) {
+          hiversaires.currentFuses.delete(this.id);
           hiversaires.game.userEnergy += 1;
         } else if (hiversaires.game.userEnergy > 0) {
-          hiversaires.game.puzzleState.fuses.push(this.id);
+          hiversaires.currentFuses.add(this.id);
           hiversaires.game.userEnergy -= 1;
         } else {
-          hiversaires.showEnergyAlert();
+          hiversaires.interface.showEnergyAlert();
         }
-
         this.updateFuse();
-        hiversaires.showEnergyInterface();
+        hiversaires.interface.showEnergy();
       }.bind(this)
     );
   }
 
   updateFuse() {
     hiversaires.setModifier(
-      hiversaires.game.puzzleState.fuses.indexOf(this.id) != -1
-        ? "filled"
-        : "empty"
+      hiversaires.currentFuses.has(this.id) ? "filled" : "empty"
     );
     hiversaires.showModifier();
   }

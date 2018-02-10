@@ -1,3 +1,5 @@
+"use strict";
+
 class ClockDoor extends Door {
   constructor(id, lockValue) {
     super(id);
@@ -5,15 +7,19 @@ class ClockDoor extends Door {
   }
 
   setup() {
-    hiversaires.flashVignette();
-    hiversaires.stage.setHidden(hiversaires.stage.billboard("overlay"), true);
-    hiversaires.showClockInterface();
+    hiversaires.interface.flashVignette();
+    hiversaires.stage.billboard("overlay").hidden = true;
+    hiversaires.interface.showClock();
     hiversaires.music.playEffect("action_DoorInit");
-    if (hiversaires.game.puzzleState.clock != this.lockValue) {
+    if (this.isUnlocked) {
       hiversaires.setCurrentAction(this.openDoor.bind(this));
       hiversaires.setModifier("open");
     } else {
-      hiversaires.showClockAlert();
+      hiversaires.interface.showClockAlert();
     }
+  }
+
+  get isUnlocked() {
+    return hiversaires.game.puzzleState.clock != this.lockValue;
   }
 }

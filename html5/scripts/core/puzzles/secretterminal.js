@@ -1,10 +1,12 @@
+"use strict";
+
 class SecretTerminal extends Puzzle {
   constructor(id) {
     super(id);
   }
 
   setup() {
-    hiversaires.flashVignette();
+    hiversaires.interface.flashVignette();
     hiversaires.setCurrentAction(
       function() {
         hiversaires.game.puzzleState.secret = !hiversaires.game.puzzleState

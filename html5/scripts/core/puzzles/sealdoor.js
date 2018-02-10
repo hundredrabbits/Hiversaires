@@ -1,75 +1,47 @@
+"use strict";
+
 class SealDoor extends Door {
-  constructor(id, seals, fadeDuration) {
+  constructor(id, locks, fadeDuration) {
     super(id, fadeDuration);
-    this.seals = seals;
+    this.locks = locks;
   }
 
   setup() {
-    hiversaires.flashVignette();
+    hiversaires.interface.flashVignette();
 
-    hiversaires.stage.setHidden(hiversaires.stage.billboard("overlay"), true);
+    hiversaires.stage.billboard("overlay").hidden = true;
 
     hiversaires.music.playEffect("action_DoorInit");
-    hiversaires.showSealInterface();
+    hiversaires.interface.showSeal();
 
-    const seals = hiversaires.currentSeals;
-    const containsForest = seals.includes(Zone.forest);
-    const containsAntechannel = seals.includes(Zone.antechannel);
-    const containsStones = seals.includes(Zone.stones);
-    const containsRainre = seals.includes(Zone.rainre);
-    const containsMetamondst = seals.includes(Zone.metamondst);
-
-    let modifier = null;
-
-    if (
-      containsForest &&
-      containsRainre &&
-      (hiversaires.game.userNodeID == 46 || hiversaires.game.userNodeID == 85)
-    ) {
-      // Act 1 : Forest + Rainre in Stones
+    if (this.isUnlocked) {
       hiversaires.setCurrentAction(this.openDoor.bind(this));
-      hiversaires.game.userChapter = Chapter.act2;
+      hiversaires.game.userChapter = this.matchedLock().chapter;
       hiversaires.setModifier("open");
       hiversaires.game.save();
-    } else if (
-      containsMetamondst &&
-      containsRainre &&
-      (hiversaires.game.userNodeID == 11 || hiversaires.game.userNodeID == 48)
-    ) {
-      // Act 2 : Metamondst + Rainre in Forest
-      hiversaires.setCurrentAction(this.openDoor.bind(this));
-      hiversaires.game.userChapter = Chapter.act3;
-      hiversaires.setModifier("open");
-      hiversaires.game.save();
-    } else if (
-      containsAntechannel &&
-      containsRainre &&
-      (hiversaires.game.userNodeID == 46 || hiversaires.game.userNodeID == 85)
-    ) {
-      // Act 3 : Forest + Rainre in Metamondst
-      hiversaires.setCurrentAction(this.openDoor.bind(this));
-      hiversaires.game.userChapter = Chapter.act4;
-      hiversaires.setModifier("open");
-      hiversaires.game.save();
-    } else if (
-      containsAntechannel &&
-      containsStones &&
-      hiversaires.game.userNodeID == 1
-    ) {
-      // Act 4 : Antechannel + Stones in Forest
-      hiversaires.setCurrentAction(this.openDoor.bind(this));
-      hiversaires.setModifier("open");
-      hiversaires.game.save();
-    } else if (
-      containsAntechannel &&
-      containsStones &&
-      (hiversaires.game.userNodeID == 76 || hiversaires.game.userNodeID == 87)
-    ) {
-      // Act 4 : Antechannel + Stones in Metamondst
-      hiversaires.setCurrentAction(this.openDoor.bind(this));
-      hiversaires.setModifier("open");
     } else {
-      hiversaires.showSealAlert();
+      hiversaires.interface.showSealAlert();
     }
+  }
+
+  get isUnlocked() {
+    return this.matchedLock() != null;
+  }
+
+  matchedLock() {
+    const seals = hiversaires.currentSeals;
+    for (let lock of this.locks) {
+      let locked = false;
+      for (let seal of lock.seals) {
+        if (!seals.has(seal)) {
+          locked = true;
+          break;
+        }
+      }
+      if (!locked) {
+        return lock;
+      }
+    }
+    return null;
   }
 }

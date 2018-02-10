@@ -1,16 +1,18 @@
+"use strict";
+
 class StudioTerminal extends Puzzle {
   constructor(id) {
     super(id);
   }
 
   setup() {
-    hiversaires.flashVignette();
-    hiversaires.stage.setHidden(hiversaires.stage.billboard("overlay"), true);
+    hiversaires.interface.flashVignette();
+    hiversaires.stage.billboard("overlay").hidden = true;
     hiversaires.music.playEffect("action_DoorInit");
 
     const seals = hiversaires.currentSeals;
-    const containsAntechannel = seals.includes(Zone.antechannel);
-    const containsStones = seals.includes(Zone.stones);
+    const containsAntechannel = seals.has(Zone.antechannel);
+    const containsStones = seals.has(Zone.stones);
 
     if (containsStones && containsAntechannel) {
       // Act 4 : Antechannel + Stones in Studio
@@ -30,8 +32,8 @@ class StudioTerminal extends Puzzle {
 
   update() {
     const seals = hiversaires.currentSeals;
-    const containsAntechannel = seals.includes(Zone.antechannel);
-    const containsStones = seals.includes(Zone.stones);
+    const containsAntechannel = seals.has(Zone.antechannel);
+    const containsStones = seals.has(Zone.stones);
 
     let modifier = null;
 

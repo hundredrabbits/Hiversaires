@@ -1,29 +1,34 @@
+"use strict";
+
 class TimeDoor extends Door {
-  constructor(id) {
+  constructor(id, innerNodeID, hours, minutes) {
     super(id);
+    this.innerNodeID = innerNodeID;
+    this.hours = hours;
+    this.minutes = minutes;
   }
 
   setup() {
-    hiversaires.flashVignette();
+    hiversaires.interface.flashVignette();
 
     const now = new Date(Date.now());
     const currentHours = now.getHours();
     const currentMinutes = now.getMinutes();
 
     if (
-      (currentHours == 15 && currentMinutes == 7) ||
-      hiversaires.game.userNodeID == 143
+      (currentHours == this.hours && currentMinutes == this.minutes) ||
+      hiversaires.game.userNodeID == innerNodeID
     ) {
       hiversaires.game.puzzleState.timeDoor = true;
     }
 
-    if (hiversaires.game.puzzleState.timeDoor) {
+    if (this.isUnlocked) {
       hiversaires.setCurrentAction(this.openDoor.bind(this));
       hiversaires.setModifier("open");
-    } else {
-      console.log("Door locked, wait for time.");
     }
+  }
 
-    console.log("Current Time:", currentHours, currentMinutes);
+  get isUnlocked() {
+    return hiversaires.game.puzzleState.timeDoor;
   }
 }

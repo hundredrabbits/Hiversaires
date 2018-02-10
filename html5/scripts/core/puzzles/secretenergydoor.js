@@ -1,19 +1,22 @@
+"use strict";
+
 class SecretEnergyDoor extends EnergyDoor {
-  constructor(id, fuseIDs) {
+  constructor(id, fuseIDs, secretFuseIDs) {
     super(id, fuseIDs);
+    this.secretFuseIDs = secretFuseIDs;
   }
 
   setup() {
-    if (this.isSecretUnlocked() && this.isUnlocked()) {
-      hiversaires.flashVignette();
-      hiversaires.stage.setHidden(hiversaires.stage.billboard("overlay"), true);
+    if (this.isSecretUnlocked) {
+      hiversaires.interface.flashVignette();
+      hiversaires.stage.billboard("overlay").hidden = true;
       hiversaires.music.playEffect("action_DoorInit");
-      hiversaires.showEnergyInterface();
+      hiversaires.interface.showEnergy();
 
       hiversaires.setCurrentAction(
         function() {
           this.openDoor();
-          hiversaires.showEnergyInterface();
+          hiversaires.interface.showEnergy();
         }.bind(this)
       );
 
@@ -23,10 +26,18 @@ class SecretEnergyDoor extends EnergyDoor {
     }
   }
 
-  isSecretUnlocked() {
-    return (
-      hiversaires.game.puzzleState.studio &&
-      hiversaires.game.puzzleState.fuses.includes(31)
-    );
+  get isSecretUnlocked() {
+    if (!hiversaires.game.puzzleState.studio) {
+      return false;
+    }
+
+    const fuses = hiversaires.currentFuses;
+    for (let fuseID of this.secretFuseIDs) {
+      if (!fuses.has(fuseID)) {
+        return false;
+      }
+    }
+
+    return this.isUnlocked;
   }
 }

@@ -1,10 +1,17 @@
 "use strict";
 
 class Stage {
-  constructor(root) {
+  constructor(root, responder) {
     this.root = root;
+    this.responder = responder;
     this.billboardsByID = new Map();
     this.triggersByID = new Map();
+
+    this.triggerMap = new Map();
+    this.triggerMap.set("moveLeft", Input.left);
+    this.triggerMap.set("moveRight", Input.right);
+    this.triggerMap.set("moveForward", Input.forward);
+    this.triggerMap.set("action", Input.action);
   }
 
   start() {
@@ -50,83 +57,76 @@ class Stage {
       "interfaceIndicatorForward",
       "interfaceIndicatorLeft"
     ]) {
-      let billboard = this.billboards.appendChild(
-        document.createElement("billboard")
-      );
-      billboard.id = id;
-      if (DEBUG_SHOW_BILLBOARDS) {
-        billboard.innerText = id;
-      }
+      let billboard = new Billboard(id, DEBUG_SHOW_BILLBOARDS);
+      this.billboards.appendChild(billboard.element);
       this.billboardsByID.set(id, billboard);
     }
 
     function handleClick(event) {
-      hiversaires[event.currentTarget.id](); // Ugh. Temporary. It's temporary!
+      if (this.triggerMap.has(event.currentTarget.id)) {
+        this.responder(this.triggerMap.get(event.currentTarget.id));
+      }
     }
 
     for (let id of ["moveRight", "moveLeft", "moveForward", "action"]) {
-      let trigger = this.triggers.appendChild(
-        document.createElement("trigger")
-      );
-      trigger.id = id;
-      if (DEBUG_SHOW_TRIGGERS) {
-        trigger.innerText = id;
-      }
-      trigger.addEventListener("click", handleClick);
+      let trigger = new Trigger(id, DEBUG_SHOW_TRIGGERS);
+      this.triggers.appendChild(trigger.element);
+      trigger.element.addEventListener("click", handleClick.bind(this));
       this.triggersByID.set(id, trigger);
     }
 
-    this.setAlpha("interfaceIndicatorRight", 0);
-    this.setAlpha("interfaceIndicatorForward", 0);
-    this.setAlpha("interfaceIndicatorLeft", 0);
-    this.setAlpha("interfaceDimclockAlert", 0);
-    this.setAlpha("interfaceSealAlert", 0);
-    this.setAlpha("interfaceFuseAlert", 0);
+    this.billboard("interfaceIndicatorRight").alpha = 0;
+    this.billboard("interfaceIndicatorForward").alpha = 0;
+    this.billboard("interfaceIndicatorLeft").alpha = 0;
+    this.billboard("interfaceDimclockAlert").alpha = 0;
+    this.billboard("interfaceSealAlert").alpha = 0;
+    this.billboard("interfaceFuseAlert").alpha = 0;
 
-    this.setImage("interfaceIndicatorRight", "interface/footstep.svg");
-    this.setImage("interfaceIndicatorForward", "interface/footstep.svg");
-    this.setImage("interfaceIndicatorLeft", "interface/footstep.svg");
-    this.setImage("interfaceDimclockAlert", "interface/alert.svg");
-    this.setImage("clockShadow", "interface/dimclock.shadow.svg");
-    this.setImage("interfaceSealAlert", "interface/alert.svg");
-    this.setImage("interfaceFuseAlert", "interface/alert.svg");
-    this.setImage("menuBlack", "menu/menu.black.svg");
-    this.setImage("menuCredit1", "menu/menu.credit1.svg");
-    this.setImage("menuCredit2", "menu/menu.credit2.svg");
-    this.setImage("menuCredit3", "menu/menu.credit3.svg");
-    this.setImage("menuCredit4", "menu/menu.credit4.svg");
-    this.setImage("vignette", "interface/vignette.svg");
-    this.setImage("interfaceSave", "interface/save.svg");
-    this.setImage("menuBlack", "menu/menu.black.svg");
-    this.setImage("menuLogo", "menu/menu.logo.svg");
-    this.setImage("menuControls", "menu/menu.controls.svg");
+    this.billboard("interfaceIndicatorRight").image = "interface/footstep.svg";
+    this.billboard("interfaceIndicatorForward").image =
+      "interface/footstep.svg";
+    this.billboard("interfaceIndicatorLeft").image = "interface/footstep.svg";
+    this.billboard("interfaceDimclockAlert").image = "interface/alert.svg";
+    this.billboard("clockShadow").image = "interface/dimclock.shadow.svg";
+    this.billboard("interfaceSealAlert").image = "interface/alert.svg";
+    this.billboard("interfaceFuseAlert").image = "interface/alert.svg";
+    this.billboard("menuBlack").image = "menu/menu.black.svg";
+    this.billboard("menuCredit1").image = "menu/menu.credit1.svg";
+    this.billboard("menuCredit2").image = "menu/menu.credit2.svg";
+    this.billboard("menuCredit3").image = "menu/menu.credit3.svg";
+    this.billboard("menuCredit4").image = "menu/menu.credit4.svg";
+    this.billboard("vignette").image = "interface/vignette.svg";
+    this.billboard("interfaceSave").image = "interface/save.svg";
+    this.billboard("menuBlack").image = "menu/menu.black.svg";
+    this.billboard("menuLogo").image = "menu/menu.logo.svg";
+    this.billboard("menuControls").image = "menu/menu.controls.svg";
   }
 
   fadeIn(viewToFadeIn, duration, delay, skipLast = true) {
     if (skipLast) {
-      $(viewToFadeIn).finish();
+      $(viewToFadeIn.element).finish();
     }
-    $(viewToFadeIn)
+    $(viewToFadeIn.element)
       .delay(delay * 1000)
       .animate({ opacity: 1 }, duration * 1000);
   }
 
   fadeOut(viewToFadeOut, duration, delay, skipLast = true) {
     if (skipLast) {
-      $(viewToFadeOut).finish();
+      $(viewToFadeOut.element).finish();
     }
-    $(viewToFadeOut)
+    $(viewToFadeOut.element)
       .delay(delay * 1000)
       .animate({ opacity: 0 }, duration * 1000);
   }
 
   animateTurnLeft() {
-    let viewMain = $(this.billboard("viewMain"));
+    let viewMain = $(this.billboard("viewMain").element);
     viewMain.finish();
     let viewMainX = viewMain.css("left").split("px")[0];
-    this.setAlpha("viewMain", 0.5);
+    this.billboard("viewMain").alpha = 0.5;
     viewMain.css({ left: (viewMainX - 15).toString() + "px" });
-    this.setAlpha("interfaceIndicatorLeft", 1);
+    this.billboard("interfaceIndicatorLeft").alpha = 1;
 
     viewMain.animate({ opacity: 1, left: viewMainX + "px" }, 0.2 * 1000);
 
@@ -134,12 +134,12 @@ class Stage {
   }
 
   animateTurnRight() {
-    let viewMain = $(this.billboard("viewMain"));
+    let viewMain = $(this.billboard("viewMain").element);
     viewMain.finish();
     let viewMainX = viewMain.css("left").split("px")[0];
-    this.setAlpha("viewMain", 0.5);
+    this.billboard("viewMain").alpha = 0.5;
     viewMain.css({ left: (viewMainX + 15).toString() + "px" });
-    this.setAlpha("interfaceIndicatorRight", 1);
+    this.billboard("interfaceIndicatorRight").alpha = 1;
 
     viewMain.animate({ opacity: 1, left: viewMainX + "px" }, 0.2 * 1000);
 
@@ -147,12 +147,12 @@ class Stage {
   }
 
   animateStepForward() {
-    let viewMain = $(this.billboard("viewMain"));
+    let viewMain = $(this.billboard("viewMain").element);
     viewMain.finish();
     let viewMainY = viewMain.css("top").split("px")[0];
-    this.setAlpha("viewMain", 0.5);
+    this.billboard("viewMain").alpha = 0.5;
     viewMain.css({ top: (viewMainY + 2).toString() + "px" });
-    this.setAlpha("interfaceIndicatorForward", 1);
+    this.billboard("interfaceIndicatorForward").alpha = 1;
 
     viewMain.animate({ opacity: 1, top: viewMainY + "px" }, 0.2 * 1000);
 
@@ -160,12 +160,12 @@ class Stage {
   }
 
   animateStepBackward() {
-    let viewMain = $(this.billboard("viewMain"));
+    let viewMain = $(this.billboard("viewMain").element);
     viewMain.finish();
     let viewMainY = viewMain.css("top").split("px")[0];
-    this.setAlpha("viewMain", 0.5);
+    this.billboard("viewMain").alpha = 0.5;
     viewMain.css({ top: (viewMainY - 2).toString() + "px" });
-    this.setAlpha("interfaceIndicatorForward", 1);
+    this.billboard("interfaceIndicatorForward").alpha = 1;
 
     viewMain.animate({ opacity: 1, top: viewMainY + "px" }, 0.2 * 1000);
 
@@ -179,27 +179,68 @@ class Stage {
   trigger(id) {
     return hiversaires.stage.triggersByID.get(id);
   }
+}
 
-  setImage(billboardID, url) {
-    let subject = this.billboard(billboardID);
+class Visual {
+  constructor(tagName, id, debug) {
+    this.element = document.createElement(tagName);
+    this.element.id = id;
+    if (debug) {
+      this.element.innerText = id;
+    }
+    this._hidden = false;
+  }
+
+  get hidden() {
+    return this._hidden;
+  }
+
+  set hidden(value) {
+    this._hidden = value;
+    $(this.element).css({
+      display: value ? "none" : "block",
+      "pointer-events": value ? "none" : "inherit"
+    });
+  }
+}
+
+class Billboard extends Visual {
+  constructor(id, debug) {
+    super("billboard", id, debug);
+    this._alpha = 1;
+  }
+
+  get image() {
+    return this._url;
+  }
+
+  set image(url) {
+    this._url = url;
     if (url) {
-      hiversaires.artBook.setArt(subject, "media/graphics/" + url);
+      hiversaires.artBook.setArt(this.element, "media/graphics/" + url);
     } else {
-      hiversaires.artBook.removeArt(subject);
+      hiversaires.artBook.removeArt(this.element);
     }
   }
 
-  setAlpha(billboardID, value) {
-    let subject = this.billboard(billboardID);
-    $(subject)
+  get alpha() {
+    return this._alpha;
+  }
+
+  set alpha(value) {
+    this._alpha = value;
+    $(this.element)
       .finish()
       .css({ opacity: value });
   }
 
-  setHidden(subject, value) {
-    $(subject).css({
-      display: value ? "none" : "block",
-      "pointer-events": value ? "none" : "inherit"
-    });
+  set className(value) {
+    this.element.className = value;
+  }
+}
+
+class Trigger extends Visual {
+  constructor(id, debug) {
+    super("trigger", id, debug);
   }
 }

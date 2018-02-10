@@ -35,8 +35,12 @@ class Game {
         userChapter: this.userChapter,
         userEnergy: this.userEnergy
       },
-      puzzleState: this.puzzleState
+      puzzleState: Object.assign({}, this.puzzleState)
     };
+
+    saveObject.puzzleState.seals = Array.from(this.puzzleState.seals);
+    saveObject.puzzleState.fuses = Array.from(this.puzzleState.fuses);
+    saveObject.puzzleState.illusions = Array.from(this.puzzleState.illusions);
 
     if (!DEBUG_DONT_SAVE) {
       localStorage.save = JSON.stringify(saveObject);
@@ -44,7 +48,7 @@ class Game {
 
     console.log("saved state.");
 
-    hiversaires.showSaveInterface();
+    hiversaires.interface.showSave();
   }
 
   load() {
@@ -63,7 +67,10 @@ class Game {
       this.sessionKillCount = 0;
 
       // Storage
-      this.puzzleState = saveObject.puzzleState;
+      this.puzzleState = Object.assign({}, saveObject.puzzleState);
+      this.puzzleState.seals = new Set(saveObject.puzzleState.seals);
+      this.puzzleState.fuses = new Set(saveObject.puzzleState.fuses);
+      this.puzzleState.illusions = new Set(saveObject.puzzleState.illusions);
 
       console.log("loaded state.");
 
@@ -71,17 +78,7 @@ class Game {
     } else {
       // New Game
 
-      this.puzzleState = {
-        seals: [],
-        fuses: [31, 38, 39],
-        illusions: [],
-        clock: 0,
-        audio: true,
-        studio: false,
-        secret: false,
-        timeDoor: false,
-        maze: { x: 15, y: 0 }
-      };
+      this.puzzleState = createDefaultState();
 
       this.userNodeID = 1;
       this.userOrientation = 0;

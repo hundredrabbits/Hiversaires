@@ -1,15 +1,13 @@
+"use strict";
+
 class Door extends Puzzle {
   constructor(id, fadeDuration = 0) {
     super(id);
     this.fadeDuration = fadeDuration;
   }
 
-  isUnlocked() {
-    return false;
-  }
-
   openDoor() {
-    hiversaires.stage.setHidden(hiversaires.stage.billboard("overlay"), false);
+    hiversaires.stage.billboard("overlay").hidden = false;
     hiversaires.setCurrentAction(this.walkThroughDoor.bind(this));
     hiversaires.stage.fadeIn(
       hiversaires.stage.billboard("overlay"),
@@ -19,90 +17,34 @@ class Door extends Puzzle {
   }
 
   walkThroughDoor() {
-    // Warp Action
-
     hiversaires.music.playEffect("action_DoorActive");
-
-    if (hiversaires.game.userNodeID == 1) {
-      hiversaires.game.userNodeID = 103;
-    } else if (hiversaires.game.userNodeID == 11) {
-      hiversaires.game.userNodeID = 48;
-      hiversaires.game.userOrientation = 2;
-    } else if (hiversaires.game.userNodeID == 13) {
-      hiversaires.game.userNodeID = 12;
-    } else if (hiversaires.game.userNodeID == 12) {
-      hiversaires.game.userNodeID = 13;
-    } else if (hiversaires.game.userNodeID == 16) {
-      hiversaires.game.userNodeID = 22;
-    } else if (
-      hiversaires.game.userNodeID == 20 &&
-      hiversaires.game.puzzleState.secret
-    ) {
-      hiversaires.game.userNodeID = 116;
-      hiversaires.game.userOrientation = 1;
-    } else if (hiversaires.game.userNodeID == 23) {
-      // Fold Gate
-      hiversaires.game.userNodeID = 22;
-    } else if (hiversaires.game.userNodeID == 25) {
-      hiversaires.game.userNodeID = 31;
-      hiversaires.game.userOrientation = 2;
-    } else if (hiversaires.game.userNodeID == 27) {
-      hiversaires.game.userNodeID = 32;
-      hiversaires.game.userOrientation = 1;
-    } else if (hiversaires.game.userNodeID == 35) {
-      hiversaires.game.userNodeID = 31;
-      hiversaires.game.userOrientation = 0;
-    } else if (
-      hiversaires.game.userNodeID == 39 &&
-      hiversaires.game.puzzleState.studio &&
-      hiversaires.game.puzzleState.fuses.includes(31)
-    ) {
-      hiversaires.game.userNodeID = 34;
-    } else if (hiversaires.game.userNodeID == 39) {
-      hiversaires.game.userNodeID = 45;
-    } else if (hiversaires.game.userNodeID == 46) {
-      hiversaires.game.userNodeID = 85;
-      hiversaires.game.userOrientation = 2;
-    } else if (hiversaires.game.userNodeID == 48) {
-      hiversaires.game.userNodeID = 11;
-      hiversaires.game.userOrientation = 2;
-    } else if (hiversaires.game.userNodeID == 52) {
-      hiversaires.game.userNodeID = 32;
-      hiversaires.game.userOrientation = 3;
-    } else if (hiversaires.game.userNodeID == 61) {
-      hiversaires.game.userNodeID = 72;
-    } else if (hiversaires.game.userNodeID == 62) {
-      hiversaires.game.userNodeID = 77;
-    } else if (hiversaires.game.userNodeID == 69) {
-      hiversaires.game.userNodeID = 72;
-    } else if (hiversaires.game.userNodeID == 76) {
-      hiversaires.game.userNodeID = 87;
-    } else if (hiversaires.game.userNodeID == 77) {
-      hiversaires.game.userNodeID = 62;
-    } else if (hiversaires.game.userNodeID == 79) {
-      hiversaires.game.userNodeID = 112;
-    } else if (hiversaires.game.userNodeID == 85) {
-      hiversaires.game.userNodeID = 46;
-      hiversaires.game.userOrientation = 0;
-    } else if (hiversaires.game.userNodeID == 87) {
-      hiversaires.game.userNodeID = 76;
-    } else if (hiversaires.game.userNodeID == 112) {
-      hiversaires.game.userNodeID = 79;
-    } else if (hiversaires.game.userNodeID == 113) {
-      hiversaires.game.userNodeID = 50;
-    } else if (hiversaires.game.userNodeID == 50) {
-      hiversaires.game.userNodeID = 113;
-    } else if (hiversaires.game.userNodeID == 142) {
-      hiversaires.game.userNodeID = 143;
-      hiversaires.game.userOrientation = 3;
-    } else if (hiversaires.game.userNodeID == 143) {
-      hiversaires.game.userNodeID = 142;
-      hiversaires.game.userOrientation = 1;
+    let subject = hiversaires.currentSubject;
+    let changed = false;
+    if (this.isSecretUnlocked) {
+      changed = true;
+      hiversaires.game.userNodeID = subject.secretNodeID;
+      if (subject.secretOrientation != null) {
+        hiversaires.game.userOrientation = subject.secretOrientation;
+      }
+    } else if (this.isUnlocked) {
+      changed = true;
+      hiversaires.game.userNodeID = subject.nodeID;
+      if (subject.orientation != null) {
+        hiversaires.game.userOrientation = subject.orientation;
+      }
     }
 
-    // Easter Eggs
+    if (changed) {
+      hiversaires.actionCheck();
+      hiversaires.moveCheck();
+    }
+  }
 
-    hiversaires.actionCheck();
-    hiversaires.moveCheck();
+  get isUnlocked() {
+    return false;
+  }
+
+  get isSecretUnlocked() {
+    return false;
   }
 }

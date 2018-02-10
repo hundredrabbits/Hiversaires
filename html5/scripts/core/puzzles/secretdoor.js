@@ -1,15 +1,21 @@
+"use strict";
+
 class SecretDoor extends Door {
   constructor(id) {
     super(id);
   }
 
   setup() {
-    hiversaires.flashVignette();
-    hiversaires.stage.setHidden(hiversaires.stage.billboard("overlay"), true);
+    hiversaires.interface.flashVignette();
+    hiversaires.stage.billboard("overlay").hidden = true;
     hiversaires.music.playEffect("action_DoorInit");
 
-    if (hiversaires.game.puzzleState.secret) {
+    if (this.isUnlocked) {
       hiversaires.setCurrentAction(this.walkThroughDoor.bind(this));
     }
+  }
+
+  get isUnlocked() {
+    return hiversaires.game.puzzleState.secret;
   }
 }

@@ -1,3 +1,5 @@
+"use strict";
+
 class EntenteTerminal extends Puzzle {
   constructor(id, axis) {
     super(id, {});
@@ -9,7 +11,7 @@ class EntenteTerminal extends Puzzle {
 
     let axisValue = hiversaires.game.puzzleState.maze[this.axis];
 
-    if (this.axis == "x") {
+    if (this.axis == MazeAxis.x) {
       if (axisValue > 17) {
         targetGraphic = "Left";
       } else if (axisValue < 17) {
@@ -17,7 +19,7 @@ class EntenteTerminal extends Puzzle {
       } else if (axisValue == 17) {
         targetGraphic = "Right";
       }
-    } else if (this.axis == "y") {
+    } else if (this.axis == MazeAxis.y) {
       if (axisValue > 17) {
         targetGraphic = "Left2";
       } else if (axisValue < 17) {
@@ -27,10 +29,8 @@ class EntenteTerminal extends Puzzle {
       }
     }
 
-    hiversaires.stage.setImage(
-      "ententeScreen",
-      "interface/entente" + targetGraphic + ".svg"
-    );
+    hiversaires.stage.billboard("ententeScreen").image =
+      "interface/entente" + targetGraphic + ".svg";
     hiversaires.stage.fadeIn(
       hiversaires.stage.billboard("ententeScreen"),
       1,
