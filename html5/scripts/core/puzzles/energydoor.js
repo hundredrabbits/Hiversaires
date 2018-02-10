@@ -6,19 +6,19 @@ class EnergyDoor extends Door {
     this.fuseIDs = fuseIDs;
   }
 
+  openDoor() {
+    super.openDoor();
+    hiversaires.interface.showEnergy();
+  }
+
   setup() {
+    super.setup();
     hiversaires.interface.flashVignette();
     hiversaires.stage.billboard("overlay").hidden = true;
     hiversaires.music.playEffect("action_DoorInit");
     hiversaires.interface.showEnergy();
 
     if (this.isUnlocked) {
-      hiversaires.setCurrentAction(
-        function() {
-          this.openDoor();
-          hiversaires.interface.showEnergy();
-        }.bind(this)
-      );
       hiversaires.setModifier("open");
     } else {
       hiversaires.interface.showEnergyAlert();

@@ -5,8 +5,8 @@ class EndgameCredit extends Puzzle {
     super(id);
   }
 
-  setup() {
-    hiversaires.setCurrentAction(this.showCredits.bind(this));
+  performAction() {
+    this.showCredits();
   }
 
   showCredits() {

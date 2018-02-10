@@ -8,29 +8,8 @@ class SealTerminal extends Puzzle {
 
   setup() {
     hiversaires.interface.flashVignette();
-
     hiversaires.stage.billboard("overlay").hidden = false;
     hiversaires.stage.billboard("overlay").alpha = 0;
-
-    hiversaires.setCurrentAction(
-      function() {
-        let seals = hiversaires.currentSeals;
-
-        if (seals.has(this.seal)) {
-          hiversaires.music.playEffect("action_SealInactive");
-          seals.delete(this.seal);
-        } else if (seals.size < 2) {
-          hiversaires.music.playEffect("action_SealActive");
-          seals.add(this.seal);
-        } else {
-          hiversaires.music.playEffect("action_EnergyStack");
-          hiversaires.interface.showSealAlert();
-        }
-
-        this.update();
-      }.bind(this)
-    );
-
     hiversaires.music.playEffect("action_SealInit");
     this.update();
   }
@@ -43,5 +22,20 @@ class SealTerminal extends Puzzle {
     } else {
       hiversaires.hideModifier(0.2, 0.2);
     }
+  }
+
+  performAction() {
+    let seals = hiversaires.currentSeals;
+    if (seals.has(this.seal)) {
+      hiversaires.music.playEffect("action_SealInactive");
+      seals.delete(this.seal);
+    } else if (seals.size < 2) {
+      hiversaires.music.playEffect("action_SealActive");
+      seals.add(this.seal);
+    } else {
+      hiversaires.music.playEffect("action_EnergyStack");
+      hiversaires.interface.showSealAlert();
+    }
+    this.update();
   }
 }

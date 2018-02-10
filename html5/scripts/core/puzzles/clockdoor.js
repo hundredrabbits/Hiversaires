@@ -7,12 +7,12 @@ class ClockDoor extends Door {
   }
 
   setup() {
+    super.setup();
     hiversaires.interface.flashVignette();
     hiversaires.stage.billboard("overlay").hidden = true;
     hiversaires.interface.showClock();
     hiversaires.music.playEffect("action_DoorInit");
     if (this.isUnlocked) {
-      hiversaires.setCurrentAction(this.openDoor.bind(this));
       hiversaires.setModifier("open");
     } else {
       hiversaires.interface.showClockAlert();

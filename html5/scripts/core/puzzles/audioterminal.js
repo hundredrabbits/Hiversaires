@@ -7,14 +7,6 @@ class AudioTerminal extends Puzzle {
 
   setup() {
     hiversaires.interface.flashVignette();
-    hiversaires.setCurrentAction(
-      function() {
-        hiversaires.game.puzzleState.audio = !hiversaires.game.puzzleState
-          .audio;
-        this.update();
-      }.bind(this)
-    );
-
     this.update();
   }
 
@@ -28,5 +20,14 @@ class AudioTerminal extends Puzzle {
       hiversaires.hideModifier(0.3, 0);
       hiversaires.music.volume = 0;
     }
+  }
+
+  get active() {
+    return true;
+  }
+
+  performAction() {
+    hiversaires.game.puzzleState.audio = !hiversaires.game.puzzleState.audio;
+    this.update();
   }
 }

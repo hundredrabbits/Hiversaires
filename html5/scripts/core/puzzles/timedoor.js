@@ -9,6 +9,7 @@ class TimeDoor extends Door {
   }
 
   setup() {
+    super.setup();
     hiversaires.interface.flashVignette();
 
     const now = new Date(Date.now());
@@ -23,7 +24,6 @@ class TimeDoor extends Door {
     }
 
     if (this.isUnlocked) {
-      hiversaires.setCurrentAction(this.openDoor.bind(this));
       hiversaires.setModifier("open");
     }
   }

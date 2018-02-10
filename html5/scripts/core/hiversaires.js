@@ -37,7 +37,7 @@ class Hiversaires {
         this.action();
         break;
       case Input.center:
-        if (this.currentAction != null) {
+        if (this.currentPuzzle != null && this.currentPuzzle.active) {
           this.action();
         } else {
           this.moveForward();
@@ -83,11 +83,6 @@ class Hiversaires {
 
   get currentFuses() {
     return this.game.puzzleState.fuses;
-  }
-
-  setCurrentAction(value) {
-    this.currentAction = value;
-    this.stage.trigger("action").hidden = value == null;
   }
 
   updateMusic() {
@@ -147,12 +142,6 @@ class Hiversaires {
     this.moveCheck();
   }
 
-  warpTo(node, orientation) {
-    this.game.userNodeID = node;
-    this.game.userOrientation = orientation % 4;
-    this.moveCheck();
-  }
-
   moveBackward() {
     this.music.playEffect("footstep_turn");
 
@@ -172,20 +161,26 @@ class Hiversaires {
     this.moveCheck();
   }
 
+  warpTo(node, orientation) {
+    this.game.userNodeID = node;
+    this.game.userOrientation = orientation % 4;
+    this.moveCheck();
+  }
+
   actionCheck() {
-    this.stage.trigger("moveForward").hidden = this.currentPuzzle == null;
-
-    this.setCurrentAction(null);
-
+    this.stage.trigger("moveForward").hidden = this.currentPuzzle == null; // ?!
     if (this.currentPuzzle != null) {
       this.actionReset();
       this.currentPuzzle.setup();
+      this.stage.trigger("action").hidden = !this.currentPuzzle.active;
+    } else {
+      this.stage.trigger("action").hidden = true;
     }
   }
 
   action() {
-    if (this.currentAction != null) {
-      this.currentAction();
+    if (this.currentPuzzle != null && this.currentPuzzle.active) {
+      this.currentPuzzle.performAction();
     }
   }
 
@@ -205,7 +200,7 @@ class Hiversaires {
     this.stage.billboard("ententeScreen").alpha = 0;
     this.stage.billboard("illusion").alpha = 0;
 
-    this.setCurrentAction(null);
+    this.stage.trigger("action").hidden = true;
   }
 
   setModifier(modifier) {

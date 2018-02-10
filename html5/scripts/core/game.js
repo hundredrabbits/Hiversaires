@@ -10,7 +10,6 @@ class Game {
     this.userChapter = Chapter.act1;
     this.userEnergy = 0;
     this.userFootstep = 0;
-    this.currentAction = null;
   }
 
   start() {

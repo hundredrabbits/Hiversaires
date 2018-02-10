@@ -16,14 +16,6 @@ class StudioTerminal extends Puzzle {
 
     if (containsStones && containsAntechannel) {
       // Act 4 : Antechannel + Stones in Studio
-      hiversaires.setCurrentAction(
-        function() {
-          hiversaires.game.puzzleState.studio = !hiversaires.game.puzzleState
-            .studio;
-          hiversaires.music.playEffect("action_EnergyActive");
-          this.update();
-        }.bind(this)
-      );
       hiversaires.game.save();
     }
 
@@ -61,6 +53,15 @@ class StudioTerminal extends Puzzle {
       hiversaires.showModifier();
     } else {
       hiversaires.hideModifier();
+    }
+  }
+
+  performAction() {
+    if (containsStones && containsAntechannel) {
+      hiversaires.game.puzzleState.studio = !hiversaires.game.puzzleState
+        .studio;
+      hiversaires.music.playEffect("action_EnergyActive");
+      this.update();
     }
   }
 }

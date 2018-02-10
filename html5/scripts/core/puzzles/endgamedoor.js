@@ -7,10 +7,10 @@ class EndgameDoor extends Door {
   }
 
   setup() {
-    if (this.isUnlocked) {
+    super.setup();
+    if (!this.isUnlocked) {
       hiversaires.setModifier("open");
       hiversaires.showModifier();
-      hiversaires.setCurrentAction(this.walkThroughDoor.bind(this));
     } else {
       hiversaires.interface.showEnergyAlert();
     }
@@ -24,5 +24,9 @@ class EndgameDoor extends Door {
       }
     }
     return true;
+  }
+
+  performAction() {
+    this.walkThroughDoor();
   }
 }

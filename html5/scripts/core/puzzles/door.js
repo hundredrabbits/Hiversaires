@@ -4,11 +4,16 @@ class Door extends Puzzle {
   constructor(id, fadeDuration = 0) {
     super(id);
     this.fadeDuration = fadeDuration;
+    this._isOpen = { value: false };
+  }
+
+  setup() {
+    this.isOpen = false;
   }
 
   openDoor() {
+    this.isOpen = true;
     hiversaires.stage.billboard("overlay").hidden = false;
-    hiversaires.setCurrentAction(this.walkThroughDoor.bind(this));
     hiversaires.stage.fadeIn(
       hiversaires.stage.billboard("overlay"),
       this.fadeDuration,
@@ -35,6 +40,7 @@ class Door extends Puzzle {
     }
 
     if (changed) {
+      this.isOpen = false;
       hiversaires.actionCheck();
       hiversaires.moveCheck();
     }
@@ -46,5 +52,25 @@ class Door extends Puzzle {
 
   get isSecretUnlocked() {
     return false;
+  }
+
+  get active() {
+    return this.isUnlocked || this.isSecretUnlocked;
+  }
+
+  get isOpen() {
+    return this._isOpen.value;
+  }
+
+  set isOpen(value) {
+    this._isOpen.value = value;
+  }
+
+  performAction() {
+    if (this.isOpen) {
+      this.walkThroughDoor();
+    } else {
+      this.openDoor();
+    }
   }
 }

@@ -6,20 +6,18 @@ class SecretEnergyDoor extends EnergyDoor {
     this.secretFuseIDs = secretFuseIDs;
   }
 
+  openDoor() {
+    super.openDoor();
+    hiversaires.interface.showEnergy();
+  }
+
   setup() {
+    super.setup();
     if (this.isSecretUnlocked) {
       hiversaires.interface.flashVignette();
       hiversaires.stage.billboard("overlay").hidden = true;
       hiversaires.music.playEffect("action_DoorInit");
       hiversaires.interface.showEnergy();
-
-      hiversaires.setCurrentAction(
-        function() {
-          this.openDoor();
-          hiversaires.interface.showEnergy();
-        }.bind(this)
-      );
-
       hiversaires.setModifier("secret");
     } else {
       super.setup();

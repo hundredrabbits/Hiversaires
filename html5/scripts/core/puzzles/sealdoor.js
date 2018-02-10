@@ -7,6 +7,7 @@ class SealDoor extends Door {
   }
 
   setup() {
+    super.setup();
     hiversaires.interface.flashVignette();
 
     hiversaires.stage.billboard("overlay").hidden = true;
@@ -15,7 +16,6 @@ class SealDoor extends Door {
     hiversaires.interface.showSeal();
 
     if (this.isUnlocked) {
-      hiversaires.setCurrentAction(this.openDoor.bind(this));
       hiversaires.game.userChapter = this.matchedLock().chapter;
       hiversaires.setModifier("open");
       hiversaires.game.save();
