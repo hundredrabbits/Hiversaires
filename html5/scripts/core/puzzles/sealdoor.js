@@ -10,8 +10,6 @@ class SealDoor extends Door {
     super.setup();
     hiversaires.interface.flashVignette();
 
-
-
     hiversaires.music.playEffect("action_DoorInit");
     hiversaires.interface.showSeal();
 

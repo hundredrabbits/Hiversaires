@@ -1,10 +1,8 @@
 "use strict";
 
 class Illusion extends Puzzle {
-  constructor(id, nodeID, orientation) {
+  constructor(id) {
     super(id);
-    this.nodeID = nodeID;
-    this.orientation = orientation;
   }
 
   appear() {
