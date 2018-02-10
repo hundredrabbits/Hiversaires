@@ -41,7 +41,6 @@ class Door extends Puzzle {
 
     if (changed) {
       this.isOpen = false;
-      hiversaires.actionCheck();
       hiversaires.moveCheck();
     }
   }

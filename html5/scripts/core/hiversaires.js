@@ -56,7 +56,6 @@ class Hiversaires {
     }
     this.game.load();
     this.updateMusic();
-    this.actionCheck();
     this.moveCheck();
     this.interface.menuHome();
   }
@@ -90,7 +89,22 @@ class Hiversaires {
   }
 
   moveCheck() {
-    this.actionReset();
+    this.stage.billboard("menuBlack").hidden = true;
+    this.stage.billboard("menuCredit1").hidden = true;
+    this.stage.billboard("menuCredit2").hidden = true;
+    this.stage.billboard("menuCredit3").hidden = true;
+    this.stage.billboard("menuCredit4").hidden = true;
+    this.stage.billboard("menuLogo").hidden = true;
+    this.stage.billboard("menuControls").hidden = true;
+
+    this.stage.billboard("overlay").alpha = 0;
+    this.stage.billboard("clockFace").alpha = 0;
+    this.stage.billboard("clockShadow").alpha = 0;
+    this.stage.billboard("progressPane").alpha = 0;
+    this.stage.billboard("ententeScreen").alpha = 0;
+    this.stage.billboard("illusion").alpha = 0;
+
+    this.stage.trigger("action").hidden = true;
 
     this.stage.trigger("moveForward").hidden =
       this.currentSubject.type == SubjectType.none;
@@ -100,17 +114,18 @@ class Hiversaires {
 
     this.illusionCheck();
 
-    if (this.currentSubject.type == SubjectType.puzzle) {
-      this.actionCheck();
+    if (this.currentPuzzle != null) {
+      this.currentPuzzle.setup();
+      this.stage.trigger("action").hidden = !this.currentPuzzle.active;
     }
 
     this.music.setAmbience(ambienceByZone.get(this.currentNode.zone));
 
-    console.log(
-      this.game.userNodeID,
-      this.game.userOrientation,
-      this.currentSubject
-    );
+    // console.log(
+    //   this.game.userNodeID,
+    //   this.game.userOrientation,
+    //   this.currentSubject
+    // );
   }
 
   moveLeft() {
@@ -153,6 +168,12 @@ class Hiversaires {
       if (orientation != null) {
         this.game.userOrientation = orientation;
       }
+    } else if (this.currentPuzzle != null && this.currentPuzzle instanceof Door) {
+      // As long as it's active, perform the door's action until you walked through it
+      let lastSubject = this.currentSubject;
+      while (this.currentSubject == lastSubject && this.currentPuzzle.active) {
+        this.currentPuzzle.performAction();
+      }
     }
 
     this.game.userOrientation = (this.game.userOrientation + 4 + 2) % 4;
@@ -167,40 +188,10 @@ class Hiversaires {
     this.moveCheck();
   }
 
-  actionCheck() {
-    this.stage.trigger("moveForward").hidden = this.currentPuzzle == null; // ?!
-    if (this.currentPuzzle != null) {
-      this.actionReset();
-      this.currentPuzzle.setup();
-      this.stage.trigger("action").hidden = !this.currentPuzzle.active;
-    } else {
-      this.stage.trigger("action").hidden = true;
-    }
-  }
-
   action() {
     if (this.currentPuzzle != null && this.currentPuzzle.active) {
       this.currentPuzzle.performAction();
     }
-  }
-
-  actionReset() {
-    this.stage.billboard("menuBlack").hidden = true;
-    this.stage.billboard("menuCredit1").hidden = true;
-    this.stage.billboard("menuCredit2").hidden = true;
-    this.stage.billboard("menuCredit3").hidden = true;
-    this.stage.billboard("menuCredit4").hidden = true;
-    this.stage.billboard("menuLogo").hidden = true;
-    this.stage.billboard("menuControls").hidden = true;
-
-    this.stage.billboard("overlay").alpha = 0;
-    this.stage.billboard("clockFace").alpha = 0;
-    this.stage.billboard("clockShadow").alpha = 0;
-    this.stage.billboard("progressPane").alpha = 0;
-    this.stage.billboard("ententeScreen").alpha = 0;
-    this.stage.billboard("illusion").alpha = 0;
-
-    this.stage.trigger("action").hidden = true;
   }
 
   setModifier(modifier) {

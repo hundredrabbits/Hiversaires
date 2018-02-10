@@ -25,9 +25,7 @@ class Entente extends Puzzle {
         break;
     }
 
-    hiversaires.actionCheck();
     hiversaires.moveCheck();
-    hiversaires.actionReset();
   }
 
   incrX() {
