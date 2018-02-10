@@ -7,7 +7,7 @@ class StudioTerminal extends Puzzle {
 
   setup() {
     hiversaires.interface.flashVignette();
-    hiversaires.stage.billboard("overlay").hidden = true;
+
     hiversaires.music.playEffect("action_DoorInit");
 
     const seals = hiversaires.currentSeals;

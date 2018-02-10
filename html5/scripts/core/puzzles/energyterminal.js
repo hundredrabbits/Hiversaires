@@ -11,7 +11,6 @@ class EnergyTerminal extends Puzzle {
     this.isOpen = false;
     hiversaires.interface.flashVignette();
     hiversaires.interface.showEnergy();
-    hiversaires.stage.billboard("overlay").hidden = false;
     hiversaires.music.playEffect("action_EnergyInit");
   }
 

@@ -30,7 +30,7 @@ class Stage {
     for (let id of [
       "viewMain",
       "vignette",
-      "overlay",
+      "modifier",
       "illusion",
       "menuBlack",
       "menuCredit1",

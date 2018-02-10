@@ -97,7 +97,7 @@ class Hiversaires {
     this.stage.billboard("menuLogo").hidden = true;
     this.stage.billboard("menuControls").hidden = true;
 
-    this.stage.billboard("overlay").alpha = 0;
+    this.stage.billboard("modifier").alpha = 0;
     this.stage.billboard("clockFace").alpha = 0;
     this.stage.billboard("clockShadow").alpha = 0;
     this.stage.billboard("progressPane").alpha = 0;
@@ -105,6 +105,7 @@ class Hiversaires {
     this.stage.billboard("illusion").alpha = 0;
 
     this.stage.trigger("action").hidden = true;
+    this.stage.billboard("modifier").hidden = true;
 
     this.stage.trigger("moveForward").hidden =
       this.currentSubject.type == SubjectType.none;
@@ -200,7 +201,7 @@ class Hiversaires {
   }
 
   setModifier(modifier) {
-    this.stage.billboard("overlay").image =
+    this.stage.billboard("modifier").image =
       "node/" +
       this.game.userNodeID +
       "." +
@@ -211,14 +212,18 @@ class Hiversaires {
   }
 
   showModifier(fadeDuration = 0, fadeDelay = 0) {
-    this.stage.billboard("overlay").hidden = false;
-    this.stage.fadeIn(this.stage.billboard("overlay"), fadeDuration, fadeDelay);
+    this.stage.billboard("modifier").hidden = false;
+    this.stage.fadeIn(
+      this.stage.billboard("modifier"),
+      fadeDuration,
+      fadeDelay
+    );
   }
 
   hideModifier(fadeDuration = 0, fadeDelay = 0) {
-    this.stage.billboard("overlay").hidden = false;
+    this.stage.billboard("modifier").hidden = false;
     this.stage.fadeOut(
-      this.stage.billboard("overlay"),
+      this.stage.billboard("modifier"),
       fadeDuration,
       fadeDelay
     );

@@ -8,8 +8,6 @@ class SealTerminal extends Puzzle {
 
   setup() {
     hiversaires.interface.flashVignette();
-    hiversaires.stage.billboard("overlay").hidden = false;
-    hiversaires.stage.billboard("overlay").alpha = 0;
     hiversaires.music.playEffect("action_SealInit");
     this.update();
   }

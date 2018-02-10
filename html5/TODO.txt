@@ -1,7 +1,3 @@
-Rename overlay to modifier
-    In CSS too, remember
-    Furthermore, clean up references to overlay/modifier
-        Perhaps showModifier and hideModifier are enough
 Try to make Entente more data driven somehow
 A node should be able to report all the different assets that might be needed for its subjects
     Especially puzzles

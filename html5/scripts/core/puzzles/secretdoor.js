@@ -8,7 +8,7 @@ class SecretDoor extends Door {
   setup() {
     super.setup();
     hiversaires.interface.flashVignette();
-    hiversaires.stage.billboard("overlay").hidden = true;
+
     hiversaires.music.playEffect("action_DoorInit");
   }
 

@@ -13,12 +13,7 @@ class Door extends Puzzle {
 
   openDoor() {
     this.isOpen = true;
-    hiversaires.stage.billboard("overlay").hidden = false;
-    hiversaires.stage.fadeIn(
-      hiversaires.stage.billboard("overlay"),
-      this.fadeDuration,
-      0
-    );
+    hiversaires.showModifier(this.fadeDuration);
   }
 
   walkThroughDoor() {

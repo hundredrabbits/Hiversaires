@@ -15,7 +15,7 @@ class SecretEnergyDoor extends EnergyDoor {
     super.setup();
     if (this.isSecretUnlocked) {
       hiversaires.interface.flashVignette();
-      hiversaires.stage.billboard("overlay").hidden = true;
+
       hiversaires.music.playEffect("action_DoorInit");
       hiversaires.interface.showEnergy();
       hiversaires.setModifier("secret");
