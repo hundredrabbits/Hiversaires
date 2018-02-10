@@ -119,7 +119,17 @@ class Interface {
     );
   }
 
-  menuHome() {
+  hideMenu() {
+    hiversaires.stage.billboard("menuBlack").hidden = true;
+    hiversaires.stage.billboard("menuCredit1").hidden = true;
+    hiversaires.stage.billboard("menuCredit2").hidden = true;
+    hiversaires.stage.billboard("menuCredit3").hidden = true;
+    hiversaires.stage.billboard("menuCredit4").hidden = true;
+    hiversaires.stage.billboard("menuLogo").hidden = true;
+    hiversaires.stage.billboard("menuControls").hidden = true;
+  }
+
+  showHomeMenu() {
     hiversaires.stage.billboard("menuBlack").alpha = 1.0;
     hiversaires.stage.billboard("menuBlack").hidden = false;
 
@@ -143,6 +153,58 @@ class Interface {
     );
 
     hiversaires.music.volume = 1; // Music
+  }
+
+  showCreditsMenu() {
+    hiversaires.stage.billboard("menuBlack").alpha = 0.0;
+    hiversaires.stage.billboard("menuBlack").hidden = false;
+
+    hiversaires.stage.fadeIn(hiversaires.stage.billboard("menuBlack"), 3, 1.0);
+
+    hiversaires.stage.billboard("menuCredit1").alpha = 0.0;
+    hiversaires.stage.billboard("menuCredit1").hidden = false;
+
+    hiversaires.stage.fadeIn(
+      hiversaires.stage.billboard("menuCredit1"),
+      1,
+      6.0
+    );
+
+    hiversaires.stage.billboard("menuCredit2").alpha = 0.0;
+    hiversaires.stage.billboard("menuCredit2").hidden = false;
+
+    hiversaires.stage.fadeIn(
+      hiversaires.stage.billboard("menuCredit2"),
+      1,
+      10.0
+    );
+
+    hiversaires.stage.billboard("menuCredit3").alpha = 0.0;
+    hiversaires.stage.billboard("menuCredit3").hidden = false;
+
+    hiversaires.stage.fadeIn(
+      hiversaires.stage.billboard("menuCredit3"),
+      1,
+      16.0
+    );
+
+    hiversaires.stage.fadeIn(
+      hiversaires.stage.billboard("menuBlack"),
+      1,
+      20.0,
+      false
+    );
+
+    if (hiversaires.game.userEnergy == 1) {
+      hiversaires.stage.billboard("menuCredit4").alpha = 0.0;
+      hiversaires.stage.billboard("menuCredit4").hidden = false;
+
+      hiversaires.stage.fadeIn(
+        hiversaires.stage.billboard("menuCredit4"),
+        1,
+        24.0
+      );
+    }
   }
 
   flashVignette() {

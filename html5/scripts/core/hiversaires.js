@@ -15,6 +15,44 @@ class Hiversaires {
     this.walkthrough = new Walkthrough();
   }
 
+  start() {
+    this.stage.start();
+    this.game.start();
+    this.walkthrough.start();
+
+    if (DEBUG_START_FRESH) {
+      this.game.wipePlayerProgress();
+    }
+    this.game.load();
+    this.updateMusic();
+    this.moveCheck();
+    this.interface.showHomeMenu();
+  }
+
+  get currentNode() {
+    return nodesByID.get(this.game.userNodeID);
+  }
+
+  get currentSubject() {
+    return this.currentNode.subjects[this.game.userOrientation];
+  }
+
+  get currentPuzzle() {
+    let subject = this.currentSubject;
+    if (subject != null && subject.type == SubjectType.puzzle) {
+      return puzzlesByID.get(subject.puzzleID);
+    }
+    return null;
+  }
+
+  get currentSeals() {
+    return this.game.puzzleState.seals;
+  }
+
+  get currentFuses() {
+    return this.game.puzzleState.fuses;
+  }
+
   responder(input) {
     if (this.game.userChapter == Chapter.credit) {
       return;
@@ -46,57 +84,12 @@ class Hiversaires {
     }
   }
 
-  start() {
-    this.stage.start();
-    this.game.start();
-    this.walkthrough.start();
-
-    if (DEBUG_START_FRESH) {
-      this.game.wipePlayerProgress();
-    }
-    this.game.load();
-    this.updateMusic();
-    this.moveCheck();
-    this.interface.menuHome();
-  }
-
-  get currentNode() {
-    return nodesByID.get(this.game.userNodeID);
-  }
-
-  get currentSubject() {
-    return this.currentNode.subjects[this.game.userOrientation];
-  }
-
-  get currentPuzzle() {
-    let subject = this.currentSubject;
-    if (subject != null && subject.type == SubjectType.puzzle) {
-      return puzzlesByID.get(subject.puzzleID);
-    }
-    return null;
-  }
-
-  get currentSeals() {
-    return this.game.puzzleState.seals;
-  }
-
-  get currentFuses() {
-    return this.game.puzzleState.fuses;
-  }
-
   updateMusic() {
     this.music.setRecord(recordsByChapter.get(this.game.userChapter));
   }
 
   moveCheck() {
-    this.stage.billboard("menuBlack").hidden = true;
-    this.stage.billboard("menuCredit1").hidden = true;
-    this.stage.billboard("menuCredit2").hidden = true;
-    this.stage.billboard("menuCredit3").hidden = true;
-    this.stage.billboard("menuCredit4").hidden = true;
-    this.stage.billboard("menuLogo").hidden = true;
-    this.stage.billboard("menuControls").hidden = true;
-
+    this.interface.hideMenu();
     this.stage.billboard("modifier").alpha = 0;
     this.stage.billboard("clockFace").alpha = 0;
     this.stage.billboard("clockShadow").alpha = 0;
@@ -117,18 +110,21 @@ class Hiversaires {
       puzzlesByID.get(this.currentSubject.illusionID).appear();
     }
 
-    if (this.currentPuzzle != null) {
-      this.currentPuzzle.setup();
-      this.stage.trigger("action").hidden = !this.currentPuzzle.active;
+    let lastPuzzle = null;
+    while (this.currentPuzzle != null && lastPuzzle != this.currentPuzzle) {
+      lastPuzzle = this.currentPuzzle;
+      lastPuzzle.setup();
     }
-
+    this.stage.trigger("action").hidden = !(
+      this.currentPuzzle != null && this.currentPuzzle.active
+    );
     this.music.setAmbience(ambienceByZone.get(this.currentNode.zone));
 
-    // console.log(
-    //   this.game.userNodeID,
-    //   this.game.userOrientation,
-    //   this.currentSubject
-    // );
+    console.log(
+      this.game.userNodeID,
+      this.game.userOrientation,
+      this.currentSubject
+    );
   }
 
   moveLeft() {
