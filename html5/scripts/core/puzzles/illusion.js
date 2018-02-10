@@ -17,7 +17,7 @@ class Illusion extends Puzzle {
     hiversaires.stage.billboard("illusion").alpha = 1;
     hiversaires.stage.fadeOut(hiversaires.stage.billboard("illusion"), 0.5, 1);
 
-    hiversaires.game.puzzleState.illusions.add(this.id);
+    hiversaires.game.puzzleState.illusions.add(hiversaires.game.userNodeID);
     hiversaires.interface.showIllusion();
   }
 }

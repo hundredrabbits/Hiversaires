@@ -113,6 +113,10 @@ const nodesByID = (function() {
     });
   }
 
+  function illusion(subject, illusionID) {
+    return Object.freeze(Object.assign({ illusionID }, subject));
+  }
+
   function maze(puzzleID, effect) {
     return Object.freeze({ type: SubjectType.puzzle, puzzleID, effect });
   }
@@ -128,14 +132,14 @@ const nodesByID = (function() {
   addNode(6, Zone.forest, node(7, 1), none, node(5), none);
   addNode(7, Zone.forest, node(12), node(8, 0), terminal(1), node(6, 2));
   addNode(8, Zone.forest, node(9, 2), none, node(7, 3), none);
-  addNode(9, Zone.forest, node(8, 2), none, node(10, 0), none);
+  addNode(9, Zone.forest, node(8, 2), illusion(none, 17), node(10, 0), none);
 
   addNode(10, Zone.forest, node(3, 3), none, node(9, 0), none);
   addNode(11, Zone.forest, door(25, 48, 2), none, node(3), none);
   addNode(12, Zone.forest, door(3, 13), none, node(7), node(14, 0));
   addNode(13, Zone.studio, node(17), node(15), door(3, 12), terminal(2));
   addNode(14, Zone.forest, node(18), none, node(12, 1), none);
-  addNode(15, Zone.studio, node(16), none, none, node(13));
+  addNode(15, Zone.studio, illusion(node(16), 17), none, none, node(13));
   addNode(16, Zone.studio, node(21), door(7, 22), node(15), node(17));
   addNode(17, Zone.studio, node(20), node(16), node(13), none);
   addNode(18, Zone.forest, terminal(31), terminal(2), node(14), none);
@@ -162,7 +166,14 @@ const nodesByID = (function() {
   addNode(30, Zone.circular, node(29), none, node(23), none);
   addNode(31, Zone.circular, node(25, 1), none, node(35), none);
   addNode(32, Zone.studio, none, node(52), none, node(27, 1));
-  addNode(33, Zone.circular, terminal(14), none, node(29, 1), none);
+  addNode(
+    33,
+    Zone.circular,
+    terminal(14),
+    none,
+    illusion(node(29, 1), 17),
+    none
+  );
   addNode(34, Zone.entente, terminal(37), none, none, node(39));
   addNode(35, Zone.stones, door(8, 31, 0), node(38), node(36), none);
   addNode(36, Zone.stones, node(35), node(37), none, none);
@@ -180,7 +191,7 @@ const nodesByID = (function() {
   addNode(40, Zone.stones, node(39), none, node(41), none);
   addNode(41, Zone.stones, node(40), none, none, node(42));
   addNode(42, Zone.stones, none, node(41), node(44), node(43));
-  addNode(43, Zone.stones, none, node(42), none, terminal(35));
+  addNode(43, Zone.stones, none, node(42), illusion(none, 17), terminal(35));
   addNode(44, Zone.stones, node(42), none, node(46), none);
   addNode(45, Zone.rainre, terminal(13), none, terminal(1), node(39));
   addNode(46, Zone.stones, node(44), none, door(15, 85, 2), none);
@@ -195,7 +206,7 @@ const nodesByID = (function() {
   addNode(55, Zone.antechannel, terminal(39), node(56), node(53), node(54));
   addNode(56, Zone.antechannel, node(58), none, node(84), node(55));
   addNode(57, Zone.antechannel, node(59), none, node(54), none);
-  addNode(58, Zone.antechannel, node(60), none, node(56), none);
+  addNode(58, Zone.antechannel, node(60), illusion(none, 17), node(56), none);
   addNode(59, Zone.antechannel, node(61), none, node(57), none);
 
   addNode(60, Zone.antechannel, node(62), none, node(56), none);
@@ -209,7 +220,7 @@ const nodesByID = (function() {
 
   addNode(70, Zone.metamondst, node(75), node(67), none, none);
   addNode(72, Zone.metamondst, none, node(61), none, node(69));
-  addNode(73, Zone.metamondst, node(81), none, node(63), none);
+  addNode(73, Zone.metamondst, node(81), none, illusion(node(63), 17), none);
   addNode(74, Zone.metamondst, node(80), none, node(67), none);
   addNode(75, Zone.metamondst, node(76), none, node(70), none);
   addNode(76, Zone.metamondst, none, none, node(75), door(30, 87));
@@ -225,11 +236,18 @@ const nodesByID = (function() {
   addNode(85, Zone.metamondst, door(15, 46, 0), none, node(80), node(86));
   addNode(86, Zone.metamondst, none, node(85), none, terminal(1));
   addNode(87, Zone.capsule, node(79), door(30, 76), none, node(88));
-  addNode(88, Zone.capsule, none, node(87), none, node(141));
+  addNode(88, Zone.capsule, none, node(87), none, illusion(node(141), 17));
 
   addNode(89, Zone.entente, maze(42, MazeEffect.decrX), none, node(90), none);
   addNode(90, Zone.entente, node(89), none, node(91), none);
-  addNode(91, Zone.entente, node(90), terminal(23), node(103), none);
+  addNode(
+    91,
+    Zone.entente,
+    illusion(node(90), 17),
+    terminal(23),
+    node(103),
+    none
+  );
 
   addNode(92, Zone.entente, node(91), none, node(93), none);
   addNode(93, Zone.entente, node(92), none, node(94), none);
@@ -255,7 +273,7 @@ const nodesByID = (function() {
 
   addNode(112, Zone.nataniev, node(115), node(113), none, door(33, 79));
   addNode(113, Zone.nataniev, node(114), terminal(36), door(40, 50), node(112));
-  addNode(114, Zone.nataniev, none, none, node(113), node(115));
+  addNode(114, Zone.nataniev, none, none, illusion(node(113), 17), node(115));
   addNode(115, Zone.nataniev, none, node(114), node(112), none);
   addNode(116, Zone.entente, none, none, none, node(20, 2));
 
@@ -297,12 +315,11 @@ const puzzlesByID = (function() {
     )
   );
   addPuzzle(new ProgressTerminal(16));
-  addPuzzle(new Illusion(17, 15, 0)); // studio
+  addPuzzle(new Illusion(17));
   addPuzzle(new EnergyTerminal(18));
   addPuzzle(new EnergyDoor(19, [18]));
   addPuzzle(new SealTerminal(20, Zone.metamondst));
   addPuzzle(new SealTerminal(21, Zone.antechannel));
-  addPuzzle(new Illusion(22, 43, 2)); // stones
   addPuzzle(new EntenteTerminal(23, MazeAxis.x, 15));
   addPuzzle(new EntenteTerminal(24, MazeAxis.y, 0));
   addPuzzle(
@@ -315,11 +332,8 @@ const puzzlesByID = (function() {
   addPuzzle(new EnergyDoor(26, [27]));
   addPuzzle(new EnergyTerminal(27));
   addPuzzle(new StudioDoor(28, 1));
-  addPuzzle(new Illusion(29, 73, 2)); // metamondst
   addPuzzle(new StudioDoor(30));
-
   addPuzzle(new EnergyTerminal(31, 1));
-  addPuzzle(new Illusion(32, 58, 1)); // antechannel
   addPuzzle(new EnergyDoor(33, [47]));
   addPuzzle(new AudioTerminal(34, 1));
   addPuzzle(new AudioTerminal(35, 1));
@@ -329,18 +343,9 @@ const puzzlesByID = (function() {
   addPuzzle(new EnergyTerminal(39, 1));
   addPuzzle(new EndgameDoor(40, [36, 47]));
   addPuzzle(new EndgameCredit(41));
-
   addPuzzle(new Entente(42));
-
   addPuzzle(new EnergyTerminal(47)); // Spare Fuse
-
-  addPuzzle(new Illusion(48, 114, 2));
-  addPuzzle(new Illusion(49, 91, 0));
-  addPuzzle(new Illusion(50, 88, 3));
-  addPuzzle(new Illusion(51, 33, 2));
-  addPuzzle(new Illusion(52, 9, 1));
-
-  addPuzzle(new TimeDoor(54, 143, 15, 7));
+  addPuzzle(new TimeDoor(54, 15, 7));
 
   return Object.freeze(puzzlesByID);
 })();

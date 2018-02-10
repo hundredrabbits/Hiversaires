@@ -112,7 +112,9 @@ class Hiversaires {
     this.stage.billboard("viewMain").image =
       "node/" + this.game.userNodeID + "." + this.game.userOrientation + ".jpg";
 
-    this.illusionCheck();
+    if (Math.random() < 0.3 && this.currentSubject.illusionID != null) {
+      puzzlesByID.get(this.currentSubject.illusionID).appear();
+    }
 
     if (this.currentPuzzle != null) {
       this.currentPuzzle.setup();
@@ -168,7 +170,10 @@ class Hiversaires {
       if (orientation != null) {
         this.game.userOrientation = orientation;
       }
-    } else if (this.currentPuzzle != null && this.currentPuzzle instanceof Door) {
+    } else if (
+      this.currentPuzzle != null &&
+      this.currentPuzzle instanceof Door
+    ) {
       // As long as it's active, perform the door's action until you walked through it
       let lastSubject = this.currentSubject;
       while (this.currentSubject == lastSubject && this.currentPuzzle.active) {
@@ -217,23 +222,6 @@ class Hiversaires {
       fadeDuration,
       fadeDelay
     );
-  }
-
-  illusionCheck() {
-    if (Math.random() < 0.3) {
-      return;
-    }
-
-    for (let puzzle of puzzlesByID.values()) {
-      if (
-        puzzle instanceof Illusion &&
-        puzzle.nodeID == this.game.userNodeID &&
-        puzzle.orientation == this.game.userOrientation
-      ) {
-        puzzle.appear();
-        break;
-      }
-    }
   }
 
   playFootStep() {

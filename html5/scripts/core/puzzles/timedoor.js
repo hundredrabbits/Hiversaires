@@ -1,9 +1,8 @@
 "use strict";
 
 class TimeDoor extends Door {
-  constructor(id, innerNodeID, hours, minutes) {
+  constructor(id, hours, minutes) {
     super(id);
-    this.innerNodeID = innerNodeID;
     this.hours = hours;
     this.minutes = minutes;
   }
@@ -16,10 +15,7 @@ class TimeDoor extends Door {
     const currentHours = now.getHours();
     const currentMinutes = now.getMinutes();
 
-    if (
-      (currentHours == this.hours && currentMinutes == this.minutes) ||
-      hiversaires.game.userNodeID == innerNodeID
-    ) {
+    if (currentHours == this.hours && currentMinutes == this.minutes) {
       hiversaires.game.puzzleState.timeDoor = true;
     }
 
