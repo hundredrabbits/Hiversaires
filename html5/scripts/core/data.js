@@ -261,12 +261,12 @@ const nodesByID = (function() {
   addNode(95, Zone.entente, node(94), terminal(24), node(96), none);
   addNode(96, Zone.entente, node(95), none, node(97), none);
   addNode(97, Zone.entente, node(96), none, node(98), none);
-  addNode(98, Zone.entente, node(97), none/*node(99)*/, node(65), node(101));
+  addNode(98, Zone.entente, node(97), node(99), node(65), node(101));
   addNode(65, Zone.entente, node(98), none, node(93)/*maze(42, MazeEffect.exitY, 93, null, 107, 3)*/, none);
-  // addNode(99, Zone.entente, none, node(100), none, node(98));
-  // addNode(100, Zone.entente, none, maze(42, MazeEffect.decrY), none, node(99));
+  addNode(99, Zone.entente, none, node(100), none, node(98));
+  addNode(100, Zone.entente, none, node(95,2)/*maze(42, MazeEffect.decrY)*/, none, node(99));
   addNode(101, Zone.entente, none, node(98), terminal(38), node(102));
-  addNode(102, Zone.entente, none, node(101), none, none/*maze(42, MazeEffect.incrY)*/);
+  addNode(102, Zone.entente, none, node(101), none, node(95,2)/*maze(42, MazeEffect.incrY)*/);
 
   addNode(104, Zone.entente, none, node(107), none, node(105));
   addNode(105, Zone.entente, none, node(104), none, node(106));
