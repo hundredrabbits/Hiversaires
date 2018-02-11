@@ -63,6 +63,9 @@ const ambienceByZone = (function() {
 class SubjectType {}
 setEnumValues(SubjectType, ["node", "puzzle", "none"]);
 
+class PuzzleType {}
+setEnumValues(PuzzleType, ["door", "terminal", "maze"]);
+
 class Node {
   constructor(id, zone, subjects) {
     this.id = id;
@@ -93,7 +96,11 @@ const nodesByID = (function() {
   }
 
   function terminal(puzzleID) {
-    return Object.freeze({ type: SubjectType.puzzle, puzzleID });
+    return Object.freeze({
+      type: SubjectType.puzzle,
+      puzzleType: PuzzleType.terminal,
+      puzzleID
+    });
   }
 
   function door(
@@ -105,6 +112,7 @@ const nodesByID = (function() {
   ) {
     return Object.freeze({
       type: SubjectType.puzzle,
+      puzzleType: PuzzleType.door,
       puzzleID,
       nodeID,
       orientation,
@@ -118,7 +126,12 @@ const nodesByID = (function() {
   }
 
   function maze(puzzleID, effect) {
-    return Object.freeze({ type: SubjectType.puzzle, puzzleID, effect });
+    return Object.freeze({
+      type: SubjectType.puzzle,
+      puzzleType: PuzzleType.maze,
+      puzzleID,
+      effect
+    });
   }
 
   const none = Object.freeze({ type: SubjectType.none });
@@ -262,12 +275,12 @@ const nodesByID = (function() {
   addNode(102, Zone.entente, none, node(101), none, maze(42, MazeEffect.incrY));
   addNode(103, Zone.entente, node(91), none, maze(42, MazeEffect.incrX), none);
 
-  addNode(104, Zone.entente, none, node(100), none, node(105));
-  addNode(105, Zone.entente, none, node(104), terminal(24), node(106));
+  addNode(104, Zone.entente, none, node(107), none, node(105));
+  addNode(105, Zone.entente, none, node(104), none, node(106));
   addNode(106, Zone.entente, none, node(105), none, node(107));
   addNode(107, Zone.entente, none, node(106), none, node(108));
   addNode(108, Zone.entente, none, node(107), none, node(109));
-  addNode(109, Zone.entente, none, node(108), none, node(110));
+  addNode(109, Zone.entente, none, node(108), terminal(43), node(110));
   addNode(110, Zone.entente, none, node(109), none, node(111));
   addNode(111, Zone.entente, none, node(110), none, node(1, 0));
 
@@ -344,6 +357,7 @@ const puzzlesByID = (function() {
   addPuzzle(new EndgameDoor(40, [36, 47]));
   addPuzzle(new EndgameCredit(41));
   addPuzzle(new Entente(42));
+  addPuzzle(new EntenteProgressTerminal(43));
   addPuzzle(new EnergyTerminal(47)); // Spare Fuse
   addPuzzle(new TimeDoor(54, 15, 7));
 
@@ -359,8 +373,7 @@ const createDefaultState = function() {
     audio: true,
     studio: false,
     secret: false,
-    timeDoor: false,
-    maze: { x: 15, y: 0 }
+    timeDoor: false
   };
   for (let puzzle of puzzlesByID.values()) {
     if (puzzle instanceof EnergyTerminal && puzzle.filledOnNewGame) {

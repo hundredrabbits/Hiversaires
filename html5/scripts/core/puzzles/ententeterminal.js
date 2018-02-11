@@ -9,14 +9,14 @@ class EntenteTerminal extends Puzzle {
   setup() {
     let targetGraphic = "";
 
-    let axisValue = hiversaires.game.puzzleState.maze[this.axis];
+    let axisValue = hiversaires.game.userMaze[this.axis];
 
     if (this.axis == MazeAxis.x) {
-      if (axisValue > 17) {
+      if (axisValue > 2) {
         targetGraphic = "Left";
-      } else if (axisValue < 17) {
+      } else if (axisValue < 2) {
         targetGraphic = "Right";
-      } else if (axisValue == 17) {
+      } else if (axisValue == 2) {
         targetGraphic = "Right";
       }
     } else if (this.axis == MazeAxis.y) {

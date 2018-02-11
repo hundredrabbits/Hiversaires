@@ -121,9 +121,14 @@ class Hiversaires {
     this.music.setAmbience(ambienceByZone.get(this.currentNode.zone));
 
     console.log(
+      "nodeID:",
       this.game.userNodeID,
+      "orientation:",
       this.game.userOrientation,
-      this.currentSubject
+      "subject:",
+      this.currentSubject,
+      "maze:",
+      this.game.userMaze
     );
   }
 
@@ -159,7 +164,10 @@ class Hiversaires {
   moveBackward() {
     this.music.playEffect("footstep_turn");
 
-    this.game.userOrientation = (this.game.userOrientation + 4 + 2) % 4;
+    for (let i = 0; i < 2; i++) {
+      this.game.userOrientation = (this.game.userOrientation + 4 + 1) % 4;
+      this.moveCheck();
+    }
 
     if (this.currentSubject.type == SubjectType.node) {
       let { nodeID, orientation } = this.currentSubject;
@@ -167,21 +175,27 @@ class Hiversaires {
       if (orientation != null) {
         this.game.userOrientation = orientation;
       }
-    } else if (
-      this.currentPuzzle != null &&
-      this.currentPuzzle instanceof Door
-    ) {
-      // As long as it's active, perform the door's action until you walked through it
-      let lastSubject = this.currentSubject;
-      while (this.currentSubject == lastSubject && this.currentPuzzle.active) {
-        this.currentPuzzle.performAction();
+    } else if (this.currentSubject.type == SubjectType.puzzle) {
+      if (this.currentSubject.puzzleType == PuzzleType.door) {
+        // As long as it's active, perform the door's action until you walked through it
+        let lastSubject = this.currentSubject;
+        while (
+          this.currentSubject == lastSubject &&
+          this.currentPuzzle.active
+        ) {
+          this.currentPuzzle.performAction();
+        }
+      } else if (this.currentSubject.puzzleType == PuzzleType.maze) {
+        this.currentPuzzle.setup();
       }
     }
 
-    this.game.userOrientation = (this.game.userOrientation + 4 + 2) % 4;
+    for (let i = 0; i < 2; i++) {
+      this.game.userOrientation = (this.game.userOrientation + 4 + 1) % 4;
+      this.moveCheck();
+    }
 
     this.stage.animateStepBackward();
-    this.moveCheck();
   }
 
   warpTo(node, orientation) {

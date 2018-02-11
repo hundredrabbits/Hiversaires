@@ -1,4 +1,4 @@
-Try to make Entente more data driven somehow
+Turn Entente into doors with no open state
 A node should be able to report all the different assets that might be needed for its subjects
     Especially puzzles
     Then we can load it preemptively
