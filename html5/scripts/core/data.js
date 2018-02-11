@@ -137,7 +137,7 @@ const nodesByID = (function() {
   const none = Object.freeze({ type: SubjectType.none });
 
   addNode(0, Zone.forest, node(1), none, none, none);
-  addNode(1, Zone.forest, node(2), none, none/*door(28, 103)*/, none);
+  addNode(1, Zone.forest, node(2), none, door(28, 89), none);
   addNode(2, Zone.forest, node(3), none, node(1), none);
   addNode(3, Zone.forest, node(11), node(10, 2), node(2), node(4, 0));
   addNode(4, Zone.forest, node(5), none, node(3, 1), none);
@@ -227,7 +227,6 @@ const nodesByID = (function() {
   addNode(62, Zone.antechannel, door(26, 77), none, node(60), none);
   addNode(63, Zone.metamondst, node(73), node(69), none, node(67));
   addNode(64, Zone.nataniev, node(63), none, none, none); // TODO: something interesting
-  // addNode(65, Zone.entente, none, none, maze(42, MazeEffect.exitY), none);
   addNode(67, Zone.metamondst, node(74), node(63), none, node(70));
   addNode(69, Zone.metamondst, terminal(18), door(19, 72), none, node(63));
 
@@ -251,22 +250,23 @@ const nodesByID = (function() {
   addNode(87, Zone.capsule, node(79), door(30, 76), none, node(88));
   addNode(88, Zone.capsule, none, node(87), none, illusion(node(141), 17));
 
-  // addNode(89, Zone.entente, maze(42, MazeEffect.decrX), none, node(90), none);
-  // addNode(90, Zone.entente, node(89), none, node(91), none);
-  // addNode(91, Zone.entente, illusion(node(90), 17), terminal(23), node(103), none);
+  addNode(89, Zone.entente, node(103)/*maze(42, MazeEffect.decrX, 103)*/, none, node(90), none);
+  addNode(90, Zone.entente, node(89), none, node(91), none);
+  addNode(91, Zone.entente, illusion(node(90), 17), terminal(23), node(103)/*maze(42, MazeEffect.incrX, 103, null, 92)*/, none);
+  addNode(103, Zone.entente, node(91), none, node(89), none);
 
-  // addNode(92, Zone.entente, node(91), none, node(93), none);
-  // addNode(93, Zone.entente, node(92), none, node(94), none);
-  // addNode(94, Zone.entente, node(93), none, node(95), none);
-  // addNode(95, Zone.entente, node(94), terminal(24), node(96), none);
-  // addNode(96, Zone.entente, node(95), none, node(97), none);
-  // addNode(97, Zone.entente, node(96), none, node(98), none);
-  // addNode(98, Zone.entente, node(97), node(99), node(65), node(101));
+  addNode(92, Zone.entente, node(91), none, node(93), none);
+  addNode(93, Zone.entente, node(92), none, node(94), none);
+  addNode(94, Zone.entente, node(93), none, node(95), none);
+  addNode(95, Zone.entente, node(94), terminal(24), node(96), none);
+  addNode(96, Zone.entente, node(95), none, node(97), none);
+  addNode(97, Zone.entente, node(96), none, node(98), none);
+  addNode(98, Zone.entente, node(97), none/*node(99)*/, node(65), none/*node(101)*/);
+  addNode(65, Zone.entente, node(98), none, node(93)/*maze(42, MazeEffect.exitY, 93, null, 107, 3)*/, none);
   // addNode(99, Zone.entente, none, node(100), none, node(98));
   // addNode(100, Zone.entente, none, maze(42, MazeEffect.decrY), none, node(99));
   // addNode(101, Zone.entente, none, node(98), terminal(38), node(102));
   // addNode(102, Zone.entente, none, node(101), none, maze(42, MazeEffect.incrY));
-  // addNode(103, Zone.entente, node(91), none, maze(42, MazeEffect.incrX), none);
 
   addNode(104, Zone.entente, none, node(107), none, node(105));
   addNode(105, Zone.entente, none, node(104), none, node(106));

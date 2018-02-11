@@ -7,8 +7,11 @@ class EntenteTerminal extends Puzzle {
   }
 
   setup() {
+    if (hiversaires.game.userMaze == null) {
+      hiversaires.game.userMaze = { x: 0, y: 0 };
+    }
+    
     let targetGraphic = "";
-
     let axisValue = hiversaires.game.userMaze[this.axis];
 
     if (this.axis == MazeAxis.x) {
