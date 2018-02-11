@@ -1,4 +1,9 @@
 Turn Entente into doors with no open state
+    Make area 1
+    Make area 2
+    Make EntenteDoor, EntenteExitDoor
+    Add EntenteDoors, EntenteExitDoor to areas
+    Delete old entente
 A node should be able to report all the different assets that might be needed for its subjects
     Especially puzzles
     Then we can load it preemptively
