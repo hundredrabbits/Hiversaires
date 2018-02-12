@@ -34,6 +34,14 @@ setEnumValues(MazeAxis, ["x", "y"]);
 class MazeEffect {}
 setEnumValues(MazeEffect, ["incrX", "decrX", "incrY", "decrY", "exitY"]);
 
+const ententeIcons = (function() {
+  let ententeIcons = new Map();
+  ententeIcons.set(-1, "left");
+  ententeIcons.set(0, "straight");
+  ententeIcons.set(1, "right");
+  return Object.freeze(ententeIcons);
+})();
+
 const recordsByChapter = (function() {
   let recordsByChapter = new Map();
   recordsByChapter.set(Chapter.act1, "music_act1");
@@ -125,12 +133,16 @@ const nodesByID = (function() {
     return Object.freeze(Object.assign({ illusionID }, subject));
   }
 
-  function maze(puzzleID, effect) {
+  function maze(subject, puzzleID, effect, mazeNodeID, mazeOrientation) {
     return Object.freeze({
+      nodeID: subject.nodeID,
+      orientation: subject.orientation,
       type: SubjectType.puzzle,
       puzzleType: PuzzleType.maze,
       puzzleID,
-      effect
+      effect,
+      alternateNodeID: mazeNodeID,
+      alternateOrientation: mazeOrientation
     });
   }
 
@@ -173,7 +185,7 @@ const nodesByID = (function() {
   addNode(25, Zone.circular, node(24), none, node(26), door(8, 31, 2));
   addNode(26, Zone.circular, node(25), none, node(27), none);
   addNode(27, Zone.circular, node(26), none, node(28), door(9, 32, 1));
-  addNode(28, Zone.circular, node(27), none, node(29), none /*puzzle(40)*/);
+  addNode(28, Zone.circular, node(27), none, node(29), none);
   addNode(29, Zone.circular, node(28), none, node(30), node(33, 0));
 
   addNode(30, Zone.circular, node(29), none, node(23), none);
@@ -250,9 +262,23 @@ const nodesByID = (function() {
   addNode(87, Zone.capsule, node(79), door(30, 76), none, node(88));
   addNode(88, Zone.capsule, none, node(87), none, illusion(node(141), 17));
 
-  addNode(89, Zone.entente, node(103)/*maze(42, MazeEffect.decrX, 103)*/, none, node(90), none);
+  addNode(
+    89,
+    Zone.entente,
+    maze(node(103), 42, MazeEffect.decrX),
+    none,
+    node(90),
+    none
+  );
   addNode(90, Zone.entente, node(89), none, node(91), none);
-  addNode(91, Zone.entente, illusion(node(90), 17), terminal(23), node(103)/*maze(42, MazeEffect.incrX, 103, null, 92)*/, none);
+  addNode(
+    91,
+    Zone.entente,
+    illusion(node(90), 17),
+    terminal(23),
+    maze(node(103), 42, MazeEffect.incrX, 92),
+    none
+  );
   addNode(103, Zone.entente, node(91), none, node(89), none);
 
   addNode(92, Zone.entente, node(91), none, node(93), none);
@@ -262,11 +288,32 @@ const nodesByID = (function() {
   addNode(96, Zone.entente, node(95), none, node(97), none);
   addNode(97, Zone.entente, node(96), none, node(98), none);
   addNode(98, Zone.entente, node(97), node(99), node(65), node(101));
-  addNode(65, Zone.entente, node(98), none, node(93)/*maze(42, MazeEffect.exitY, 93, null, 107, 3)*/, none);
+  addNode(
+    65,
+    Zone.entente,
+    node(98),
+    none,
+    maze(node(93), 42, MazeEffect.exitY, 107, 3),
+    none
+  );
   addNode(99, Zone.entente, none, node(100), none, node(98));
-  addNode(100, Zone.entente, none, node(95,2)/*maze(42, MazeEffect.decrY)*/, none, node(99));
+  addNode(
+    100,
+    Zone.entente,
+    none,
+    maze(node(95, 2), 42, MazeEffect.decrY),
+    none,
+    node(99)
+  );
   addNode(101, Zone.entente, none, node(98), terminal(38), node(102));
-  addNode(102, Zone.entente, none, node(101), none, node(95,2)/*maze(42, MazeEffect.incrY)*/);
+  addNode(
+    102,
+    Zone.entente,
+    none,
+    node(101),
+    none,
+    maze(node(95, 2), 42, MazeEffect.incrY)
+  );
 
   addNode(104, Zone.entente, none, node(107), none, node(105));
   addNode(105, Zone.entente, none, node(104), none, node(106));
@@ -349,7 +396,7 @@ const puzzlesByID = (function() {
   addPuzzle(new EnergyTerminal(39, 1));
   addPuzzle(new EndgameDoor(40, [36, 47]));
   addPuzzle(new EndgameCredit(41));
-  // addPuzzle(new Entente(42));
+  addPuzzle(new EntenteDoor(42));
   addPuzzle(new EntenteProgressTerminal(43));
   addPuzzle(new EnergyTerminal(47)); // Spare Fuse
   addPuzzle(new TimeDoor(54, 15, 7));
