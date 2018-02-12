@@ -12,20 +12,13 @@ class Hiversaires {
     this.music = new Music();
     this.stage = new Stage(this.element, this.responder.bind(this));
     this.interface = new Interface();
-    this.walkthrough = new Walkthrough();
+    this.walkthrough = new Walkthrough(this.responder.bind(this));
   }
 
   start() {
     this.stage.start();
     this.game.start();
-    this.walkthrough.start();
-
-    if (DEBUG_START_FRESH) {
-      this.game.wipePlayerProgress();
-    }
-    this.game.load();
-    this.updateMusic();
-    this.moveCheck();
+    this.refreshNode();
     this.interface.showHomeMenu();
   }
 
@@ -58,6 +51,10 @@ class Hiversaires {
       return;
     }
 
+    if (DEBUG_LOG_INPUT) {
+      console.log(input);
+    }
+
     switch (input) {
       case Input.left:
         this.moveLeft();
@@ -84,11 +81,7 @@ class Hiversaires {
     }
   }
 
-  updateMusic() {
-    this.music.setRecord(recordsByChapter.get(this.game.userChapter));
-  }
-
-  moveCheck() {
+  refreshNode() {
     this.interface.hideMenu();
     this.stage.billboard("modifier").alpha = 0;
     this.stage.billboard("clockFace").alpha = 0;
@@ -130,20 +123,26 @@ class Hiversaires {
         this.currentSubject
       );
     }
+
+    this.updateMusic();
+  }
+
+  updateMusic() {
+    this.music.setRecord(recordsByChapter.get(this.game.userChapter));
   }
 
   moveLeft() {
     this.music.playEffect("footstep_turn");
     this.game.userOrientation = (this.game.userOrientation + 4 - 1) % 4;
     this.stage.animateTurnLeft();
-    this.moveCheck();
+    this.refreshNode();
   }
 
   moveRight() {
     this.music.playEffect("footstep_turn");
     this.game.userOrientation = (this.game.userOrientation + 4 + 1) % 4;
     this.stage.animateTurnRight();
-    this.moveCheck();
+    this.refreshNode();
   }
 
   moveForward() {
@@ -159,7 +158,7 @@ class Hiversaires {
     }
 
     this.stage.animateStepForward();
-    this.moveCheck();
+    this.refreshNode();
   }
 
   moveBackward() {
@@ -167,7 +166,7 @@ class Hiversaires {
 
     for (let i = 0; i < 2; i++) {
       this.game.userOrientation = (this.game.userOrientation + 4 + 1) % 4;
-      this.moveCheck();
+      this.refreshNode();
     }
 
     if (this.currentSubject.type == SubjectType.node) {
@@ -191,7 +190,7 @@ class Hiversaires {
 
     for (let i = 0; i < 2; i++) {
       this.game.userOrientation = (this.game.userOrientation + 4 + 1) % 4;
-      this.moveCheck();
+      this.refreshNode();
     }
 
     this.stage.animateStepBackward();
@@ -200,7 +199,7 @@ class Hiversaires {
   warpTo(node, orientation) {
     this.game.userNodeID = node;
     this.game.userOrientation = orientation % 4;
-    this.moveCheck();
+    this.refreshNode();
   }
 
   action() {

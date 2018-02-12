@@ -10,7 +10,7 @@ class KillTerminal extends Puzzle {
     hiversaires.game.sessionKillCount++;
     if (hiversaires.game.sessionKillCount > this.max) {
       hiversaires.game.wipePlayerProgress();
-      hiversaires.newGame();
+      hiversaires.refreshNode();
     }
   }
 }

@@ -57,6 +57,9 @@ class StudioTerminal extends Puzzle {
   }
 
   performAction() {
+    const seals = hiversaires.currentSeals;
+    const containsStones = seals.has(Zone.stones);
+    const containsAntechannel = seals.has(Zone.antechannel);
     if (containsStones && containsAntechannel) {
       hiversaires.game.puzzleState.studio = !hiversaires.game.puzzleState
         .studio;
