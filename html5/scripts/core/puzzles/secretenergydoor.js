@@ -13,7 +13,7 @@ class SecretEnergyDoor extends EnergyDoor {
 
   setup() {
     super.setup();
-    if (this.isSecretUnlocked) {
+    if (this.isAlternateUnlocked) {
       hiversaires.interface.flashVignette();
 
       hiversaires.music.playEffect("action_DoorInit");
@@ -24,7 +24,7 @@ class SecretEnergyDoor extends EnergyDoor {
     }
   }
 
-  get isSecretUnlocked() {
+  get isAlternateUnlocked() {
     if (!hiversaires.game.puzzleState.studio) {
       return false;
     }

@@ -1,9 +1,10 @@
 "use strict";
 
 class Door extends Puzzle {
-  constructor(id, fadeDuration = 0) {
+  constructor(id, fadeDuration = 0, silent = false) {
     super(id);
     this.fadeDuration = fadeDuration;
+    this.silent = silent;
     this._isOpen = { value: false };
   }
 
@@ -17,14 +18,18 @@ class Door extends Puzzle {
   }
 
   walkThroughDoor() {
-    hiversaires.music.playEffect("action_DoorActive");
+    if (this.silent) {
+      hiversaires.playFootStep();
+    } else {
+      hiversaires.music.playEffect("action_DoorActive");
+    }
     let subject = hiversaires.currentSubject;
     let changed = false;
-    if (this.isSecretUnlocked) {
+    if (this.isAlternateUnlocked) {
       changed = true;
-      hiversaires.game.userNodeID = subject.secretNodeID;
-      if (subject.secretOrientation != null) {
-        hiversaires.game.userOrientation = subject.secretOrientation;
+      hiversaires.game.userNodeID = subject.alternateNodeID;
+      if (subject.alternateOrientation != null) {
+        hiversaires.game.userOrientation = subject.alternateOrientation;
       }
     } else if (this.isUnlocked) {
       changed = true;
@@ -44,12 +49,12 @@ class Door extends Puzzle {
     return false;
   }
 
-  get isSecretUnlocked() {
+  get isAlternateUnlocked() {
     return false;
   }
 
   get active() {
-    return this.isUnlocked || this.isSecretUnlocked;
+    return this.isUnlocked || this.isAlternateUnlocked;
   }
 
   get isOpen() {

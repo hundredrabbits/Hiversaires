@@ -116,8 +116,8 @@ const nodesByID = (function() {
       puzzleID,
       nodeID,
       orientation,
-      secretNodeID,
-      secretOrientation
+      alternateNodeID: secretNodeID,
+      alternateOrientation: secretOrientation
     });
   }
 

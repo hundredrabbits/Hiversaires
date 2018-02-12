@@ -147,14 +147,15 @@ class Hiversaires {
   }
 
   moveForward() {
-    this.playFootStep();
-
     if (this.currentSubject.type == SubjectType.node) {
+      this.playFootStep();
       let { nodeID, orientation } = this.currentSubject;
       this.game.userNodeID = nodeID;
       if (orientation != null) {
         this.game.userOrientation = orientation;
       }
+    } else {
+      this.music.playEffect("footstep_collide");
     }
 
     this.stage.animateStepForward();
@@ -241,11 +242,8 @@ class Hiversaires {
 
   playFootStep() {
     this.game.userFootstep += 1;
-    let effect = "footstep_collide";
-    if (this.currentSubject.type == SubjectType.node) {
-      effect =
-        this.game.userFootstep % 2 == 1 ? "footstep_left" : "footstep_right";
-    }
-    this.music.playEffect(effect);
+    this.music.playEffect(
+      this.game.userFootstep % 2 == 1 ? "footstep_left" : "footstep_right"
+    );
   }
 }
