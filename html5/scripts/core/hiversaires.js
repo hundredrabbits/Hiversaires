@@ -120,16 +120,16 @@ class Hiversaires {
     );
     this.music.setAmbience(ambienceByZone.get(this.currentNode.zone));
 
-    console.log(
-      "nodeID:",
-      this.game.userNodeID,
-      "orientation:",
-      this.game.userOrientation,
-      "subject:",
-      this.currentSubject,
-      "maze:",
-      this.game.userMaze
-    );
+    if (DEBUG_PRINT_INFO) {
+      console.log(
+        "at",
+        this.game.userNodeID,
+        "facing",
+        this.game.userOrientation,
+        "toward",
+        this.currentSubject
+      );
+    }
   }
 
   moveLeft() {
@@ -186,8 +186,6 @@ class Hiversaires {
         ) {
           this.currentPuzzle.performAction();
         }
-      } else if (this.currentSubject.puzzleType == PuzzleType.maze) {
-        this.currentPuzzle.setup();
       }
     }
 

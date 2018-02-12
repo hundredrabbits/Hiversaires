@@ -32,7 +32,7 @@ class MazeAxis {}
 setEnumValues(MazeAxis, ["x", "y"]);
 
 class MazeEffect {}
-setEnumValues(MazeEffect, ["incrX", "decrX", "incrY", "decrY", "exitY"]);
+setEnumValues(MazeEffect, ["incr", "decr", "exit"]);
 
 const ententeIcons = (function() {
   let ententeIcons = new Map();
@@ -72,7 +72,7 @@ class SubjectType {}
 setEnumValues(SubjectType, ["node", "puzzle", "none"]);
 
 class PuzzleType {}
-setEnumValues(PuzzleType, ["door", "terminal", "maze"]);
+setEnumValues(PuzzleType, ["door", "terminal"]);
 
 class Node {
   constructor(id, zone, subjects) {
@@ -129,21 +129,31 @@ const nodesByID = (function() {
     });
   }
 
-  function illusion(subject, illusionID) {
-    return Object.freeze(Object.assign({ illusionID }, subject));
-  }
-
-  function maze(subject, puzzleID, effect, mazeNodeID, mazeOrientation) {
+  function maze(
+    subject,
+    puzzleID,
+    axis,
+    effect,
+    amount,
+    mazeNodeID,
+    mazeOrientation
+  ) {
     return Object.freeze({
       nodeID: subject.nodeID,
       orientation: subject.orientation,
       type: SubjectType.puzzle,
-      puzzleType: PuzzleType.maze,
+      puzzleType: PuzzleType.door,
       puzzleID,
+      axis,
       effect,
+      amount,
       alternateNodeID: mazeNodeID,
       alternateOrientation: mazeOrientation
     });
+  }
+
+  function illusion(subject, illusionID) {
+    return Object.freeze(Object.assign({ illusionID }, subject));
   }
 
   const none = Object.freeze({ type: SubjectType.none });
@@ -265,7 +275,7 @@ const nodesByID = (function() {
   addNode(
     89,
     Zone.entente,
-    maze(node(103), 42, MazeEffect.decrX),
+    maze(node(103), 42, MazeAxis.x, MazeEffect.decr, 1),
     none,
     node(90),
     none
@@ -276,7 +286,7 @@ const nodesByID = (function() {
     Zone.entente,
     illusion(node(90), 17),
     terminal(23),
-    maze(node(103), 42, MazeEffect.incrX, 92),
+    maze(node(103), 42, MazeAxis.x, MazeEffect.incr, 3, 92),
     none
   );
   addNode(103, Zone.entente, node(91), none, node(89), none);
@@ -293,7 +303,7 @@ const nodesByID = (function() {
     Zone.entente,
     node(98),
     none,
-    maze(node(93), 42, MazeEffect.exitY, 107, 3),
+    maze(node(93), 42, MazeAxis.y, MazeEffect.exit, 0, 107, 3),
     none
   );
   addNode(99, Zone.entente, none, node(100), none, node(98));
@@ -301,7 +311,7 @@ const nodesByID = (function() {
     100,
     Zone.entente,
     none,
-    maze(node(95, 2), 42, MazeEffect.decrY),
+    maze(node(95, 2), 42, MazeAxis.y, MazeEffect.decr, 1),
     none,
     node(99)
   );
@@ -312,7 +322,7 @@ const nodesByID = (function() {
     none,
     node(101),
     none,
-    maze(node(95, 2), 42, MazeEffect.incrY)
+    maze(node(95, 2), 42, MazeAxis.y, MazeEffect.incr, 4)
   );
 
   addNode(104, Zone.entente, none, node(107), none, node(105));
@@ -342,6 +352,10 @@ const puzzlesByID = (function() {
   function addPuzzle(puzzle) {
     puzzlesByID.set(puzzle.id, Object.freeze(puzzle));
   }
+
+  let ententeMazeGoal = Object.freeze(
+    new Map([[MazeAxis.x, 2], [MazeAxis.y, 17]])
+  );
 
   addPuzzle(new ClockTerminal(1));
   addPuzzle(new EnergyTerminal(2));
@@ -373,8 +387,8 @@ const puzzlesByID = (function() {
   addPuzzle(new EnergyDoor(19, [18]));
   addPuzzle(new SealTerminal(20, Zone.metamondst));
   addPuzzle(new SealTerminal(21, Zone.antechannel));
-  addPuzzle(new EntenteTerminal(23, MazeAxis.x, 15));
-  addPuzzle(new EntenteTerminal(24, MazeAxis.y, 0));
+  addPuzzle(new EntenteTerminal(23, MazeAxis.x, ententeMazeGoal));
+  addPuzzle(new EntenteTerminal(24, MazeAxis.y, ententeMazeGoal));
   addPuzzle(
     new SealDoor(
       25,
@@ -396,7 +410,7 @@ const puzzlesByID = (function() {
   addPuzzle(new EnergyTerminal(39, 1));
   addPuzzle(new EndgameDoor(40, [36, 47]));
   addPuzzle(new EndgameCredit(41));
-  addPuzzle(new EntenteDoor(42));
+  addPuzzle(new EntenteDoor(42, ententeMazeGoal));
   addPuzzle(new EntenteProgressTerminal(43));
   addPuzzle(new EnergyTerminal(47)); // Spare Fuse
   addPuzzle(new TimeDoor(54, 15, 7));

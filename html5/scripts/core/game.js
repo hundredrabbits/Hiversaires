@@ -11,8 +11,7 @@ class Game {
     this.userEnergy = 0;
     this.userFootstep = 0;
 
-    this.userMaze = { x: 0, y: 0 };
-    this.userMazeGoal = { x: 2, y: 17 };
+    this.userMaze = new Map([[MazeAxis.x, 0], [MazeAxis.y, 0]]);
   }
 
   start() {
