@@ -29,8 +29,8 @@ class Stage {
 
     for (let id of [
       "viewMain",
-      "vignette",
       "modifier",
+      "vignette",
       "illusion",
       "menuBlack",
       "menuCredit1",

@@ -20,6 +20,14 @@ class ArtBook {
     }
   }
 
+  preloadArt(assetURL) {
+    let img = new Image();
+    img.onload = function() {
+      img.onload = null;
+    };
+    img.src = assetURL;
+  }
+
   setArt(selector, assetURL) {
     if (!this.assetCatalog.has(assetURL)) {
       let className = "artbook_" + this.classUniqueID;

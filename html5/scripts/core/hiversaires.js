@@ -210,14 +210,23 @@ class Hiversaires {
   }
 
   setModifier(modifier) {
-    this.stage.billboard("modifier").image =
+    this.stage.billboard("modifier").image = this.modifierToURL(modifier);
+  }
+
+  preloadModifier(modifier) {
+    this.artBook.preloadArt("media/graphics/" + this.modifierToURL(modifier));
+  }
+
+  modifierToURL(modifier) {
+    return (
       "node/" +
       this.game.userNodeID +
       "." +
       this.game.userOrientation +
       "." +
       modifier +
-      ".jpg";
+      ".jpg"
+    );
   }
 
   showModifier(fadeDuration = 0, fadeDelay = 0) {
