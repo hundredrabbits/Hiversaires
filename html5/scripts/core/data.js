@@ -86,38 +86,38 @@ class Node {
 const nodesByID = (function() {
   const nodesByID = new Map();
 
-  function addNode(id, zone, subject0, subject1, subject2, subject3) {
+  const addNode = (id, zone, subject0, subject1, subject2, subject3) => {
     nodesByID.set(
       id,
       Object.freeze(
         new Node(id, zone, [subject0, subject1, subject2, subject3])
       )
     );
-  }
+  };
 
-  function node(nodeID, orientation) {
+  const node = (nodeID, orientation) => {
     return Object.freeze({
       type: SubjectType.node,
       nodeID,
       orientation
     });
-  }
+  };
 
-  function terminal(puzzleID) {
+  const terminal = puzzleID => {
     return Object.freeze({
       type: SubjectType.puzzle,
       puzzleType: PuzzleType.terminal,
       puzzleID
     });
-  }
+  };
 
-  function door(
+  const door = (
     puzzleID,
     nodeID,
     orientation,
     secretNodeID,
     secretOrientation
-  ) {
+  ) => {
     return Object.freeze({
       type: SubjectType.puzzle,
       puzzleType: PuzzleType.door,
@@ -127,9 +127,9 @@ const nodesByID = (function() {
       alternateNodeID: secretNodeID,
       alternateOrientation: secretOrientation
     });
-  }
+  };
 
-  function secretDoor(puzzleID, secretNodeID, secretOrientation) {
+  const secretDoor = (puzzleID, secretNodeID, secretOrientation) => {
     return Object.freeze({
       type: SubjectType.puzzle,
       puzzleType: PuzzleType.door,
@@ -137,9 +137,9 @@ const nodesByID = (function() {
       alternateNodeID: secretNodeID,
       alternateOrientation: secretOrientation
     });
-  }
+  };
 
-  function maze(
+  const maze = (
     subject,
     puzzleID,
     axis,
@@ -147,7 +147,7 @@ const nodesByID = (function() {
     amount,
     mazeNodeID,
     mazeOrientation
-  ) {
+  ) => {
     return Object.freeze({
       nodeID: subject.nodeID,
       orientation: subject.orientation,
@@ -160,11 +160,11 @@ const nodesByID = (function() {
       alternateNodeID: mazeNodeID,
       alternateOrientation: mazeOrientation
     });
-  }
+  };
 
-  function illusion(subject, illusionID) {
+  const illusion = (subject, illusionID) => {
     return Object.freeze(Object.assign({ illusionID }, subject));
-  }
+  };
 
   const none = Object.freeze({ type: SubjectType.none });
 
@@ -311,13 +311,13 @@ const nodesByID = (function() {
 const puzzlesByID = (function() {
   const puzzlesByID = new Map();
 
-  function addPuzzle(puzzle) {
+  const addPuzzle = puzzle => {
     puzzlesByID.set(puzzle.id, Object.freeze(puzzle));
-  }
+  };
 
-  function lock(chapter, seals) {
+  const lock = (chapter, seals) => {
     return Object.freeze({ chapter, seals });
-  }
+  };
 
   const ententeMazeGoal = Object.freeze(
     new Map([[MazeAxis.x, 2], [MazeAxis.y, 17]])
