@@ -2,18 +2,92 @@
 
 class Walkthrough {
   constructor(responder) {
+    this._running = false;
     this.responder = responder;
     this.recordedPlaythrough = [
-      ["center","center","left","center","center","left","center","right","center","center","right","center","left","left","center","left","center","center","center","center","right","center","center","right","center","center","left","center","center","left","center","center","right","center","right","center","center","center","center","right","center","center","right","center","center","center","center","left","center","center","left","center","center","right","center","center","left","center","right","right","center","right","center","right","center","center","left","left","center","center","right","center","left","center","center","center","center","center","center","center","left","center","center","left","center","center","right","center","center","center","right","center","center","center","left","center","left","center","center","left","left","center","right","center","center","center","center","left","center","center","center","center","left","center","center","center","center","left","center","right","center","center","left","center","center","center","right","center","center","right","center","right","center","center","left","center","center","center","center","right","center","center","center","center","left","center","center","center","center","left","center","center","center","left","center","center","center","center","left","center","center","center","center","right","center","center","center","left","center","left","center","center","center","left","center","center","center","center","right","center","center","center","center","right","center","center","center","left","center","center","center","center","left","center"],
-      ["center","center","center","left","center","center","center","right","center","center","right","center","center","right","center","center","right","center","center","right","center","center","center","center","left","center","center","center","center","right","center","center","center","left","center","center","center","center","right","center","center","right","center","center","center","left","center","center","center","center","right","center","center","center","left","center"],
-      ["left","center","center","center","left","center","center","center","center","right","center","center","center","left","center","center","left","center","center","center","center","center","right","center","right","center","right","center","left","center","center","center","center","right","center","center","right","center","center","center","left","center","center","center","right","center","center","left","center","center","right","center","center","center","center","center","center","center","right","center","left","center","center","center","center","right","center","center","left","center"],
-      ["right","right","center","right","center","center","right","center","center","left","center","right","center","center","center","left","center","center","left","center","center","center","center","right","center","left","center","left","center","left","center","center","right","center","left","center","center","center","right","center","center","right","center","center","center","left","center","left","center"],
-      ["right","right","center","left","center","center","center","left","center","right","right","center","right","center","right","center","center","left","left","center","center","right","center","left","center","center","center","center","center","center","center","left","center","center","left","center","center","right","center","center","center","right","center","center","center","left","center","center","left","center","center","center","center","center","right","center","right","center","right","center","left","center","center","center","center","right","center","center","right","center","center","center","left","center","center","center","center","right","center","center","center","left","center","left","center","center","center","left","center","center","center","center","right","center","center","center","left","center","center","left","center","center","center","center","center","left","center","center","right","right","center","left","center","center","center"],
-      ["center","center","center","center","center","center","center","left","right","center","center","center","center","left","left","center","center","center","center","right","right","center","center","center","center","left","right","center","center","center","right","center","left","center","center","right","center","center","left","right","center","center","center","right","center","center","center","left","right","center","center","center","right","center","center","center","left","right","center","center","center","right","center","center","center","left","right","center","center","center","right","center","center","center","left","right","center","center","center","left","center","center","center","left","right","center","center","center","left","center","center","center","left","right","center","center","center","left","center","center","center","left","right","center","center","center","center","center","center","center","center","center","center"],
-      ["center","center","right","center","center","center","center","left","center","center","right","right","center","left","center","center","center","center","right","center","center","right","center","center","left","center","center","left","center","center","right","center","right","center","center","center","center","right","center","center","right","center","center","center","center","left","center","center","left","center","center","right","center","center","left","center","left","center","right","center","center","left","center","center","right","center","center","center","center","left","center","center","left","center","center","center","center","right","center","center"],
-      ["left","left","center","center","center","right","center","center","left","center","center","center","center","left","left","center","center","center","left","center","center","right","center","right","center","center","center","center","left","center","center","center","center","left","center","center","center","center","center","right","center","center","left","left","left","left"],
-      ["right","center","center","right","center","center","center","center","left","center","center","center","right","center","center","left","center","center","center","right","center","center","left","center","center","right","center","right","center","center","center","center","center","right","center","center"],
+      [
+        "forward","forward","left","forward","forward","left","action","right","forward","forward","right",
+        "action","left","left","forward","left","forward","forward","action","action","right",
+        "action","action","right","forward","forward","left","action","action","left","action",
+        "action","right","forward","right","forward","action","action","forward","right","forward",
+        "forward","right","action","action","forward","forward","left","forward","forward","left",
+        "action","action","right","action","action","left","action","right","right","action",
+        "right","forward","right","action","action","left","left","forward","forward","right",
+        "forward","left","forward","forward","action","action","forward","forward","forward","left",
+        "forward","forward","left","action","action","right","action","action","forward","right",
+        "forward","forward","forward","left","forward","left","action","action","left","left",
+        "forward","right","forward","action","action","forward","left","forward","forward","forward",
+        "forward","left","action","action","forward","forward","left","forward","right","action",
+        "action","left","action","action","forward","right","forward","forward","right","action",
+        "right","forward","forward","left","forward","action","action","forward","right","forward",
+        "action","action","forward","left","forward","forward","forward","forward","left","action",
+        "action","forward","left","forward","forward","forward","forward","left","action","action",
+        "forward","forward","right","forward","forward","forward","left","action","left","forward",
+        "forward","forward","left","forward","action","action","forward","right","forward","forward",
+        "forward","forward","right","action","action","forward","left","forward","forward","forward",
+        "forward","left","action","action","forward","forward","left","forward","action","action",
+        "right","forward","forward","right","action","action","right","forward","forward","right",
+        "forward","action","right","forward","forward","forward","forward","left","forward","action",
+        "action","forward","right","forward","action","action","left","action","action","forward",
+        "forward","right","forward","forward","right","forward","forward","forward","left","action",
+        "action","forward","forward","right","forward","forward","forward","left","action","left",
+        "forward","forward","forward","left","forward","action","action","forward","right","forward",
+        "forward","forward","left","forward","forward","left","forward","forward","forward","action",
+        "action","right","forward","right","action","right","forward","left","action","action",
+        "forward","forward","right","forward","forward","right","forward","forward","forward","left",
+        "action","action","forward","right","action","action","left","forward","forward","right",
+        "forward","forward","forward","action","action","forward","forward","right","forward","left",
+        "forward","forward","action","action","right","action","action","left","action","right",
+        "right","action","right","forward","forward","right","forward","action","left","forward",
+        "right","action","action","forward","left","forward","forward","left","action","action",
+        "forward","forward","right","forward","left","forward","left","action","left","forward",
+        "forward","right","forward","left","action","action","forward","right","forward","forward",
+        "right","action","action","forward","left","forward","left","action","right","right",
+        "forward","left","forward","action","action","left","action","right","right","action",
+        "right","forward","right","action","action","left","left","forward","forward","right",
+        "forward","left","forward","forward","action","action","forward","forward","forward","left",
+        "forward","forward","left","action","action","right","action","action","forward","right",
+        "forward","forward","forward","left","forward","forward","left","forward","forward","forward",
+        "action","action","right","forward","right","action","right","forward","left","action",
+        "action","forward","forward","right","forward","forward","right","forward","forward","forward",
+        "left","action","action","forward","forward","right","forward","forward","forward","left",
+        "action","left","forward","forward","forward","left","forward","action","action","forward",
+        "right","forward","forward","forward","left","forward","forward","left","forward","forward",
+        "forward","action","action","left","action","action","right","right","forward","left",
+        "forward","action","action","forward","forward","forward","action","action","forward","forward",
+        "left","right","action","forward","forward","forward","left","left","forward","forward",
+        "action","forward","right","right","action","forward","forward","forward","left","right",
+        "forward","forward","forward","right","forward","left","action","action","right","forward",
+        "action","left","right","forward","forward","forward","right","forward","forward","action",
+        "left","right","forward","forward","forward","right","forward","forward","action","left",
+        "right","forward","forward","forward","right","forward","forward","action","left","right",
+        "forward","forward","forward","right","forward","forward","action","left","right","forward",
+        "forward","forward","left","forward","forward","action","left","right","forward","forward",
+        "forward","left","forward","forward","action","left","right","forward","forward","forward",
+        "left","forward","forward","action","left","right","forward","forward","forward","forward",
+        "action","forward","forward","forward","forward","forward","forward","forward","right","forward",
+        "forward","forward","forward","left","action","action","right","right","forward","left",
+        "forward","forward","action","action","right","action","action","right","forward","forward",
+        "left","action","action","left","action","action","right","forward","right","forward",
+        "action","action","forward","right","forward","forward","right","action","action","forward",
+        "forward","left","forward","forward","left","action","action","right","action","action",
+        "left","action","left","forward","right","action","action","left","forward","forward",
+        "right","forward","action","action","forward","left","forward","forward","left","action",
+        "action","forward","forward","right","forward","action","left","left","forward","forward",
+        "forward","right","action","action","left","action","action","forward","action","left",
+        "left","forward","action","action","left","action","action","right","forward","right",
+        "forward","action","action","forward","left","forward","forward","forward","forward","left",
+        "action","action","forward","forward","forward","right","action","action","right","forward",
+        "forward","right","forward","forward","forward","forward","left","action","action","forward",
+        "right","action","action","left","forward","forward","forward","right","forward","forward",
+        "left","action","action","right","forward","right","action","action","forward","action",
+        "action","right","action","action",
+      ]
     ];
+  }
+
+  get running() {
+    return this._running;
   }
 
   playEntireGame(speed = 250) {
@@ -28,12 +102,14 @@ class Walkthrough {
       index++;
       if (index > flattenedPlaythrough.length) {
         clearInterval(intervalID);
+        this._running = false;
         console.log("Walkthrough complete");
       }
     }
     // For a game once called "Dozenal Clock", it's kind of odd
     // that this is the only timer it contains. -RM
     const intervalID = setInterval(next.bind(this), speed);
+    this._running = true;
   }
 
   beginRecording() {

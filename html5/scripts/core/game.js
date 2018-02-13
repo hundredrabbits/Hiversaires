@@ -40,6 +40,10 @@ class Game {
       console.log("DEBUG_DONT_SAVE : did not save state.");
       return;
     }
+    if (hiversaires.walkthrough.running) {
+      console.log("Walkthrough running : did not save state.");
+      return;
+    }
 
     const saveObject = {
       userState: {
