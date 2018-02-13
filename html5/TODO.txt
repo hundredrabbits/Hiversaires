@@ -1,4 +1,4 @@
-Full walkthrough
+Change credits to text, you know why not
 Bug someone about using import/export es6 syntax
 Convert the world to a displayable graph, if you can
 

@@ -4,86 +4,43 @@ class Walkthrough {
   constructor(responder) {
     this._running = false;
     this.responder = responder;
-    this.recordedPlaythrough = [
+
+    const inputs = new Map([
+      ["a", Input.action],
+      ["l", Input.left],
+      ["r", Input.right],
+      ["f", Input.forward],
+      ["b", Input.backward]
+    ]);
+    this.recordedPlaythrough = [].concat.apply(
+      [],
       [
-        "forward","forward","left","forward","forward","left","action","right","forward","forward","right",
-        "action","left","left","forward","left","forward","forward","action","action","right",
-        "action","action","right","forward","forward","left","action","action","left","action",
-        "action","right","forward","right","forward","action","action","forward","right","forward",
-        "forward","right","action","action","forward","forward","left","forward","forward","left",
-        "action","action","right","action","action","left","action","right","right","action",
-        "right","forward","right","action","action","left","left","forward","forward","right",
-        "forward","left","forward","forward","action","action","forward","forward","forward","left",
-        "forward","forward","left","action","action","right","action","action","forward","right",
-        "forward","forward","forward","left","forward","left","action","action","left","left",
-        "forward","right","forward","action","action","forward","left","forward","forward","forward",
-        "forward","left","action","action","forward","forward","left","forward","right","action",
-        "action","left","action","action","forward","right","forward","forward","right","action",
-        "right","forward","forward","left","forward","action","action","forward","right","forward",
-        "action","action","forward","left","forward","forward","forward","forward","left","action",
-        "action","forward","left","forward","forward","forward","forward","left","action","action",
-        "forward","forward","right","forward","forward","forward","left","action","left","forward",
-        "forward","forward","left","forward","action","action","forward","right","forward","forward",
-        "forward","forward","right","action","action","forward","left","forward","forward","forward",
-        "forward","left","action","action","forward","forward","left","forward","action","action",
-        "right","forward","forward","right","action","action","right","forward","forward","right",
-        "forward","action","right","forward","forward","forward","forward","left","forward","action",
-        "action","forward","right","forward","action","action","left","action","action","forward",
-        "forward","right","forward","forward","right","forward","forward","forward","left","action",
-        "action","forward","forward","right","forward","forward","forward","left","action","left",
-        "forward","forward","forward","left","forward","action","action","forward","right","forward",
-        "forward","forward","left","forward","forward","left","forward","forward","forward","action",
-        "action","right","forward","right","action","right","forward","left","action","action",
-        "forward","forward","right","forward","forward","right","forward","forward","forward","left",
-        "action","action","forward","right","action","action","left","forward","forward","right",
-        "forward","forward","forward","action","action","forward","forward","right","forward","left",
-        "forward","forward","action","action","right","action","action","left","action","right",
-        "right","action","right","forward","forward","right","forward","action","left","forward",
-        "right","action","action","forward","left","forward","forward","left","action","action",
-        "forward","forward","right","forward","left","forward","left","action","left","forward",
-        "forward","right","forward","left","action","action","forward","right","forward","forward",
-        "right","action","action","forward","left","forward","left","action","right","right",
-        "forward","left","forward","action","action","left","action","right","right","action",
-        "right","forward","right","action","action","left","left","forward","forward","right",
-        "forward","left","forward","forward","action","action","forward","forward","forward","left",
-        "forward","forward","left","action","action","right","action","action","forward","right",
-        "forward","forward","forward","left","forward","forward","left","forward","forward","forward",
-        "action","action","right","forward","right","action","right","forward","left","action",
-        "action","forward","forward","right","forward","forward","right","forward","forward","forward",
-        "left","action","action","forward","forward","right","forward","forward","forward","left",
-        "action","left","forward","forward","forward","left","forward","action","action","forward",
-        "right","forward","forward","forward","left","forward","forward","left","forward","forward",
-        "forward","action","action","left","action","action","right","right","forward","left",
-        "forward","action","action","forward","forward","forward","action","action","forward","forward",
-        "left","right","action","forward","forward","forward","left","left","forward","forward",
-        "action","forward","right","right","action","forward","forward","forward","left","right",
-        "forward","forward","forward","right","forward","left","action","action","right","forward",
-        "action","left","right","forward","forward","forward","right","forward","forward","action",
-        "left","right","forward","forward","forward","right","forward","forward","action","left",
-        "right","forward","forward","forward","right","forward","forward","action","left","right",
-        "forward","forward","forward","right","forward","forward","action","left","right","forward",
-        "forward","forward","left","forward","forward","action","left","right","forward","forward",
-        "forward","left","forward","forward","action","left","right","forward","forward","forward",
-        "left","forward","forward","action","left","right","forward","forward","forward","forward",
-        "action","forward","forward","forward","forward","forward","forward","forward","right","forward",
-        "forward","forward","forward","left","action","action","right","right","forward","left",
-        "forward","forward","action","action","right","action","action","right","forward","forward",
-        "left","action","action","left","action","action","right","forward","right","forward",
-        "action","action","forward","right","forward","forward","right","action","action","forward",
-        "forward","left","forward","forward","left","action","action","right","action","action",
-        "left","action","left","forward","right","action","action","left","forward","forward",
-        "right","forward","action","action","forward","left","forward","forward","left","action",
-        "action","forward","forward","right","forward","action","left","left","forward","forward",
-        "forward","right","action","action","left","action","action","forward","action","left",
-        "left","forward","action","action","left","action","action","right","forward","right",
-        "forward","action","action","forward","left","forward","forward","forward","forward","left",
-        "action","action","forward","forward","forward","right","action","action","right","forward",
-        "forward","right","forward","forward","forward","forward","left","action","action","forward",
-        "right","action","action","left","forward","forward","forward","right","forward","forward",
-        "left","action","action","right","forward","right","action","action","forward","action",
-        "action","right","action","action",
+        "fflfflarffrallflffaaraarfflaalaarfrfaafrffraafflfflaaraalarrarfraallffrflff",
+        "aaf3lfflaaraafrf3lflaallfrfaaflf4laafflfraalaafrffrarfflfaafrfaaflf4laa",
+        "flf4laaffrf3lalf3lfaafrf4raaflf4laafflfaarffraarffrfarf4lf",
+        "aafrfaalaaffrffrf3laaffrf3lalf3lfaafrf3lfflf3aarfrarflaaffrffrf3laafraalffrf3",
+        "aaffrflffaaraalarrarffrfalfraaflfflaaffrflfla",
+        "lffrflaafrffraaflflarrflfaalarrarfraallffrflff",
+        "aaf3lfflaaraafrf3lfflf3aarfrarflaaffrffrf3laaffrf3lalf3lfaafrf3lfflf3aalaarrflf",
+        "aaf3aafflraf3llffafrraf3lrf3rflaarfalrf3rffalrf3rffalrf3rffalrf3rffalrf3lffalrf3lffalrf3lffalrf4af7rf4laarrflffaaraarfflaa",
+        "laarfrfaafrffraafflfflaaraalalfraalffrfaaflfflaaffrfallf3raalaarffaarrffrfallfaa",
+        "laarfrfaaflf4laaf3raarffrf4laafraalf3rfflaarfraafaaraa"
       ]
-    ];
+        .join("")
+        .replace(/([a-z]\d*)/g, "$1,")
+        .split(",")
+        .map(function(step) {
+          const token = step.charAt(0);
+          const amount = step.length > 1 ? parseInt(step.substr(1)) : 1;
+          let output = [];
+          for (let i = 0; i < amount; i++) {
+            output.push(inputs.get(token));
+          }
+          return output;
+        })
+    );
+
+    console.log(this.recordedPlaythrough);
   }
 
   get running() {
@@ -94,13 +51,11 @@ class Walkthrough {
     hiversaires.game.wipePlayerProgress();
     hiversaires.refreshNode();
 
-    const flattenedPlaythrough = [].concat.apply([], this.recordedPlaythrough);
-
     let index = 0;
     function next() {
-      this.responder(flattenedPlaythrough[index]);
+      this.responder(this.recordedPlaythrough[index]);
       index++;
-      if (index > flattenedPlaythrough.length) {
+      if (index > this.recordedPlaythrough.length) {
         clearInterval(intervalID);
         this._running = false;
         console.log("Walkthrough complete");
@@ -148,7 +103,7 @@ class Walkthrough {
 
     const savedPlaythrough = JSON.stringify(this.playthroughs);
     localStorage.savedPlaythrough = savedPlaythrough;
-    
+
     console.clear();
     console.log(savedPlaythrough);
   }
