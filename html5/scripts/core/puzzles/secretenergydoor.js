@@ -30,7 +30,7 @@ class SecretEnergyDoor extends EnergyDoor {
     }
 
     const fuses = hiversaires.currentFuses;
-    for (let fuseID of this.secretFuseIDs) {
+    for (const fuseID of this.secretFuseIDs) {
       if (!fuses.has(fuseID)) {
         return false;
       }

@@ -23,7 +23,7 @@ class Door extends Puzzle {
     } else {
       hiversaires.music.playEffect("action_DoorActive");
     }
-    let subject = hiversaires.currentSubject;
+    const subject = hiversaires.currentSubject;
     let changed = false;
     if (this.isAlternateUnlocked) {
       changed = true;

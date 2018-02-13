@@ -8,9 +8,9 @@ class EntenteTerminal extends Puzzle {
   }
 
   setup() {
-    let axisValue = hiversaires.game.userMaze.get(this.axis);
-    let axisGoal = this.goal.get(this.axis);
-    let targetGraphic = ententeIcons.get(Math.sign(axisGoal - axisValue));
+    const axisValue = hiversaires.game.userMaze.get(this.axis);
+    const axisGoal = this.goal.get(this.axis);
+    const targetGraphic = ententeIcons.get(Math.sign(axisGoal - axisValue));
     hiversaires.stage.billboard("ententeScreen").image =
       "interface/entente." + this.axis + "." + targetGraphic + ".svg";
     hiversaires.stage.fadeIn(

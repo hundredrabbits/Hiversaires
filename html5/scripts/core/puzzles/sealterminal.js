@@ -23,7 +23,7 @@ class SealTerminal extends Puzzle {
   }
 
   performAction() {
-    let seals = hiversaires.currentSeals;
+    const seals = hiversaires.currentSeals;
     if (seals.has(this.seal)) {
       hiversaires.music.playEffect("action_SealInactive");
       seals.delete(this.seal);

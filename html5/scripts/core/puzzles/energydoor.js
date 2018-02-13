@@ -27,7 +27,7 @@ class EnergyDoor extends Door {
 
   get isUnlocked() {
     const fuses = hiversaires.currentFuses;
-    for (let fuseID of this.fuseIDs) {
+    for (const fuseID of this.fuseIDs) {
       if (!fuses.has(fuseID)) {
         return false;
       }

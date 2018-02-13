@@ -24,13 +24,24 @@ class Game {
     }
   }
 
+  get savedData() {
+    try {
+      return JSON.parse(localStorage.save);
+    } catch (error) {}
+    return null;
+  }
+
+  set savedData(object) {
+    localStorage.save = JSON.stringify(object);
+  }
+
   save() {
     if (DEBUG_DONT_SAVE) {
       console.log("DEBUG_DONT_SAVE : did not save state.");
       return;
     }
 
-    let saveObject = {
+    const saveObject = {
       userState: {
         userNodeID: this.userNodeID,
         userOrientation: this.userOrientation,
@@ -45,7 +56,7 @@ class Game {
     saveObject.puzzleState.illusions = Array.from(this.puzzleState.illusions);
 
     if (!DEBUG_DONT_SAVE) {
-      localStorage.save = JSON.stringify(saveObject);
+      this.savedData = saveObject;
     }
 
     console.log("saved state.");
@@ -54,14 +65,10 @@ class Game {
   }
 
   load() {
-    let saveObject = null;
-    try {
-      saveObject = JSON.parse(localStorage.save);
-    } catch (error) {}
-
+    const saveObject = this.savedData;
     if (saveObject != null) {
       // Settings
-      let userState = saveObject.userState;
+      const userState = saveObject.userState;
       this.userNodeID = userState.userNodeID;
       this.userOrientation = userState.userOrientation;
       this.userChapter = userState.userChapter;

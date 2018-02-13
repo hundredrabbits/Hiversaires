@@ -12,7 +12,7 @@ class SecretDoor extends Door {
     hiversaires.music.playEffect("action_DoorInit");
   }
 
-  get isUnlocked() {
+  get isAlternateUnlocked() {
     return hiversaires.game.puzzleState.secret;
   }
 

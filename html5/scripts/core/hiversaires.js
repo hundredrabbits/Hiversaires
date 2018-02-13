@@ -31,7 +31,7 @@ class Hiversaires {
   }
 
   get currentPuzzle() {
-    let subject = this.currentSubject;
+    const subject = this.currentSubject;
     if (subject != null && subject.type == SubjectType.puzzle) {
       return puzzlesByID.get(subject.puzzleID);
     }
@@ -148,7 +148,7 @@ class Hiversaires {
   moveForward() {
     if (this.currentSubject.type == SubjectType.node) {
       this.playFootStep();
-      let { nodeID, orientation } = this.currentSubject;
+      const { nodeID, orientation } = this.currentSubject;
       this.game.userNodeID = nodeID;
       if (orientation != null) {
         this.game.userOrientation = orientation;
@@ -164,13 +164,11 @@ class Hiversaires {
   moveBackward() {
     this.music.playEffect("footstep_turn");
 
-    for (let i = 0; i < 2; i++) {
-      this.game.userOrientation = (this.game.userOrientation + 4 + 1) % 4;
-      this.refreshNode();
-    }
+    this.game.userOrientation = (this.game.userOrientation + 2) % 4;
+    this.refreshNode();
 
     if (this.currentSubject.type == SubjectType.node) {
-      let { nodeID, orientation } = this.currentSubject;
+      const { nodeID, orientation } = this.currentSubject;
       this.game.userNodeID = nodeID;
       if (orientation != null) {
         this.game.userOrientation = orientation;
@@ -178,7 +176,7 @@ class Hiversaires {
     } else if (this.currentSubject.type == SubjectType.puzzle) {
       if (this.currentSubject.puzzleType == PuzzleType.door) {
         // As long as it's active, perform the door's action until you walked through it
-        let lastSubject = this.currentSubject;
+        const lastSubject = this.currentSubject;
         while (
           this.currentSubject == lastSubject &&
           this.currentPuzzle.active
@@ -188,10 +186,8 @@ class Hiversaires {
       }
     }
 
-    for (let i = 0; i < 2; i++) {
-      this.game.userOrientation = (this.game.userOrientation + 4 + 1) % 4;
-      this.refreshNode();
-    }
+    this.game.userOrientation = (this.game.userOrientation + 2) % 4;
+    this.refreshNode();
 
     this.stage.animateStepBackward();
   }

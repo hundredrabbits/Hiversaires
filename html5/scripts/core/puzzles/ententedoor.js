@@ -22,30 +22,29 @@ class EntenteDoor extends Door {
   }
 
   get isAlternateUnlocked() {
-    let subject = hiversaires.currentSubject;
+    const subject = hiversaires.currentSubject;
     if (subject.alternateNodeID == null) {
       return false;
     }
-    let userMaze = hiversaires.game.userMaze;
+    const userMaze = hiversaires.game.userMaze;
     if (subject.effect == MazeEffect.exit) {
       return (
         userMaze.get(MazeAxis.x) == this.goal.get(MazeAxis.x) &&
         userMaze.get(MazeAxis.y) == this.goal.get(MazeAxis.y)
       );
     }
-    let axis = subject.axis;
-    return userMaze.get(axis) == this.goal.get(axis);
+    return userMaze.get(subject.axis) == this.goal.get(subject.axis);
   }
 
   performAction() {
-    let subject = hiversaires.currentSubject;
-    let isAlternateUnlocked = this.isAlternateUnlocked;
-    let userMaze = hiversaires.game.userMaze;
+    const subject = hiversaires.currentSubject;
+    const isAlternateUnlocked = this.isAlternateUnlocked;
+    const userMaze = hiversaires.game.userMaze;
     if (!isAlternateUnlocked) {
-      let axis = subject.axis;
-      let amount = subject.amount;
-      let axisValue = userMaze.get(axis);
-      let axisGoal = this.goal.get(axis);
+      const axis = subject.axis;
+      const amount = subject.amount;
+      const axisValue = userMaze.get(axis);
+      const axisGoal = this.goal.get(axis);
       switch (subject.effect) {
         case MazeEffect.incr:
           if (axisValue < axisGoal + 2 * amount) {

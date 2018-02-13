@@ -7,10 +7,10 @@ class Walkthrough {
   }
 
   playEntireGame() {
-    let { left, right, center, forward, back, action } = Input;
+    const { left, right, center, forward, back, action } = Input;
     hiversaires.game.wipePlayerProgress();
     hiversaires.refreshNode();
-    for (let input in this.playthrough) {
+    for (const input in this.playthrough) {
       this.responder(input);
     }
   }

@@ -384,7 +384,7 @@ const createDefaultState = function() {
     secret: false,
     timeDoor: false
   };
-  for (let puzzle of puzzlesByID.values()) {
+  for (const puzzle of puzzlesByID.values()) {
     if (puzzle instanceof EnergyTerminal && puzzle.filledOnNewGame) {
       state.fuses.add(puzzle.id);
     }

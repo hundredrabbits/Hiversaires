@@ -7,12 +7,12 @@ class ArtBook {
     this.elementRegistryUniqueID = 0;
     this.classUniqueID = 0;
 
-    let stylesheetElement = document.createElement("style");
+    const stylesheetElement = document.createElement("style");
     stylesheetElement.type = "text/css";
     stylesheetElement.title = "artbook";
     stylesheetElement.appendChild(document.createTextNode(""));
     document.head.appendChild(stylesheetElement);
-    for (let stylesheet of document.styleSheets) {
+    for (const stylesheet of document.styleSheets) {
       if (stylesheet.title == stylesheetElement.title) {
         this.stylesheet = stylesheet;
         break;
@@ -21,7 +21,7 @@ class ArtBook {
   }
 
   preloadArt(assetURL) {
-    let img = new Image();
+    const img = new Image();
     img.onload = function() {
       img.onload = null;
     };
@@ -30,7 +30,7 @@ class ArtBook {
 
   setArt(selector, assetURL) {
     if (!this.assetCatalog.has(assetURL)) {
-      let className = "artbook_" + this.classUniqueID;
+      const className = "artbook_" + this.classUniqueID;
       this.classUniqueID++;
 
       this.stylesheet.insertRule(
@@ -40,7 +40,7 @@ class ArtBook {
       this.assetCatalog.set(assetURL, className);
     }
 
-    let id = this.getElementID(selector);
+    const id = this.getElementID(selector);
 
     if (id == null) {
       console.warn("no element for selector " + selector);
@@ -57,9 +57,9 @@ class ArtBook {
   }
 
   removeArt(selector) {
-    let id = this.getElementID(selector);
+    const id = this.getElementID(selector);
     if (this.elementRegistry.has(id)) {
-      let assetURL = this.elementRegistry.get(id);
+      const assetURL = this.elementRegistry.get(id);
       if (this.assetCatalog.has(assetURL)) {
         $(selector).removeClass(this.assetCatalog.get(assetURL));
       }
@@ -68,7 +68,7 @@ class ArtBook {
   }
 
   getElementID(selector) {
-    let element = $(selector)[0];
+    const element = $(selector)[0];
 
     if (element == null) {
       return null;

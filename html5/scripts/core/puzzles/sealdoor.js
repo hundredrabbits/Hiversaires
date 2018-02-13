@@ -28,9 +28,9 @@ class SealDoor extends Door {
 
   matchedLock() {
     const seals = hiversaires.currentSeals;
-    for (let lock of this.locks) {
+    for (const lock of this.locks) {
       let locked = false;
-      for (let seal of lock.seals) {
+      for (const seal of lock.seals) {
         if (!seals.has(seal)) {
           locked = true;
           break;

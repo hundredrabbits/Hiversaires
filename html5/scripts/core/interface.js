@@ -26,7 +26,7 @@ class Interface {
   showSeal() {
     let seal1 = null;
     let seal2 = null;
-    for (let seal of hiversaires.currentSeals) {
+    for (const seal of hiversaires.currentSeals) {
       if (seal1 == null) {
         seal1 = seal;
       } else if (SealOrder.indexOf(seal) > SealOrder.indexOf(seal1)) {

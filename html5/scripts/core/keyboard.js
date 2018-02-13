@@ -3,7 +3,7 @@
 class Keyboard {
   constructor(responder) {
     this.responder = responder;
-    document.onkeyup = this.onKey.bind(this);
+    document.addEventListener("keyup", this.onKey.bind(this));
     this.keyMap = new Map();
     this.keyMap.set(37, Input.left); // left arrow
     this.keyMap.set(39, Input.right); // right arrow

@@ -27,7 +27,7 @@ class Stage {
       $(this.triggers).addClass("debug");
     }
 
-    for (let id of [
+    for (const id of [
       "viewMain",
       "modifier",
       "vignette",
@@ -57,7 +57,7 @@ class Stage {
       "interfaceIndicatorForward",
       "interfaceIndicatorLeft"
     ]) {
-      let billboard = new Billboard(id, DEBUG_SHOW_BILLBOARDS);
+      const billboard = new Billboard(id, DEBUG_SHOW_BILLBOARDS);
       this.billboards.appendChild(billboard.element);
       this.billboardsByID.set(id, billboard);
     }
@@ -68,8 +68,8 @@ class Stage {
       }
     }
 
-    for (let id of ["moveRight", "moveLeft", "moveForward", "action"]) {
-      let trigger = new Trigger(id, DEBUG_SHOW_TRIGGERS);
+    for (const id of ["moveRight", "moveLeft", "moveForward", "action"]) {
+      const trigger = new Trigger(id, DEBUG_SHOW_TRIGGERS);
       this.triggers.appendChild(trigger.element);
       trigger.element.addEventListener("click", handleClick.bind(this));
       this.triggersByID.set(id, trigger);
@@ -121,9 +121,9 @@ class Stage {
   }
 
   animateTurnLeft() {
-    let viewMain = $(this.billboard("viewMain").element);
+    const viewMain = $(this.billboard("viewMain").element);
     viewMain.finish();
-    let viewMainX = viewMain.css("left").split("px")[0];
+    const viewMainX = viewMain.css("left").split("px")[0];
     this.billboard("viewMain").alpha = 0.5;
     viewMain.css({ left: (viewMainX - 15).toString() + "px" });
     this.billboard("interfaceIndicatorLeft").alpha = 1;
@@ -134,9 +134,9 @@ class Stage {
   }
 
   animateTurnRight() {
-    let viewMain = $(this.billboard("viewMain").element);
+    const viewMain = $(this.billboard("viewMain").element);
     viewMain.finish();
-    let viewMainX = viewMain.css("left").split("px")[0];
+    const viewMainX = viewMain.css("left").split("px")[0];
     this.billboard("viewMain").alpha = 0.5;
     viewMain.css({ left: (viewMainX + 15).toString() + "px" });
     this.billboard("interfaceIndicatorRight").alpha = 1;
@@ -147,9 +147,9 @@ class Stage {
   }
 
   animateStepForward() {
-    let viewMain = $(this.billboard("viewMain").element);
+    const viewMain = $(this.billboard("viewMain").element);
     viewMain.finish();
-    let viewMainY = viewMain.css("top").split("px")[0];
+    const viewMainY = viewMain.css("top").split("px")[0];
     this.billboard("viewMain").alpha = 0.5;
     viewMain.css({ top: (viewMainY + 2).toString() + "px" });
     this.billboard("interfaceIndicatorForward").alpha = 1;
@@ -160,9 +160,9 @@ class Stage {
   }
 
   animateStepBackward() {
-    let viewMain = $(this.billboard("viewMain").element);
+    const viewMain = $(this.billboard("viewMain").element);
     viewMain.finish();
-    let viewMainY = viewMain.css("top").split("px")[0];
+    const viewMainY = viewMain.css("top").split("px")[0];
     this.billboard("viewMain").alpha = 0.5;
     viewMain.css({ top: (viewMainY - 2).toString() + "px" });
     this.billboard("interfaceIndicatorForward").alpha = 1;

@@ -16,14 +16,14 @@ class Music {
   set volume(value) {
     if (this._volume != value) {
       this._volume = value;
-      for (let track of this.playingTracksByRole.values()) {
+      for (const track of this.playingTracksByRole.values()) {
         track.volume = value * track.volumeMult;
       }
     }
   }
 
   playEffect(name) {
-    let track = this.fetchTrack(
+    const track = this.fetchTrack(
       name,
       "effect",
       "media/audio/effect/" + name + ".mp3",
@@ -69,7 +69,7 @@ class Music {
   }
 
   switchAudio(role, name) {
-    let oldTrack = this.playingTracksByRole.get(role);
+    const oldTrack = this.playingTracksByRole.get(role);
 
     if (oldTrack != null) {
       if (oldTrack.name == name) {
@@ -79,7 +79,7 @@ class Music {
     }
 
     if (name != null) {
-      let newTrack = this.fetchTrack(
+      const newTrack = this.fetchTrack(
         name,
         role,
         "media/audio/" + role + "/" + name + ".mp3",
@@ -97,7 +97,7 @@ class Music {
   }
 
   fetchTrack(name, role, src, loop) {
-    let audioID = role + "_" + name;
+    const audioID = role + "_" + name;
     if (!this._trackCatalog.has(audioID)) {
       this._trackCatalog.set(audioID, new Track(name, role, src, loop));
     }
