@@ -77,7 +77,7 @@ class Game {
       this.userOrientation = userState.userOrientation;
       this.userChapter = userState.userChapter;
       this.userEnergy = userState.userEnergy;
-      this.sessionKillCount = 0;
+      this.userKillCount = 0;
 
       // Storage
       this.puzzleState = Object.assign({}, saveObject.puzzleState);

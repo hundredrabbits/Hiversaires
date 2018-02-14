@@ -4,20 +4,20 @@ class Interface {
   constructor() {}
 
   showClock() {
-    hiversaires.stage.billboard("interfaceDimclock").image =
+    hiversaires.stage.billboard("hudDimclock").image =
       "interface/clock." + hiversaires.game.puzzleState.clock + ".svg";
-    hiversaires.stage.billboard("interfaceDimclock").alpha = 1;
+    hiversaires.stage.billboard("hudDimclock").alpha = 1;
     hiversaires.stage.fadeOut(
-      hiversaires.stage.billboard("interfaceDimclock"),
+      hiversaires.stage.billboard("hudDimclock"),
       0.5,
       3
     );
   }
 
   showClockAlert() {
-    hiversaires.stage.billboard("interfaceDimclockAlert").alpha = 1.0;
+    hiversaires.stage.billboard("hudDimclockAlert").alpha = 1.0;
     hiversaires.stage.fadeOut(
-      hiversaires.stage.billboard("interfaceDimclockAlert"),
+      hiversaires.stage.billboard("hudDimclockAlert"),
       0.5,
       0.5
     );
@@ -37,83 +37,67 @@ class Interface {
       }
     }
 
-    hiversaires.stage.billboard("interfaceSeal1").image =
+    hiversaires.stage.billboard("hudSeal1").image =
       "interface/seal." + (seal1 == null ? "none" : seal1) + ".svg";
-    hiversaires.stage.billboard("interfaceSeal2").image =
+    hiversaires.stage.billboard("hudSeal2").image =
       "interface/seal." + (seal2 == null ? "none" : seal2) + ".svg";
 
-    hiversaires.stage.billboard("interfaceSeal1").hidden = false;
-    hiversaires.stage.billboard("interfaceSeal2").hidden = false;
+    hiversaires.stage.billboard("hudSeal1").hidden = false;
+    hiversaires.stage.billboard("hudSeal2").hidden = false;
 
-    hiversaires.stage.billboard("interfaceSeal1").alpha = 1;
-    hiversaires.stage.billboard("interfaceSeal2").alpha = 1;
+    hiversaires.stage.billboard("hudSeal1").alpha = 1;
+    hiversaires.stage.billboard("hudSeal2").alpha = 1;
 
-    hiversaires.stage.fadeOut(
-      hiversaires.stage.billboard("interfaceSeal1"),
-      0.5,
-      3
-    );
-    hiversaires.stage.fadeOut(
-      hiversaires.stage.billboard("interfaceSeal2"),
-      0.5,
-      3
-    );
+    hiversaires.stage.fadeOut(hiversaires.stage.billboard("hudSeal1"), 0.5, 3);
+    hiversaires.stage.fadeOut(hiversaires.stage.billboard("hudSeal2"), 0.5, 3);
   }
 
   showSealAlert() {
-    hiversaires.stage.billboard("interfaceSealAlert").alpha = 1.0;
+    hiversaires.stage.billboard("hudSealAlert").alpha = 1.0;
     hiversaires.stage.fadeOut(
-      hiversaires.stage.billboard("interfaceSealAlert"),
+      hiversaires.stage.billboard("hudSealAlert"),
       0.5,
       0.5
     );
   }
 
   showEnergy() {
-    hiversaires.stage.billboard("interfaceFuse1").image =
+    hiversaires.stage.billboard("hudFuse1").image =
       "interface/fuse." + hiversaires.game.userEnergy + ".svg";
 
-    hiversaires.stage.billboard("interfaceFuse1").hidden = false;
-    hiversaires.stage.billboard("interfaceFuse1").alpha = 1;
+    hiversaires.stage.billboard("hudFuse1").hidden = false;
+    hiversaires.stage.billboard("hudFuse1").alpha = 1;
 
-    hiversaires.stage.fadeOut(
-      hiversaires.stage.billboard("interfaceFuse1"),
-      0.5,
-      3
-    );
+    hiversaires.stage.fadeOut(hiversaires.stage.billboard("hudFuse1"), 0.5, 3);
   }
 
   showEnergyAlert() {
-    hiversaires.stage.billboard("interfaceFuseAlert").alpha = 1.0;
+    hiversaires.stage.billboard("hudFuseAlert").alpha = 1.0;
     hiversaires.stage.fadeOut(
-      hiversaires.stage.billboard("interfaceFuseAlert"),
+      hiversaires.stage.billboard("hudFuseAlert"),
       1.5,
       0.5
     );
   }
 
   showAudio() {
-    hiversaires.stage.billboard("interfaceAudio").image =
+    hiversaires.stage.billboard("hudAudio").image =
       "interface/music." +
       (hiversaires.game.puzzleState.audio ? "on" : "off") +
       ".svg";
 
-    hiversaires.stage.billboard("interfaceAudio").alpha = 1;
-    hiversaires.stage.fadeOut(
-      hiversaires.stage.billboard("interfaceAudio"),
-      0.5,
-      3
-    );
+    hiversaires.stage.billboard("hudAudio").alpha = 1;
+    hiversaires.stage.fadeOut(hiversaires.stage.billboard("hudAudio"), 0.5, 3);
   }
 
   showIllusion() {
-    hiversaires.stage.billboard("interfaceIllusion").image =
+    hiversaires.stage.billboard("hudIllusion").image =
       "interface/illusion." +
       hiversaires.game.puzzleState.illusions.size +
       ".svg";
-    hiversaires.stage.billboard("interfaceIllusion").alpha = 1;
+    hiversaires.stage.billboard("hudIllusion").alpha = 1;
     hiversaires.stage.fadeOut(
-      hiversaires.stage.billboard("interfaceIllusion"),
+      hiversaires.stage.billboard("hudIllusion"),
       0.5,
       3
     );
@@ -139,10 +123,10 @@ class Interface {
     hiversaires.stage.billboard("menuControls").alpha = 1.0;
     hiversaires.stage.billboard("menuControls").hidden = false;
 
-    hiversaires.stage.billboard("interfaceSeal1").hidden = true;
-    hiversaires.stage.billboard("interfaceSeal2").hidden = true;
-    hiversaires.stage.billboard("interfaceFuse1").hidden = true;
-    hiversaires.stage.billboard("interfaceSave").hidden = true;
+    hiversaires.stage.billboard("hudSeal1").hidden = true;
+    hiversaires.stage.billboard("hudSeal2").hidden = true;
+    hiversaires.stage.billboard("hudFuse1").hidden = true;
+    hiversaires.stage.billboard("hudSave").hidden = true;
 
     hiversaires.stage.fadeOut(hiversaires.stage.billboard("menuBlack"), 2.0, 0);
     hiversaires.stage.fadeOut(hiversaires.stage.billboard("menuLogo"), 2.0, 3);
@@ -213,12 +197,8 @@ class Interface {
   }
 
   showSave() {
-    hiversaires.stage.billboard("interfaceSave").hidden = false;
-    hiversaires.stage.billboard("interfaceSave").alpha = 1;
-    hiversaires.stage.fadeOut(
-      hiversaires.stage.billboard("interfaceSave"),
-      0.5,
-      3
-    );
+    hiversaires.stage.billboard("hudSave").hidden = false;
+    hiversaires.stage.billboard("hudSave").alpha = 1;
+    hiversaires.stage.fadeOut(hiversaires.stage.billboard("hudSave"), 0.5, 3);
   }
 }

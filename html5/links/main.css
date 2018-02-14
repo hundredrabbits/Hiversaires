@@ -52,9 +52,9 @@ trigger#moveRight {
   cursor: url(../media/graphics/cursor/pointer.right.svg) 32 32, e-resize;
 }
 
-billboard#interfaceIndicatorForward,
-billboard#interfaceIndicatorLeft,
-billboard#interfaceIndicatorRight {
+billboard#hudStepForward,
+billboard#hudStepLeft,
+billboard#hudStepRight {
   background-size: 100% 100%;
 }
 

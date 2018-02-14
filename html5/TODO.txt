@@ -1,5 +1,3 @@
-Rename some of the interface assets
-    Menu assets can be moved into interface, we're all friends
 Bug someone about using import/export es6 syntax
 Convert the world to a displayable graph, if you can
 

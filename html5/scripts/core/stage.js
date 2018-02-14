@@ -43,19 +43,19 @@ class Stage {
       "clockFace",
       "progressPane",
       "ententeScreen",
-      "interfaceDimclockAlert",
-      "interfaceDimclock",
-      "interfaceFuseAlert",
-      "interfaceFuse1",
-      "interfaceSealAlert",
-      "interfaceSeal1",
-      "interfaceSeal2",
-      "interfaceAudio",
-      "interfaceSave",
-      "interfaceIllusion",
-      "interfaceIndicatorRight",
-      "interfaceIndicatorForward",
-      "interfaceIndicatorLeft"
+      "hudDimclockAlert",
+      "hudDimclock",
+      "hudFuseAlert",
+      "hudFuse1",
+      "hudSealAlert",
+      "hudSeal1",
+      "hudSeal2",
+      "hudAudio",
+      "hudSave",
+      "hudIllusion",
+      "hudStepRight",
+      "hudStepForward",
+      "hudStepLeft"
     ]) {
       const billboard = new Billboard(id, DEBUG_SHOW_BILLBOARDS);
       this.billboards.appendChild(billboard.element);
@@ -75,21 +75,20 @@ class Stage {
       this.triggersByID.set(id, trigger);
     }
 
-    this.billboard("interfaceIndicatorRight").alpha = 0;
-    this.billboard("interfaceIndicatorForward").alpha = 0;
-    this.billboard("interfaceIndicatorLeft").alpha = 0;
-    this.billboard("interfaceDimclockAlert").alpha = 0;
-    this.billboard("interfaceSealAlert").alpha = 0;
-    this.billboard("interfaceFuseAlert").alpha = 0;
+    this.billboard("hudStepRight").alpha = 0;
+    this.billboard("hudStepForward").alpha = 0;
+    this.billboard("hudStepLeft").alpha = 0;
+    this.billboard("hudDimclockAlert").alpha = 0;
+    this.billboard("hudSealAlert").alpha = 0;
+    this.billboard("hudFuseAlert").alpha = 0;
 
-    this.billboard("interfaceIndicatorRight").image = "interface/footstep.svg";
-    this.billboard("interfaceIndicatorForward").image =
-      "interface/footstep.svg";
-    this.billboard("interfaceIndicatorLeft").image = "interface/footstep.svg";
-    this.billboard("interfaceDimclockAlert").image = "interface/alert.svg";
+    this.billboard("hudStepRight").image = "interface/footstep.svg";
+    this.billboard("hudStepForward").image = "interface/footstep.svg";
+    this.billboard("hudStepLeft").image = "interface/footstep.svg";
+    this.billboard("hudDimclockAlert").image = "interface/alert.svg";
     this.billboard("clockShadow").image = "interface/dimclock.shadow.svg";
-    this.billboard("interfaceSealAlert").image = "interface/alert.svg";
-    this.billboard("interfaceFuseAlert").image = "interface/alert.svg";
+    this.billboard("hudSealAlert").image = "interface/alert.svg";
+    this.billboard("hudFuseAlert").image = "interface/alert.svg";
 
     this.billboard("menuBlack").text = "<contents></contents>";
     this.billboard("menuCredit1").text =
@@ -102,10 +101,9 @@ class Stage {
       "<contents><h1>See You</h1><h2>wiki.xxiivv.com/nataniev</h2></contents>";
 
     this.billboard("vignette").image = "interface/vignette.svg";
-    this.billboard("interfaceSave").image = "interface/save.svg";
-    this.billboard("menuBlack").image = "menu/menu.black.svg";
-    this.billboard("menuLogo").image = "menu/menu.logo.svg";
-    this.billboard("menuControls").image = "menu/menu.controls.svg";
+    this.billboard("hudSave").image = "interface/save.svg";
+    this.billboard("menuLogo").image = "interface/menu.logo.svg";
+    this.billboard("menuControls").image = "interface/menu.controls.svg";
   }
 
   fadeIn(viewToFadeIn, duration, delay, skipLast = true) {
@@ -132,11 +130,11 @@ class Stage {
     const viewMainX = viewMain.css("left").split("px")[0];
     this.billboard("viewMain").alpha = 0.5;
     viewMain.css({ left: (viewMainX - 15).toString() + "px" });
-    this.billboard("interfaceIndicatorLeft").alpha = 1;
+    this.billboard("hudStepLeft").alpha = 1;
 
     viewMain.animate({ opacity: 1, left: viewMainX + "px" }, 0.2 * 1000);
 
-    this.fadeOut(this.billboard("interfaceIndicatorLeft"), 0.5, 0);
+    this.fadeOut(this.billboard("hudStepLeft"), 0.5, 0);
   }
 
   animateTurnRight() {
@@ -145,11 +143,11 @@ class Stage {
     const viewMainX = viewMain.css("left").split("px")[0];
     this.billboard("viewMain").alpha = 0.5;
     viewMain.css({ left: (viewMainX + 15).toString() + "px" });
-    this.billboard("interfaceIndicatorRight").alpha = 1;
+    this.billboard("hudStepRight").alpha = 1;
 
     viewMain.animate({ opacity: 1, left: viewMainX + "px" }, 0.2 * 1000);
 
-    this.fadeOut(this.billboard("interfaceIndicatorRight"), 0.5, 0);
+    this.fadeOut(this.billboard("hudStepRight"), 0.5, 0);
   }
 
   animateStepForward() {
@@ -158,11 +156,11 @@ class Stage {
     const viewMainY = viewMain.css("top").split("px")[0];
     this.billboard("viewMain").alpha = 0.5;
     viewMain.css({ top: (viewMainY + 2).toString() + "px" });
-    this.billboard("interfaceIndicatorForward").alpha = 1;
+    this.billboard("hudStepForward").alpha = 1;
 
     viewMain.animate({ opacity: 1, top: viewMainY + "px" }, 0.2 * 1000);
 
-    this.fadeOut(this.billboard("interfaceIndicatorForward"), 0.5, 0);
+    this.fadeOut(this.billboard("hudStepForward"), 0.5, 0);
   }
 
   animateStepBackward() {
@@ -171,11 +169,11 @@ class Stage {
     const viewMainY = viewMain.css("top").split("px")[0];
     this.billboard("viewMain").alpha = 0.5;
     viewMain.css({ top: (viewMainY - 2).toString() + "px" });
-    this.billboard("interfaceIndicatorForward").alpha = 1;
+    this.billboard("hudStepForward").alpha = 1;
 
     viewMain.animate({ opacity: 1, top: viewMainY + "px" }, 0.2 * 1000);
 
-    this.fadeOut(this.billboard("interfaceIndicatorForward"), 0.5, 0);
+    this.fadeOut(this.billboard("hudStepForward"), 0.5, 0);
   }
 
   billboard(id) {

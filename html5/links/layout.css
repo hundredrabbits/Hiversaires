@@ -14,91 +14,91 @@ billboard#menuControls {
   height: calc(100% / 16 * (16 / 1));
 }
 
-billboard#interfaceAudio {
+billboard#hudAudio {
   left: calc(100% / 9 * (9 / 24 + 9 / 12 * 2));
   top: calc(100% / 16 * (16 - 9 / 12 - 9 / 24));
   width: calc(100% / 9 * (9 / 12));
   height: calc(100% / 16 * (9 / 12));
 }
 
-billboard#interfaceDimclock {
+billboard#hudDimclock {
   left: calc(100% / 9 * (9 / 24 + 9 / 12 * 4));
   top: calc(100% / 16 * (16 - 9 / 12 - 9 / 24));
   width: calc(100% / 9 * (9 / 12));
   height: calc(100% / 16 * (9 / 12));
 }
 
-billboard#interfaceDimclockAlert {
+billboard#hudDimclockAlert {
   left: calc(100% / 9 * (9 / 24 + 9 / 12 * 4));
   top: calc(100% / 16 * (16 - 9 / 12));
   width: calc(100% / 9 * (9 / 12));
   height: calc(100% / 16 * (9 / 12));
 }
 
-billboard#interfaceFuse1 {
+billboard#hudFuse1 {
   left: calc(100% / 9 * (9 / 24));
   top: calc(100% / 16 * (16 - 9 / 12 - 9 / 24));
   width: calc(100% / 9 * (9 / 12));
   height: calc(100% / 16 * (9 / 12));
 }
 
-billboard#interfaceFuseAlert {
+billboard#hudFuseAlert {
   left: calc(100% / 9 * (9 / 24));
   top: calc(100% / 16 * (16 - 9 / 12));
   width: calc(100% / 9 * (9 / 12));
   height: calc(100% / 16 * (9 / 12));
 }
 
-billboard#interfaceIllusion {
+billboard#hudIllusion {
   left: calc(100% / 9 * (9 / 24 + 9 / 12 * 8));
   top: calc(100% / 16 * (16 - 9 / 12 - 9 / 24));
   width: calc(100% / 9 * (9 / 12));
   height: calc(100% / 16 * (9 / 12));
 }
 
-billboard#interfaceIndicatorForward {
+billboard#hudStepForward {
   left: calc(100% / 9 * (9 / 5));
   top: calc(100% / 16 * (16 - 9 / 12));
   width: calc(100% / 9 * (9 / 5 * 3));
   height: calc(100% / 16 * (9 / 12));
 }
 
-billboard#interfaceIndicatorLeft {
+billboard#hudStepLeft {
   left: calc(100% / 9 * (0));
   top: calc(100% / 16 * (16 - 9 / 12));
   width: calc(100% / 9 * (9 / 5));
   height: calc(100% / 16 * (9 / 12));
 }
 
-billboard#interfaceIndicatorRight {
+billboard#hudStepRight {
   left: calc(100% / 9 * (9 / 5 * 4));
   top: calc(100% / 16 * (16 - 9 / 12));
   width: calc(100% / 9 * (9 / 5));
   height: calc(100% / 16 * (9 / 12));
 }
 
-billboard#interfaceSave {
+billboard#hudSave {
   left: calc(100% / 9 * (9 / 24 + 9 / 12 * 6));
   top: calc(100% / 16 * (16 - 9 / 12 - 9 / 24));
   width: calc(100% / 9 * (9 / 12));
   height: calc(100% / 16 * (9 / 12));
 }
 
-billboard#interfaceSeal1 {
+billboard#hudSeal1 {
   left: calc(100% / 9 * (9 - 9 / 12 - 9 / 24));
   top: calc(100% / 16 * (16 - 9 / 12 - 9 / 24));
   width: calc(100% / 9 * (9 / 12));
   height: calc(100% / 16 * (9 / 12));
 }
 
-billboard#interfaceSeal2 {
+billboard#hudSeal2 {
   left: calc(100% / 9 * (9 - 9 / 12 - 9 / 24));
   top: calc(100% / 16 * (16 - 9 / 12 * 2 - 9 / 24));
   width: calc(100% / 9 * (9 / 12));
   height: calc(100% / 16 * (9 / 12));
 }
 
-billboard#interfaceSealAlert {
+billboard#hudSealAlert {
   left: calc(100% / 9 * (9 - 9 / 12 - 9 / 24));
   top: calc(100% / 16 * (16 - 9 / 12));
   width: calc(100% / 9 * (9 / 12));
