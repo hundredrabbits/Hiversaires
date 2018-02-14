@@ -57,7 +57,6 @@ billboard#interfaceIllusion {
 }
 
 billboard#interfaceIndicatorForward {
-  background-size: 100% 100%;
   left: calc(100% / 9 * (9 / 5));
   top: calc(100% / 16 * (16 - 9 / 12));
   width: calc(100% / 9 * (9 / 5 * 3));
@@ -65,7 +64,6 @@ billboard#interfaceIndicatorForward {
 }
 
 billboard#interfaceIndicatorLeft {
-  background-size: 100% 100%;
   left: calc(100% / 9 * (0));
   top: calc(100% / 16 * (16 - 9 / 12));
   width: calc(100% / 9 * (9 / 5));
@@ -73,7 +71,6 @@ billboard#interfaceIndicatorLeft {
 }
 
 billboard#interfaceIndicatorRight {
-  background-size: 100% 100%;
   left: calc(100% / 9 * (9 / 5 * 4));
   top: calc(100% / 16 * (16 - 9 / 12));
   width: calc(100% / 9 * (9 / 5));

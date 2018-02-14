@@ -90,11 +90,17 @@ class Stage {
     this.billboard("clockShadow").image = "interface/dimclock.shadow.svg";
     this.billboard("interfaceSealAlert").image = "interface/alert.svg";
     this.billboard("interfaceFuseAlert").image = "interface/alert.svg";
-    this.billboard("menuBlack").image = "menu/menu.black.svg";
-    this.billboard("menuCredit1").image = "menu/menu.credit1.svg";
-    this.billboard("menuCredit2").image = "menu/menu.credit2.svg";
-    this.billboard("menuCredit3").image = "menu/menu.credit3.svg";
-    this.billboard("menuCredit4").image = "menu/menu.credit4.svg";
+
+    this.billboard("menuBlack").text = "<contents></contents>";
+    this.billboard("menuCredit1").text =
+      "<contents><h1>Development</h1><h2>Devine Lu Linvega</h2><h1>Technical Assistance</h1><h2>Sven Bergstr&ouml;m</h2></contents>";
+    this.billboard("menuCredit2").text =
+      "<contents><h1>Audio</h1><h2>Aliceffekt</h2></contents>";
+    this.billboard("menuCredit3").text =
+      "<contents><h1>Testing</h1><h2>Offal</h2><h2>Tekgo</h2><h2>Orihaus</h2><h2>Minikomi</h2><h2>John Eternal</h2><h2>Richard E Flanagan</h2></contents>";
+    this.billboard("menuCredit4").text =
+      "<contents><h1>See You</h1><h2>wiki.xxiivv.com/nataniev</h2></contents>";
+
     this.billboard("vignette").image = "interface/vignette.svg";
     this.billboard("interfaceSave").image = "interface/save.svg";
     this.billboard("menuBlack").image = "menu/menu.black.svg";
@@ -236,6 +242,12 @@ class Billboard extends Visual {
 
   set className(value) {
     this.element.className = value;
+  }
+
+  set text(value) {
+    $(this.element)
+      .addClass("credit")
+      .html(value);
   }
 }
 

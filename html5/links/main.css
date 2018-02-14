@@ -1,22 +1,12 @@
-hiversaires,
-hiversaires * {
-  display: block;
-  position: absolute;
-}
-
 body {
-  display: block;
-  position: absolute;
   background: black;
   overflow: hidden;
   user-select: none;
   width: 100vw;
   height: 100vh;
 
-  text-align: center;
   font-family: "Alte-DIN-1451-Mittelschrift";
-  font-size: 8pt;
-  overflow-wrap: break-word;
+  color: white;
 }
 
 hiversaires,
@@ -35,17 +25,56 @@ billboard {
   /*-webkit-optimize-contrast: crisp-edges;*/
 }
 
+billboard,
 trigger {
+  display: block;
+  position: absolute;
 }
 
 triggers.debug > trigger {
   border: 1px lime dashed;
   color: lime;
+  text-align: center;
+  font-size: 8pt;
+  overflow-wrap: break-word;
+}
+
+billboard#interfaceIndicatorForward,
+billboard#interfaceIndicatorLeft,
+billboard#interfaceIndicatorRight {
+  background-size: 100% 100%;
 }
 
 billboards.debug > billboard {
   border: 1px blue dashed;
   color: blue;
+  text-align: center;
+  font-size: 8pt;
+  overflow-wrap: break-word;
+}
+
+billboard.credit {
+  background: black;
+}
+
+billboard.credit contents {
+  position: static;
+  text-align: center;
+  padding-top: 75%;
+  display: block;
+}
+
+billboard.credit h1 {
+  color: #9e9e9e;
+  font-size: 112.5%;
+  text-transform: uppercase;
+  padding-bottom: 5.5%;
+  padding-top: 7.5%;
+}
+
+billboard.credit h2 {
+  color: white;
+  font-size: 155%;
 }
 
 @font-face {

@@ -39,8 +39,6 @@ class Walkthrough {
           return output;
         })
     );
-
-    console.log(this.recordedPlaythrough);
   }
 
   get running() {
