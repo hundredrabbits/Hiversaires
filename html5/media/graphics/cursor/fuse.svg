@@ -1,0 +1,31 @@
+<svg width="128" height="128"  xmlns="http://www.w3.org/2000/svg"  xmlns:xlink="http://www.w3.org/1999/xlink">
+    <defs>
+        <g id="art">
+            <g transform="translate(-8,-27)">
+                <rect width="16" height="54" rx="2" ry="2" fill="#aaaaaa" stroke="#aaaaaa" stroke-width="6" stroke-linejoin="round" x="0" y="0"/>
+                <rect width="16" height="54" rx="2" ry="2" fill="black" x="0" y="0"/>
+                <rect width="16" height="46" fill="white" x="0" y="4"/>
+                <rect width="16" height="4" fill="black" x="0" y="7"/>
+                <rect width="6" height="4" fill="black" x="0" y="43"/>
+                <rect width="6" height="4" fill="black" x="10" y="43"/>
+
+                <rect width="2" height="14" fill="black" x="10" y="15"/>
+            </g>
+        </g>
+
+        <filter id="glow" x="-100%" y="-100%" width="400%" height="400%">
+            <feGaussianBlur in="SourceAlpha" stdDeviation="3" result="blur"/>
+            <feColorMatrix result="bluralpha" type="matrix" values=
+                    "1 0 0 0   1
+                     0 1 0 0   1
+                     0 0 1 0   1
+                     0 0 0 0.5   0 "/>
+            <feMerge>
+                <feMergeNode in="bluralpha"/>
+                <feMergeNode in="SourceGraphic"/>
+            </feMerge>
+        </filter>
+    </defs>
+    <!-- <rect id="background" width="64" height="64" fill="blue"/> -->
+    <g  filter="url(#glow)"><g transform="translate(32,32)scale(0.5,0.5)rotate(-30)"><use xlink:href="#art"/></g></g>
+</svg>

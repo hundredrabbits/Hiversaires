@@ -41,6 +41,12 @@ class EnergyTerminal extends Puzzle {
     hiversaires.setModifier(
       hiversaires.currentFuses.has(this.id) ? "filled" : "empty"
     );
+    hiversaires.setActionCursor(
+      !hiversaires.currentFuses.has(this.id) && hiversaires.game.userEnergy > 0
+        ? "fuse"
+        : null
+    );
+
     hiversaires.showModifier();
   }
 }

@@ -14,13 +14,14 @@ billboards,
 triggers {
   width: 100%;
   height: 100%;
+  cursor: url(../media/graphics/cursor/pointer.up.svg) 32 32, n-resize;
 }
 
 billboard {
   background-size: contain;
   background-repeat: no-repeat;
-  pointer-events: none;
   transform-origin: left;
+  /*pointer-events: none;*/
   /*image-rendering: crisp-edges;*/
   /*-webkit-optimize-contrast: crisp-edges;*/
 }
@@ -37,6 +38,18 @@ triggers.debug > trigger {
   text-align: center;
   font-size: 8pt;
   overflow-wrap: break-word;
+}
+
+trigger#action.fuse {
+  cursor: url(../media/graphics/cursor/fuse.svg) 32 32, w-resize;
+}
+
+trigger#moveLeft {
+  cursor: url(../media/graphics/cursor/pointer.left.svg) 32 32, w-resize;
+}
+
+trigger#moveRight {
+  cursor: url(../media/graphics/cursor/pointer.right.svg) 32 32, e-resize;
 }
 
 billboard#interfaceIndicatorForward,

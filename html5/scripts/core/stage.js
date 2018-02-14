@@ -254,5 +254,22 @@ class Billboard extends Visual {
 class Trigger extends Visual {
   constructor(id, debug) {
     super("trigger", id, debug);
+    this._cursorID = null;
+  }
+
+  get cursor() {
+    return this._cursorID;
+  }
+
+  set cursor(value) {
+    if (this._cursorID != value) {
+      if (this._cursorID != null) {
+        $(this.element).removeClass(this._cursorID);
+      }
+      this._cursorID = value;
+      if (this._cursorID != null) {
+        $(this.element).addClass(this._cursorID);
+      }
+    }
   }
 }

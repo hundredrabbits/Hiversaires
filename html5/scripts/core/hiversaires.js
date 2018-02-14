@@ -90,6 +90,7 @@ class Hiversaires {
     this.stage.billboard("ententeScreen").alpha = 0;
     this.stage.billboard("illusion").alpha = 0;
 
+    this.stage.trigger("action").cursor = null;
     this.stage.trigger("action").hidden = true;
     this.stage.billboard("modifier").hidden = true;
 
@@ -240,6 +241,14 @@ class Hiversaires {
       fadeDuration,
       fadeDelay
     );
+  }
+
+  setActionCursor(id) {
+    this.stage.trigger("action").cursor = id;
+  }
+
+  clearActionCursor() {
+    this.stage.trigger("action").cursor = null;
   }
 
   playFootStep() {
