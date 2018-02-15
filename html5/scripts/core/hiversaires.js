@@ -13,6 +13,7 @@ class Hiversaires {
     this.stage = new Stage(this.element, this.responder.bind(this));
     this.interface = new Interface();
     this.walkthrough = new Walkthrough(this.responder.bind(this));
+    this.cartographer = new Cartographer();
   }
 
   start() {
@@ -193,7 +194,7 @@ class Hiversaires {
     this.stage.animateStepBackward();
   }
 
-  warpTo(node, orientation) {
+  warpTo(node, orientation = 0) {
     this.game.userNodeID = node;
     this.game.userOrientation = orientation % 4;
     this.refreshNode();

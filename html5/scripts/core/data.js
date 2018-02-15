@@ -95,11 +95,12 @@ const nodesByID = (function() {
     );
   };
 
-  const node = (nodeID, orientation) => {
+  const node = (nodeID, orientation, mapIgnore = false) => {
     return Object.freeze({
       type: SubjectType.node,
       nodeID,
-      orientation
+      orientation,
+      mapIgnore
     });
   };
 
@@ -203,7 +204,7 @@ const nodesByID = (function() {
 
   addNode(30, Zone.circular, node(29), none, node(23), none);
   addNode(31, Zone.circular, node(25, 1), none, node(35), none);
-  addNode(32, Zone.studio, none, node(52), none, node(27, 1));
+  addNode(32, Zone.metamondst, none, node(52), none, node(27, 1));
   const node33Illusion = illusion(node(29, 1), 17);
   addNode(33, Zone.circular, terminal(14), none, node33Illusion, none);
   addNode(34, Zone.entente, terminal(37), none, none, node(39));
@@ -235,7 +236,7 @@ const nodesByID = (function() {
   addNode(58, Zone.antechannel, node(60), illusion(none, 17), node(56), none);
   addNode(59, Zone.antechannel, node(61), none, node(57), none);
 
-  addNode(60, Zone.antechannel, node(62), none, node(56), none);
+  addNode(60, Zone.antechannel, node(62), none, node(56, null, true), none); // probably a bug; check with IOO⠛
   addNode(61, Zone.antechannel, none, none, node(59), door(19, 72));
   addNode(62, Zone.antechannel, door(26, 77), none, node(60), none);
   addNode(63, Zone.metamondst, node(73), node(69), none, node(67));
