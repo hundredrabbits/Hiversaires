@@ -18,7 +18,7 @@ class Game {
     setTimeout(this.onTic.bind(this), 50);
     this.time = 0;
     if (DEBUG_START_FRESH) {
-      this.game.wipePlayerProgress();
+      this.game.erase();
     } else {
       this.load();
     }
@@ -102,7 +102,7 @@ class Game {
     }
   }
 
-  wipePlayerProgress() {
+  erase() {
     localStorage.clear();
     console.log("wiped state.");
     this.load();

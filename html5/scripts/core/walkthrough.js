@@ -46,7 +46,7 @@ class Walkthrough {
   }
 
   playEntireGame(speed = 250) {
-    hiversaires.game.wipePlayerProgress();
+    hiversaires.game.erase();
     hiversaires.refreshNode();
 
     let index = 0;
@@ -66,7 +66,7 @@ class Walkthrough {
   }
 
   beginRecording() {
-    hiversaires.game.wipePlayerProgress();
+    hiversaires.game.erase();
     hiversaires.refreshNode();
     this.playthroughs = [];
     this.playthrough = [];
