@@ -52,9 +52,6 @@
     <title>Hiversaires</title>
   </head>
   <body>
-    <div id='splash' style='position:fixed; top:0px; left:0px; width:100%; height:100%; background:black; z-index: 9999; display:block'>
-      <div id='logo' style='width:120px;height:120px; margin:25vh auto'></div>
-    </div>
     <script>
       let DEBUG_SKIP_LOGO = false;
       let DEBUG_SHOW_TRIGGERS = false;
@@ -66,10 +63,9 @@
       let DEBUG_PRINT_INFO = false;
       let DEBUG_PRINT_MAZE = false;
       let hh = new Hiversaires();
-      setTimeout(hh.start.bind(hh), DEBUG_SKIP_LOGO ? 100 : 7000);
-      let logo = new Logo(document.getElementById("logo"));
-      setTimeout(function(){ logo.install(); }, 1500);
-      $("#splash").delay(DEBUG_SKIP_LOGO ? 100 : 7500).animate({ opacity: 0 }, 1000, function() { $("#splash").remove(); }); 
+      var logo = new Logo(false);
+      logo.install(120);
+      setTimeout(function(){ logo.remove(); }, 5500);
     </script>
   </body>
 </html>
