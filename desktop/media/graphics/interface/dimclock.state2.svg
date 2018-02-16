@@ -1,0 +1,31 @@
+<svg width="300" height="300"  xmlns="http://www.w3.org/2000/svg"  xmlns:xlink="http://www.w3.org/1999/xlink">
+    <defs>
+        <g id="heel">
+            <path d="m 0 0 l 0 36 
+                a 80 80, 0, 0, 0, 80 80 
+                l 10 0
+                l 76 0 l 0 -116 
+                Z" fill="white" />
+        </g>
+        <g id="west">
+            <line x1="116" y1="512" x2="752" y2="512" stroke="white" stroke-width="116"/>
+            <line x1="512" y1="116" x2="512" y2="752" stroke="white" stroke-width="116"/>
+            <line x1="529" y1="866" x2="866" y2="529" stroke="white" stroke-width="116"/>
+
+            <g transform="translate(570,908)scale(1,-1)rotate(90)"><use xlink:href="#heel"/></g>
+            <g transform="translate(908,570)scale(-1,-1)"><use xlink:href="#heel"/></g>
+        </g>
+
+        <g id="east">
+            <line x1="116" y1="512" x2="908" y2="512" stroke="white" stroke-width="116"/>
+            <line x1="174" y1="116" x2="174" y2="908" stroke="white" stroke-width="116"/>
+            <line x1="512" y1="116" x2="512" y2="908" stroke="white" stroke-width="116"/>
+            <line x1="850" y1="116" x2="850" y2="908" stroke="white" stroke-width="116"/>
+        </g>
+    </defs>
+    <!-- <rect id="background" width="300" height="300" fill="grey"/> -->
+    <g transform="translate(0,124.4)scale(0.05,0.05)"><use xlink:href="#west"/></g>
+    <g transform="translate(248.8,124.4)scale(0.05,0.05)"><use xlink:href="#east"/></g>
+    <line x1="75" y1="150" x2="150" y2="150" stroke="white" stroke-width="5" stroke-linecap="square"/>
+    <line x1="225" y1="150" x2="150" y2="150" stroke="white" stroke-width="5" stroke-linecap="square"/>
+</svg>

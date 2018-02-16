@@ -1,0 +1,42 @@
+<svg width="128" height="128"  xmlns="http://www.w3.org/2000/svg"  xmlns:xlink="http://www.w3.org/1999/xlink">
+    <defs>
+        <g id="art">
+            <g transform="translate(-35,-50)">
+                <polygon stroke="#222222" stroke-width="6" stroke-linejoin="round" points="16 41 22 40 35 46 48 46 48 55 44 62 26 62 25 58"/>
+                <polygon stroke="#222222" stroke-width="6" stroke-linejoin="round" points="16 35 20 31 21 32 20 37"/>
+                <rect width="8" height="19" rx="2" ry="2" stroke="#222222" stroke-width="5" x="24"/>
+                <rect width="8" height="16" rx="2" ry="2" stroke="#222222" stroke-width="5" x="24" y="22"/>
+                <rect width="6" height="16" rx="2" ry="2" stroke="#222222" stroke-width="5" x="34" y="23"/>
+                <rect width="6" height="25" rx="2" ry="2" stroke="#222222" stroke-width="5" x="43" y="26"/>
+
+                <polygon fill="white" stroke="white" stroke-width="2" stroke-linejoin="round" points="16 41 22 40 35 46 48 46 48 55 44 62 26 62 25 58"/>
+                <polygon fill="#222222" stroke="#222222" stroke-width="2" stroke-linejoin="round" points="16 38 18 35 21 38 21 41 16 40"/>
+                <polygon fill="white" stroke="white" stroke-width="2" stroke-linejoin="round" points="16 35 20 31 21 32 20 37"/>
+                <rect width="6" height="5" rx="1" ry="1" fill="#222222" x="25" y="37"/>
+                <rect width="8" height="19" rx="2" ry="2" fill="white" x="24"/>
+                <rect width="8" height="16" rx="2" ry="2" fill="white" x="24" y="22"/>
+                <rect width="6" height="16" rx="2" ry="2" fill="white" x="34" y="23"/>
+                <rect width="6" height="25" rx="2" ry="2" fill="white" x="43" y="26"/>
+                <rect width="6" height="6" rx="1" ry="1" fill="#222222" x="25" y="17"/>
+                <rect width="6" height="5" rx="0" ry="0" fill="#222222" x="43" y="32"/>
+                <polygon fill="#222222" stroke="#222222" stroke-width="2" stroke-linejoin="round" points="32 30 34 28 34 25 34 40 32 40"/>
+                <polygon fill="#222222" stroke="#222222" stroke-width="2" stroke-linejoin="round" points="40 30 42 28 42 40 40 40"/>
+                <circle fill="white" stroke="#222222" stroke-width="4" r="10" cx="35" cy="48"/>
+            </g>
+        </g>
+
+        <filter id="dropShadow" x="-100%" y="-100%" width="400%" height="400%">
+            <feGaussianBlur in="SourceAlpha" stdDeviation="3" />
+            <feOffset dx="4" dy="6" />
+            <feComponentTransfer>
+                <feFuncA type="linear" slope="0.7"/>
+            </feComponentTransfer>
+            <feMerge>
+                <feMergeNode />
+                <feMergeNode in="SourceGraphic" />
+            </feMerge>
+        </filter>
+    </defs>
+    <!-- <rect id="background" width="64" height="64" fill="blue"/> -->
+    <g  filter="url(#dropShadow)"><g transform="translate(32,32)scale(0.5,0.5)rotate(0)"><use xlink:href="#art"/></g></g>
+</svg>

@@ -1,0 +1,67 @@
+billboard#illusion {
+  background-image: url("../media/graphics/illusion/little_ghost.png");
+}
+
+billboard#illusion.node_9_1 {
+  left: calc(100% / 9 * (9*308/640));
+  top: calc(100% / 16 * (16*465/1136));
+  width: calc(100% / 9 * (9*83/640));
+  height: calc(100% / 16 * (16*162/1136));
+}
+
+billboard#illusion.node_15_0 {
+  left: calc(100% / 9 * (9*268/640));
+  top: calc(100% / 16 * (16*449/1136));
+  width: calc(100% / 9 * (9*101/640));
+  height: calc(100% / 16 * (16*196/1136));
+}
+
+billboard#illusion.node_33_2 {
+  left: calc(100% / 9 * (9*67/640));
+  top: calc(100% / 16 * (16*445/1136));
+  width: calc(100% / 9 * (9*95/640));
+  height: calc(100% / 16 * (16*185/1136));
+}
+
+billboard#illusion.node_43_2 {
+  left: calc(100% / 9 * (9*275/640));
+  top: calc(100% / 16 * (16*445/1136));
+  width: calc(100% / 9 * (9*119/640));
+  height: calc(100% / 16 * (16*231/1136));
+}
+
+billboard#illusion.node_58_1 {
+  left: calc(100% / 9 * (9*213/640));
+  top: calc(100% / 16 * (16*272/1136));
+  width: calc(100% / 9 * (9*284/640));
+  height: calc(100% / 16 * (16*554/1136));
+}
+
+billboard#illusion.node_73_2 {
+  left: calc(100% / 9 * (9*362/640));
+  top: calc(100% / 16 * (16*459/1136));
+  width: calc(100% / 9 * 9*88/640);
+  height: calc(100% / 16 * (16*171/1136));
+  transform: scaleX(-1);
+}
+
+billboard#illusion.node_88_3 {
+  left: calc(100% / 9 * (9*280/640));
+  top: calc(100% / 16 * (16*155/1136));
+  width: calc(100% / 9 * (9*83/640));
+  height: calc(100% / 16 * (16*162/1136));
+}
+
+billboard#illusion.node_91_0 {
+  left: calc(100% / 9 * (9*300/640));
+  top: calc(100% / 16 * (16*507/1136));
+  width: calc(100% / 9 * (9*41/640));
+  height: calc(100% / 16 * (16*81/1136));
+}
+
+billboard#illusion.node_114_2 {
+  left: calc(100% / 9 * (9*290/640));
+  top: calc(100% / 16 * (16*483/1136));
+  width: calc(100% / 9 * (9*71/640));
+  height: calc(100% / 16 * (16*139/1136));
+}
