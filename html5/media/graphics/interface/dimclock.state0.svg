@@ -1,0 +1,39 @@
+<svg width="300" height="300"  xmlns="http://www.w3.org/2000/svg"  xmlns:xlink="http://www.w3.org/1999/xlink">
+    <defs>
+        <g id="elbow">
+            <path d="m 0 -156 l 0 76 
+                a 80 80, 0, 0, 0, 80 80 
+                l 10 0
+                l 76 0 l 0 -116 
+                l -10 0
+                a 40 40, 0, 0, 1, -40 -40
+                l 0 -10
+                l -116 0
+                Z" fill="white" />
+        </g>
+        <g id="east">
+            <line x1="116" y1="512" x2="908" y2="512" stroke="white" stroke-width="116"/>
+            <line x1="174" y1="116" x2="174" y2="908" stroke="white" stroke-width="116"/>
+            <line x1="512" y1="116" x2="512" y2="908" stroke="white" stroke-width="116"/>
+            <line x1="850" y1="116" x2="850" y2="908" stroke="white" stroke-width="116"/>
+        </g>
+
+        <g id="south">
+            <line x1="174" y1="116" x2="174" y2="752" stroke="white" stroke-width="116"/>
+            <line x1="272" y1="850" x2="752" y2="850" stroke="white" stroke-width="116"/>
+            <line x1="512" y1="610" x2="512" y2="908" stroke="white" stroke-width="116"/>
+            <line x1="610" y1="512" x2="908" y2="512" stroke="white" stroke-width="116"/>
+            <line x1="850" y1="454" x2="850" y2="752" stroke="white" stroke-width="116"/>
+
+            <g transform="translate(116,908)"><use xlink:href="#elbow"/></g>
+            <g transform="translate(454,454)scale(1,-1)"><use xlink:href="#elbow"/></g>
+            <g transform="translate(908,908)scale(-1,1)"><use xlink:href="#elbow"/></g>
+        </g>
+
+    </defs>
+    <!-- <rect id="background" width="300" height="300" fill="grey"/> -->
+    <g transform="translate(248.8,124.4)scale(0.05,0.05)"><use xlink:href="#east"/></g>
+    <g transform="translate(124.4,248.8)scale(0.05,0.05)"><use xlink:href="#south"/></g>
+    <line x1="225" y1="150" x2="150" y2="150" stroke="white" stroke-width="5" stroke-linecap="square"/>
+    <line x1="150" y1="225" x2="150" y2="150" stroke="white" stroke-width="5" stroke-linecap="square"/>
+</svg>

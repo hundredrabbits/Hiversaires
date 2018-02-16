@@ -1,0 +1,158 @@
+billboard#viewMain,
+billboard#vignette,
+billboard#modifier,
+billboard#menuBlack,
+billboard#menuCredit1,
+billboard#menuCredit2,
+billboard#menuCredit3,
+billboard#menuCredit4,
+billboard#menuLogo,
+billboard#menuControls {
+  left: calc(100% / 9 * (0));
+  top: calc(100% / 16 * (0));
+  width: calc(100% / 9 * (9 / 1));
+  height: calc(100% / 16 * (16 / 1));
+}
+
+billboard#hudAudio {
+  left: calc(100% / 9 * (9 / 24 + 9 / 12 * 2));
+  top: calc(100% / 16 * (16 - 9 / 12 - 9 / 24));
+  width: calc(100% / 9 * (9 / 12));
+  height: calc(100% / 16 * (9 / 12));
+}
+
+billboard#hudDimclock {
+  left: calc(100% / 9 * (9 / 24 + 9 / 12 * 4));
+  top: calc(100% / 16 * (16 - 9 / 12 - 9 / 24));
+  width: calc(100% / 9 * (9 / 12));
+  height: calc(100% / 16 * (9 / 12));
+}
+
+billboard#hudDimclockAlert {
+  left: calc(100% / 9 * (9 / 24 + 9 / 12 * 4));
+  top: calc(100% / 16 * (16 - 9 / 12));
+  width: calc(100% / 9 * (9 / 12));
+  height: calc(100% / 16 * (9 / 12));
+}
+
+billboard#hudFuse1 {
+  left: calc(100% / 9 * (9 / 24));
+  top: calc(100% / 16 * (16 - 9 / 12 - 9 / 24));
+  width: calc(100% / 9 * (9 / 12));
+  height: calc(100% / 16 * (9 / 12));
+}
+
+billboard#hudFuseAlert {
+  left: calc(100% / 9 * (9 / 24));
+  top: calc(100% / 16 * (16 - 9 / 12));
+  width: calc(100% / 9 * (9 / 12));
+  height: calc(100% / 16 * (9 / 12));
+}
+
+billboard#hudIllusion {
+  left: calc(100% / 9 * (9 / 24 + 9 / 12 * 8));
+  top: calc(100% / 16 * (16 - 9 / 12 - 9 / 24));
+  width: calc(100% / 9 * (9 / 12));
+  height: calc(100% / 16 * (9 / 12));
+}
+
+billboard#hudStepForward {
+  left: calc(100% / 9 * (9 / 5));
+  top: calc(100% / 16 * (16 - 9 / 12));
+  width: calc(100% / 9 * (9 / 5 * 3));
+  height: calc(100% / 16 * (9 / 12));
+}
+
+billboard#hudStepLeft {
+  left: calc(100% / 9 * (0));
+  top: calc(100% / 16 * (16 - 9 / 12));
+  width: calc(100% / 9 * (9 / 5));
+  height: calc(100% / 16 * (9 / 12));
+}
+
+billboard#hudStepRight {
+  left: calc(100% / 9 * (9 / 5 * 4));
+  top: calc(100% / 16 * (16 - 9 / 12));
+  width: calc(100% / 9 * (9 / 5));
+  height: calc(100% / 16 * (9 / 12));
+}
+
+billboard#hudSave {
+  left: calc(100% / 9 * (9 / 24 + 9 / 12 * 6));
+  top: calc(100% / 16 * (16 - 9 / 12 - 9 / 24));
+  width: calc(100% / 9 * (9 / 12));
+  height: calc(100% / 16 * (9 / 12));
+}
+
+billboard#hudSeal1 {
+  left: calc(100% / 9 * (9 - 9 / 12 - 9 / 24));
+  top: calc(100% / 16 * (16 - 9 / 12 - 9 / 24));
+  width: calc(100% / 9 * (9 / 12));
+  height: calc(100% / 16 * (9 / 12));
+}
+
+billboard#hudSeal2 {
+  left: calc(100% / 9 * (9 - 9 / 12 - 9 / 24));
+  top: calc(100% / 16 * (16 - 9 / 12 * 2 - 9 / 24));
+  width: calc(100% / 9 * (9 / 12));
+  height: calc(100% / 16 * (9 / 12));
+}
+
+billboard#hudSealAlert {
+  left: calc(100% / 9 * (9 - 9 / 12 - 9 / 24));
+  top: calc(100% / 16 * (16 - 9 / 12));
+  width: calc(100% / 9 * (9 / 12));
+  height: calc(100% / 16 * (9 / 12));
+}
+
+billboard#ententeScreen {
+  left: calc(100% / 9 * (9 * 260/640));
+  top: calc(100% / 16 * (16 * 506/1136));
+  width: calc(100% / 9 * (9 * 120/640));
+  height: calc(100% / 16 * (16 * 120/1136));
+}
+
+billboard#clockFace,
+billboard#clockShadow {
+  left: calc(100% / 9 * (9 * 170/640));
+  top: calc(100% / 16 * (16 * 416/1136));
+  width: calc(100% / 9 * (9 * 300/640));
+  height: calc(100% / 16 * (16 * 300/1136));
+}
+
+billboard#progressPane {
+  left: calc(100% / 9 * (9 * 170/640));
+  top: calc(100% / 16 * (16 * 385/1136));
+  width: calc(100% / 9 * (9 * 300/640));
+  height: calc(100% / 16 * (16 * 300/1136));
+  transform-origin: center;
+  transform: perspective(500px) rotateX(-4deg);
+}
+
+trigger#action {
+  left: calc(100% / 9 * (9 / 3));
+  top: calc(100% / 16 * (16 / 3));
+  width: calc(100% / 9 * (9 / 3));
+  height: calc(100% / 16 * (16 / 3));
+}
+
+trigger#moveForward {
+  left: calc(100% / 9 * (9 / 5));
+  top: calc(100% / 16 * (0));
+  width: calc(100% / 9 * (9 / 5 * 3));
+  height: calc(100% / 16 * (16 / 1));
+}
+
+trigger#moveLeft {
+  left: calc(100% / 9 * (0));
+  top: calc(100% / 16 * (0));
+  width: calc(100% / 9 * (9 / 5));
+  height: calc(100% / 16 * (16 / 1));
+}
+
+trigger#moveRight {
+  left: calc(100% / 9 * (9 / 5 * 4));
+  top: calc(100% / 16 * (0));
+  width: calc(100% / 9 * (9 / 5));
+  height: calc(100% / 16 * (16 / 1));
+}

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script>if (typeof module === 'object') {window.module = module; module = undefined;}</script>
+    <!-- <script type="text/javascript" src="scripts/jquery.js"></script> -->
+    <script type="text/javascript" src="lib/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="scripts/logo.js"></script>
+    <script type="text/javascript" src="scripts/utils/enum.js"></script>
+
+    <script type="text/javascript" src="scripts/core/puzzles/puzzle.js"></script>
+    <script type="text/javascript" src="scripts/core/puzzles/door.js"></script>
+    <script type="text/javascript" src="scripts/core/puzzles/clockterminal.js"></script>
+    <script type="text/javascript" src="scripts/core/puzzles/sealterminal.js"></script>
+    <script type="text/javascript" src="scripts/core/puzzles/secretterminal.js"></script>
+    <script type="text/javascript" src="scripts/core/puzzles/energyterminal.js"></script>
+    <script type="text/javascript" src="scripts/core/puzzles/sealdoor.js"></script>
+    <script type="text/javascript" src="scripts/core/puzzles/studioterminal.js"></script>
+    <script type="text/javascript" src="scripts/core/puzzles/studiodoor.js"></script>
+    <script type="text/javascript" src="scripts/core/puzzles/secretdoor.js"></script>
+    <script type="text/javascript" src="scripts/core/puzzles/energydoor.js"></script>
+    <script type="text/javascript" src="scripts/core/puzzles/secretenergydoor.js"></script>
+    <script type="text/javascript" src="scripts/core/puzzles/clockdoor.js"></script>
+    <script type="text/javascript" src="scripts/core/puzzles/progressterminal.js"></script>
+    <script type="text/javascript" src="scripts/core/puzzles/audioterminal.js"></script>
+    <script type="text/javascript" src="scripts/core/puzzles/killterminal.js"></script>
+    <script type="text/javascript" src="scripts/core/puzzles/endgamedoor.js"></script>
+    <script type="text/javascript" src="scripts/core/puzzles/endgamecredit.js"></script>
+    <script type="text/javascript" src="scripts/core/puzzles/timedoor.js"></script>
+    <script type="text/javascript" src="scripts/core/puzzles/ententeterminal.js"></script>
+    <script type="text/javascript" src="scripts/core/puzzles/ententeprogressterminal.js"></script>
+    <script type="text/javascript" src="scripts/core/puzzles/ententedoor.js"></script>
+    <script type="text/javascript" src="scripts/core/puzzles/illusion.js"></script>
+
+    <script type="text/javascript" src="scripts/core/data.js"></script>
+    
+    <script type="text/javascript" src="scripts/core/hiversaires.js"></script>
+    <script type="text/javascript" src="scripts/core/stage.js"></script>
+    <script type="text/javascript" src="scripts/core/interface.js"></script>
+    <script type="text/javascript" src="scripts/core/game.js"></script>
+    <script type="text/javascript" src="scripts/core/music.js"></script>
+    <script type="text/javascript" src="scripts/core/artbook.js"></script>
+
+    <script type="text/javascript" src="scripts/core/keyboard.js"></script>
+    <script type="text/javascript" src="scripts/core/walkthrough.js"></script>
+    <script type="text/javascript" src="scripts/core/cartographer.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="links/reset.css"/>
+    <link rel="stylesheet" type="text/css" href="links/main.css"/>
+    <link rel="stylesheet" type="text/css" href="links/layout.css"/>
+    <link rel="stylesheet" type="text/css" href="links/illusion.css"/>
+    <title>Hiversaires</title>
+  </head>
+  <body>
+    <div id='splash' style='position:fixed; top:0px; left:0px; width:100%; height:100%; background:black; z-index: 9999; display:block'>
+      <div id='logo' style='width:120px;height:120px; margin:25vh auto'></div>
+    </div>
+    <script>
+      let DEBUG_SKIP_LOGO = false;
+      let DEBUG_SHOW_TRIGGERS = false;
+      let DEBUG_SHOW_BILLBOARDS = false;
+      let DEBUG_LOG_INPUT = false;
+      let DEBUG_DONT_SAVE = false;
+      let DEBUG_START_FRESH = false;
+      let DEBUG_NO_MUSIC = false;
+      let DEBUG_PRINT_INFO = false;
+      let DEBUG_PRINT_MAZE = false;
+      let hh = new Hiversaires();
+      setTimeout(hh.start.bind(hh), DEBUG_SKIP_LOGO ? 100 : 7000);
+      let logo = new Logo(document.getElementById("logo"));
+      setTimeout(function(){ logo.install(); }, 1500);
+      $("#splash").delay(DEBUG_SKIP_LOGO ? 100 : 7500).animate({ opacity: 0 }, 1000, function() { $("#splash").remove(); }); 
+    </script>
+  </body>
+</html>

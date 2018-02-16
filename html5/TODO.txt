@@ -1,0 +1,7 @@
+Once you show IOO⠛, fold their new stuff into the build
+
+Allow limited resizing?
+    iPads cropped the background and scaled the layout
+
+Switch JS files to ES6 modules once Electron supports them
+    Already supported by expo.io, supposedly

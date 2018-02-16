@@ -1,0 +1,15 @@
+<svg width="640" height="1136"  xmlns="http://www.w3.org/2000/svg"  xmlns:xlink="http://www.w3.org/1999/xlink">
+    <g id="leftbutton" transform="translate(60,880)">
+        <circle r="22.5" fill="white"/>
+        <polyline points="2,8 -6,0 2,-8" fill="none" stroke="black" stroke-width="3.5" stroke-linecap="square" stroke-linejoin="miter"/>
+    </g>
+    <g id="upbutton" transform="translate(320,880)">
+        <circle r="22.5" fill="white"/>
+        <circle r="31.25" stroke="white" opacity="0.25" fill="none" stroke-width="3.5"/>
+        <polyline points="8,2 0,-6 -8,2" fill="none" stroke="black" stroke-width="3.5" stroke-linecap="square" stroke-linejoin="miter"/>
+    </g>
+    <g id="rightbutton" transform="translate(580,880)">
+        <circle r="22.5" fill="white"/>
+        <polyline points="-2,8 6,0 -2,-8" fill="none" stroke="black" stroke-width="3.5" stroke-linecap="square" stroke-linejoin="miter"/>
+    </g>
+</svg>
