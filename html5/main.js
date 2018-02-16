@@ -19,7 +19,7 @@ function createWindow() {
     }
   }
 
-  function getGoodWindowBounds(display) {
+  function getGoodWindowBounds(display, ratio) {
     let height = display.workArea.height;
     if (electron.screen.getMenuBarHeight != null) {
       height -= electron.screen.getMenuBarHeight();
@@ -29,7 +29,7 @@ function createWindow() {
     // below a full-screen window, to convince the user the window terminates.
     height -= 2;
 
-    let width = Math.ceil(height * 9 / 16);
+    let width = Math.ceil(height * ratio);
     let x =
       display.workArea.x + Math.round(display.workArea.width / 2 - width / 2);
     let y = display.workArea.y;
@@ -37,7 +37,9 @@ function createWindow() {
     return { x, y, width, height };
   }
 
-  let initBounds = getGoodWindowBounds(tallestDisplay);
+  const initialRatio = 9 / 16;
+
+  let initBounds = getGoodWindowBounds(tallestDisplay, initialRatio);
 
   // Create the browser window.
   win = new BrowserWindow({
@@ -46,9 +48,9 @@ function createWindow() {
     width: initBounds.width,
     height: initBounds.height,
     backgroundColor: "#000000",
-    resizable: false,
-    fullscreenable: false,
-    maximizable: false,
+    resizable: true,
+    fullscreenable: true,
+    maximizable: true,
     autoHideMenuBar: true,
     icon: __dirname + "/icon.ico"
   });
@@ -69,8 +71,10 @@ function createWindow() {
   });
 
   win.on("move", () => {
+    let oldBounds = win.getBounds();
     let bounds = getGoodWindowBounds(
-      electron.screen.getDisplayMatching(win.getBounds())
+      electron.screen.getDisplayMatching(win.getBounds()),
+      oldBounds.width / oldBounds.height
     );
     win.setContentSize(bounds.width, bounds.height);
   });
