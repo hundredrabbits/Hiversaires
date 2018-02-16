@@ -98,8 +98,7 @@ class Hiversaires {
     this.stage.trigger("moveForward").hidden =
       this.currentSubject.type == SubjectType.none;
 
-    this.stage.billboard("viewMain").image =
-      "node/" + this.game.userNodeID + "." + this.game.userOrientation + ".jpg";
+    this.stage.billboard("viewMain").image = this.modifierToURL();
 
     if (Math.random() < 0.3 && this.currentSubject.illusionID != null) {
       puzzlesByID.get(this.currentSubject.illusionID).appear();
@@ -214,16 +213,11 @@ class Hiversaires {
     this.artBook.preloadArt("media/graphics/" + this.modifierToURL(modifier));
   }
 
-  modifierToURL(modifier) {
-    return (
-      "node/" +
-      this.game.userNodeID +
-      "." +
-      this.game.userOrientation +
-      "." +
-      modifier +
-      ".jpg"
-    );
+  modifierToURL(modifier = null) {
+    const identifiers = [this.game.userNodeID, this.game.userOrientation];
+    if (modifier != null) identifiers.push(modifier);
+    // return "node/" + identifiers.join(".") + ".jpg";
+    return "node_render/" + nodeAssetMap.get(identifiers.join("."));
   }
 
   showModifier(fadeDuration = 0, fadeDelay = 0) {

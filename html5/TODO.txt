@@ -1,7 +1,10 @@
-Once you show IOO⠛, fold their new stuff into the build
+Flexible aspect ratio
+    Rethink Layout
+        Probably center on screen
+    Those SVGs
+    Walk around, see if any state changes are jarring
 
-Allow limited resizing?
-    iPads cropped the background and scaled the layout
+Once you show IOO⠛, fold their new stuff into the build
 
 Switch JS files to ES6 modules once Electron supports them
     Already supported by expo.io, supposedly

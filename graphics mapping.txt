@@ -1,13 +1,12 @@
-photoshopped graphics/node.0044.jpg and graphics/node.0487.jpg into graphics/node/11.0.open.jpg
-copied graphics/node.0378.jpg to graphics/node/102.3.jpg
 copied graphics/node.0080.jpg to graphics/node/20.0.open.jpg
 copied graphics/node.0200.jpg to graphics/node/50.0.open.jpg
-copied graphics/node.0427.jpg to graphics/node/65.2.exit.jpg
 copied graphics/node.0365.jpg to graphics/node/91.1.jpg
 copied graphics/node.0370.jpg to graphics/node/92.2.jpg
 copied graphics/node.0374.jpg to graphics/node/93.2.jpg
-copied graphics/node.0378.jpg to graphics/node/94.2.jpg
 copied graphics/node.0374.jpg to graphics/node/99.1.jpg
+copied graphics/node.0378.jpg to graphics/node/102.3.jpg
+copied graphics/node.0378.jpg to graphics/node/94.2.jpg
+copied graphics/node.0427.jpg to graphics/node/65.2.exit.jpg
 moved graphics/node.0000.jpg to graphics/node/0.0.jpg
 moved graphics/node.0001.jpg to graphics/node/0.1.jpg
 moved graphics/node.0002.jpg to graphics/node/0.2.jpg
@@ -475,6 +474,7 @@ moved graphics/node.0482.jpg to graphics/node/76.3.open.jpg
 moved graphics/node.0483.jpg to graphics/node/87.1.open.jpg
 moved graphics/node.0485.jpg to graphics/node/85.0.open.jpg
 moved graphics/node.0486.jpg to graphics/node/46.2.open.jpg
+moved graphics/node.0487.jpg into graphics/node/11.0.open.jpg
 moved graphics/node.0488.jpg to graphics/node/48.0.open.jpg
 moved graphics/node.0489.jpg to graphics/node/19.2.unlocked.jpg
 moved graphics/node.0490.jpg to graphics/node/39.1.open.jpg
