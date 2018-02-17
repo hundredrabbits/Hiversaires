@@ -202,8 +202,8 @@ class Visual {
   set hidden(value) {
     this._hidden = value;
     $(this.element).css({
-      display: value ? "none" : "block",
-      "pointer-events": value ? "none" : "inherit"
+      display: value ? "none" : "",
+      "pointer-events": value ? "none" : ""
     });
   }
 }
