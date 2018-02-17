@@ -63,9 +63,13 @@
       let DEBUG_PRINT_INFO = false;
       let DEBUG_PRINT_MAZE = false;
       let hh = new Hiversaires();
-      var logo = new Logo(false);
-      logo.install(120);
-      setTimeout(function(){ logo.remove(); }, 5500);
+      // setTimeout(() => { hh.walkthrough.playEntireGame(250); },1000)
+      setTimeout(hh.start.bind(hh), DEBUG_SKIP_LOGO ? 100 : 4000);
+      if(!DEBUG_SKIP_LOGO){
+        var logo = new Logo(false);
+        logo.install(120);
+        setTimeout(function(){ logo.remove(); }, 5500);
+      }
     </script>
   </body>
 </html>

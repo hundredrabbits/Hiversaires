@@ -21,6 +21,7 @@ billboard {
   background-size: contain;
   background-repeat: no-repeat;
   transform-origin: left;
+  background-position: center
   /*pointer-events: none;*/
   /*image-rendering: crisp-edges;*/
   /*-webkit-optimize-contrast: crisp-edges;*/
@@ -95,4 +96,11 @@ billboard.credit h2 {
   src: url("../media/fonts/Alte-DIN-1451-Mittelschrift.ttf.woff") format("woff");
   font-weight: normal;
   font-style: normal;
+}
+
+#viewMain,#vignette,#modifier {
+  background-size: cover;
+  background-repeat: no-repeat;
+  transform-origin: left;
+  background-position: center;
 }

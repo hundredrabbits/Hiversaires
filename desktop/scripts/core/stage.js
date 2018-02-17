@@ -92,7 +92,7 @@ class Stage {
 
     this.billboard("menuBlack").text = "<contents></contents>";
     this.billboard("menuCredit1").text =
-      "<contents><h1>Development</h1><h2>Devine Lu Linvega</h2><h1>Technical Assistance</h1><h2>Sven Bergstr&ouml;m</h2></contents>";
+      "<contents><h1>Development</h1><h2>Devine Lu Linvega</h2><h1>Technical Assistance</h1><h2>Sven Bergstr&ouml;m</h2><h2>Jeremy Sachs</h2></contents>";
     this.billboard("menuCredit2").text =
       "<contents><h1>Audio</h1><h2>Aliceffekt</h2></contents>";
     this.billboard("menuCredit3").text =

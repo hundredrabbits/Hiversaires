@@ -1,103 +1,61 @@
-const { app, BrowserWindow, webFrame } = require("electron");
-const path = require("path");
-const url = require("url");
+const {app, BrowserWindow, webFrame, Menu} = require('electron')
+const path = require('path')
+const url = require('url')
+const shell = require('electron').shell;
 
-// Keep a global reference of the window object, if you don't, the window will
-// be closed automatically when the JavaScript object is garbage collected.
-let win;
+let win
 
-function createWindow() {
-  const electron = require("electron");
+let is_shown = true;
 
-  let tallestDisplay = null;
-  for (let display of electron.screen.getAllDisplays()) {
-    if (
-      !tallestDisplay ||
-      tallestDisplay.workArea.height < display.workArea.height
-    ) {
-      tallestDisplay = display;
-    }
-  }
-
-  function getGoodWindowBounds(display, ratio) {
-    let height = display.workArea.height;
-    if (electron.screen.getMenuBarHeight != null) {
-      height -= electron.screen.getMenuBarHeight();
-    }
-
-    // Many macOS apps seem to leave a couple pixels
-    // below a full-screen window, to convince the user the window terminates.
-    height -= 2;
-
-    let width = Math.ceil(height * ratio);
-    let x =
-      display.workArea.x + Math.round(display.workArea.width / 2 - width / 2);
-    let y = display.workArea.y;
-
-    return { x, y, width, height };
-  }
-
-  const initialRatio = 9 / 16;
-
-  let initBounds = getGoodWindowBounds(tallestDisplay, initialRatio);
-
-  // Create the browser window.
-  win = new BrowserWindow({
-    x: initBounds.x,
-    y: initBounds.y,
-    width: initBounds.width,
-    height: initBounds.height,
-    backgroundColor: "#000000",
-    resizable: true,
-    fullscreenable: true,
-    maximizable: true,
-    autoHideMenuBar: true,
-    icon: __dirname + "/icon.ico"
-  });
-
-  win.setContentSize(initBounds.width, initBounds.height);
-
-  win.loadURL(`file://${__dirname}/index.html`);
-
-  // Open the DevTools.
-  // win.webContents.openDevTools()
-
-  // Emitted when the window is closed.
-  win.on("closed", () => {
-    // Dereference the window object, usually you would store windows
-    // in an array if your app supports multi windows, this is the time
-    // when you should delete the corresponding element.
-    win = null;
-  });
-
-  win.on("move", () => {
-    let oldBounds = win.getBounds();
-    let bounds = getGoodWindowBounds(
-      electron.screen.getDisplayMatching(win.getBounds()),
-      oldBounds.width / oldBounds.height
-    );
-    win.setContentSize(bounds.width, bounds.height);
-  });
+app.inspect = function()
+{
+  app.win.toggleDevTools();
 }
 
-// This method will be called when Electron has finished
-// initialization and is ready to create browser windows.
-// Some APIs can only be used after this event occurs.
-app.on("ready", createWindow);
+app.toggle_fullscreen = function()
+{
+  app.win.setFullScreen(app.win.isFullScreen() ? false : true);
+}
 
-// Quit when all windows are closed.
-app.on("window-all-closed", () => {
-  app.quit();
-});
+app.toggle_visible = function()
+{
+  if(is_shown){ app.win.hide(); } else{ app.win.show(); }
+}
 
-app.on("activate", () => {
-  // On macOS it's common to re-create a window in the app when the
-  // dock icon is clicked and there are no other windows open.
-  if (win === null) {
-    createWindow();
-  } else {
+app.inject_menu = function(m)
+{
+  Menu.setApplicationMenu(Menu.buildFromTemplate(m));
+}
+
+app.win = null;
+
+app.on('ready', () => 
+{
+  app.win = new BrowserWindow({width: 960, height: 600, minWidth:860, minHeight:600, frame:true, autoHideMenuBar: true,backgroundColor: '#000000', resizable:true, autoHideMenuBar: true,icon: __dirname + '/icon.ico'})
+
+  app.win.loadURL(`file://${__dirname}/index.html`)
+
+  app.win.on('closed', () => {
+    win = null
+    app.quit()
+  })
+
+  app.win.on('hide',function() {
+    is_shown = false;
+  })
+
+  app.win.on('show',function() {
+    is_shown = true;
+  })
+})
+
+app.on('window-all-closed', () => 
+{
+  app.quit()
+})
+
+app.on('activate', () => {
+  if (app.win === null) {
+    createWindow()
   }
-});
-
-// In this file you can include the rest of your app's specific main process
-// code. You can also put them in separate files and require them here.
+})
