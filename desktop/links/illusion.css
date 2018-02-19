@@ -1,5 +1,6 @@
 billboard#illusion {
   background-image: url("../media/graphics/illusion/little_ghost.png");
+  display:none !important;
 }
 
 billboard#illusion.node_9_1 {
