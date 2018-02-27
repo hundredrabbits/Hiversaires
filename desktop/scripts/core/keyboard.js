@@ -14,6 +14,7 @@ class Keyboard {
   onKey(event) {
     if (this.keyMap.has(event.keyCode)) {
       this.responder(this.keyMap.get(event.keyCode));
+      event.preventDefault();
     }
   }
 }

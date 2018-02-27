@@ -14,6 +14,7 @@ class Hiversaires {
     this.interface = new Interface();
     this.walkthrough = new Walkthrough(this.responder.bind(this));
     this.cartographer = new Cartographer();
+    this.controller = new Controller();
   }
 
   start() {
@@ -21,6 +22,21 @@ class Hiversaires {
     this.game.start();
     this.refreshNode();
     this.interface.showHomeMenu();
+
+    this.controller.add("default","*","About",() => { require('electron').shell.openExternal('https://hundredrabbits.itch.io/hiversaires'); },"CmdOrCtrl+,");
+    this.controller.add("default","*","Fullscreen",() => { app.toggle_fullscreen(); },"CmdOrCtrl+Enter");
+    this.controller.add("default","*","Hide",() => { app.toggle_visible(); },"CmdOrCtrl+H");
+    this.controller.add("default","*","Inspect",() => { app.inspect(); },"CmdOrCtrl+.");
+    this.controller.add("default","*","Documentation",() => { this.controller.docs(); },"CmdOrCtrl+Esc");
+    this.controller.add("default","*","Reset",() => { this.game.erase(); },"CmdOrCtrl+Backspace");
+    this.controller.add("default","*","Quit",() => { app.exit(); },"CmdOrCtrl+Q");
+
+    this.controller.add("default","Move","Walk Forward",() => { this.moveForward(); },"W");
+    this.controller.add("default","Move","Walk Backward",() => { this.moveBackward();  },"S");
+    this.controller.add("default","Move","Turn Left",() => { this.moveLeft(); },"A");
+    this.controller.add("default","Move","Turn Right",() => { this.moveRight(); },"D");
+
+    this.controller.commit();
   }
 
   get currentNode() {
