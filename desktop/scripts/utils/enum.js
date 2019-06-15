@@ -1,6 +1,6 @@
-function setEnumValues(enumType, values) {
+function setEnumValues (enumType, values) {
   for (value of values) {
-    enumType[value] = value;
+    enumType[value] = value
   }
-  Object.freeze(enumType);
+  Object.freeze(enumType)
 }

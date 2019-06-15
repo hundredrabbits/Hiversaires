@@ -1,13 +1,13 @@
-"use strict";
+'use strict'
 
 class Puzzle {
-  constructor(id) {
-    this.id = id;
+  constructor (id) {
+    this.id = id
   }
-  setup() {}
-  update() {}
-  performAction() {}
-  get active() {
-    return true;
+  setup () {}
+  update () {}
+  performAction () {}
+  get active () {
+    return true
   }
 }

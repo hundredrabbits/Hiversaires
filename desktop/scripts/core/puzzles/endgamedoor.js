@@ -1,32 +1,32 @@
-"use strict";
+'use strict'
 
 class EndgameDoor extends Door {
-  constructor(id, fuseIDs) {
-    super(id);
-    this.fuseIDs = fuseIDs;
+  constructor (id, fuseIDs) {
+    super(id)
+    this.fuseIDs = fuseIDs
   }
 
-  setup() {
-    super.setup();
+  setup () {
+    super.setup()
     if (this.isUnlocked) {
-      hiversaires.setModifier("open");
-      hiversaires.showModifier();
+      hiversaires.setModifier('open')
+      hiversaires.showModifier()
     } else {
-      hiversaires.interface.showEnergyAlert();
+      hiversaires.interface.showEnergyAlert()
     }
   }
 
-  get isUnlocked() {
-    const fuses = hiversaires.currentFuses;
+  get isUnlocked () {
+    const fuses = hiversaires.currentFuses
     for (const fuseID of this.fuseIDs) {
       if (!fuses.has(fuseID)) {
-        return false;
+        return false
       }
     }
-    return true;
+    return true
   }
 
-  performAction() {
-    this.walkThroughDoor();
+  performAction () {
+    this.walkThroughDoor()
   }
 }

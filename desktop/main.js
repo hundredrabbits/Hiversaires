@@ -1,45 +1,40 @@
-const {app, BrowserWindow, webFrame, Menu} = require('electron')
+const { app, BrowserWindow, webFrame, Menu } = require('electron')
 const path = require('path')
 const url = require('url')
-const shell = require('electron').shell;
+const shell = require('electron').shell
 
 let win
 
-let is_shown = true;
+let is_shown = true
 
-app.inspect = function()
-{
-  app.win.toggleDevTools();
+app.inspect = function () {
+  app.win.toggleDevTools()
 }
 
-app.toggle_fullscreen = function()
-{
-  app.win.setFullScreen(app.win.isFullScreen() ? false : true);
+app.toggle_fullscreen = function () {
+  app.win.setFullScreen(!app.win.isFullScreen())
 }
 
-app.toggle_visible = function()
-{
-  if(is_shown){ app.win.hide(); } else{ app.win.show(); }
+app.toggle_visible = function () {
+  if (is_shown) { app.win.hide() } else { app.win.show() }
 }
 
-app.inject_menu = function(m)
-{
-  Menu.setApplicationMenu(Menu.buildFromTemplate(m));
+app.inject_menu = function (m) {
+  Menu.setApplicationMenu(Menu.buildFromTemplate(m))
 }
 
-app.win = null;
+app.win = null
 
-app.on('ready', () => 
-{
+app.on('ready', () => {
   app.win = new BrowserWindow({
-    width: 960, 
-    height: 600, 
-    minWidth:860, 
-    minHeight:600, 
-    frame:true, 
+    width: 960,
+    height: 600,
+    minWidth: 860,
+    minHeight: 600,
+    frame: true,
     autoHideMenuBar: true,
-    backgroundColor: '#000000', 
-    resizable:true, 
+    backgroundColor: '#000000',
+    resizable: true,
     autoHideMenuBar: true,
     icon: __dirname + '/icon.ico',
     webPreferences: { zoomFactor: 1.0, nodeIntegration: true, backgroundThrottling: false }
@@ -52,17 +47,16 @@ app.on('ready', () =>
     app.quit()
   })
 
-  app.win.on('hide',function() {
-    is_shown = false;
+  app.win.on('hide', function () {
+    is_shown = false
   })
 
-  app.win.on('show',function() {
-    is_shown = true;
+  app.win.on('show', function () {
+    is_shown = true
   })
 })
 
-app.on('window-all-closed', () => 
-{
+app.on('window-all-closed', () => {
   app.quit()
 })
 

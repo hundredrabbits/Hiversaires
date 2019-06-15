@@ -1,75 +1,75 @@
-"use strict";
+'use strict'
 
 class Door extends Puzzle {
-  constructor(id, fadeDuration = 0, silent = false) {
-    super(id);
-    this.fadeDuration = fadeDuration;
-    this.silent = silent;
-    this._isOpen = { value: false };
+  constructor (id, fadeDuration = 0, silent = false) {
+    super(id)
+    this.fadeDuration = fadeDuration
+    this.silent = silent
+    this._isOpen = { value: false }
   }
 
-  setup() {
-    this.isOpen = false;
+  setup () {
+    this.isOpen = false
   }
 
-  openDoor() {
-    this.isOpen = true;
-    hiversaires.showModifier(this.fadeDuration);
+  openDoor () {
+    this.isOpen = true
+    hiversaires.showModifier(this.fadeDuration)
   }
 
-  walkThroughDoor() {
+  walkThroughDoor () {
     if (this.silent) {
-      hiversaires.playFootStep();
+      hiversaires.playFootStep()
     } else {
-      hiversaires.music.playEffect("action_DoorActive");
+      hiversaires.music.playEffect('action_DoorActive')
     }
-    const subject = hiversaires.currentSubject;
-    let changed = false;
+    const subject = hiversaires.currentSubject
+    let changed = false
     if (this.isAlternateUnlocked) {
-      changed = true;
-      hiversaires.game.userNodeID = subject.alternateNodeID;
+      changed = true
+      hiversaires.game.userNodeID = subject.alternateNodeID
       if (subject.alternateOrientation != null) {
-        hiversaires.game.userOrientation = subject.alternateOrientation;
+        hiversaires.game.userOrientation = subject.alternateOrientation
       }
     } else if (this.isUnlocked) {
-      changed = true;
-      hiversaires.game.userNodeID = subject.nodeID;
+      changed = true
+      hiversaires.game.userNodeID = subject.nodeID
       if (subject.orientation != null) {
-        hiversaires.game.userOrientation = subject.orientation;
+        hiversaires.game.userOrientation = subject.orientation
       }
     }
 
     if (changed) {
-      this.isOpen = false;
-      hiversaires.refreshNode();
+      this.isOpen = false
+      hiversaires.refreshNode()
     }
   }
 
-  get isUnlocked() {
-    return false;
+  get isUnlocked () {
+    return false
   }
 
-  get isAlternateUnlocked() {
-    return false;
+  get isAlternateUnlocked () {
+    return false
   }
 
-  get active() {
-    return this.isUnlocked || this.isAlternateUnlocked;
+  get active () {
+    return this.isUnlocked || this.isAlternateUnlocked
   }
 
-  get isOpen() {
-    return this._isOpen.value;
+  get isOpen () {
+    return this._isOpen.value
   }
 
-  set isOpen(value) {
-    this._isOpen.value = value;
+  set isOpen (value) {
+    this._isOpen.value = value
   }
 
-  performAction() {
+  performAction () {
     if (this.isOpen) {
-      this.walkThroughDoor();
+      this.walkThroughDoor()
     } else {
-      this.openDoor();
+      this.openDoor()
     }
   }
 }

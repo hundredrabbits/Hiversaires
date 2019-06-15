@@ -1,70 +1,70 @@
-"use strict";
+'use strict'
 
 class StudioTerminal extends Puzzle {
-  constructor(id) {
-    super(id);
+  constructor (id) {
+    super(id)
   }
 
-  setup() {
-    hiversaires.interface.flashVignette();
+  setup () {
+    hiversaires.interface.flashVignette()
 
-    hiversaires.music.playEffect("action_DoorInit");
+    hiversaires.music.playEffect('action_DoorInit')
 
-    const seals = hiversaires.currentSeals;
-    const containsAntechannel = seals.has(Zone.antechannel);
-    const containsStones = seals.has(Zone.stones);
+    const seals = hiversaires.currentSeals
+    const containsAntechannel = seals.has(Zone.antechannel)
+    const containsStones = seals.has(Zone.stones)
 
     if (containsStones && containsAntechannel) {
       // Act 4 : Antechannel + Stones in Studio
-      hiversaires.game.save();
+      hiversaires.game.save()
     }
 
-    this.update();
+    this.update()
   }
 
-  update() {
-    const seals = hiversaires.currentSeals;
-    const containsAntechannel = seals.has(Zone.antechannel);
-    const containsStones = seals.has(Zone.stones);
+  update () {
+    const seals = hiversaires.currentSeals
+    const containsAntechannel = seals.has(Zone.antechannel)
+    const containsStones = seals.has(Zone.stones)
 
-    let modifier = null;
+    let modifier = null
 
     if (hiversaires.game.puzzleState.studio) {
-      modifier = "unlocked";
-      hiversaires.game.userChapter = Chapter.act5;
-      hiversaires.updateMusic();
+      modifier = 'unlocked'
+      hiversaires.game.userChapter = Chapter.act5
+      hiversaires.updateMusic()
     } else {
       if (containsStones && containsAntechannel) {
-        modifier = "both";
+        modifier = 'both'
       } else if (containsStones && !containsAntechannel) {
-        modifier = "stones";
+        modifier = 'stones'
       } else if (!containsStones && containsAntechannel) {
-        modifier = "antechannel";
+        modifier = 'antechannel'
       }
 
       if (hiversaires.game.userChapter == Chapter.act5) {
-        hiversaires.game.userChapter = Chapter.act4;
-        hiversaires.updateMusic();
+        hiversaires.game.userChapter = Chapter.act4
+        hiversaires.updateMusic()
       }
     }
 
     if (modifier != null) {
-      hiversaires.setModifier(modifier);
-      hiversaires.showModifier();
+      hiversaires.setModifier(modifier)
+      hiversaires.showModifier()
     } else {
-      hiversaires.hideModifier();
+      hiversaires.hideModifier()
     }
   }
 
-  performAction() {
-    const seals = hiversaires.currentSeals;
-    const containsStones = seals.has(Zone.stones);
-    const containsAntechannel = seals.has(Zone.antechannel);
+  performAction () {
+    const seals = hiversaires.currentSeals
+    const containsStones = seals.has(Zone.stones)
+    const containsAntechannel = seals.has(Zone.antechannel)
     if (containsStones && containsAntechannel) {
       hiversaires.game.puzzleState.studio = !hiversaires.game.puzzleState
-        .studio;
-      hiversaires.music.playEffect("action_EnergyActive");
-      this.update();
+        .studio
+      hiversaires.music.playEffect('action_EnergyActive')
+      this.update()
     }
   }
 }
