@@ -10,23 +10,22 @@
     "start": "electron .",
     "fmt": "prettier --write main.js 'scripts/**/*.js' 'links/**/*.css' 'media/**/*.json'",
     "stretch": "prettier --print-width 1000 --write main.js 'scripts/**/*.js' 'links/**/*.css'",
-    "start": "electron .",
-    "clean"        : "rm -r ~/Desktop/Hiversaires-darwin-x64/ ; rm -r ~/Desktop/Hiversaires-linux-x64/ ; rm -r ~/Desktop/Hiversaires-win32-x64/ ; echo 'cleaned build location'",
-    "build_osx"    : "electron-packager . Hiversaires --platform=darwin --arch=x64 --out ~/Desktop/ --overwrite --icon=icon.icns ; echo 'Built for OSX'",
-    "build_linux"  : "electron-packager . Hiversaires --platform=linux  --arch=x64 --out ~/Desktop/ --overwrite --icon=icon.ico ; echo 'Built for LINUX'",
-    "build_win"    : "electron-packager . Hiversaires --platform=win32  --arch=x64 --out ~/Desktop/ --overwrite --icon=icon.ico ; echo 'Built for WIN'",
-    "build"        : "npm run clean ; npm run build_osx ; npm run build_linux ; npm run build_win",
-    "push_osx"     : "~/butler push ~/Desktop/Hiversaires-darwin-x64/ hundredrabbits/hiversaires:osx-64",
-    "push_linux"   : "~/butler push ~/Desktop/Hiversaires-linux-x64/ hundredrabbits/hiversaires:linux-64",
-    "push_win"     : "~/butler push ~/Desktop/Hiversaires-win32-x64/ hundredrabbits/hiversaires:windows-64",
-    "push_status"  : "~/butler status hundredrabbits/hiversaires",
-    "push"         : "npm run build ; npm run push_osx ; npm run push_linux ; npm run push_win ; npm run clean ; npm run push_status"
-  },
-  "dependencies": {
-    "electron": "^1.8.2"
+    "clean": "rm -r ~/Desktop/Hiversaires-darwin-x64/ ; rm -r ~/Desktop/Hiversaires-linux-x64/ ; rm -r ~/Desktop/Hiversaires-win32-x64/ ; echo 'cleaned build location'",
+    "build_osx": "electron-packager . Hiversaires --platform=darwin --arch=x64 --out ~/Desktop/ --overwrite --icon=icon.icns ; echo 'Built for OSX'",
+    "build_linux": "electron-packager . Hiversaires --platform=linux  --arch=x64 --out ~/Desktop/ --overwrite --icon=icon.ico ; echo 'Built for LINUX'",
+    "build_win": "electron-packager . Hiversaires --platform=win32  --arch=x64 --out ~/Desktop/ --overwrite --icon=icon.ico ; echo 'Built for WIN'",
+    "build": "npm run clean ; npm run build_osx ; npm run build_linux ; npm run build_win",
+    "push_osx": "~/butler push ~/Desktop/Hiversaires-darwin-x64/ hundredrabbits/hiversaires:osx-64",
+    "push_linux": "~/butler push ~/Desktop/Hiversaires-linux-x64/ hundredrabbits/hiversaires:linux-64",
+    "push_win": "~/butler push ~/Desktop/Hiversaires-win32-x64/ hundredrabbits/hiversaires:windows-64",
+    "push_status": "~/butler status hundredrabbits/hiversaires",
+    "push": "npm run build ; npm run push_osx ; npm run push_linux ; npm run push_win ; npm run clean ; npm run push_status"
   },
   "devDependencies": {
-    "electron-packager": "^8.4.0",
-    "prettier": "^1.5.3"
+    "electron": "^5.0.1",
+    "electron-packager": "^13.1.1"
+  },
+  "dependencies": {
+    "node-osc": "^4.1.0"
   }
 }
