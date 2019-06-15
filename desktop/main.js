@@ -31,7 +31,19 @@ app.win = null;
 
 app.on('ready', () => 
 {
-  app.win = new BrowserWindow({width: 960, height: 600, minWidth:860, minHeight:600, frame:true, autoHideMenuBar: true,backgroundColor: '#000000', resizable:true, autoHideMenuBar: true,icon: __dirname + '/icon.ico'})
+  app.win = new BrowserWindow({
+    width: 960, 
+    height: 600, 
+    minWidth:860, 
+    minHeight:600, 
+    frame:true, 
+    autoHideMenuBar: true,
+    backgroundColor: '#000000', 
+    resizable:true, 
+    autoHideMenuBar: true,
+    icon: __dirname + '/icon.ico',
+    webPreferences: { zoomFactor: 1.0, nodeIntegration: true, backgroundThrottling: false }
+  })
 
   app.win.loadURL(`file://${__dirname}/index.html`)
 
